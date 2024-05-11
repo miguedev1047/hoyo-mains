@@ -1,7 +1,8 @@
 import '@/styles/globals.css'
 import { Metadata, Viewport } from 'next'
 import { siteConfig } from '@/config/site'
-import { fontSans } from '@/config/fonts'
+import { fontDM_Sans } from '@/config/fonts'
+import { Toaster } from 'sonner'
 import { Providers } from './providers'
 import clsx from 'clsx'
 
@@ -29,17 +30,18 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang='en' suppressHydrationWarning>
+    <html lang='es' suppressHydrationWarning>
       <head />
       <body
         className={clsx(
-          'min-h-screen bg-background font-sans antialiased',
-          fontSans.variable
+          'app-theme min-h-screen bg-background font-sans antialiased',
+          fontDM_Sans.variable
         )}
       >
         <Providers themeProps={{ attribute: 'class', defaultTheme: 'dark' }}>
+          <Toaster position='bottom-right' richColors />
           <div className='relative flex flex-col h-screen'>
-            <main className='container mx-auto max-w-7xl pt-16 px-6 flex-grow'>
+            <main className='container mx-auto max-w-7xl p-8 flex-grow'>
               {children}
             </main>
           </div>
