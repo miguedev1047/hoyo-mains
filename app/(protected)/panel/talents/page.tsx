@@ -1,8 +1,12 @@
+import { IconBooks } from '@tabler/icons-react'
+import Header from '@/render/components/panel/header'
+import PanelSection from '@/render/sections/panel/panel-section'
+
 const TalentsPage = () => {
   return (
-    <div className='w-full'>
-      <h1>Talents Page</h1>
-    </div>
+    <PanelSection>
+      <Header title='Talentos' startContent={<IconBooks size={40} />} />
+    </PanelSection>
   )
 }
 

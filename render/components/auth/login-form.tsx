@@ -9,6 +9,7 @@ import { LoginSchema } from '@/schemas'
 import { useTransition } from 'react'
 import { toast } from 'sonner'
 import { login } from '@/render/services/auth/login'
+import { useRouter } from 'next/navigation'
 
 const LoginForm = () => {
   const [isPending, startTransition] = useTransition()
@@ -30,7 +31,7 @@ const LoginForm = () => {
       const { message, status, error } = await login(data)
 
       if (status === 200) {
-        toast.success(message)
+        toast.success('Inicio de sesión exitoso!')
         return
       }
 

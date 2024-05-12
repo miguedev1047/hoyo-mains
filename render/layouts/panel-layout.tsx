@@ -11,7 +11,7 @@ const metadata: Metadata = {
 
 const PanelLayout = ({ children }: { children: React.ReactNode }) => {
   return (
-    <main className='w-full h-full flex gap-2'>
+    <main className='w-full h-full flex gap-4'>
       <Sidebar />
       {children}
     </main>
