@@ -1,9 +1,7 @@
-import React from 'react'
-
 const PanelHome = () => {
   return (
-    <section>
-        <h1>Panel Home</h1>
+    <section className='w-full'>
+      <h1>Panel Home</h1>
     </section>
   )
 }

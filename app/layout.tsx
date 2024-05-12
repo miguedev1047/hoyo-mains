@@ -41,7 +41,8 @@ export default function RootLayout({
         <Providers themeProps={{ attribute: 'class', defaultTheme: 'dark' }}>
           <Toaster position='bottom-right' richColors />
           <div className='relative flex flex-col h-screen'>
-            <main className='container mx-auto max-w-7xl p-8 flex-grow'>
+            <main className='p-4 flex-grow'>
+              <div className='absolute top-0 left-0 h-screen w-screen bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.3),rgba(255,255,255,0))]'></div>
               {children}
             </main>
           </div>

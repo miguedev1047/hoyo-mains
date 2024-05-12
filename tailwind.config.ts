@@ -14,11 +14,14 @@ module.exports = {
         'color-red': '#A52834',
         'color-white': '#FFFFFF',
         'color-gold': '#D7B580',
-        'color-black': '#000000',
-        'primary-color': '#C4C6CF',
-        'secondary-color': '#A52834'
-      }
+        'color-black': '#050613',
 
+        'color-dark': '#2C2937',
+        'color-light': '#F5F5F5',
+
+        'primary-color': '#534A5D',
+        'secondary-color': '#668CF6'
+      }
     }
   },
   darkMode: 'class',

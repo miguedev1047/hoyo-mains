@@ -1,10 +1,10 @@
 'use client'
 
-import { useForm, Controller } from 'react-hook-form'
-import { zodResolver } from '@hookform/resolvers/zod'
+import { Card, CardHeader, CardBody, CardFooter } from '@nextui-org/card'
 import { Input } from '@nextui-org/input'
 import { Button } from '@nextui-org/button'
-import { Card, CardHeader, CardBody, CardFooter } from '@nextui-org/card'
+import { useForm, Controller } from 'react-hook-form'
+import { zodResolver } from '@hookform/resolvers/zod'
 import { LoginSchema } from '@/schemas'
 import { useTransition } from 'react'
 import { login } from '@/actions/login/login'
@@ -40,7 +40,7 @@ const LoginForm = () => {
   })
 
   return (
-    <Card className='w-full max-w-[340px] mx-auto p-4 bg-slate-900'>
+    <Card className='w-full max-w-[440px] mx-auto p-4 bg-color-black'>
       <form onSubmit={onSubmit}>
         <CardHeader>
           <h4 className='text-xl font-bold text-color-white'>Iniciar sesión</h4>
@@ -86,7 +86,6 @@ const LoginForm = () => {
             size='lg'
             type='submit'
             color='danger'
-            variant='shadow'
             isLoading={isPending}
             className='bg-color-red font-bold'
           >
