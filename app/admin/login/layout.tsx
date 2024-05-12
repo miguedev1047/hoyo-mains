@@ -1,7 +1,2 @@
-const LoginLayout = ({ children }: { children: React.ReactNode }) => {
-  return (
-    <main className='w-full h-full grid place-items-center'>{children}</main>
-  )
-}
-
+import LoginLayout from '@/render/layouts/login-layout'
 export default LoginLayout

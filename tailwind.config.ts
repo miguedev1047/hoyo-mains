@@ -11,14 +11,12 @@ module.exports = {
     extend: {
       colors: {
         'color-gray': '#C4C6CF',
-        'color-red': '#A52834',
-        'color-white': '#FFFFFF',
+        'color-red': '#F62F63',
         'color-gold': '#D7B580',
-        'color-black': '#050613',
-
-        'color-dark': '#2C2937',
-        'color-light': '#F5F5F5',
-
+        'color-darkest': '#070616',
+        'color-dark': '#171435',
+        'color-light': '#D6D4E8',
+        'color-lightest': '#FFFFFF',
         'primary-color': '#534A5D',
         'secondary-color': '#668CF6'
       }
@@ -31,8 +29,8 @@ module.exports = {
         'app-theme': {
           extend: 'dark',
           colors: {
-            background: '#050613',
-            foreground: '#FFFFFF'
+            background: '#070616',
+            foreground: '#D6D4E8'
           }
         }
       }
