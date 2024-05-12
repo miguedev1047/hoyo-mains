@@ -7,8 +7,8 @@ import { useForm, Controller } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { LoginSchema } from '@/schemas'
 import { useTransition } from 'react'
-import { login } from '@/actions/login/login'
 import { toast } from 'sonner'
+import { login } from '@/render/services/auth/login'
 
 const LoginForm = () => {
   const [isPending, startTransition] = useTransition()
