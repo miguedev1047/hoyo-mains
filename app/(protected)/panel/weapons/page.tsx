@@ -1,6 +1,6 @@
 const WeaponsPage = () => {
   return (
-    <div>
+    <div className='w-full'>
       <h1>Weapons Page</h1>
     </div>
   )

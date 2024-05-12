@@ -1,5 +1,2 @@
-const CharacterLayout = ({ children }: { children: React.ReactNode }) => {
-  return <section className='w-full'>{children}</section>
-}
-
-export default CharacterLayout
+import PanelLayout from '@/render/layouts/panel-layout'
+export default PanelLayout

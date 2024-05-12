@@ -62,6 +62,7 @@ const Sidebar = () => {
             <ListboxItem
               key={index}
               href={item.href}
+              textValue={item.title}
               startContent={item.icon}
               className={`text-color-gray ${
                 pathname === item.href
