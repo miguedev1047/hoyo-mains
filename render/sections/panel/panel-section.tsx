@@ -5,7 +5,7 @@ interface PanelSectionProps {
 
 const PanelSection = ({ children, className }: PanelSectionProps) => {
   return (
-    <section className={`w-full space-y-4 ${className}`}>{children}</section>
+    <section className={`w-full space-y-4 z-20 ${className}`}>{children}</section>
   )
 }
 
