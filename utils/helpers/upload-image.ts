@@ -15,7 +15,7 @@ export const uploadImage = async ({
 }: Props) => {
   try {
     switch (path) {
-      case 'characers':
+      case 'characters':
         return await db.character.update({
           where: {
             id: id

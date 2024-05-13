@@ -13,7 +13,8 @@ interface HeaderProps {
 
 const Header = ({ title, startContent }: HeaderProps) => {
   return (
-    <Navbar className='bg-color-lightest text-color-darkest rounded-3xl p-4' classNames={{
+    <header>
+      <Navbar className='bg-color-lightest text-color-darkest rounded-3xl p-4' classNames={{
       wrapper: 'max-w-full px-2'
     }}>
       <NavbarBrand className='space-x-3'>
@@ -26,6 +27,7 @@ const Header = ({ title, startContent }: HeaderProps) => {
         </NavbarItem>
       </NavbarContent>
     </Navbar>
+    </header>
   )
 }
 

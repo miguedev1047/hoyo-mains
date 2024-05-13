@@ -51,7 +51,7 @@ const navInfo = {
 const Sidebar = () => {
   const pathname = usePathname()
   return (
-    <Card className='w-60 h-full bg-color-dark'>
+    <Card as={'nav'} className='w-60 h-full bg-color-dark'>
       <CardHeader>
         <h1 className='text-2xl font-bold mx-auto'>{navInfo.title}</h1>
       </CardHeader>

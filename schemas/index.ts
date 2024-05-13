@@ -22,10 +22,10 @@ export const CharacterSchema = z.object({
   weapon: z.string().min(1, {
     message: 'Selecciona un arma.'
   }),
-  rarity: z.number().int().min(0, {
+  stars: z.number().int().min(0, {
     message: 'Selecciona una rareza.'
   }),
-  rarityText: z.string().min(1, {
+  starsText: z.string().min(1, {
     message: 'Selecciona una rareza.'
   })
 })

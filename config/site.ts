@@ -2,10 +2,11 @@ export type SiteConfig = typeof siteConfig
 
 export const siteConfig = {
   name: 'HoYo Mains',
-  description: 'Make beautiful websites regardless of your design experience.'
+  description:
+    'Hoyo Mains es un sitio web de fans para Genshin Impact. Aquí puedes encontrar información sobre personajes, artefactos, armas y más.'
 }
 
 export const sitePanel = {
-  name: 'HoYo Mains | Admin Panel',
-  description: 'Admin panel for HoYo Mains'
+  name: 'Admin Panel',
+  description: 'Panel exclusivo para administradores de HoYo Mains.'
 }

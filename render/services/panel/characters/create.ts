@@ -24,7 +24,7 @@ export const createCharacters = async (
       status: 400
     }
 
-  const { element, name, rarity, rarityText, weapon, role } =
+  const { element, name, stars, starsText, weapon, role } =
     validateFields.data
 
   try {
@@ -32,8 +32,8 @@ export const createCharacters = async (
       data: {
         element,
         name,
-        rarity,
-        rarityText,
+        stars,
+        starsText,
         weapon,
         role
       }
