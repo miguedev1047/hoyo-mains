@@ -1,6 +1,7 @@
 import { IconUsers } from '@tabler/icons-react'
 import Header from '@/render/components/panel/header'
 import PanelSection from '@/render/sections/panel/panel-section'
+import CharacterModal from '@/render/components/panel/modal/character-modal'
 
 const CharactersPage = () => {
   return (
@@ -14,6 +15,8 @@ const CharactersPage = () => {
           different sections of the panel using the sidebar.
         </p>
       </div>
+
+      <CharacterModal />
     </PanelSection>
   )
 }

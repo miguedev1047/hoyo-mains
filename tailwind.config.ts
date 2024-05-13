@@ -18,7 +18,10 @@ module.exports = {
         'color-light': '#D6D4E8',
         'color-lightest': '#FFFFFF',
         'primary-color': '#534A5D',
-        'secondary-color': '#668CF6'
+        'secondary-color': '#668CF6',
+        'color-success': '#22C55E',
+        'color-dark-hover': '#121026',
+        'color-darkest-hover': '#08071a'
       }
     }
   },

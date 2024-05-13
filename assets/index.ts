@@ -18,9 +18,9 @@ import Sword from './images/weapon-types/Weapon_Sword.png'
 
 // Rarity images
 
-import Rarity1 from './images/rarity-types/rarity_3.png'
-import Rarity2 from './images/rarity-types/rarity_4.png'
-import Rarity3 from './images/rarity-types/rarity_5.png'
+import Rarity3 from './images/rarity-types/rarity_3.png'
+import Rarity4 from './images/rarity-types/rarity_4.png'
+import Rarity5 from './images/rarity-types/rarity_5.png'
 
 export {
   Anemo,
@@ -35,7 +35,7 @@ export {
   Claymore,
   Polearm,
   Sword,
-  Rarity1,
-  Rarity2,
-  Rarity3
+  Rarity3,
+  Rarity4,
+  Rarity5
 }

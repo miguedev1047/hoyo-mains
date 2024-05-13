@@ -22,3 +22,13 @@ model User {
   password String
   role     Role    @default(ADMIN)
 }
+
+model Character {
+  id         String   @unique @id @default(uuid())
+  name       String
+  element    String
+  weapon     String
+  rarity     Int
+  rarityText String
+  role       String
+}
