@@ -6,11 +6,12 @@ import { Chip } from '@nextui-org/chip'
 import { Divider } from '@nextui-org/divider'
 import { Card, CardBody, CardFooter, CardHeader } from '@nextui-org/card'
 import { Character } from '@prisma/client'
+import { starColorMap } from '@/constants'
 import { getElementImage } from '@/utils/helpers/get-element-image'
-import { getRarityColor } from '@/utils/helpers/get-rarity-color'
 import { getWeapon } from '@/utils/helpers/get-weapon'
 import { getRole } from '@/utils/helpers/get-role'
 import useSWR from 'swr'
+import CharacterMaterials from '@/render/components/panel/characters/character-materials'
 
 const CharacterSection = ({ characterId }: { characterId: string }) => {
   const {
@@ -22,8 +23,6 @@ const CharacterSection = ({ characterId }: { characterId: string }) => {
   if (error) return <div>Error loading characters</div>
   if (isLoading) return <div>Loading...</div>
 
-  const color = getRarityColor({ type: 'gradient', item: character! })
-
   return (
     <section className='space-y-4'>
       <Card className='bg-color-dark p-4'>
@@ -33,7 +32,10 @@ const CharacterSection = ({ characterId }: { characterId: string }) => {
               isBlurred
               width={125}
               height={125}
-              className={color}
+              className={
+                starColorMap[character?.stars as keyof typeof starColorMap] ||
+                'bg-gradient-to-t to-gray-500 from-gray-600'
+              }
               src={character?.imageUrl!}
               alt={character?.name}
             />
@@ -65,8 +67,8 @@ const CharacterSection = ({ characterId }: { characterId: string }) => {
           />
         </CardHeader>
         <Divider />
-        <CardBody>
-          <div>Upgrade materials</div>
+        <CardBody className='grid grid-cols-4'>
+          <CharacterMaterials />
           <div>Best weapons</div>
           <div>Best artifacts</div>
           <div>Best stats</div>

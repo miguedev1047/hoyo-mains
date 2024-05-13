@@ -25,6 +25,7 @@ import { useTransition } from 'react'
 import { createCharacters } from '@/render/services/panel/characters/create'
 import { useDropImage } from '@/utils/store/use-drop-image'
 import { downloadImage } from '@/utils/helpers/download-image'
+import { InputWrapper, selectInputWrapper } from '@/utils/classes'
 import { toast } from 'sonner'
 import DropImage from '@/render/components/panel/drop-image'
 
@@ -144,10 +145,7 @@ const ContentModal = ({ onOpenChange }: { onOpenChange: () => void }) => {
                   isDisabled={isPending}
                   errorMessage={errors.name?.message}
                   isInvalid={!!errors.name}
-                  classNames={{
-                    inputWrapper:
-                      'bg-color-darkest data-[hover=true]:bg-color-dark-hover group-data-[focus=true]:bg-color-dark-hover'
-                  }}
+                  classNames={InputWrapper}
                   {...field}
                 />
               )}
@@ -164,11 +162,7 @@ const ContentModal = ({ onOpenChange }: { onOpenChange: () => void }) => {
                   isDisabled={isPending}
                   errorMessage={errors.element?.message}
                   isInvalid={!!errors.element}
-                  classNames={{
-                    popoverContent: 'bg-color-darkest',
-                    trigger:
-                      'bg-color-darkest data-[hover=true]:bg-color-dark-hover'
-                  }}
+                  classNames={selectInputWrapper}
                   renderValue={(value) => {
                     return value.map(({ data, key }) => (
                       <div key={key} className='flex gap-2 items-center'>
@@ -210,11 +204,7 @@ const ContentModal = ({ onOpenChange }: { onOpenChange: () => void }) => {
                   isDisabled={isPending}
                   errorMessage={errors.role?.message}
                   isInvalid={!!errors.role}
-                  classNames={{
-                    popoverContent: 'bg-color-darkest',
-                    trigger:
-                      'bg-color-darkest data-[hover=true]:bg-color-dark-hover'
-                  }}
+                  classNames={selectInputWrapper}
                   renderValue={(value) => {
                     return value.map(({ data, key }) => (
                       <div key={key} className='flex gap-2 items-center'>
@@ -250,11 +240,7 @@ const ContentModal = ({ onOpenChange }: { onOpenChange: () => void }) => {
                   isDisabled={isPending}
                   errorMessage={errors.weapon?.message}
                   isInvalid={!!errors.weapon}
-                  classNames={{
-                    popoverContent: 'bg-color-darkest',
-                    trigger:
-                      'bg-color-darkest data-[hover=true]:bg-color-dark-hover'
-                  }}
+                  classNames={selectInputWrapper}
                   renderValue={(value) => {
                     return value.map(({ data, key }) => (
                       <div key={key} className='flex gap-2 items-center'>
@@ -296,11 +282,7 @@ const ContentModal = ({ onOpenChange }: { onOpenChange: () => void }) => {
                   isDisabled={isPending}
                   errorMessage={errors.starsText?.message}
                   isInvalid={!!errors.starsText}
-                  classNames={{
-                    popoverContent: 'bg-color-darkest',
-                    trigger:
-                      'bg-color-darkest data-[hover=true]:bg-color-dark-hover'
-                  }}
+                  classNames={selectInputWrapper}
                   renderValue={(value) => {
                     return value.map(({ data, key }) => (
                       <div key={key} className='flex gap-2 items-center'>

@@ -110,3 +110,11 @@ export const role = [
     title: 'soporte'
   }
 ]
+
+export const starColorMap = {
+  5: 'bg-gradient-to-b to bg-yellow-500 from-yellow-800',
+  4: 'bg-gradient-to-b to-purple-500 from-purple-800',
+  3: 'bg-gradient-to-b to-blue-500 from-blue-800',
+  2: 'bg-gradient-to-b to-green-500 from-green-800',
+  1: 'bg-gradient-to-b to-gray-500 from-gray-800'
+}

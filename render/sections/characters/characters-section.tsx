@@ -4,7 +4,7 @@ import { fetcher } from '@/utils/helpers/fetcher'
 import { Tooltip } from '@nextui-org/tooltip'
 import { Image } from '@nextui-org/image'
 import { Character } from '@prisma/client'
-import { getRarityColor } from '@/utils/helpers/get-rarity-color'
+import { starColorMap } from '@/constants'
 import useSWR from 'swr'
 import Link from 'next/link'
 
@@ -25,21 +25,26 @@ const CharactersSection = () => {
       <ol className='w-full grid grid-cols-8 gap-4'>
         {characters?.map((character) => {
           const url = '/panel/characters/character/' + character.id
-          const color = getRarityColor({ type: 'gradient', item: character! })
 
           return (
             <Link href={url} key={character.id}>
               <Tooltip
                 className='bg-color-light text-color-darkest px-8'
                 placement='bottom'
-                content={<p className='font-medium'>{character.name}</p>}
+                content={
+                  <p className='font-medium capitalize'>{character.name}</p>
+                }
               >
                 <Image
                   isBlurred
                   isZoomed
+                  className={
+                    starColorMap[
+                      character.stars as keyof typeof starColorMap
+                    ] || 'bg-gradient-to-t to-gray-500 from-gray-600'
+                  }
                   src={character.imageUrl!}
                   alt={character.name}
-                  className={color}
                   height={200}
                   width={200}
                 />
