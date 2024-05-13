@@ -4,9 +4,9 @@ import { fetcher } from '@/utils/helpers/fetcher'
 import { Tooltip } from '@nextui-org/tooltip'
 import { Image } from '@nextui-org/image'
 import { Character } from '@prisma/client'
+import { getRarityColor } from '@/utils/helpers/get-rarity-color'
 import useSWR from 'swr'
 import Link from 'next/link'
-import { getRarityColor } from '@/utils/helpers/get-rarity-color'
 
 const CharactersSection = () => {
   const {
