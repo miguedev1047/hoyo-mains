@@ -24,11 +24,12 @@ model User {
 }
 
 model Character {
-  id         String   @unique @id @default(uuid())
+  id         String  @id @unique @default(uuid())
   name       String
   element    String
   weapon     String
   rarity     Int
   rarityText String
   role       String
+  imageUrl   String?
 }

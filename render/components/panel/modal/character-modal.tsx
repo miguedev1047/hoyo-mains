@@ -1,5 +1,7 @@
 'use client'
 
+import { set, z } from 'zod'
+
 import { Tooltip } from '@nextui-org/tooltip'
 import { Button } from '@nextui-org/button'
 import { IconPlus } from '@tabler/icons-react'
@@ -21,13 +23,19 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { CharacterSchema } from '@/schemas'
 import { useTransition } from 'react'
 import { createCharacters } from '@/render/services/panel/characters/create'
-import { z } from 'zod'
+import { useDropImage } from '@/utils/store/use-drop-image'
+import { downloadImage } from '@/utils/helpers/download-image'
 import { toast } from 'sonner'
-import DropImage from '../drop-image'
+import DropImage from '@/render/components/panel/drop-image'
 
 const CharacterModal = () => {
   const [isPending, starTransition] = useTransition()
   const { isOpen, onOpen, onOpenChange } = useDisclosure()
+
+  const { image, setImage } = useDropImage((state) => ({
+    image: state.image,
+    setImage: state.setImage
+  }))
 
   const {
     handleSubmit,
@@ -46,6 +54,12 @@ const CharacterModal = () => {
     }
   })
 
+  const handleReset = () => {
+    reset()
+    setImage({ imgFile: null, imgPreview: '' })
+    onOpenChange()
+  }
+
   const onSubmit = handleSubmit((data) => {
     const rarityNumber = Number(
       raritys.find((rarity) => rarity.name === data.rarityText)?.title[0]
@@ -57,12 +71,24 @@ const CharacterModal = () => {
     }
 
     starTransition(async () => {
-      const { status, error, message } = await createCharacters(newValues)
+      console.log(image.file)
+
+      if (!image.file) {
+        toast.error('Debes subir una imagen.')
+        return
+      }
+
+      const { data, status, error, message } = await createCharacters(newValues)
+
+      downloadImage({
+        id: data?.id!,
+        path: 'characters',
+        imgFile: image.file
+      })
 
       if (status === 201) {
         toast.success(message)
-        onOpenChange()
-        reset()
+        handleReset()
         return
       }
 

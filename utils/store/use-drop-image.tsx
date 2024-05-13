@@ -5,7 +5,7 @@ interface DropImageState {
     file: File | null
     preview: string
   }
-  setImage: (img: { imgFile: File; imgPreview: string }) => void
+  setImage: (img: { imgFile: File | null; imgPreview: string }) => void
 }
 
 export const useDropImage = create<DropImageState>((set) => ({
