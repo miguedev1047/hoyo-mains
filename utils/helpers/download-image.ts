@@ -24,8 +24,6 @@ export const downloadImage = async ({
     const downloadURL = await getDownloadURL(imageRef)
     await uploadImage({ path: path, id: id, imgUrl: downloadURL })
 
-    console.log('Image uploaded successfully')
-
     routes.forEach((route) => mutate(route))
   })
 }

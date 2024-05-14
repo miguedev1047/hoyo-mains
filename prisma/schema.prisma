@@ -40,12 +40,29 @@ model Character {
   materials MaterialsByCharacter[]
 }
 
+model Material {
+  id String @id @default(uuid())
+
+  imageUrl String?
+
+  name        String
+  type        String
+  description String
+  stars       Int
+  starsText   String
+
+  label String
+  value String
+
+  createdDate DateTime @default(now())
+  updatedDate DateTime @updatedAt
+}
+
 model MaterialsByCharacter {
   id          String  @id @unique @default(uuid())
   item        String
   characterId String?
   order       Int     @default(0)
-  disable     Boolean @default(false)
 
   createdDate DateTime @default(now())
   updatedDate DateTime @updatedAt

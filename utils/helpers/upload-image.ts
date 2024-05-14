@@ -24,6 +24,16 @@ export const uploadImage = async ({
             imageUrl: downloadUrl
           }
         })
+
+      case 'materials':
+        return await db.material.update({
+          where: {
+            id: id
+          },
+          data: {
+            imageUrl: downloadUrl
+          }
+        })
       default:
         break
     }

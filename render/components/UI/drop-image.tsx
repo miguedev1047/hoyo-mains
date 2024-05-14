@@ -74,9 +74,16 @@ const DropImage = () => {
       </div>
 
       <div className='w-full'>
-        <p className='text-xl text-color-light/75'>
-          Arrastra una imagen aquí o haz click para seleccionar una imagen.
-        </p>
+        {isDragActive ? (
+          <p className='text-xl text-color-light/75'>
+            Suelta la imagen aquí...
+          </p>
+        ) : (
+          <p className='text-xl text-color-light/75'>
+            Arrastra una imagen aquí o haz click para seleccionar una imagen.
+          </p>
+        )}
+
         {showFileRejected === 'file-invalid-type' && (
           <p className='text-sm text-color-red font-medium'>
             El archivo seleccionado no es una imagen. Por favor, selecciona un

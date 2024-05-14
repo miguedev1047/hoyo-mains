@@ -77,22 +77,29 @@ export const weapons = [
 
 export const raritys = [
   {
-    name: 'three_star',
-    number: 3,
-    title: '3 Estrella',
-    icon: Rarity3.src
+    name: 'five_star',
+    number: 5,
+    title: '5 Estrellas'
   },
   {
     name: 'four_star',
     number: 4,
-    title: '4 Estrellas',
-    icon: Rarity4.src
+    title: '4 Estrellas'
   },
   {
-    name: 'five_star',
-    number: 5,
-    title: '5 Estrellas',
-    icon: Rarity5.src
+    name: 'three_star',
+    number: 3,
+    title: '3 Estrella'
+  },
+  {
+    name: 'two_star',
+    number: 2,
+    title: '2 Estrellas'
+  },
+  {
+    name: 'one_star',
+    number: 1,
+    title: '1 Estrella'
   }
 ]
 
@@ -118,3 +125,22 @@ export const starColorMap = {
   2: 'bg-gradient-to-b to-green-500 from-green-800',
   1: 'bg-gradient-to-b to-gray-500 from-gray-800'
 }
+
+export const startTextColorMap = {
+  5: 'text-yellow-500',
+  4: 'text-purple-500',
+  3: 'text-blue-500',
+  2: 'text-green-500',
+  1: 'text-gray-500'
+}
+
+export const materialType = [
+  { name: 'Material de ascension', id: 'MATERIAL_UPGRADE' },
+  { name: 'Material local', id: 'MATERIAL_LOCAL' },
+  { name: 'Material comun', id: 'MATERIAL_COMMON' },
+  { name: 'Material de jefe', id: 'MATERIAL_BOSS' },
+  { name: 'Material de jefe semanal', id: 'MATERIAL_WEEKLY_BOSS' },
+  { name: 'Material de talento', id: 'MATERIAL_TALENT' },
+  { name: 'Mejora de arma', id: 'MATERIAL_UPGRADE_WEAPON' },
+  { name: 'Mejora de personaje', id: 'MATERIAL_UPGRADE_CHARACTER' }
+]

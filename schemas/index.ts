@@ -29,3 +29,27 @@ export const CharacterSchema = z.object({
     message: 'Selecciona una rareza.'
   })
 })
+
+export const MaterialSchema = z.object({
+  name: z.string().min(1, {
+    message: 'Escribe un nombre válido.'
+  }),
+  description: z.string().min(1, {
+    message: 'Selecciona un elemento.'
+  }),
+  type: z.string().min(1, {
+    message: 'Selecciona el tipo de material.'
+  }),
+  stars: z.number().int().min(0, {
+    message: 'Selecciona una rareza.'
+  }),
+  starsText: z.string().min(1, {
+    message: 'Selecciona una rareza.'
+  }),
+  label: z.string().min(1, {
+    message: 'Campo requerido.'
+  }),
+  value: z.string().min(1, {
+    message: 'Campo requerido.'
+  })
+})

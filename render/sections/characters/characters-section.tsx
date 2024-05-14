@@ -20,8 +20,6 @@ const CharactersSection = () => {
 
   return (
     <section className='space-y-4'>
-      <h1 className='text-2xl'>Lista de personajes</h1>
-
       <ol className='w-full grid grid-cols-8 gap-4'>
         {characters?.map((character) => {
           const url = '/panel/characters/character/' + character.id

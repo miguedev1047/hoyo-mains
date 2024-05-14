@@ -36,7 +36,7 @@ const navInfo = {
       title: 'Artefactos'
     },
     {
-      href: '/panel/materials',
+      href: '/panel/materials?type=all',
       icon: <IconSquareRotated />,
       title: 'Materiales'
     },
@@ -51,31 +51,33 @@ const navInfo = {
 const Sidebar = () => {
   const pathname = usePathname()
   return (
-    <Card as={'nav'} className='w-60 h-full bg-color-dark'>
-      <CardHeader>
-        <h1 className='text-2xl font-bold mx-auto'>{navInfo.title}</h1>
-      </CardHeader>
+    <nav>
+      <Card className='w-60 h-[calc(100vh_-_4rem)] sticky top-8  bg-color-dark z-50'>
+        <CardHeader>
+          <h1 className='text-2xl font-bold mx-auto'>{navInfo.title}</h1>
+        </CardHeader>
 
-      <CardBody>
-        <Listbox aria-label='Panel Dashboard'>
-          {navInfo.items.map((item, index) => (
-            <ListboxItem
-              key={index}
-              href={item.href}
-              textValue={item.title}
-              startContent={item.icon}
-              className={`text-color-gray ${
-                pathname === item.href
-                  ? 'bg-primary-color'
-                  : 'hover:bg-color-primary'
-              }`}
-            >
-              <span className='ml-2'>{item.title}</span>
-            </ListboxItem>
-          ))}
-        </Listbox>
-      </CardBody>
-    </Card>
+        <CardBody>
+          <Listbox aria-label='Panel Dashboard'>
+            {navInfo.items.map((item, index) => (
+              <ListboxItem
+                key={index}
+                href={item.href}
+                textValue={item.title}
+                startContent={item.icon}
+                className={`text-color-gray ${
+                  pathname === item.href
+                    ? 'bg-primary-color'
+                    : 'hover:bg-color-primary'
+                }`}
+              >
+                <span className='ml-2'>{item.title}</span>
+              </ListboxItem>
+            ))}
+          </Listbox>
+        </CardBody>
+      </Card>
+    </nav>
   )
 }
 
