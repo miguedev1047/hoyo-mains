@@ -1,26 +1,26 @@
 // Element images
 
-import Anemo from './images/elements/Element_Anemo.png'
-import Cryo from './images/elements/Element_Cryo.png'
-import Dendro from './images/elements/Element_Dendro.png'
-import Electro from './images/elements/Element_Electro.png'
-import Geo from './images/elements/Element_Geo.png'
-import Hydro from './images/elements/Element_Hydro.png'
-import Pyro from './images/elements/Element_Pyro.png'
+import Anemo from '@/assets/images/elements/Element_Anemo.png'
+import Cryo from '@/assets/images/elements/Element_Cryo.png'
+import Dendro from '@/assets/images/elements/Element_Dendro.png'
+import Electro from '@/assets/images/elements/Element_Electro.png'
+import Geo from '@/assets/images/elements/Element_Geo.png'
+import Hydro from '@/assets/images/elements/Element_Hydro.png'
+import Pyro from '@/assets/images/elements/Element_Pyro.png'
 
 // Weapons images
 
-import Bow from './images/weapon-types/Weapon_Bow.png'
-import Catalyst from './images/weapon-types/Weapon_Catalyst.png'
-import Claymore from './images/weapon-types/Weapon_Claymore.png'
-import Polearm from './images/weapon-types/Weapon_Polearm.png'
-import Sword from './images/weapon-types/Weapon_Sword.png'
+import Bow from '@/assets/images/weapon-types/Weapon_Bow.png'
+import Catalyst from '@/assets/images/weapon-types/Weapon_Catalyst.png'
+import Claymore from '@/assets/images/weapon-types/Weapon_Claymore.png'
+import Polearm from '@/assets/images/weapon-types/Weapon_Polearm.png'
+import Sword from '@/assets/images/weapon-types/Weapon_Sword.png'
 
 // Rarity images
 
-import Rarity3 from './images/rarity-types/rarity_3.png'
-import Rarity4 from './images/rarity-types/rarity_4.png'
-import Rarity5 from './images/rarity-types/rarity_5.png'
+import Rarity3 from '@/assets/images/rarity-types/rarity_3.png'
+import Rarity4 from '@/assets/images/rarity-types/rarity_4.png'
+import Rarity5 from '@/assets/images/rarity-types/rarity_5.png'
 
 export {
   Anemo,
