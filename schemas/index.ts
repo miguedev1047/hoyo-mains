@@ -31,6 +31,12 @@ export const CharacterSchema = z.object({
 })
 
 export const MaterialSchema = z.object({
+  id: z.string().min(1, {
+    message: 'Campo requerido.'
+  }),
+  imageUrl: z.string().min(1, {
+    message: 'Campo requerido.'
+  }),
   name: z.string().min(1, {
     message: 'Escribe un nombre válido.'
   }),

@@ -2,16 +2,16 @@
 
 import { fetcher } from '@/utils/helpers/fetcher'
 import { Button } from '@nextui-org/button'
+import { Spinner } from '@nextui-org/spinner'
 import { Material } from '@prisma/client'
-import { Tooltip } from '@nextui-org/tooltip'
 import { Divider } from '@nextui-org/divider'
-import { Image } from '@nextui-org/image'
 import { usePathname, useSearchParams } from 'next/navigation'
-import { Card, CardFooter, CardHeader } from '@nextui-org/card'
-import { IconPencil, IconTrash } from '@tabler/icons-react'
 import useSWR from 'swr'
 import Link from 'next/link'
-import TooltipMaterials from '@/render/components/UI/tooltip/tooltip-materials'
+import ItemMaterial from '@/render/components/panel/materials/items/item-material'
+import AlertError from '@/render/components/UI/errors/alert-error'
+import NoItems from '@/render/components/UI/no-items'
+import PanelLoader from '@/render/components/UI/loaders/panel-loader'
 
 const materialItems = [
   {
@@ -56,6 +56,7 @@ const MaterialsSection = () => {
   return (
     <section className='space-y-4'>
       <Divider />
+
       <nav className='w-full'>
         <ol className='grid grid-cols-4 gap-2'>
           {materialItems.map((item) => (
@@ -90,62 +91,26 @@ const MaterialList = () => {
   const url = `${pathanme}?${searchParams}`
   const queryParams = url.split('?')[1]
 
+  // Fetch materials
   const {
     data: materials,
     isLoading,
     error
   } = useSWR<Material[]>(`/api/materials?${queryParams}`, fetcher)
 
-  if (error) return <div>Error loading characters</div>
-  if (isLoading) return <div>Loading...</div>
+  // Condicionales de renderizado
+  if (error)
+    return <AlertError message='Hubo un problema al cargar los materiales.' />
+
+  if (isLoading) return <PanelLoader />
+  
+  if (!materials?.length)
+    return <NoItems message='No hay materiales para mostrar' />
 
   return (
     <ol className='w-full grid grid-cols-5 gap-4'>
       {materials?.map((material) => (
-        <Tooltip
-          key={material.id}
-          placement='bottom'
-          className='bg-color-dark p-4'
-          content={<TooltipMaterials material={material} />}
-        >
-          <Card className='bg-color-dark'>
-            <CardHeader className='flex flex-row items-center gap-4'>
-              <Image
-                isBlurred
-                width={240}
-                height={240}
-                classNames={{
-                  wrapper: 'w-12 h-12'
-                }}
-                className='object-cover'
-                src={material.imageUrl!}
-                alt={material.name}
-              />
-              <h3 className='text-base font-semibold line-clamp-1'>
-                {material.name}
-              </h3>
-            </CardHeader>
-            <CardFooter className='grid grid-cols-2 gap-4'>
-              <Button
-                radius='sm'
-                color='danger'
-                variant='bordered'
-                className='font-bold '
-                startContent={<IconTrash />}
-              >
-                Delete
-              </Button>
-              <Button
-                radius='sm'
-                color='success'
-                className='font-bold bg-color-success'
-                startContent={<IconPencil />}
-              >
-                Edit
-              </Button>
-            </CardFooter>
-          </Card>
-        </Tooltip>
+        <ItemMaterial key={material.id} material={material} />
       ))}
     </ol>
   )

@@ -33,10 +33,15 @@ import { useDropImage } from '@/utils/store/use-drop-image'
 import { downloadImage } from '@/utils/helpers/download-image'
 import { InputWrapper, selectInputWrapper } from '@/utils/classes'
 import { toast } from 'sonner'
+import { useOpen } from '@/utils/store/use-open'
 import DropImage from '@/render/components/UI/drop-image'
 
 const CharacterModal = () => {
-  const { isOpen, onOpen, onOpenChange } = useDisclosure()
+  const { onOpen, onOpenChange, open } = useOpen((state) => ({
+    open: state.open,
+    onOpen: state.onOpen,
+    onOpenChange: state.onOpenChange
+  }))
 
   return (
     <>
@@ -49,7 +54,7 @@ const CharacterModal = () => {
           radius='full'
           color='success'
           variant='shadow'
-          onPress={onOpen}
+          onPress={() => onOpen(true)}
           className='bg-color-success w-16 h-16 fixed bottom-8 right-8'
         >
           <IconPlus size={40} />
@@ -57,7 +62,7 @@ const CharacterModal = () => {
       </Tooltip>
       <Modal
         size='4xl'
-        isOpen={isOpen}
+        isOpen={open}
         onOpenChange={onOpenChange}
         className='bg-color-dark'
       >

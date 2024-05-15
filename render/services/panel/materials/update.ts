@@ -5,7 +5,10 @@ import { currentRole } from '@/data/auth'
 import { MaterialSchema } from '@/schemas'
 import db from '@/libs/db'
 
-export const createMaterials = async (data: z.infer<typeof MaterialSchema>) => {
+export const updateMaterials = async (
+  dataId: string,
+  data: z.infer<typeof MaterialSchema>
+) => {
   const currentAdminRole = await currentRole()
   const validateFields = MaterialSchema.safeParse(data)
 
@@ -21,23 +24,13 @@ export const createMaterials = async (data: z.infer<typeof MaterialSchema>) => {
       status: 400
     }
 
-  const {
-    description,
-    id,
-    imageUrl,
-    label,
-    name,
-    stars,
-    starsText,
-    type,
-    value
-  } = validateFields.data
+  const { description, label, name, stars, starsText, type, value } =
+    validateFields.data
 
   try {
-    const material = await db.material.create({
+    const material = await db.material.update({
+      where: { id: dataId },
       data: {
-        id,
-        imageUrl,
         description,
         label,
         name,
@@ -48,8 +41,8 @@ export const createMaterials = async (data: z.infer<typeof MaterialSchema>) => {
       }
     })
 
-    return { data: material, message: 'Material creado!', status: 201 }
-  } catch (error) {
-    return { error: 'Error al crear el material', status: 500 }
+    return { data: material, message: 'Material actualizado!', status: 201 }
+  } catch (error: any) {
+    return { error: 'Error al actualizar los materiales', status: 500 }
   }
 }

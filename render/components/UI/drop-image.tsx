@@ -37,47 +37,43 @@ const DropImage = () => {
 
   return (
     <div
-      className={`col-span-2 flex items-center gap-4 text-center text-2xl `}
+      className={`col-span-2 flex items-center gap-4 text-center text-2xl cursor-pointer border-2 rounded-xl p-4 ${
+        isDragActive
+          ? 'border-blue-500 text-blue-500'
+          : 'border-color-light/75 '
+      }`}
       {...getRootProps()}
     >
-      <div
-        className={`aspect-square size-40 grid place-items-center border-4 rounded-xl ${
-          isDragActive ? 'border-blue-500 text-blue-500' : ''
-        }`}
-      >
+      <div className='aspect-square size-40 grid place-items-center rounded-xl'>
         <input {...getInputProps()} />
         {isDragActive ? (
-          <IconPhoto size={64} />
+          <IconPhoto size={96} />
         ) : image.file ? (
           <Image
-            className='object-cover'
-            classNames={{
-              wrapper: 'aspect-square w-full h-full',
-              img: 'size-full'
-            }}
+            isBlurred
+            width={120}
+            height={120}
+            className='size-20'
             src={URL.createObjectURL(image.file)}
             alt='Imagen de personaje'
           />
         ) : image.preview ? (
           <Image
-            className='object-cover'
-            classNames={{
-              wrapper: 'aspect-square w-full h-full',
-              img: 'size-full'
-            }}
+            isBlurred
+            width={120}
+            height={120}
+            className='size-20'
             src={image.preview}
             alt='Imagen de personaje'
           />
         ) : (
-          <IconPhoto size={64} />
+          <IconPhoto size={96} />
         )}
       </div>
 
       <div className='w-full'>
         {isDragActive ? (
-          <p className='text-xl text-color-light/75'>
-            Suelta la imagen aquí...
-          </p>
+          <p className='text-xl text-blue-500'>Suelta la imagen aquí...</p>
         ) : (
           <p className='text-xl text-color-light/75'>
             Arrastra una imagen aquí o haz click para seleccionar una imagen.
