@@ -2,7 +2,6 @@
 
 import { fetcher } from '@/utils/helpers/fetcher'
 import { Button } from '@nextui-org/button'
-import { Spinner } from '@nextui-org/spinner'
 import { Material } from '@prisma/client'
 import { Divider } from '@nextui-org/divider'
 import { usePathname, useSearchParams } from 'next/navigation'
