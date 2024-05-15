@@ -1,6 +1,6 @@
 import { z } from 'zod'
 import { createMaterials } from '@/render/services/panel/materials/create'
-import { downloadImage } from '../helpers/download-image'
+import { downloadImage } from '@/utils/helpers/download-image'
 import { updateMaterials } from '@/render/services/panel/materials/update'
 import { raritys } from '@/constants'
 import { useEffect, useState, useTransition } from 'react'
@@ -8,18 +8,20 @@ import { dataMaterialById } from '@/render/services/panel/materials/data'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { MaterialSchema } from '@/schemas'
 import { useForm } from 'react-hook-form'
-import { useDropImage } from '../store/use-drop-image'
-import { useOpen } from '../store/use-open'
+import { useDropImage } from '@/utils/store/use-drop-image'
+import { useOpen } from '@/utils/store/use-open'
 import { toast } from 'sonner'
 import { mutate } from 'swr'
 
-export const useCreateMaterial = (onOpenChange: () => void) => {
+export const useCreateMaterial = () => {
   const [isPending, startTransition] = useTransition()
   const [key, setKey] = useState(+new Date())
 
-  const { id, open } = useOpen((state) => ({
+  const { id, open, onOpen, onOpenChange } = useOpen((state) => ({
     id: state.id,
-    open: state.open
+    open: state.open,
+    onOpen: state.onOpen,
+    onOpenChange: state.onOpenChange
   }))
 
   const isEditActive = !!id
@@ -94,46 +96,173 @@ export const useCreateMaterial = (onOpenChange: () => void) => {
     const starsNumber = Number(
       raritys.find((rarity) => rarity.name === data.starsText)?.title[0]
     )
+    //   // Si la edición está activa, se envían los datos para actualizar
+    //   if (isEditActive) {
+    //     // UPDATE: Subimos la imagen
+    //     const { url, status, error } = await downloadImage({
+    //       id: id,
+    //       path: 'materials',
+    //       imgFile: image.file
+    //     })
 
+    //     // Si sale bien continuamos con la actualización
+    //     if (status === 201) {
+    //       const newValues = {
+    //         ...data,
+    //         id: uuid,
+    //         imageUrl: url!,
+    //         stars: starsNumber,
+    //         type: data.type.toLocaleLowerCase(),
+    //         label: data.name,
+    //         value: data.name
+    //       }
+
+    //       const { message, status, error } = await updateMaterials(
+    //         id,
+    //         newValues
+    //       )
+
+    //       if (status === 201) {
+    //         toast.success(message)
+    //         handleReset()
+    //         mutate('/api/materials?type=all')
+    //         return
+    //       }
+
+    //       toast.error(error)
+    //       return
+    //     }
+
+    //     toast.error(error)
+    //     return
+    //   }
+
+    //   if (!image.file) {
+    //     toast.error('Debes subir una imagen.')
+    //     return
+    //   }
+
+    //   // CREATE: Subimos la imagen
+    //   const { url, status, error } = await downloadImage({
+    //     id: uuid,
+    //     path: 'materials',
+    //     imgFile: image.file
+    //   })
+
+    //   // Si sale bien continuamos con la creación
+    //   if (status === 201) {
+    //     const newValues = {
+    //       ...data,
+    //       id: uuid,
+    //       imageUrl: url!,
+    //       stars: starsNumber,
+    //       type: data.type.toLocaleLowerCase(),
+    //       label: data.name,
+    //       value: data.name
+    //     }
+
+    //     const { message, status, error } = await createMaterials(newValues)
+
+    //     if (status === 201) {
+    //       toast.success(message)
+    //       handleReset()
+    //       mutate('/api/materials?type=all')
+    //       return
+    //     }
+
+    //     toast.error(error)
+    //     return
+    //   }
+
+    //   toast.error(`${error} Intentalo denuevo.`)
+    //   return
+    // })
+
+    // Logica para subir una imagen
+
+    async function uploadImage(
+      image: { file: File | null },
+      id: string | null
+    ) {
+      const { url, status, error } = await downloadImage({
+        id: id!,
+        path: 'materials',
+        imgFile: image.file
+      })
+      return { url, status, error }
+    }
+
+    // Logica para actualizar un material
+    async function handleUpdate(
+      id: string,
+      data: z.infer<typeof MaterialSchema>,
+      uuid: string,
+      url: string | null,
+      starsNumber: number
+    ) {
+      const newValues = {
+        ...data,
+        id: uuid,
+        imageUrl: url!,
+        stars: starsNumber,
+        type: data.type.toLocaleLowerCase(),
+        label: data.name,
+        value: data.name
+      }
+
+      const { message, status, error } = await updateMaterials(id, newValues)
+
+      if (status === 201) {
+        toast.success(message)
+        handleReset()
+        mutate('/api/materials?type=all')
+        return
+      }
+
+      toast.error(error)
+    }
+
+    // Logica para crear un material
+    async function handleCreate(
+      data: z.infer<typeof MaterialSchema>,
+      uuid: string,
+      url: string | null,
+      starsNumber: number
+    ) {
+      const newValues = {
+        ...data,
+        id: uuid,
+        imageUrl: url!,
+        stars: starsNumber,
+        type: data.type.toLocaleLowerCase(),
+        label: data.name,
+        value: data.name
+      }
+
+      const { message, status, error } = await createMaterials(newValues)
+
+      if (status === 201) {
+        toast.success(message)
+        handleReset()
+        mutate('/api/materials?type=all')
+        return
+      }
+
+      toast.error(error)
+    }
+
+    // Logica de la función onSubmit
     startTransition(async () => {
       // Si la edición está activa, se envían los datos para actualizar
       if (isEditActive) {
-        // UPDATE: Subimos la imagen
-        const { url, status, error } = await downloadImage({
-          id: id,
-          path: 'materials',
-          imgFile: image.file
-        })
+        const { url, status, error } = await uploadImage(image, id)
 
-        // Si sale bien continuamos con la actualización
         if (status === 201) {
-          const newValues = {
-            ...data,
-            id: uuid,
-            imageUrl: url!,
-            stars: starsNumber,
-            type: data.type.toLocaleLowerCase(),
-            label: data.name,
-            value: data.name
-          }
-
-          const { message, status, error } = await updateMaterials(
-            id,
-            newValues
-          )
-
-          if (status === 201) {
-            toast.success(message)
-            handleReset()
-            mutate('/api/materials?type=all')
-            return
-          }
-
-          toast.error(error)
+          await handleUpdate(id, data, uuid, url, starsNumber)
           return
         }
 
-        toast.error(error)
+        toast.error(`${error} Intentalo denuevo.`)
         return
       }
 
@@ -142,50 +271,28 @@ export const useCreateMaterial = (onOpenChange: () => void) => {
         return
       }
 
-      // CREATE: Subimos la imagen
-      const { url, status, error } = await downloadImage({
-        id: uuid,
-        path: 'materials',
-        imgFile: image.file
-      })
+      // Creamos el material con la imagen subida
+      const { url, status, error } = await uploadImage(image, uuid)
 
-      // Si sale bien continuamos con la creación
       if (status === 201) {
-        const newValues = {
-          ...data,
-          id: uuid,
-          imageUrl: url!,
-          stars: starsNumber,
-          type: data.type.toLocaleLowerCase(),
-          label: data.name,
-          value: data.name
-        }
-
-        const { message, status, error } = await createMaterials(newValues)
-
-        if (status === 201) {
-          toast.success(message)
-          handleReset()
-          mutate('/api/materials?type=all')
-          return
-        }
-
-        toast.error(error)
+        await handleCreate(data, uuid, url, starsNumber)
         return
       }
 
       toast.error(`${error} Intentalo denuevo.`)
-      return
     })
   })
 
   return {
+    open,
     key,
     control,
     errors,
     isPending,
     isEditActive,
     onSubmit,
-    handleReset
+    handleReset,
+    onOpen,
+    onOpenChange
   }
 }

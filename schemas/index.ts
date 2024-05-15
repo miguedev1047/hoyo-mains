@@ -41,7 +41,7 @@ export const MaterialSchema = z.object({
     message: 'Escribe un nombre válido.'
   }),
   description: z.string().min(1, {
-    message: 'Selecciona un elemento.'
+    message: 'Escribe una descripción válida.'
   }),
   type: z.string().min(1, {
     message: 'Selecciona el tipo de material.'

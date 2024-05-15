@@ -9,10 +9,12 @@ import TextStyle from '@tiptap/extension-text-style'
 const Editor = ({
   description,
   placeholder,
+  errorMessage,
   onChange
 }: {
   description: string
   placeholder?: string
+  errorMessage?: string
   onChange: (richText: string) => void
 }) => {
   const [key, setKey] = useState(+new Date())
@@ -36,9 +38,12 @@ const Editor = ({
   }, [editor])
 
   return (
-    <div className='col-span-2 flex flex-col gap-2 justify-stretch'>
-      <EditorToolbar editor={editor} />
-      <EditorContent key={key} editor={editor} />
+    <div className='col-span-2 flex flex-col space-y-1 justify-stretch'>
+      <div>
+        <EditorToolbar editor={editor} />
+        <EditorContent key={key} editor={editor} />
+      </div>
+      <p className='text-danger-400 text-xs'>{errorMessage}</p>
     </div>
   )
 }
