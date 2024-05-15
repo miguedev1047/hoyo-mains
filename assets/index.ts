@@ -11,16 +11,18 @@ import Pyro from '@/assets/images/elements/Element_Pyro.png'
 // Weapons images
 
 import Bow from '@/assets/images/weaponTypes/weapon_bow.png'
-import Catalyst from '@/assets/images/weaponTypes/Weapon_Catalyst.png'
-import Claymore from '@/assets/images/weaponTypes/Weapon_Claymore.png'
-import Polearm from '@/assets/images/weaponTypes/Weapon_Polearm.png'
-import Sword from '@/assets/images/weaponTypes/Weapon_Sword.png'
+import Catalyst from '@/assets/images/weaponTypes/weapon_catalyst.png'
+import Claymore from '@/assets/images/weaponTypes/weapon_claymore.png'
+import Polearm from '@/assets/images/weaponTypes/weapon_polearm.png'
+import Sword from '@/assets/images/weaponTypes/weapon_sword.png'
 
 // Rarity images
 
 import Rarity3 from '@/assets/images/rarity-types/rarity_3.png'
 import Rarity4 from '@/assets/images/rarity-types/rarity_4.png'
 import Rarity5 from '@/assets/images/rarity-types/rarity_5.png'
+
+// Brands 
 
 export {
   Anemo,
