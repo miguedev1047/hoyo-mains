@@ -10,11 +10,11 @@ import Pyro from '@/assets/images/elements/Element_Pyro.png'
 
 // Weapons images
 
-import Bow from '@/assets/images/weapon-types/Weapon_Bow.png'
-import Catalyst from '@/assets/images/weapon-types/Weapon_Catalyst.png'
-import Claymore from '@/assets/images/weapon-types/Weapon_Claymore.png'
-import Polearm from '@/assets/images/weapon-types/Weapon_Polearm.png'
-import Sword from '@/assets/images/weapon-types/Weapon_Sword.png'
+import Bow from '@/assets/images/weaponTypes/weapon_bow.png'
+import Catalyst from '@/assets/images/weaponTypes/Weapon_Catalyst.png'
+import Claymore from '@/assets/images/weaponTypes/Weapon_Claymore.png'
+import Polearm from '@/assets/images/weaponTypes/Weapon_Polearm.png'
+import Sword from '@/assets/images/weaponTypes/Weapon_Sword.png'
 
 // Rarity images
 
