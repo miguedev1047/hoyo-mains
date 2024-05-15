@@ -18,11 +18,11 @@ import Sword from '@/assets/images/weaponTypes/weapon_sword.png'
 
 // Rarity images
 
-import Rarity3 from '@/assets/images/rarity-types/rarity_3.png'
-import Rarity4 from '@/assets/images/rarity-types/rarity_4.png'
-import Rarity5 from '@/assets/images/rarity-types/rarity_5.png'
+import Rarity3 from '@/assets/images/rarityTypes/rarity_3.png'
+import Rarity4 from '@/assets/images/rarityTypes/rarity_4.png'
+import Rarity5 from '@/assets/images/rarityTypes/rarity_5.png'
 
-// Brands 
+// Brands
 
 export {
   Anemo,
