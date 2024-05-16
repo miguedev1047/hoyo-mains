@@ -15,7 +15,7 @@ interface Props {
   character: Character
 }
 
-const ItemCharacters = ({ character }: Props) => {
+const ItemCharacter = ({ character }: Props) => {
   const [isPending, startTransition] = useTransition()
   const url = '/panel/characters/character/' + character.id
 
@@ -83,4 +83,4 @@ const ItemCharacters = ({ character }: Props) => {
   )
 }
 
-export default ItemCharacters
+export default ItemCharacter
