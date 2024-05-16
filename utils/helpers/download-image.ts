@@ -16,8 +16,6 @@ export const downloadImage = async ({
     const metadata = { contentType: 'image/webp' }
     const imageRef = ref(storage, `${path}/${id}`)
 
-    console.log('asd')
-
     const exitsImageUrl = await getDownloadURL(imageRef)
       .then((url) => url)
       .catch(() => null)

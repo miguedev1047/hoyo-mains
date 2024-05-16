@@ -24,12 +24,14 @@ export const createCharacters = async (
       status: 400
     }
 
-  const { element, name, stars, starsText, weapon, role } =
+  const { element, name, id, imageUrl, stars, starsText, weapon, role } =
     validateFields.data
 
   try {
     const character = await db.character.create({
       data: {
+        id,
+        imageUrl,
         element,
         name,
         stars,
@@ -42,6 +44,6 @@ export const createCharacters = async (
     return { data: character, message: 'Personaje creado!', status: 201 }
   } catch (error) {
     console.log(error)
-    return { error: 'Error al crear el personaje', status: 500 }
+    return { error: 'Error al crear el personaje.', status: 500 }
   }
 }

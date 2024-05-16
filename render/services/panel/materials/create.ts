@@ -50,6 +50,6 @@ export const createMaterials = async (data: z.infer<typeof MaterialSchema>) => {
 
     return { data: material, message: 'Material creado!', status: 201 }
   } catch (error) {
-    return { error: 'Error al crear el material', status: 500 }
+    return { error: 'Error al crear el material.', status: 500 }
   }
 }

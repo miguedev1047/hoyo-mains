@@ -40,10 +40,10 @@ export const useCreateMaterial = () => {
   } = useForm<z.infer<typeof MaterialSchema>>({
     resolver: zodResolver(MaterialSchema),
     defaultValues: {
-      description: '',
       id: 'none',
       imageUrl: 'none',
       name: '',
+      description: '',
       type: '',
       label: 'none',
       value: 'none',
@@ -67,6 +67,9 @@ export const useCreateMaterial = () => {
               imgFile: null,
               imgPreview: data?.imageUrl!
             })
+          })
+          .catch((error) => {
+            toast.error(`${error} Intentalo de nuevo.`)
           })
           .finally(() => {
             setKey(+new Date())

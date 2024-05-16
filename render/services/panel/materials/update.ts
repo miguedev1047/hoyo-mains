@@ -43,6 +43,6 @@ export const updateMaterials = async (
 
     return { data: material, message: 'Material actualizado!', status: 201 }
   } catch (error: any) {
-    return { error: 'Error al actualizar los materiales', status: 500 }
+    return { error: 'Error al actualizar los materiales.', status: 500 }
   }
 }

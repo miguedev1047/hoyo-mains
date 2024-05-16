@@ -30,7 +30,7 @@ const ItemMaterial = ({ material }: { material: Material }) => {
         id: materialId
       })
 
-      // Comprobar si la imagen se ha eliminado correctamente
+      // Si la imagen se elimino, eliminamos el material
       if (status === 201) {
 
         // Eliminar el material
@@ -46,7 +46,7 @@ const ItemMaterial = ({ material }: { material: Material }) => {
         return
       }
 
-      toast.error(error)
+      toast.error(`${error} Intentalo de nuevo`)
     })
   }
 

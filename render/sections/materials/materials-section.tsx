@@ -1,51 +1,17 @@
 'use client'
 
+import { materialItems } from '@/constants'
 import { fetcher } from '@/utils/helpers/fetcher'
 import { Button } from '@nextui-org/button'
 import { Material } from '@prisma/client'
 import { Divider } from '@nextui-org/divider'
 import { usePathname, useSearchParams } from 'next/navigation'
-import useSWR from 'swr'
-import Link from 'next/link'
-import ItemMaterial from '@/render/components/panel/materials/items/item-material'
+import ItemMaterial from '@/render/components/panel/materials/item-material'
 import AlertError from '@/render/components/UI/errors/alert-error'
 import NoItems from '@/render/components/UI/no-items'
 import PanelLoader from '@/render/components/UI/loaders/panel-loader'
-
-const materialItems = [
-  {
-    name: 'Todos',
-    url: '/panel/materials?type=all'
-  },
-  {
-    name: 'Materiales de ascension',
-    url: '/panel/materials?type=material_upgrade'
-  },
-  {
-    name: 'Material local',
-    url: '/panel/materials?type=material_local'
-  },
-  {
-    name: 'Material comun',
-    url: '/panel/materials?type=material_common'
-  },
-  {
-    name: 'Material de jefe',
-    url: '/panel/materials?type=material_boss'
-  },
-  {
-    name: 'Material de jefe semanal',
-    url: '/panel/materials?type=material_weekly_boss'
-  },
-  {
-    name: 'Material mejora de armas',
-    url: '/panel/materials?type=material_upgrade_weapon'
-  },
-  {
-    name: 'Material mejora de personaje',
-    url: '/panel/materials?type=material_upgrade_character'
-  }
-]
+import useSWR from 'swr'
+import Link from 'next/link'
 
 const MaterialsSection = () => {
   const pathanme = usePathname()
@@ -102,7 +68,7 @@ const MaterialList = () => {
     return <AlertError message='Hubo un problema al cargar los materiales.' />
 
   if (isLoading) return <PanelLoader />
-  
+
   if (!materials?.length)
     return <NoItems message='No hay materiales para mostrar' />
 

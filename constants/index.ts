@@ -144,3 +144,38 @@ export const materialType = [
   { name: 'Mejora de arma', id: 'MATERIAL_UPGRADE_WEAPON' },
   { name: 'Mejora de personaje', id: 'MATERIAL_UPGRADE_CHARACTER' }
 ]
+
+export const materialItems = [
+  {
+    name: 'Todos',
+    url: '/panel/materials?type=all'
+  },
+  {
+    name: 'Materiales de ascension',
+    url: '/panel/materials?type=material_upgrade'
+  },
+  {
+    name: 'Material local',
+    url: '/panel/materials?type=material_local'
+  },
+  {
+    name: 'Material comun',
+    url: '/panel/materials?type=material_common'
+  },
+  {
+    name: 'Material de jefe',
+    url: '/panel/materials?type=material_boss'
+  },
+  {
+    name: 'Material de jefe semanal',
+    url: '/panel/materials?type=material_weekly_boss'
+  },
+  {
+    name: 'Material mejora de armas',
+    url: '/panel/materials?type=material_upgrade_weapon'
+  },
+  {
+    name: 'Material mejora de personaje',
+    url: '/panel/materials?type=material_upgrade_character'
+  }
+]
