@@ -25,7 +25,7 @@ const CharactersSection = () => {
 
   return (
     <section className='space-y-4'>
-      <ol className='w-full grid grid-cols-8 gap-4'>
+      <ol className='w-full grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 2xl:grid-cols-8 gap-4'>
         {characters?.map((character) => (
           <ItemCharacters key={character.id} character={character} />
         ))}

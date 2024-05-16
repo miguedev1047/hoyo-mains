@@ -50,10 +50,9 @@ const DropImage = () => {
           <IconPhoto size={96} />
         ) : image.file ? (
           <Image
-            isBlurred
             width={120}
             height={120}
-            className='size-20'
+            className='size-24'
             src={URL.createObjectURL(image.file)}
             alt='Imagen de personaje'
           />
@@ -62,7 +61,7 @@ const DropImage = () => {
             isBlurred
             width={120}
             height={120}
-            className='size-20'
+            className='size-24'
             src={image.preview}
             alt='Imagen de personaje'
           />

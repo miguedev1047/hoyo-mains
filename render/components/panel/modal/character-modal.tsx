@@ -214,11 +214,7 @@ const CharacterModal = () => {
                           <div key={key} className='flex gap-2 items-center'>
                             <IconStarFilled
                               size={24}
-                              className={
-                                startTextColorMap[
-                                  data?.number as keyof typeof startTextColorMap
-                                ] || 'text-gray-500'
-                              }
+                              className='text-yellow-500'
                             />
                             <span className='capitalize'>{data?.title}</span>
                           </div>
@@ -235,11 +231,7 @@ const CharacterModal = () => {
                           <div className='flex gap-2 items-center'>
                             <IconStarFilled
                               size={24}
-                              className={
-                                startTextColorMap[
-                                  rarity.number as keyof typeof startTextColorMap
-                                ] || 'text-gray-500'
-                              }
+                              className='text-yellow-500'
                             />
                             <span className='capitalize'>{rarity.title}</span>
                           </div>

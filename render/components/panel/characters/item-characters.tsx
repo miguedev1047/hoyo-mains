@@ -54,16 +54,16 @@ const ItemCharacters = ({ character }: Props) => {
         isFooterBlurred
         as={Link}
         href={url}
-        className='overflow-visible bg-color-dark'
+        className='bg-color-dark aspect-square'
       >
         <Image
-          isBlurred
           isZoomed
-          className='text-yellow-500'
+          className='object-cover w-full h-full'
+          classNames={{
+            wrapper: 'w-full h-full aspect-square'
+          }}
           src={character.imageUrl!}
           alt={character.name}
-          height={320}
-          width={320}
         />
 
         <CardFooter className='before:bg-color-darkest/10 border-white/20 border-1 overflow-hidden py-1 px-1 absolute before:rounded-xl rounded-large bottom-1 w-[calc(100%_-_8px)] shadow-small ml-1 z-10'>
