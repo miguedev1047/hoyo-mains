@@ -1,4 +1,4 @@
-import { Card, CardBody } from '@nextui-org/card'
+import { IconAlertCircle } from '@tabler/icons-react'
 
 interface Props {
   message?: string
@@ -7,16 +7,16 @@ interface Props {
 
 const AlertError = ({ message, className }: Props) => {
   return (
-    <Card
-      className={`${className} text-color-red border-color-red border-2 bg-color-red/20 p-4`}
+    <div
+      className={`w-full h-[calc(100vh_-_332px)] grid place-content-center ${className}`}
     >
-      <CardBody>
-        <h1 className='text-center text-4xl font-bold'>Error</h1>
-        <p className='text-center text-xl'>
+      <div className='space-y-4 text-color-red'>
+        <IconAlertCircle className='mx-auto animate-pulse' size={120} />
+        <p className='text-center text-3xl'>
           {message ? message : 'Hubo un problema al cargar los datos'}
         </p>
-      </CardBody>
-    </Card>
+      </div>
+    </div>
   )
 }
 

@@ -4,6 +4,9 @@ import { fetcher } from '@/utils/helpers/fetcher'
 import { Character } from '@prisma/client'
 import useSWR from 'swr'
 import ItemCharacters from '@/render/components/panel/characters/item-characters'
+import AlertError from '@/render/components/UI/errors/alert-error'
+import PanelLoader from '@/render/components/UI/loaders/panel-loader'
+import NoItems from '@/render/components/UI/no-items'
 
 const CharactersSection = () => {
   const {
@@ -12,8 +15,13 @@ const CharactersSection = () => {
     error
   } = useSWR<Character[]>('/api/characters', fetcher)
 
-  if (error) return <div>Error loading characters</div>
-  if (isLoading) return <div>Loading...</div>
+  if (error)
+    return <AlertError message='Hubo un problema al cargar los personajes.' />
+
+  if (isLoading) return <PanelLoader />
+
+  if (!characters?.length)
+    return <NoItems message='No hay personajes para mostrar' />
 
   return (
     <section className='space-y-4'>

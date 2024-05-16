@@ -3,13 +3,13 @@ import { Tooltip } from '@nextui-org/tooltip'
 import { Image } from '@nextui-org/image'
 import { Character } from '@prisma/client'
 import { Button } from '@nextui-org/button'
-import Link from 'next/link'
 import { IconTrash } from '@tabler/icons-react'
 import { useTransition } from 'react'
 import { deleteImage } from '@/utils/helpers/delete-image'
-import { toast } from 'sonner'
 import { deleteCharacter } from '@/render/services/panel/characters/delete'
+import { toast } from 'sonner'
 import { mutate } from 'swr'
+import Link from 'next/link'
 
 interface Props {
   character: Character
