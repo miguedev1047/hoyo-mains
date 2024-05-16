@@ -14,10 +14,10 @@ import {
   ModalBody,
   ModalFooter
 } from '@nextui-org/modal'
+import { useCreateWeapon } from '@/utils/hooks/panel/use-create-weapon'
 import { raritys, stats, weaponTypes } from '@/constants'
 import Editor from '@/render/components/UI/editor/editor'
 import DropImage from '@/render/components/UI/drop-image'
-import { useCreateWeapon } from '@/utils/hooks/panel/use-create-weapon'
 
 const WeaponModal = () => {
   const {
@@ -70,7 +70,10 @@ const WeaponModal = () => {
                     <Input
                       type='text'
                       label='Nombre'
+                      isDisabled={isPending}
                       classNames={InputWrapper}
+                      errorMessage={errors.name?.message}
+                      isInvalid={!!errors.name}
                       {...field}
                     />
                   )}

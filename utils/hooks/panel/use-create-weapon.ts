@@ -108,6 +108,8 @@ export const useCreateWeapon = () => {
         path: 'weapons',
         imgFile: image.file
       })
+
+      mutate('/api/weapons')
       return { url, status, error }
     }
 
@@ -132,7 +134,7 @@ export const useCreateWeapon = () => {
       if (status === 201) {
         toast.success(message)
         handleReset()
-        mutate('/api/materials?type=all')
+        mutate('/api/weapons')
         return
       }
 
@@ -160,7 +162,7 @@ export const useCreateWeapon = () => {
       if (status === 201) {
         toast.success(message)
         handleReset()
-        mutate('/api/weapons')
+        mutate('/api/weapons?')
         return
       }
 

@@ -16,12 +16,14 @@ import Link from 'next/link'
 const MaterialsSection = () => {
   const pathanme = usePathname()
   const searchParams = useSearchParams()
-  const url = `${pathanme}?${searchParams}`
+  
+  const paramsToString = searchParams.toString().length > 0
+  const query = paramsToString ? `?${searchParams}` : ''
+  const url = `${pathanme}${query}`
 
   return (
     <section className='space-y-4'>
       <Divider />
-
       <nav className='w-full'>
         <ol className='grid grid-cols-4 gap-2'>
           {materialItems.map((item) => (

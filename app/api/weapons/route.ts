@@ -6,9 +6,9 @@ export const dynamic = 'force-dynamic'
 export async function GET(request: Request) {
   try {
     const type = new URL(request.url).searchParams.get('type')!
-
+    
     if (type === 'all' || !type) {
-      const materials = await db.material.findMany({
+      const weapons = await db.weapon.findMany({
         orderBy: [
           {
             name: 'asc'
@@ -18,10 +18,10 @@ export async function GET(request: Request) {
           }
         ]
       })
-      return NextResponse.json(materials, { status: 200 })
+      return NextResponse.json(weapons, { status: 200 })
     }
 
-    const materials = await db.material.findMany({
+    const weapons = await db.weapon.findMany({
       where: {
         type: type
       },
@@ -35,7 +35,7 @@ export async function GET(request: Request) {
       ]
     })
 
-    return NextResponse.json(materials, { status: 200 })
+    return NextResponse.json(weapons, { status: 200 })
   } catch (error: any) {
     return NextResponse.json(
       {

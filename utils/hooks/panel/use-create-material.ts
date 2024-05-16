@@ -135,7 +135,7 @@ export const useCreateMaterial = () => {
       if (status === 201) {
         toast.success(message)
         handleReset()
-        mutate('/api/materials?type=all')
+        mutate('/api/materials?')
         return
       }
 

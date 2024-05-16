@@ -20,25 +20,37 @@ export const downloadImage = async ({
       .then((url) => url)
       .catch(() => null)
 
-    if (!!exitsImageUrl || !imgFile) {
+    if (!!exitsImageUrl && !imgFile) {
+      console.log('Imagen descargada con éxito.')
+
       return {
-        url: exitsImageUrl,
-        error: 'Imagen descargada con éxito.',
+        url: exitsImageUrl as unknown as string,
+        message: 'Imagen descargada con éxito.',
         status: 201
       }
     }
 
-    const imageUrl = await uploadBytes(imageRef, imgFile, metadata).then(
-      async () => {
-        const url = await getDownloadURL(imageRef)
-        return url
+    if (imgFile) {
+      const imageUrl = await uploadBytes(imageRef, imgFile, metadata).then(
+        async () => {
+          const url = await getDownloadURL(imageRef)
+          return url
+        }
+      )
+
+      console.log('Subiendo o actualizando imagen...')
+
+      return {
+        url: imageUrl as unknown as string,
+        message: 'Imagen subida con éxito.',
+        status: 201
       }
-    )
+    }
 
     return {
-      url: imageUrl as unknown as string,
-      message: 'Imagen subida con éxito.',
-      status: 201
+      url: null as unknown as string,
+      message: 'No se ha podido subir la imagen.',
+      status: 400
     }
   } catch (error) {
     return { url: null, error: 'Error al subir la imagen.', status: 500 }

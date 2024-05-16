@@ -36,7 +36,7 @@ const navInfo = {
       title: 'Artefactos'
     },
     {
-      href: '/panel/materials?type=all',
+      href: '/panel/materials',
       icon: <IconSquareRotated />,
       title: 'Materiales'
     },

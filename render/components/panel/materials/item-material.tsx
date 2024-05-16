@@ -38,7 +38,7 @@ const ItemMaterial = ({ material }: { material: Material }) => {
 
         if (status === 201) {
           toast.success(message)
-          mutate('/api/materials?type=all')
+          mutate('/api/materials?')
           return
         }
 

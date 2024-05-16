@@ -129,7 +129,7 @@ export const materialType = [
 export const materialItems = [
   {
     name: 'Todos',
-    url: '/panel/materials?type=all'
+    url: '/panel/materials'
   },
   {
     name: 'Materiales de ascension',
@@ -158,6 +158,33 @@ export const materialItems = [
   {
     name: 'Material mejora de personaje',
     url: '/panel/materials?type=material_upgrade_character'
+  }
+]
+
+export const weaponItems = [
+  {
+    name: 'Todos',
+    url: '/panel/weapons'
+  },
+  {
+    name: 'Arcos',
+    url: '/panel/weapons?type=bow'
+  },
+  {
+    name: 'Mandoble',
+    url: '/panel/weapons?type=claymore'
+  },
+  {
+    name: 'Lanza',
+    url: '/panel/weapons?type=polearm'
+  },
+  {
+    name: 'Espada',
+    url: '/panel/weapons?type=sword'
+  },
+  {
+    name: 'Catalizador',
+    url: '/panel/weapons?type=catalyst'
   }
 ]
 

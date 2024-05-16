@@ -6,7 +6,6 @@ import { Chip } from '@nextui-org/chip'
 import { Divider } from '@nextui-org/divider'
 import { Card, CardBody, CardFooter, CardHeader } from '@nextui-org/card'
 import { Character } from '@prisma/client'
-import { starColorMap } from '@/constants'
 import { getElementImage } from '@/utils/helpers/get-element-image'
 import { getWeapon } from '@/utils/helpers/get-weapon'
 import { getRole } from '@/utils/helpers/get-role'
@@ -32,10 +31,7 @@ const CharacterSection = ({ characterId }: { characterId: string }) => {
               isBlurred
               width={125}
               height={125}
-              className={
-                starColorMap[character?.stars as keyof typeof starColorMap] ||
-                'bg-gradient-to-t to-gray-500 from-gray-600'
-              }
+              className='bg-color-darkest'
               src={character?.imageUrl!}
               alt={character?.name}
             />
@@ -67,14 +63,14 @@ const CharacterSection = ({ characterId }: { characterId: string }) => {
           />
         </CardHeader>
         <Divider />
-        <CardBody className='grid grid-cols-4'>
-          <CharacterMaterials />
+        <CardBody className='grid grid-cols-1'>
+          {/* <CharacterMaterials /> */}
           <div>Best weapons</div>
           <div>Best artifacts</div>
           <div>Best stats</div>
           <div>Best YT guide</div>
           <div>Best teams</div>
-          <div> Talents Passives</div>
+          <div>Talents Passives</div>
           <div>Constellations</div>
           <div>Ascencions Costs</div>
         </CardBody>
