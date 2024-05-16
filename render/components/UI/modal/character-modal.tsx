@@ -15,15 +15,9 @@ import { Select, SelectItem } from '@nextui-org/select'
 import { Avatar } from '@nextui-org/avatar'
 
 import { Controller } from 'react-hook-form'
-import {
-  elements,
-  raritys,
-  role,
-  startTextColorMap,
-  weapons
-} from '@/constants'
+import { elements, raritys, role, weapons } from '@/constants'
 import { InputWrapper, selectInputWrapper } from '@/utils/classes'
-import { useCreateCharacter } from '@/utils/hooks/use-create-character'
+import { useCreateCharacter } from '@/utils/hooks/panel/use-create-character'
 import DropImage from '@/render/components/UI/drop-image'
 
 const CharacterModal = () => {

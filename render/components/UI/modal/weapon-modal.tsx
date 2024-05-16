@@ -2,8 +2,11 @@
 
 import { Tooltip } from '@nextui-org/tooltip'
 import { Button } from '@nextui-org/button'
+import { Input } from '@nextui-org/input'
+import { InputWrapper, selectInputWrapper } from '@/utils/classes'
 import { IconPlus, IconStarFilled } from '@tabler/icons-react'
 import { Select, SelectItem } from '@nextui-org/select'
+import { Controller } from 'react-hook-form'
 import {
   Modal,
   ModalContent,
@@ -11,32 +14,29 @@ import {
   ModalBody,
   ModalFooter
 } from '@nextui-org/modal'
-import { materialType, raritys } from '@/constants'
-import { Controller } from 'react-hook-form'
-import { Input } from '@nextui-org/input'
-import { InputWrapper, selectInputWrapper } from '@/utils/classes'
-import { useCreateMaterial } from '@/utils/hooks/panel/use-create-material'
+import { raritys, stats, weaponTypes } from '@/constants'
 import Editor from '@/render/components/UI/editor/editor'
 import DropImage from '@/render/components/UI/drop-image'
+import { useCreateWeapon } from '@/utils/hooks/panel/use-create-weapon'
 
-const MaterialModal = () => {
+const WeaponModal = () => {
   const {
-    key,
+    isEditActive,
     control,
     errors,
-    open,
     isPending,
-    isEditActive,
-    onOpen,
+    key,
+    open,
     onSubmit,
+    onOpen,
     onOpenChange
-  } = useCreateMaterial()
+  } = useCreateWeapon()
 
   return (
     <>
       <Tooltip
         className='bg-color-dark'
-        content={<p className='font-bold'>Crear material</p>}
+        content={<p className='font-bold'>Crear arma</p>}
       >
         <Button
           isIconOnly
@@ -49,6 +49,7 @@ const MaterialModal = () => {
           <IconPlus size={40} />
         </Button>
       </Tooltip>
+
       <Modal
         size='4xl'
         isOpen={open}
@@ -59,7 +60,7 @@ const MaterialModal = () => {
           {(onClose) => (
             <form onSubmit={onSubmit}>
               <ModalHeader className='flex flex-col gap-1 text-2xl capitalize'>
-                {isEditActive ? 'Editando material' : 'Nuevo material'}
+                {isEditActive ? 'Editando arma' : 'Nuevo arma'}
               </ModalHeader>
               <ModalBody className='grid grid-cols-2'>
                 <Controller
@@ -69,13 +70,49 @@ const MaterialModal = () => {
                     <Input
                       type='text'
                       label='Nombre'
-                      className='col-span-2'
-                      isDisabled={isPending}
-                      errorMessage={errors.name?.message}
-                      isInvalid={!!errors.name}
                       classNames={InputWrapper}
                       {...field}
                     />
+                  )}
+                />
+
+                <Controller
+                  name='stat'
+                  control={control}
+                  render={({ field }) => (
+                    <Select
+                      items={stats}
+                      label='Selecciona la estadística'
+                      className='max-w-full'
+                      isDisabled={isPending}
+                      errorMessage={errors.stat?.message}
+                      isInvalid={!!errors.stat}
+                      classNames={selectInputWrapper}
+                      key={key}
+                      defaultSelectedKeys={
+                        isEditActive ? [field.value.toUpperCase()] : []
+                      }
+                      renderValue={(value) => {
+                        return value.map(({ data, key }) => (
+                          <div key={key}>
+                            <span className='capitalize'>{data?.name}</span>
+                          </div>
+                        ))
+                      }}
+                      {...field}
+                    >
+                      {(element) => (
+                        <SelectItem
+                          textValue={element.name}
+                          key={element.id}
+                          value={element.id}
+                        >
+                          <div>
+                            <span className='capitalize'>{element.name}</span>
+                          </div>
+                        </SelectItem>
+                      )}
+                    </Select>
                   )}
                 />
 
@@ -84,8 +121,8 @@ const MaterialModal = () => {
                   control={control}
                   render={({ field }) => (
                     <Select
-                      items={materialType}
-                      label='Tipo de material'
+                      items={weaponTypes}
+                      label='Tipo de arma'
                       className='max-w-full'
                       isDisabled={isPending}
                       errorMessage={errors.type?.message}
@@ -174,7 +211,7 @@ const MaterialModal = () => {
                     <Editor
                       key={key}
                       errorMessage={errors.description?.message}
-                      placeholder='Descripción del material'
+                      placeholder='Descripción del arma'
                       description={field.value}
                       onChange={field.onChange}
                     />
@@ -194,7 +231,6 @@ const MaterialModal = () => {
                   type='submit'
                   color='success'
                   className='bg-color-lightest font-extrabold'
-                  isLoading={isPending}
                 >
                   {isEditActive ? 'Editar' : 'Crear'}
                 </Button>
@@ -207,4 +243,4 @@ const MaterialModal = () => {
   )
 }
 
-export default MaterialModal
+export default WeaponModal

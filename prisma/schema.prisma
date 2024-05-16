@@ -58,6 +58,22 @@ model Material {
   updatedDate DateTime @updatedAt
 }
 
+model Weapon {
+  id String @id @default(uuid())
+
+  imageUrl String?
+
+  name        String
+  type        String
+  stat        String
+  description String
+  stars       Int
+  starsText   String
+
+  createdDate DateTime @default(now())
+  updatedDate DateTime @updatedAt
+}
+
 model MaterialsByCharacter {
   id          String  @id @unique @default(uuid())
   item        String

@@ -1,19 +1,19 @@
-import { z } from 'zod'
-import { createMaterials } from '@/render/services/panel/materials/create'
-import { downloadImage } from '@/utils/helpers/download-image'
-import { updateMaterials } from '@/render/services/panel/materials/update'
 import { raritys } from '@/constants'
-import { useEffect, useState, useTransition } from 'react'
-import { dataMaterialById } from '@/render/services/panel/materials/data'
-import { zodResolver } from '@hookform/resolvers/zod'
-import { MaterialSchema } from '@/schemas'
-import { useForm } from 'react-hook-form'
+import { createWapons } from '@/render/services/panel/weapons/create'
+import { dataWeaponsById } from '@/render/services/panel/weapons/data'
+import { updateWapons } from '@/render/services/panel/weapons/update'
+import { WeaponSchema } from '@/schemas'
+import { downloadImage } from '@/utils/helpers/download-image'
 import { useDropImage } from '@/utils/store/use-drop-image'
 import { useOpen } from '@/utils/store/use-open'
+import { zodResolver } from '@hookform/resolvers/zod'
+import { useEffect, useState, useTransition } from 'react'
+import { useForm } from 'react-hook-form'
 import { toast } from 'sonner'
 import { mutate } from 'swr'
+import { z } from 'zod'
 
-export const useCreateMaterial = () => {
+export const useCreateWeapon = () => {
   const [isPending, startTransition] = useTransition()
   const [key, setKey] = useState(+new Date())
 
@@ -37,16 +37,15 @@ export const useCreateMaterial = () => {
     setValue,
     control,
     formState: { errors }
-  } = useForm<z.infer<typeof MaterialSchema>>({
-    resolver: zodResolver(MaterialSchema),
+  } = useForm<z.infer<typeof WeaponSchema>>({
+    resolver: zodResolver(WeaponSchema),
     defaultValues: {
       id: 'none',
       imageUrl: 'none',
+      stat: '',
       name: '',
       description: '',
       type: '',
-      label: 'none',
-      value: 'none',
       starsText: '',
       stars: 0
     }
@@ -56,11 +55,12 @@ export const useCreateMaterial = () => {
   useEffect(() => {
     if (isEditActive) {
       startTransition(() => {
-        dataMaterialById(id)
+        dataWeaponsById(id)
           .then(({ data }) => {
             setValue('name', data?.name!)
             setValue('type', data?.type!)
             setValue('starsText', data?.starsText!)
+            setValue('stat', data?.stat!)
             setValue('description', data?.description!)
 
             setImage({
@@ -92,96 +92,12 @@ export const useCreateMaterial = () => {
     onOpenChange()
   }
 
-  // Función para enviar los datos del formulario
   const onSubmit = handleSubmit((data) => {
     const uuid = crypto.randomUUID()
 
     const starsNumber = Number(
       raritys.find((rarity) => rarity.name === data.starsText)?.title[0]
     )
-    //   // Si la edición está activa, se envían los datos para actualizar
-    //   if (isEditActive) {
-    //     // UPDATE: Subimos la imagen
-    //     const { url, status, error } = await downloadImage({
-    //       id: id,
-    //       path: 'materials',
-    //       imgFile: image.file
-    //     })
-
-    //     // Si sale bien continuamos con la actualización
-    //     if (status === 201) {
-    //       const newValues = {
-    //         ...data,
-    //         id: uuid,
-    //         imageUrl: url!,
-    //         stars: starsNumber,
-    //         type: data.type.toLocaleLowerCase(),
-    //         label: data.name,
-    //         value: data.name
-    //       }
-
-    //       const { message, status, error } = await updateMaterials(
-    //         id,
-    //         newValues
-    //       )
-
-    //       if (status === 201) {
-    //         toast.success(message)
-    //         handleReset()
-    //         mutate('/api/materials?type=all')
-    //         return
-    //       }
-
-    //       toast.error(error)
-    //       return
-    //     }
-
-    //     toast.error(error)
-    //     return
-    //   }
-
-    //   if (!image.file) {
-    //     toast.error('Debes subir una imagen.')
-    //     return
-    //   }
-
-    //   // CREATE: Subimos la imagen
-    //   const { url, status, error } = await downloadImage({
-    //     id: uuid,
-    //     path: 'materials',
-    //     imgFile: image.file
-    //   })
-
-    //   // Si sale bien continuamos con la creación
-    //   if (status === 201) {
-    //     const newValues = {
-    //       ...data,
-    //       id: uuid,
-    //       imageUrl: url!,
-    //       stars: starsNumber,
-    //       type: data.type.toLocaleLowerCase(),
-    //       label: data.name,
-    //       value: data.name
-    //     }
-
-    //     const { message, status, error } = await createMaterials(newValues)
-
-    //     if (status === 201) {
-    //       toast.success(message)
-    //       handleReset()
-    //       mutate('/api/materials?type=all')
-    //       return
-    //     }
-
-    //     toast.error(error)
-    //     return
-    //   }
-
-    //   toast.error(`${error} Intentalo denuevo.`)
-    //   return
-    // })
-
-    // Logica para subir una imagen
 
     async function uploadImage(
       image: { file: File | null },
@@ -189,7 +105,7 @@ export const useCreateMaterial = () => {
     ) {
       const { url, status, error } = await downloadImage({
         id: id!,
-        path: 'materials',
+        path: 'weapons',
         imgFile: image.file
       })
       return { url, status, error }
@@ -198,7 +114,7 @@ export const useCreateMaterial = () => {
     // Logica para actualizar un material
     async function handleUpdate(
       id: string,
-      data: z.infer<typeof MaterialSchema>,
+      data: z.infer<typeof WeaponSchema>,
       uuid: string,
       url: string | null,
       starsNumber: number
@@ -208,12 +124,10 @@ export const useCreateMaterial = () => {
         id: uuid,
         imageUrl: url!,
         stars: starsNumber,
-        type: data.type.toLocaleLowerCase(),
-        label: data.name,
-        value: data.name
+        type: data.type.toLocaleLowerCase()
       }
 
-      const { message, status, error } = await updateMaterials(id, newValues)
+      const { message, status, error } = await updateWapons(id, newValues)
 
       if (status === 201) {
         toast.success(message)
@@ -227,7 +141,7 @@ export const useCreateMaterial = () => {
 
     // Logica para crear un material
     async function handleCreate(
-      data: z.infer<typeof MaterialSchema>,
+      data: z.infer<typeof WeaponSchema>,
       uuid: string,
       url: string | null,
       starsNumber: number
@@ -237,17 +151,16 @@ export const useCreateMaterial = () => {
         id: uuid,
         imageUrl: url!,
         stars: starsNumber,
-        type: data.type.toLocaleLowerCase(),
-        label: data.name,
-        value: data.name
+        stat: data.stat.toLocaleLowerCase(),
+        type: data.type.toLocaleLowerCase()
       }
 
-      const { message, status, error } = await createMaterials(newValues)
+      const { message, status, error } = await createWapons(newValues)
 
       if (status === 201) {
         toast.success(message)
         handleReset()
-        mutate('/api/materials?type=all')
+        mutate('/api/weapons')
         return
       }
 
@@ -274,7 +187,7 @@ export const useCreateMaterial = () => {
         return
       }
 
-      // Creamos el material con la imagen subida
+      // Creamos el arma con la imagen subida
       const { url, status, error } = await uploadImage(image, uuid)
 
       if (status === 201) {
@@ -287,14 +200,13 @@ export const useCreateMaterial = () => {
   })
 
   return {
-    open,
     key,
+    open,
     control,
     errors,
     isPending,
     isEditActive,
     onSubmit,
-    handleReset,
     onOpen,
     onOpenChange
   }

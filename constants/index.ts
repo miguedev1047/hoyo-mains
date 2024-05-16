@@ -10,9 +10,6 @@ import {
   Hydro,
   Polearm,
   Pyro,
-  Rarity3,
-  Rarity4,
-  Rarity5,
   Sword
 } from '@/assets'
 
@@ -118,22 +115,6 @@ export const role = [
   }
 ]
 
-export const starColorMap = {
-  5: 'bg-gradient-to-b to bg-yellow-500 from-yellow-800',
-  4: 'bg-gradient-to-b to-purple-500 from-purple-800',
-  3: 'bg-gradient-to-b to-blue-500 from-blue-800',
-  2: 'bg-gradient-to-b to-green-500 from-green-800',
-  1: 'bg-gradient-to-b to-gray-500 from-gray-800'
-}
-
-export const startTextColorMap = {
-  5: 'text-yellow-500',
-  4: 'text-purple-500',
-  3: 'text-blue-500',
-  2: 'text-green-500',
-  1: 'text-gray-500'
-}
-
 export const materialType = [
   { name: 'Material de ascension', id: 'MATERIAL_UPGRADE' },
   { name: 'Material local', id: 'MATERIAL_LOCAL' },
@@ -178,4 +159,24 @@ export const materialItems = [
     name: 'Material mejora de personaje',
     url: '/panel/materials?type=material_upgrade_character'
   }
+]
+
+export const stats = [
+  { name: 'Prob. critica', id: 'PROB_CRIT' },
+  { name: 'Daño critico', id: 'DMG_CRIT' },
+  { name: 'Recarga de energia', id: 'ENERGY_RECHARGE' },
+  { name: 'Atq.', id: 'ATQ' },
+  { name: 'Vida', id: 'HP' },
+  { name: 'Def.', id: 'DEF' },
+  { name: 'Atq. porcentual', id: 'ATQ_PERCENTUAL' },
+  { name: 'Vida porcentual', id: 'HP_PERCENTUAL' },
+  { name: 'Def. porcentual', id: 'DEF_PERCENTUAL' }
+]
+
+export const weaponTypes = [
+  { name: 'Espada', id: 'SWORD' },
+  { name: 'Mandoble', id: 'CLAYMORE' },
+  { name: 'Arco', id: 'BOW' },
+  { name: 'Lanza', id: 'POLEARM' },
+  { name: 'Catalizador', id: 'CATALYST' }
 ]
