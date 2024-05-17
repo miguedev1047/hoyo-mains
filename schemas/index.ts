@@ -63,6 +63,30 @@ export const WeaponSchema = z.object({
   })
 })
 
+export const ArtifactSchema = z.object({
+  id: z.string().min(1, {
+    message: 'Campo requerido.'
+  }),
+  imageUrl: z.string().min(1, {
+    message: 'Campo requerido.'
+  }),
+  name: z.string().min(1, {
+    message: 'Escribe un nombre válido.'
+  }),
+  stars: z.number().int().min(0, {
+    message: 'Selecciona una rareza.'
+  }),
+  starsText: z.string().min(1, {
+    message: 'Selecciona una rareza.'
+  }),
+  descTwoPieces: z.string().min(1, {
+    message: 'Escribe una descripción válida.'
+  }),
+  descFourPieces: z.string().min(1, {
+    message: 'Escribe una descripción válida.'
+  })
+})
+
 export const MaterialSchema = z.object({
   id: z.string().min(1, {
     message: 'Campo requerido.'

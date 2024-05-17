@@ -52,7 +52,7 @@ const DropImage = () => {
           <Image
             width={120}
             height={120}
-            className='size-24'
+            className='object-cover'
             src={URL.createObjectURL(image.file)}
             alt='Imagen de personaje'
           />
@@ -61,7 +61,7 @@ const DropImage = () => {
             isBlurred
             width={120}
             height={120}
-            className='size-24'
+            className='object-cover'
             src={image.preview}
             alt='Imagen de personaje'
           />

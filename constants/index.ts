@@ -171,19 +171,19 @@ export const weaponItems = [
     url: '/panel/weapons?type=bow'
   },
   {
-    name: 'Mandoble',
+    name: 'Mandobles',
     url: '/panel/weapons?type=claymore'
   },
   {
-    name: 'Lanza',
+    name: 'Lanzas',
     url: '/panel/weapons?type=polearm'
   },
   {
-    name: 'Espada',
+    name: 'Espadas',
     url: '/panel/weapons?type=sword'
   },
   {
-    name: 'Catalizador',
+    name: 'Catalizadores',
     url: '/panel/weapons?type=catalyst'
   }
 ]

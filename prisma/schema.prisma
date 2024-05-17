@@ -74,6 +74,21 @@ model Weapon {
   updatedDate DateTime @updatedAt
 }
 
+model Artifact {
+  id String @id @unique @default(uuid())
+
+  name      String
+  stars     Int
+  starsText String
+  imageUrl  String?
+
+  descTwoPieces  String
+  descFourPieces String
+
+  createdDate DateTime @default(now())
+  updatedDate DateTime @updatedAt
+}
+
 model MaterialsByCharacter {
   id          String  @id @unique @default(uuid())
   item        String
