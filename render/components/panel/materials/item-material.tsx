@@ -9,6 +9,8 @@ import { mutate } from 'swr'
 import { deleteMaterial } from '@/render/services/panel/materials/delete'
 import { toast } from 'sonner'
 import { useTransition } from 'react'
+import clsx from 'clsx'
+import { getStarBorderColor } from '@/utils/helpers/get-color'
 
 const ItemMaterial = ({ material }: { material: Material }) => {
   const [isPending, starTransition] = useTransition()
@@ -51,7 +53,10 @@ const ItemMaterial = ({ material }: { material: Material }) => {
   }
 
   return (
-    <Card key={material.id} className='bg-color-dark'>
+    <Card key={material.id} className={clsx(
+      'bg-color-dark border-2',
+      getStarBorderColor(material.stars)
+    )}>
       <CardHeader className='flex flex-row items-center gap-4'>
         <Image
           isBlurred
@@ -68,23 +73,25 @@ const ItemMaterial = ({ material }: { material: Material }) => {
           {material.name}
         </h3>
       </CardHeader>
-      <CardFooter className='grid grid-cols-2 gap-4'>
+      <CardFooter className='grid grid-cols-2 gap-2'>
         <Button
+          size='sm'
           radius='sm'
           color='danger'
           isLoading={isPending}
           onPress={() => handleDelete(material.id)}
           className='bg-color-darkest font-bold'
-          startContent={<IconTrash />}
+          startContent={<IconTrash size={16} />}
         >
           Eliminar
         </Button>
         <Button
+          size='sm'
           radius='sm'
           color='success'
           onPress={() => handleEdit(material.id)}
           className='font-bold bg-color-light'
-          startContent={<IconPencil />}
+          startContent={<IconPencil size={16} />}
         >
           Editar
         </Button>

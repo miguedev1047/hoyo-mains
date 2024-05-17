@@ -6,15 +6,18 @@ export const dynamic = 'force-dynamic'
 export async function GET(request: Request) {
   try {
     const type = new URL(request.url).searchParams.get('type')!
-    
+
     if (type === 'all' || !type) {
       const weapons = await db.weapon.findMany({
         orderBy: [
           {
+            stars: 'desc'
+          },
+          {
             name: 'asc'
           },
           {
-            stars: 'asc'
+            createdDate: 'asc'
           }
         ]
       })
@@ -27,13 +30,18 @@ export async function GET(request: Request) {
       },
       orderBy: [
         {
+          stars: 'desc'
+        },
+        {
           name: 'asc'
         },
         {
-          stars: 'asc'
+          createdDate: 'asc'
         }
       ]
     })
+
+    console.log(weapons)
 
     return NextResponse.json(weapons, { status: 200 })
   } catch (error: any) {

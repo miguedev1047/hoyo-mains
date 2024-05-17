@@ -9,6 +9,8 @@ import { mutate } from 'swr'
 import { toast } from 'sonner'
 import { useTransition } from 'react'
 import { deleteArtifact } from '@/render/services/panel/artifacts/delete'
+import { getStarBorderColor } from '@/utils/helpers/get-color'
+import clsx from 'clsx'
 
 const ItemArtifact = ({ artifact }: { artifact: Artifact }) => {
   const [isPending, starTransition] = useTransition()
@@ -50,7 +52,13 @@ const ItemArtifact = ({ artifact }: { artifact: Artifact }) => {
   }
 
   return (
-    <Card key={artifact.id} className='bg-color-dark'>
+    <Card
+      key={artifact.id}
+      className={clsx(
+        'bg-color-dark border-2',
+        getStarBorderColor(artifact.stars)
+      )}
+    >
       <CardHeader className='flex flex-row items-center gap-4'>
         <Image
           isBlurred
@@ -62,23 +70,25 @@ const ItemArtifact = ({ artifact }: { artifact: Artifact }) => {
           {artifact.name}
         </h3>
       </CardHeader>
-      <CardFooter className='grid grid-cols-2 gap-4'>
+      <CardFooter className='grid grid-cols-2 gap-2'>
         <Button
+          size='sm'
           radius='sm'
           color='danger'
           isLoading={isPending}
           onPress={() => handleDelete(artifact.id)}
           className='bg-color-darkest font-bold'
-          startContent={<IconTrash />}
+          startContent={<IconTrash size={16} />}
         >
           Eliminar
         </Button>
         <Button
+          size='sm'
           radius='sm'
           color='success'
           onPress={() => handleEdit(artifact.id)}
           className='font-bold bg-color-light'
-          startContent={<IconPencil />}
+          startContent={<IconPencil size={16} />}
         >
           Editar
         </Button>

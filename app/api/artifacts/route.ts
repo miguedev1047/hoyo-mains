@@ -5,7 +5,19 @@ export const dynamic = 'force-dynamic'
 
 export async function GET(request: Request) {
   try {
-    const artifacts = await db.artifact.findMany()
+    const artifacts = await db.artifact.findMany({
+      orderBy: [
+        {
+          stars: 'desc'
+        },
+        {
+          name: 'asc'
+        },
+        {
+          createdDate: 'asc'
+        }
+      ]
+    })
 
     return NextResponse.json(artifacts, { status: 200 })
   } catch (error: any) {

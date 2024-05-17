@@ -1,4 +1,3 @@
-import { Avatar } from '@nextui-org/avatar'
 import { useOpen } from '@/utils/store/use-open'
 import { Weapon } from '@prisma/client'
 import { Image } from '@nextui-org/image'
@@ -10,6 +9,8 @@ import { toast } from 'sonner'
 import { useTransition } from 'react'
 import { deleteImage } from '@/utils/helpers/delete-image'
 import { deleteWeapon } from '@/render/services/panel/weapons/delete'
+import { getStarBorderColor } from '@/utils/helpers/get-color'
+import clsx from 'clsx'
 
 const ItemWeapon = ({ weapon }: { weapon: Weapon }) => {
   const [isPending, starTransition] = useTransition()
@@ -51,7 +52,12 @@ const ItemWeapon = ({ weapon }: { weapon: Weapon }) => {
   }
 
   return (
-    <Card className='bg-color-dark'>
+    <Card
+      className={clsx(
+        'bg-color-dark border-2',
+        getStarBorderColor(weapon.stars)
+      )}
+    >
       <CardHeader className='flex flex-row items-center gap-4'>
         <Image
           isBlurred
@@ -66,23 +72,25 @@ const ItemWeapon = ({ weapon }: { weapon: Weapon }) => {
         />
         <h3 className='text-base font-semibold line-clamp-1'>{weapon.name}</h3>
       </CardHeader>
-      <CardFooter className='grid grid-cols-2 gap-4'>
+      <CardFooter className='grid grid-cols-2 gap-2'>
         <Button
+          size='sm'
           radius='sm'
           color='danger'
           isLoading={isPending}
           onPress={() => handleDelete(weapon.id)}
           className='bg-color-darkest font-bold'
-          startContent={<IconTrash />}
+          startContent={<IconTrash size={16} />}
         >
           Eliminar
         </Button>
         <Button
+          size='sm'
           radius='sm'
           color='success'
           onPress={() => handleEdit(weapon.id)}
           className='font-bold bg-color-light'
-          startContent={<IconPencil />}
+          startContent={<IconPencil size={16} />}
         >
           Editar
         </Button>

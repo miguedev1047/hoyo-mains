@@ -39,11 +39,6 @@ const navInfo = {
       href: '/panel/materials',
       icon: <IconSquareRotated />,
       title: 'Materiales'
-    },
-    {
-      href: '/panel/talents',
-      icon: <IconBooks />,
-      title: 'Talentos'
     }
   ]
 }

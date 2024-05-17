@@ -10,6 +10,8 @@ import { deleteCharacter } from '@/render/services/panel/characters/delete'
 import { toast } from 'sonner'
 import { mutate } from 'swr'
 import Link from 'next/link'
+import clsx from 'clsx'
+import { getStarBorderColor } from '@/utils/helpers/get-color'
 
 interface Props {
   character: Character
@@ -54,7 +56,10 @@ const ItemCharacter = ({ character }: Props) => {
         isFooterBlurred
         as={Link}
         href={url}
-        className='bg-color-dark aspect-square'
+        className={clsx(
+          'bg-color-dark aspect-square border-2',
+          getStarBorderColor(character.stars)
+        )}
       >
         <Image
           isZoomed

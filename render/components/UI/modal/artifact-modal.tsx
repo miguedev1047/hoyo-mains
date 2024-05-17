@@ -49,7 +49,6 @@ const ArtifactModal = () => {
           <IconPlus size={40} />
         </Button>
       </Tooltip>
-
       <Modal
         size='4xl'
         isOpen={open}

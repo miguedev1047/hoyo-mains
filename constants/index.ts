@@ -207,3 +207,11 @@ export const weaponTypes = [
   { name: 'Lanza', id: 'POLEARM' },
   { name: 'Catalizador', id: 'CATALYST' }
 ]
+
+export const borderColorStars = {
+  1: 'border-gray-500',
+  2: 'border-green-500',
+  3: 'border-blue-500',
+  4: 'border-purple-500',
+  5: 'border-yellow-500'
+}

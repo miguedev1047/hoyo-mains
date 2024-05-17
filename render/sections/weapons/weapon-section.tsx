@@ -3,16 +3,15 @@
 import { fetcher } from '@/utils/helpers/fetcher'
 import { Button } from '@nextui-org/button'
 import { Weapon } from '@prisma/client'
-
 import { Divider } from '@nextui-org/divider'
 import { usePathname, useSearchParams } from 'next/navigation'
-import Link from 'next/link'
-import useSWR from 'swr'
 import { weaponItems } from '@/constants'
 import AlertError from '@/render/components/UI/errors/alert-error'
 import PanelLoader from '@/render/components/UI/loaders/panel-loader'
 import NoItems from '@/render/components/UI/no-items'
 import ItemWeapon from '@/render/components/panel/weapons/item-weapon'
+import Link from 'next/link'
+import useSWR from 'swr'
 
 const WeaponsSection = () => {
   const pathanme = usePathname()
@@ -61,14 +60,12 @@ const WeaponList = () => {
   const url = `${pathanme}?${searchParams}`
   const queryParams = url.split('?')[1]
 
-  // Fetch materials
+  // Fetch weapons
   const {
     data: weapons,
     isLoading,
     error
-  } = useSWR<Weapon[]>(`/api/weapons?${queryParams}`, fetcher, {
-    refreshInterval: 1000
-  })
+  } = useSWR<Weapon[]>(`/api/weapons?${queryParams}`, fetcher)
 
   // Condicionales de renderizado
   if (error)

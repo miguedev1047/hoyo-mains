@@ -11,10 +11,13 @@ export async function GET(request: Request) {
       const materials = await db.material.findMany({
         orderBy: [
           {
+            stars: 'desc'
+          },
+          {
             name: 'asc'
           },
           {
-            stars: 'asc'
+            createdDate: 'asc'
           }
         ]
       })
@@ -27,10 +30,13 @@ export async function GET(request: Request) {
       },
       orderBy: [
         {
+          stars: 'desc'
+        },
+        {
           name: 'asc'
         },
         {
-          stars: 'asc'
+          createdDate: 'asc'
         }
       ]
     })
