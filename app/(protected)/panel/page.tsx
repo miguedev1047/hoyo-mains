@@ -1,20 +1,20 @@
-import { Suspense } from 'react'
+import { currentUser } from '@/data/auth'
 import { IconHome } from '@tabler/icons-react'
 import { Divider } from '@nextui-org/divider'
 import Header from '@/render/components/panel/header'
 import PanelWrapper from '@/render/components/UI/panel-wrapper'
 import HomeSection from '@/render/sections/panel/home-section'
 
-const PanelHome = () => {
+const PanelHome = async () => {
+  const user = await currentUser()
+  
   return (
     <PanelWrapper>
       <Header title='Inicio' startContent={<IconHome size={40} />} />
 
       <Divider />
 
-      <Suspense>
-        <HomeSection />
-      </Suspense>
+      <HomeSection user={user!} />
     </PanelWrapper>
   )
 }

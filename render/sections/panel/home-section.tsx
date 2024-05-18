@@ -1,13 +1,11 @@
 import { homeItems } from '@/constants'
 import { Card, CardFooter } from '@nextui-org/card'
-import { currentUser } from '@/data/auth'
+import { User } from 'next-auth'
 import Link from 'next/link'
 import Image from 'next/image'
 import Countup from '@/render/components/UI/countup'
 
-const HomeSection = async () => {
-  const user = await currentUser()
-
+const HomeSection = ({user}: {user: User}) => {
   return (
     <section className='space-y-8'>
       <article className='text-center font-semibold space-y-4'>
