@@ -2,7 +2,7 @@ import { IconHourglassEmpty } from '@tabler/icons-react'
 import ArtifactModal from '@/render/components/UI/modal/artifact-modal'
 import Header from '@/render/components/panel/header'
 import ArtifactSection from '@/render/sections/artifacts/artifact-section'
-import PanelWrapper from '@/render/sections/panel-wrapper'
+import PanelWrapper from '@/render/components/UI/panel-wrapper'
 
 const ArtifactsPage = () => {
   return (
