@@ -1,3 +1,4 @@
+import { Suspense } from 'react'
 import { IconHome } from '@tabler/icons-react'
 import { Divider } from '@nextui-org/divider'
 import Header from '@/render/components/panel/header'
@@ -11,7 +12,9 @@ const PanelHome = () => {
 
       <Divider />
 
-      <HomeSection />
+      <Suspense>
+        <HomeSection />
+      </Suspense>
     </PanelWrapper>
   )
 }
