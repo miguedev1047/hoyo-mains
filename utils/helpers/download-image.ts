@@ -21,8 +21,6 @@ export const downloadImage = async ({
       .catch(() => null)
 
     if (!!exitsImageUrl && !imgFile) {
-      console.log('Imagen descargada con éxito.')
-
       return {
         url: exitsImageUrl as unknown as string,
         message: 'Imagen descargada con éxito.',
@@ -37,8 +35,6 @@ export const downloadImage = async ({
           return url
         }
       )
-
-      console.log('Subiendo o actualizando imagen...')
 
       return {
         url: imageUrl as unknown as string,
