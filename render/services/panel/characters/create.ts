@@ -14,13 +14,13 @@ export const createCharacters = async (
 
   if (currentAdminRole !== 'ADMIN' && currentAdminRole !== 'OWNER')
     return {
-      error: 'You are not allowed to create characters',
+      error: 'No tienes permisos para realizar esta acción.',
       status: 403
     }
 
   if (!validateFields.success)
     return {
-      error: 'Invalid fields',
+      error: 'Campos inválidos.',
       status: 400
     }
 
