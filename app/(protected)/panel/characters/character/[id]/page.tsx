@@ -1,13 +1,13 @@
 import CharacterSection from '@/render/sections/characters/character-section'
-import PanelSection from '@/render/sections/panel/panel-section'
+import PanelWrapper from '@/render/sections/panel-wrapper'
 
 const CharacterPage = ({ params }: { params: { id: string } }) => {
   const characterId = params.id
 
   return (
-    <PanelSection>
+    <PanelWrapper>
       <CharacterSection characterId={characterId} />
-    </PanelSection>
+    </PanelWrapper>
   )
 }
 

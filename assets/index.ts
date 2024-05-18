@@ -24,6 +24,18 @@ import Rarity5 from '@/assets/images/rarityTypes/rarity_5.png'
 
 // Brands
 
+import NoelleBrand from '@/assets/images/noelle-brand-image.webp'
+
+// Backgrounds
+
+import CharacterBackground from '@/assets/images/backgrounds/characters_background.jpeg'
+
+import ArtifactBackground from '@/assets/images/backgrounds/artifacts_background.png'
+
+import WeaponBackground from '@/assets/images/backgrounds/weapons_background.jpg'
+
+import MaterialBackground from '@/assets/images/backgrounds/materials_background.jpeg'
+
 export {
   Anemo,
   Cryo,
@@ -39,5 +51,10 @@ export {
   Sword,
   Rarity3,
   Rarity4,
-  Rarity5
+  Rarity5,
+  NoelleBrand,
+  CharacterBackground,
+  ArtifactBackground,
+  WeaponBackground,
+  MaterialBackground
 }

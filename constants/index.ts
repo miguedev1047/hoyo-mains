@@ -1,16 +1,20 @@
 import {
   Anemo,
+  ArtifactBackground,
   Bow,
   Catalyst,
+  CharacterBackground,
   Claymore,
   Cryo,
   Dendro,
   Electro,
   Geo,
   Hydro,
+  MaterialBackground,
   Polearm,
   Pyro,
-  Sword
+  Sword,
+  WeaponBackground
 } from '@/assets'
 
 export const elements = [
@@ -215,3 +219,26 @@ export const borderColorStars = {
   4: 'border-purple-500',
   5: 'border-yellow-500'
 }
+
+export const homeItems = [
+  {
+    title: 'Personajes',
+    url: '/panel/characters',
+    background: CharacterBackground.src
+  },
+  {
+    title: 'Armas',
+    url: '/panel/weapons',
+    background: ArtifactBackground.src
+  },
+  {
+    title: 'Artefactos',
+    url: '/panel/artifacts',
+    background: WeaponBackground.src
+  },
+  {
+    title: 'Materiales',
+    url: '/panel/materials',
+    background: MaterialBackground.src
+  }
+]

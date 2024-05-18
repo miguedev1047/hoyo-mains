@@ -1,20 +1,20 @@
+import { Suspense } from 'react'
 import { IconSword } from '@tabler/icons-react'
 import Header from '@/render/components/panel/header'
-import PanelSection from '@/render/sections/panel/panel-section'
 import WeaponsSection from '@/render/sections/weapons/weapon-section'
 import WeaponModal from '@/render/components/UI/modal/weapon-modal'
-import { Suspense } from 'react'
+import PanelWrapper from '@/render/sections/panel-wrapper'
 
 const WeaponsPage = () => {
   return (
     <Suspense>
-      <PanelSection>
+      <PanelWrapper>
         <Header title='Armas' startContent={<IconSword size={40} />} />
 
         <WeaponsSection />
 
         <WeaponModal />
-      </PanelSection>
+      </PanelWrapper>
     </Suspense>
   )
 }

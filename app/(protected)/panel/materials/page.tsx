@@ -2,13 +2,13 @@ import MaterialsSection from '@/render/sections/materials/materials-section'
 import { Suspense } from 'react'
 import { IconSquareRotated } from '@tabler/icons-react'
 import Header from '@/render/components/panel/header'
-import PanelSection from '@/render/sections/panel/panel-section'
+import PanelWrapper from '@/render/sections/panel-wrapper'
 import MaterialModal from '@/render/components/UI/modal/material-modal'
 
 const MaterialPage = () => {
   return (
     <Suspense>
-      <PanelSection>
+      <PanelWrapper>
         <Header
           title='Materiales'
           startContent={<IconSquareRotated size={40} />}
@@ -17,7 +17,7 @@ const MaterialPage = () => {
         <MaterialsSection />
 
         <MaterialModal />
-      </PanelSection>
+      </PanelWrapper>
     </Suspense>
   )
 }

@@ -1,9 +1,9 @@
-interface PanelSectionProps {
+interface PanelWrapperProps {
   children: React.ReactNode
   className?: string
 }
 
-const PanelSection = ({ children, className }: PanelSectionProps) => {
+const PanelWrapper = ({ children, className }: PanelWrapperProps) => {
   return (
     <div className={`w-full space-y-4 z-20 relative ${className}`}>
       {children}
@@ -11,4 +11,4 @@ const PanelSection = ({ children, className }: PanelSectionProps) => {
   )
 }
 
-export default PanelSection
+export default PanelWrapper
