@@ -5,12 +5,12 @@ import Link from 'next/link'
 import Image from 'next/image'
 import Countup from '@/render/components/UI/countup'
 
-const HomeSection = ({user}: {user: User}) => {
+const HomeSection = ({ user }: { user: User }) => {
   return (
     <section className='space-y-8'>
       <article className='text-center font-semibold space-y-4'>
         <h1 className='text-5xl'>
-          ¡Bienvenido <span className='text-color-red'>{user?.name}</span>
+          ¡Bienvenido <span className='text-color-red'>{user?.name}</span>! 🎉
         </h1>
       </article>
 
@@ -37,7 +37,7 @@ const HomeSection = ({user}: {user: User}) => {
                   <h2 className='text-xl font-semibold line-clamp-1'>
                     {item.title}
                   </h2>
-                  
+
                   <Countup url={item.url} />
                 </CardFooter>
               </Card>
