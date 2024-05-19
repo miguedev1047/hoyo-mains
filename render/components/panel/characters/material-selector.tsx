@@ -75,7 +75,6 @@ const MaterialSelector = ({ character }: { character: Characters }) => {
     })
   })
 
-  if (allMaterials.length === 6) return null
   if (error) return <div>Error al cargar los materiales</div>
 
   return (
