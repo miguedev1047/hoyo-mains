@@ -15,17 +15,17 @@ import { selectorItemWrapper } from '@/utils/classes'
 import useSWR, { mutate } from 'swr'
 
 const MaterialSelector = ({ character }: { character: Characters }) => {
-  const allMaterials = character.materials
-  const disableKeys = allMaterials.map((item) => item.item)
-
-  const [isPending, startTransition] = useTransition()
-  const [randomId, setRandomId] = useState<string>('')
-
   const {
     data: materials,
     isLoading,
     error
   } = useSWR<Material[]>('/api/materials', fetcher)
+
+  const allMaterials = character.materials
+  const disableKeys = allMaterials.map((item) => item.item)
+
+  const [isPending, startTransition] = useTransition()
+  const [randomId, setRandomId] = useState<string>('')
 
   const {
     handleSubmit,
@@ -45,13 +45,13 @@ const MaterialSelector = ({ character }: { character: Characters }) => {
 
   const onSubmit = handleSubmit((data) => {
     const newMaterials = data.materials
-    .split(',')
-    .map((item: string, index) => ({
-      item: item,
-      characterId: character.id,
-      order: index++
-    }))
-    
+      .split(',')
+      .map((item: string, index) => ({
+        item: item,
+        characterId: character.id,
+        order: index++
+      }))
+
     const ITEM_LIMIT = 6
     const CURRENT_ITEMS = [...allMaterials, ...newMaterials]
 

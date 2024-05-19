@@ -1,5 +1,3 @@
-'use client'
-
 import { Characters } from '@/types'
 import MaterialSelector from '@/render/components/panel/characters/material-selector'
 import SorteableMaterialList from '@/render/components/panel/characters/sortable-material-list'
