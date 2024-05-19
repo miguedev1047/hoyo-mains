@@ -11,7 +11,7 @@ const Output = ({ description }: { description: string }) => {
     autofocus: false,
     editorProps: {
       attributes: {
-        class: 'w-full leading-6 text-sm'
+        class: 'w-full leading-8 text-base text-pretty'
       }
     }
   })

@@ -4,7 +4,7 @@ import db from '@/libs/db'
 import { z } from 'zod'
 
 import { currentRole } from '@/data/auth'
-import { CharacterSchema } from '@/schemas'
+import { CharacterSchema, CharactersMaterialsSchema } from '@/schemas'
 
 export const createCharacters = async (
   data: z.infer<typeof CharacterSchema>
@@ -43,7 +43,32 @@ export const createCharacters = async (
 
     return { data: character, message: 'Personaje creado!', status: 201 }
   } catch (error) {
-    console.log(error)
     return { error: 'Error al crear el personaje.', status: 500 }
+  }
+}
+
+export const createMaterialCharacters = async (data: any[]) => {
+  const currentAdminRole = await currentRole()
+  console.log(data)
+
+  if (currentAdminRole !== 'ADMIN' && currentAdminRole !== 'OWNER')
+    return {
+      error: 'No tienes permisos para realizar esta acción.',
+      status: 403
+    }
+  try {
+    const materials = await db.materialsByCharacter.createMany({
+      data,
+      skipDuplicates: true
+    })
+
+    return {
+      data: materials,
+      message: 'Los material/es han sido creado/s!',
+      status: 201
+    }
+  } catch (error) {
+    console.log(error)
+    return { error: 'Error al crear el/los material/es.', status: 500 }
   }
 }

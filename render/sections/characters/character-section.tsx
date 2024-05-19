@@ -5,26 +5,35 @@ import { Image } from '@nextui-org/image'
 import { Chip } from '@nextui-org/chip'
 import { Divider } from '@nextui-org/divider'
 import { Card, CardBody, CardFooter, CardHeader } from '@nextui-org/card'
-import { Character } from '@prisma/client'
 import { getElementImage } from '@/utils/helpers/get-element-image'
 import { getWeapon } from '@/utils/helpers/get-weapon'
+import { Characters } from '@/types'
 import { getRole } from '@/utils/helpers/get-role'
 import useSWR from 'swr'
 import CharacterMaterials from '@/render/components/panel/characters/character-materials'
+import CharacterLoader from '@/render/components/UI/loaders/character-loader'
+import AlertError from '@/render/components/UI/errors/alert-error'
 
 const CharacterSection = ({ characterId }: { characterId: string }) => {
   const {
     data: character,
     isLoading,
     error
-  } = useSWR<Character>(`/api/characters/character/${characterId}`, fetcher)
+  } = useSWR<Characters>(`/api/characters/character/${characterId}`, fetcher)
 
-  if (error) return <div>Error loading characters</div>
-  if (isLoading) return <div>Loading...</div>
+  if (error)
+    return (
+      <AlertError
+        className='h-[calc(100vh_-_64px)]'
+        message='Hubo un problema al cargar el personaje.'
+      />
+    )
+
+  if (isLoading) return <CharacterLoader />
 
   return (
-    <section className='space-y-4'>
-      <Card className='bg-color-dark p-4'>
+    <section>
+      <Card className='dark:bg-color-dark/50 p-4'>
         <CardHeader className='flex justify-between items-center'>
           <div className='flex items-center space-x-8'>
             <Image
@@ -63,8 +72,8 @@ const CharacterSection = ({ characterId }: { characterId: string }) => {
           />
         </CardHeader>
         <Divider />
-        <CardBody className='grid grid-cols-1'>
-          {/* <CharacterMaterials /> */}
+        <CardBody className='grid grid-cols-4 gap-8'>
+          <CharacterMaterials character={character!} />
           <div>Best weapons</div>
           <div>Best artifacts</div>
           <div>Best stats</div>

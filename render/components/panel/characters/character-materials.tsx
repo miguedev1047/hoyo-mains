@@ -1,22 +1,16 @@
-import {
-  Autocomplete,
-  AutocompleteSection,
-  AutocompleteItem
-} from '@nextui-org/autocomplete'
-import { Button } from '@nextui-org/button'
+'use client'
 
-const CharacterMaterials = () => {
+import { Characters } from '@/types'
+import MaterialSelector from '@/render/components/panel/characters/material-selector'
+import SorteableMaterialList from '@/render/components/panel/characters/sortable-material-list'
+
+const CharacterMaterials = ({ character }: { character: Characters }) => {
   return (
-    <div className='col-span-4'>
-      <SelectMaterial />
+    <div className='col-span-2'>
+      <SorteableMaterialList character={character} />
+      <MaterialSelector character={character} />
     </div>
   )
-}
-
-const SelectMaterial = () => {
-  return <form>
-    
-  </form>
 }
 
 export default CharacterMaterials

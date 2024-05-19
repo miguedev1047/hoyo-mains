@@ -46,3 +46,27 @@ export const updateMaterials = async (
     return { error: 'Error al actualizar los materiales.', status: 500 }
   }
 }
+
+export const updatedOrderMaterial = async (items: any) => {
+  try {
+    const transaction = items.map((list: any) =>
+      db.materialsByCharacter.update({
+        where: {
+          id: list.id
+        },
+        data: {
+          order: list.order
+        }
+      })
+    )
+
+    await db.$transaction(transaction)
+
+    return {
+      status: 200,
+      message: 'Cambios guardados!'
+    }
+  } catch (error) {
+    return { status: 500, message: 'Ha ocurrido un error!', error: error }
+  }
+}

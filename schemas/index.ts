@@ -116,3 +116,9 @@ export const MaterialSchema = z.object({
     message: 'Campo requerido.'
   })
 })
+
+export const CharactersMaterialsSchema = z.object({
+  materials: z.string().min(1, {
+    message: 'Selecciona al menos un material.'
+  })
+})

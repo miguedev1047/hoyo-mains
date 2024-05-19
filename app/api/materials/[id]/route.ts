@@ -1,17 +1,16 @@
 import { NextResponse } from 'next/server'
 import db from '@/libs/db'
 
+export const dynamic = 'force-dynamic'
+
 export async function GET(
   request: Request,
   { params }: { params: { id: string } }
 ) {
   try {
-    const characterId = params.id
-
-    const characters = await db.character.findUnique({
-      where: { id: characterId },
-      include: {
-        materials: true
+    const characters = await db.material.findUnique({
+      where: {
+        id: params.id
       }
     })
 

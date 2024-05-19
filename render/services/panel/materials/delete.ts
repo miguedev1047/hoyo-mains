@@ -20,3 +20,21 @@ export const deleteMaterial = async (id: string) => {
     return { error: 'Error al eliminar el material.', status: 500 }
   }
 }
+
+export const deleteCharacterMaterial = async (id: string) => {
+  const currentAdminRole = await currentRole()
+
+  if (currentAdminRole !== 'ADMIN' && currentAdminRole !== 'OWNER') {
+    return {
+      error: 'No tienes permisos para realizar esta acción.',
+      status: 403
+    }
+  }
+
+  try {
+    await db.materialsByCharacter.delete({ where: { id } })
+    return { message: 'Material eliminado.', status: 201 }
+  } catch (error) {
+    return { error: 'Error al eliminar el material.', status: 500 }
+  }
+}

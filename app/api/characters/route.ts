@@ -16,7 +16,10 @@ export async function GET(request: Request) {
         {
           createdDate: 'asc'
         }
-      ]
+      ],
+      include: {
+        materials: true
+      }
     })
 
     return NextResponse.json(characters, { status: 200 })
