@@ -82,6 +82,8 @@ const MaterialSelector = ({
   if (error) return <div>Ha ocurrido un error</div>
   if (isLoading) return <div>Cargando...</div>
 
+  if (allMaterials?.length === 6) return null
+
   return (
     <form onSubmit={onSubmit} className='space-y-2'>
       <Controller
