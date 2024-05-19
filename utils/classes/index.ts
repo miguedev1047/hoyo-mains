@@ -68,3 +68,6 @@ export const selectorItemWrapper:
   listbox:
     'data-[hover=true]:bg-red-500 data-[hover=true]:text-default-foreground'
 }
+
+export const skeletonWrapper =
+  'dark:bg-color-darkest before:bg-gradient-to-r dark:before:from-color-dark/10 dark:before:via-color-dark dark:before:to-color-dark/10 before:border-0'

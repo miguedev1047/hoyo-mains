@@ -4,9 +4,11 @@ import { Draggable } from '@hello-pangea/dnd'
 import { fetcher } from '@/utils/helpers/fetcher'
 import { Material } from '@prisma/client'
 import { Card } from '@nextui-org/card'
+import { Image } from '@nextui-org/react'
 import ButtonDeleteMaterial from '@/render/components/UI/buttons/material/button-delete-material'
 import useSWR from 'swr'
-import Image from 'next/image'
+import SkeletonMaterialItems from '@/render/components/UI/skeletons/skeleton-material-items'
+import { CharacterMaterialItemError } from '@/render/components/UI/errors/character-error'
 
 const ItemCharacterMaterial = ({
   material,
@@ -21,8 +23,12 @@ const ItemCharacterMaterial = ({
     error
   } = useSWR<Material>(`/api/materials/${material.item}`, fetcher)
 
-  if (error) return <div>Ha ocurrido un error</div>
-  if (isLoading) return <div>Cargando...</div>
+  if (error)
+    return (
+      <CharacterMaterialItemError message='Ha ocurrido un error al cargar el material.' />
+    )
+
+  if (isLoading) return <SkeletonMaterialItems />
 
   return (
     <Draggable draggableId={material.id} index={index}>
@@ -34,18 +40,16 @@ const ItemCharacterMaterial = ({
           className='mb-4'
         >
           <Card className='flex flex-row items-center justify-between gap-4 p-5 bg-color-darkest'>
-            <div className='flex gap-4'>
+            <div className='flex gap-4  select-none'>
               <div className='flex gap-7 items-center'>
                 <IconGripVertical size={20} />
-                {dataMaterial?.imageUrl && (
-                  <Image
-                    width={32}
-                    height={32}
-                    src={dataMaterial?.imageUrl!}
-                    alt={dataMaterial?.name!}
-                    className='w-8 h-8 rounded-full'
-                  />
-                )}
+                <Image
+                  width={32}
+                  height={32}
+                  src={dataMaterial?.imageUrl!}
+                  alt={dataMaterial?.name!}
+                  className='w-8 h-8 rounded-full'
+                />
               </div>
               <h3 className='text-lg font-semibold'>{dataMaterial?.name}</h3>
             </div>

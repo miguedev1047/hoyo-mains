@@ -12,6 +12,7 @@ import { Material } from '@prisma/client'
 import { Characters } from '@/types'
 import { toast } from 'sonner'
 import { selectorItemWrapper } from '@/utils/classes'
+import { CharacterMaterialError } from '@/render/components/UI/errors/character-error'
 import useSWR, { mutate } from 'swr'
 
 const MaterialSelector = ({
@@ -26,7 +27,8 @@ const MaterialSelector = ({
   } = useSWR<Material[]>('/api/materials', fetcher)
 
   const allMaterials = character?.materials
-  const disableKeys = allMaterials?.map((item) => item.item)
+  const DISABLE_ITEMS = allMaterials?.map((item) => item.item)
+  const MAX_ITEMS = 6
 
   const [isPending, startTransition] = useTransition()
   const [randomId, setRandomId] = useState<string>('')
@@ -79,10 +81,12 @@ const MaterialSelector = ({
     })
   })
 
-  if (error) return <div>Ha ocurrido un error</div>
-  if (isLoading) return <div>Cargando...</div>
+  if (error)
+    return (
+      <CharacterMaterialError message='Ha ocurrido un error al cargar los materiales.' />
+    )
 
-  if (allMaterials?.length === 6) return null
+  if (allMaterials?.length === MAX_ITEMS) return null
 
   return (
     <form onSubmit={onSubmit} className='space-y-2'>
@@ -96,16 +100,17 @@ const MaterialSelector = ({
 
           return (
             <Select
+              placeholder='Selecciona los materiales'
               selectionMode='multiple'
               className='w-full'
               isMultiline={true}
               key={randomId}
               items={materials}
-              placeholder='Selecciona los materiales'
-              isDisabled={isLoading || newFieldsLength === 6}
+              isLoading={isLoading}
+              isDisabled={isLoading || newFieldsLength === MAX_ITEMS}
               onSelectionChange={field.onChange}
               classNames={selectorItemWrapper}
-              disabledKeys={disableKeys}
+              disabledKeys={DISABLE_ITEMS}
               isInvalid={!!errors.materials}
               errorMessage={errors.materials?.message}
               renderValue={(value) => {
@@ -134,6 +139,7 @@ const MaterialSelector = ({
 
       <Button
         fullWidth
+        isDisabled={isLoading}
         isLoading={isPending}
         className='bg-color-light text-color-darkest font-bold'
         type='submit'
