@@ -73,7 +73,7 @@ const CharacterSection = ({ characterId }: { characterId: string }) => {
         </CardHeader>
         <Divider />
         <CardBody className='grid grid-cols-4 gap-8'>
-          <CharacterMaterials character={character!} />
+          <CharacterMaterials character={character} />
           <div>Best weapons</div>
           <div>Best artifacts</div>
           <div>Best stats</div>

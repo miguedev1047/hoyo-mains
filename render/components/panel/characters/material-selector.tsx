@@ -14,15 +14,19 @@ import { toast } from 'sonner'
 import { selectorItemWrapper } from '@/utils/classes'
 import useSWR, { mutate } from 'swr'
 
-const MaterialSelector = ({ character }: { character: Characters }) => {
+const MaterialSelector = ({
+  character
+}: {
+  character: Characters | undefined
+}) => {
   const {
     data: materials,
     isLoading,
     error
   } = useSWR<Material[]>('/api/materials', fetcher)
 
-  const allMaterials = character.materials
-  const disableKeys = allMaterials.map((item) => item.item)
+  const allMaterials = character?.materials
+  const disableKeys = allMaterials?.map((item) => item.item)
 
   const [isPending, startTransition] = useTransition()
   const [randomId, setRandomId] = useState<string>('')
@@ -48,12 +52,12 @@ const MaterialSelector = ({ character }: { character: Characters }) => {
       .split(',')
       .map((item: string, index) => ({
         item: item,
-        characterId: character.id,
+        characterId: character?.id,
         order: index++
       }))
 
     const ITEM_LIMIT = 6
-    const CURRENT_ITEMS = [...allMaterials, ...newMaterials]
+    const CURRENT_ITEMS = [...allMaterials!, ...newMaterials]
 
     if (CURRENT_ITEMS.length > ITEM_LIMIT)
       return toast.error('No puedes añadir más de 6 materiales.')
@@ -65,7 +69,7 @@ const MaterialSelector = ({ character }: { character: Characters }) => {
 
       if (status === 201) {
         reset()
-        mutate(`/api/characters/character/${character.id}`)
+        mutate(`/api/characters/character/${character?.id}`)
         toast.success(message)
         handleGenerateRandomId()
         return
@@ -75,7 +79,8 @@ const MaterialSelector = ({ character }: { character: Characters }) => {
     })
   })
 
-  if (error) return <div>Error al cargar los materiales</div>
+  if (error) return <div>Ha ocurrido un error</div>
+  if (isLoading) return <div>Cargando...</div>
 
   return (
     <form onSubmit={onSubmit} className='space-y-2'>
@@ -95,7 +100,6 @@ const MaterialSelector = ({ character }: { character: Characters }) => {
               key={randomId}
               items={materials}
               placeholder='Selecciona los materiales'
-              isLoading={isLoading}
               isDisabled={isLoading || newFieldsLength === 6}
               onSelectionChange={field.onChange}
               classNames={selectorItemWrapper}

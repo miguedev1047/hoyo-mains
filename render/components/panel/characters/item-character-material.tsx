@@ -1,4 +1,4 @@
-import { Characters, Data } from '@/types'
+import { Data } from '@/types'
 import { IconGripVertical } from '@tabler/icons-react'
 import { Draggable } from '@hello-pangea/dnd'
 import { fetcher } from '@/utils/helpers/fetcher'
@@ -21,9 +21,8 @@ const ItemCharacterMaterial = ({
     error
   } = useSWR<Material>(`/api/materials/${material.item}`, fetcher)
 
-  if (error) return
-  if (isLoading) return
-  if (dataMaterial === undefined) return
+  if (error) return <div>Ha ocurrido un error</div>
+  if (isLoading) return <div>Cargando...</div>
 
   return (
     <Draggable draggableId={material.id} index={index}>
@@ -38,13 +37,15 @@ const ItemCharacterMaterial = ({
             <div className='flex gap-4'>
               <div className='flex gap-7 items-center'>
                 <IconGripVertical size={20} />
-                <Image
-                  width={32}
-                  height={32}
-                  src={dataMaterial?.imageUrl!}
-                  alt={dataMaterial?.name!}
-                  className='w-8 h-8 rounded-full'
-                />
+                {dataMaterial?.imageUrl && (
+                  <Image
+                    width={32}
+                    height={32}
+                    src={dataMaterial?.imageUrl!}
+                    alt={dataMaterial?.name!}
+                    className='w-8 h-8 rounded-full'
+                  />
+                )}
               </div>
               <h3 className='text-lg font-semibold'>{dataMaterial?.name}</h3>
             </div>

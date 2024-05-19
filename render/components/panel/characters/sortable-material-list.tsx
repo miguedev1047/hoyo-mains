@@ -1,28 +1,33 @@
 import { DragDropContext, Droppable } from '@hello-pangea/dnd'
-import { useEffect, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { Characters } from '@/types'
 import { reOrder } from '@/utils/helpers/re-order'
 import { updatedOrderMaterial } from '@/render/services/panel/materials/update'
 import { toast } from 'sonner'
 import ItemCharacterMaterial from '@/render/components/panel/characters/item-character-material'
+import { MaterialsByCharacter } from '@prisma/client'
 
-const SorteableMaterialList = ({ character }: { character: Characters }) => {
-  const materials = character?.materials
+const SorteableMaterialList = ({
+  character
+}: {
+  character: Characters | undefined
+}) => {
+  const materials = useMemo(() => character?.materials ?? [], [character])
 
-  const [data, setData] = useState(materials)
+  const [data, setData] = useState<MaterialsByCharacter[]>(materials)
 
   useEffect(() => {
     setData(materials)
   }, [character, materials])
 
-  const onDrageEnd = async (result: any) => {
+  const onDragEnd = async (result: any) => {
     const { destination, source, type } = result
 
     if (!destination) {
       return
     }
 
-    // Si es arrastrado en la misma posicion
+    // Si es arrastrado en la misma posición
     if (
       destination.droppableId === source.droppableId &&
       destination.index === source.index
@@ -30,9 +35,9 @@ const SorteableMaterialList = ({ character }: { character: Characters }) => {
       return
     }
 
-    // Ordenamos es la lista
+    // Ordenamos en la lista
     if (type === 'list') {
-      const items = reOrder(data!, source.index, destination.index).map(
+      const items = reOrder(data, source.index, destination.index).map(
         (item, index) => ({ ...item, order: index })
       )
 
@@ -46,11 +51,11 @@ const SorteableMaterialList = ({ character }: { character: Characters }) => {
   }
 
   return (
-    <DragDropContext onDragEnd={onDrageEnd}>
+    <DragDropContext onDragEnd={onDragEnd}>
       <Droppable droppableId='list' type='list'>
         {(provided) => (
           <ol ref={provided.innerRef} {...provided.droppableProps}>
-            {data?.map((material, index) => (
+            {data.map((material, index) => (
               <ItemCharacterMaterial
                 index={index}
                 key={material.id}
