@@ -61,8 +61,7 @@ const ItemArtifact = ({ artifact }: { artifact: Artifact }) => {
     >
       <CardHeader className='flex flex-row items-center gap-4'>
         <Image
-          isBlurred
-          className='object-cover w-12 h-12'
+          className='w-12 h-12 object-cover bg-color-darkest rounded-lg'
           src={artifact.imageUrl!}
           alt={artifact.name}
         />

@@ -1,6 +1,6 @@
 import { Card, CardFooter } from '@nextui-org/card'
+import { getStarBorderColor } from '@/utils/helpers/get-color'
 import { Tooltip } from '@nextui-org/tooltip'
-import { Image } from '@nextui-org/image'
 import { Character } from '@prisma/client'
 import { Button } from '@nextui-org/button'
 import { IconTrash } from '@tabler/icons-react'
@@ -10,8 +10,8 @@ import { deleteCharacter } from '@/render/services/panel/characters/delete'
 import { toast } from 'sonner'
 import { mutate } from 'swr'
 import Link from 'next/link'
+import Image from 'next/image'
 import clsx from 'clsx'
-import { getStarBorderColor } from '@/utils/helpers/get-color'
 
 interface Props {
   character: Character
@@ -52,37 +52,27 @@ const ItemCharacter = ({ character }: Props) => {
       placement='bottom'
       content={<p className='font-medium capitalize'>{character.name}</p>}
     >
-      <Card
-        isFooterBlurred
-        as={Link}
-        href={url}
-        className={clsx(
-          'bg-color-dark aspect-square border-2',
-          getStarBorderColor(character.stars)
-        )}
-      >
+      <Card as={Link} href={url} isDisabled={isPending} className='bg-color-dark border-2'>
         <Image
-          isZoomed
-          className='object-cover w-full h-full'
-          classNames={{
-            wrapper: 'w-full h-full aspect-square'
-          }}
+          width={1024}
+          height={1024}
+          className='object-cover bg-color-darkest'
           src={character.imageUrl!}
           alt={character.name}
         />
 
-        <CardFooter className='before:bg-color-darkest/10 border-white/20 border-1 overflow-hidden py-1 px-1 absolute before:rounded-xl rounded-large bottom-1 w-[calc(100%_-_8px)] shadow-small ml-1 z-10'>
-          <Button
-            fullWidth
-            size='sm'
-            isLoading={isPending}
-            onPress={() => handleDelete(character.id)}
-            startContent={<IconTrash size={16} />}
-            className='bg-color-darkest'
-          >
-            Eliminar
-          </Button>
-        </CardFooter>
+        <Button
+          fullWidth
+          isIconOnly
+          size='sm'
+          radius='sm'
+          color='danger'
+          isLoading={isPending}
+          onPress={() => handleDelete(character.id)}
+          className='bg-color-red absolute right-0 bottom-0 z-10 m-2'
+        >
+          <IconTrash size={18} />
+        </Button>
       </Card>
     </Tooltip>
   )

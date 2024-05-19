@@ -60,13 +60,7 @@ const ItemWeapon = ({ weapon }: { weapon: Weapon }) => {
     >
       <CardHeader className='flex flex-row items-center gap-4'>
         <Image
-          isBlurred
-          width={240}
-          height={240}
-          classNames={{
-            wrapper: 'w-12 h-12'
-          }}
-          className='object-cover'
+          className='w-12 h-12 object-cover bg-color-darkest rounded-lg'
           src={weapon.imageUrl!}
           alt={weapon.name}
         />
