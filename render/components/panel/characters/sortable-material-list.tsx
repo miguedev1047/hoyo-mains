@@ -1,11 +1,11 @@
 import { DragDropContext, Droppable } from '@hello-pangea/dnd'
-import { useEffect, useMemo, useState } from 'react'
+import { useMemo, useState } from 'react'
 import { Characters } from '@/types'
 import { reOrder } from '@/utils/helpers/re-order'
 import { updatedOrderMaterial } from '@/render/services/panel/materials/update'
+import { MaterialsByCharacter } from '@prisma/client'
 import { toast } from 'sonner'
 import ItemCharacterMaterial from '@/render/components/panel/characters/item-character-material'
-import { MaterialsByCharacter } from '@prisma/client'
 
 const SorteableMaterialList = ({
   character
@@ -13,12 +13,7 @@ const SorteableMaterialList = ({
   character: Characters | undefined
 }) => {
   const materials = useMemo(() => character?.materials ?? [], [character])
-
   const [data, setData] = useState<MaterialsByCharacter[]>(materials)
-
-  useEffect(() => {
-    setData(materials)
-  }, [character, materials])
 
   const onDragEnd = async (result: any) => {
     const { destination, source, type } = result
