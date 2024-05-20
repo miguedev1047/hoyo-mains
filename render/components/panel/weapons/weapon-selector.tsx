@@ -85,6 +85,8 @@ const WeaponSelector = ({
       <CharacterMaterialError message='No se ha podido cargar el selector.' />
     )
 
+  if (isLoading) return null
+
   if (allMaterials?.length === MAX_ITEMS) return null
 
   return (
@@ -126,14 +128,14 @@ const WeaponSelector = ({
                 }}
                 {...field}
               >
-                {(weapon) => (
+                {filteredWeapons?.map((weapon) => (
                   <SelectItem key={weapon.id} textValue={weapon.name}>
                     <div className='flex gap-2 items-center'>
                       <Avatar src={weapon.imageUrl!} alt={weapon.name} />
                       <span className='capitalize'>{weapon.name}</span>
                     </div>
                   </SelectItem>
-                )}
+                )) || []}
               </Select>
             </>
           )

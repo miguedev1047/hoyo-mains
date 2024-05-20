@@ -82,6 +82,8 @@ const MaterialSelector = ({
       <CharacterMaterialError message='No se ha podido cargar el selector.' />
     )
 
+  if (isLoading) return null
+
   if (allMaterials?.length === MAX_ITEMS) return null
 
   return (
