@@ -9,8 +9,8 @@ import { deleteImage } from '@/utils/helpers/delete-image'
 import { deleteCharacter } from '@/render/services/panel/characters/delete'
 import { toast } from 'sonner'
 import { mutate } from 'swr'
+import { Image } from '@nextui-org/image'
 import Link from 'next/link'
-import Image from 'next/image'
 import clsx from 'clsx'
 
 interface Props {
@@ -52,7 +52,15 @@ const ItemCharacter = ({ character }: Props) => {
       placement='bottom'
       content={<p className='font-medium capitalize'>{character.name}</p>}
     >
-      <Card as={Link} href={url} isDisabled={isPending} className='bg-color-dark border-2'>
+      <Card
+        as={Link}
+        href={url}
+        isDisabled={isPending}
+        className={clsx(
+          'bg-color-dark border-2 overflow-visible',
+          getStarBorderColor(character.stars)
+        )}
+      >
         <Image
           width={1024}
           height={1024}
