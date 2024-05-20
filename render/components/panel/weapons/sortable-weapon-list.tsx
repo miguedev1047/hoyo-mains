@@ -1,24 +1,24 @@
-import { DragDropContext, Droppable } from '@hello-pangea/dnd'
-import { useEffect, useMemo, useState } from 'react'
+import { updatedOrderWeapon } from '@/render/services/panel/weapons/update'
 import { Characters } from '@/types'
 import { reOrder } from '@/utils/helpers/re-order'
-import { updatedOrderMaterial } from '@/render/services/panel/materials/update'
-import { MaterialsByCharacter } from '@prisma/client'
+import { DragDropContext, Droppable } from '@hello-pangea/dnd'
+import { WeaponByCharacter } from '@prisma/client'
+import { useEffect, useMemo, useState } from 'react'
 import { toast } from 'sonner'
 import { mutate } from 'swr'
-import ItemCharacterMaterial from '@/render/components/panel/characters/item-character-material'
+import ItemCharacterWeapon from '@/render/components/panel/weapons/item-character-weapon'
 
-const SorteableMaterialList = ({
+const SortableWeaponList = ({
   character
 }: {
   character: Characters | undefined
 }) => {
-  const materials = useMemo(() => character?.materials ?? [], [character])
-  const [data, setData] = useState<MaterialsByCharacter[]>(materials)
+  const weapons = useMemo(() => character?.weapons ?? [], [character])
+  const [data, setData] = useState<WeaponByCharacter[]>(weapons)
 
   useEffect(() => {
-    setData(materials)
-  }, [materials])
+    setData(weapons)
+  }, [weapons])
 
   const onDragEnd = async (result: any) => {
     const { destination, source, type } = result
@@ -42,8 +42,8 @@ const SorteableMaterialList = ({
       )
 
       setData(items)
-      const { status, message } = await updatedOrderMaterial(items)
-      if (status === 200) {
+      const { status, message } = await updatedOrderWeapon(items)
+      if (status === 201) {
         mutate(`/api/characters/character/${character?.id}`)
         toast.success(message)
         return
@@ -56,11 +56,11 @@ const SorteableMaterialList = ({
       <Droppable droppableId='list' type='list'>
         {(provided) => (
           <ol ref={provided.innerRef} {...provided.droppableProps}>
-            {data.map((material, index) => (
-              <ItemCharacterMaterial
+            {data.map((weapon, index) => (
+              <ItemCharacterWeapon
                 index={index}
-                key={material.id}
-                material={material}
+                key={weapon.id}
+                weapon={weapon}
               />
             ))}
             {provided.placeholder}
@@ -71,4 +71,4 @@ const SorteableMaterialList = ({
   )
 }
 
-export default SorteableMaterialList
+export default SortableWeaponList

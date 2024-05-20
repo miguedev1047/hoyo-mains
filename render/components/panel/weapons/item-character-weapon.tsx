@@ -2,36 +2,36 @@ import { Data } from '@/types'
 import { IconGripVertical } from '@tabler/icons-react'
 import { Draggable } from '@hello-pangea/dnd'
 import { fetcher } from '@/utils/helpers/fetcher'
-import { Material } from '@prisma/client'
+import { Weapon } from '@prisma/client'
 import { Card } from '@nextui-org/card'
 import { Image } from '@nextui-org/react'
 import { CharacterMaterialItemError } from '@/render/components/UI/errors/character-error'
-import ButtonDeleteMaterial from '@/render/components/UI/buttons/material/button-delete-material'
+import ButtonDeleteWeapon from '@/render/components/UI/buttons/weapon/button-delete-weapon'
 import SkeletonMaterialItems from '@/render/components/UI/skeletons/skeleton-material-items'
 import useSWR from 'swr'
 
-const ItemCharacterMaterial = ({
-  material,
+const ItemCharacterWeapon = ({
+  weapon,
   index
 }: {
-  material: Data
+  weapon: Data
   index: number
 }) => {
   const {
-    data: dataMaterial,
+    data: dataWeapon,
     isLoading,
     error
-  } = useSWR<Material>(`/api/materials/${material.item}`, fetcher)
+  } = useSWR<Weapon>(`/api/weapons/weapon/${weapon.item}`, fetcher)
 
   if (error)
     return (
-      <CharacterMaterialItemError message='Ha ocurrido un error al cargar el material.' />
+      <CharacterMaterialItemError message='Ha ocurrido un error al cargar el arma.' />
     )
 
   if (isLoading) return <SkeletonMaterialItems />
 
   return (
-    <Draggable draggableId={material.id} index={index}>
+    <Draggable draggableId={weapon.id} index={index}>
       {(provided) => (
         <li
           ref={provided.innerRef}
@@ -46,15 +46,15 @@ const ItemCharacterMaterial = ({
                 <Image
                   width={32}
                   height={32}
-                  src={dataMaterial?.imageUrl!}
-                  alt={dataMaterial?.name!}
+                  src={dataWeapon?.imageUrl!}
+                  alt={dataWeapon?.name!}
                   className='w-8 h-8 rounded-full'
                 />
               </div>
-              <h3 className='text-lg font-semibold'>{dataMaterial?.name}</h3>
+              <h3 className='text-lg font-semibold'>{dataWeapon?.name}</h3>
             </div>
 
-            <ButtonDeleteMaterial material={material} />
+            <ButtonDeleteWeapon weapon={weapon} />
           </Card>
         </li>
       )}
@@ -62,4 +62,4 @@ const ItemCharacterMaterial = ({
   )
 }
 
-export default ItemCharacterMaterial
+export default ItemCharacterWeapon

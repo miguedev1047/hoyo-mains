@@ -43,3 +43,27 @@ export const createWapons = async (data: z.infer<typeof WeaponSchema>) => {
     return { error: 'Error al crear el arma.', status: 500 }
   }
 }
+
+export const createWeaponCharacters = async (data: any[]) => {
+  const currentAdminRole = await currentRole()
+
+  if (currentAdminRole !== 'ADMIN' && currentAdminRole !== 'OWNER')
+    return {
+      error: 'No tienes permisos para realizar esta acción.',
+      status: 403
+    }
+  try {
+    const weapons = await db.weaponByCharacter.createMany({
+      data,
+      skipDuplicates: true
+    })
+
+    return {
+      data: weapons,
+      message: 'Las arma/s han sido creada/s!',
+      status: 201
+    }
+  } catch (error) {
+    return { error: 'Error al crear el/las arma/s.', status: 500 }
+  }
+}

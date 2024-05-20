@@ -49,7 +49,6 @@ export const createCharacters = async (
 
 export const createMaterialCharacters = async (data: any[]) => {
   const currentAdminRole = await currentRole()
-  console.log(data)
 
   if (currentAdminRole !== 'ADMIN' && currentAdminRole !== 'OWNER')
     return {
@@ -68,7 +67,6 @@ export const createMaterialCharacters = async (data: any[]) => {
       status: 201
     }
   } catch (error) {
-    console.log(error)
     return { error: 'Error al crear el/los material/es.', status: 500 }
   }
 }

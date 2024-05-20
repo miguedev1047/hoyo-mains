@@ -8,7 +8,7 @@ const CharacterMaterials = ({
   character: Characters | undefined
 }) => {
   return (
-    <div className='col-span-2'>
+    <div className='col-span-4'>
       <SorteableMaterialList character={character} />
       <MaterialSelector character={character} />
     </div>

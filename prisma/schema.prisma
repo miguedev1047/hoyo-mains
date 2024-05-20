@@ -38,6 +38,7 @@ model Character {
   updatedDate DateTime @updatedAt
 
   materials MaterialsByCharacter[]
+  weapons   WeaponByCharacter[]
 }
 
 model Material {
@@ -90,6 +91,18 @@ model Artifact {
 }
 
 model MaterialsByCharacter {
+  id          String  @id @unique @default(uuid())
+  item        String
+  characterId String?
+  order       Int     @default(0)
+
+  createdDate DateTime @default(now())
+  updatedDate DateTime @updatedAt
+
+  character Character? @relation(fields: [characterId], references: [id])
+}
+
+model WeaponByCharacter {
   id          String  @id @unique @default(uuid())
   item        String
   characterId String?

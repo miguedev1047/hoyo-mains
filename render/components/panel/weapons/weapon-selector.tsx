@@ -1,37 +1,44 @@
 import { z } from 'zod'
+import { createWeaponCharacters } from '@/render/services/panel/weapons/create'
 import { CharacterItemSchema } from '@/schemas'
+import { Characters } from '@/types'
+import { selectorItemWrapper } from '@/utils/classes'
 import { fetcher } from '@/utils/helpers/fetcher'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { Avatar } from '@nextui-org/avatar'
 import { Button } from '@nextui-org/button'
-import { Chip, Select, SelectItem } from '@nextui-org/react'
+import { Avatar, Chip, Select, SelectItem } from '@nextui-org/react'
+import { Weapon } from '@prisma/client'
 import { useState, useTransition } from 'react'
 import { Controller, useForm } from 'react-hook-form'
-import { createMaterialCharacters } from '@/render/services/panel/characters/create'
-import { Material } from '@prisma/client'
-import { Characters } from '@/types'
 import { toast } from 'sonner'
-import { selectorItemWrapper } from '@/utils/classes'
 import { CharacterMaterialError } from '@/render/components/UI/errors/character-error'
 import useSWR, { mutate } from 'swr'
 
-const MaterialSelector = ({
+const WeaponSelector = ({
   character
 }: {
   character: Characters | undefined
 }) => {
   const {
-    data: materials,
+    data: weapons,
     isLoading,
     error
-  } = useSWR<Material[]>('/api/materials', fetcher)
+  } = useSWR<Weapon[]>('/api/weapons', fetcher)
 
-  const allMaterials = character?.materials
+  const filteredWeapons = weapons?.filter(
+    (item) => item.type === character?.weapon
+  )
+
+  const allMaterials = character?.weapons
   const disabledItems = allMaterials?.map((item) => item.item)
-  const MAX_ITEMS = 6
+  const MAX_ITEMS = 5
 
   const [isPending, startTransition] = useTransition()
-  const [defaultKey, setKey] = useState<string>('')
+  const [defaultKey, setKey] = useState<string>('default-key')
+
+  const handleGenerateKey = () => {
+    setKey(crypto.randomUUID())
+  }
 
   const {
     handleSubmit,
@@ -45,24 +52,20 @@ const MaterialSelector = ({
     }
   })
 
-  const handleGenerateKey = () => {
-    setKey(crypto.randomUUID())
-  }
-
   const onSubmit = handleSubmit((data) => {
-    const newMaterials = data.items.split(',').map((item: string, index) => ({
+    const newWeapons = data.items.split(',').map((item: string, index) => ({
       item: item,
       characterId: character?.id,
       order: index++
     }))
 
-    const CURRENT_ITEMS = [...allMaterials!, ...newMaterials]
+    const CURRENT_ITEMS = [...allMaterials!, ...newWeapons]
     if (CURRENT_ITEMS.length > MAX_ITEMS)
       return toast.error(`No puedes añadir más de ${MAX_ITEMS} materiales.`)
 
     startTransition(async () => {
-      const { status, message, error } = await createMaterialCharacters(
-        newMaterials
+      const { status, message, error } = await createWeaponCharacters(
+        newWeapons
       )
 
       if (status === 201) {
@@ -99,12 +102,12 @@ const MaterialSelector = ({
           return (
             <>
               <Select
-                placeholder='Selecciona los materiales'
+                placeholder='Selecciona las armas'
                 selectionMode='multiple'
                 className='w-full'
                 isMultiline={true}
                 key={defaultKey}
-                items={materials}
+                items={filteredWeapons}
                 isLoading={isLoading}
                 isDisabled={disableSelector}
                 classNames={selectorItemWrapper}
@@ -123,11 +126,11 @@ const MaterialSelector = ({
                 }}
                 {...field}
               >
-                {(material) => (
-                  <SelectItem key={material.id} textValue={material.name}>
+                {(weapon) => (
+                  <SelectItem key={weapon.id} textValue={weapon.name}>
                     <div className='flex gap-2 items-center'>
-                      <Avatar src={material.imageUrl!} alt={material.name} />
-                      <span className='capitalize'>{material.name}</span>
+                      <Avatar src={weapon.imageUrl!} alt={weapon.name} />
+                      <span className='capitalize'>{weapon.name}</span>
                     </div>
                   </SelectItem>
                 )}
@@ -144,10 +147,10 @@ const MaterialSelector = ({
         className='bg-color-light text-color-darkest font-bold'
         type='submit'
       >
-        Añadir Materiales
+        Añadir Armas
       </Button>
     </form>
   )
 }
 
-export default MaterialSelector
+export default WeaponSelector

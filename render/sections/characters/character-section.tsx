@@ -13,6 +13,7 @@ import useSWR from 'swr'
 import CharacterMaterials from '@/render/components/panel/characters/character-materials'
 import CharacterLoader from '@/render/components/UI/loaders/character-loader'
 import AlertError from '@/render/components/UI/errors/alert-error'
+import CharacterWeapons from '@/render/components/panel/weapons/character-weapons'
 
 const CharacterSection = ({ characterId }: { characterId: string }) => {
   const {
@@ -74,7 +75,7 @@ const CharacterSection = ({ characterId }: { characterId: string }) => {
         <Divider />
         <CardBody className='grid grid-cols-4 gap-8'>
           <CharacterMaterials character={character} />
-          <div>Best weapons</div>
+          <CharacterWeapons character={character} />
           <div>Best artifacts</div>
           <div>Best stats</div>
           <div>Best YT guide</div>

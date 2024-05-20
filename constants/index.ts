@@ -196,12 +196,13 @@ export const stats = [
   { name: 'Prob. critica', id: 'PROB_CRIT' },
   { name: 'Daño critico', id: 'DMG_CRIT' },
   { name: 'Recarga de energia', id: 'ENERGY_RECHARGE' },
-  { name: 'Atq.', id: 'ATQ' },
-  { name: 'Vida', id: 'HP' },
-  { name: 'Def.', id: 'DEF' },
+  { name: 'Maestria elemental', id: 'ELEMENTAL_MASTERY' },
   { name: 'Atq. porcentual', id: 'ATQ_PERCENTUAL' },
   { name: 'Vida porcentual', id: 'HP_PERCENTUAL' },
-  { name: 'Def. porcentual', id: 'DEF_PERCENTUAL' }
+  { name: 'Def. porcentual', id: 'DEF_PERCENTUAL' },
+  { name: 'Atq. plano', id: 'ATQ_FLAT' },
+  { name: 'Vida plano', id: 'HP_FLAT' },
+  { name: 'Def. plano', id: 'DEF_FLAT' },
 ]
 
 export const weaponTypes = [
