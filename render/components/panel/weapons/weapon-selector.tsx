@@ -104,6 +104,7 @@ const WeaponSelector = ({
           return (
             <>
               <Select
+                aria-label='Weapon Selector'
                 placeholder='Selecciona las armas'
                 selectionMode='multiple'
                 className='w-full'
@@ -128,14 +129,14 @@ const WeaponSelector = ({
                 }}
                 {...field}
               >
-                {filteredWeapons?.map((weapon) => (
+                {(weapon) => (
                   <SelectItem key={weapon.id} textValue={weapon.name}>
                     <div className='flex gap-2 items-center'>
                       <Avatar src={weapon.imageUrl!} alt={weapon.name} />
                       <span className='capitalize'>{weapon.name}</span>
                     </div>
                   </SelectItem>
-                )) || []}
+                )}
               </Select>
             </>
           )

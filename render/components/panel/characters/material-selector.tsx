@@ -101,6 +101,7 @@ const MaterialSelector = ({
           return (
             <>
               <Select
+                aria-label='Material Selector'
                 placeholder='Selecciona los materiales'
                 selectionMode='multiple'
                 className='w-full'

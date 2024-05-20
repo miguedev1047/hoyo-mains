@@ -119,7 +119,7 @@ export const MaterialSchema = z.object({
 
 export const CharacterItemSchema = z.object({
   items: z.string().min(1, {
-    message: 'Selecciona al menos un material.'
+    message: 'Selecciona al menos un elemento.'
   })
 })
 
