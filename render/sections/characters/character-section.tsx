@@ -76,7 +76,7 @@ const CharacterSection = ({ characterId }: { characterId: string }) => {
         <CardBody className='grid grid-cols-4 gap-8'>
           <CharacterMaterials character={character} />
           <CharacterWeapons character={character} />
-          <div>Best artifacts</div>
+          
           <div>Best stats</div>
           <div>Best YT guide</div>
           <div>Best teams</div>
