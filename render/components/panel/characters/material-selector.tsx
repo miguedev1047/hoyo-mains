@@ -27,11 +27,11 @@ const MaterialSelector = ({
   } = useSWR<Material[]>('/api/materials', fetcher)
 
   const allMaterials = character?.materials
-  const DISABLE_ITEMS = allMaterials?.map((item) => item.item)
+  const disabledItems = allMaterials?.map((item) => item.item)
   const MAX_ITEMS = 6
 
   const [isPending, startTransition] = useTransition()
-  const [randomId, setRandomId] = useState<string>('')
+  const [defaultKey, setKey] = useState<string>('')
 
   const {
     handleSubmit,
@@ -45,18 +45,16 @@ const MaterialSelector = ({
     }
   })
 
-  const handleGenerateRandomId = () => {
-    setRandomId(crypto.randomUUID())
+  const handleGenerateKey = () => {
+    setKey(crypto.randomUUID())
   }
 
   const onSubmit = handleSubmit((data) => {
-    const newMaterials = data.items
-      .split(',')
-      .map((item: string, index) => ({
-        item: item,
-        characterId: character?.id,
-        order: index++
-      }))
+    const newMaterials = data.items.split(',').map((item: string, index) => ({
+      item: item,
+      characterId: character?.id,
+      order: index++
+    }))
 
     const ITEM_LIMIT = 6
     const CURRENT_ITEMS = [...allMaterials!, ...newMaterials]
@@ -73,7 +71,7 @@ const MaterialSelector = ({
         reset()
         mutate(`/api/characters/character/${character?.id}`)
         toast.success(message)
-        handleGenerateRandomId()
+        handleGenerateKey()
         return
       }
 
@@ -96,43 +94,47 @@ const MaterialSelector = ({
         render={({ field }) => {
           const data = { ...field }
           const newFields = data.value.split(',')
+
           const newFieldsLength = newFields.length
+          const disableSelector = isLoading || newFieldsLength === MAX_ITEMS
 
           return (
-            <Select
-              placeholder='Selecciona los materiales'
-              selectionMode='multiple'
-              className='w-full'
-              isMultiline={true}
-              key={randomId}
-              items={materials}
-              isLoading={isLoading}
-              isDisabled={isLoading || newFieldsLength === MAX_ITEMS}
-              onSelectionChange={field.onChange}
-              classNames={selectorItemWrapper}
-              disabledKeys={DISABLE_ITEMS}
-              isInvalid={!!errors.items}
-              errorMessage={errors.items?.message}
-              renderValue={(value) => {
-                return value.map(({ data, key }) => (
-                  <div key={key} className='flex flex-wrap gap-4'>
-                    <Chip className='bg-color-dark capitalize px-2 py-1 rounded-md'>
-                      {data?.name}
-                    </Chip>
-                  </div>
-                ))
-              }}
-              {...field}
-            >
-              {(material) => (
-                <SelectItem key={material.id} textValue={material.name}>
-                  <div className='flex gap-2 items-center'>
-                    <Avatar src={material.imageUrl!} alt={material.name} />
-                    <span className='capitalize'>{material.name}</span>
-                  </div>
-                </SelectItem>
-              )}
-            </Select>
+            <>
+              <Select
+                placeholder='Selecciona los materiales'
+                selectionMode='multiple'
+                className='w-full'
+                isMultiline={true}
+                key={defaultKey}
+                items={materials}
+                isLoading={isLoading}
+                isDisabled={disableSelector}
+                classNames={selectorItemWrapper}
+                disabledKeys={disabledItems}
+                onSelectionChange={field.onChange}
+                isInvalid={!!errors.items}
+                errorMessage={errors.items?.message}
+                renderValue={(value) => {
+                  return value.map(({ data, key }) => (
+                    <div key={key} className='flex flex-wrap gap-4'>
+                      <Chip className='bg-color-dark capitalize px-2 py-1 rounded-md'>
+                        {data?.name}
+                      </Chip>
+                    </div>
+                  ))
+                }}
+                {...field}
+              >
+                {(material) => (
+                  <SelectItem key={material.id} textValue={material.name}>
+                    <div className='flex gap-2 items-center'>
+                      <Avatar src={material.imageUrl!} alt={material.name} />
+                      <span className='capitalize'>{material.name}</span>
+                    </div>
+                  </SelectItem>
+                )}
+              </Select>
+            </>
           )
         }}
       />
