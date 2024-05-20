@@ -18,7 +18,7 @@ const SortableWeaponList = ({
 
   useEffect(() => {
     setData(weapons)
-  }, [weapons])
+  }, [weapons, character])
 
   const onDragEnd = async (result: any) => {
     const { destination, source, type } = result

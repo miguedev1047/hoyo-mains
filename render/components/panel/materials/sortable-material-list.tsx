@@ -18,7 +18,7 @@ const SorteableMaterialList = ({
 
   useEffect(() => {
     setData(materials)
-  }, [materials])
+  }, [materials, character])
 
   const onDragEnd = async (result: any) => {
     const { destination, source, type } = result

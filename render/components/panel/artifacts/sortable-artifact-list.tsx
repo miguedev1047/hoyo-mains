@@ -18,7 +18,7 @@ const SortableArtifactList = ({
 
   useEffect(() => {
     setData(artifacts)
-  }, [artifacts])
+  }, [artifacts, character])
 
   const onDragEnd = async (result: any) => {
     const { destination, source, type } = result
