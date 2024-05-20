@@ -1,5 +1,6 @@
 import { storage } from '@/libs/firebase-config'
 import { getDownloadURL, ref, uploadBytes } from 'firebase/storage'
+import { getSession } from 'next-auth/react'
 
 interface Props {
   path: string
@@ -13,6 +14,16 @@ export const downloadImage = async ({
   imgFile: imgFile
 }: Props) => {
   try {
+    const session = await getSession()
+
+    if (!session) {
+      return {
+        url: null as unknown as string,
+        message: 'No hay una sesión activa.',
+        status: 401
+      }
+    }
+
     const metadata = { contentType: 'image/webp' }
     const imageRef = ref(storage, `${path}/${id}`)
 
