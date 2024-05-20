@@ -90,9 +90,6 @@ const ArtifactSelector = ({
         name='items'
         control={control}
         render={({ field }) => {
-          const data = { ...field }
-          const newFields = data.value.split(',')
-          
           return (
             <>
               <Select

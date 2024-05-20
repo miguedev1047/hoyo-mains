@@ -4,7 +4,7 @@ import db from '@/libs/db'
 import { z } from 'zod'
 
 import { currentRole } from '@/data/auth'
-import { CharacterSchema, CharacterItemSchema } from '@/schemas'
+import { CharacterSchema } from '@/schemas'
 
 export const createCharacters = async (
   data: z.infer<typeof CharacterSchema>

@@ -7,7 +7,7 @@ import { Button } from '@nextui-org/button'
 import { Chip, Select, SelectItem } from '@nextui-org/react'
 import { useState, useTransition } from 'react'
 import { Controller, useForm } from 'react-hook-form'
-import { createMaterialCharacters } from '@/render/services/panel/characters/create'
+import { createMaterialCharacters } from '@/render/services/panel/materials/create'
 import { Material } from '@prisma/client'
 import { Characters } from '@/types'
 import { toast } from 'sonner'
@@ -92,12 +92,6 @@ const MaterialSelector = ({
         name='items'
         control={control}
         render={({ field }) => {
-          const data = { ...field }
-          const newFields = data.value.split(',')
-
-          const newFieldsLength = newFields.length
-          const disableSelector = isLoading || newFieldsLength === MAX_ITEMS
-
           return (
             <>
               <Select
@@ -109,7 +103,7 @@ const MaterialSelector = ({
                 key={defaultKey}
                 items={materials}
                 isLoading={isLoading}
-                isDisabled={disableSelector}
+                isDisabled={isLoading}
                 classNames={selectorItemWrapper}
                 disabledKeys={disabledItems}
                 onSelectionChange={field.onChange}

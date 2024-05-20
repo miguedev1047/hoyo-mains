@@ -95,12 +95,6 @@ const WeaponSelector = ({
         name='items'
         control={control}
         render={({ field }) => {
-          const data = { ...field }
-          const newFields = data.value.split(',')
-
-          const newFieldsLength = newFields.length
-          const disableSelector = isLoading || newFieldsLength === MAX_ITEMS
-
           return (
             <>
               <Select
@@ -112,7 +106,7 @@ const WeaponSelector = ({
                 key={defaultKey}
                 items={filteredWeapons}
                 isLoading={isLoading}
-                isDisabled={disableSelector}
+                isDisabled={isLoading}
                 classNames={selectorItemWrapper}
                 disabledKeys={disabledItems}
                 onSelectionChange={field.onChange}

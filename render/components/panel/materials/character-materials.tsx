@@ -1,6 +1,6 @@
 import { Characters } from '@/types'
-import MaterialSelector from '@/render/components/panel/characters/material-selector'
-import SorteableMaterialList from '@/render/components/panel/characters/sortable-material-list'
+import MaterialSelector from '@/render/components/panel/materials/material-selector'
+import SorteableMaterialList from '@/render/components/panel/materials/sortable-material-list'
 
 const CharacterMaterials = ({
   character

@@ -6,7 +6,7 @@ import { updatedOrderMaterial } from '@/render/services/panel/materials/update'
 import { MaterialsByCharacter } from '@prisma/client'
 import { toast } from 'sonner'
 import { mutate } from 'swr'
-import ItemCharacterMaterial from '@/render/components/panel/characters/item-character-material'
+import ItemCharacterMaterial from '@/render/components/panel/materials/item-character-material'
 
 const SorteableMaterialList = ({
   character
