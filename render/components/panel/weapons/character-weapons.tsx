@@ -8,7 +8,10 @@ const CharacterWeapons = ({
   character: Characters | undefined
 }) => {
   return (
-    <div className='col-span-2'>
+    <div className='col-span-2 space-y-4'>
+      <h3 className='text-xl font-semibold text-secondary-color'>
+        {character?.name} Armas
+      </h3>
       <SortableWeaponList character={character} />
       <WeaponSelector character={character} />
     </div>
