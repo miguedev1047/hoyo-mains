@@ -34,7 +34,7 @@ const CharacterSection = ({ characterId }: { characterId: string }) => {
 
   return (
     <section>
-      <Card className='dark:bg-color-dark/50 p-4'>
+      <Card className='dark:bg-color-dark/50 py-4 px-40'>
         <CardHeader className='flex justify-between items-center'>
           <div className='flex items-center space-x-8'>
             <Image
