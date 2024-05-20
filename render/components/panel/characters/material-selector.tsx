@@ -1,5 +1,5 @@
 import { z } from 'zod'
-import { CharactersMaterialsSchema } from '@/schemas'
+import { CharacterItemSchema } from '@/schemas'
 import { fetcher } from '@/utils/helpers/fetcher'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { Avatar } from '@nextui-org/avatar'
@@ -38,10 +38,10 @@ const MaterialSelector = ({
     reset,
     control,
     formState: { errors }
-  } = useForm<z.infer<typeof CharactersMaterialsSchema>>({
-    resolver: zodResolver(CharactersMaterialsSchema),
+  } = useForm<z.infer<typeof CharacterItemSchema>>({
+    resolver: zodResolver(CharacterItemSchema),
     defaultValues: {
-      materials: ''
+      items: ''
     }
   })
 
@@ -50,7 +50,7 @@ const MaterialSelector = ({
   }
 
   const onSubmit = handleSubmit((data) => {
-    const newMaterials = data.materials
+    const newMaterials = data.items
       .split(',')
       .map((item: string, index) => ({
         item: item,
@@ -83,7 +83,7 @@ const MaterialSelector = ({
 
   if (error)
     return (
-      <CharacterMaterialError message='Ha ocurrido un error al cargar los materiales.' />
+      <CharacterMaterialError message='No se ha podido cargar el selector.' />
     )
 
   if (allMaterials?.length === MAX_ITEMS) return null
@@ -91,7 +91,7 @@ const MaterialSelector = ({
   return (
     <form onSubmit={onSubmit} className='space-y-2'>
       <Controller
-        name='materials'
+        name='items'
         control={control}
         render={({ field }) => {
           const data = { ...field }
@@ -111,8 +111,8 @@ const MaterialSelector = ({
               onSelectionChange={field.onChange}
               classNames={selectorItemWrapper}
               disabledKeys={DISABLE_ITEMS}
-              isInvalid={!!errors.materials}
-              errorMessage={errors.materials?.message}
+              isInvalid={!!errors.items}
+              errorMessage={errors.items?.message}
               renderValue={(value) => {
                 return value.map(({ data, key }) => (
                   <div key={key} className='flex flex-wrap gap-4'>
