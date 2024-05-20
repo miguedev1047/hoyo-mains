@@ -9,11 +9,12 @@ import { getElementImage } from '@/utils/helpers/get-element-image'
 import { getWeapon } from '@/utils/helpers/get-weapon'
 import { Characters } from '@/types'
 import { getRole } from '@/utils/helpers/get-role'
-import useSWR from 'swr'
 import CharacterMaterials from '@/render/components/panel/characters/character-materials'
 import CharacterLoader from '@/render/components/UI/loaders/character-loader'
 import AlertError from '@/render/components/UI/errors/alert-error'
 import CharacterWeapons from '@/render/components/panel/weapons/character-weapons'
+import CharacterArtifacts from '@/render/components/panel/artifacts/character-artifacts'
+import useSWR from 'swr'
 
 const CharacterSection = ({ characterId }: { characterId: string }) => {
   const {
@@ -76,7 +77,7 @@ const CharacterSection = ({ characterId }: { characterId: string }) => {
         <CardBody className='grid grid-cols-4 gap-8'>
           <CharacterMaterials character={character} />
           <CharacterWeapons character={character} />
-          
+          <CharacterArtifacts character={character} />
           <div>Best stats</div>
           <div>Best YT guide</div>
           <div>Best teams</div>

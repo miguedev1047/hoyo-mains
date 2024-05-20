@@ -39,6 +39,7 @@ model Character {
 
   materials MaterialsByCharacter[]
   weapons   WeaponByCharacter[]
+  artifacts ArtifactByCharacter[]
 }
 
 model Material {
@@ -103,6 +104,18 @@ model MaterialsByCharacter {
 }
 
 model WeaponByCharacter {
+  id          String  @id @unique @default(uuid())
+  item        String
+  characterId String?
+  order       Int     @default(0)
+
+  createdDate DateTime @default(now())
+  updatedDate DateTime @updatedAt
+
+  character Character? @relation(fields: [characterId], references: [id])
+}
+
+model ArtifactByCharacter {
   id          String  @id @unique @default(uuid())
   item        String
   characterId String?

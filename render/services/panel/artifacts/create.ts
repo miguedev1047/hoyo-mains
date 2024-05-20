@@ -49,3 +49,27 @@ export const createArtifacts = async (data: z.infer<typeof ArtifactSchema>) => {
     return { error: 'Error al crear el Artefacto.', status: 500 }
   }
 }
+
+export const createArtifactCharacters = async (data: any[]) => {
+  const currentAdminRole = await currentRole()
+
+  if (currentAdminRole !== 'ADMIN' && currentAdminRole !== 'OWNER')
+    return {
+      error: 'No tienes permisos para realizar esta acción.',
+      status: 403
+    }
+  try {
+    const weapons = await db.artifactByCharacter.createMany({
+      data,
+      skipDuplicates: true
+    })
+
+    return {
+      data: weapons,
+      message: 'Los artefacto/s han sido creado/s!',
+      status: 201
+    }
+  } catch (error) {
+    return { error: 'Error al crear el/los artefacto/s.', status: 500 }
+  }
+}

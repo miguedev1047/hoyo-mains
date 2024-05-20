@@ -1,23 +1,20 @@
 import { NextResponse } from 'next/server'
 import db from '@/libs/db'
 
+export const dynamic = 'force-dynamic'
+
 export async function GET(
   request: Request,
   { params }: { params: { id: string } }
 ) {
   try {
-    const characterId = params.id
-
-    const characters = await db.character.findUnique({
-      where: { id: characterId },
-      include: {
-        materials: true,
-        weapons: true,
-        artifacts: true
+    const artifacts = await db.artifact.findUnique({
+      where: {
+        id: params.id
       }
     })
 
-    return NextResponse.json(characters, { status: 200 })
+    return NextResponse.json(artifacts, { status: 200 })
   } catch (error: any) {
     return NextResponse.json(
       {
