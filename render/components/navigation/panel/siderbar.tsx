@@ -47,7 +47,7 @@ const Sidebar = () => {
   const pathname = usePathname()
   return (
     <nav>
-      <Card className='w-[250px] hidden lg:block h-[calc(100vh_-_4rem)] sticky top-8  bg-color-dark z-50'>
+      <Card className='w-[250px] hidden lg:block h-[calc(100vh_-_4rem)] sticky top-8  bg-color-dark z-20'>
         <CardHeader>
           <h1 className='text-2xl font-bold mx-auto'>{navInfo.title}</h1>
         </CardHeader>
