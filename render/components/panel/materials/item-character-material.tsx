@@ -40,17 +40,16 @@ const ItemCharacterMaterial = ({
           className='mb-4'
         >
           <Card className='flex flex-row items-center justify-between gap-4 p-5 bg-color-darkest'>
-            <div className='flex gap-4  select-none'>
-              <div className='flex gap-7 items-center'>
-                <IconGripVertical size={20} />
-                <Image
-                  width={32}
-                  height={32}
-                  src={dataMaterial?.imageUrl!}
-                  alt={dataMaterial?.name!}
-                  className='w-8 h-8 rounded-full'
-                />
-              </div>
+            <div className='flex gap-4 items-center select-none'>
+              <IconGripVertical size={20} />
+              <Image
+                src={dataMaterial?.imageUrl!}
+                alt={dataMaterial?.name!}
+                classNames={{
+                  wrapper: 'size-10 bg-primary-color rounded-md'
+                }}
+                className='size-10 rounded-md object-cover p-1'
+              />
               <h3 className='text-lg font-semibold'>{dataMaterial?.name}</h3>
             </div>
 
