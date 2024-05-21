@@ -15,6 +15,7 @@ import AlertError from '@/render/components/UI/errors/alert-error'
 import CharacterWeapons from '@/render/components/panel/weapons/character-weapons'
 import CharacterArtifacts from '@/render/components/panel/artifacts/character-artifacts'
 import useSWR from 'swr'
+import CharacterBestStats from '@/render/components/panel/best-stats/character-best-stats'
 
 const CharacterSection = ({ characterId }: { characterId: string }) => {
   const {
@@ -78,7 +79,7 @@ const CharacterSection = ({ characterId }: { characterId: string }) => {
           <CharacterMaterials character={character} />
           <CharacterWeapons character={character} />
           <CharacterArtifacts character={character} />
-          <div>Best stats</div>
+          <CharacterBestStats character={character} />
           <div>Best YT guide</div>
           <div>Best teams</div>
           <div>Talents Passives</div>

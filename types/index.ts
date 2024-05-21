@@ -22,7 +22,7 @@ export interface Characters {
   materials: Data[]
   artifacts: Data[]
   team: Team[]
-  substats: Substats
+  bestStats: BestStats
 }
 
 export interface Data {
@@ -35,7 +35,7 @@ export interface Data {
   updatedDate: Date
 }
 
-export interface Substats {
+export interface BestStats {
   id: string
   characterId: string
   sandStat: string

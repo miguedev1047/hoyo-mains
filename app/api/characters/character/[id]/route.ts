@@ -13,7 +13,8 @@ export async function GET(
       include: {
         materials: true,
         weapons: true,
-        artifacts: true
+        artifacts: true,
+        bestStats: true
       }
     })
 

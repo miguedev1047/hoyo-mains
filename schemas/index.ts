@@ -123,3 +123,17 @@ export const CharacterItemSchema = z.object({
   })
 })
 
+export const CharacterBestStatsSchema = z.object({
+  sandStat: z.string().min(1, {
+    message: 'Estadistica requerida.'
+  }),
+  globetStat: z.string().min(1, {
+    message: 'Estadistica requerida.'
+  }),
+  circletStat: z.string().min(1, {
+    message: 'Estadistica requerida.'
+  }),
+  substatPriority: z.string().min(1, {
+    message: 'Estadistica secundarias requerida.'
+  })
+})
