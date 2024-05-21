@@ -1,6 +1,6 @@
 import { z } from 'zod'
 import { IconPencil, IconPlus } from '@tabler/icons-react'
-import { createBestStats } from '@/render/services/panel/substats/create'
+import { createBestStats } from '@/render/services/panel/stats/create'
 import { CharacterBestStatsSchema } from '@/schemas'
 import { Characters } from '@/types'
 import { InputWrapper } from '@/utils/classes'
@@ -11,7 +11,7 @@ import { useEffect, useTransition } from 'react'
 import { Controller, useForm } from 'react-hook-form'
 import { toast } from 'sonner'
 import { useEditStatStore } from '@/utils/store/use-edit-substat'
-import { updateBestStats } from '@/render/services/panel/substats/update'
+import { updateBestStats } from '@/render/services/panel/stats/update'
 import { mutate } from 'swr'
 
 const FormBestStat = ({ character }: { character: Characters | undefined }) => {

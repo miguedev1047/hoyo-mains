@@ -14,8 +14,8 @@ import CharacterLoader from '@/render/components/UI/loaders/character-loader'
 import AlertError from '@/render/components/UI/errors/alert-error'
 import CharacterWeapons from '@/render/components/panel/weapons/character-weapons'
 import CharacterArtifacts from '@/render/components/panel/artifacts/character-artifacts'
+import CharacterBestStats from '@/render/components/panel/stats/character-best-stats'
 import useSWR from 'swr'
-import CharacterBestStats from '@/render/components/panel/best-stats/character-best-stats'
 
 const CharacterSection = ({ characterId }: { characterId: string }) => {
   const {

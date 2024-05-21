@@ -1,6 +1,6 @@
 import { Characters } from '@/types'
-import FormBestStat from '@/render/components/panel/best-stats/form-best-stat'
-import ItemBestStat from '@/render/components/panel/best-stats/item-best-stats'
+import FormBestStat from '@/render/components/panel/stats/form-best-stat'
+import ItemBestStat from '@/render/components/panel/stats/item-best-stats'
 
 const CharacterBestStats = ({
   character
