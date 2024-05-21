@@ -5,7 +5,6 @@ import { DragDropContext, Droppable } from '@hello-pangea/dnd'
 import { ArtifactByCharacter } from '@prisma/client'
 import { useEffect, useMemo, useState } from 'react'
 import { toast } from 'sonner'
-import { mutate } from 'swr'
 import ItemCharacterArtifact from '@/render/components/panel/artifacts/item-character-artifact'
 
 const SortableArtifactList = ({
@@ -44,7 +43,6 @@ const SortableArtifactList = ({
       setData(items)
       const { status, message } = await updatedOrderArtifact(items)
       if (status === 201) {
-        mutate(`/api/characters/character/${character?.id}`)
         toast.success(message)
         return
       }

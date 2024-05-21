@@ -5,7 +5,6 @@ import { reOrder } from '@/utils/helpers/re-order'
 import { updatedOrderMaterial } from '@/render/services/panel/materials/update'
 import { MaterialsByCharacter } from '@prisma/client'
 import { toast } from 'sonner'
-import { mutate } from 'swr'
 import ItemCharacterMaterial from '@/render/components/panel/materials/item-character-material'
 
 const SorteableMaterialList = ({
@@ -44,7 +43,6 @@ const SorteableMaterialList = ({
       setData(items)
       const { status, message } = await updatedOrderMaterial(items)
       if (status === 200) {
-        mutate(`/api/characters/character/${character?.id}`)
         toast.success(message)
         return
       }
