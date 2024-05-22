@@ -16,6 +16,7 @@ import CharacterWeapons from '@/render/components/panel/weapons/character-weapon
 import CharacterArtifacts from '@/render/components/panel/artifacts/character-artifacts'
 import CharacterBestStats from '@/render/components/panel/stats/character-best-stats'
 import useSWR from 'swr'
+import CharacterYoutube from '@/render/components/panel/yt/character-youtube'
 
 const CharacterSection = ({ characterId }: { characterId: string }) => {
   const {
@@ -38,7 +39,7 @@ const CharacterSection = ({ characterId }: { characterId: string }) => {
     <section>
       <Card className='dark:bg-color-dark/50 py-4 px-40'>
         <CardHeader className='flex justify-between items-center'>
-          <div className='flex items-center space-x-8'>
+          <div className='flex items-center space-x-10'>
             <Image
               isBlurred
               width={125}
@@ -75,12 +76,12 @@ const CharacterSection = ({ characterId }: { characterId: string }) => {
           />
         </CardHeader>
         <Divider />
-        <CardBody className='grid grid-cols-4 gap-8'>
+        <CardBody className='grid grid-cols-4 gap-12'>
           <CharacterMaterials character={character} />
           <CharacterWeapons character={character} />
           <CharacterArtifacts character={character} />
           <CharacterBestStats character={character} />
-          <div>Best YT guide</div>
+          <CharacterYoutube character={character} />
           <div>Best teams</div>
           <div>Talents Passives</div>
           <div>Constellations</div>

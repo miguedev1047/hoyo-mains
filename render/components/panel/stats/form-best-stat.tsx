@@ -25,7 +25,7 @@ const FormBestStat = ({ character }: { character: Characters | undefined }) => {
     : 'border-transparent'
 
   const editStat = useEditStatStore((state) => state.isEditingStat)
-  const updatedSubstat = useEditStatStore((state) => state.startEditingStat)
+  const updatedStat = useEditStatStore((state) => state.startEditingStat)
 
   const {
     handleSubmit,
@@ -53,24 +53,18 @@ const FormBestStat = ({ character }: { character: Characters | undefined }) => {
   }, [isActiveEdit, setValue, bestStats])
 
   const onSubmit = handleSubmit((data) => {
-    const newBestStats = {
-      ...data,
-      characterId: character?.id
-    }
+    const characterId = character?.id!
 
     // Enviar datos al servidor para crear las estadísticas
     startTrasition(async () => {
       if (isActiveEdit) {
         const statId = bestStats.id
-        const { status, message, error } = await updateBestStats(
-          newBestStats,
-          statId
-        )
+        const { status, message, error } = await updateBestStats(data, statId)
 
         if (status === 201) {
           reset()
           toast.success(message)
-          updatedSubstat(false)
+          updatedStat(false)
           mutate(`/api/characters/character/${character?.id}`)
           return
         }
@@ -79,7 +73,10 @@ const FormBestStat = ({ character }: { character: Characters | undefined }) => {
         return
       }
 
-      const { status, message, error } = await createBestStats(newBestStats)
+      const { status, message, error } = await createBestStats(
+        data,
+        characterId
+      )
 
       if (status === 201) {
         reset()

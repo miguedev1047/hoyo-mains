@@ -37,11 +37,11 @@ model Character {
   createdDate DateTime @default(now())
   updatedDate DateTime @updatedAt
 
-  materials MaterialsByCharacter[]
-  weapons   WeaponByCharacter[]
-  artifacts ArtifactByCharacter[]
-  bestStats CharacterBestStat?
-  characterVideo CharacterVideo? 
+  materials      MaterialsByCharacter[]
+  weapons        WeaponByCharacter[]
+  artifacts      ArtifactByCharacter[]
+  bestStats      CharacterBestStat?
+  characterVideo CharacterVideo?
 }
 
 model Material {
@@ -150,6 +150,7 @@ model CharacterVideo {
 
   youtuberName    String
   youtuberChannel String
+  embedVideoUrl   String
 
   createdDate DateTime @default(now())
   updatedDate DateTime @updatedAt

@@ -1,16 +1,16 @@
 'use server'
 
 import { z } from 'zod'
-import { CharacterBestStatsSchema } from '@/schemas'
+import { CharacterYoutubeSchema } from '@/schemas'
 import { currentRole } from '@/data/auth'
 import db from '@/libs/db'
 
-export const updateBestStats = async (
-  data: z.infer<typeof CharacterBestStatsSchema>,
-  statId: string
+export const updateCharacterVideo = async (
+  data: z.infer<typeof CharacterYoutubeSchema>,
+  characterVideoId: string
 ) => {
   const currentAdminRole = await currentRole()
-  const validateFields = CharacterBestStatsSchema.safeParse(data)
+  const validateFields = CharacterYoutubeSchema.safeParse(data)
 
   if (currentAdminRole !== 'ADMIN' && currentAdminRole !== 'OWNER')
     return {
@@ -24,31 +24,29 @@ export const updateBestStats = async (
       status: 400
     }
 
-  const { circletStat, globetStat, sandStat, substatPriority } =
-    validateFields.data
+  const { embedVideoUrl, youtuberChannel, youtuberName } = validateFields.data
 
   try {
-    const bestStats = await db.characterBestStat.update({
+    const characterVideo = await db.characterVideo.update({
       where: {
-        id: statId
+        id: characterVideoId
       },
       data: {
-        circletStat,
-        globetStat,
-        sandStat,
-        substatPriority
+        embedVideoUrl,
+        youtuberChannel,
+        youtuberName
       }
     })
 
     return {
-      data: bestStats,
+      data: characterVideo,
       message: 'Cambios guardados!',
       status: 201
     }
   } catch (error) {
     return {
       data: null,
-      error: 'Hubo un error al actualizar las estadísticas.',
+      error: 'Hubo un error al actualizar la video guía.',
       status: 500
     }
   }

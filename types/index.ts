@@ -22,6 +22,7 @@ export interface Characters {
   materials: Data[]
   artifacts: Data[]
   team: Team[]
+  characterVideo: CharacterVideos
   bestStats: BestStats
 }
 
@@ -30,9 +31,17 @@ export interface Data {
   item: string
   characterId: string | null
   order: number
-  
+
   createdDate: Date
   updatedDate: Date
+}
+
+export interface CharacterVideos {
+  id: string
+  embedVideoUrl: string
+  youtuberChannel: string
+  youtuberName: string
+  characterId: string
 }
 
 export interface BestStats {

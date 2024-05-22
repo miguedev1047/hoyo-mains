@@ -14,7 +14,8 @@ export async function GET(
         materials: true,
         weapons: true,
         artifacts: true,
-        bestStats: true
+        bestStats: true,
+        characterVideo: true
       }
     })
 

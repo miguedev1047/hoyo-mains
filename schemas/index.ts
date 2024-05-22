@@ -137,3 +137,15 @@ export const CharacterBestStatsSchema = z.object({
     message: 'Estadistica secundarias requerida.'
   })
 })
+
+export const CharacterYoutubeSchema = z.object({
+  youtuberName: z.string().min(1, {
+    message: 'Escribe un nombre válido.'
+  }),
+  youtuberChannel: z.string().min(1, {
+    message: 'Escribe una URL válida.'
+  }),
+  embedVideoUrl: z.string().min(1, {
+    message: 'Escribe una URL válida.'
+  })
+})

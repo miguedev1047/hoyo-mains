@@ -1,16 +1,16 @@
 'use server'
 
 import { z } from 'zod'
-import { CharacterBestStatsSchema } from '@/schemas'
 import { currentRole } from '@/data/auth'
+import { CharacterYoutubeSchema } from '@/schemas'
 import db from '@/libs/db'
 
-export const createBestStats = async (
-  data: z.infer<typeof CharacterBestStatsSchema>,
+export const createCharacterVideo = async (
+  data: z.infer<typeof CharacterYoutubeSchema>,
   characterId: string
 ) => {
   const currentAdminRole = await currentRole()
-  const validateFields = CharacterBestStatsSchema.safeParse(data)
+  const validateFields = CharacterYoutubeSchema.safeParse(data)
 
   if (currentAdminRole !== 'ADMIN' && currentAdminRole !== 'OWNER')
     return {
@@ -24,25 +24,27 @@ export const createBestStats = async (
       status: 400
     }
 
-  const { circletStat, globetStat, sandStat, substatPriority } =
-    validateFields.data
+  const { embedVideoUrl, youtuberChannel, youtuberName } = validateFields.data
 
   try {
-    const bestStats = await db.characterBestStat.create({
+    const bestStats = await db.characterVideo.create({
       data: {
-        circletStat,
-        globetStat,
-        sandStat,
-        substatPriority,
+        embedVideoUrl,
+        youtuberChannel,
+        youtuberName,
         characterId
       }
     })
 
-    return { data: bestStats, message: 'Estadísticas agregadas!', status: 201 }
+    return {
+      data: bestStats,
+      message: 'Se ha creado la video guía!',
+      status: 201
+    }
   } catch (error) {
     return {
       data: null,
-      error: 'Hubo un error al agregar las estadísticas.',
+      error: 'Hubo un error al crear la video guía.',
       status: 500
     }
   }
