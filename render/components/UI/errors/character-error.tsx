@@ -6,7 +6,7 @@ interface Props {
   className?: string
 }
 
-export const CharacterMaterialError = ({ message, className }: Props) => {
+export const CharacterItemError = ({ message, className }: Props) => {
   return (
     <Card
       isBlurred

@@ -21,7 +21,7 @@ export interface Characters {
   weapons: Data[]
   materials: Data[]
   artifacts: Data[]
-  team: Team[]
+  characterTeams: Team[]
   characterVideo: CharacterVideos
   bestStats: BestStats
 }
@@ -62,13 +62,13 @@ export interface Team {
   name: string
   createdDate: Date
   updatedDate: Date
-  characters: MaterialsByCharacter[]
+  characters: CharactersByTeam[]
 }
 
-export interface MaterialsByCharacter {
+export interface CharactersByTeam {
   id: string
-  item: string
-  characterId: string
+  characterId: string | null
+  teamId: string
   order: number
   createdDate: Date
   updatedDate: Date

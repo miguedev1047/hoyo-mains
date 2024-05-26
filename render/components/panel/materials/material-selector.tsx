@@ -12,7 +12,7 @@ import { Material } from '@prisma/client'
 import { Characters } from '@/types'
 import { toast } from 'sonner'
 import { selectorItemWrapper } from '@/utils/classes'
-import { CharacterMaterialError } from '@/render/components/UI/errors/character-error'
+import { CharacterItemError } from '@/render/components/UI/errors/character-error'
 import useSWR, { mutate } from 'swr'
 
 const MaterialSelector = ({
@@ -79,7 +79,7 @@ const MaterialSelector = ({
 
   if (error)
     return (
-      <CharacterMaterialError message='No se ha podido cargar el selector.' />
+      <CharacterItemError message='No se ha podido cargar el selector.' />
     )
 
   if (isLoading) return null

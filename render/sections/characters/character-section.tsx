@@ -15,8 +15,9 @@ import AlertError from '@/render/components/UI/errors/alert-error'
 import CharacterWeapons from '@/render/components/panel/weapons/character-weapons'
 import CharacterArtifacts from '@/render/components/panel/artifacts/character-artifacts'
 import CharacterBestStats from '@/render/components/panel/stats/character-best-stats'
-import useSWR from 'swr'
 import CharacterYoutube from '@/render/components/panel/yt/character-youtube'
+import CharacterTeams from '@/render/components/panel/teams/character-teams'
+import useSWR from 'swr'
 
 const CharacterSection = ({ characterId }: { characterId: string }) => {
   const {
@@ -82,7 +83,7 @@ const CharacterSection = ({ characterId }: { characterId: string }) => {
           <CharacterArtifacts character={character} />
           <CharacterBestStats character={character} />
           <CharacterYoutube character={character} />
-          <div>Best teams</div>
+          <CharacterTeams character={character} />
           <div>Talents Passives</div>
           <div>Constellations</div>
           <div>Ascencions Costs</div>

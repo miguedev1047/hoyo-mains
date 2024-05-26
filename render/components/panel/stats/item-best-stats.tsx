@@ -18,25 +18,25 @@ const ItemBestStat = ({ character }: { character: Characters | undefined }) => {
       <Card className='col-span-1 bg-color-darkest p-5 capitalize select-none'>
         <h3 className='text-base text-center capitalize font-light'>
           <span className='font-bold'>Reloj:</span>{' '}
-          {character?.bestStats.sandStat}
+          {character?.bestStats?.sandStat}
         </h3>
       </Card>
       <Card className='col-span-1 bg-color-darkest p-5 capitalize select-none'>
         <h3 className='text-base text-center capitalize font-light'>
           <span className='font-bold'>Caliz:</span>{' '}
-          {character?.bestStats.globetStat}
+          {character?.bestStats?.globetStat}
         </h3>
       </Card>
       <Card className='col-span-1 bg-color-darkest p-5 capitalize select-none'>
         <h3 className='text-base text-center capitalize font-light'>
           <span className='font-bold'>Tiara:</span>{' '}
-          {character?.bestStats.circletStat}
+          {character?.bestStats?.circletStat}
         </h3>
       </Card>
       <Card className='col-span-3 bg-color-darkest p-5 capitalize select-none'>
         <h3 className='text-base text-center capitalize font-light'>
           <span className='font-bold'>Substats:</span>{' '}
-          {character?.bestStats.substatPriority}
+          {character?.bestStats?.substatPriority}
         </h3>
       </Card>
 

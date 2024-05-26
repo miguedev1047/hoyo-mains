@@ -42,6 +42,7 @@ model Character {
   artifacts      ArtifactByCharacter[]
   bestStats      CharacterBestStat?
   characterVideo CharacterVideo?
+  characterTeams Team[]
 }
 
 model Material {
@@ -156,4 +157,31 @@ model CharacterVideo {
   updatedDate DateTime @updatedAt
 
   characterVideo Character? @relation(fields: [characterId], references: [id])
+}
+
+model Team {
+  id          String  @id @unique @default(uuid())
+  characterId String?
+
+  order Int    @default(0)
+  name  String
+
+  createdDate DateTime @default(now())
+  updatedDate DateTime @updatedAt
+
+  character  Character?        @relation(fields: [characterId], references: [id])
+  characters CharacterByTeam[]
+}
+
+model CharacterByTeam {
+  id          String  @id @unique @default(uuid())
+  characterId String?
+  teamId      String
+
+  order Int @default(0)
+
+  createdDate DateTime @default(now())
+  updatedDate DateTime @updatedAt
+
+  characters Team @relation(fields: [teamId], references: [id])
 }

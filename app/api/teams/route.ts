@@ -5,10 +5,10 @@ export const dynamic = 'force-dynamic'
 
 export async function GET(request: Request) {
   try {
-    const characters = await db.character.findMany({
+    const teams = await db.team.findMany({
       orderBy: [
         {
-          stars: 'desc'
+          order: 'asc'
         },
         {
           name: 'asc'
@@ -18,20 +18,11 @@ export async function GET(request: Request) {
         }
       ],
       include: {
-        materials: true,
-        weapons: true,
-        artifacts: true,
-        bestStats: true,
-        characterVideo: true,
-        characterTeams: {
-          include: {
-            characters: true
-          }
-        }
+        characters: true
       }
     })
 
-    return NextResponse.json(characters, { status: 200 })
+    return NextResponse.json(teams, { status: 200 })
   } catch (error: any) {
     return NextResponse.json(
       {

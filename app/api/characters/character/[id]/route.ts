@@ -15,7 +15,12 @@ export async function GET(
         weapons: true,
         artifacts: true,
         bestStats: true,
-        characterVideo: true
+        characterVideo: true,
+        characterTeams: {
+          include: {
+            characters: true
+          }
+        }
       }
     })
 

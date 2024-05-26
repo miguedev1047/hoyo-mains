@@ -1,6 +1,6 @@
 import { Characters } from '@/types'
 import SortableWeaponList from '@/render/components/panel/weapons/sortable-weapon-list'
-import WeaponSelector from '@/render/components/panel/materials/weapon-selector'
+import WeaponSelector from '@/render/components/panel/weapons/weapon-selector'
 
 const CharacterWeapons = ({
   character

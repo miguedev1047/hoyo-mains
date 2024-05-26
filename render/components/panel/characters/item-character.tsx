@@ -57,14 +57,14 @@ const ItemCharacter = ({ character }: Props) => {
         href={url}
         isDisabled={isPending}
         className={clsx(
-          'bg-color-dark border-2 overflow-visible',
+          'bg-color-dark border-2 p-0 aspect-square',
           getStarBorderColor(character.stars)
         )}
       >
         <Image
-          width={1024}
-          height={1024}
-          className='object-cover bg-color-darkest'
+          classNames={{
+            wrapper: 'bg-color-darkest w-full h-full aspect-square'
+          }}
           src={character.imageUrl!}
           alt={character.name}
         />

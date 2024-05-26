@@ -11,7 +11,7 @@ import { Weapon } from '@prisma/client'
 import { useState, useTransition } from 'react'
 import { Controller, useForm } from 'react-hook-form'
 import { toast } from 'sonner'
-import { CharacterMaterialError } from '@/render/components/UI/errors/character-error'
+import { CharacterItemError } from '@/render/components/UI/errors/character-error'
 import useSWR, { mutate } from 'swr'
 
 const WeaponSelector = ({
@@ -81,9 +81,7 @@ const WeaponSelector = ({
   })
 
   if (error)
-    return (
-      <CharacterMaterialError message='No se ha podido cargar el selector.' />
-    )
+    return <CharacterItemError message='No se ha podido cargar el selector.' />
 
   if (isLoading) return null
 
@@ -94,47 +92,45 @@ const WeaponSelector = ({
       <Controller
         name='items'
         control={control}
-        render={({ field }) => {
-          return (
-            <>
-              <Select
-                aria-label='Weapon Selector'
-                placeholder='Selecciona las armas'
-                selectionMode='multiple'
-                className='w-full'
-                isMultiline={true}
-                key={defaultKey}
-                items={filteredWeapons}
-                isLoading={isLoading}
-                isDisabled={isLoading}
-                classNames={selectorItemWrapper}
-                disabledKeys={disabledItems}
-                onSelectionChange={field.onChange}
-                isInvalid={!!errors.items}
-                errorMessage={errors.items?.message}
-                renderValue={(value) => {
-                  return value.map(({ data, key }) => (
-                    <div key={key} className='flex flex-wrap gap-4'>
-                      <Chip className='bg-color-dark capitalize px-2 py-1 rounded-md'>
-                        {data?.name}
-                      </Chip>
-                    </div>
-                  ))
-                }}
-                {...field}
-              >
-                {(weapon) => (
-                  <SelectItem key={weapon.id} textValue={weapon.name}>
-                    <div className='flex gap-2 items-center'>
-                      <Avatar src={weapon.imageUrl!} alt={weapon.name} />
-                      <span className='capitalize'>{weapon.name}</span>
-                    </div>
-                  </SelectItem>
-                )}
-              </Select>
-            </>
-          )
-        }}
+        render={({ field }) => (
+          <>
+            <Select
+              aria-label='Weapon Selector'
+              placeholder='Selecciona las armas'
+              selectionMode='multiple'
+              className='w-full'
+              isMultiline={true}
+              key={defaultKey}
+              items={filteredWeapons}
+              isLoading={isLoading}
+              isDisabled={isLoading}
+              classNames={selectorItemWrapper}
+              disabledKeys={disabledItems}
+              onSelectionChange={field.onChange}
+              isInvalid={!!errors.items}
+              errorMessage={errors.items?.message}
+              renderValue={(value) => {
+                return value.map(({ data, key }) => (
+                  <div key={key} className='flex flex-wrap gap-4'>
+                    <Chip className='bg-color-dark capitalize px-2 py-1 rounded-md'>
+                      {data?.name}
+                    </Chip>
+                  </div>
+                ))
+              }}
+              {...field}
+            >
+              {(weapon) => (
+                <SelectItem key={weapon.id} textValue={weapon.name}>
+                  <div className='flex gap-2 items-center'>
+                    <Avatar src={weapon.imageUrl!} alt={weapon.name} />
+                    <span className='capitalize'>{weapon.name}</span>
+                  </div>
+                </SelectItem>
+              )}
+            </Select>
+          </>
+        )}
       />
 
       <Button

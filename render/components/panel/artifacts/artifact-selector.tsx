@@ -6,7 +6,7 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { Artifact } from '@prisma/client'
 import { useState, useTransition } from 'react'
 import { Controller, useForm } from 'react-hook-form'
-import { CharacterMaterialError } from '@/render/components/UI/errors/character-error'
+import { CharacterItemError } from '@/render/components/UI/errors/character-error'
 import { createArtifactCharacters } from '@/render/services/panel/artifacts/create'
 import { Avatar, Button, Chip, Select, SelectItem } from '@nextui-org/react'
 import { selectorItemWrapper } from '@/utils/classes'
@@ -77,7 +77,7 @@ const ArtifactSelector = ({
 
   if (error)
     return (
-      <CharacterMaterialError message='No se ha podido cargar el selector.' />
+      <CharacterItemError message='No se ha podido cargar el selector.' />
     )
 
   if (isLoading) return null
