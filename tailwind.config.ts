@@ -36,7 +36,8 @@ module.exports = {
           extend: 'dark',
           colors: {
             background: '#070616',
-            foreground: '#D6D4E8'
+            foreground: '#D6D4E8',
+            default: '#534A5D'
           }
         }
       }

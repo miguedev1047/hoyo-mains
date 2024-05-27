@@ -1,7 +1,7 @@
 import { Draggable } from '@hello-pangea/dnd'
 import { Avatar, Card } from '@nextui-org/react'
 import { IconGripVertical } from '@tabler/icons-react'
-import { CharacterMaterialItemError } from '@/render/components/UI/errors/character-error'
+import { ItemCharacterError } from '@/render/components/UI/errors/character-error'
 import { Characters, CharactersByTeam } from '@/types'
 import { fetcher } from '@/utils/helpers/fetcher'
 import ButtonDeleteCharacter from '@/render/components/UI/buttons/team/button-delete-character'
@@ -28,7 +28,7 @@ const CharacterItemCharacter = ({
 
   if (error)
     return (
-      <CharacterMaterialItemError message='Ha ocurrido un error al cargar el personaje.' />
+      <ItemCharacterError message='Ha ocurrido un error al cargar el personaje.' />
     )
 
   if (isLoading) return <SkeletonTeamCharacters />
@@ -47,7 +47,7 @@ const CharacterItemCharacter = ({
               <div className='flex gap-2 items-center select-none'>
                 <IconGripVertical size={20} />
                 <Avatar
-                  radius='md'
+                  radius='sm'
                   className='bg-primary-color'
                   src={dataCharacter?.imageUrl!}
                   alt={dataCharacter?.name}

@@ -5,7 +5,7 @@ import { fetcher } from '@/utils/helpers/fetcher'
 import { Material } from '@prisma/client'
 import { Card } from '@nextui-org/card'
 import { Image } from '@nextui-org/react'
-import { CharacterMaterialItemError } from '@/render/components/UI/errors/character-error'
+import { ItemMaterialError } from '@/render/components/UI/errors/character-error'
 import ButtonDeleteMaterial from '@/render/components/UI/buttons/material/button-delete-material'
 import SkeletonMaterialItems from '@/render/components/UI/skeletons/skeleton-material-items'
 import useSWR from 'swr'
@@ -25,7 +25,7 @@ const ItemCharacterMaterial = ({
 
   if (error)
     return (
-      <CharacterMaterialItemError message='Ha ocurrido un error al cargar el material.' />
+      <ItemMaterialError message='Ha ocurrido un error al cargar el material.' />
     )
 
   if (isLoading) return <SkeletonMaterialItems />

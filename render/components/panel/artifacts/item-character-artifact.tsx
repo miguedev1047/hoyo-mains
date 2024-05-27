@@ -1,7 +1,7 @@
 import { IconGripVertical } from '@tabler/icons-react'
 import { fetcher } from '@/utils/helpers/fetcher'
 import { Weapon } from '@prisma/client'
-import { CharacterMaterialItemError } from '@/render/components/UI/errors/character-error'
+import { ItemArtifactError } from '@/render/components/UI/errors/character-error'
 import { Draggable } from '@hello-pangea/dnd'
 import { Data } from '@/types'
 import { Card } from '@nextui-org/card'
@@ -25,7 +25,7 @@ const ItemCharacterArtifact = ({
 
   if (error)
     return (
-      <CharacterMaterialItemError message='Ha ocurrido un error al cargar el artefacto.' />
+      <ItemArtifactError message='Ha ocurrido un error al cargar el artefacto.' />
     )
 
   if (isLoading) return <SkeletonMaterialItems />
