@@ -1,3 +1,19 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.editor-text-color p {
+  color: rgb(214, 212, 232) !important;
+}
+
+.editor-text-color span {
+  color: rgb(214, 212, 232) !important;
+}
+
+.editor-text-color strong {
+  color: rgb(214, 212, 232) !important;
+}
+
+.editor-text-color em {
+  color: rgb(214, 212, 232) !important;
+}

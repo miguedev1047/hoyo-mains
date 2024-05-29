@@ -149,3 +149,18 @@ export const CharacterYoutubeSchema = z.object({
     message: 'Escribe una URL válida.'
   })
 })
+
+export const CharacterTalentSchema = z.object({
+  id: z.string().min(1, {
+    message: 'Campo requerido.'
+  }),
+  imageUrl: z.string().min(1, {
+    message: 'Campo requerido.'
+  }),
+  name: z.string().min(1, {
+    message: 'Escribe un nombre válido.'
+  }),
+  description: z.string().min(1, {
+    message: 'Escribe una descripción válida.'
+  })
+})

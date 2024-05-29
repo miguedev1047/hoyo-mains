@@ -24,6 +24,7 @@ export interface Characters {
   characterTeams: Team[]
   characterVideo: CharacterVideos
   bestStats: BestStats
+  talents: CharacterTalents[]
 }
 
 export interface Data {
@@ -63,6 +64,7 @@ export interface Team {
   createdDate: Date
   updatedDate: Date
   characters: CharactersByTeam[]
+  
 }
 
 export interface CharactersByTeam {
@@ -72,4 +74,15 @@ export interface CharactersByTeam {
   order: number
   createdDate: Date
   updatedDate: Date
+}
+
+export interface CharacterTalents {
+  id: string
+  characterId: string
+  order: number
+  name: string
+  createdDate: Date
+  updatedDate: Date
+  description?: string
+  imageUrl?: string
 }

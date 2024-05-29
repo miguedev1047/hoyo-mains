@@ -1,10 +1,14 @@
 import EditorToolbar from './editor-toolbar'
 
-import { useEditor, EditorContent } from '@tiptap/react'
-import { Color } from '@tiptap/extension-color'
-import { useEffect, useState } from 'react'
-import StarterKit from '@tiptap/starter-kit'
+import { EditorContent, useEditor } from '@tiptap/react'
+import Color from '@tiptap/extension-color'
 import TextStyle from '@tiptap/extension-text-style'
+import Document from '@tiptap/extension-document'
+import Paragraph from '@tiptap/extension-paragraph'
+import Text from '@tiptap/extension-text'
+import StarterKit from '@tiptap/starter-kit'
+import { useEffect, useState } from 'react'
+import { ScrollShadow } from '@nextui-org/react'
 
 const Editor = ({
   description,
@@ -20,12 +24,19 @@ const Editor = ({
   const [key, setKey] = useState(+new Date())
 
   const editor = useEditor({
-    extensions: [StarterKit.configure(), Color, TextStyle],
+    extensions: [
+      StarterKit.configure(),
+      Document,
+      Paragraph,
+      Text,
+      Color,
+      TextStyle
+    ],
     content: description || placeholder,
     editorProps: {
       attributes: {
         class:
-          'bg-color-darkest rounded-lg border-color-lightest min-h-[125px] p-3 focus:outline-none'
+          'bg-color-darkest rounded-lg border-color-lightest h-full p-3 focus:outline-none'
       }
     },
     onUpdate({ editor }) {
@@ -39,9 +50,11 @@ const Editor = ({
 
   return (
     <div className='col-span-2 flex flex-col space-y-1 justify-stretch'>
-      <div>
+      <div className='space-y-2'>
         <EditorToolbar editor={editor} />
-        <EditorContent key={key} editor={editor} />
+        <ScrollShadow hideScrollBar className='w-full h-full max-h-[240px] '>
+          <EditorContent key={key} editor={editor} />
+        </ScrollShadow>
       </div>
       <p className='text-danger-400 text-xs'>{errorMessage}</p>
     </div>

@@ -6,17 +6,17 @@ import { Button } from '@nextui-org/button'
 import { Material } from '@prisma/client'
 import { Divider } from '@nextui-org/divider'
 import { usePathname, useSearchParams } from 'next/navigation'
-import ItemMaterial from '@/render/components/panel/materials/item-material'
 import AlertError from '@/render/components/UI/errors/alert-error'
 import NoItems from '@/render/components/UI/no-items'
 import PanelLoader from '@/render/components/UI/loaders/panel-loader'
 import useSWR from 'swr'
 import Link from 'next/link'
+import ItemMaterial from '@/render/components/panel/materials/item-material'
 
 const MaterialsSection = () => {
   const pathanme = usePathname()
   const searchParams = useSearchParams()
-  
+
   const paramsToString = searchParams.toString().length > 0
   const query = paramsToString ? `?${searchParams}` : ''
   const url = `${pathanme}${query}`

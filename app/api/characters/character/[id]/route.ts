@@ -20,6 +20,11 @@ export async function GET(
           include: {
             characters: true
           }
+        },
+        talents: {
+          orderBy: {
+            createdDate: 'asc'
+          }
         }
       }
     })

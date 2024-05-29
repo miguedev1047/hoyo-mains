@@ -18,6 +18,7 @@ import CharacterBestStats from '@/render/components/panel/stats/character-best-s
 import CharacterYoutube from '@/render/components/panel/yt/character-youtube'
 import CharacterTeams from '@/render/components/panel/teams/character-teams'
 import useSWR from 'swr'
+import CharacterTalents from '@/render/components/panel/talents/character-talents'
 
 const CharacterSection = ({ characterId }: { characterId: string }) => {
   const {
@@ -84,7 +85,8 @@ const CharacterSection = ({ characterId }: { characterId: string }) => {
           <CharacterBestStats character={character} />
           <CharacterYoutube character={character} />
           <CharacterTeams character={character} />
-          <div>Talents Passives</div>
+          <CharacterTalents character={character} />
+          <div>Passives</div>
           <div>Constellations</div>
           <div>Ascencions Costs</div>
         </CardBody>

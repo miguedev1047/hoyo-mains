@@ -43,6 +43,9 @@ model Character {
   bestStats      CharacterBestStat?
   characterVideo CharacterVideo?
   characterTeams Team[]
+  talents        TalentsByCharacter[]
+  passives       PassivesByCharacter[]
+  constellations ConstellationsByCharacter[]
 }
 
 model Material {
@@ -184,4 +187,49 @@ model CharacterByTeam {
   updatedDate DateTime @updatedAt
 
   characters Team @relation(fields: [teamId], references: [id])
+}
+
+model TalentsByCharacter {
+  id          String  @id @unique @default(uuid())
+  characterId String?
+  name        String
+  description String
+  imageUrl    String?
+
+  order Int @default(0)
+
+  createdDate DateTime @default(now())
+  updatedDate DateTime @updatedAt
+
+  talents Character? @relation(fields: [characterId], references: [id])
+}
+
+model PassivesByCharacter {
+  id          String  @id @unique @default(uuid())
+  characterId String?
+  name        String
+  description String
+  imageUrl    String?
+
+  order Int @default(0)
+
+  createdDate DateTime @default(now())
+  updatedDate DateTime @updatedAt
+
+  passives Character? @relation(fields: [characterId], references: [id])
+}
+
+model ConstellationsByCharacter {
+  id          String  @id @unique @default(uuid())
+  characterId String?
+  name        String
+  description String
+  imageUrl    String?
+
+  order Int @default(0)
+
+  createdDate DateTime @default(now())
+  updatedDate DateTime @updatedAt
+
+  constellations Character? @relation(fields: [characterId], references: [id])
 }
