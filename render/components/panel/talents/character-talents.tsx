@@ -1,6 +1,6 @@
 import { Characters } from '@/types'
-import FormCharacterTalent from './form-character-talent'
-import ItemCharacterTalent from './item-character-talent'
+import FormCharacterTalent from '@/render/components/panel/talents/form-character-talent'
+import ItemCharacterTalent from '@/render/components/panel/talents/item-character-talent'
 
 const CharacterTalents = ({
   character
