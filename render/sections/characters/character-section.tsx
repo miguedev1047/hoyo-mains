@@ -82,14 +82,22 @@ const CharacterSection = ({ characterId }: { characterId: string }) => {
         <Divider />
         <CardBody className='grid grid-cols-4 gap-12'>
           <CharacterMaterials character={character} />
+          <Divider className='col-span-4' />
           <CharacterWeapons character={character} />
           <CharacterArtifacts character={character} />
+          <Divider className='col-span-4' />
           <CharacterBestStats character={character} />
+          <Divider className='col-span-4' />
           <CharacterYoutube character={character} />
+          <Divider className='col-span-4' />
           <CharacterTeams character={character} />
+          <Divider className='col-span-4' />
           <CharacterTalents character={character} />
+          <Divider className='col-span-4' />
           <CharacterPassive character={character} />
+          <Divider className='col-span-4' />
           <CharacterConstellations character={character} />
+          <Divider className='col-span-4' />
           <div>Ascencions Costs</div>
         </CardBody>
         <Divider />
