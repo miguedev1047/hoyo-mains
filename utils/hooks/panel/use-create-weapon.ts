@@ -54,26 +54,23 @@ export const useCreateWeapon = () => {
   // Obtenemos los artefactos para rellenar el formulario
   useEffect(() => {
     if (isEditActive) {
-      startTransition(() => {
-        dataWeaponsById(id)
-          .then(({ data }) => {
-            setValue('name', data?.name!)
-            setValue('type', data?.type!)
-            setValue('starsText', data?.starsText!)
-            setValue('stat', data?.stat!)
-            setValue('description', data?.description!)
+      startTransition(async () => {
+        const { status, data, error } = await dataWeaponsById(id)
 
-            setImage({
-              imgFile: null,
-              imgPreview: data?.imageUrl!
-            })
-          })
-          .catch((error) => {
-            toast.error(`${error} Intentalo de nuevo.`)
-          })
-          .finally(() => {
-            setKey(+new Date())
-          })
+        if (status === 201) {
+          setValue('name', data?.name!)
+          setValue('description', data?.description!)
+          setValue('type', data?.type!)
+          setValue('stat', data?.stat!)
+          setValue('starsText', data?.starsText!)
+          setValue('stars', data?.stars!)
+
+          setImage({ imgFile: null, imgPreview: data?.imageUrl! })
+          setKey(+new Date())
+          return
+        }
+
+        toast.error(error)
       })
     }
   }, [isEditActive, id, setValue, setImage])

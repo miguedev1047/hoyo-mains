@@ -55,25 +55,22 @@ export const useCreateMaterial = () => {
   // Obtenemos los artefactos para rellenar el formulario
   useEffect(() => {
     if (isEditActive) {
-      startTransition(() => {
-        dataMaterialById(id)
-          .then(({ data }) => {
-            setValue('name', data?.name!)
-            setValue('type', data?.type!)
-            setValue('starsText', data?.starsText!)
-            setValue('description', data?.description!)
+      startTransition(async () => {
+        const { status, data, error } = await dataMaterialById(id)
 
-            setImage({
-              imgFile: null,
-              imgPreview: data?.imageUrl!
-            })
-          })
-          .catch((error) => {
-            toast.error(`${error} Intentalo de nuevo.`)
-          })
-          .finally(() => {
-            setKey(+new Date())
-          })
+        if (status === 201) {
+          setValue('name', data?.name!)
+          setValue('description', data?.description!)
+          setValue('type', data?.type!)
+          setValue('starsText', data?.starsText!)
+          setValue('stars', data?.stars!)
+
+          setImage({ imgFile: null, imgPreview: data?.imageUrl! })
+          setKey(+new Date())
+          return
+        }
+
+        toast.error(error)
       })
     }
   }, [isEditActive, id, setValue, setImage])

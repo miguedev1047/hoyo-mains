@@ -53,25 +53,21 @@ export const useCreateArtifact = () => {
   // Obtenemos los artefactos para rellenar el formulario
   useEffect(() => {
     if (isEditActive) {
-      startTransition(() => {
-        dataArtifactById(id)
-          .then(({ data }) => {
-            setValue('name', data?.name!)
-            setValue('starsText', data?.starsText!)
-            setValue('descTwoPieces', data?.descTwoPieces!)
-            setValue('descFourPieces', data?.descFourPieces!)
+      startTransition(async () => {
+        const { status, data, error } = await dataArtifactById(id)
 
-            setImage({
-              imgFile: null,
-              imgPreview: data?.imageUrl!
-            })
-          })
-          .catch((error) => {
-            toast.error(`${error} Intentalo de nuevo.`)
-          })
-          .finally(() => {
-            setKey(+new Date())
-          })
+        if (status === 201) {
+          setValue('name', data?.name!)
+          setValue('descTwoPieces', data?.descTwoPieces!)
+          setValue('descFourPieces', data?.descFourPieces!)
+          setValue('starsText', data?.starsText!)
+
+          setImage({ imgFile: null, imgPreview: data?.imageUrl! })
+          setKey(+new Date())
+          return
+        }
+
+        toast.error(error)
       })
     }
   }, [isEditActive, id, setValue, setImage])
