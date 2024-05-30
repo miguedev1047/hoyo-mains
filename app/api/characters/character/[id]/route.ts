@@ -30,6 +30,11 @@ export async function GET(
           orderBy: {
             createdDate: 'asc'
           }
+        },
+        constellations: {
+          orderBy: {
+            createdDate: 'asc'
+          }
         }
       }
     })

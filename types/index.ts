@@ -26,6 +26,7 @@ export interface Characters {
   bestStats: BestStats
   talents: CharacterTalents[]
   passives: CharacterPassives[]
+  constellations: Constellations[]
 }
 
 export interface Data {
@@ -88,6 +89,17 @@ export interface CharacterTalents {
 }
 
 export interface CharacterPassives {
+  id: string
+  characterId: string
+  order: number
+  name: string
+  createdDate: Date
+  updatedDate: Date
+  description?: string
+  imageUrl?: string
+}
+
+export interface Constellations {
   id: string
   characterId: string
   order: number

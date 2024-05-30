@@ -37,6 +37,11 @@ export async function GET(request: Request) {
           orderBy: {
             createdDate: 'asc'
           }
+        },
+        constellations: {
+          orderBy: {
+            createdDate: 'asc'
+          }
         }
       }
     })

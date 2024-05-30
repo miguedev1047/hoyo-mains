@@ -20,6 +20,7 @@ import CharacterTeams from '@/render/components/panel/teams/character-teams'
 import useSWR from 'swr'
 import CharacterTalents from '@/render/components/panel/talents/character-talents'
 import CharacterPassive from '@/render/components/panel/passive/character-passive'
+import CharacterConstellations from '@/render/components/panel/constellations/character-constellations'
 
 const CharacterSection = ({ characterId }: { characterId: string }) => {
   const {
@@ -88,7 +89,7 @@ const CharacterSection = ({ characterId }: { characterId: string }) => {
           <CharacterTeams character={character} />
           <CharacterTalents character={character} />
           <CharacterPassive character={character} />
-          <div>Constellations</div>
+          <CharacterConstellations character={character} />
           <div>Ascencions Costs</div>
         </CardBody>
         <Divider />
