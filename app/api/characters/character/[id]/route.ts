@@ -25,6 +25,11 @@ export async function GET(
           orderBy: {
             createdDate: 'asc'
           }
+        },
+        passives: {
+          orderBy: {
+            createdDate: 'asc'
+          }
         }
       }
     })

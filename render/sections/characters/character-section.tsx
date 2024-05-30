@@ -19,6 +19,7 @@ import CharacterYoutube from '@/render/components/panel/yt/character-youtube'
 import CharacterTeams from '@/render/components/panel/teams/character-teams'
 import useSWR from 'swr'
 import CharacterTalents from '@/render/components/panel/talents/character-talents'
+import CharacterPassive from '@/render/components/panel/passive/character-passive'
 
 const CharacterSection = ({ characterId }: { characterId: string }) => {
   const {
@@ -86,7 +87,7 @@ const CharacterSection = ({ characterId }: { characterId: string }) => {
           <CharacterYoutube character={character} />
           <CharacterTeams character={character} />
           <CharacterTalents character={character} />
-          <div>Passives</div>
+          <CharacterPassive character={character} />
           <div>Constellations</div>
           <div>Ascencions Costs</div>
         </CardBody>
