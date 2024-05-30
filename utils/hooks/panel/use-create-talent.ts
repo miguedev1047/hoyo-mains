@@ -52,7 +52,8 @@ export const useCreateTalent = (character: Characters | undefined) => {
 
   // Obtenemos los artefactos para rellenar el formulario
   useEffect(() => {
-    if (isEditActive) {
+    const talentModal = modalName === 'talent-modal'
+    if (isEditActive && talentModal) {
       startTransition(async () => {
         const { status, data, error } = await dataTalentById(id)
 
@@ -60,7 +61,7 @@ export const useCreateTalent = (character: Characters | undefined) => {
           setValue('name', data?.name!)
           setValue('description', data?.description!)
 
-          setImage({ imgFile: null, imgPreview: data?.imageUrl! })
+          setImage({ imgFile: null, imgPreview: data?.imageUrl ?? '' })
           setKey(+new Date())
           return
         }
@@ -68,7 +69,7 @@ export const useCreateTalent = (character: Characters | undefined) => {
         toast.error(error)
       })
     }
-  }, [isEditActive, id, setValue, setImage])
+  }, [isEditActive, id, modalName, setValue, setImage])
 
   // Reinicio de los valores del formulario
   useEffect(() => {

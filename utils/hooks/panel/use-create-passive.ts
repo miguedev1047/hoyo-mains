@@ -52,7 +52,8 @@ export const useCreatePassive = (character: Characters | undefined) => {
 
   // Obtenemos los artefactos para rellenar el formulario
   useEffect(() => {
-    if (isEditActive) {
+    const passiveModal = modalName === 'passive-modal'
+    if (isEditActive && passiveModal) {
       startTransition(async () => {
         const { status, data, error } = await dataPassiveId(id)
 
@@ -68,7 +69,7 @@ export const useCreatePassive = (character: Characters | undefined) => {
         toast.error(error)
       })
     }
-  }, [isEditActive, id, setValue, setImage])
+  }, [isEditActive, modalName, id, setValue, setImage])
 
   // Reinicio de los valores del formulario
   useEffect(() => {

@@ -21,7 +21,7 @@ const FormCharacterConstellation = ({
   character: Characters | undefined
 }) => {
   const constellations = character?.constellations
-  const MAX_CONSTELLATIONS = 3
+  const MAX_CONSTELLATIONS = 6
   const CONSTELLATIONS_LENGTH = constellations?.length
 
   const {

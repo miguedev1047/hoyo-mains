@@ -26,21 +26,21 @@ const ItemCharacterConstellation = ({
     onOpen: state.onOpen
   }))
 
-  const handleEdit = (talentId: string) => {
-    setId(talentId)
+  const handleEdit = (constellationsId: string) => {
+    setId(constellationsId)
     onOpen(true, 'constellation-modal')
   }
 
-  const handleDelete = (talentId: string) => {
+  const handleDelete = (constellationsId: string) => {
     startTransition(async () => {
       const { status, error } = await deleteImage({
         path: 'constellations',
-        id: talentId
+        id: constellationsId
       })
 
       // Si la imagen se elimino, eliminamos la constelación
       if (status === 201) {
-        const { message, status, error } = await deleteTalent(talentId)
+        const { message, status, error } = await deleteTalent(constellationsId)
 
         if (status === 201) {
           toast.success(message)

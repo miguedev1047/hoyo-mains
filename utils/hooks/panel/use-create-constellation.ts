@@ -52,7 +52,8 @@ export const useCreateConstellation = (character: Characters | undefined) => {
 
   // Obtenemos las constelaciones para rellenar el formulario
   useEffect(() => {
-    if (isEditActive) {
+    const constellationModal = modalName === 'constellation-modal'
+    if (isEditActive && constellationModal) {
       startTransition(async () => {
         const { status, data, error } = await dataConstellationId(id)
 
@@ -68,7 +69,7 @@ export const useCreateConstellation = (character: Characters | undefined) => {
         toast.error(error)
       })
     }
-  }, [isEditActive, id, setValue, setImage])
+  }, [isEditActive, modalName, id, setValue, setImage])
 
   // Reinicio de los valores del formulario
   useEffect(() => {
