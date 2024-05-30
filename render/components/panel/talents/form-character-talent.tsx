@@ -49,6 +49,8 @@ const FormCharacterTalent = ({
     })
   )
 
+  console.log(id)
+
   const isEditActive = !!id
 
   const { image, setImage } = useDropImage((state) => ({
@@ -75,22 +77,19 @@ const FormCharacterTalent = ({
   // Cargar los datos del talento a editar
   useEffect(() => {
     if (isEditActive) {
-      startTransition(() => {
-        dataTalentById(id)
-          .then((res) => {
-            const { data } = res
+      startTransition(async () => {
+        const { status, data, error } = await dataTalentById(id)
 
-            setValue('name', data?.name!)
-            setValue('description', data?.description!)
+        if (status === 201) {
+          setValue('name', data?.name!)
+          setValue('description', data?.description!)
 
-            setImage({ imgFile: null, imgPreview: data?.imageUrl! })
-          })
-          .catch((error) => {
-            toast.error(`${error} Intentalo de nuevo.`)
-          })
-          .finally(() => {
-            setKey(+new Date())
-          })
+          setImage({ imgFile: null, imgPreview: data?.imageUrl! })
+          setKey(+new Date())
+          return
+        }
+
+        toast.error(error)
       })
     }
   }, [isEditActive, id, setValue, setImage])

@@ -32,6 +32,7 @@ const Editor = ({
       Color,
       TextStyle
     ],
+    
     content: description || placeholder,
     editorProps: {
       attributes: {
