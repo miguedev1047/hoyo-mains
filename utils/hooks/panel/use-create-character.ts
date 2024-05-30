@@ -44,7 +44,7 @@ export const useCreateCharacter = () => {
     }
   })
 
-  // Reinicio de los valores del formulario
+  // Función para resetear el formulario
   useEffect(() => {
     if (!open) {
       setImage({ imgFile: null, imgPreview: '' })
@@ -52,12 +52,14 @@ export const useCreateCharacter = () => {
     }
   }, [reset, setImage, open])
 
+  // Función para resetear el formulario
   const handleReset = () => {
     reset()
     setImage({ imgFile: null, imgPreview: '' })
     onOpenChange()
   }
 
+  // Logica de la función onSubmit
   const onSubmit = handleSubmit(async (data) => {
     const uuid = crypto.randomUUID()
 
@@ -65,7 +67,7 @@ export const useCreateCharacter = () => {
       raritys.find((rarity) => rarity.name === data.starsText)?.title[0]
     )
 
-    // Función para subir la imagen
+    // Logica para subir una imagen
     async function uploadImage(
       image: { file: File | null },
       id: string | null
@@ -105,17 +107,16 @@ export const useCreateCharacter = () => {
       toast.error(error)
     }
 
-    // Logica para subir la imagen y crear el personaje
     startTransition(async () => {
+      // Verificar si no se subió una imagen
       if (!image.file) {
         toast.error('Debes subir una imagen.')
         return
       }
 
-      // Subimos primero la imagen
+      // Logica para subir la imagen y crear el personaje
       const { url, status, error } = await uploadImage(image, uuid)
-      console.log(url)
-      // Si la imagen se sube correctamente, creamos el personaje
+      
       if (status === 201) {
         await handleCreate(data, uuid, url, starsNumber)
         return

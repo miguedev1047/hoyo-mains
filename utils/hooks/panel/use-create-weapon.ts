@@ -51,7 +51,7 @@ export const useCreateWeapon = () => {
     }
   })
 
-  // Llamada a la API para obtener los datos del material
+  // Obtenemos los artefactos para rellenar el formulario
   useEffect(() => {
     if (isEditActive) {
       startTransition(() => {
@@ -86,12 +86,14 @@ export const useCreateWeapon = () => {
     }
   }, [reset, setImage, open, isEditActive])
 
+  // Función para resetear el formulario
   const handleReset = () => {
     reset()
     setImage({ imgFile: null, imgPreview: '' })
     onOpenChange()
   }
 
+  // Logica de la función onSubmit
   const onSubmit = handleSubmit((data) => {
     const uuid = crypto.randomUUID()
 
@@ -99,6 +101,7 @@ export const useCreateWeapon = () => {
       raritys.find((rarity) => rarity.name === data.starsText)?.title[0]
     )
 
+    // Logica para subir una imagen
     async function uploadImage(
       image: { file: File | null },
       id: string | null
@@ -113,7 +116,7 @@ export const useCreateWeapon = () => {
       return { url, status, error }
     }
 
-    // Logica para actualizar un material
+    // Logica para actualizar
     async function handleUpdate(
       id: string,
       data: z.infer<typeof WeaponSchema>,
@@ -141,7 +144,7 @@ export const useCreateWeapon = () => {
       toast.error(error)
     }
 
-    // Logica para crear un material
+    // Logica para crear
     async function handleCreate(
       data: z.infer<typeof WeaponSchema>,
       uuid: string,
@@ -184,12 +187,13 @@ export const useCreateWeapon = () => {
         return
       }
 
+      // Verificar si no se subió una imagen
       if (!image.file) {
         toast.error('Debes subir una imagen.')
         return
       }
 
-      // Creamos el arma con la imagen subida
+      // Subir la imagen y creamos el arma
       const { url, status, error } = await uploadImage(image, uuid)
 
       if (status === 201) {

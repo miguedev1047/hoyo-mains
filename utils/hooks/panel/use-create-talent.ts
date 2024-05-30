@@ -50,7 +50,7 @@ export const useCreateTalent = (character: Characters | undefined) => {
     }
   })
 
-  // Cargar los datos del talento a editar
+  // Obtenemos los artefactos para rellenar el formulario
   useEffect(() => {
     if (isEditActive) {
       startTransition(async () => {
@@ -78,12 +78,14 @@ export const useCreateTalent = (character: Characters | undefined) => {
     }
   }, [reset, setImage, isOpen, isEditActive])
 
+  // Función para resetear el formulario
   const handleReset = () => {
     reset()
     setImage({ imgFile: null, imgPreview: '' })
     onOpenChange()
   }
 
+  // Logica de la función onSubmit
   const onSubmit = handleSubmit((data) => {
     const uuid = crypto.randomUUID()
     const characterId = character?.id
@@ -101,7 +103,7 @@ export const useCreateTalent = (character: Characters | undefined) => {
       return { url, status, error }
     }
 
-    // Logica para actualizar un talento
+    // Logica para actualizar
     async function handleUpdate(
       id: string,
       data: z.infer<typeof CharacterTalentSchema>,
@@ -126,6 +128,7 @@ export const useCreateTalent = (character: Characters | undefined) => {
       toast.error(error)
     }
 
+    // Logica para crear
     async function handleCreate(
       data: z.infer<typeof CharacterTalentSchema>,
       uuid: string,
@@ -152,7 +155,6 @@ export const useCreateTalent = (character: Characters | undefined) => {
       toast.error(error)
     }
 
-    // Logica de la función onSubmit
     startTransition(async () => {
       // Si la edición está activa, se envían los datos para actualizar
       if (isEditActive) {
@@ -167,12 +169,13 @@ export const useCreateTalent = (character: Characters | undefined) => {
         return
       }
 
+      // Verificar si no se subió una imagen
       if (!image.file) {
         toast.error('Debes subir una imagen.')
         return
       }
 
-      // Creamos el talento con la imagen subida
+      // Subir la imagen y creamos el talento
       const { url, status, error } = await uploadImage(image, uuid)
 
       if (status === 201) {
