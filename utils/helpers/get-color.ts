@@ -1,13 +1,13 @@
 export const getStarBorderColor = (stars: number) => {
   const starColors = {
-    5: 'border-yellow-500',
-    4: 'border-purple-500',
-    3: 'border-blue-500',
-    2: 'border-green-500',
-    1: 'border-gray-500'
+    5: 'five-star',
+    4: 'four-star',
+    3: 'three-star',
+    2: 'two-star',
+    1: 'one-star'
   }
 
-  const defaultBorderColor = 'border-gray-500'
+  const defaultBorderColor = 'default'
 
   return starColors[stars as keyof typeof starColors] || defaultBorderColor
 }

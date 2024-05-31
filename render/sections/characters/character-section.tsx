@@ -21,6 +21,8 @@ import useSWR from 'swr'
 import CharacterTalents from '@/render/components/panel/talents/character-talents'
 import CharacterPassive from '@/render/components/panel/passive/character-passive'
 import CharacterConstellations from '@/render/components/panel/constellations/character-constellations'
+import clsx from 'clsx'
+import { getStarBorderColor } from '@/utils/helpers/get-color'
 
 const CharacterSection = ({ characterId }: { characterId: string }) => {
   const {
@@ -48,7 +50,10 @@ const CharacterSection = ({ characterId }: { characterId: string }) => {
               isBlurred
               width={125}
               height={125}
-              className='bg-color-darkest'
+              className={clsx(
+                'bg-color-dark border-2 p-0 aspect-square five-star',
+                getStarBorderColor(character?.stars!)
+              )}
               src={character?.imageUrl!}
               alt={character?.name}
             />

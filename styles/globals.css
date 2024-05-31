@@ -2,18 +2,26 @@
 @tailwind components;
 @tailwind utilities;
 
-.editor-text-color p {
-  color: rgb(214, 212, 232) !important;
+.five-star {
+  @apply border-yellow-500;
 }
 
-.editor-text-color span {
-  color: rgb(214, 212, 232) !important;
+.four-star {
+  @apply border-purple-500;
 }
 
-.editor-text-color strong {
-  color: rgb(214, 212, 232) !important;
+.three-star {
+  @apply border-blue-500;
 }
 
-.editor-text-color em {
-  color: rgb(214, 212, 232) !important;
+.two-star {
+  @apply border-green-500;
+}
+
+.one-star {
+  @apply border-gray-500;
+}
+
+.default {
+  @apply border-gray-500;
 }
