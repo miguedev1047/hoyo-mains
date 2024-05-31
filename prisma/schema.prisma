@@ -47,6 +47,7 @@ model Character {
   talents        TalentsByCharacter[]
   passives       PassivesByCharacter[]
   constellations ConstellationsByCharacter[]
+  ascensions     AscensionByCharacter[]
 }
 
 model Material {
@@ -233,4 +234,32 @@ model ConstellationsByCharacter {
   updatedDate DateTime @updatedAt
 
   constellations Character? @relation(fields: [characterId], references: [id])
+}
+
+model AscensionByCharacter {
+  id          String  @id @unique @default(uuid())
+  characterId String?
+
+  rank  Int
+  level Int
+  cost  Int
+
+  createdDate DateTime @default(now())
+  updatedDate DateTime @updatedAt
+
+  ascensions Character?            @relation(fields: [characterId], references: [id])
+  materials  MaterialByAscension[]
+}
+
+model MaterialByAscension {
+  id          String  @id @unique @default(uuid())
+  characterId String?
+  ascensionId String
+
+  quantity Int
+
+  createdDate DateTime @default(now())
+  updatedDate DateTime @updatedAt
+
+  ascensions AscensionByCharacter @relation(fields: [ascensionId], references: [id])
 }
