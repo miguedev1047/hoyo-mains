@@ -14,7 +14,6 @@ const CharacterYoutube = ({
   return (
     <div className='col-span-4 space-y-4'>
       <article className='flex items-center space-x-4'>
-        <FormCharacterYoutube character={character} />
         <h3 className='text-xl font-semibold capitalize text-secondary-color'>
           {character?.name} Video guía
         </h3>
@@ -52,6 +51,8 @@ const CharacterYoutube = ({
           ></iframe>
         )}
       </Card>
+
+      <FormCharacterYoutube character={character} />
     </div>
   )
 }

@@ -57,9 +57,9 @@ const CharacterFormTeam = ({
   return (
     <div className='space-y-4'>
       <h3 className='text-xl font-semibold capitalize text-secondary-color'>
-        Crear Equipo
+        Nuevo Equipo
       </h3>
-      <form onSubmit={onSubmit} className='flex items-center gap-4'>
+      <form onSubmit={onSubmit} className='space-y-4'>
         <Controller
           name='items'
           control={control}
@@ -79,14 +79,15 @@ const CharacterFormTeam = ({
         />
 
         <Button
-          isIconOnly
+          fullWidth
           size='lg'
           type='submit'
           color='success'
+          startContent={<IconPlus />}
           isLoading={isPending}
           className='bg-color-light font-bold'
         >
-          <IconPlus />
+          Añadir Equipo
         </Button>
       </form>
     </div>

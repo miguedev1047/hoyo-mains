@@ -90,73 +90,73 @@ const CharacterSelector = ({
   if ((allCharacters?.length ?? 0) >= MAX_ITEMS) return null
 
   return (
-    <form onSubmit={onSubmit} className='flex gap-4 items-center'>
+    <form onSubmit={onSubmit} className='space-y-4'>
       <Controller
         name='items'
         control={control}
         render={({ field }) => {
           return (
-            <>
-              <Select
-                aria-label='Character Selector'
-                placeholder='Selecciona los personajes'
-                selectionMode='multiple'
-                className=''
-                isMultiline={true}
-                key={defaultKey}
-                items={characters}
-                isLoading={isLoading}
-                isDisabled={isLoading}
-                classNames={selectorItemDarkwrapper}
-                disabledKeys={disabledItems}
-                onSelectionChange={field.onChange}
-                isInvalid={!!errors.items}
-                errorMessage={errors.items?.message}
-                renderValue={(value) => {
-                  return value.map(({ data, key }) => (
-                    <div
-                      key={key}
-                      className='flex flex-wrap items-center gap-2'
-                    >
-                      <div className='flex items-center gap-3'>
-                        <Avatar
-                          size='sm'
-                          src={data?.imageUrl!}
-                          alt={data?.name}
-                        />
-                        <Chip className='bg-color-darkest capitalize px-2 py-1 rounded-md'>
-                          {data?.name}
-                        </Chip>
-                      </div>
+            <Select
+              aria-label='Character Selector'
+              placeholder='Selecciona los personajes'
+              selectionMode='multiple'
+              className='w-full'
+              isMultiline={true}
+              key={defaultKey}
+              items={characters}
+              isLoading={isLoading}
+              isDisabled={isLoading}
+              classNames={selectorItemDarkwrapper}
+              disabledKeys={disabledItems}
+              onSelectionChange={field.onChange}
+              isInvalid={!!errors.items}
+              errorMessage={errors.items?.message}
+              renderValue={(value) => {
+                return value.map(({ data, key }) => (
+                  <div key={key} className='flex flex-wrap items-center gap-2'>
+                    <div className='flex items-center gap-2'>
+                      <Avatar
+                        radius='sm'
+                        size='sm'
+                        src={data?.imageUrl!}
+                        alt={data?.name}
+                      />
+                      <Chip className='bg-color-darkest capitalize px-2 py-1 rounded-md'>
+                        {data?.name}
+                      </Chip>
                     </div>
-                  ))
-                }}
-                {...field}
-              >
-                {(character) => (
-                  <SelectItem key={character.id} textValue={character.name}>
-                    <div className='flex gap-2 items-center'>
-                      <Avatar src={character.imageUrl!} alt={character.name} />
-                      <span className='capitalize'>{character.name}</span>
-                    </div>
-                  </SelectItem>
-                )}
-              </Select>
-            </>
+                  </div>
+                ))
+              }}
+              {...field}
+            >
+              {(character) => (
+                <SelectItem key={character.id} textValue={character.name}>
+                  <div className='flex gap-2 items-center'>
+                    <Avatar
+                      radius='sm'
+                      src={character.imageUrl!}
+                      alt={character.name}
+                    />
+                    <span className='capitalize'>{character.name}</span>
+                  </div>
+                </SelectItem>
+              )}
+            </Select>
           )
         }}
       />
 
       <Button
-        size='lg'
         fullWidth
-        isIconOnly
-        isDisabled={isLoading}
-        isLoading={isPending}
-        className='bg-color-light text-color-darkest font-bold'
+        size='lg'
         type='submit'
+        color='success'
+        startContent={<IconPlus />}
+        isLoading={isPending}
+        className='bg-color-light font-bold'
       >
-        <IconPlus />
+        Añadir Personajes
       </Button>
     </form>
   )

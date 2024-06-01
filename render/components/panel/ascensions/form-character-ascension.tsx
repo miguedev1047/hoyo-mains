@@ -116,7 +116,7 @@ const FormCharacterAscension = ({
       </PopoverTrigger>
       <PopoverContent className='bg-color-dark p-4'>
         <form onSubmit={onSubmit} className='space-y-2'>
-          <h2 className='text-xl font-bold text-secondary-color mb-4'>
+          <h2 className='text-2xl font-semibold text-secondary-color mb-4'>
             Agregar Nivel de Ascensión
           </h2>
           <div className='grid grid-cols-3 gap-2'>

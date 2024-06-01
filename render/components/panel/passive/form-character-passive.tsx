@@ -48,7 +48,7 @@ const FormCharacterPassive = ({
           className=' bg-color-light font-bold'
           onPress={() => onOpen(true, 'passive-modal')}
         >
-          Agregar Pasiva
+          Añadir Pasiva
         </Button>
       )}
       <Modal

@@ -48,7 +48,7 @@ const FormCharacterConstellation = ({
           className=' bg-color-light font-bold'
           onPress={() => onOpen(true, 'constellation-modal')}
         >
-          Agregar Constelación
+          Añadir Constelación
         </Button>
       )}
       <Modal

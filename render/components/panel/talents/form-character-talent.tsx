@@ -48,7 +48,7 @@ const FormCharacterTalent = ({
           className=' bg-color-light font-bold'
           onPress={() => onOpen(true, 'talent-modal')}
         >
-          Agregar Talento
+          Añadir Talento
         </Button>
       )}
       <Modal

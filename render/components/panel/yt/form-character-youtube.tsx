@@ -9,15 +9,13 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { Button } from '@nextui-org/button'
 import { Input } from '@nextui-org/input'
 import {
-  Modal,
-  ModalContent,
-  ModalHeader,
-  ModalBody,
-  ModalFooter
-} from '@nextui-org/modal'
-import { Tooltip } from '@nextui-org/react'
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+  Tooltip
+} from '@nextui-org/react'
 import { IconPlus } from '@tabler/icons-react'
-import { useEffect, useTransition } from 'react'
+import { useState, useTransition } from 'react'
 import { Controller, useForm } from 'react-hook-form'
 import { toast } from 'sonner'
 import { mutate } from 'swr'
@@ -28,11 +26,7 @@ const FormCharacterYoutube = ({
   character: Characters | undefined
 }) => {
   const [isPending, startTransition] = useTransition()
-  const { isOpen, onOpenChange, onOpen } = useOpen((state) => ({
-    isOpen: state.open,
-    onOpenChange: state.onOpenChange,
-    onOpen: state.onOpen
-  }))
+  const [isOpen, setIsOpen] = useState(false)
 
   const videoGuide = character?.videoGuide
   const isActiveEdit = !!videoGuide?.id
@@ -41,24 +35,15 @@ const FormCharacterYoutube = ({
     handleSubmit,
     reset,
     control,
-    setValue,
     formState: { errors }
   } = useForm<z.infer<typeof CharacterYoutubeSchema>>({
     resolver: zodResolver(CharacterYoutubeSchema),
     defaultValues: {
-      youtuberName: '',
-      embedVideoUrl: '',
-      youtuberChannel: ''
+      youtuberName: videoGuide?.youtuberName ?? '',
+      embedVideoUrl: videoGuide?.embedVideoUrl ?? '',
+      youtuberChannel: videoGuide?.youtuberChannel ?? ''
     }
   })
-
-  useEffect(() => {
-    if (isActiveEdit) {
-      setValue('embedVideoUrl', videoGuide.embedVideoUrl)
-      setValue('youtuberName', videoGuide.youtuberName)
-      setValue('youtuberChannel', videoGuide.youtuberChannel)
-    }
-  }, [isActiveEdit, setValue, videoGuide])
 
   const onSubmit = handleSubmit((data) => {
     const characterId = character?.id!
@@ -72,10 +57,9 @@ const FormCharacterYoutube = ({
         )
 
         if (status === 201) {
-          reset()
-          toast.success(message)
-          onOpen(false)
           mutate(`/api/characters/character/${character?.id}`)
+          toast.success(message)
+          setIsOpen(false)
           return
         }
 
@@ -89,10 +73,9 @@ const FormCharacterYoutube = ({
       )
 
       if (status === 201) {
-        reset()
-        onOpen(false)
-        toast.success(message)
         mutate(`/api/characters/character/${character?.id}`)
+        toast.success(message)
+        setIsOpen(false)
         return
       }
 
@@ -101,104 +84,96 @@ const FormCharacterYoutube = ({
   })
 
   return (
-    <>
-      <Tooltip
-        className='bg-color-dark p-2'
-        radius='md'
-        content='Agregar video guia del personaje'
-      >
+    <Popover
+      isOpen={isOpen}
+      backdrop='opaque'
+      onOpenChange={(open) => setIsOpen(open)}
+      placement='bottom'
+    >
+      <PopoverTrigger>
         <Button
-          isIconOnly
-          className='bg-color-light text-color-darkest'
-          onPress={() => onOpen(true)}
+          fullWidth
+          size='lg'
+          color='success'
+          startContent={<IconPlus size={24} />}
+          className='bg-color-light font-bold'
         >
-          <IconPlus size={24} />
+          {videoGuide?.youtuberName ? 'Editar' : 'Crear'} Video Guía
         </Button>
-      </Tooltip>
-      <Modal
-        size='3xl'
-        className='bg-color-dark'
-        isOpen={isOpen}
-        onOpenChange={onOpenChange}
-      >
-        <ModalContent>
-          {() => (
-            <form onSubmit={onSubmit}>
-              <ModalHeader className='flex flex-col gap-1'>
-                <h3 className='text-2xl font-semibold text-secondary-color'>
-                  {character?.name} Video Guía
-                </h3>
-              </ModalHeader>
-              <ModalBody>
-                <Controller
-                  name='youtuberName'
-                  control={control}
-                  render={({ field }) => (
-                    <Input
-                      autoFocus
-                      isDisabled={isPending}
-                      label='Nombre del youtuber'
-                      placeholder='taNNa'
-                      classNames={InputWrapper}
-                      isInvalid={!!errors.youtuberName}
-                      errorMessage={errors.youtuberName?.message}
-                      size='lg'
-                      {...field}
-                    />
-                  )}
-                />
-
-                <Controller
-                  name='youtuberChannel'
-                  control={control}
-                  render={({ field }) => (
-                    <Input
-                      size='lg'
-                      isDisabled={isPending}
-                      label='URL del canal'
-                      placeholder='https://www.youtube.com/...'
-                      classNames={InputWrapper}
-                      isInvalid={!!errors.youtuberChannel}
-                      errorMessage={errors.youtuberChannel?.message}
-                      {...field}
-                    />
-                  )}
-                />
-
-                <Controller
-                  name='embedVideoUrl'
-                  control={control}
-                  render={({ field }) => (
-                    <Input
-                      size='lg'
-                      isDisabled={isPending}
-                      label='URL embed del video'
-                      placeholder='https://www.youtube.com/embed/...'
-                      classNames={InputWrapper}
-                      isInvalid={!!errors.embedVideoUrl}
-                      errorMessage={errors.embedVideoUrl?.message}
-                      {...field}
-                    />
-                  )}
-                />
-              </ModalBody>
-              <ModalFooter>
-                <Button
-                  fullWidth
+      </PopoverTrigger>
+      <PopoverContent className='max-w-full w-[720px] bg-color-dark rounded-lg p-4'>
+        <form onSubmit={onSubmit} className='w-full space-y-2'>
+          <h3 className='text-2xl font-semibold text-secondary-color mb-4'>
+            {character?.name} Video Guía
+          </h3>
+          <div className='grid grid-cols-1 gap-2'>
+            <Controller
+              name='youtuberName'
+              control={control}
+              render={({ field }) => (
+                <Input
+                  autoFocus
                   isDisabled={isPending}
-                  isLoading={isPending}
-                  type='submit'
-                  color='success'
-                  className='bg-color-light font-bold'
-                >
-                  {isActiveEdit ? 'Editar' : 'Guardar'}
-                </Button>
-              </ModalFooter>
-            </form>
-          )}
-        </ModalContent>
-      </Modal>
-    </>
+                  label='Nombre del youtuber'
+                  placeholder='taNNa'
+                  classNames={InputWrapper}
+                  isInvalid={!!errors.youtuberName}
+                  errorMessage={errors.youtuberName?.message}
+                  size='lg'
+                  {...field}
+                />
+              )}
+            />
+
+            <Controller
+              name='youtuberChannel'
+              control={control}
+              render={({ field }) => (
+                <Input
+                  size='lg'
+                  isDisabled={isPending}
+                  label='URL del canal'
+                  placeholder='https://www.youtube.com/...'
+                  classNames={InputWrapper}
+                  isInvalid={!!errors.youtuberChannel}
+                  errorMessage={errors.youtuberChannel?.message}
+                  {...field}
+                />
+              )}
+            />
+
+            <Controller
+              name='embedVideoUrl'
+              control={control}
+              render={({ field }) => (
+                <Input
+                  size='lg'
+                  isDisabled={isPending}
+                  label='URL embed del video'
+                  placeholder='https://www.youtube.com/embed/...'
+                  classNames={InputWrapper}
+                  isInvalid={!!errors.embedVideoUrl}
+                  errorMessage={errors.embedVideoUrl?.message}
+                  {...field}
+                />
+              )}
+            />
+
+            <Button
+              size='lg'
+              fullWidth
+              isDisabled={isPending}
+              isLoading={isPending}
+              type='submit'
+              color='success'
+              className='bg-color-light font-bold'
+            >
+              {isActiveEdit ? 'Editar' : 'Guardar'}
+            </Button>
+          </div>
+        </form>
+      </PopoverContent>
+    </Popover>
   )
 }
 

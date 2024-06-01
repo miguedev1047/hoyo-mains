@@ -14,7 +14,7 @@ import {
 } from '@nextui-org/react'
 import { Material } from '@prisma/client'
 import { IconCheck } from '@tabler/icons-react'
-import { useTransition } from 'react'
+import { useState, useTransition } from 'react'
 import { Controller, useForm } from 'react-hook-form'
 import { InputWrapper } from '@/utils/classes'
 import { updateQuantityAscensionMaterial } from '@/render/services/panel/ascensions/update'
@@ -29,6 +29,7 @@ const ItemMaterial = ({
   characterId: string | undefined
 }) => {
   const [isPending, startTransition] = useTransition()
+  const [isOpen, setIsOpen] = useState(false)
 
   const {
     data: dataMaterial,
@@ -63,6 +64,7 @@ const ItemMaterial = ({
       if (status === 201) {
         toast.success(message)
         mutate(`/api/characters/character/${characterId}`)
+        setIsOpen(false)
         return
       }
 
@@ -74,7 +76,11 @@ const ItemMaterial = ({
   if (error) return null
 
   return (
-    <Popover placement='bottom'>
+    <Popover
+      isOpen={isOpen}
+      onOpenChange={(open) => setIsOpen(open)}
+      placement='bottom'
+    >
       <PopoverTrigger>
         <div className='flex items-center gap-2 cursor-pointer'>
           <Badge placement='top-left' content={material.quantity}>
