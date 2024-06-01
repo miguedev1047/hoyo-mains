@@ -2,7 +2,7 @@ import { Characters } from '@/types'
 import { IconPencil, IconTrash } from '@tabler/icons-react'
 import { Avatar, Button, Card, CardBody, CardFooter } from '@nextui-org/react'
 import { useOpenModal } from '@/utils/store/use-open'
-import { useEffect, useState, useTransition } from 'react'
+import { useTransition } from 'react'
 import { deleteImage } from '@/utils/helpers/delete-image'
 import { toast } from 'sonner'
 import { mutate } from 'swr'
@@ -15,11 +15,6 @@ const ItemCharacterTalent = ({
   character: Characters | undefined
 }) => {
   const [isPending, startTransition] = useTransition()
-  const [key, setKey] = useState(+new Date())
-
-  useEffect(() => {
-    setKey(+new Date())
-  }, [character])
 
   const { onOpen, setId } = useOpenModal((state) => ({
     setId: state.setId,
@@ -75,7 +70,7 @@ const ItemCharacterTalent = ({
                   </h3>
                 </article>
 
-                <Output key={key} description={talent.description!} />
+                <Output description={talent.description!} />
               </div>
             </CardBody>
 

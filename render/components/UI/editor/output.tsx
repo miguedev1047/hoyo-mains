@@ -5,8 +5,15 @@ import Document from '@tiptap/extension-document'
 import Paragraph from '@tiptap/extension-paragraph'
 import Text from '@tiptap/extension-text'
 import StarterKit from '@tiptap/starter-kit'
+import { useEffect, useState } from 'react'
 
 const Output = ({ description }: { description: string }) => {
+  const [defaultKey, setKey] = useState(0)
+
+  useEffect(() => {
+    setKey(+new Date().toString())
+  }, [description])
+
   const editor = useEditor({
     extensions: [
       StarterKit.configure(),
@@ -28,7 +35,7 @@ const Output = ({ description }: { description: string }) => {
 
   return (
     <div className='w-full '>
-      <EditorContent editor={editor} />
+      <EditorContent key={defaultKey} editor={editor} />
     </div>
   )
 }

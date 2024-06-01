@@ -2,9 +2,9 @@ import { Characters } from '@/types'
 import { IconPencil, IconTrash } from '@tabler/icons-react'
 import { Avatar, Button, Card, CardBody, CardFooter } from '@nextui-org/react'
 import { useOpenModal } from '@/utils/store/use-open'
-import { useEffect, useState, useTransition } from 'react'
+import { useTransition } from 'react'
 import { deleteImage } from '@/utils/helpers/delete-image'
-import { deleteTalent } from '@/render/services/panel/talents/delete'
+import { deletePassive } from '@/render/services/panel/passives/delete'
 import { toast } from 'sonner'
 import { mutate } from 'swr'
 import Output from '@/render/components/UI/editor/output'
@@ -15,11 +15,6 @@ const ItemCharacterPassive = ({
   character: Characters | undefined
 }) => {
   const [isPending, startTransition] = useTransition()
-  const [key, setKey] = useState(+new Date())
-
-  useEffect(() => {
-    setKey(+new Date())
-  }, [character])
 
   const { onOpen, setId } = useOpenModal((state) => ({
     setId: state.setId,
@@ -41,7 +36,7 @@ const ItemCharacterPassive = ({
       // Si la imagen se elimino, eliminamos el talento
       if (status === 201) {
         // Eliminar el talento
-        const { message, status, error } = await deleteTalent(passiveId)
+        const { message, status, error } = await deletePassive(passiveId)
 
         if (status === 201) {
           toast.success(message)
@@ -75,7 +70,7 @@ const ItemCharacterPassive = ({
                   </h3>
                 </article>
 
-                <Output key={key} description={passive.description!} />
+                <Output description={passive.description!} />
               </div>
             </CardBody>
 

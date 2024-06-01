@@ -42,6 +42,16 @@ export async function GET(request: Request) {
           orderBy: {
             createdDate: 'asc'
           }
+        },
+        ascensions: {
+          orderBy: [{ rank: 'asc' }, { level: 'asc' }, { cost: 'asc' }],
+          include: {
+            materials: {
+              orderBy: {
+                order: 'asc'
+              }
+            }
+          }
         }
       }
     })

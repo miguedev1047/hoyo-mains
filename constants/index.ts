@@ -202,7 +202,7 @@ export const stats = [
   { name: 'Def. porcentual', id: 'DEF_PERCENTUAL' },
   { name: 'Atq. plano', id: 'ATQ_FLAT' },
   { name: 'Vida plano', id: 'HP_FLAT' },
-  { name: 'Def. plano', id: 'DEF_FLAT' },
+  { name: 'Def. plano', id: 'DEF_FLAT' }
 ]
 
 export const weaponTypes = [
@@ -242,4 +242,12 @@ export const homeItems = [
     url: '/panel/materials',
     background: MaterialBackground.src
   }
+]
+
+export const columns = [
+  { name: 'RANGO', uid: 'rank' },
+  { name: 'NIVEL', uid: 'level' },
+  { name: 'COSTO', uid: 'cost' },
+  { name: 'MATERIALES', uid: 'materials' },
+  { name: 'ACCIONES', uid: 'actions' }
 ]

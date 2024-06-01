@@ -27,6 +27,7 @@ export interface Characters {
   talents: CharacterTalents[]
   passives: CharacterPassives[]
   constellations: Constellations[]
+  ascensions: Ascension[]
 }
 
 export interface Data {
@@ -108,4 +109,21 @@ export interface Constellations {
   updatedDate: Date
   description?: string
   imageUrl?: string
+}
+
+export interface Ascension {
+  id: string
+  characterId: string
+  ascensionId: string
+  rank: number
+  level: number
+  cost: number
+  materials: MaterialByAscension[]
+}
+
+export interface MaterialByAscension {
+  id: string,
+  materialId: string,
+  ascensionId: string,
+  quantity: number,
 }

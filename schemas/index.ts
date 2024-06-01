@@ -180,7 +180,7 @@ export const CharactersPassiveSchema = z.object({
   })
 })
 
-export const CharacterConstellationSchema =  z.object({
+export const CharacterConstellationSchema = z.object({
   id: z.string().min(1, {
     message: 'Campo requerido.'
   }),
@@ -192,5 +192,29 @@ export const CharacterConstellationSchema =  z.object({
   }),
   description: z.string().min(1, {
     message: 'Escribe una descripción válida.'
+  })
+})
+
+export const CharacterAscensionSchema = z.object({
+  rank: z.string().min(1, {
+    message: 'Campo requerido.'
+  }),
+  level: z.string().min(1, {
+    message: 'Campo requerido.'
+  }),
+  cost: z.string().min(1, {
+    message: 'Campo requerido.'
+  }),
+  materials: z.string().min(1, {
+    message: 'Selecciona al menos un material.'
+  })
+})
+
+export const AscensionQuantitySchema = z.object({
+  quantity: z.string().min(1, {
+    message: 'Campo requerido.'
+  }),
+  id: z.string().min(1, {
+    message: 'Campo requerido.'
   })
 })

@@ -23,23 +23,28 @@ import CharacterPassive from '@/render/components/panel/passive/character-passiv
 import CharacterConstellations from '@/render/components/panel/constellations/character-constellations'
 import clsx from 'clsx'
 import { getStarBorderColor } from '@/utils/helpers/get-color'
+import CharacterAscension from '@/render/components/panel/ascensions/character-ascension'
 
 const CharacterSection = ({ characterId }: { characterId: string }) => {
+  console.log()
+
+  const API_CHARACTERS = `/api/characters/character/${characterId}`
+
   const {
     data: character,
     isLoading,
     error
-  } = useSWR<Characters>(`/api/characters/character/${characterId}`, fetcher)
+  } = useSWR<Characters>(API_CHARACTERS, fetcher)
 
-  if (error)
+  if (isLoading) return <CharacterLoader />
+
+  if (error || !character)
     return (
       <AlertError
         className='h-[calc(100vh_-_64px)]'
         message='Hubo un problema al cargar el personaje.'
       />
     )
-
-  if (isLoading) return <CharacterLoader />
 
   return (
     <section>
@@ -103,7 +108,7 @@ const CharacterSection = ({ characterId }: { characterId: string }) => {
           <Divider className='col-span-4' />
           <CharacterConstellations character={character} />
           <Divider className='col-span-4' />
-          <div>Ascencions Costs</div>
+          <CharacterAscension character={character} />
         </CardBody>
         <Divider />
         <CardFooter>Options</CardFooter>
