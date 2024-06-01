@@ -15,8 +15,8 @@ export async function GET(
         weapons: true,
         artifacts: true,
         bestStats: true,
-        characterVideo: true,
-        characterTeams: {
+        videoGuide: true,
+        teams: {
           include: {
             characters: true
           }

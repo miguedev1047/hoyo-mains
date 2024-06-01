@@ -42,8 +42,8 @@ model Character {
   weapons        WeaponByCharacter[]
   artifacts      ArtifactByCharacter[]
   bestStats      CharacterBestStat?
-  characterVideo CharacterVideo?
-  characterTeams Team[]
+  videoGuide videoGuide?
+  teams Team[]
   talents        TalentsByCharacter[]
   passives       PassivesByCharacter[]
   constellations ConstellationsByCharacter[]
@@ -150,7 +150,7 @@ model CharacterBestStat {
   substats Character? @relation(fields: [characterId], references: [id])
 }
 
-model CharacterVideo {
+model videoGuide {
   id          String  @id @unique @default(uuid())
   characterId String? @unique
 
@@ -161,7 +161,7 @@ model CharacterVideo {
   createdDate DateTime @default(now())
   updatedDate DateTime @updatedAt
 
-  characterVideo Character? @relation(fields: [characterId], references: [id])
+  videoGuide Character? @relation(fields: [characterId], references: [id])
 }
 
 model Team {

@@ -8,7 +8,7 @@ const CharacterYoutube = ({
 }: {
   character: Characters | undefined
 }) => {
-  const characterVideo = character?.characterVideo
+  const videoGuide = character?.videoGuide
   const videoIsNull = null
 
   return (
@@ -21,31 +21,31 @@ const CharacterYoutube = ({
       </article>
 
       <Card className='p-8 space-y-4 bg-color-darkest'>
-        {characterVideo === videoIsNull && (
+        {videoGuide === videoIsNull && (
           <article className='text-xl text-color-gray/50 font-bold text-center'>
             <h2>No hay video disponible para mostrar</h2>
             <h2>agregue uno para mostrarlo aqui.</h2>
           </article>
         )}
 
-        {characterVideo !== videoIsNull && (
+        {videoGuide !== videoIsNull && (
           <h3 className='text-lg'>
             {character?.name} video guía por&nbsp;
             <Link
               isExternal
-              href={characterVideo?.youtuberChannel}
+              href={videoGuide?.youtuberChannel}
               className='text-lg text-secondary-color'
             >
-              <span>{characterVideo?.youtuberName} ¡Mira su contenido!</span>
+              <span>{videoGuide?.youtuberName} ¡Mira su contenido!</span>
             </Link>
           </h3>
         )}
 
-        {characterVideo !== null && (
+        {videoGuide !== null && (
           <iframe
             className='aspect-video rounded-xl'
-            src={characterVideo?.embedVideoUrl}
-            title={`Guia por: ${characterVideo?.youtuberName}`}
+            src={videoGuide?.embedVideoUrl}
+            title={`Guia por: ${videoGuide?.youtuberName}`}
             allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share'
             referrerPolicy='strict-origin-when-cross-origin'
             allowFullScreen

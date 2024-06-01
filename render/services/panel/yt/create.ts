@@ -5,7 +5,7 @@ import { currentRole } from '@/data/auth'
 import { CharacterYoutubeSchema } from '@/schemas'
 import db from '@/libs/db'
 
-export const createCharacterVideo = async (
+export const createvideoGuide = async (
   data: z.infer<typeof CharacterYoutubeSchema>,
   characterId: string
 ) => {
@@ -27,7 +27,7 @@ export const createCharacterVideo = async (
   const { embedVideoUrl, youtuberChannel, youtuberName } = validateFields.data
 
   try {
-    const bestStats = await db.characterVideo.create({
+    const bestStats = await db.videoGuide.create({
       data: {
         embedVideoUrl,
         youtuberChannel,

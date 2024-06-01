@@ -20,7 +20,7 @@ const CharacterFormTeam = ({
 }) => {
   const [isPending, startTransition] = useTransition()
 
-  const teams = character?.characterTeams
+  const teams = character?.teams
   const MAX_TEAMS = 3
   const TEAM_LENGTH = teams?.length
 

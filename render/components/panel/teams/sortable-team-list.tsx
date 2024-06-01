@@ -11,7 +11,7 @@ const SortableTeamList = ({
 }: {
   character: Characters | undefined
 }) => {
-  const teams = useMemo(() => character?.characterTeams ?? [], [character])
+  const teams = useMemo(() => character?.teams ?? [], [character])
   const [orderedList, setOrderedList] = useState<Team[]>(teams)
 
   useEffect(() => {

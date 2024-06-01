@@ -1,6 +1,6 @@
 import { z } from 'zod'
-import { createCharacterVideo } from '@/render/services/panel/yt/create'
-import { updateCharacterVideo } from '@/render/services/panel/yt/update'
+import { createvideoGuide } from '@/render/services/panel/yt/create'
+import { updatevideoGuide } from '@/render/services/panel/yt/update'
 import { CharacterYoutubeSchema } from '@/schemas'
 import { Characters } from '@/types'
 import { InputWrapper } from '@/utils/classes'
@@ -34,8 +34,8 @@ const FormCharacterYoutube = ({
     onOpen: state.onOpen
   }))
 
-  const characterVideo = character?.characterVideo
-  const isActiveEdit = !!characterVideo?.id
+  const videoGuide = character?.videoGuide
+  const isActiveEdit = !!videoGuide?.id
 
   const {
     handleSubmit,
@@ -54,21 +54,21 @@ const FormCharacterYoutube = ({
 
   useEffect(() => {
     if (isActiveEdit) {
-      setValue('embedVideoUrl', characterVideo.embedVideoUrl)
-      setValue('youtuberName', characterVideo.youtuberName)
-      setValue('youtuberChannel', characterVideo.youtuberChannel)
+      setValue('embedVideoUrl', videoGuide.embedVideoUrl)
+      setValue('youtuberName', videoGuide.youtuberName)
+      setValue('youtuberChannel', videoGuide.youtuberChannel)
     }
-  }, [isActiveEdit, setValue, characterVideo])
+  }, [isActiveEdit, setValue, videoGuide])
 
   const onSubmit = handleSubmit((data) => {
     const characterId = character?.id!
 
     startTransition(async () => {
       if (isActiveEdit) {
-        const characterVideoId = characterVideo.id
-        const { status, message, error } = await updateCharacterVideo(
+        const videoGuideId = videoGuide.id
+        const { status, message, error } = await updatevideoGuide(
           data,
-          characterVideoId
+          videoGuideId
         )
 
         if (status === 201) {
@@ -83,7 +83,7 @@ const FormCharacterYoutube = ({
         return
       }
 
-      const { status, message, error } = await createCharacterVideo(
+      const { status, message, error } = await createvideoGuide(
         data,
         characterId
       )

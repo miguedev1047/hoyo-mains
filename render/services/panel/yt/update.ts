@@ -5,9 +5,9 @@ import { CharacterYoutubeSchema } from '@/schemas'
 import { currentRole } from '@/data/auth'
 import db from '@/libs/db'
 
-export const updateCharacterVideo = async (
+export const updatevideoGuide = async (
   data: z.infer<typeof CharacterYoutubeSchema>,
-  characterVideoId: string
+  videoGuideId: string
 ) => {
   const currentAdminRole = await currentRole()
   const validateFields = CharacterYoutubeSchema.safeParse(data)
@@ -27,9 +27,9 @@ export const updateCharacterVideo = async (
   const { embedVideoUrl, youtuberChannel, youtuberName } = validateFields.data
 
   try {
-    const characterVideo = await db.characterVideo.update({
+    const videoGuide = await db.videoGuide.update({
       where: {
-        id: characterVideoId
+        id: videoGuideId
       },
       data: {
         embedVideoUrl,
@@ -39,7 +39,7 @@ export const updateCharacterVideo = async (
     })
 
     return {
-      data: characterVideo,
+      data: videoGuide,
       message: 'Cambios guardados!',
       status: 201
     }

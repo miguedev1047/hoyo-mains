@@ -21,8 +21,8 @@ export interface Characters {
   weapons: Data[]
   materials: Data[]
   artifacts: Data[]
-  characterTeams: Team[]
-  characterVideo: CharacterVideos
+  teams: Team[]
+  videoGuide: videoGuides
   bestStats: BestStats
   talents: CharacterTalents[]
   passives: CharacterPassives[]
@@ -40,7 +40,7 @@ export interface Data {
   updatedDate: Date
 }
 
-export interface CharacterVideos {
+export interface videoGuides {
   id: string
   embedVideoUrl: string
   youtuberChannel: string
