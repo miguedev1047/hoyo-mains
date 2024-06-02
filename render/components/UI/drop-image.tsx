@@ -58,7 +58,6 @@ const DropImage = () => {
           />
         ) : image.preview ? (
           <Image
-            isBlurred
             width={120}
             height={120}
             className='size-24 object-cover'
