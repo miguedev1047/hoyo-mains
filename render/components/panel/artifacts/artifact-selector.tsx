@@ -109,7 +109,7 @@ const ArtifactSelector = ({
                 renderValue={(value) => {
                   return value.map(({ data, key }) => (
                     <div key={key} className='flex flex-wrap gap-4'>
-                      <Chip className='bg-color-dark capitalize px-2 py-1 rounded-md'>
+                      <Chip className='bg-color-dark px-2 py-1 rounded-md'>
                         {data?.name}
                       </Chip>
                     </div>
@@ -126,7 +126,7 @@ const ArtifactSelector = ({
                         src={weapon.imageUrl!}
                         alt={weapon.name}
                       />
-                      <span className='capitalize'>{weapon.name}</span>
+                      <span>{weapon.name}</span>
                     </div>
                   </SelectItem>
                 )}

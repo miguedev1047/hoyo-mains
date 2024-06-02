@@ -100,7 +100,7 @@ const MaterialModal = () => {
                       renderValue={(value) => {
                         return value.map(({ data, key }) => (
                           <div key={key}>
-                            <span className='capitalize'>{data?.name}</span>
+                            <span>{data?.name}</span>
                           </div>
                         ))
                       }}
@@ -113,7 +113,7 @@ const MaterialModal = () => {
                           value={element.id}
                         >
                           <div>
-                            <span className='capitalize'>{element.name}</span>
+                            <span>{element.name}</span>
                           </div>
                         </SelectItem>
                       )}

@@ -89,9 +89,11 @@ const CharacterModal = () => {
                         return value.map(({ data, key }) => (
                           <div key={key} className='flex gap-2 items-center'>
                             <Avatar
-                              src={data?.icon}
-                              size='sm'
                               className='w-6 h-6'
+                              size='sm'
+                              radius='sm'
+                              src={data?.icon}
+                              alt={data?.name}
                             />
                             <span className='capitalize'>{data?.name}</span>
                           </div>
@@ -106,7 +108,11 @@ const CharacterModal = () => {
                           value={element.name}
                         >
                           <div className='flex gap-2 items-center'>
-                            <Avatar src={element.icon} size='sm' />
+                            <Avatar
+                              radius='sm'
+                              src={element.icon}
+                              alt={element.name}
+                            />
                             <span className='capitalize'>{element.name}</span>
                           </div>
                         </SelectItem>
@@ -169,6 +175,7 @@ const CharacterModal = () => {
                             <Avatar
                               src={data?.icon}
                               size='sm'
+                              radius='sm'
                               className='w-6 h-6'
                             />
                             <span className='capitalize'>{data?.title}</span>
@@ -184,7 +191,11 @@ const CharacterModal = () => {
                           value={weapon.title}
                         >
                           <div className='flex gap-2 items-center'>
-                            <Avatar src={weapon.icon} size='sm' />
+                            <Avatar
+                              radius='sm'
+                              src={weapon.icon}
+                              alt={weapon.title}
+                            />
                             <span className='capitalize'>{weapon.title}</span>
                           </div>
                         </SelectItem>
