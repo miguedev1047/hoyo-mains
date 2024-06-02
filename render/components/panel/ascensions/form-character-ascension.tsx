@@ -125,6 +125,7 @@ const FormCharacterAscension = ({
               control={control}
               render={({ field }) => (
                 <Input
+                  autoFocus
                   classNames={InputWrapper}
                   isInvalid={!!errors.rank}
                   errorMessage={errors.rank?.message}
@@ -206,9 +207,7 @@ const FormCharacterAscension = ({
                           src={material.imageUrl!}
                           alt={material.name}
                         />
-                        <span className='line-clamp-1'>
-                          {material.name}
-                        </span>
+                        <span className='line-clamp-1'>{material.name}</span>
                       </div>
                     </SelectItem>
                   )}

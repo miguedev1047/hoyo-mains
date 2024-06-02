@@ -70,6 +70,7 @@ const FormCharacterPassive = ({
                   control={control}
                   render={({ field }) => (
                     <Input
+                      autoFocus
                       className='col-span-2'
                       label='Nombre de la pasiva'
                       placeholder='Ascensión 1'
@@ -100,7 +101,7 @@ const FormCharacterPassive = ({
                 <DropImage />
               </ModalBody>
               <ModalFooter>
-              <ModalButton isLoading={isPending}>
+                <ModalButton isLoading={isPending}>
                   {isEditActive ? 'Guardar' : 'Crear'}
                 </ModalButton>
               </ModalFooter>

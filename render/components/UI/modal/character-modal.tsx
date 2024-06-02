@@ -60,6 +60,7 @@ const CharacterModal = () => {
                   control={control}
                   render={({ field }) => (
                     <Input
+                      autoFocus
                       type='text'
                       label='Nombre'
                       className='col-span-2'

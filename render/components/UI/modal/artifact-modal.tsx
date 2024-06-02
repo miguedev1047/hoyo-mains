@@ -68,6 +68,7 @@ const ArtifactModal = () => {
                   control={control}
                   render={({ field }) => (
                     <Input
+                      autoFocus
                       type='text'
                       label='Nombre'
                       isDisabled={isPending}

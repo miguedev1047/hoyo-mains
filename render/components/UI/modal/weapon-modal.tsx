@@ -212,6 +212,7 @@ const WeaponModal = () => {
                   control={control}
                   render={({ field }) => (
                     <Editor
+                      autoFocus
                       isPending={isPending}
                       isEdit={isEditActive}
                       errorMessage={errors.description?.message}

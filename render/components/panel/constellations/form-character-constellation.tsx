@@ -71,6 +71,7 @@ const FormCharacterConstellation = ({
                   control={control}
                   render={({ field }) => (
                     <Input
+                      autoFocus
                       className='col-span-2'
                       label='Nombre de la constelación'
                       placeholder='Constelación 1'

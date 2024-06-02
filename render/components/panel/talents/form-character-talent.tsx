@@ -71,6 +71,7 @@ const FormCharacterTalent = ({
                   control={control}
                   render={({ field }) => (
                     <Input
+                      autoFocus
                       className='col-span-2'
                       label='Nombre del talento'
                       placeholder='Ataque Normal'
