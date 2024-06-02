@@ -43,8 +43,7 @@ export const useCreateArtifact = () => {
       id: 'none',
       imageUrl: 'none',
       name: '',
-      descTwoPieces: '',
-      descFourPieces: '',
+      description: '',
       starsText: '',
       stars: 0
     }
@@ -58,8 +57,7 @@ export const useCreateArtifact = () => {
 
         if (status === 201) {
           setValue('name', data?.name!)
-          setValue('descTwoPieces', data?.descTwoPieces!)
-          setValue('descFourPieces', data?.descFourPieces!)
+          setValue('description', data?.description!)
           setValue('starsText', data?.starsText!)
 
           setImage({ imgFile: null, imgPreview: data?.imageUrl! })

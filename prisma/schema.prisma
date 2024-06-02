@@ -42,8 +42,8 @@ model Character {
   weapons        WeaponByCharacter[]
   artifacts      ArtifactByCharacter[]
   bestStats      CharacterBestStat?
-  videoGuide videoGuide?
-  teams Team[]
+  videoGuide     videoGuide?
+  teams          Team[]
   talents        TalentsByCharacter[]
   passives       PassivesByCharacter[]
   constellations ConstellationsByCharacter[]
@@ -92,8 +92,7 @@ model Artifact {
   starsText String
   imageUrl  String?
 
-  descTwoPieces  String
-  descFourPieces String
+  description String
 
   createdDate DateTime @default(now())
   updatedDate DateTime @updatedAt

@@ -129,29 +129,14 @@ const ArtifactModal = () => {
                 />
 
                 <Controller
-                  name='descTwoPieces'
+                  name='description'
                   control={control}
                   render={({ field }) => (
                     <Editor
                       isPending={isPending}
                       isEdit={isEditActive}
-                      errorMessage={errors.descTwoPieces?.message}
-                      placeholder='Descripción bono x2 piezas'
-                      description={field.value}
-                      onChange={field.onChange}
-                    />
-                  )}
-                />
-
-                <Controller
-                  name='descFourPieces'
-                  control={control}
-                  render={({ field }) => (
-                    <Editor
-                      isPending={isPending}
-                      isEdit={isEditActive}
-                      errorMessage={errors.descFourPieces?.message}
-                      placeholder='Descripción bono x4 piezas'
+                      errorMessage={errors.description?.message}
+                      placeholder='Descripción del artefacto'
                       description={field.value}
                       onChange={field.onChange}
                     />

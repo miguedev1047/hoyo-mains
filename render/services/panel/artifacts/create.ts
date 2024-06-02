@@ -27,8 +27,7 @@ export const createArtifacts = async (data: z.infer<typeof ArtifactSchema>) => {
     name,
     stars,
     starsText,
-    descTwoPieces,
-    descFourPieces
+    description
   } = validateFields.data
 
   try {
@@ -39,8 +38,7 @@ export const createArtifacts = async (data: z.infer<typeof ArtifactSchema>) => {
         name,
         stars,
         starsText,
-        descTwoPieces,
-        descFourPieces
+        description
       }
     })
 

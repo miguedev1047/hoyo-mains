@@ -79,10 +79,7 @@ export const ArtifactSchema = z.object({
   starsText: z.string().min(1, {
     message: 'Selecciona una rareza.'
   }),
-  descTwoPieces: z.string().min(1, {
-    message: 'Escribe una descripción válida.'
-  }),
-  descFourPieces: z.string().min(1, {
+  description: z.string().min(1, {
     message: 'Escribe una descripción válida.'
   })
 })
