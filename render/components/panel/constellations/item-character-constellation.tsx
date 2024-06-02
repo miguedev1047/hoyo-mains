@@ -67,7 +67,7 @@ const ItemCharacterConstellation = ({
                 size='lg'
                 className='w-20 h-20 mx-auto bg-primary-color p-4 object-cover'
               />
-              <h3 className='text-xl font-semibold capitalize text-secondary-color text-center'>
+              <h3 className='text-xl font-semibold text-secondary-color text-center'>
                 {constellation.name}
               </h3>
             </article>
