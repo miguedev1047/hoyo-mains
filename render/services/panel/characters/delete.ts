@@ -22,21 +22,31 @@ export const deleteCharacter = async (id: string) => {
     const passives = character?.passives
     const constellations = character?.constellations
 
-    talents?.forEach(async (talent) => {
-      deleteImage({ path: 'talents', id: talent.id })
+    const deleteImagePromises: any[] = []
+
+    talents?.forEach((talent) => {
+      deleteImagePromises.push(deleteImage({ path: 'talents', id: talent.id }))
     })
 
-    passives?.forEach(async (passive) => {
-      deleteImage({ path: 'passives', id: passive.id })
+    passives?.forEach((passive) => {
+      deleteImagePromises.push(
+        deleteImage({ path: 'passives', id: passive.id })
+      )
     })
 
-    constellations?.forEach(async (constellation) => {
-      deleteImage({ path: 'constellations', id: constellation.id })
+    constellations?.forEach((constellation) => {
+      deleteImagePromises.push(
+        deleteImage({ path: 'constellations', id: constellation.id })
+      )
     })
-    
+
+    await Promise.all(deleteImagePromises)
+
     await db.materialByAscension.deleteMany({ where: { characterId: id } })
     await db.ascensionByCharacter.deleteMany({ where: { characterId: id } })
-    await db.characterByTeam.deleteMany({ where: { characterId: id } })
+    await db.characterByTeam.deleteMany({
+      where: { OR: [{ characterId: id }, { characterItem: id }] }
+    })
     await db.team.deleteMany({ where: { characterId: id } })
     await db.materialsByCharacter.deleteMany({ where: { characterId: id } })
     await db.weaponByCharacter.deleteMany({ where: { characterId: id } })
