@@ -24,7 +24,7 @@ export const updateArtifacts = async (
       status: 400
     }
 
-  const { name, stars, starsText, descFourPieces, descTwoPieces } =
+  const { name, stars, starsText, description } =
     validateFields.data
 
   try {
@@ -34,8 +34,7 @@ export const updateArtifacts = async (
         name,
         stars,
         starsText,
-        descTwoPieces,
-        descFourPieces
+        description
       }
     })
 
