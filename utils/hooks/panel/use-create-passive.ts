@@ -14,6 +14,7 @@ import { toast } from 'sonner'
 import { mutate } from 'swr'
 
 export const useCreatePassive = (character: Characters | undefined) => {
+  const characterName = character?.name.toLowerCase().replace(/\s/g, '-')
   const [isPending, startTransition] = useTransition()
   const [key, setKey] = useState(+new Date())
 
@@ -122,7 +123,7 @@ export const useCreatePassive = (character: Characters | undefined) => {
       if (status === 201) {
         toast.success(message)
         handleReset()
-        mutate(`/api/characters/character/${character?.id}`)
+        mutate(`/api/characters/character?name=${characterName}`)
         return
       }
 
@@ -149,7 +150,7 @@ export const useCreatePassive = (character: Characters | undefined) => {
       if (status === 201) {
         toast.success(message)
         handleReset()
-        mutate(`/api/characters/character/${character?.id}`)
+        mutate(`/api/characters/character?name=${characterName}`)
         return
       }
 

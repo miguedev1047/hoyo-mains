@@ -27,13 +27,13 @@ const FormCharacterYoutube = ({
 }) => {
   const [isPending, startTransition] = useTransition()
   const [isOpen, setIsOpen] = useState(false)
+  const characterName = character?.name.toLowerCase().replace(/\s/g, '-')
 
   const videoGuide = character?.videoGuide
   const isActiveEdit = !!videoGuide?.id
 
   const {
     handleSubmit,
-    reset,
     control,
     formState: { errors }
   } = useForm<z.infer<typeof CharacterYoutubeSchema>>({
@@ -57,7 +57,7 @@ const FormCharacterYoutube = ({
         )
 
         if (status === 201) {
-          mutate(`/api/characters/character/${character?.id}`)
+          mutate(`/api/characters/character?name=${characterName}`)
           toast.success(message)
           setIsOpen(false)
           return
@@ -73,7 +73,7 @@ const FormCharacterYoutube = ({
       )
 
       if (status === 201) {
-        mutate(`/api/characters/character/${character?.id}`)
+        mutate(`/api/characters/character?name=${characterName}`)
         toast.success(message)
         setIsOpen(false)
         return

@@ -59,6 +59,7 @@ const SorteableMaterialList = ({
                 index={index}
                 key={material.id}
                 material={material}
+                character={character}
               />
             ))}
             {provided.placeholder}

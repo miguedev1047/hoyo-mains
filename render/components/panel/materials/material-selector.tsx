@@ -25,7 +25,8 @@ const MaterialSelector = ({
     isLoading,
     error
   } = useSWR<Material[]>('/api/materials', fetcher)
-
+  
+  const characterName = character?.name.toLowerCase().replace(/\s/g, '-')
   const allMaterials = character?.materials
   const disabledItems = allMaterials?.map((item) => item.item)
   const MAX_ITEMS = 6
@@ -67,7 +68,7 @@ const MaterialSelector = ({
 
       if (status === 201) {
         reset()
-        mutate(`/api/characters/character/${character?.id}`)
+        mutate(`/api/characters/character?name=${characterName}`)
         toast.success(message)
         handleGenerateKey()
         return

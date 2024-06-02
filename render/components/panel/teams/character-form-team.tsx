@@ -20,6 +20,7 @@ const CharacterFormTeam = ({
 }) => {
   const [isPending, startTransition] = useTransition()
 
+  const characterName = character?.name.toLowerCase().replace(/\s/g, '-')
   const teams = character?.teams
   const MAX_TEAMS = 3
   const TEAM_LENGTH = teams?.length
@@ -43,7 +44,7 @@ const CharacterFormTeam = ({
 
       if (status === 201) {
         toast.success(message)
-        mutate(`/api/characters/character/${characterId}`)
+        mutate(`/api/characters/character?name=${characterName}`)
         reset()
         return
       }

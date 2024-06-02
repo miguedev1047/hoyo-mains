@@ -1,6 +1,6 @@
 import { Characters } from '@/types'
 import FormCharacterTalent from '@/render/components/panel/talents/form-character-talent'
-import ItemCharacterTalent from '@/render/components/panel/talents/item-character-talent'
+import ListCharacterTalent from '@/render/components/panel/talents/list-character-talent'
 
 const CharacterTalents = ({
   character
@@ -13,7 +13,7 @@ const CharacterTalents = ({
         {character?.name} Talentos
       </h3>
 
-      <ItemCharacterTalent character={character} />
+      <ListCharacterTalent character={character} />
       <FormCharacterTalent character={character} />
     </div>
   )

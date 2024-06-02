@@ -14,14 +14,14 @@ const ButtonDeleteTeam = ({
   team: Team | undefined
 }) => {
   const [isPending, startTransition] = useTransition()
-  const characterId = character?.id
+  const characterName = character?.name.toLowerCase().replace(/\s/g, '-')
 
   const handleDeleteCharacterTeam = async (teamId: string | undefined) => {
     startTransition(async () => {
       const { status, message, error } = await deleteTeam(teamId)
       if (status === 200) {
         toast.success(message)
-        mutate(`/api/characters/character/${characterId}`)
+        mutate(`/api/characters/character?name=${characterName}`)
         return
       }
 

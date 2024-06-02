@@ -7,21 +7,21 @@ import { toast } from 'sonner'
 import { mutate } from 'swr'
 
 const ButtonDeleteCharacter = ({
-  character,
-  team
+  team,
+  character
 }: {
-  character: Characters | undefined
   team: CharactersByTeam | undefined
+  character: Characters | undefined
 }) => {
-  const characterId = character?.id
   const [isPending, startTransition] = useTransition()
+  const characterName = character?.name.toLowerCase().replace(/\s/g, '-')
 
   const handleDeleteCharacterTeam = async (teamId: string | undefined) => {
     startTransition(async () => {
       const { status, message, error } = await deleteCharacterTeam(teamId)
       if (status === 200) {
         toast.success(message)
-        mutate(`/api/characters/character/${characterId}`)
+        mutate(`/api/characters/character?name=${characterName}`)
         return
       }
 

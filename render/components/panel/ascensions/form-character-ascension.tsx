@@ -30,7 +30,8 @@ const FormCharacterAscension = ({
   const [isPending, startTransition] = useTransition()
   const [isOpen, setIsOpen] = useState(false)
 
-  const ascension = character?.ascensions
+  const characterName = character?.name.toLowerCase().replace(/\s/g, '-')
+  const ascension = character?.ascensions 
   const MAX_ITEMS = 6
   const ASCENSION_LENGTH = ascension?.length
 
@@ -86,7 +87,7 @@ const FormCharacterAscension = ({
 
       if (status === 201) {
         toast.success(message)
-        mutate(`/api/characters/character/${character?.id}`)
+        mutate(`/api/characters/character?name=${characterName}`)
         setIsOpen(false)
         reset()
         return

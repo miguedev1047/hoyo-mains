@@ -48,14 +48,14 @@ const TableCharacterAscension = ({
               {ascension.materials.map((material) => (
                 <ItemMaterial
                   key={material.id}
-                  characterId={character?.id}
+                  character={character}
                   material={material}
                 />
               ))}
             </ol>
           )
         case 'actions':
-          return <TableActions ascension={ascension} />
+          return <TableActions character={character} ascension={ascension} />
         default:
           return cellValue
       }

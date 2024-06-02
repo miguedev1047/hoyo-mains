@@ -1,4 +1,4 @@
-import { Data } from '@/types'
+import { Characters, Data } from '@/types'
 import { IconGripVertical } from '@tabler/icons-react'
 import { Draggable } from '@hello-pangea/dnd'
 import { fetcher } from '@/utils/helpers/fetcher'
@@ -12,9 +12,11 @@ import useSWR from 'swr'
 
 const ItemCharacterMaterial = ({
   material,
+  character,
   index
 }: {
   material: Data
+  character: Characters | undefined
   index: number
 }) => {
   const {
@@ -53,7 +55,7 @@ const ItemCharacterMaterial = ({
               <h3 className='text-lg font-semibold'>{dataMaterial?.name}</h3>
             </div>
 
-            <ButtonDeleteMaterial material={material} />
+            <ButtonDeleteMaterial character={character} material={material} />
           </Card>
         </li>
       )}

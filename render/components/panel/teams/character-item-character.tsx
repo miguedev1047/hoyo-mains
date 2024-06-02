@@ -9,12 +9,12 @@ import SkeletonTeamCharacters from '@/render/components/UI/skeletons/skeleton-te
 import useSWR from 'swr'
 
 const CharacterItemCharacter = ({
-  character,
   team,
+  character,
   index
 }: {
-  character: Characters | undefined
   team: CharactersByTeam
+  character: Characters | undefined
   index: number
 }) => {
   const {

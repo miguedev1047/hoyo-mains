@@ -29,6 +29,7 @@ const WeaponSelector = ({
     (item) => item.type === character?.weapon
   )
 
+  const characterName = character?.name.toLowerCase().replace(/\s/g, '-')
   const allMaterials = character?.weapons
   const disabledItems = allMaterials?.map((item) => item.item)
   const MAX_ITEMS = 5
@@ -70,7 +71,7 @@ const WeaponSelector = ({
 
       if (status === 201) {
         reset()
-        mutate(`/api/characters/character/${character?.id}`)
+        mutate(`/api/characters/character?name=${characterName}`)
         toast.success(message)
         handleGenerateKey()
         return

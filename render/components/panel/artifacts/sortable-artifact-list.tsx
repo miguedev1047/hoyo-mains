@@ -59,6 +59,7 @@ const SortableArtifactList = ({
                 index={index}
                 key={artifact.id}
                 artifact={artifact}
+                character={character}
               />
             ))}
             {provided.placeholder}

@@ -3,7 +3,7 @@ import { fetcher } from '@/utils/helpers/fetcher'
 import { Weapon } from '@prisma/client'
 import { ItemArtifactError } from '@/render/components/UI/errors/character-error'
 import { Draggable } from '@hello-pangea/dnd'
-import { Data } from '@/types'
+import { Characters, Data } from '@/types'
 import { Card } from '@nextui-org/card'
 import { Image } from '@nextui-org/react'
 import ButtonDeleteArtifact from '@/render/components/UI/buttons/artifact/button-delete-artifact'
@@ -12,9 +12,11 @@ import useSWR from 'swr'
 
 const ItemCharacterArtifact = ({
   artifact,
+  character,
   index
 }: {
   artifact: Data
+  character: Characters | undefined
   index: number
 }) => {
   const {
@@ -53,7 +55,7 @@ const ItemCharacterArtifact = ({
               <h3 className='text-lg font-semibold'>{dataArtifact?.name}</h3>
             </div>
 
-            <ButtonDeleteArtifact artifact={artifact} />
+            <ButtonDeleteArtifact character={character} artifact={artifact} />
           </Card>
         </li>
       )}

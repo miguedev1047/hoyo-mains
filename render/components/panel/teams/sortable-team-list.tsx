@@ -58,9 +58,9 @@ const SortableTeamList = ({
             {orderedList.map((team, index) => (
               <CharacterItemTeam
                 key={team.id}
-                character={character}
                 index={index}
                 team={team}
+                character={character}
               />
             ))}
             {provided.placeholder}

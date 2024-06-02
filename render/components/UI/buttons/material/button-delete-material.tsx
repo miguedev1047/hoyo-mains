@@ -1,13 +1,20 @@
 import { deleteCharacterMaterial } from '@/render/services/panel/materials/delete'
-import { Data } from '@/types'
+import { Characters, Data } from '@/types'
 import { Button } from '@nextui-org/button'
 import { IconTrash } from '@tabler/icons-react'
 import { useTransition } from 'react'
 import { toast } from 'sonner'
 import { mutate } from 'swr'
 
-const ButtonDeleteMaterial = ({ material }: { material: Data }) => {
+const ButtonDeleteMaterial = ({
+  material,
+  character
+}: {
+  material: Data
+  character: Characters | undefined
+}) => {
   const [isPending, starTransition] = useTransition()
+  const characterName = character?.name.toLowerCase().replace(/\s/g, '-')
 
   const handleDeleteMaterial = (materialId: string) => {
     starTransition(async () => {
@@ -17,7 +24,7 @@ const ButtonDeleteMaterial = ({ material }: { material: Data }) => {
 
       if (status === 201) {
         toast.success(message)
-        mutate(`/api/characters/character/${material.characterId}`)
+        mutate(`/api/characters/character?name=${characterName}`)
         return
       }
 

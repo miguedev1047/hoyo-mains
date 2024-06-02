@@ -6,12 +6,12 @@ import SortableCharacterList from '@/render/components/panel/teams/sortable-char
 import ButtonDeleteTeam from '@/render/components/UI/buttons/team/button-delete-team'
 
 const CharacterItemTeam = ({
-  character,
   team,
+  character,
   index
 }: {
-  character: Characters | undefined
   team: Team
+  character: Characters | undefined
   index: number
 }) => {
   return (

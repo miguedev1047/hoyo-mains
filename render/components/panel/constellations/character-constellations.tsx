@@ -1,5 +1,5 @@
 import { Characters } from '@/types'
-import ItemCharacterConstellation from '@/render/components/panel/constellations/item-character-constellation'
+import ListCharacterConstellation from '@/render/components/panel/constellations/list-character-constellation'
 import FormCharacterConstellation from '@/render/components/panel/constellations/form-character-constellation'
 
 const CharacterConstellations = ({
@@ -13,7 +13,7 @@ const CharacterConstellations = ({
         {character?.name} Constelaciones
       </h3>
 
-      <ItemCharacterConstellation character={character} />
+      <ListCharacterConstellation character={character} />
       <FormCharacterConstellation character={character} />
     </div>
   )

@@ -1,5 +1,5 @@
 import { Characters } from '@/types'
-import ItemCharacterPassive from '@/render/components/panel/passive/item-character-passive'
+import ListCharacterPassive from '@/render/components/panel/passive/list-character-passive'
 import FormCharacterPassive from '@/render/components/panel/passive/form-character-passive'
 
 const CharacterPassive = ({
@@ -13,7 +13,7 @@ const CharacterPassive = ({
         {character?.name} Pasivas
       </h3>
 
-      <ItemCharacterPassive character={character} />
+      <ListCharacterPassive character={character} />
       <FormCharacterPassive character={character} />
     </div>
   )

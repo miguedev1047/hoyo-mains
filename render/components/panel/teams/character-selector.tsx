@@ -27,6 +27,7 @@ const CharacterSelector = ({
     error
   } = useSWR<Character[]>('/api/characters', fetcher)
 
+  const characterName = character?.name.toLowerCase().replace(/\s/g, '-')
   const allCharacters = team.characters
   const disabledItems = team.characters?.map((item) => item.characterId!)
 
@@ -72,7 +73,7 @@ const CharacterSelector = ({
 
       if (status === 201) {
         reset()
-        mutate(`/api/characters/character/${character?.id}`)
+        mutate(`/api/characters/character?name=${characterName}`)
         toast.success(message)
         handleGenerateKey()
         return

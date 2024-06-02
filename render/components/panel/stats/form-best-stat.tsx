@@ -1,5 +1,4 @@
 import { z } from 'zod'
-import { IconPencil, IconPlus } from '@tabler/icons-react'
 import { createBestStats } from '@/render/services/panel/stats/create'
 import { CharacterBestStatsSchema } from '@/schemas'
 import { Characters } from '@/types'
@@ -16,6 +15,7 @@ import { mutate } from 'swr'
 
 const FormBestStat = ({ character }: { character: Characters | undefined }) => {
   const [isPending, startTrasition] = useTransition()
+  const characterName = character?.name.toLowerCase().replace(/\s/g, '-')
 
   const bestStats = character?.bestStats
   const isActiveEdit = !!bestStats?.id
@@ -65,7 +65,7 @@ const FormBestStat = ({ character }: { character: Characters | undefined }) => {
           reset()
           toast.success(message)
           updatedStat(false)
-          mutate(`/api/characters/character/${character?.id}`)
+          mutate(`/api/characters/character?name=${characterName}`)
           return
         }
 
@@ -81,7 +81,7 @@ const FormBestStat = ({ character }: { character: Characters | undefined }) => {
       if (status === 201) {
         reset()
         toast.success(message)
-        mutate(`/api/characters/character/${character?.id}`)
+        mutate(`/api/characters/character?name=${characterName}`)
         return
       }
 

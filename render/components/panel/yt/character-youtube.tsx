@@ -1,9 +1,9 @@
 import { Characters } from '@/types'
 import { Link } from '@nextui-org/link'
 import { Card } from '@nextui-org/card'
-import FormCharacterYoutube from './form-character-youtube'
-import { IconMovie, IconMovieOff } from '@tabler/icons-react'
+import { IconMovieOff } from '@tabler/icons-react'
 import { Tooltip } from '@nextui-org/react'
+import FormCharacterYoutube from '@/render/components/panel/yt/form-character-youtube'
 
 const CharacterYoutube = ({
   character

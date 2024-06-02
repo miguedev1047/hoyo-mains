@@ -24,6 +24,7 @@ const ArtifactSelector = ({
     error
   } = useSWR<Artifact[]>('/api/artifacts', fetcher)
 
+  const characterName = character?.name.toLowerCase().replace(/\s/g, '-')
   const allArtifacts = character?.artifacts
   const disabledItems = allArtifacts?.map((item) => item.item)
   const MAX_ITEMS = 5
@@ -65,7 +66,7 @@ const ArtifactSelector = ({
 
       if (status === 201) {
         reset()
-        mutate(`/api/characters/character/${character?.id}`)
+        mutate(`/api/characters/character?name=${characterName}`)
         toast.success(message)
         handleGenerateKey()
         return

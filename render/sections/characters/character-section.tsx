@@ -20,15 +20,13 @@ import CharacterYoutube from '@/render/components/panel/yt/character-youtube'
 import CharacterTalents from '@/render/components/panel/talents/character-talents'
 import CharacterPassive from '@/render/components/panel/passive/character-passive'
 import CharacterConstellations from '@/render/components/panel/constellations/character-constellations'
-import clsx from 'clsx'
 import CharacterTeams from '@/render/components/panel/teams/character-teams'
 import CharacterAscension from '@/render/components/panel/ascensions/character-ascension'
 import useSWR from 'swr'
+import clsx from 'clsx'
 
-const CharacterSection = ({ characterId }: { characterId: string }) => {
-  console.log()
-
-  const API_CHARACTERS = `/api/characters/character/${characterId}`
+const CharacterSection = ({ characterName }: { characterName: string }) => {
+  const API_CHARACTERS = `/api/characters/character?name=${characterName}`
 
   const {
     data: character,

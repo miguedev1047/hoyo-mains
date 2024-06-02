@@ -69,9 +69,9 @@ const SortableCharacterList = ({
             {orderedList?.map((characterData, index) => (
               <CharacterItemCharacter
                 key={characterData.id}
-                character={character}
-                team={characterData}
                 index={index}
+                team={characterData}
+                character={character}
               />
             ))}
             {provided.placeholder}

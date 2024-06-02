@@ -59,6 +59,7 @@ const SortableWeaponList = ({
                 index={index}
                 key={weapon.id}
                 weapon={weapon}
+                character={character}
               />
             ))}
             {provided.placeholder}

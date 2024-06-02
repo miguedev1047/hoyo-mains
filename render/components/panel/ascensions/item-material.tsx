@@ -1,6 +1,6 @@
 import { z } from 'zod'
 import { AscensionQuantitySchema } from '@/schemas'
-import { MaterialByAscension } from '@/types'
+import { Characters, MaterialByAscension } from '@/types'
 import { fetcher } from '@/utils/helpers/fetcher'
 import { zodResolver } from '@hookform/resolvers/zod'
 import {
@@ -23,13 +23,14 @@ import useSWR, { mutate } from 'swr'
 
 const ItemMaterial = ({
   material,
-  characterId
+  character
 }: {
   material: MaterialByAscension
-  characterId: string | undefined
+  character: Characters | undefined
 }) => {
   const [isPending, startTransition] = useTransition()
   const [isOpen, setIsOpen] = useState(false)
+  const characterName = character?.name.toLowerCase().replace(/\s/g, '-')
 
   const {
     data: dataMaterial,
@@ -63,7 +64,7 @@ const ItemMaterial = ({
 
       if (status === 201) {
         toast.success(message)
-        mutate(`/api/characters/character/${characterId}`)
+        mutate(`/api/characters/character?name=${characterName}`)
         setIsOpen(false)
         return
       }
