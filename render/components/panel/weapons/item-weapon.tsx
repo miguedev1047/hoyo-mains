@@ -1,7 +1,7 @@
 import { useOpen } from '@/utils/store/use-open'
 import { Weapon } from '@prisma/client'
-import { Image } from '@nextui-org/image'
 import { Button } from '@nextui-org/button'
+import { Avatar } from '@nextui-org/react'
 import { mutate } from 'swr'
 import { Card, CardFooter, CardHeader } from '@nextui-org/card'
 import { IconPencil, IconTrash } from '@tabler/icons-react'
@@ -59,8 +59,9 @@ const ItemWeapon = ({ weapon }: { weapon: Weapon }) => {
       )}
     >
       <CardHeader className='flex flex-row items-center gap-4'>
-        <Image
-          className='w-12 h-12 object-cover bg-color-darkest rounded-lg'
+        <Avatar
+          radius='sm'
+          className='p-1 object-cover'
           src={weapon.imageUrl!}
           alt={weapon.name}
         />

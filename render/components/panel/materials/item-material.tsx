@@ -1,16 +1,16 @@
 import { Button } from '@nextui-org/button'
 import { Material } from '@prisma/client'
-import { Image } from '@nextui-org/image'
 import { Card, CardFooter, CardHeader } from '@nextui-org/card'
 import { IconPencil, IconTrash } from '@tabler/icons-react'
 import { useOpen } from '@/utils/store/use-open'
 import { deleteImage } from '@/utils/helpers/delete-image'
+import { Avatar } from '@nextui-org/react'
 import { mutate } from 'swr'
 import { deleteMaterial } from '@/render/services/panel/materials/delete'
 import { toast } from 'sonner'
 import { useTransition } from 'react'
-import clsx from 'clsx'
 import { getStarBorderColor } from '@/utils/helpers/get-color'
+import clsx from 'clsx'
 
 const ItemMaterial = ({ material }: { material: Material }) => {
   const [isPending, starTransition] = useTransition()
@@ -34,7 +34,6 @@ const ItemMaterial = ({ material }: { material: Material }) => {
 
       // Si la imagen se elimino, eliminamos el material
       if (status === 201) {
-
         // Eliminar el material
         const { message, status, error } = await deleteMaterial(materialId)
 
@@ -53,13 +52,17 @@ const ItemMaterial = ({ material }: { material: Material }) => {
   }
 
   return (
-    <Card key={material.id} className={clsx(
-      'bg-color-dark border-2',
-      getStarBorderColor(material.stars)
-    )}>
+    <Card
+      key={material.id}
+      className={clsx(
+        'bg-color-dark border-2',
+        getStarBorderColor(material.stars)
+      )}
+    >
       <CardHeader className='flex flex-row items-center gap-4'>
-        <Image
-          className='w-12 h-12 object-cover bg-color-darkest rounded-lg'
+        <Avatar
+          radius='sm'
+          className='p-1 object-cover'
           src={material.imageUrl!}
           alt={material.name}
         />

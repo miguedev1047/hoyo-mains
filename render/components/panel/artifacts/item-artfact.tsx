@@ -1,11 +1,11 @@
 import { Button } from '@nextui-org/button'
 import { Artifact } from '@prisma/client'
-import { Image } from '@nextui-org/image'
 import { Card, CardFooter, CardHeader } from '@nextui-org/card'
 import { IconPencil, IconTrash } from '@tabler/icons-react'
 import { useOpen } from '@/utils/store/use-open'
 import { deleteImage } from '@/utils/helpers/delete-image'
 import { mutate } from 'swr'
+import { Avatar } from '@nextui-org/react'
 import { toast } from 'sonner'
 import { useTransition } from 'react'
 import { deleteArtifact } from '@/render/services/panel/artifacts/delete'
@@ -60,8 +60,9 @@ const ItemArtifact = ({ artifact }: { artifact: Artifact }) => {
       )}
     >
       <CardHeader className='flex flex-row items-center gap-4'>
-        <Image
-          className='w-12 h-12 object-cover bg-color-darkest rounded-lg'
+        <Avatar
+          radius='sm'
+          className='p-1 object-cover'
           src={artifact.imageUrl!}
           alt={artifact.name}
         />
