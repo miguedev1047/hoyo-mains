@@ -116,7 +116,7 @@ export interface Ascension {
   id: string
   characterId: string
   ascensionId: string
-  order: number
+  index: number
   rank: number
   level: number
   cost: number

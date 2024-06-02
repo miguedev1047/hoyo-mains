@@ -17,7 +17,10 @@ const TableCharacterAscension = ({
 }: {
   character: Characters | undefined
 }) => {
-  const ascension = character?.ascensions
+  const ascension = character?.ascensions.map((ascension, index) => ({
+    ...ascension,
+    index: 1 + index++
+  }))
 
   const renderCell = useCallback(
     (ascension: Ascension, columnKey: React.Key) => {
@@ -27,7 +30,7 @@ const TableCharacterAscension = ({
         case 'rank':
           return (
             <div>
-              <p className='text-color-light'>{ascension.order}</p>
+              <p className='text-color-light'>{ascension.index}</p>
             </div>
           )
         case 'level':
@@ -90,11 +93,13 @@ const TableCharacterAscension = ({
         >
           {(item) => (
             <TableRow key={item.id}>
-              {(columnKey) => (
-                <TableCell>
-                  {renderCell(item, columnKey) as React.ReactNode}
-                </TableCell>
-              )}
+              {(columnKey) => {
+                return (
+                  <TableCell>
+                    {renderCell(item, columnKey) as React.ReactNode}
+                  </TableCell>
+                )
+              }}
             </TableRow>
           )}
         </TableBody>
