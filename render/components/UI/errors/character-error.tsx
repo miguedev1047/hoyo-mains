@@ -6,6 +6,22 @@ interface Props {
   className?: string
 }
 
+export const CharacterError = ({ message, className }: Props) => {
+  return (
+    <Card
+      isBlurred
+      className={`p-5 text-warning-500 dark:bg-warning-500/20 border-[1px] border-warning-500/40 mb-4 ${className}`}
+    >
+      <div className='flex items-center gap-2'>
+        <IconAlertCircle size={32} />
+        <p className='text-lg font-semibold'>
+          {message ? message : 'Ha ocurrido un error.'}
+        </p>
+      </div>
+    </Card>
+  )
+}
+
 export const CharacterItemError = ({ message, className }: Props) => {
   return (
     <Card

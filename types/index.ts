@@ -16,6 +16,7 @@ export interface Characters {
   role: string
   imageUrl: string
   public: boolean
+  isNew: boolean
   createdDate: Date
   updatedDate: Date
   weapons: Data[]

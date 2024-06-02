@@ -212,3 +212,8 @@ export const AscensionQuantitySchema = z.object({
     message: 'Campo requerido.'
   })
 })
+
+export const CharacterConfigurationSchema = z.object({
+  public: z.boolean(),
+  isNew: z.boolean()
+})
