@@ -72,6 +72,7 @@ export interface Team {
 export interface CharactersByTeam {
   id: string
   characterId: string | null
+  characterItem: string | null
   teamId: string
   order: number
   createdDate: Date

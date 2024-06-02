@@ -33,8 +33,26 @@ export const deleteCharacter = async (id: string) => {
     constellations?.forEach(async (constellation) => {
       deleteImage({ path: 'constellations', id: constellation.id })
     })
-
+    
+    await db.materialByAscension.deleteMany({ where: { characterId: id } })
+    await db.ascensionByCharacter.deleteMany({ where: { characterId: id } })
+    await db.characterByTeam.deleteMany({ where: { characterId: id } })
+    await db.team.deleteMany({ where: { characterId: id } })
+    await db.materialsByCharacter.deleteMany({ where: { characterId: id } })
+    await db.weaponByCharacter.deleteMany({ where: { characterId: id } })
+    await db.artifactByCharacter.deleteMany({ where: { characterId: id } })
+    await db.artifactByCharacter.deleteMany({ where: { characterId: id } })
+    await db.ascensionByCharacter.deleteMany({ where: { characterId: id } })
+    await db.characterBestStat.deleteMany({ where: { characterId: id } })
+    await db.videoGuide.deleteMany({ where: { characterId: id } })
+    await db.characterBestStat.deleteMany({ where: { characterId: id } })
+    await db.talentsByCharacter.deleteMany({ where: { characterId: id } })
+    await db.passivesByCharacter.deleteMany({ where: { characterId: id } })
+    await db.constellationsByCharacter.deleteMany({
+      where: { characterId: id }
+    })
     await db.character.delete({ where: { id } })
+
     return { message: 'Personaje eliminado.', status: 201 }
   } catch (error) {
     return { error: 'Error al eliminar el personaje.', status: 500 }

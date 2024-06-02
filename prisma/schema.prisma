@@ -178,9 +178,10 @@ model Team {
 }
 
 model CharacterByTeam {
-  id          String  @id @unique @default(uuid())
-  characterId String?
-  teamId      String
+  id            String  @id @unique @default(uuid())
+  characterItem String?
+  characterId   String?
+  teamId        String
 
   order Int @default(0)
 
@@ -253,6 +254,7 @@ model MaterialByAscension {
   id          String  @id @unique @default(uuid())
   materialId  String?
   ascensionId String
+  characterId String?
 
   order    Int @default(0)
   quantity Int @default(0)

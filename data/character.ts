@@ -42,7 +42,7 @@ export const getFullCharacterById = async (id: string) => {
           }
         },
         ascensions: {
-          orderBy: [{ rank: 'asc' }, { level: 'asc' }, { cost: 'asc' }],
+          orderBy: [{ level: 'asc' }, { cost: 'asc' }],
           include: {
             materials: {
               orderBy: {
@@ -55,5 +55,7 @@ export const getFullCharacterById = async (id: string) => {
     })
 
     return character
-  } catch (error) {}
+  } catch (error) {
+    return null
+  }
 }

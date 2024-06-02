@@ -30,6 +30,7 @@ const FormCharacterAscension = ({
   const [isPending, startTransition] = useTransition()
   const [isOpen, setIsOpen] = useState(false)
 
+  const characterId = character?.id
   const characterName = character?.name.toLowerCase().replace(/\s/g, '-')
   const ascension = character?.ascensions
   const MAX_ITEMS = 6
@@ -61,6 +62,7 @@ const FormCharacterAscension = ({
     const materials = data.materials.split(',').map((materialId, index) => ({
       ascensionId: ascensionId,
       materialId: materialId,
+      characterId: characterId,
       quantity: 0,
       order: index++
     }))

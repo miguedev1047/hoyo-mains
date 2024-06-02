@@ -27,6 +27,7 @@ const CharacterSelector = ({
     error
   } = useSWR<Character[]>('/api/characters', fetcher)
 
+  const characterId = character?.id
   const characterName = character?.name.toLowerCase().replace(/\s/g, '-')
   const allCharacters = team.characters
   const disabledItems = team.characters?.map((item) => item.characterId!)
@@ -58,7 +59,8 @@ const CharacterSelector = ({
       .split(',')
       .map((itemId: string, index) => ({
         teamId: teamId,
-        characterId: itemId,
+        characterItem: itemId,
+        characterId: characterId,
         order: index++
       }))
 

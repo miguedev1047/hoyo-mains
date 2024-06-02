@@ -20,7 +20,7 @@ interface Props {
 const ItemCharacter = ({ character }: Props) => {
   const [isPending, startTransition] = useTransition()
   const characterName = character.name.toLowerCase().replace(/\s/g, '-')
-  const url = '/panel/characters/character?name=' + characterName
+  const url = `/panel/characters/character?name=${characterName}`
 
   const handleDelete = async (characterId: string) => {
     startTransition(async () => {

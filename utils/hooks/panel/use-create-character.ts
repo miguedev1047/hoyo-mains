@@ -90,6 +90,7 @@ export const useCreateCharacter = () => {
     ) {
       const newValues = {
         ...data,
+        name: data.name.toLowerCase(),
         id: uuid,
         imageUrl: url!,
         stars: starsNumber
@@ -116,7 +117,7 @@ export const useCreateCharacter = () => {
 
       // Logica para subir la imagen y crear el personaje
       const { url, status, error } = await uploadImage(image, uuid)
-      
+
       if (status === 201) {
         await handleCreate(data, uuid, url, starsNumber)
         return

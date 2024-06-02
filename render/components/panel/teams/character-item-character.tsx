@@ -22,7 +22,7 @@ const CharacterItemCharacter = ({
     isLoading,
     error
   } = useSWR<Characters>(
-    `/api/characters/character/${team.characterId}`,
+    `/api/characters/character/${team.characterItem}`,
     fetcher
   )
 
