@@ -28,7 +28,7 @@ export const updateBestStats = async (
     validateFields.data
 
   try {
-    const bestStats = await db.characterBestStat.update({
+    const bestStats = await db.statsByCharacter.update({
       where: {
         id: statId
       },

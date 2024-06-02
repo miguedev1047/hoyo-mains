@@ -10,7 +10,7 @@ export const deleteTeam = async (teamId: string | undefined) => {
       }
     })
 
-    await db.team.delete({
+    await db.teamByCharacter.delete({
       where: {
         id: teamId
       }

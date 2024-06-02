@@ -5,7 +5,7 @@ import db from '@/libs/db'
 export const updatedOrderTeams = async (items: any) => {
   try {
     const transaction = items.map((list: any) =>
-      db.team.update({
+      db.teamByCharacter.update({
         where: {
           id: list.id
         },

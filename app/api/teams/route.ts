@@ -5,7 +5,7 @@ export const dynamic = 'force-dynamic'
 
 export async function GET(request: Request) {
   try {
-    const teams = await db.team.findMany({
+    const teams = await db.teamByCharacter.findMany({
       orderBy: [
         {
           order: 'asc'

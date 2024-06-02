@@ -35,19 +35,19 @@ model Character {
   public    Boolean @default(false)
   isNew     Boolean @default(false)
 
-  createdDate DateTime @default(now())
-  updatedDate DateTime @updatedAt
-
   materials      MaterialsByCharacter[]
   weapons        WeaponByCharacter[]
   artifacts      ArtifactByCharacter[]
-  bestStats      CharacterBestStat?
-  videoGuide     videoGuide?
-  teams          Team[]
+  bestStats      StatsByCharacter?
+  videoGuide     VideoGuideByCharacter?
+  teams          TeamByCharacter[]
   talents        TalentsByCharacter[]
   passives       PassivesByCharacter[]
   constellations ConstellationsByCharacter[]
   ascensions     AscensionByCharacter[]
+
+  createdDate DateTime @default(now())
+  updatedDate DateTime @updatedAt
 }
 
 model Material {
@@ -134,7 +134,7 @@ model ArtifactByCharacter {
   character Character? @relation(fields: [characterId], references: [id])
 }
 
-model CharacterBestStat {
+model StatsByCharacter {
   id          String  @id @unique @default(uuid())
   characterId String? @unique
 
@@ -149,7 +149,7 @@ model CharacterBestStat {
   substats Character? @relation(fields: [characterId], references: [id])
 }
 
-model videoGuide {
+model VideoGuideByCharacter {
   id          String  @id @unique @default(uuid())
   characterId String? @unique
 
@@ -163,7 +163,7 @@ model videoGuide {
   videoGuide Character? @relation(fields: [characterId], references: [id])
 }
 
-model Team {
+model TeamByCharacter {
   id          String  @id @unique @default(uuid())
   characterId String?
 
@@ -188,7 +188,7 @@ model CharacterByTeam {
   createdDate DateTime @default(now())
   updatedDate DateTime @updatedAt
 
-  characters Team @relation(fields: [teamId], references: [id])
+  characters TeamByCharacter @relation(fields: [teamId], references: [id])
 }
 
 model TalentsByCharacter {

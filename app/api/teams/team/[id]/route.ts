@@ -8,7 +8,7 @@ export async function GET(
   { params }: { params: { id: string } }
 ) {
   try {
-    const teams = await db.team.findUnique({
+    const teams = await db.teamByCharacter.findUnique({
       where: {
         id: params.id
       },

@@ -27,7 +27,7 @@ export const updatevideoGuide = async (
   const { embedVideoUrl, youtuberChannel, youtuberName } = validateFields.data
 
   try {
-    const videoGuide = await db.videoGuide.update({
+    const videoGuide = await db.videoGuideByCharacter.update({
       where: {
         id: videoGuideId
       },

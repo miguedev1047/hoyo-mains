@@ -27,7 +27,7 @@ export const createvideoGuide = async (
   const { embedVideoUrl, youtuberChannel, youtuberName } = validateFields.data
 
   try {
-    const bestStats = await db.videoGuide.create({
+    const bestStats = await db.videoGuideByCharacter.create({
       data: {
         embedVideoUrl,
         youtuberChannel,

@@ -47,15 +47,14 @@ export const deleteCharacter = async (id: string) => {
     await db.characterByTeam.deleteMany({
       where: { OR: [{ characterId: id }, { characterItem: id }] }
     })
-    await db.team.deleteMany({ where: { characterId: id } })
+    await db.teamByCharacter.deleteMany({ where: { characterId: id } })
     await db.materialsByCharacter.deleteMany({ where: { characterId: id } })
     await db.weaponByCharacter.deleteMany({ where: { characterId: id } })
     await db.artifactByCharacter.deleteMany({ where: { characterId: id } })
     await db.artifactByCharacter.deleteMany({ where: { characterId: id } })
     await db.ascensionByCharacter.deleteMany({ where: { characterId: id } })
-    await db.characterBestStat.deleteMany({ where: { characterId: id } })
-    await db.videoGuide.deleteMany({ where: { characterId: id } })
-    await db.characterBestStat.deleteMany({ where: { characterId: id } })
+    await db.statsByCharacter.deleteMany({ where: { characterId: id } })
+    await db.videoGuideByCharacter.deleteMany({ where: { characterId: id } })
     await db.talentsByCharacter.deleteMany({ where: { characterId: id } })
     await db.passivesByCharacter.deleteMany({ where: { characterId: id } })
     await db.constellationsByCharacter.deleteMany({

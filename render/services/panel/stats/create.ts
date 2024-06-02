@@ -28,7 +28,7 @@ export const createBestStats = async (
     validateFields.data
 
   try {
-    const bestStats = await db.characterBestStat.create({
+    const bestStats = await db.statsByCharacter.create({
       data: {
         circletStat,
         globetStat,

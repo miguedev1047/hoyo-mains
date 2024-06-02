@@ -27,7 +27,7 @@ export const createTeam = async (
   const { items: name } = validateFields.data
 
   try {
-    const teams = await db.team.create({
+    const teams = await db.teamByCharacter.create({
       data: {
         name,
         characterId
