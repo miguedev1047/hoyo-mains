@@ -31,7 +31,7 @@ const FormCharacterAscension = ({
   const [isOpen, setIsOpen] = useState(false)
 
   const characterName = character?.name.toLowerCase().replace(/\s/g, '-')
-  const ascension = character?.ascensions 
+  const ascension = character?.ascensions
   const MAX_ITEMS = 6
   const ASCENSION_LENGTH = ascension?.length
 
@@ -49,7 +49,6 @@ const FormCharacterAscension = ({
   } = useForm<z.infer<typeof CharacterAscensionSchema>>({
     resolver: zodResolver(CharacterAscensionSchema),
     defaultValues: {
-      rank: '',
       level: '',
       cost: '',
       materials: ''
@@ -120,24 +119,7 @@ const FormCharacterAscension = ({
           <h2 className='text-2xl font-semibold text-secondary-color mb-4'>
             Agregar Nivel de Ascensión
           </h2>
-          <div className='grid grid-cols-3 gap-2'>
-            <Controller
-              name='rank'
-              control={control}
-              render={({ field }) => (
-                <Input
-                  autoFocus
-                  classNames={InputWrapper}
-                  isInvalid={!!errors.rank}
-                  errorMessage={errors.rank?.message}
-                  type='number'
-                  label='Rango'
-                  placeholder='1'
-                  {...field}
-                />
-              )}
-            />
-
+          <div className='grid grid-cols-2 gap-2'>
             <Controller
               name='level'
               control={control}
@@ -179,7 +161,7 @@ const FormCharacterAscension = ({
                   aria-label='Material Selector'
                   placeholder='Selecciona los materiales'
                   selectionMode='multiple'
-                  className='col-span-3 w-full'
+                  className='col-span-2 w-full'
                   isMultiline={true}
                   items={materials}
                   isLoading={isLoading}

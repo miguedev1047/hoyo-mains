@@ -115,6 +115,7 @@ export interface Ascension {
   id: string
   characterId: string
   ascensionId: string
+  order: number
   rank: number
   level: number
   cost: number
@@ -122,8 +123,8 @@ export interface Ascension {
 }
 
 export interface MaterialByAscension {
-  id: string,
-  materialId: string,
-  ascensionId: string,
-  quantity: number,
+  id: string
+  materialId: string
+  ascensionId: string
+  quantity: number
 }

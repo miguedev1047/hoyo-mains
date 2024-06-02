@@ -6,8 +6,6 @@ export async function GET(request: Request) {
     const nameParams = new URL(request.url).searchParams.get('name')!
     const characterName = nameParams.replace(/-/g, ' ')
 
-    console.log(characterName)
-
     const characters = await db.character.findFirst({
       where: { name: characterName },
       include: {
@@ -37,7 +35,7 @@ export async function GET(request: Request) {
           }
         },
         ascensions: {
-          orderBy: [{ rank: 'asc' }, { level: 'asc' }, { cost: 'asc' }],
+          orderBy: [{ level: 'asc' }, { cost: 'asc' }],
           include: {
             materials: {
               orderBy: {

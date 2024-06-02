@@ -239,9 +239,8 @@ model AscensionByCharacter {
   id          String  @id @unique @default(uuid())
   characterId String?
 
-  rank      Int
-  level     Int
-  cost      Int
+  level     Int                   @default(20)
+  cost      Int                   @default(20000)
   materials MaterialByAscension[]
 
   createdDate DateTime @default(now())

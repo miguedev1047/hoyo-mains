@@ -26,7 +26,7 @@ export const createAscension = async (
       status: 400
     }
 
-  const { cost, level, rank } = validateFields.data
+  const { cost, level } = validateFields.data
 
   try {
     await db.ascensionByCharacter.create({
@@ -34,7 +34,6 @@ export const createAscension = async (
         id: ascensionId,
         cost: Number(cost),
         level: Number(level),
-        rank: Number(rank),
         characterId
       }
     })

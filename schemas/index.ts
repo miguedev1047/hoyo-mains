@@ -193,9 +193,6 @@ export const CharacterConstellationSchema = z.object({
 })
 
 export const CharacterAscensionSchema = z.object({
-  rank: z.string().min(1, {
-    message: 'Campo requerido.'
-  }),
   level: z.string().min(1, {
     message: 'Campo requerido.'
   }),

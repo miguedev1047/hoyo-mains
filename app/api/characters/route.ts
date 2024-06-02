@@ -44,7 +44,7 @@ export async function GET(request: Request) {
           }
         },
         ascensions: {
-          orderBy: [{ rank: 'asc' }, { level: 'asc' }, { cost: 'asc' }],
+          orderBy: [{ level: 'asc' }, { cost: 'asc' }],
           include: {
             materials: {
               orderBy: {

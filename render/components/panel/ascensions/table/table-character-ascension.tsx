@@ -27,7 +27,7 @@ const TableCharacterAscension = ({
         case 'rank':
           return (
             <div>
-              <p className='text-color-light'>{ascension.rank}</p>
+              <p className='text-color-light'>{ascension.order}</p>
             </div>
           )
         case 'level':
