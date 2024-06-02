@@ -23,26 +23,21 @@ const ItemCharacter = ({ character }: Props) => {
 
   const handleDelete = async (characterId: string) => {
     startTransition(async () => {
-      const { status, error } = await deleteImage({
-        path: 'characters',
-        id: characterId
-      })
+      const { status, message, error } = await deleteCharacter(characterId)
 
-      // Si la imagen se elimino, eliminamos el personaje
       if (status === 201) {
-        // Eliminar el personaje
-        const { status, message, error } = await deleteCharacter(characterId)
+        toast.success(message)
 
-        if (status === 201) {
-          toast.success(message)
-          mutate('/api/characters')
-          return
-        }
+        await deleteImage({
+          path: 'characters',
+          id: characterId
+        })
 
-        toast.error(error)
+        mutate('/api/characters')
+        return
       }
 
-      toast.error(`${error} Intentalo de nuevo`)
+      toast.error(error)
     })
   }
 
