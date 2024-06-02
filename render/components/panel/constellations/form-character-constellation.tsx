@@ -14,6 +14,7 @@ import { Controller } from 'react-hook-form'
 import { useCreateConstellation } from '@/utils/hooks/panel/use-create-constellation'
 import Editor from '@/render/components/UI/editor/editor'
 import DropImage from '@/render/components/UI/drop-image'
+import ModalButton from '@/render/components/UI/buttons/modal/modal-button'
 
 const FormCharacterConstellation = ({
   character
@@ -25,7 +26,6 @@ const FormCharacterConstellation = ({
   const CONSTELLATIONS_LENGTH = constellations?.length
 
   const {
-    key,
     isPending,
     errors,
     control,
@@ -42,7 +42,6 @@ const FormCharacterConstellation = ({
         <Button
           fullWidth
           size='lg'
-          type='submit'
           color='success'
           startContent={<IconPlus />}
           className=' bg-color-light font-bold'
@@ -89,7 +88,8 @@ const FormCharacterConstellation = ({
                   control={control}
                   render={({ field }) => (
                     <Editor
-                      key={key}
+                      isPending={isPending}
+                      isEdit={isEditActive}
                       errorMessage={errors.description?.message}
                       placeholder='Descripción de la constelación'
                       description={field.value}
@@ -101,16 +101,9 @@ const FormCharacterConstellation = ({
                 <DropImage />
               </ModalBody>
               <ModalFooter>
-                <Button
-                  fullWidth
-                  size='lg'
-                  type='submit'
-                  color='success'
-                  isLoading={isPending}
-                  className=' bg-color-light font-bold'
-                >
-                  {isEditActive ? 'Editar' : 'Crear'}
-                </Button>
+                <ModalButton isLoading={isPending}>
+                  {isEditActive ? 'Guardar' : 'Crear'}
+                </ModalButton>
               </ModalFooter>
             </form>
           )}

@@ -11,9 +11,7 @@ const EditorToolbar = ({ editor }: Props) => {
   if (!editor) return null
 
   return (
-    <div className='flex gap-4'>
-      <Colors editor={editor} />
-
+    <div className='flex items-center gap-2'>
       <div className='flex gap-2'>
         <Button
           size='sm'
@@ -46,6 +44,8 @@ const EditorToolbar = ({ editor }: Props) => {
           <IconStrikethrough />
         </Button>
       </div>
+
+      <Colors editor={editor} />
     </div>
   )
 }

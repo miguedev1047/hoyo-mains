@@ -14,6 +14,7 @@ import { toast } from 'sonner'
 import { mutate } from 'swr'
 
 export const useCreateConstellation = (character: Characters | undefined) => {
+  
   const [isPending, startTransition] = useTransition()
   const [key, setKey] = useState(+new Date())
 

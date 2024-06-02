@@ -44,7 +44,7 @@ const DropImage = () => {
       }`}
       {...getRootProps()}
     >
-      <div className='aspect-square size-40 grid place-items-center rounded-xl'>
+      <div className='aspect-square size-40 grid place-items-center rounded-xl overflow-hidden'>
         <input {...getInputProps()} />
         {isDragActive ? (
           <IconPhoto size={96} />
@@ -52,7 +52,7 @@ const DropImage = () => {
           <Image
             width={120}
             height={120}
-            className='object-cover'
+            className='size-24 object-cover'
             src={URL.createObjectURL(image.file)}
             alt='Imagen de personaje'
           />
@@ -61,7 +61,7 @@ const DropImage = () => {
             isBlurred
             width={120}
             height={120}
-            className='object-cover'
+            className='size-24 object-cover'
             src={image.preview}
             alt='Imagen de personaje'
           />

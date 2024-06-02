@@ -114,8 +114,8 @@ const FormCharacterAscension = ({
           Agregar Ascensión
         </Button>
       </PopoverTrigger>
-      <PopoverContent className='bg-color-dark p-4'>
-        <form onSubmit={onSubmit} className='space-y-2'>
+      <PopoverContent className='bg-color-dark max-w-full w-[720px] p-4 rounded-lg'>
+        <form onSubmit={onSubmit} className='w-full space-y-2'>
           <h2 className='text-2xl font-semibold text-secondary-color mb-4'>
             Agregar Nivel de Ascensión
           </h2>
@@ -189,7 +189,7 @@ const FormCharacterAscension = ({
                   renderValue={(value) => {
                     return value.map(({ data, key }) => (
                       <div key={key} className='flex flex-wrap gap-4'>
-                        <Chip className='bg-color-dark capitalize px-2 py-1 rounded-md'>
+                        <Chip className='bg-color-dark px-2 py-1 rounded-md'>
                           {data?.name}
                         </Chip>
                       </div>
@@ -206,7 +206,7 @@ const FormCharacterAscension = ({
                           src={material.imageUrl!}
                           alt={material.name}
                         />
-                        <span className='capitalize line-clamp-1'>
+                        <span className='line-clamp-1'>
                           {material.name}
                         </span>
                       </div>

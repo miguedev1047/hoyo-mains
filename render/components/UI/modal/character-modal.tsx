@@ -19,6 +19,7 @@ import { elements, raritys, role, weapons } from '@/constants'
 import { InputWrapper, selectInputWrapper } from '@/utils/classes'
 import { useCreateCharacter } from '@/utils/hooks/panel/use-create-character'
 import DropImage from '@/render/components/UI/drop-image'
+import ModalButton from '@/render/components/UI/buttons/modal/modal-button'
 
 const CharacterModal = () => {
   const { errors, isPending, control, open, onSubmit, onOpen, onOpenChange } =
@@ -237,21 +238,8 @@ const CharacterModal = () => {
 
                 <DropImage />
               </ModalBody>
-              <ModalFooter className='grid grid-cols-2'>
-                <Button
-                  className='bg-color-darkest font-extrabold'
-                  onPress={onClose}
-                >
-                  Cerrar
-                </Button>
-                <Button
-                  type='submit'
-                  color='success'
-                  className='bg-color-lightest font-extrabold'
-                  isLoading={isPending}
-                >
-                  Crear
-                </Button>
+              <ModalFooter>
+                <ModalButton isLoading={isPending}>Crear</ModalButton>
               </ModalFooter>
             </form>
           )}

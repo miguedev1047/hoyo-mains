@@ -18,6 +18,7 @@ import { useCreateWeapon } from '@/utils/hooks/panel/use-create-weapon'
 import { raritys, stats, weaponTypes } from '@/constants'
 import Editor from '@/render/components/UI/editor/editor'
 import DropImage from '@/render/components/UI/drop-image'
+import ModalButton from '@/render/components/UI/buttons/modal/modal-button'
 
 const WeaponModal = () => {
   const {
@@ -56,7 +57,7 @@ const WeaponModal = () => {
         className='bg-color-dark'
       >
         <ModalContent>
-          {(onClose) => (
+          {() => (
             <form onSubmit={onSubmit}>
               <ModalHeader className='flex flex-col gap-1 text-2xl capitalize'>
                 {isEditActive ? 'Editando arma' : 'Nuevo arma'}
@@ -211,7 +212,8 @@ const WeaponModal = () => {
                   control={control}
                   render={({ field }) => (
                     <Editor
-                      key={key}
+                      isPending={isPending}
+                      isEdit={isEditActive}
                       errorMessage={errors.description?.message}
                       placeholder='Descripción del arma'
                       description={field.value}
@@ -222,20 +224,10 @@ const WeaponModal = () => {
 
                 <DropImage />
               </ModalBody>
-              <ModalFooter className='grid grid-cols-2'>
-                <Button
-                  className='bg-color-darkest font-extrabold'
-                  onPress={onClose}
-                >
-                  Cerrar
-                </Button>
-                <Button
-                  type='submit'
-                  color='success'
-                  className='bg-color-lightest font-extrabold'
-                >
-                  {isEditActive ? 'Editar' : 'Crear'}
-                </Button>
+              <ModalFooter>
+                <ModalButton isLoading={isPending}>
+                  {isEditActive ? 'Guardar' : 'Crear'}
+                </ModalButton>
               </ModalFooter>
             </form>
           )}

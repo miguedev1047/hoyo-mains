@@ -18,6 +18,7 @@ import { InputWrapper, selectInputWrapper } from '@/utils/classes'
 import { useCreateMaterial } from '@/utils/hooks/panel/use-create-material'
 import Editor from '@/render/components/UI/editor/editor'
 import DropImage from '@/render/components/UI/drop-image'
+import ModalButton from '@/render/components/UI/buttons/modal/modal-button'
 
 const MaterialModal = () => {
   const {
@@ -56,7 +57,7 @@ const MaterialModal = () => {
         className='bg-color-dark'
       >
         <ModalContent>
-          {(onClose) => (
+          {() => (
             <form onSubmit={onSubmit}>
               <ModalHeader className='flex flex-col gap-1 text-2xl capitalize'>
                 {isEditActive ? 'Editando material' : 'Nuevo material'}
@@ -125,6 +126,7 @@ const MaterialModal = () => {
                   render={({ field }) => {
                     return (
                       <Select
+                        key={key}
                         items={raritys}
                         label='Selecciona la rareza'
                         className='max-w-full'
@@ -132,7 +134,6 @@ const MaterialModal = () => {
                         errorMessage={errors.starsText?.message}
                         isInvalid={!!errors.starsText}
                         classNames={selectInputWrapper}
-                        key={key}
                         defaultSelectedKeys={isEditActive ? [field.value] : []}
                         renderValue={(value) => {
                           return value.map(({ data, key }) => (
@@ -172,7 +173,8 @@ const MaterialModal = () => {
                   control={control}
                   render={({ field }) => (
                     <Editor
-                      key={key}
+                      isPending={isPending}
+                      isEdit={isEditActive}
                       errorMessage={errors.description?.message}
                       placeholder='Descripción del material'
                       description={field.value}
@@ -183,21 +185,10 @@ const MaterialModal = () => {
 
                 <DropImage />
               </ModalBody>
-              <ModalFooter className='grid grid-cols-2'>
-                <Button
-                  className='bg-color-darkest font-extrabold'
-                  onPress={onClose}
-                >
-                  Cerrar
-                </Button>
-                <Button
-                  type='submit'
-                  color='success'
-                  className='bg-color-lightest font-extrabold'
-                  isLoading={isPending}
-                >
-                  {isEditActive ? 'Editar' : 'Crear'}
-                </Button>
+              <ModalFooter>
+                <ModalButton isLoading={isPending}>
+                  {isEditActive ? 'Guardar' : 'Crear'}
+                </ModalButton>
               </ModalFooter>
             </form>
           )}

@@ -101,7 +101,7 @@ const FormCharacterYoutube = ({
           {videoGuide?.youtuberName ? 'Editar' : 'Crear'} Video Guía
         </Button>
       </PopoverTrigger>
-      <PopoverContent className='max-w-full w-[720px] bg-color-dark rounded-lg p-4'>
+      <PopoverContent className='max-w-full w-[1024px] bg-color-dark rounded-lg p-4'>
         <form onSubmit={onSubmit} className='w-full space-y-2'>
           <h3 className='text-2xl font-semibold text-secondary-color mb-4'>
             {character?.name} Video Guía
@@ -119,7 +119,6 @@ const FormCharacterYoutube = ({
                   classNames={InputWrapper}
                   isInvalid={!!errors.youtuberName}
                   errorMessage={errors.youtuberName?.message}
-                  size='lg'
                   {...field}
                 />
               )}
@@ -130,7 +129,6 @@ const FormCharacterYoutube = ({
               control={control}
               render={({ field }) => (
                 <Input
-                  size='lg'
                   isDisabled={isPending}
                   label='URL del canal'
                   placeholder='https://www.youtube.com/...'
@@ -147,7 +145,6 @@ const FormCharacterYoutube = ({
               control={control}
               render={({ field }) => (
                 <Input
-                  size='lg'
                   isDisabled={isPending}
                   label='URL embed del video'
                   placeholder='https://www.youtube.com/embed/...'

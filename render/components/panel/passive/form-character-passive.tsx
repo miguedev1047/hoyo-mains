@@ -14,6 +14,7 @@ import { Controller } from 'react-hook-form'
 import { useCreatePassive } from '@/utils/hooks/panel/use-create-passive'
 import Editor from '@/render/components/UI/editor/editor'
 import DropImage from '@/render/components/UI/drop-image'
+import ModalButton from '@/render/components/UI/buttons/modal/modal-button'
 
 const FormCharacterPassive = ({
   character
@@ -25,7 +26,6 @@ const FormCharacterPassive = ({
   const TALENTS_LENGTH = passives?.length
 
   const {
-    key,
     isPending,
     errors,
     control,
@@ -42,7 +42,6 @@ const FormCharacterPassive = ({
         <Button
           fullWidth
           size='lg'
-          type='submit'
           color='success'
           startContent={<IconPlus />}
           className=' bg-color-light font-bold'
@@ -88,7 +87,8 @@ const FormCharacterPassive = ({
                   control={control}
                   render={({ field }) => (
                     <Editor
-                      key={key}
+                      isPending={isPending}
+                      isEdit={isEditActive}
                       errorMessage={errors.description?.message}
                       placeholder='Descripción de la pasiva'
                       description={field.value}
@@ -100,16 +100,9 @@ const FormCharacterPassive = ({
                 <DropImage />
               </ModalBody>
               <ModalFooter>
-                <Button
-                  fullWidth
-                  size='lg'
-                  type='submit'
-                  color='success'
-                  isLoading={isPending}
-                  className=' bg-color-light font-bold'
-                >
-                  {isEditActive ? 'Editar' : 'Crear'}
-                </Button>
+              <ModalButton isLoading={isPending}>
+                  {isEditActive ? 'Guardar' : 'Crear'}
+                </ModalButton>
               </ModalFooter>
             </form>
           )}

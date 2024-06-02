@@ -91,7 +91,7 @@ const ItemMaterial = ({
               alt={dataMaterial?.name}
             />
           </Badge>
-          {dataMaterial?.name}
+          <h3 className='text-xs line-clamp-1'>{dataMaterial?.name}</h3>
         </div>
       </PopoverTrigger>
       <PopoverContent className='bg-color-dark p-2 rounded-md'>

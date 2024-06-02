@@ -90,7 +90,7 @@ export const raritys = [
   {
     name: 'three_star',
     number: 3,
-    title: '3 Estrella'
+    title: '3 Estrellas'
   },
   {
     name: 'two_star',

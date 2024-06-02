@@ -18,6 +18,7 @@ import { useCreateArtifact } from '@/utils/hooks/panel/use-create-artifact'
 import { raritys } from '@/constants'
 import Editor from '@/render/components/UI/editor/editor'
 import DropImage from '@/render/components/UI/drop-image'
+import ModalButton from '@/render/components/UI/buttons/modal/modal-button'
 
 const ArtifactModal = () => {
   const {
@@ -56,7 +57,7 @@ const ArtifactModal = () => {
         className='bg-color-dark'
       >
         <ModalContent>
-          {(onClose) => (
+          {() => (
             <form onSubmit={onSubmit}>
               <ModalHeader className='flex flex-col gap-1 text-2xl capitalize'>
                 {isEditActive ? 'Editando artefacto' : 'Nuevo artefacto'}
@@ -131,7 +132,8 @@ const ArtifactModal = () => {
                   control={control}
                   render={({ field }) => (
                     <Editor
-                      key={key}
+                      isPending={isPending}
+                      isEdit={isEditActive}
                       errorMessage={errors.descTwoPieces?.message}
                       placeholder='Descripción bono x2 piezas'
                       description={field.value}
@@ -145,7 +147,8 @@ const ArtifactModal = () => {
                   control={control}
                   render={({ field }) => (
                     <Editor
-                      key={key}
+                      isPending={isPending}
+                      isEdit={isEditActive}
                       errorMessage={errors.descFourPieces?.message}
                       placeholder='Descripción bono x4 piezas'
                       description={field.value}
@@ -156,20 +159,10 @@ const ArtifactModal = () => {
 
                 <DropImage />
               </ModalBody>
-              <ModalFooter className='grid grid-cols-2'>
-                <Button
-                  className='bg-color-darkest font-extrabold'
-                  onPress={onClose}
-                >
-                  Cerrar
-                </Button>
-                <Button
-                  type='submit'
-                  color='success'
-                  className='bg-color-lightest font-extrabold'
-                >
-                  {isEditActive ? 'Editar' : 'Crear'}
-                </Button>
+              <ModalFooter>
+                <ModalButton isLoading={isPending}>
+                  {isEditActive ? 'Guardar' : 'Crear'}
+                </ModalButton>
               </ModalFooter>
             </form>
           )}

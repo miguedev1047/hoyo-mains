@@ -12,7 +12,7 @@ export const updateQuantityAscensionMaterial = async (
       data: { quantity }
     })
 
-    return { message: 'Material actualizado.', status: 201 }
+    return { message: 'Cambios guardados.', status: 201 }
   } catch (error) {
     return { error: 'Hubo un problema al actualizar el material.', status: 500 }
   }

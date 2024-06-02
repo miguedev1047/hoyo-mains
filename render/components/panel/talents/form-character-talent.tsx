@@ -2,18 +2,19 @@ import { Characters } from '@/types'
 import { InputWrapper } from '@/utils/classes'
 import { Button } from '@nextui-org/button'
 import { Input } from '@nextui-org/input'
-import {
-  Modal,
-  ModalContent,
-  ModalHeader,
-  ModalBody,
-  ModalFooter
-} from '@nextui-org/modal'
 import { IconPlus } from '@tabler/icons-react'
 import { Controller } from 'react-hook-form'
 import { useCreateTalent } from '@/utils/hooks/panel/use-create-talent'
+import {
+  Modal,
+  ModalBody,
+  ModalContent,
+  ModalFooter,
+  ModalHeader
+} from '@nextui-org/react'
 import Editor from '@/render/components/UI/editor/editor'
 import DropImage from '@/render/components/UI/drop-image'
+import ModalButton from '@/render/components/UI/buttons/modal/modal-button'
 
 const FormCharacterTalent = ({
   character
@@ -25,7 +26,6 @@ const FormCharacterTalent = ({
   const TALENTS_LENGTH = talents?.length
 
   const {
-    key,
     isPending,
     errors,
     control,
@@ -41,7 +41,6 @@ const FormCharacterTalent = ({
       {(TALENTS_LENGTH ?? 0) !== MAX_TALENTS && (
         <Button
           fullWidth
-          size='lg'
           type='submit'
           color='success'
           startContent={<IconPlus />}
@@ -89,7 +88,8 @@ const FormCharacterTalent = ({
                   control={control}
                   render={({ field }) => (
                     <Editor
-                      key={key}
+                      isPending={isPending}
+                      isEdit={isEditActive}
                       errorMessage={errors.description?.message}
                       placeholder='Descripción del talento'
                       description={field.value}
@@ -101,16 +101,9 @@ const FormCharacterTalent = ({
                 <DropImage />
               </ModalBody>
               <ModalFooter>
-                <Button
-                  fullWidth
-                  size='lg'
-                  type='submit'
-                  color='success'
-                  isLoading={isPending}
-                  className=' bg-color-light font-bold'
-                >
-                  {isEditActive ? 'Editar' : 'Crear'}
-                </Button>
+                <ModalButton isLoading={isPending}>
+                  {isEditActive ? 'Guardar' : 'Crear'}
+                </ModalButton>
               </ModalFooter>
             </form>
           )}
