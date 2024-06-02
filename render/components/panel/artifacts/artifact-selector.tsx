@@ -76,9 +76,7 @@ const ArtifactSelector = ({
   })
 
   if (error)
-    return (
-      <CharacterItemError message='No se ha podido cargar el selector.' />
-    )
+    return <CharacterItemError message='No se ha podido cargar el selector.' />
 
   if (isLoading) return null
 
@@ -121,7 +119,12 @@ const ArtifactSelector = ({
                 {(weapon) => (
                   <SelectItem key={weapon.id} textValue={weapon.name}>
                     <div className='flex gap-2 items-center'>
-                      <Avatar src={weapon.imageUrl!} alt={weapon.name} />
+                      <Avatar
+                        radius='sm'
+                        className='p-1 object-cover'
+                        src={weapon.imageUrl!}
+                        alt={weapon.name}
+                      />
                       <span className='capitalize'>{weapon.name}</span>
                     </div>
                   </SelectItem>

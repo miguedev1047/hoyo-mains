@@ -98,7 +98,7 @@ const FormCharacterYoutube = ({
           startContent={<IconPlus size={24} />}
           className='bg-color-light font-bold'
         >
-          {videoGuide?.youtuberName ? 'Editar' : 'Crear'} Video Guía
+          {videoGuide?.youtuberName ? 'Editar' : 'Añadir'} Video Guía
         </Button>
       </PopoverTrigger>
       <PopoverContent className='max-w-full w-[1024px] bg-color-dark rounded-lg p-4'>

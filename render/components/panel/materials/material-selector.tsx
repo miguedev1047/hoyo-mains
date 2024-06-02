@@ -78,9 +78,7 @@ const MaterialSelector = ({
   })
 
   if (error)
-    return (
-      <CharacterItemError message='No se ha podido cargar el selector.' />
-    )
+    return <CharacterItemError message='No se ha podido cargar el selector.' />
 
   if (isLoading) return null
 
@@ -112,7 +110,7 @@ const MaterialSelector = ({
                 renderValue={(value) => {
                   return value.map(({ data, key }) => (
                     <div key={key} className='flex flex-wrap gap-4'>
-                      <Chip className='bg-color-dark capitalize px-2 py-1 rounded-md'>
+                      <Chip className='bg-color-dark px-2 py-1 rounded-md'>
                         {data?.name}
                       </Chip>
                     </div>
@@ -123,8 +121,13 @@ const MaterialSelector = ({
                 {(material) => (
                   <SelectItem key={material.id} textValue={material.name}>
                     <div className='flex gap-2 items-center'>
-                      <Avatar src={material.imageUrl!} alt={material.name} />
-                      <span className='capitalize'>{material.name}</span>
+                      <Avatar
+                        radius='sm'
+                        className='p-1 object-cover'
+                        src={material.imageUrl!}
+                        alt={material.name}
+                      />
+                      <span>{material.name}</span>
                     </div>
                   </SelectItem>
                 )}

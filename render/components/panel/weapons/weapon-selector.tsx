@@ -123,8 +123,13 @@ const WeaponSelector = ({
               {(weapon) => (
                 <SelectItem key={weapon.id} textValue={weapon.name}>
                   <div className='flex gap-2 items-center'>
-                    <Avatar src={weapon.imageUrl!} alt={weapon.name} />
-                    <span className='capitalize'>{weapon.name}</span>
+                    <Avatar
+                      radius='sm'
+                      className='p-1 object-cover'
+                      src={weapon.imageUrl!}
+                      alt={weapon.name}
+                    />
+                    <span>{weapon.name}</span>
                   </div>
                 </SelectItem>
               )}

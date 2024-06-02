@@ -55,42 +55,37 @@ const CharacterFormTeam = ({
   if (TEAM_LENGTH === MAX_TEAMS) return null
 
   return (
-    <div className='space-y-4'>
-      <h3 className='text-xl font-semibold capitalize text-secondary-color'>
-        Nuevo Equipo
-      </h3>
-      <form onSubmit={onSubmit} className='space-y-4'>
-        <Controller
-          name='items'
-          control={control}
-          render={({ field }) => (
-            <>
-              <Input
-                label='Nombre del equipo'
-                placeholder='Escribe el nombre del equipo.'
-                isInvalid={!!errors.items}
-                errorMessage={errors.items?.message}
-                classNames={InputWrapper}
-                isDisabled={isPending}
-                {...field}
-              />
-            </>
-          )}
-        />
+    <form onSubmit={onSubmit} className='space-y-4'>
+      <Controller
+        name='items'
+        control={control}
+        render={({ field }) => (
+          <>
+            <Input
+              label='Añadir equipo'
+              placeholder='Escribe el nombre del equipo.'
+              isInvalid={!!errors.items}
+              errorMessage={errors.items?.message}
+              classNames={InputWrapper}
+              isDisabled={isPending}
+              {...field}
+            />
+          </>
+        )}
+      />
 
-        <Button
-          fullWidth
-          size='lg'
-          type='submit'
-          color='success'
-          startContent={<IconPlus />}
-          isLoading={isPending}
-          className='bg-color-light font-bold'
-        >
-          Añadir Equipo
-        </Button>
-      </form>
-    </div>
+      <Button
+        fullWidth
+        size='lg'
+        type='submit'
+        color='success'
+        startContent={<IconPlus />}
+        isLoading={isPending}
+        className='bg-color-light font-bold'
+      >
+        Añadir Equipo
+      </Button>
+    </form>
   )
 }
 

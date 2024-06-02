@@ -2,6 +2,8 @@ import { Characters } from '@/types'
 import { Link } from '@nextui-org/link'
 import { Card } from '@nextui-org/card'
 import FormCharacterYoutube from './form-character-youtube'
+import { IconMovie, IconMovieOff } from '@tabler/icons-react'
+import { Tooltip } from '@nextui-org/react'
 
 const CharacterYoutube = ({
   character
@@ -21,9 +23,21 @@ const CharacterYoutube = ({
 
       <Card className='p-8 space-y-4 bg-color-darkest'>
         {videoGuide === videoIsNull && (
-          <article className='text-xl text-color-gray/50 font-bold text-center'>
-            <h2>No hay video disponible para mostrar</h2>
-            <h2>agregue uno para mostrarlo aqui.</h2>
+          <article className='text-xl text-color-gray/50 font-bold flex  flex-col items-center justify-center'>
+            <Tooltip
+              placement='bottom'
+              radius='sm'
+              showArrow
+              className='bg-color-dark p-4'
+              content={
+                <div className='text-center'>
+                  <h2>No hay video disponible para mostrar</h2>
+                  <h2>agregue uno para mostrarlo aqui.</h2>
+                </div>
+              }
+            >
+              <IconMovieOff size={120} />
+            </Tooltip>
           </article>
         )}
 
