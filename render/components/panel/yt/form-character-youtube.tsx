@@ -4,16 +4,10 @@ import { updatevideoGuide } from '@/render/services/panel/yt/update'
 import { CharacterYoutubeSchema } from '@/schemas'
 import { Characters } from '@/types'
 import { InputWrapper } from '@/utils/classes'
-import { useOpen } from '@/utils/store/use-open'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { Button } from '@nextui-org/button'
 import { Input } from '@nextui-org/input'
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-  Tooltip
-} from '@nextui-org/react'
+import { Popover, PopoverContent, PopoverTrigger } from '@nextui-org/react'
 import { IconPlus } from '@tabler/icons-react'
 import { useState, useTransition } from 'react'
 import { Controller, useForm } from 'react-hook-form'
