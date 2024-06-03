@@ -1,6 +1,6 @@
 import { Characters } from '@/types'
 import ListCharacterPassive from '@/render/components/panel/passive/list-character-passive'
-import FormCharacterPassive from '@/render/components/panel/passive/form-character-passive'
+import ModalPassive from '@/render/components/UI/modal/modal-passive'
 
 const CharacterPassive = ({
   character
@@ -14,7 +14,7 @@ const CharacterPassive = ({
       </h3>
 
       <ListCharacterPassive character={character} />
-      <FormCharacterPassive character={character} />
+      <ModalPassive character={character} />
     </div>
   )
 }

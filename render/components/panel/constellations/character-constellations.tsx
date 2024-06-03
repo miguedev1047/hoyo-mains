@@ -1,6 +1,6 @@
 import { Characters } from '@/types'
 import ListCharacterConstellation from '@/render/components/panel/constellations/list-character-constellation'
-import FormCharacterConstellation from '@/render/components/panel/constellations/form-character-constellation'
+import ModalConstellation from '@/render/components/UI/modal/modal-constellation'
 
 const CharacterConstellations = ({
   character
@@ -14,7 +14,7 @@ const CharacterConstellations = ({
       </h3>
 
       <ListCharacterConstellation character={character} />
-      <FormCharacterConstellation character={character} />
+      <ModalConstellation character={character} />
     </div>
   )
 }

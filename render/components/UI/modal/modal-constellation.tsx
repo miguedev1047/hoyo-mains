@@ -2,52 +2,52 @@ import { Characters } from '@/types'
 import { InputWrapper } from '@/utils/classes'
 import { Button } from '@nextui-org/button'
 import { Input } from '@nextui-org/input'
-import { IconPlus } from '@tabler/icons-react'
-import { Controller } from 'react-hook-form'
-import { useCreateTalent } from '@/utils/hooks/panel/use-create-talent'
 import {
   Modal,
-  ModalBody,
   ModalContent,
-  ModalFooter,
-  ModalHeader
-} from '@nextui-org/react'
+  ModalHeader,
+  ModalBody,
+  ModalFooter
+} from '@nextui-org/modal'
+import { IconPlus } from '@tabler/icons-react'
+import { Controller } from 'react-hook-form'
+import { useCreateConstellation } from '@/utils/hooks/panel/use-create-constellation'
 import Editor from '@/render/components/UI/editor/editor'
 import DropImage from '@/render/components/UI/drop-image'
 import ModalButton from '@/render/components/UI/buttons/modal/modal-button'
 
-const FormCharacterTalent = ({
+const ModalConstellation = ({
   character
 }: {
   character: Characters | undefined
 }) => {
-  const talents = character?.talents
-  const MAX_TALENTS = 3
-  const TALENTS_LENGTH = talents?.length
+  const constellations = character?.constellations
+  const MAX_CONSTELLATIONS = 6
+  const CONSTELLATIONS_LENGTH = constellations?.length
 
   const {
     isPending,
     errors,
     control,
-    isEditActive,
     modalName,
+    isEditActive,
     onOpenModal,
-    onOpenChange,
     onSubmit,
-  } = useCreateTalent(character)
+    onOpenChange
+  } = useCreateConstellation(character)
 
   return (
     <>
-      {(TALENTS_LENGTH ?? 0) !== MAX_TALENTS && (
+      {(CONSTELLATIONS_LENGTH ?? 0) !== MAX_CONSTELLATIONS && (
         <Button
           fullWidth
-          type='submit'
+          size='lg'
           color='success'
           startContent={<IconPlus />}
           className=' bg-color-light font-bold'
           onPress={onOpenModal}
         >
-          Añadir Talento
+          Añadir Constelación
         </Button>
       )}
       <Modal
@@ -62,7 +62,7 @@ const FormCharacterTalent = ({
               <ModalHeader className='flex flex-col gap-1'>
                 <h3 className='text-xl font-semibold capitalize text-secondary-color'>
                   {character?.name} - {isEditActive ? 'Editar' : 'Crear'}{' '}
-                  Talento
+                  Constelación
                 </h3>
               </ModalHeader>
               <ModalBody className='grid grid-cols-2'>
@@ -73,8 +73,8 @@ const FormCharacterTalent = ({
                     <Input
                       autoFocus
                       className='col-span-2'
-                      label='Nombre del talento'
-                      placeholder='Ataque Normal'
+                      label='Nombre de la constelación'
+                      placeholder='Constelación 1'
                       isDisabled={isPending}
                       isInvalid={!!errors.name}
                       errorMessage={errors.name?.message}
@@ -92,7 +92,7 @@ const FormCharacterTalent = ({
                       isPending={isPending}
                       isEdit={isEditActive}
                       errorMessage={errors.description?.message}
-                      placeholder='Descripción del talento'
+                      placeholder='Descripción de la constelación'
                       description={field.value}
                       onChange={field.onChange}
                     />
@@ -114,4 +114,4 @@ const FormCharacterTalent = ({
   )
 }
 
-export default FormCharacterTalent
+export default ModalConstellation
