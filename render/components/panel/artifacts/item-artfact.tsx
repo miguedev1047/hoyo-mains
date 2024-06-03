@@ -1,8 +1,8 @@
 import { Button } from '@nextui-org/button'
 import { Artifact } from '@prisma/client'
-import { Card, CardBody, CardFooter, CardHeader } from '@nextui-org/card'
+import { Card, CardBody } from '@nextui-org/card'
 import { IconPencil, IconSettings, IconTrash } from '@tabler/icons-react'
-import { useOpen } from '@/utils/store/use-open'
+import { useModalStore } from '@/utils/store/use-open'
 import { deleteImage } from '@/utils/helpers/delete-image'
 import { mutate } from 'swr'
 import {
@@ -23,14 +23,14 @@ import clsx from 'clsx'
 const ItemArtifact = ({ artifact }: { artifact: Artifact }) => {
   const [isPending, starTransition] = useTransition()
 
-  const { onOpen, setId } = useOpen((state) => ({
+  const { onOpen, setModalId } = useModalStore((state) => ({
     onOpen: state.onOpen,
-    setId: state.setId
+    setModalId: state.setModalId
   }))
 
   const handleEdit = (artifactId: string) => {
-    setId(artifactId)
-    onOpen(true)
+    setModalId(artifactId)
+    onOpen({ name: 'artifact' })
   }
 
   const handleDelete = (artifactId: string) => {

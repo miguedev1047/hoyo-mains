@@ -1,8 +1,8 @@
 import { Button } from '@nextui-org/button'
 import { Material } from '@prisma/client'
-import { Card, CardBody, CardFooter, CardHeader } from '@nextui-org/card'
+import { Card, CardBody } from '@nextui-org/card'
 import { IconPencil, IconSettings, IconTrash } from '@tabler/icons-react'
-import { useOpen } from '@/utils/store/use-open'
+import { useModalStore } from '@/utils/store/use-open'
 import { deleteImage } from '@/utils/helpers/delete-image'
 import {
   Avatar,
@@ -23,14 +23,14 @@ import clsx from 'clsx'
 const ItemMaterial = ({ material }: { material: Material }) => {
   const [isPending, starTransition] = useTransition()
 
-  const { onOpen, setId } = useOpen((state) => ({
+  const { onOpen, setModalId } = useModalStore((state) => ({
     onOpen: state.onOpen,
-    setId: state.setId
+    setModalId: state.setModalId
   }))
 
   const handleEdit = (materialId: string) => {
-    setId(materialId)
-    onOpen(true)
+    setModalId(materialId)
+    onOpen({ name: 'material' })
   }
 
   const handleDelete = (materialId: string) => {

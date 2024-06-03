@@ -1,7 +1,7 @@
 import { Characters, Constellations } from '@/types'
 import { IconPencil, IconTrash } from '@tabler/icons-react'
 import { Avatar, Button, Card, CardBody, CardFooter } from '@nextui-org/react'
-import { useOpenModal } from '@/utils/store/use-open'
+import { useModalStore } from '@/utils/store/use-open'
 import { useTransition } from 'react'
 import { deleteImage } from '@/utils/helpers/delete-image'
 import { toast } from 'sonner'
@@ -19,14 +19,14 @@ const ItemCharacterConstellation = ({
   const [isPending, startTransition] = useTransition()
   const characterName = character?.name.toLowerCase().replace(/\s/g, '-')
 
-  const { onOpen, setId } = useOpenModal((state) => ({
-    setId: state.setId,
-    onOpen: state.onOpen
+  const { onOpen, setModalId } = useModalStore((state) => ({
+    onOpen: state.onOpen,
+    setModalId: state.setModalId
   }))
 
-  const handleEdit = (constellationsId: string) => {
-    setId(constellationsId)
-    onOpen(true, 'constellation-modal')
+  const handleEdit = (constellationId: string) => {
+    setModalId(constellationId)
+    onOpen({ name: 'constellation' })
   }
 
   const handleDelete = (constellationsId: string) => {

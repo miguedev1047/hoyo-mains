@@ -1,4 +1,3 @@
-import { useOpen } from '@/utils/store/use-open'
 import { Weapon } from '@prisma/client'
 import { Button } from '@nextui-org/button'
 import {
@@ -11,6 +10,7 @@ import {
   Tooltip
 } from '@nextui-org/react'
 import { mutate } from 'swr'
+import { useModalStore } from '@/utils/store/use-open'
 import { Card, CardBody } from '@nextui-org/card'
 import { IconPencil, IconSettings, IconTrash } from '@tabler/icons-react'
 import { toast } from 'sonner'
@@ -23,14 +23,14 @@ import clsx from 'clsx'
 const ItemWeapon = ({ weapon }: { weapon: Weapon }) => {
   const [isPending, starTransition] = useTransition()
 
-  const { onOpen, setId } = useOpen((state) => ({
+  const { onOpen, setModalId } = useModalStore((state) => ({
     onOpen: state.onOpen,
-    setId: state.setId
+    setModalId: state.setModalId
   }))
 
   const handleEdit = (weaponId: string) => {
-    setId(weaponId)
-    onOpen(true)
+    setModalId(weaponId)
+    onOpen({ name: 'weapon' })
   }
 
   const handleDelete = (weaponId: string) => {

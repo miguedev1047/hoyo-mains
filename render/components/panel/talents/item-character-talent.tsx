@@ -3,7 +3,7 @@ import { Avatar, Button } from '@nextui-org/react'
 import { IconPencil, IconTrash } from '@tabler/icons-react'
 import { CharacterTalents, Characters } from '@/types'
 import { deleteImage } from '@/utils/helpers/delete-image'
-import { useOpenModal } from '@/utils/store/use-open'
+import { useModalStore } from '@/utils/store/use-open'
 import { useTransition } from 'react'
 import { deleteTalent } from '@/render/services/panel/talents/delete'
 import { toast } from 'sonner'
@@ -20,14 +20,14 @@ const ItemCharacterTalent = ({
   const [isPending, startTransition] = useTransition()
   const characterName = character?.name.toLowerCase().replace(/\s/g, '-')
 
-  const { onOpen, setId } = useOpenModal((state) => ({
-    setId: state.setId,
-    onOpen: state.onOpen
+  const { onOpen, setModalId } = useModalStore((state) => ({
+    onOpen: state.onOpen,
+    setModalId: state.setModalId
   }))
 
   const handleEdit = (talentId: string) => {
-    setId(talentId)
-    onOpen(true, 'talent-modal')
+    setModalId(talentId)
+    onOpen({ name: 'talent' })
   }
 
   const handleDelete = (talentId: string) => {

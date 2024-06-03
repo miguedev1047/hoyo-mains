@@ -3,7 +3,7 @@ import { Avatar, Button } from '@nextui-org/react'
 import { IconPencil, IconTrash } from '@tabler/icons-react'
 import { CharacterPassives, Characters } from '@/types'
 import { deleteImage } from '@/utils/helpers/delete-image'
-import { useOpenModal } from '@/utils/store/use-open'
+import { useModalStore } from '@/utils/store/use-open'
 import { useTransition } from 'react'
 import { deletePassive } from '@/render/services/panel/passives/delete'
 import { toast } from 'sonner'
@@ -20,14 +20,14 @@ const ItemCharacterPassive = ({
   const [isPending, startTransition] = useTransition()
   const characterName = character?.name.toLowerCase().replace(/\s/g, '-')
 
-  const { onOpen, setId } = useOpenModal((state) => ({
-    setId: state.setId,
-    onOpen: state.onOpen
+  const { onOpen, setModalId } = useModalStore((state) => ({
+    onOpen: state.onOpen,
+    setModalId: state.setModalId
   }))
 
   const handleEdit = (passiveId: string) => {
-    setId(passiveId)
-    onOpen(true, 'passive-modal')
+    setModalId(passiveId)
+    onOpen({ name: 'passive' })
   }
 
   const handleDelete = (passiveId: string) => {
