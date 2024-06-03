@@ -77,7 +77,7 @@ const ItemArtifact = ({ artifact }: { artifact: Artifact }) => {
           color='danger'
           isLoading={isPending}
           onPress={() => handleDelete(artifact.id)}
-          className='bg-color-darkest font-bold'
+          className='bg-color-red'
           startContent={<IconTrash size={16} />}
         >
           Eliminar
@@ -87,7 +87,7 @@ const ItemArtifact = ({ artifact }: { artifact: Artifact }) => {
           radius='sm'
           color='success'
           onPress={() => handleEdit(artifact.id)}
-          className='font-bold bg-color-light'
+          className='bg-color-light'
           startContent={<IconPencil size={16} />}
         >
           Editar

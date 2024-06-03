@@ -74,7 +74,7 @@ const ItemWeapon = ({ weapon }: { weapon: Weapon }) => {
           color='danger'
           isLoading={isPending}
           onPress={() => handleDelete(weapon.id)}
-          className='bg-color-darkest font-bold'
+          className='bg-color-red'
           startContent={<IconTrash size={16} />}
         >
           Eliminar
@@ -84,7 +84,7 @@ const ItemWeapon = ({ weapon }: { weapon: Weapon }) => {
           radius='sm'
           color='success'
           onPress={() => handleEdit(weapon.id)}
-          className='font-bold bg-color-light'
+          className='bg-color-light'
           startContent={<IconPencil size={16} />}
         >
           Editar
