@@ -1,10 +1,18 @@
 import { Button } from '@nextui-org/button'
 import { Material } from '@prisma/client'
-import { Card, CardFooter, CardHeader } from '@nextui-org/card'
-import { IconPencil, IconTrash } from '@tabler/icons-react'
+import { Card, CardBody, CardFooter, CardHeader } from '@nextui-org/card'
+import { IconPencil, IconSettings, IconTrash } from '@tabler/icons-react'
 import { useOpen } from '@/utils/store/use-open'
 import { deleteImage } from '@/utils/helpers/delete-image'
-import { Avatar } from '@nextui-org/react'
+import {
+  Avatar,
+  Dropdown,
+  DropdownItem,
+  DropdownMenu,
+  DropdownSection,
+  DropdownTrigger,
+  Tooltip
+} from '@nextui-org/react'
 import { mutate } from 'swr'
 import { deleteMaterial } from '@/render/services/panel/materials/delete'
 import { toast } from 'sonner'
@@ -59,40 +67,60 @@ const ItemMaterial = ({ material }: { material: Material }) => {
         getStarBorderColor(material.stars)
       )}
     >
-      <CardHeader className='flex flex-row items-center gap-4'>
-        <Avatar
-          radius='sm'
-          className='p-1 object-cover'
-          src={material.imageUrl!}
-          alt={material.name}
-        />
-        <h3 className='text-base font-semibold line-clamp-1'>
-          {material.name}
-        </h3>
-      </CardHeader>
-      <CardFooter className='grid grid-cols-2 gap-2'>
-        <Button
-          size='sm'
-          radius='sm'
-          color='danger'
-          isLoading={isPending}
-          onPress={() => handleDelete(material.id)}
-          className='bg-color-red'
-          startContent={<IconTrash size={16} />}
-        >
-          Eliminar
-        </Button>
-        <Button
-          size='sm'
-          radius='sm'
-          color='success'
-          onPress={() => handleEdit(material.id)}
-          className='bg-color-light'
-          startContent={<IconPencil size={16} />}
-        >
-          Editar
-        </Button>
-      </CardFooter>
+      <CardBody className='flex flex-row gap-4 items-center justify-between'>
+        <article className='flex items-center gap-2'>
+          <Avatar
+            radius='sm'
+            className='p-1 object-cover'
+            src={material.imageUrl!}
+            alt={material.name}
+          />
+          <Tooltip
+            radius='sm'
+            placement='bottom-end'
+            className='bg-color-light text-color-darkest p-4 font-medium'
+            content={material.name}
+          >
+            <h3 className='text-base font-semibold line-clamp-1'>
+              {material.name}
+            </h3>
+          </Tooltip>
+        </article>
+
+        <Dropdown backdrop='opaque' className='bg-color-dark'>
+          <DropdownTrigger>
+            <Button
+              isIconOnly
+              size='sm'
+              color='success'
+              className='bg-color-light'
+              isLoading={isPending}
+            >
+              <IconSettings />
+            </Button>
+          </DropdownTrigger>
+          <DropdownMenu aria-label='Weapon Actions'>
+            <DropdownSection title='Acciones'>
+              <DropdownItem
+                key='edit'
+                onPress={() => handleEdit(material.id)}
+                startContent={<IconPencil />}
+              >
+                Editar
+              </DropdownItem>
+              <DropdownItem
+                key='delete'
+                onPress={() => handleDelete(material.id)}
+                startContent={<IconTrash />}
+                color='danger'
+                className='text-color-red'
+              >
+                Eliminar
+              </DropdownItem>
+            </DropdownSection>
+          </DropdownMenu>
+        </Dropdown>
+      </CardBody>
     </Card>
   )
 }

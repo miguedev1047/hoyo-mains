@@ -75,7 +75,7 @@ const MaterialList = () => {
     return <NoItems message='No hay materiales para mostrar' />
 
   return (
-    <ol className='w-full grid grid-cols-5 gap-4'>
+    <ol className='w-full grid grid-cols-4 gap-4'>
       {materials?.map((material) => (
         <ItemMaterial key={material.id} material={material} />
       ))}

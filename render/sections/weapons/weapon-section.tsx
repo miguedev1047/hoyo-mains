@@ -76,7 +76,7 @@ const WeaponList = () => {
   if (!weapons?.length) return <NoItems message='No hay armas para mostrar.' />
 
   return (
-    <ol className='w-full grid grid-cols-5 gap-4'>
+    <ol className='w-full grid grid-cols-4 gap-4'>
       {weapons?.map((weapon) => (
         <ItemWeapon key={weapon.id} weapon={weapon} />
       ))}
