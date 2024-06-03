@@ -29,11 +29,11 @@ const FormCharacterTalent = ({
     isPending,
     errors,
     control,
-    modalName,
     isEditActive,
-    onOpen,
+    modalName,
+    onOpenModal,
+    onOpenChange,
     onSubmit,
-    onOpenChange
   } = useCreateTalent(character)
 
   return (
@@ -45,14 +45,14 @@ const FormCharacterTalent = ({
           color='success'
           startContent={<IconPlus />}
           className=' bg-color-light font-bold'
-          onPress={() => onOpen(true, 'talent-modal')}
+          onPress={onOpenModal}
         >
           Añadir Talento
         </Button>
       )}
       <Modal
         size='4xl'
-        isOpen={modalName === 'talent-modal'}
+        isOpen={modalName}
         onOpenChange={onOpenChange}
         className='bg-color-dark'
       >

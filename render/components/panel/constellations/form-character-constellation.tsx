@@ -31,7 +31,7 @@ const FormCharacterConstellation = ({
     control,
     modalName,
     isEditActive,
-    onOpen,
+    onOpenModal,
     onSubmit,
     onOpenChange
   } = useCreateConstellation(character)
@@ -45,14 +45,14 @@ const FormCharacterConstellation = ({
           color='success'
           startContent={<IconPlus />}
           className=' bg-color-light font-bold'
-          onPress={() => onOpen(true, 'constellation-modal')}
+          onPress={onOpenModal}
         >
           Añadir Constelación
         </Button>
       )}
       <Modal
         size='4xl'
-        isOpen={modalName === 'constellation-modal'}
+        isOpen={modalName}
         onOpenChange={onOpenChange}
         className='bg-color-dark'
       >

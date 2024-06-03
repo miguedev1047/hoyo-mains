@@ -1,6 +1,6 @@
 import { z } from 'zod'
 import { useEffect, useTransition } from 'react'
-import { useOpen } from '@/utils/store/use-open'
+import { useModalStore } from '@/utils/store/use-open'
 import { useDropImage } from '@/utils/store/use-drop-image'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
@@ -14,8 +14,9 @@ import { mutate } from 'swr'
 export const useCreateCharacter = () => {
   const [isPending, startTransition] = useTransition()
 
-  const { open, onOpen, onOpenChange } = useOpen((state) => ({
-    open: state.open,
+  // Estado globales
+  const { name, onOpen, onOpenChange } = useModalStore((state) => ({
+    name: state.activeModal.name,
     onOpen: state.onOpen,
     onOpenChange: state.onOpenChange
   }))
@@ -24,6 +25,10 @@ export const useCreateCharacter = () => {
     image: state.image,
     setImage: state.setImage
   }))
+
+  // Función para abrir el modal
+  const onOpenModal = () => onOpen({ name: 'character' })
+  const modalName = name === 'character'
 
   const {
     handleSubmit,
@@ -46,11 +51,11 @@ export const useCreateCharacter = () => {
 
   // Función para resetear el formulario
   useEffect(() => {
-    if (!open) {
+    if (!modalName) {
       setImage({ imgFile: null, imgPreview: '' })
       reset()
     }
-  }, [reset, setImage, open])
+  }, [reset, setImage, modalName])
 
   // Función para resetear el formulario
   const handleReset = () => {
@@ -131,9 +136,9 @@ export const useCreateCharacter = () => {
     errors,
     isPending,
     control,
-    open,
+    modalName,
     onSubmit,
-    onOpenChange,
-    onOpen
+    onOpenModal,
+    onOpenChange
   }
 }

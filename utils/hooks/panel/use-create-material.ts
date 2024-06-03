@@ -6,10 +6,10 @@ import { raritys } from '@/constants'
 import { useEffect, useState, useTransition } from 'react'
 import { dataMaterialById } from '@/render/services/panel/materials/data'
 import { zodResolver } from '@hookform/resolvers/zod'
+import { useModalStore } from '@/utils/store/use-open'
 import { MaterialSchema } from '@/schemas'
 import { useForm } from 'react-hook-form'
 import { useDropImage } from '@/utils/store/use-drop-image'
-import { useOpen } from '@/utils/store/use-open'
 import { toast } from 'sonner'
 import { mutate } from 'swr'
 
@@ -17,19 +17,25 @@ export const useCreateMaterial = () => {
   const [isPending, startTransition] = useTransition()
   const [key, setKey] = useState(+new Date())
 
-  const { id, open, onOpen, onOpenChange } = useOpen((state) => ({
-    id: state.id,
-    open: state.open,
+  // Estado globales
+  const { id, name, onOpen, onOpenChange } = useModalStore((state) => ({
+    id: state.activeModal.id,
+    name: state.activeModal.name,
     onOpen: state.onOpen,
     onOpenChange: state.onOpenChange
   }))
-
-  const isEditActive = !!id
 
   const { image, setImage } = useDropImage((state) => ({
     image: state.image,
     setImage: state.setImage
   }))
+
+  // Función para abrir el modal
+  const onOpenModal = () => onOpen({ name: 'material' })
+  const modalName = name === 'material'
+
+  // Verificar si la edición está activa
+  const isEditActive = !!id
 
   const {
     handleSubmit,
@@ -77,11 +83,11 @@ export const useCreateMaterial = () => {
 
   // Reinicio de los valores del formulario
   useEffect(() => {
-    if (!open && !isEditActive) {
+    if (!modalName && !isEditActive) {
       setImage({ imgFile: null, imgPreview: '' })
       reset()
     }
-  }, [reset, setImage, open, isEditActive])
+  }, [reset, setImage, modalName, isEditActive])
 
   // Función para resetear el formulario
   const handleReset = () => {
@@ -203,15 +209,14 @@ export const useCreateMaterial = () => {
   })
 
   return {
-    open,
     key,
     control,
     errors,
     isPending,
     isEditActive,
+    modalName,
     onSubmit,
-    handleReset,
-    onOpen,
+    onOpenModal,
     onOpenChange
   }
 }

@@ -31,7 +31,7 @@ const FormCharacterPassive = ({
     control,
     modalName,
     isEditActive,
-    onOpen,
+    onOpenModal,
     onSubmit,
     onOpenChange
   } = useCreatePassive(character)
@@ -45,14 +45,14 @@ const FormCharacterPassive = ({
           color='success'
           startContent={<IconPlus />}
           className=' bg-color-light font-bold'
-          onPress={() => onOpen(true, 'passive-modal')}
+          onPress={onOpenModal}
         >
           Añadir Pasiva
         </Button>
       )}
       <Modal
         size='4xl'
-        isOpen={modalName === 'passive-modal'}
+        isOpen={modalName}
         onOpenChange={onOpenChange}
         className='bg-color-dark'
       >

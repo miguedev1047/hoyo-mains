@@ -3,10 +3,10 @@ import { raritys } from '@/constants'
 import { createArtifacts } from '@/render/services/panel/artifacts/create'
 import { dataArtifactById } from '@/render/services/panel/artifacts/data'
 import { updateArtifacts } from '@/render/services/panel/artifacts/update'
+import { useModalStore } from '@/utils/store/use-open'
 import { ArtifactSchema } from '@/schemas'
 import { downloadImage } from '@/utils/helpers/download-image'
 import { useDropImage } from '@/utils/store/use-drop-image'
-import { useOpen } from '@/utils/store/use-open'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useEffect, useState, useTransition } from 'react'
 import { useForm } from 'react-hook-form'
@@ -17,19 +17,25 @@ export const useCreateArtifact = () => {
   const [isPending, startTransition] = useTransition()
   const [key, setKey] = useState(+new Date())
 
-  const { id, open, onOpen, onOpenChange } = useOpen((state) => ({
-    id: state.id,
-    open: state.open,
+  // Estado globales
+  const { id, name, onOpen, onOpenChange } = useModalStore((state) => ({
+    id: state.activeModal.id,
+    name: state.activeModal.name,
     onOpen: state.onOpen,
     onOpenChange: state.onOpenChange
   }))
-
-  const isEditActive = !!id
 
   const { image, setImage } = useDropImage((state) => ({
     image: state.image,
     setImage: state.setImage
   }))
+
+  // Función para abrir el modal
+  const onOpenModal = () => onOpen({ name: 'artifact' })
+  const modalName = name === 'artifact'
+
+  // Verificar si la edición está activa
+  const isEditActive = !!id
 
   const {
     handleSubmit,
@@ -72,11 +78,11 @@ export const useCreateArtifact = () => {
 
   // Reinicio de los valores del formulario
   useEffect(() => {
-    if (!open && !isEditActive) {
+    if (!modalName && !isEditActive) {
       setImage({ imgFile: null, imgPreview: '' })
       reset()
     }
-  }, [reset, setImage, open, isEditActive])
+  }, [reset, setImage, modalName, isEditActive])
 
   // Función para resetear el formulario
   const handleReset = () => {
@@ -192,15 +198,15 @@ export const useCreateArtifact = () => {
   })
 
   return {
-    open,
     key,
     control,
     errors,
     isPending,
     isEditActive,
+    modalName,
     onSubmit,
-    handleReset,
     onOpen,
+    onOpenModal,
     onOpenChange
   }
 }

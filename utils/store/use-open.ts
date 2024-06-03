@@ -1,45 +1,23 @@
 import { create } from 'zustand'
 
-interface OpenState {
-  open: boolean
-  id: string
-  onOpen: (open: boolean) => void
-  onOpenChange: () => void
-  setId: (id: string) => void
-}
-
-interface OpenModalState {
-  id: string
-  open: {
-    isOpen: boolean
-    modalName: string
+interface modalStore {
+  activeModal: {
+    id: string
+    name: string
   }
-  onOpen: (open: boolean, modalName: string) => void
   onOpenChange: () => void
-  setId: (id: string) => void
+  onOpen: ({ name }: { name: string }) => void
+  setModalId: (id: string) => void
 }
 
-export const useOpen = create<OpenState>((set) => ({
-  open: false,
-  id: '',
-  onOpen: (open: boolean) => set({ open }),
-  onOpenChange: () =>
-    set((state: { open: boolean }) => ({ open: !state.open, id: '' })),
-  setId: (id: string) => set({ id })
-}))
-
-export const useOpenModal = create<OpenModalState>((set) => ({
-  id: '',
-  open: {
-    isOpen: false,
-    modalName: ''
+export const useModalStore = create<modalStore>((set) => ({
+  activeModal: {
+    id: '',
+    name: ''
   },
-  onOpen: (open: boolean, modalName: string) =>
-    set({ open: { isOpen: open, modalName } }),
-  onOpenChange: () =>
-    set((state: OpenModalState) => ({
-      id: '',
-      open: { isOpen: !state.open.isOpen, modalName: '' }
-    })),
-  setId: (id: string) => set({ id })
+  onOpenChange: () => set(() => ({ activeModal: { id: '', name: '' } })),
+  onOpen: ({ name }) =>
+    set((state) => ({ activeModal: { ...state.activeModal, name } })),
+  setModalId: (id: string) =>
+    set((state) => ({ activeModal: { ...state.activeModal, id } }))
 }))

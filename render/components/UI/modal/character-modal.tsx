@@ -22,8 +22,15 @@ import DropImage from '@/render/components/UI/drop-image'
 import ModalButton from '@/render/components/UI/buttons/modal/modal-button'
 
 const CharacterModal = () => {
-  const { errors, isPending, control, open, onSubmit, onOpen, onOpenChange } =
-    useCreateCharacter()
+  const {
+    errors,
+    isPending,
+    control,
+    modalName,
+    onSubmit,
+    onOpenModal,
+    onOpenChange
+  } = useCreateCharacter()
 
   return (
     <>
@@ -36,7 +43,7 @@ const CharacterModal = () => {
           radius='full'
           color='success'
           variant='shadow'
-          onPress={() => onOpen(true)}
+          onPress={onOpenModal}
           className='bg-color-success w-16 h-16 fixed bottom-8 right-8'
         >
           <IconPlus size={40} />
@@ -44,7 +51,7 @@ const CharacterModal = () => {
       </Tooltip>
       <Modal
         size='4xl'
-        isOpen={open}
+        isOpen={modalName}
         onOpenChange={onOpenChange}
         className='bg-color-dark'
       >

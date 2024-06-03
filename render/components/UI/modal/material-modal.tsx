@@ -25,10 +25,10 @@ const MaterialModal = () => {
     key,
     control,
     errors,
-    open,
     isPending,
     isEditActive,
-    onOpen,
+    modalName,
+    onOpenModal,
     onSubmit,
     onOpenChange
   } = useCreateMaterial()
@@ -44,7 +44,7 @@ const MaterialModal = () => {
           radius='full'
           color='success'
           variant='shadow'
-          onPress={() => onOpen(true)}
+          onPress={onOpenModal}
           className='bg-color-success w-16 h-16 fixed bottom-8 right-8'
         >
           <IconPlus size={40} />
@@ -52,7 +52,7 @@ const MaterialModal = () => {
       </Tooltip>
       <Modal
         size='4xl'
-        isOpen={open}
+        isOpen={modalName}
         onOpenChange={onOpenChange}
         className='bg-color-dark'
       >

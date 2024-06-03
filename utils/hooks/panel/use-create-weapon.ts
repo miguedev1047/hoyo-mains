@@ -5,7 +5,7 @@ import { updateWapons } from '@/render/services/panel/weapons/update'
 import { WeaponSchema } from '@/schemas'
 import { downloadImage } from '@/utils/helpers/download-image'
 import { useDropImage } from '@/utils/store/use-drop-image'
-import { useOpen } from '@/utils/store/use-open'
+import { useModalStore } from '@/utils/store/use-open'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useEffect, useState, useTransition } from 'react'
 import { useForm } from 'react-hook-form'
@@ -17,19 +17,25 @@ export const useCreateWeapon = () => {
   const [isPending, startTransition] = useTransition()
   const [key, setKey] = useState(+new Date())
 
-  const { id, open, onOpen, onOpenChange } = useOpen((state) => ({
-    id: state.id,
-    open: state.open,
+  // Estado globales
+  const { id, name, onOpen, onOpenChange } = useModalStore((state) => ({
+    id: state.activeModal.id,
+    name: state.activeModal.name,
     onOpen: state.onOpen,
     onOpenChange: state.onOpenChange
   }))
-
-  const isEditActive = !!id
 
   const { image, setImage } = useDropImage((state) => ({
     image: state.image,
     setImage: state.setImage
   }))
+
+  // Función para abrir el modal
+  const onOpenModal = () => onOpen({ name: 'weapon' })
+  const modalName = name === 'weapon'
+
+  // Verificar si la edición está activa
+  const isEditActive = !!id
 
   const {
     handleSubmit,
@@ -77,11 +83,11 @@ export const useCreateWeapon = () => {
 
   // Reinicio de los valores del formulario
   useEffect(() => {
-    if (!open && !isEditActive) {
+    if (!modalName && !isEditActive) {
       setImage({ imgFile: null, imgPreview: '' })
       reset()
     }
-  }, [reset, setImage, open, isEditActive])
+  }, [reset, setImage, modalName, isEditActive])
 
   // Función para resetear el formulario
   const handleReset = () => {
@@ -204,13 +210,13 @@ export const useCreateWeapon = () => {
 
   return {
     key,
-    open,
     control,
     errors,
     isPending,
     isEditActive,
+    modalName,
     onSubmit,
-    onOpen,
+    onOpenModal,
     onOpenChange
   }
 }

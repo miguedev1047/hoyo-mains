@@ -5,7 +5,7 @@ import { updateTalents } from '@/render/services/panel/talents/update'
 import { CharacterTalentSchema } from '@/schemas'
 import { downloadImage } from '@/utils/helpers/download-image'
 import { useDropImage } from '@/utils/store/use-drop-image'
-import { useOpenModal } from '@/utils/store/use-open'
+import { useModalStore } from '@/utils/store/use-open'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useEffect, useState, useTransition } from 'react'
 import { useForm } from 'react-hook-form'
@@ -18,22 +18,24 @@ export const useCreateTalent = (character: Characters | undefined) => {
   const [isPending, startTransition] = useTransition()
   const [key, setKey] = useState(+new Date())
 
-  const { id, isOpen, modalName, onOpen, onOpenChange } = useOpenModal(
-    (state) => ({
-      id: state.id,
-      isOpen: state.open.isOpen,
-      modalName: state.open.modalName,
-      onOpen: state.onOpen,
-      onOpenChange: state.onOpenChange
-    })
-  )
-
-  const isEditActive = !!id
-
+  // Estado globales
+  const { id, name, onOpen, onOpenChange } = useModalStore((state) => ({
+    id: state.activeModal.id,
+    name: state.activeModal.name,
+    onOpen: state.onOpen,
+    onOpenChange: state.onOpenChange
+  }))
   const { image, setImage } = useDropImage((state) => ({
     image: state.image,
     setImage: state.setImage
   }))
+
+  // Función para abrir el modal
+  const onOpenModal = () => onOpen({ name: 'talent' })
+  const modalName = name === 'talent'
+
+  // Verificar si la edición está activa
+  const isEditActive = !!id
 
   const {
     handleSubmit,
@@ -53,8 +55,7 @@ export const useCreateTalent = (character: Characters | undefined) => {
 
   // Obtenemos los artefactos para rellenar el formulario
   useEffect(() => {
-    const talentModal = modalName === 'talent-modal'
-    if (isEditActive && talentModal) {
+    if (isEditActive && modalName) {
       startTransition(async () => {
         const { status, data, error } = await dataTalentById(id)
 
@@ -74,11 +75,11 @@ export const useCreateTalent = (character: Characters | undefined) => {
 
   // Reinicio de los valores del formulario
   useEffect(() => {
-    if (!isOpen && !isEditActive) {
+    if (!modalName && !isEditActive) {
       setImage({ imgFile: null, imgPreview: '' })
       reset()
     }
-  }, [reset, setImage, isOpen, isEditActive])
+  }, [reset, setImage, modalName, isEditActive])
 
   // Función para resetear el formulario
   const handleReset = () => {
@@ -194,10 +195,10 @@ export const useCreateTalent = (character: Characters | undefined) => {
     isPending,
     errors,
     control,
-    modalName,
     isEditActive,
+    modalName,
     onSubmit,
-    onOpen,
+    onOpenModal,
     onOpenChange
   }
 }

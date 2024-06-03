@@ -27,9 +27,9 @@ const ArtifactModal = () => {
     errors,
     isPending,
     key,
-    open,
+    modalName,
     onSubmit,
-    onOpen,
+    onOpenModal,
     onOpenChange
   } = useCreateArtifact()
 
@@ -44,7 +44,7 @@ const ArtifactModal = () => {
           radius='full'
           color='success'
           variant='shadow'
-          onPress={() => onOpen(true)}
+          onPress={onOpenModal}
           className='bg-color-success w-16 h-16 fixed bottom-8 right-8'
         >
           <IconPlus size={40} />
@@ -52,7 +52,7 @@ const ArtifactModal = () => {
       </Tooltip>
       <Modal
         size='4xl'
-        isOpen={open}
+        isOpen={modalName}
         onOpenChange={onOpenChange}
         className='bg-color-dark'
       >
