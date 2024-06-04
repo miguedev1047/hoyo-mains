@@ -22,6 +22,22 @@ export const CharacterError = ({ message, className }: Props) => {
   )
 }
 
+export const ItemCharacterError = ({ message, className }: Props) => {
+  return (
+    <Card
+      isBlurred
+      className={`p-2 mx-2 text-color-red dark:bg-color-red/20 border-[1px] border-color-red/40 mb-4 ${className}`}
+    >
+      <div className='flex items-center gap-2'>
+        <IconAlertCircle size={64} />
+        <p className='text-lg font-semibold'>
+          {message ? message : 'Ha ocurrido un error.'}
+        </p>
+      </div>
+    </Card>
+  )
+}
+
 export const CharacterItemError = ({ message, className }: Props) => {
   return (
     <Card
@@ -78,22 +94,6 @@ export const ItemArtifactError = ({ message, className }: Props) => {
     >
       <div className='flex items-center gap-2'>
         <IconAlertCircle size={32} />
-        <p className='text-lg font-semibold'>
-          {message ? message : 'Ha ocurrido un error.'}
-        </p>
-      </div>
-    </Card>
-  )
-}
-
-export const ItemCharacterError = ({ message, className }: Props) => {
-  return (
-    <Card
-      isBlurred
-      className={`p-2 mx-2 text-color-red dark:bg-color-red/20 border-[1px] border-color-red/40 mb-4 ${className}`}
-    >
-      <div className='flex items-center gap-2'>
-        <IconAlertCircle size={64} />
         <p className='text-lg font-semibold'>
           {message ? message : 'Ha ocurrido un error.'}
         </p>

@@ -10,7 +10,7 @@ import {
   PopoverTrigger,
   PopoverContent,
   Input,
-  Button
+  Button,
 } from '@nextui-org/react'
 import { Material } from '@prisma/client'
 import { IconCheck } from '@tabler/icons-react'
@@ -18,6 +18,7 @@ import { useState, useTransition } from 'react'
 import { Controller, useForm } from 'react-hook-form'
 import { InputWrapper } from '@/utils/classes'
 import { updateQuantityAscensionMaterial } from '@/render/services/panel/ascensions/update'
+import SkeletonTableMaterial from '@/render/components/UI/skeletons/skeleton-table-material'
 import { toast } from 'sonner'
 import useSWR, { mutate } from 'swr'
 
@@ -73,7 +74,7 @@ const ItemMaterial = ({
     })
   })
 
-  if (isLoading) return null
+  if (isLoading) return <SkeletonTableMaterial />
   if (error) return null
 
   return (

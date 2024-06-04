@@ -16,9 +16,9 @@ import CharacterPassive from '@/render/components/panel/passive/character-passiv
 import CharacterConstellations from '@/render/components/panel/constellations/character-constellations'
 import CharacterTeams from '@/render/components/panel/teams/character-teams'
 import CharacterAscension from '@/render/components/panel/ascensions/character-ascension'
-import useSWR from 'swr'
 import Configuration from '@/render/components/panel/config/configuration'
 import CharacterHeader from '@/render/components/panel/character-header'
+import useSWR from 'swr'
 
 const CharacterSection = ({ characterName }: { characterName: string }) => {
   const API_CHARACTERS = `/api/characters/character?name=${characterName}`
@@ -47,6 +47,8 @@ const CharacterSection = ({ characterName }: { characterName: string }) => {
         </CardHeader>
         <Divider />
         <CardBody className='grid grid-cols-4 gap-12'>
+          <CharacterAscension character={character} />
+          <Divider className='col-span-4' />
           <CharacterMaterials character={character} />
           <Divider className='col-span-4' />
           <CharacterWeapons character={character} />
@@ -63,8 +65,6 @@ const CharacterSection = ({ characterName }: { characterName: string }) => {
           <CharacterPassive character={character} />
           <Divider className='col-span-4' />
           <CharacterConstellations character={character} />
-          <Divider className='col-span-4' />
-          <CharacterAscension character={character} />
         </CardBody>
         <Divider />
         <CardFooter>
