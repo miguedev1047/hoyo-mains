@@ -6,18 +6,18 @@ import {
   DropdownItem,
   DropdownMenu,
   DropdownSection,
-  DropdownTrigger,
-  Tooltip
+  DropdownTrigger
 } from '@nextui-org/react'
 import { mutate } from 'swr'
 import { useModalStore } from '@/utils/store/use-open'
 import { Card, CardBody } from '@nextui-org/card'
 import { IconPencil, IconSettings, IconTrash } from '@tabler/icons-react'
-import { toast } from 'sonner'
 import { useTransition } from 'react'
 import { deleteImage } from '@/utils/helpers/delete-image'
 import { deleteWeapon } from '@/render/services/panel/weapons/delete'
 import { getStarBorderColor } from '@/utils/helpers/get-color'
+import { toast } from 'sonner'
+import TooltipItemName from '@/render/components/UI/tooltip/tooltip-item-name'
 import clsx from 'clsx'
 
 const ItemWeapon = ({ weapon }: { weapon: Weapon }) => {
@@ -74,16 +74,11 @@ const ItemWeapon = ({ weapon }: { weapon: Weapon }) => {
             src={weapon.imageUrl!}
             alt={weapon.name}
           />
-          <Tooltip
-            radius='sm'
-            placement='bottom-end'
-            className='bg-color-light text-color-darkest p-4 font-medium'
-            content={weapon.name}
-          >
+          <TooltipItemName item={weapon}>
             <h3 className='text-base font-semibold line-clamp-1'>
               {weapon.name}
             </h3>
-          </Tooltip>
+          </TooltipItemName>
         </article>
 
         <Dropdown backdrop='opaque' className='bg-color-dark'>

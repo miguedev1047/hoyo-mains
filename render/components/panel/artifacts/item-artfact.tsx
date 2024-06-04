@@ -11,13 +11,13 @@ import {
   DropdownItem,
   DropdownMenu,
   DropdownSection,
-  DropdownTrigger,
-  Tooltip
+  DropdownTrigger
 } from '@nextui-org/react'
 import { toast } from 'sonner'
 import { useTransition } from 'react'
 import { deleteArtifact } from '@/render/services/panel/artifacts/delete'
 import { getStarBorderColor } from '@/utils/helpers/get-color'
+import TooltipItemName from '@/render/components/UI/tooltip/tooltip-item-name'
 import clsx from 'clsx'
 
 const ItemArtifact = ({ artifact }: { artifact: Artifact }) => {
@@ -75,16 +75,11 @@ const ItemArtifact = ({ artifact }: { artifact: Artifact }) => {
             src={artifact.imageUrl!}
             alt={artifact.name}
           />
-          <Tooltip
-            radius='sm'
-            placement='bottom-end'
-            className='bg-color-light text-color-darkest p-4 font-medium'
-            content={artifact.name}
-          >
+          <TooltipItemName item={artifact}>
             <h3 className='text-base font-semibold line-clamp-1'>
               {artifact.name}
             </h3>
-          </Tooltip>
+          </TooltipItemName>
         </article>
 
         <Dropdown backdrop='opaque' className='bg-color-dark'>
@@ -99,7 +94,7 @@ const ItemArtifact = ({ artifact }: { artifact: Artifact }) => {
               <IconSettings />
             </Button>
           </DropdownTrigger>
-          <DropdownMenu aria-label='Weapon Actions'>
+          <DropdownMenu aria-label='Artifact Actions'>
             <DropdownSection title='Acciones'>
               <DropdownItem
                 key='edit'
