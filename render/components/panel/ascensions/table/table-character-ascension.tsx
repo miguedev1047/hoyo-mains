@@ -21,7 +21,7 @@ const TableCharacterAscension = ({
     ...ascension,
     index: 1 + index++
   }))
-  
+
   const renderCell = useCallback(
     (ascension: Ascension, columnKey: React.Key) => {
       const cellValue = ascension[columnKey as keyof Ascension]
@@ -65,6 +65,8 @@ const TableCharacterAscension = ({
     },
     [character]
   )
+
+  if (!ascension) return null
 
   return (
     <>
