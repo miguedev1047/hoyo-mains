@@ -37,6 +37,7 @@ const ModalTalent = ({ character }: { character: Characters | undefined }) => {
       {(TALENTS_LENGTH ?? 0) !== MAX_TALENTS && (
         <Button
           fullWidth
+          size='lg'
           type='submit'
           color='success'
           startContent={<IconPlus />}

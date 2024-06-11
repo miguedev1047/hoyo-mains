@@ -1,8 +1,9 @@
 'use client'
 
 import { fetcher } from '@/utils/helpers/fetcher'
-import { Divider } from '@nextui-org/divider'
 import { Card, CardBody, CardFooter, CardHeader } from '@nextui-org/card'
+import { Divider } from '@nextui-org/divider'
+import { Tabs, Tab } from '@nextui-org/tabs'
 import { Characters } from '@/types'
 import CharacterMaterials from '@/render/components/panel/materials/character-materials'
 import CharacterLoader from '@/render/components/UI/loaders/character-loader'
@@ -19,6 +20,7 @@ import CharacterAscension from '@/render/components/panel/ascensions/character-a
 import Configuration from '@/render/components/panel/config/configuration'
 import CharacterHeader from '@/render/components/panel/character-header'
 import useSWR from 'swr'
+import SkillsTabs from '@/render/components/UI/tabs/skills-tabs'
 
 const CharacterSection = ({ characterName }: { characterName: string }) => {
   const API_CHARACTERS = `/api/characters/character?name=${characterName}`
@@ -60,11 +62,7 @@ const CharacterSection = ({ characterName }: { characterName: string }) => {
           <Divider className='col-span-4' />
           <CharacterTeams character={character} />
           <Divider className='col-span-4' />
-          <CharacterTalents character={character} />
-          <Divider className='col-span-4' />
-          <CharacterPassive character={character} />
-          <Divider className='col-span-4' />
-          <CharacterConstellations character={character} />
+          <SkillsTabs character={character} />
         </CardBody>
         <Divider />
         <CardFooter>
