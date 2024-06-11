@@ -4,6 +4,8 @@ import { fetcher } from '@/utils/helpers/fetcher'
 import { Button } from '@nextui-org/button'
 import { Weapon } from '@prisma/client'
 import { Divider } from '@nextui-org/divider'
+import { Input } from '@nextui-org/input'
+import { IconSearch } from '@tabler/icons-react'
 import { usePathname, useSearchParams } from 'next/navigation'
 import { weaponItems } from '@/constants'
 import AlertError from '@/render/components/UI/errors/alert-error'
@@ -77,6 +79,15 @@ const WeaponList = () => {
 
   return (
     <ol className='w-full grid grid-cols-4 gap-4'>
+      <Input
+        size='lg'
+        aria-label='Buscar arma'
+        variant='underlined'
+        className='col-span-4'
+        startContent={<IconSearch />}
+        placeholder='Escribe el nombre del arma...'
+      />
+
       {weapons?.map((weapon) => (
         <ItemWeapon key={weapon.id} weapon={weapon} />
       ))}
