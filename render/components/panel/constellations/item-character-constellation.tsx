@@ -60,8 +60,8 @@ const ItemCharacterConstellation = ({
     <li>
       <Card className='py-5 px-8 bg-color-darkest'>
         <CardBody>
-          <div className='flex gap-8'>
-            <article className='w-64 space-y-4'>
+          <div className='grid grid-cols-12 gap-8'>
+            <article className='space-y-4 col-span-2'>
               <Avatar
                 src={constellation.imageUrl!}
                 size='lg'
@@ -72,7 +72,9 @@ const ItemCharacterConstellation = ({
               </h3>
             </article>
 
-            <Output description={constellation.description!} />
+            <div className='col-span-10'>
+              <Output description={constellation.description!} />
+            </div>
           </div>
         </CardBody>
 
