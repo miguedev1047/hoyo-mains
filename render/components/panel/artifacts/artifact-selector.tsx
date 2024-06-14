@@ -142,6 +142,7 @@ const ArtifactSelector = ({
         isLoading={isPending}
         className='bg-color-light text-color-darkest font-bold'
         type='submit'
+        size='lg'
       >
         Añadir Artefactos
       </Button>

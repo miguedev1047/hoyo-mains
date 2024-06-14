@@ -145,6 +145,7 @@ const WeaponSelector = ({
         isLoading={isPending}
         className='bg-color-light text-color-darkest font-bold'
         type='submit'
+        size='lg'
       >
         Añadir Armas
       </Button>
