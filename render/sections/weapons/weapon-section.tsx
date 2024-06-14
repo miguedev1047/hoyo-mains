@@ -1,96 +1,73 @@
 'use client'
 
-import { fetcher } from '@/utils/helpers/fetcher'
-import { Button } from '@nextui-org/button'
-import { Weapon } from '@prisma/client'
+import { useState } from 'react'
 import { Divider } from '@nextui-org/divider'
 import { Input } from '@nextui-org/input'
-import { IconSearch } from '@tabler/icons-react'
-import { usePathname, useSearchParams } from 'next/navigation'
+import { IconFilter, IconSearch } from '@tabler/icons-react'
+import { useRouter } from 'next/navigation'
 import { weaponItems } from '@/constants'
-import AlertError from '@/render/components/UI/errors/alert-error'
-import PanelLoader from '@/render/components/UI/loaders/panel-loader'
-import NoItems from '@/render/components/UI/no-items'
-import ItemWeapon from '@/render/components/panel/weapons/item-weapon'
-import Link from 'next/link'
-import useSWR from 'swr'
+import { Chip, Select, SelectItem, Selection } from '@nextui-org/react'
+import { InputWrapper, selectInputWrapper } from '@/utils/classes'
+import WeaponList from '@/render/components/panel/weapons/list-weapon'
 
 const WeaponsSection = () => {
-  const pathanme = usePathname()
-  const searchParams = useSearchParams()
+  const router = useRouter()
 
-  const paramsToString = searchParams.toString().length > 0
-  const query = paramsToString ? `?${searchParams}` : ''
-  const url = `${pathanme}${query}`
+  const [searchValue, setSearchedWeapon] = useState('')
+  const [selectedWeapon, setSelectedWeapon] = useState<Selection>(
+    new Set(['/panel/weapons'])
+  )
+
+  const handleSelectWeapon = (weapon: Selection) => {
+    setSelectedWeapon(weapon)
+
+    const data = Object.values(weapon)[0]
+    router.push(data)
+  }
 
   return (
     <section className='space-y-4'>
       <Divider />
-      <nav className='w-full'>
-        <ol className='grid grid-cols-6 gap-2'>
-          {weaponItems.map((item) => (
-            <li key={item.name}>
-              <Button
-                radius='sm'
-                as={Link}
-                href={item.url}
-                fullWidth
-                size='lg'
-                className={`text-color-darkest font-medium ${
-                  url === item.url ? 'bg-color-lightest' : 'bg-color-gray'
-                } `}
-              >
-                {item.name}
-              </Button>
-            </li>
-          ))}
-        </ol>
+      <nav className='w-full grid grid-cols-6 gap-2'>
+        <Input
+          size='md'
+          label='Buscar arma'
+          classNames={InputWrapper}
+          className='col-span-4'
+          startContent={<IconSearch />}
+          placeholder='Escribe el nombre del arma...'
+          value={searchValue}
+          onValueChange={setSearchedWeapon}
+        />
+        <Select
+          label='Filtrar por arma'
+          className='col-span-2'
+          classNames={selectInputWrapper}
+          items={weaponItems}
+          startContent={<IconFilter />}
+          placeholder='Selecciona un arma...'
+          defaultSelectedKeys={selectedWeapon}
+          onSelectionChange={handleSelectWeapon}
+          renderValue={(items) => {
+            return items.map((item) => (
+              <Chip radius='sm' size='sm' key={item.key}>
+                {item.data?.name}
+              </Chip>
+            ))
+          }}
+        >
+          {(weapon) => (
+            <SelectItem key={weapon.url} value={weapon.url}>
+              {weapon.name}
+            </SelectItem>
+          )}
+        </Select>
       </nav>
       <Divider />
 
-      <WeaponList />
+      <WeaponList searchValue={searchValue} />
     </section>
   )
 }
 
 export default WeaponsSection
-
-const WeaponList = () => {
-  const pathanme = usePathname()
-  const searchParams = useSearchParams()
-
-  const url = `${pathanme}?${searchParams}`
-  const queryParams = url.split('?')[1]
-
-  // Fetch weapons
-  const {
-    data: weapons,
-    isLoading,
-    error
-  } = useSWR<Weapon[]>(`/api/weapons?${queryParams}`, fetcher)
-
-  // Condicionales de renderizado
-  if (error)
-    return <AlertError message='Hubo un problema al cargar las armas.' />
-
-  if (isLoading) return <PanelLoader />
-
-  if (!weapons?.length) return <NoItems message='No hay armas para mostrar.' />
-
-  return (
-    <ol className='w-full grid grid-cols-4 gap-4'>
-      <Input
-        size='lg'
-        aria-label='Buscar arma'
-        variant='underlined'
-        className='col-span-4'
-        startContent={<IconSearch />}
-        placeholder='Escribe el nombre del arma...'
-      />
-
-      {weapons?.map((weapon) => (
-        <ItemWeapon key={weapon.id} weapon={weapon} />
-      ))}
-    </ol>
-  )
-}
