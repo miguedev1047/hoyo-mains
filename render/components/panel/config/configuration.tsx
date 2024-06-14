@@ -51,14 +51,15 @@ const Configuration = ({
   })
 
   return (
-    <div className='w-full space-y-4'>
+    <div className='col-span-4 space-y-4'>
       <h3 className='text-xl font-semibold text-secondary-color'>
-        <span className='capitalize'>{character?.name} </span> Configuraciones
+        Configuraciones
       </h3>
       <Popover
         isOpen={isOpen}
         onOpenChange={(open) => setIsOpen(open)}
         backdrop='opaque'
+        placement='bottom'
       >
         <PopoverTrigger>
           <Button

@@ -49,6 +49,8 @@ const CharacterSection = ({ characterName }: { characterName: string }) => {
         </CardHeader>
         <Divider />
         <CardBody className='grid grid-cols-4 gap-12'>
+          <Configuration character={character} />
+          <Divider className='col-span-4' />
           <CharacterAscension character={character} />
           <Divider className='col-span-4' />
           <CharacterMaterials character={character} />
@@ -63,11 +65,8 @@ const CharacterSection = ({ characterName }: { characterName: string }) => {
           <CharacterTeams character={character} />
           <Divider className='col-span-4' />
           <SkillsTabs character={character} />
+          <Divider className='col-span-4' />
         </CardBody>
-        <Divider />
-        <CardFooter>
-          <Configuration character={character} />
-        </CardFooter>
       </Card>
     </section>
   )
