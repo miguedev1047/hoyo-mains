@@ -1,85 +1,71 @@
 'use client'
 
-import { materialItems } from '@/constants'
-import { fetcher } from '@/utils/helpers/fetcher'
-import { Button } from '@nextui-org/button'
-import { Material } from '@prisma/client'
 import { Divider } from '@nextui-org/divider'
-import { usePathname, useSearchParams } from 'next/navigation'
-import AlertError from '@/render/components/UI/errors/alert-error'
-import NoItems from '@/render/components/UI/no-items'
-import PanelLoader from '@/render/components/UI/loaders/panel-loader'
-import useSWR from 'swr'
-import Link from 'next/link'
-import ItemMaterial from '@/render/components/panel/materials/item-material'
+import { useRouter } from 'next/navigation'
+import { useState } from 'react'
+import { Chip, Input, Select, SelectItem, Selection } from '@nextui-org/react'
+import { InputWrapper, selectInputWrapper } from '@/utils/classes'
+import { IconFilter, IconSearch } from '@tabler/icons-react'
+import { materialItems } from '@/constants'
+import MaterialList from '@/render/components/panel/materials/list-material'
 
 const MaterialsSection = () => {
-  const pathanme = usePathname()
-  const searchParams = useSearchParams()
+  const router = useRouter()
 
-  const paramsToString = searchParams.toString().length > 0
-  const query = paramsToString ? `?${searchParams}` : ''
-  const url = `${pathanme}${query}`
+  const [searchValue, setSearchedMaterial] = useState('')
+  const [selectedMaterial, setSelectedMaterial] = useState<Selection>(
+    new Set(['/panel/materials'])
+  )
+
+  const handleSelectMaterial = (weapon: Selection) => {
+    setSelectedMaterial(weapon)
+
+    const data = Object.values(weapon)[0]
+    router.push(data)
+  }
 
   return (
     <section className='space-y-4'>
       <Divider />
-      <nav className='w-full'>
-        <ol className='grid grid-cols-4 gap-2'>
-          {materialItems.map((item) => (
-            <li key={item.name}>
-              <Button
-                radius='sm'
-                as={Link}
-                href={item.url}
-                fullWidth
-                size='lg'
-                className={`text-color-darkest font-medium ${
-                  url === item.url ? 'bg-color-lightest' : 'bg-color-gray'
-                } `}
-              >
-                {item.name}
-              </Button>
-            </li>
-          ))}
-        </ol>
+      <nav className='w-full grid grid-cols-6 gap-2'>
+        <Input
+          size='md'
+          label='Buscar material'
+          classNames={InputWrapper}
+          className='col-span-4'
+          startContent={<IconSearch />}
+          placeholder='Escribe el nombre del material...'
+          value={searchValue}
+          onValueChange={setSearchedMaterial}
+        />
+        <Select
+          label='Filtrar por material'
+          className='col-span-2'
+          classNames={selectInputWrapper}
+          items={materialItems}
+          startContent={<IconFilter />}
+          placeholder='Selecciona un arma...'
+          defaultSelectedKeys={selectedMaterial}
+          onSelectionChange={handleSelectMaterial}
+          renderValue={(items) => {
+            return items.map((item) => (
+              <Chip radius='sm' size='sm' key={item.key}>
+                {item.data?.name}
+              </Chip>
+            ))
+          }}
+        >
+          {(material) => (
+            <SelectItem key={material.url} value={material.url}>
+              {material.name}
+            </SelectItem>
+          )}
+        </Select>
       </nav>
       <Divider />
 
-      <MaterialList />
+      <MaterialList searchValue={searchValue} />
     </section>
-  )
-}
-
-const MaterialList = () => {
-  const pathanme = usePathname()
-  const searchParams = useSearchParams()
-
-  const url = `${pathanme}?${searchParams}`
-  const queryParams = url.split('?')[1]
-
-  // Fetch materials
-  const {
-    data: materials,
-    isLoading,
-    error
-  } = useSWR<Material[]>(`/api/materials?${queryParams}`, fetcher)
-
-  // Condicionales de renderizado
-  if (error)
-    return <AlertError message='Hubo un problema al cargar los materiales.' />
-
-  if (isLoading) return <PanelLoader />
-
-  if (!materials?.length)
-    return <NoItems message='No hay materiales para mostrar' />
-
-  return (
-    <ol className='w-full grid grid-cols-4 gap-4'>
-      {materials?.map((material) => (
-        <ItemMaterial key={material.id} material={material} />
-      ))}
-    </ol>
   )
 }
 
