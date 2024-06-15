@@ -40,19 +40,21 @@ const CharacterItemCharacter = ({
           ref={provided.innerRef}
           {...provided.draggableProps}
           {...provided.dragHandleProps}
-          className='mx-2'
+          className='mb-4 lg:mx-2'
         >
-          <Card className='flex flex-col gap-4 p-5 bg-color-dark'>
+          <Card className='flex flex-col gap-2 md:gap-4 p-2 md:p-5 bg-color-dark'>
             <div className='flex items-center justify-between'>
               <div className='flex gap-2 items-center select-none'>
-                <IconGripVertical size={20} />
+                <span className='max-md:hidden'>
+                  <IconGripVertical size={20} />
+                </span>
                 <Avatar
                   radius='sm'
                   className='bg-primary-color'
                   src={dataCharacter?.imageUrl!}
                   alt={dataCharacter?.name}
                 />
-                <h3 className='text-lg font-semibold capitalize'>
+                <h3 className='text-sm md:text-lg font-semibold capitalize line-clamp-1'>
                   {dataCharacter?.name}
                 </h3>
               </div>

@@ -6,6 +6,7 @@ import { useEffect, useMemo, useState } from 'react'
 import { reOrder } from '@/utils/helpers/re-order'
 import { toast } from 'sonner'
 import CharacterItemCharacter from '@/render/components/panel/teams/character-item-character'
+import { useMediaQuery } from '@/utils/hooks/general/use-media-query'
 
 const SortableCharacterList = ({
   character,
@@ -14,6 +15,7 @@ const SortableCharacterList = ({
   character: Characters | undefined
   team: Team
 }) => {
+  const isDesktop = useMediaQuery('(min-width: 1280px)')
   const characters = useMemo(() => team.characters ?? [], [team])
   const [orderedList, setOrderedList] = useState<CharacterByTeam[] | undefined>(
     characters
@@ -53,16 +55,45 @@ const SortableCharacterList = ({
     }
   }
 
+  if (isDesktop)
+    return (
+      <DragDropContext onDragEnd={onDragEnd}>
+        <Droppable
+          direction='horizontal'
+          droppableId='characterList'
+          type='characterList'
+        >
+          {(provided) => (
+            <ol
+              className='grid grid-cols-4 '
+              ref={provided.innerRef}
+              {...provided.droppableProps}
+            >
+              {orderedList?.map((characterData, index) => (
+                <CharacterItemCharacter
+                  key={characterData.id}
+                  index={index}
+                  team={characterData}
+                  character={character}
+                />
+              ))}
+              {provided.placeholder}
+            </ol>
+          )}
+        </Droppable>
+      </DragDropContext>
+    )
+
   return (
     <DragDropContext onDragEnd={onDragEnd}>
       <Droppable
-        direction='horizontal'
+        direction='vertical'
         droppableId='characterList'
         type='characterList'
       >
         {(provided) => (
           <ol
-            className='grid grid-cols-4'
+            className='grid grid-cols-1'
             ref={provided.innerRef}
             {...provided.droppableProps}
           >
