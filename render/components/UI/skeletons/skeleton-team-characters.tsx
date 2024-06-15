@@ -4,7 +4,7 @@ import { IconGripVertical } from '@tabler/icons-react'
 
 const SkeletonTeamCharacters = () => {
   return (
-    <Card className='flex flex-row items-center justify-between gap-2 p-5 bg-color-dark mx-2'>
+    <Card className='flex flex-row items-center justify-between gap-2 p-5 bg-color-dark max-xl:mb-4 mx-2'>
       <div className='flex items-end gap-4'>
         <div className='flex items-center gap-2'>
           <IconGripVertical size={20} />

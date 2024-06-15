@@ -4,7 +4,7 @@ import PanelLayout from '@/render/layouts/panel-layout'
 
 export const metadata: Metadata = {
   title: {
-    default: sitePanel.name,
+    default: 'Admin Panel',
     template: `%s - ${sitePanel.name}`
   },
   description: sitePanel.description,

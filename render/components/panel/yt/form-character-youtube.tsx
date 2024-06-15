@@ -95,7 +95,7 @@ const FormCharacterYoutube = ({
           {videoGuide?.youtuberName ? 'Editar' : 'Añadir'} Video Guía
         </Button>
       </PopoverTrigger>
-      <PopoverContent className='bg-color-dark rounded-lg p-4'>
+      <PopoverContent className='bg-color-dark rounded-lg p-4 w-[275px] xs:w-[375px] sm:w-[480px] md:w-[640px]'>
         <form onSubmit={onSubmit} className='w-full space-y-2'>
           <h3 className='text-lg md:text-2xl font-semibold capitalize text-secondary-color mb-4'>
             {character?.name} Video Guía

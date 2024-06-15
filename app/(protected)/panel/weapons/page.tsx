@@ -1,3 +1,4 @@
+import { SectionFallback } from '@/render/components/UI/fallbacks'
 import { Suspense } from 'react'
 import { IconSword } from '@tabler/icons-react'
 import Header from '@/render/components/panel/header'
@@ -7,7 +8,7 @@ import PanelWrapper from '@/render/components/UI/panel-wrapper'
 
 const WeaponsPage = () => {
   return (
-    <Suspense>
+    <Suspense fallback={<SectionFallback />}>
       <PanelWrapper>
         <Header title='Armas' startContent={<IconSword size={32} />} />
 

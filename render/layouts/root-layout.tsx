@@ -14,7 +14,7 @@ export default function RootLayout({
       <head />
       <body
         className={clsx(
-          'app-theme min-h-screen bg-background font-sans antialiased',
+          'app-theme bg-background font-sans antialiased',
           fontDM_Sans.variable
         )}
       >

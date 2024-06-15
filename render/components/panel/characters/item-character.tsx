@@ -51,9 +51,10 @@ const ItemCharacter = ({ character }: Props) => {
       <Card
         as={Link}
         href={url}
+        isPressable
         isDisabled={isPending}
         className={clsx(
-          'bg-color-dark border-2 p-0 aspect-square five-star',
+          'bg-color-dark border-2 p-0 aspect-square',
           getStarBorderColor(character.stars)
         )}
       >

@@ -72,7 +72,7 @@ const Configuration = ({
             Configuración del personaje
           </Button>
         </PopoverTrigger>
-        <PopoverContent className='bg-color-darkest p-4'>
+        <PopoverContent className='bg-color-darkest p-4 w-[275px] xs:w-[375px] sm:w-[480px] md:w-[640px]'>
           <div className='w-full space-y-4'>
             <h3 className='text-base md:text-xl font-semibold text-secondary-color'>
               Configuraciones

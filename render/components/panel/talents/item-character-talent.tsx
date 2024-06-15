@@ -57,49 +57,47 @@ const ItemCharacterTalent = ({
   }
 
   return (
-    <li>
-      <Card className='px-2 py-5 md:px-8 bg-color-darkest space-y-3'>
-        <CardHeader>
-          <article className='w-full flex items-center max-md:justify-between gap-4'>
-            <Image
-              className='w-20 h-20 bg-primary-color p-4 object-cover'
-              src={talent.imageUrl!}
-              alt={talent.name}
-            />
-            <h3 className='text-xl font-semibold text-secondary-color line-clamp-1'>
-              {talent.name}
-            </h3>
-          </article>
-        </CardHeader>
-        <Divider />
-        <CardBody>
-          <Output description={talent.description!} />
-        </CardBody>
-        <Divider />
-        <CardFooter>
-          <div className='w-full grid grid-cols-1 lg:grid-cols-2 gap-4'>
-            <Button
-              size='lg'
-              color='danger'
-              isLoading={isPending}
-              startContent={<IconTrash />}
-              className='bg-color-red font-bold'
-              onPress={() => handleDelete(talent.id)}
-            >
-              Eliminar
-            </Button>
-            <Button
-              size='lg'
-              startContent={<IconPencil />}
-              onPress={() => handleEdit(talent.id)}
-              className='bg-color-light font-bold text-color-darkest'
-            >
-              Editar
-            </Button>
-          </div>
-        </CardFooter>
-      </Card>
-    </li>
+    <Card as='li' className='px-2 py-5 md:px-8 bg-color-darkest space-y-3'>
+      <CardHeader>
+        <article className='w-full flex items-center max-md:justify-between gap-4'>
+          <Image
+            className='w-20 h-20 bg-primary-color p-4 object-cover'
+            src={talent.imageUrl!}
+            alt={talent.name}
+          />
+          <h3 className='text-xl font-semibold text-secondary-color line-clamp-1'>
+            {talent.name}
+          </h3>
+        </article>
+      </CardHeader>
+      <Divider />
+      <CardBody>
+        <Output description={talent.description!} />
+      </CardBody>
+      <Divider />
+      <CardFooter>
+        <div className='w-full grid grid-cols-1 lg:grid-cols-2 gap-4'>
+          <Button
+            size='lg'
+            color='danger'
+            isLoading={isPending}
+            startContent={<IconTrash />}
+            className='bg-color-red font-bold'
+            onPress={() => handleDelete(talent.id)}
+          >
+            Eliminar
+          </Button>
+          <Button
+            size='lg'
+            startContent={<IconPencil />}
+            onPress={() => handleEdit(talent.id)}
+            className='bg-color-light font-bold text-color-darkest'
+          >
+            Editar
+          </Button>
+        </div>
+      </CardFooter>
+    </Card>
   )
 }
 

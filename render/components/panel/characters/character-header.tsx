@@ -24,10 +24,7 @@ const CharacterHeader = ({
             isBlurred
             width={120}
             height={120}
-            className={clsx(
-              'bg-color-dark border-2 p-0 aspect-square five-star',
-              getStarBorderColor(character?.stars!)
-            )}
+            className={clsx('bg-color-dark border-2 p-0 aspect-square')}
             src={character?.imageUrl!}
             alt={character?.name}
           />

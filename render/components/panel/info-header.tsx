@@ -24,7 +24,7 @@ const InfoHeader = ({ title, startContent }: HeaderProps) => {
       >
         <NavbarBrand className='space-x-3'>
           <ButtonMenu />
-          <Chip className='bg-color-dark rounded-3xl px-5 py-8'>
+          <Chip className='max-xs:hidden bg-color-dark rounded-3xl px-5 py-8'>
             <div className='flex items-center gap-2'>
               {startContent}
               <h1 className='text-lg md:text-2xl font-medium capitalize'>

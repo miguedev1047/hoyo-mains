@@ -102,7 +102,7 @@ const FormBestStat = ({ character }: { character: Characters | undefined }) => {
             label='Reloj'
             isInvalid={!!errors.sandStat}
             errorMessage={errors.sandStat?.message}
-            className={`col-span-1 rounded-xl border-2 ${classEdit}`}
+            className={`col-span-3 lg:col-span-1 rounded-xl border-2 ${classEdit}`}
             classNames={InputWrapper}
             placeholder='Recarga de Energía'
             size='lg'
@@ -120,7 +120,7 @@ const FormBestStat = ({ character }: { character: Characters | undefined }) => {
             label='Caliz'
             isInvalid={!!errors.globetStat}
             errorMessage={errors.globetStat?.message}
-            className={`col-span-1 rounded-xl border-2 ${classEdit}`}
+            className={`col-span-3 lg:col-span-1 rounded-xl border-2 ${classEdit}`}
             classNames={InputWrapper}
             placeholder='Bono daño Hydro'
             size='lg'
@@ -138,7 +138,7 @@ const FormBestStat = ({ character }: { character: Characters | undefined }) => {
             label='Tiara'
             isInvalid={!!errors.circletStat}
             errorMessage={errors.circletStat?.message}
-            className={`col-span-1 rounded-xl border-2 ${classEdit}`}
+            className={`col-span-3 lg:col-span-1 rounded-xl border-2 ${classEdit}`}
             classNames={InputWrapper}
             placeholder='Daño Crítico / Probabilidad Crítico'
             size='lg'

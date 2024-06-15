@@ -17,6 +17,7 @@ const Output = ({ description }: { description: string }) => {
   }, [description, editor])
 
   if (!editor) return null
+
   return (
     <div className='w-auto text-sm md:text-base output-text'>
       {parse(editor.getHTML())}
