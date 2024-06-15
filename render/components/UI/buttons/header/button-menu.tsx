@@ -18,7 +18,7 @@ const ButtonMenu = () => {
         color='success'
         isIconOnly
       >
-        <IconLayoutSidebar size={40} />
+        <IconLayoutSidebar size={32} />
       </Button>
     )
   }
@@ -34,7 +34,7 @@ const ButtonMenu = () => {
       color='success'
       isIconOnly
     >
-      <IconLayoutSidebar size={40} />
+      <IconLayoutSidebar size={32} />
     </Button>
   )
 }

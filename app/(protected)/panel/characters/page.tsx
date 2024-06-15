@@ -7,7 +7,7 @@ import CharactersSection from '@/render/sections/characters/characters-section'
 const CharactersPage = () => {
   return (
     <PanelWrapper>
-      <Header title='Personajes' startContent={<IconUsers size={40} />} />
+      <Header title='Personajes' startContent={<IconUsers size={32} />} />
 
       <CharactersSection />
 

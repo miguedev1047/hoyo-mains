@@ -37,7 +37,7 @@ const MaterialList = ({ searchValue }: { searchValue: string }) => {
     return <NoItems message='No se ha podido encontrar este material.' />
 
   return (
-    <ol className='w-full grid grid-cols-4 gap-4'>
+    <ol className='w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4'>
       {filteredMaterial?.map((material) => (
         <ItemMaterial key={material.id} material={material} />
       ))}

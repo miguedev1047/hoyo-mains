@@ -9,7 +9,7 @@ const WeaponsPage = () => {
   return (
     <Suspense>
       <PanelWrapper>
-        <Header title='Armas' startContent={<IconSword size={40} />} />
+        <Header title='Armas' startContent={<IconSword size={32} />} />
 
         <WeaponsSection />
 

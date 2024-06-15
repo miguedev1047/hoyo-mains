@@ -63,7 +63,7 @@ const Sidebar = () => {
             onPress={() => onOpenChange()}
             className='bg-transparent text-2xl font-medium px-0'
             color='primary'
-            startContent={<IconLayoutSidebar size={40} />}
+            startContent={<IconLayoutSidebar size={32} />}
           >
             Admin Panel
           </Button>

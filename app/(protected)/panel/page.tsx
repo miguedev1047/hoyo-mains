@@ -10,7 +10,7 @@ const PanelHome = async () => {
   
   return (
     <PanelWrapper>
-      <Header title='Inicio' startContent={<IconHome size={40} />} />
+      <Header title='Inicio' startContent={<IconHome size={32} />} />
 
       <Divider />
 

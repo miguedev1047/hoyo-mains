@@ -32,7 +32,7 @@ const ArtifactList = ({ searchValue }: { searchValue: string }) => {
     )
 
   return (
-    <ol className='w-full grid grid-cols-4 gap-4'>
+    <ol className='w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4'>
       {artifactFiltered?.map((artifact) => (
         <ItemArtifact key={artifact.id} artifact={artifact} />
       ))}

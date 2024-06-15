@@ -11,7 +11,7 @@ const MaterialPage = () => {
       <PanelWrapper>
         <Header
           title='Materiales'
-          startContent={<IconSquareRotated size={40} />}
+          startContent={<IconSquareRotated size={32} />}
         />
 
         <MaterialsSection />

@@ -1,3 +1,4 @@
+import { Chip } from '@nextui-org/react'
 import {
   Navbar,
   NavbarBrand,
@@ -23,8 +24,12 @@ const Header = ({ title, startContent }: HeaderProps) => {
       >
         <NavbarBrand className='space-x-3'>
           <ButtonMenu />
-          {startContent}
-          <h1 className='text-2xl lg:text-4xl font-medium'>{title}</h1>
+          <Chip className='bg-color-dark rounded-3xl px-5 py-8'>
+            <div className='flex items-center gap-2'>
+              {startContent}
+              <h1 className='text-lg md:text-2xl font-medium'>{title}</h1>
+            </div>
+          </Chip>
         </NavbarBrand>
         <NavbarContent justify='end'>
           <NavbarItem>
