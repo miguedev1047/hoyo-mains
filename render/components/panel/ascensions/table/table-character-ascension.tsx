@@ -47,7 +47,7 @@ const TableCharacterAscension = ({
           )
         case 'materials':
           return (
-            <ol className='grid grid-cols-4'>
+            <ol className='min-w-[975px] grid grid-cols-4'>
               {ascension.materials.map((material) => (
                 <ItemMaterial
                   key={material.id}
@@ -72,7 +72,7 @@ const TableCharacterAscension = ({
     <>
       <Table
         classNames={{
-          wrapper: 'bg-color-darkest',
+          wrapper: 'bg-color-darkest ',
           th: 'text-color-lightest bg-color-dark'
         }}
         aria-label='Materials'

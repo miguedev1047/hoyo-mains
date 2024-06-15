@@ -10,7 +10,7 @@ import {
   PopoverTrigger,
   PopoverContent,
   Input,
-  Button,
+  Button
 } from '@nextui-org/react'
 import { Material } from '@prisma/client'
 import { IconCheck } from '@tabler/icons-react'
@@ -41,8 +41,6 @@ const ItemMaterial = ({
 
   const {
     handleSubmit,
-    reset,
-    setValue,
     formState: { errors },
     control
   } = useForm<z.infer<typeof AscensionQuantitySchema>>({
