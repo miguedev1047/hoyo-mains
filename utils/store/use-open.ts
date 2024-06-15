@@ -10,6 +10,11 @@ interface modalStore {
   setModalId: (id: string) => void
 }
 
+interface sidebarStore {
+  isOpen: boolean
+  onOpenChange: () => void
+}
+
 export const useModalStore = create<modalStore>((set) => ({
   activeModal: {
     id: '',
@@ -20,4 +25,9 @@ export const useModalStore = create<modalStore>((set) => ({
     set((state) => ({ activeModal: { ...state.activeModal, name } })),
   setModalId: (id: string) =>
     set((state) => ({ activeModal: { ...state.activeModal, id } }))
+}))
+
+export const useSidebarStore = create<sidebarStore>((set) => ({
+  isOpen: false,
+  onOpenChange: () => set((state) => ({ isOpen: !state.isOpen }))
 }))

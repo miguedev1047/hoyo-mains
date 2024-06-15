@@ -43,7 +43,7 @@ const CharacterSection = ({ characterName }: { characterName: string }) => {
 
   return (
     <section>
-      <Card className='dark:bg-color-dark/50 py-4 px-32'>
+      <Card className='dark:bg-color-dark/50 py-4 px-1 sm:px-4 md:px-8 lg:px-32'>
         <CardHeader>
           <CharacterHeader character={character} />
         </CardHeader>

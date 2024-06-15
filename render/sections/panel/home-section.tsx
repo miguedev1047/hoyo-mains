@@ -9,12 +9,12 @@ const HomeSection = ({ user }: { user: User }) => {
   return (
     <section className='space-y-8'>
       <article className='text-center font-semibold space-y-4'>
-        <h1 className='text-5xl'>
+        <h1 className='text-xl md:text-3xl lg:text-5xl'>
           ¡Bienvenido <span className='text-color-red'>{user?.name}</span>! 🎉
         </h1>
       </article>
 
-      <ol className='w-full flex gap-4'>
+      <ol className='w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4'>
         {homeItems.map((item) => (
           <li
             key={item.title}

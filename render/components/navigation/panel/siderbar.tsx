@@ -1,9 +1,9 @@
 'use client'
 
 import {
-  IconBooks,
   IconHome,
   IconHourglassEmpty,
+  IconLayoutSidebar,
   IconSquareRotated,
   IconSword,
   IconUsers
@@ -11,9 +11,12 @@ import {
 import { Card, CardBody, CardHeader } from '@nextui-org/card'
 import { Listbox, ListboxItem } from '@nextui-org/listbox'
 import { usePathname } from 'next/navigation'
+import { useSidebarStore } from '@/utils/store/use-open'
+import { Button } from '@nextui-org/button'
+import { Divider } from '@nextui-org/react'
 
 const navInfo = {
-  title: 'HoYo Mains',
+  title: 'Admin Panel',
   items: [
     {
       href: '/panel',
@@ -45,14 +48,28 @@ const navInfo = {
 
 const Sidebar = () => {
   const pathname = usePathname()
-  return (
-    <nav>
-      <Card className='w-[250px] hidden lg:block h-[calc(100vh_-_4rem)] sticky top-8  bg-color-dark z-20'>
-        <CardHeader>
-          <h1 className='text-2xl font-bold mx-auto'>{navInfo.title}</h1>
-        </CardHeader>
+  const isOpen = useSidebarStore((state) => state.isOpen)
+  const onOpenChange = useSidebarStore((state) => state.onOpenChange)
 
-        <CardBody>
+  return (
+    <nav
+      className={`${
+        isOpen ? 'w-0 mr-0' : 'w-[220px] mr-2 lg:mr-4'
+      } hidden md:block transition-all ease-in-out duration-250`}
+    >
+      <Card className='h-[calc(100vh_-_1rem)] lg:h-[calc(100vh_-_2.5rem)] sticky top-2 lg:top-5 bg-color-dark z-20 space-y-4'>
+        <CardHeader className=' h-full max-h-[96px] p-4'>
+          <Button
+            onPress={() => onOpenChange()}
+            className='bg-transparent'
+            color='primary'
+            isIconOnly
+          >
+            <IconLayoutSidebar size={40} />
+          </Button>
+        </CardHeader>
+        <Divider />
+        <CardBody className='py-0'>
           <Listbox aria-label='Panel Dashboard'>
             {navInfo.items.map((item, index) => (
               <ListboxItem

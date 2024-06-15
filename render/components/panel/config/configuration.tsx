@@ -51,7 +51,7 @@ const Configuration = ({
   })
 
   return (
-    <div className='col-span-4 space-y-4'>
+    <div className='w-full col-span-4 space-y-4'>
       <h3 className='text-xl font-semibold text-secondary-color'>
         Configuraciones
       </h3>
@@ -72,11 +72,10 @@ const Configuration = ({
             Configuración del personaje
           </Button>
         </PopoverTrigger>
-        <PopoverContent className='bg-color-darkest p-4 max-w-full w-[640px]'>
+        <PopoverContent className='bg-color-darkest p-4'>
           <div className='w-full space-y-4'>
-            <h3 className='text-xl font-semibold text-secondary-color'>
-              Configuración de{' '}
-              <span className='capitalize'>{character?.name}</span>
+            <h3 className='text-base md:text-xl font-semibold text-secondary-color'>
+              Configuraciones
             </h3>
             <form onSubmit={onSubmit} className='flex flex-col space-y-4'>
               <Controller
@@ -88,7 +87,9 @@ const Configuration = ({
                     isSelected={field.value}
                     onValueChange={field.onChange}
                   >
-                    Visible para otros usuarios
+                    <span className='max-md:text-xs'>
+                      Visible para otros usuarios
+                    </span>
                   </Switch>
                 )}
               />
@@ -102,7 +103,9 @@ const Configuration = ({
                     isSelected={field.value}
                     onValueChange={field.onChange}
                   >
-                    Marcar como nuevo personaje
+                    <span className='max-md:text-xs'>
+                      Marcar como nuevo personaje
+                    </span>
                   </Switch>
                 )}
               />
