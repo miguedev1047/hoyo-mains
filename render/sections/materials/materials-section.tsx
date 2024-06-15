@@ -32,7 +32,7 @@ const MaterialsSection = () => {
           size='md'
           label='Buscar material'
           classNames={InputWrapper}
-          className='col-span-4'
+          className='col-span-6 md:col-span-4'
           startContent={<IconSearch />}
           placeholder='Escribe el nombre del material...'
           value={searchValue}
@@ -40,7 +40,7 @@ const MaterialsSection = () => {
         />
         <Select
           label='Filtrar por material'
-          className='col-span-2'
+          className='col-span-6 md:col-span-2'
           classNames={selectInputWrapper}
           items={materialItems}
           startContent={<IconFilter />}

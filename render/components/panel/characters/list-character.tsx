@@ -35,7 +35,7 @@ const ListCharacter = ({ characterFilters }: Props) => {
     return <NoItems message='No se ha podido encontrar este personaje.' />
 
   return (
-    <ol className='w-full grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 2xl:grid-cols-8 gap-4'>
+    <ol className='w-full grid grid-cols-2 xs:grid-cols-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 2xl:grid-cols-8 gap-4'>
       {filteredCharacter?.map((character) => (
         <ItemCharacter key={character.id} character={character} />
       ))}

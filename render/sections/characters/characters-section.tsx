@@ -45,7 +45,7 @@ const CharactersSection = () => {
           size='md'
           label='Buscar personaje'
           classNames={InputWrapper}
-          className='col-span-4'
+          className='col-span-6 md:col-span-4'
           startContent={<IconSearch />}
           placeholder='Escribe el nombre del personaje...'
           value={characterFilters.searchValue}
@@ -53,7 +53,7 @@ const CharactersSection = () => {
         />
         <Select
           label='Filtrar por elemento'
-          className='col-span-2'
+          className='col-span-6 md:col-span-2'
           classNames={selectInputWrapper}
           items={elements}
           startContent={<IconFilter />}

@@ -18,7 +18,6 @@ const ArtifactSection = () => {
           size='md'
           label='Buscar artfefacto'
           classNames={InputWrapper}
-          className='col-span-4'
           startContent={<IconSearch />}
           placeholder='Escribe el nombre del artefacto...'
           value={searchValue}

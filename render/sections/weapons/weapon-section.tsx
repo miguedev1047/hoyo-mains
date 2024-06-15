@@ -33,7 +33,7 @@ const WeaponsSection = () => {
           size='md'
           label='Buscar arma'
           classNames={InputWrapper}
-          className='col-span-4'
+          className='col-span-6 md:col-span-4'
           startContent={<IconSearch />}
           placeholder='Escribe el nombre del arma...'
           value={searchValue}
@@ -41,7 +41,7 @@ const WeaponsSection = () => {
         />
         <Select
           label='Filtrar por arma'
-          className='col-span-2'
+          className='col-span-6 md:col-span-2'
           classNames={selectInputWrapper}
           items={weaponItems}
           startContent={<IconFilter />}
