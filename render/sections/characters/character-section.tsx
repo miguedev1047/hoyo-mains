@@ -56,6 +56,7 @@ const CharacterSection = ({ characterName }: { characterName: string }) => {
           <CharacterMaterials character={character} />
           <Divider className='col-span-4' />
           <CharacterWeapons character={character} />
+          <Divider className='col-span-4 lg:hidden' />
           <CharacterArtifacts character={character} />
           <Divider className='col-span-4' />
           <CharacterBestStats character={character} />

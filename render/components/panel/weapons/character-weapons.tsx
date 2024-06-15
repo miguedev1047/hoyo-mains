@@ -8,7 +8,7 @@ const CharacterWeapons = ({
   character: Characters | undefined
 }) => {
   return (
-    <div className='col-span-2 space-y-4'>
+    <div className='col-span-4 lg:col-span-2 space-y-4'>
       <h3 className='text-xl font-semibold capitalize text-secondary-color'>
         {character?.name} Mejores Armas
       </h3>
