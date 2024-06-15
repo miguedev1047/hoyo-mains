@@ -15,19 +15,19 @@ const ItemBestStat = ({ character }: { character: Characters | undefined }) => {
 
   return (
     <div className='grid grid-cols-3 gap-4'>
-      <Card className='col-span-1 bg-color-darkest p-5 capitalize select-none'>
+      <Card className='col-span-3 lg:col-span-1 bg-color-darkest p-5 capitalize select-none'>
         <h3 className='text-base text-center capitalize font-light'>
           <span className='font-bold'>Reloj:</span>{' '}
           {character?.bestStats?.sandStat}
         </h3>
       </Card>
-      <Card className='col-span-1 bg-color-darkest p-5 capitalize select-none'>
+      <Card className='col-span-3 lg:col-span-1 bg-color-darkest p-5 capitalize select-none'>
         <h3 className='text-base text-center capitalize font-light'>
           <span className='font-bold'>Caliz:</span>{' '}
           {character?.bestStats?.globetStat}
         </h3>
       </Card>
-      <Card className='col-span-1 bg-color-darkest p-5 capitalize select-none'>
+      <Card className='col-span-3 lg:col-span-1 bg-color-darkest p-5 capitalize select-none'>
         <h3 className='text-base text-center capitalize font-light'>
           <span className='font-bold'>Tiara:</span>{' '}
           {character?.bestStats?.circletStat}
