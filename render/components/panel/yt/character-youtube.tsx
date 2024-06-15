@@ -21,7 +21,7 @@ const CharacterYoutube = ({
         </h3>
       </article>
 
-      <Card className='p-8 space-y-4 bg-color-darkest'>
+      <Card className='p-4 md:p-8 space-y-4 bg-color-darkest'>
         {videoGuide === videoIsNull && (
           <article className='text-xl text-color-gray/50 font-bold flex  flex-col items-center justify-center'>
             <Tooltip
@@ -43,7 +43,8 @@ const CharacterYoutube = ({
 
         {videoGuide !== videoIsNull && (
           <h3 className='text-lg'>
-            {character?.name} video guía por&nbsp;
+            <span className='capitalize'>{character?.name}</span> video guía
+            por&nbsp;
             <Link
               isExternal
               href={videoGuide?.youtuberChannel}
