@@ -2,10 +2,10 @@ import Sidebar from '@/render/components/navigation/panel/siderbar'
 
 const PanelLayout = ({ children }: { children: React.ReactNode }) => {
   return (
-    <div className='flex'>
+    <main className='flex'>
       <Sidebar />
       {children}
-    </div>
+    </main>
   )
 }
 
