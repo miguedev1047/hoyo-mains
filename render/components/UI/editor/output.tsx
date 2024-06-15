@@ -7,7 +7,7 @@ import parse from 'html-react-parser'
 
 const Output = ({ description }: { description: string }) => {
   const editor = useEditor({
-    extensions: [StarterKit.configure(), Color, TextStyle],
+    extensions: [StarterKit.configure() as any, Color, TextStyle],
     content: description
   })
 
@@ -17,7 +17,11 @@ const Output = ({ description }: { description: string }) => {
   }, [description, editor])
 
   if (!editor) return null
-  return <div className='w-full leading-8'>{parse(editor.getHTML())}</div>
+  return (
+    <div className='w-auto text-sm md:text-base output-text'>
+      {parse(editor.getHTML())}
+    </div>
+  )
 }
 
 export default Output

@@ -1,5 +1,5 @@
-import { Card, CardBody, CardFooter } from '@nextui-org/card'
-import { Avatar, Button } from '@nextui-org/react'
+import { Card, CardBody, CardFooter, CardHeader } from '@nextui-org/card'
+import { Button, Divider, Image } from '@nextui-org/react'
 import { IconPencil, IconTrash } from '@tabler/icons-react'
 import { CharacterTalents, Characters } from '@/types'
 import { deleteImage } from '@/utils/helpers/delete-image'
@@ -58,28 +58,26 @@ const ItemCharacterTalent = ({
 
   return (
     <li>
-      <Card className='py-5 px-8 bg-color-darkest'>
+      <Card className='px-2 py-5 md:px-8 bg-color-darkest space-y-3'>
+        <CardHeader>
+          <article className='w-full flex items-center max-md:justify-between gap-4'>
+            <Image
+              className='w-20 h-20 bg-primary-color p-4 object-cover'
+              src={talent.imageUrl!}
+              alt={talent.name}
+            />
+            <h3 className='text-xl font-semibold text-secondary-color line-clamp-1'>
+              {talent.name}
+            </h3>
+          </article>
+        </CardHeader>
+        <Divider />
         <CardBody>
-          <div className='grid grid-cols-12 gap-8'>
-            <article className='space-y-4 col-span-2'>
-              <Avatar
-                src={talent.imageUrl!}
-                size='lg'
-                className='w-20 h-20 mx-auto bg-primary-color p-4 object-cover'
-              />
-              <h3 className='text-xl font-semibold text-secondary-color text-center'>
-                {talent.name}
-              </h3>
-            </article>
-
-            <div className='col-span-10'>
-              <Output description={talent.description!} />
-            </div>
-          </div>
+          <Output description={talent.description!} />
         </CardBody>
-
+        <Divider />
         <CardFooter>
-          <div className='w-full grid grid-cols-2 gap-4'>
+          <div className='w-full grid grid-cols-1 lg:grid-cols-2 gap-4'>
             <Button
               size='lg'
               color='danger'

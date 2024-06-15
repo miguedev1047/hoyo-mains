@@ -1,6 +1,14 @@
 import { Characters, Constellations } from '@/types'
 import { IconPencil, IconTrash } from '@tabler/icons-react'
-import { Avatar, Button, Card, CardBody, CardFooter } from '@nextui-org/react'
+import {
+  Button,
+  Card,
+  CardBody,
+  CardFooter,
+  CardHeader,
+  Divider,
+  Image
+} from '@nextui-org/react'
 import { useModalStore } from '@/utils/store/use-open'
 import { useTransition } from 'react'
 import { deleteImage } from '@/utils/helpers/delete-image'
@@ -58,28 +66,26 @@ const ItemCharacterConstellation = ({
 
   return (
     <li>
-      <Card className='py-5 px-8 bg-color-darkest'>
+      <Card className='px-2 py-5 md:px-8 bg-color-darkest space-y-3'>
+        <CardHeader>
+          <article className='w-full flex items-center max-md:justify-between gap-4'>
+            <Image
+              className='w-20 h-20 bg-primary-color p-4 object-cover'
+              src={constellation.imageUrl!}
+              alt={constellation.name}
+            />
+            <h3 className='text-xl font-semibold text-secondary-color line-clamp-1'>
+              {constellation.name}
+            </h3>
+          </article>
+        </CardHeader>
+        <Divider />
         <CardBody>
-          <div className='grid grid-cols-12 gap-8'>
-            <article className='space-y-4 col-span-2'>
-              <Avatar
-                src={constellation.imageUrl!}
-                size='lg'
-                className='w-20 h-20 mx-auto bg-primary-color p-4 object-cover'
-              />
-              <h3 className='text-xl font-semibold text-secondary-color text-center'>
-                {constellation.name}
-              </h3>
-            </article>
-
-            <div className='col-span-10'>
-              <Output description={constellation.description!} />
-            </div>
-          </div>
+          <Output description={constellation.description!} />
         </CardBody>
-
+        <Divider />
         <CardFooter>
-          <div className='w-full grid grid-cols-2 gap-4'>
+          <div className='w-full grid grid-cols-1 lg:grid-cols-2 gap-4'>
             <Button
               size='lg'
               color='danger'

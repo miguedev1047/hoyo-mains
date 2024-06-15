@@ -28,7 +28,7 @@ const Editor = ({
   onChange: (richText: string) => void
 }) => {
   const editor = useEditor({
-    extensions: [StarterKit.configure(), Color, TextStyle],
+    extensions: [StarterKit.configure() as any, Color, TextStyle],
 
     content: description || placeholder,
     editorProps: {

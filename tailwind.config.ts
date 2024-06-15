@@ -8,6 +8,15 @@ module.exports = {
     './node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}'
   ],
   theme: {
+    screens: {
+      'sm': '640px',
+      'md': '768px',
+      'lg': '1024px',
+      'xl': '1280px',
+      '2xl': '1536px',
+      xs: '480px',
+      xls: '425px'
+    },
     extend: {
       colors: {
         'color-gray': '#C4C6CF',
