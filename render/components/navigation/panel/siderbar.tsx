@@ -14,6 +14,7 @@ import { usePathname } from 'next/navigation'
 import { useSidebarStore } from '@/utils/store/use-open'
 import { Button } from '@nextui-org/button'
 import { Divider } from '@nextui-org/react'
+import Link from 'next/link'
 
 const navInfo = {
   title: 'Admin Panel',
@@ -73,6 +74,7 @@ const Sidebar = () => {
           <Listbox aria-label='Panel Dashboard'>
             {navInfo.items.map((item, index) => (
               <ListboxItem
+                as={Link}
                 key={index}
                 href={item.href}
                 textValue={item.title}
