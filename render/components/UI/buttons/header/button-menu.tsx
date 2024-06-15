@@ -14,7 +14,7 @@ const ButtonMenu = () => {
     return (
       <Button
         onPress={() => onOpenChange()}
-        className='bg-transparent'
+        className='bg-transparent md:hidden'
         color='success'
         isIconOnly
       >
