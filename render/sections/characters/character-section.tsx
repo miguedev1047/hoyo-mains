@@ -18,9 +18,10 @@ import CharacterConstellations from '@/render/components/panel/constellations/ch
 import CharacterTeams from '@/render/components/panel/teams/character-teams'
 import CharacterAscension from '@/render/components/panel/ascensions/character-ascension'
 import Configuration from '@/render/components/panel/config/configuration'
-import CharacterHeader from '@/render/components/panel/character-header'
+import CharacterHeader from '@/render/components/panel/characters/character-header'
 import useSWR from 'swr'
 import SkillsTabs from '@/render/components/UI/tabs/skills-tabs'
+import InfoHeader from '@/render/components/panel/info-header'
 
 const CharacterSection = ({ characterName }: { characterName: string }) => {
   const API_CHARACTERS = `/api/characters/character?name=${characterName}`
@@ -42,7 +43,8 @@ const CharacterSection = ({ characterName }: { characterName: string }) => {
     )
 
   return (
-    <section>
+    <section className='space-y-4'>
+      <InfoHeader title={character.name} />
       <Card className='dark:bg-color-dark/50 py-4 px-1 sm:px-4 md:px-8'>
         <CardHeader>
           <CharacterHeader character={character} />

@@ -61,11 +61,11 @@ const Sidebar = () => {
         <CardHeader className=' h-full max-h-[96px] p-4'>
           <Button
             onPress={() => onOpenChange()}
-            className='bg-transparent'
+            className='bg-transparent text-2xl font-medium px-0'
             color='primary'
-            isIconOnly
+            startContent={<IconLayoutSidebar size={40} />}
           >
-            <IconLayoutSidebar size={40} />
+            Admin Panel
           </Button>
         </CardHeader>
         <Divider />
