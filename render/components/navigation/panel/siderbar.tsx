@@ -54,7 +54,7 @@ const Sidebar = () => {
   return (
     <nav
       className={`${
-        isOpen ? 'w-0 mr-0' : 'w-[220px] mr-2 lg:mr-4'
+        isOpen ? 'w-0 mr-0' : 'w-[275px] mr-2 lg:mr-4'
       } hidden md:block transition-all ease-in-out duration-250`}
     >
       <Card className='h-[calc(100vh_-_1rem)] lg:h-[calc(100vh_-_2.5rem)] sticky top-2 lg:top-5 bg-color-dark z-20 space-y-4'>

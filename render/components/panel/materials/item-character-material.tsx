@@ -52,7 +52,9 @@ const ItemCharacterMaterial = ({
                 }}
                 className='size-10 rounded-md object-cover p-1'
               />
-              <h3 className='text-lg font-semibold'>{dataMaterial?.name}</h3>
+              <h3 className='text-xs md:text-lg font-semibold line-clamp-1'>
+                {dataMaterial?.name}
+              </h3>
             </div>
 
             <ButtonDeleteMaterial character={character} material={material} />

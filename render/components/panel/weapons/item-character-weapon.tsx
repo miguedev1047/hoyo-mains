@@ -52,7 +52,7 @@ const ItemCharacterWeapon = ({
                 }}
                 className='size-10 rounded-md object-cover p-1'
               />
-              <h3 className='text-lg font-semibold'>{dataWeapon?.name}</h3>
+              <h3 className='text-xs md:text-lg font-semibold line-clamp-1'>{dataWeapon?.name}</h3>
             </div>
 
             <ButtonDeleteWeapon character={character} weapon={weapon} />
