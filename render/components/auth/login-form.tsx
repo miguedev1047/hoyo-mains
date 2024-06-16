@@ -6,12 +6,13 @@ import { Button } from '@nextui-org/button'
 import { useForm, Controller } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { LoginSchema } from '@/schemas'
-import { useTransition } from 'react'
+import { useState, useTransition } from 'react'
 import { toast } from 'sonner'
 import { login } from '@/render/services/auth/login'
 
 const LoginForm = () => {
   const [isPending, startTransition] = useTransition()
+  const [isError, setIsError] = useState('')
 
   const {
     handleSubmit,
@@ -35,6 +36,7 @@ const LoginForm = () => {
       }
 
       toast.error(error)
+      setIsError(error!)
       return
     })
   })
@@ -79,6 +81,10 @@ const LoginForm = () => {
               />
             )}
           />
+
+          <div>
+            {isError && <p className='text-sm text-color-red'>{isError}</p>}
+          </div>
         </CardBody>
         <CardFooter>
           <Button
