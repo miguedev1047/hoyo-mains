@@ -61,6 +61,8 @@ const ModalPassive = ({ character }: { character: Characters | undefined }) => {
                 </h3>
               </ModalHeader>
               <ModalBody className='grid grid-cols-2'>
+                <DropImage />
+
                 <Controller
                   name='name'
                   control={control}
@@ -93,8 +95,6 @@ const ModalPassive = ({ character }: { character: Characters | undefined }) => {
                     />
                   )}
                 />
-
-                <DropImage />
               </ModalBody>
               <ModalFooter>
                 <ModalButton isLoading={isPending}>

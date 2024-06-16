@@ -63,8 +63,8 @@ const WeaponModal = () => {
                 {isEditActive ? 'Editando arma' : 'Nuevo arma'}
               </ModalHeader>
               <ModalBody className='grid grid-cols-2'>
-              <DropImage />
-              
+                <DropImage />
+
                 <Controller
                   name='name'
                   control={control}
@@ -241,8 +241,6 @@ const WeaponModal = () => {
                     />
                   )}
                 />
-
-                
               </ModalBody>
               <ModalFooter>
                 <ModalButton isLoading={isPending}>

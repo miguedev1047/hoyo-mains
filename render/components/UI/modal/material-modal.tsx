@@ -63,6 +63,8 @@ const MaterialModal = () => {
                 {isEditActive ? 'Editando material' : 'Nuevo material'}
               </ModalHeader>
               <ModalBody className='grid grid-cols-2'>
+                <DropImage />
+
                 <Controller
                   name='name'
                   control={control}
@@ -183,8 +185,6 @@ const MaterialModal = () => {
                     />
                   )}
                 />
-
-                <DropImage />
               </ModalBody>
               <ModalFooter>
                 <ModalButton isLoading={isPending}>

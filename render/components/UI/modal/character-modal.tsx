@@ -62,6 +62,8 @@ const CharacterModal = () => {
                 Nuevo personaje
               </ModalHeader>
               <ModalBody className='grid grid-cols-2'>
+                <DropImage />
+                
                 <Controller
                   name='name'
                   control={control}
@@ -254,8 +256,6 @@ const CharacterModal = () => {
                     </Select>
                   )}
                 />
-
-                <DropImage />
               </ModalBody>
               <ModalFooter>
                 <ModalButton isLoading={isPending}>Crear</ModalButton>

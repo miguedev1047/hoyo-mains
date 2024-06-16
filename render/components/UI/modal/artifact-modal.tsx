@@ -63,6 +63,8 @@ const ArtifactModal = () => {
                 {isEditActive ? 'Editando artefacto' : 'Nuevo artefacto'}
               </ModalHeader>
               <ModalBody className='grid grid-cols-2'>
+                <DropImage />
+
                 <Controller
                   name='name'
                   control={control}
@@ -142,8 +144,6 @@ const ArtifactModal = () => {
                     />
                   )}
                 />
-
-                <DropImage />
               </ModalBody>
               <ModalFooter>
                 <ModalButton isLoading={isPending}>

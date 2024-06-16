@@ -63,6 +63,8 @@ const ModalTalent = ({ character }: { character: Characters | undefined }) => {
                 </h3>
               </ModalHeader>
               <ModalBody className='grid grid-cols-2'>
+                <DropImage />
+
                 <Controller
                   name='name'
                   control={control}
@@ -95,8 +97,6 @@ const ModalTalent = ({ character }: { character: Characters | undefined }) => {
                     />
                   )}
                 />
-
-                <DropImage />
               </ModalBody>
               <ModalFooter>
                 <ModalButton isLoading={isPending}>
