@@ -11,14 +11,15 @@ import {
   Selection
 } from '@nextui-org/react'
 import { InputWrapper, selectInputWrapper } from '@/utils/classes'
-import { elements } from '@/constants'
+import { elements, weapons } from '@/constants'
 import { IconFilter, IconSearch } from '@tabler/icons-react'
 import ListCharacter from '@/render/components/panel/characters/list-character'
 
 const CharactersSection = () => {
   const [characterFilters, setCharacterFilters] = useState({
     searchValue: '',
-    element: undefined
+    element: undefined,
+    weapon: undefined
   })
 
   const handleChangeSearchValue = (value: string) => {
@@ -37,6 +38,15 @@ const CharactersSection = () => {
     })
   }
 
+  const handleChangeWeapon = (weapon: Selection) => {
+    const data = Object.values(weapon)[0]
+
+    setCharacterFilters({
+      ...characterFilters,
+      weapon: data
+    })
+  }
+
   return (
     <section className='space-y-4'>
       <Divider />
@@ -52,35 +62,31 @@ const CharactersSection = () => {
           onValueChange={handleChangeSearchValue}
         />
         <Select
-          label='Filtrar por elemento'
+          label='Filtrar por arma'
           className='col-span-6 md:col-span-1'
           classNames={selectInputWrapper}
-          items={elements}
+          items={weapons}
           startContent={<IconFilter />}
-          placeholder='Selecciona un elemento...'
-          selectedKeys={[characterFilters.element ?? '']}
-          onSelectionChange={handleChangeElement}
+          placeholder='Selecciona un arma...'
+          selectedKeys={[characterFilters.weapon ?? '']}
+          onSelectionChange={handleChangeWeapon}
           renderValue={(items) => {
             return items.map((item) => (
               <Chip className='capitalize' radius='sm' size='sm' key={item.key}>
-                {item.data?.name}
+                {item.data?.title}
               </Chip>
             ))
           }}
         >
-          {(element) => (
+          {(weapon) => (
             <SelectItem
-              key={element.name}
-              textValue={element.name}
-              value={element.name}
+              textValue={weapon.name}
+              key={weapon.name}
+              value={weapon.name}
             >
               <div className='flex items-center gap-2'>
-                <Image
-                  className='size-8'
-                  src={element.icon}
-                  alt={element.name}
-                />
-                <p className='text-center capitalize'>{element.name}</p>
+                <Image className='size-8' src={weapon.icon} alt={weapon.name} />
+                <p className='text-center capitalize'>{weapon.title}</p>
               </div>
             </SelectItem>
           )}
@@ -104,8 +110,8 @@ const CharactersSection = () => {
         >
           {(element) => (
             <SelectItem
-              key={element.name}
               textValue={element.name}
+              key={element.name}
               value={element.name}
             >
               <div className='flex items-center gap-2'>

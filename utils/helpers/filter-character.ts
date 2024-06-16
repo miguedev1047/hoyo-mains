@@ -1,6 +1,7 @@
 interface Filters {
   searchValue: string
   element: string | undefined
+  weapon: string | undefined
 }
 
 export const filterCharacters = (
@@ -12,11 +13,13 @@ export const filterCharacters = (
   const filtered = characters.filter((char) => {
     const matchesElement =
       filters.element === undefined || filters.element === char.element
+    const matchesWeapon =
+      filters.weapon === undefined || filters.weapon === char.weapon
     const matchesSearchValue = char.name
       .toLowerCase()
       .includes(filters.searchValue.toLowerCase())
 
-    return matchesElement && matchesSearchValue
+    return matchesElement && matchesSearchValue && matchesWeapon
   })
 
   return filtered

@@ -11,6 +11,7 @@ interface Props {
   characterFilters: {
     searchValue: string
     element: string | undefined
+    weapon: string | undefined
   }
 }
 
