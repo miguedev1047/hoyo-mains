@@ -7,7 +7,7 @@ import parse from 'html-react-parser'
 
 const Output = ({ description }: { description: string }) => {
   const editor = useEditor({
-    extensions: [StarterKit.configure() as any, Color, TextStyle],
+    extensions: [StarterKit.configure(), Color, TextStyle],
     content: description
   })
 

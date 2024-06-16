@@ -63,6 +63,8 @@ const WeaponModal = () => {
                 {isEditActive ? 'Editando arma' : 'Nuevo arma'}
               </ModalHeader>
               <ModalBody className='grid grid-cols-2'>
+              <DropImage />
+              
                 <Controller
                   name='name'
                   control={control}
@@ -209,6 +211,23 @@ const WeaponModal = () => {
                 />
 
                 <Controller
+                  name='atk'
+                  control={control}
+                  render={({ field }) => (
+                    <Input
+                      className='col-span-2'
+                      type='number'
+                      label='ATQ. base'
+                      isDisabled={isPending}
+                      classNames={InputWrapper}
+                      errorMessage={errors.atk?.message}
+                      isInvalid={!!errors.atk}
+                      {...field}
+                    />
+                  )}
+                />
+
+                <Controller
                   name='description'
                   control={control}
                   render={({ field }) => (
@@ -223,7 +242,7 @@ const WeaponModal = () => {
                   )}
                 />
 
-                <DropImage />
+                
               </ModalBody>
               <ModalFooter>
                 <ModalButton isLoading={isPending}>

@@ -21,7 +21,7 @@ export const createWapons = async (data: z.infer<typeof WeaponSchema>) => {
       status: 400
     }
 
-  const { description, id, imageUrl, stat, name, stars, starsText, type } =
+  const { description, atk, id, imageUrl, stat, name, stars, starsText, type } =
     validateFields.data
 
   try {
@@ -29,7 +29,8 @@ export const createWapons = async (data: z.infer<typeof WeaponSchema>) => {
       data: {
         id,
         imageUrl,
-        description,
+        description, 
+        atk: parseInt(atk),
         stat,
         name,
         stars,

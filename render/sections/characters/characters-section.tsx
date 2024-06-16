@@ -53,7 +53,41 @@ const CharactersSection = () => {
         />
         <Select
           label='Filtrar por elemento'
-          className='col-span-6 md:col-span-2'
+          className='col-span-6 md:col-span-1'
+          classNames={selectInputWrapper}
+          items={elements}
+          startContent={<IconFilter />}
+          placeholder='Selecciona un elemento...'
+          selectedKeys={[characterFilters.element ?? '']}
+          onSelectionChange={handleChangeElement}
+          renderValue={(items) => {
+            return items.map((item) => (
+              <Chip className='capitalize' radius='sm' size='sm' key={item.key}>
+                {item.data?.name}
+              </Chip>
+            ))
+          }}
+        >
+          {(element) => (
+            <SelectItem
+              key={element.name}
+              textValue={element.name}
+              value={element.name}
+            >
+              <div className='flex items-center gap-2'>
+                <Image
+                  className='size-8'
+                  src={element.icon}
+                  alt={element.name}
+                />
+                <p className='text-center capitalize'>{element.name}</p>
+              </div>
+            </SelectItem>
+          )}
+        </Select>
+        <Select
+          label='Filtrar por elemento'
+          className='col-span-6 md:col-span-1'
           classNames={selectInputWrapper}
           items={elements}
           startContent={<IconFilter />}

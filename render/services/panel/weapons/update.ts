@@ -24,7 +24,7 @@ export const updateWapons = async (
       status: 400
     }
 
-  const { description, name, stars, stat, starsText, type } =
+  const { description, atk, name, stars, stat, starsText, type } =
     validateFields.data
 
   try {
@@ -34,6 +34,7 @@ export const updateWapons = async (
         description,
         stat,
         name,
+        atk: parseInt(atk),
         stars,
         starsText,
         type

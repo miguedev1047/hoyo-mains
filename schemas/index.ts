@@ -55,6 +55,9 @@ export const WeaponSchema = z.object({
   stars: z.number().int().min(0, {
     message: 'Selecciona una rareza.'
   }),
+  atk: z.string().min(1, {
+    message: 'Establece el ataque básico del arna.'
+  }),
   starsText: z.string().min(1, {
     message: 'Selecciona una rareza.'
   }),

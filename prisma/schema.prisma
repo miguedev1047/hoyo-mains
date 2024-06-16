@@ -79,6 +79,7 @@ model Weapon {
   description String
   stars       Int
   starsText   String
+  atk         Int
 
   createdDate DateTime @default(now())
   updatedDate DateTime @updatedAt

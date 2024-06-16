@@ -53,7 +53,8 @@ export const useCreateWeapon = () => {
       description: '',
       type: '',
       starsText: '',
-      stars: 0
+      stars: 0,
+      atk: '0'
     }
   })
 
@@ -70,6 +71,7 @@ export const useCreateWeapon = () => {
           setValue('stat', data?.stat!)
           setValue('starsText', data?.starsText!)
           setValue('stars', data?.stars!)
+          setValue('atk', data?.atk.toString()!)
 
           setImage({ imgFile: null, imgPreview: data?.imageUrl! })
           setKey(+new Date())
