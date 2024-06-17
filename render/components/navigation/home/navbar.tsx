@@ -8,7 +8,6 @@ import {
   NavbarContent,
   NavbarItem,
   Link,
-  Badge,
   Chip,
   NavbarMenu,
   NavbarMenuItem,
@@ -19,8 +18,8 @@ import {
   DropdownMenu,
   DropdownItem
 } from '@nextui-org/react'
-import NextLink from 'next/link'
 import { IconChevronDown } from '@tabler/icons-react'
+import NextLink from 'next/link'
 
 const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -29,7 +28,7 @@ const Navigation = () => {
     <Navbar
       shouldHideOnScroll
       onMenuOpenChange={setIsMenuOpen}
-      className='max-w-[1080px] rounded-xl container mx-auto transition-all ease-in-out duration-300'
+      className='max-w-[1280px] rounded-xl container mx-auto transition-all ease-in-out duration-300'
     >
       <NavbarBrand className='space-x-2'>
         <NavbarItem>
@@ -41,9 +40,7 @@ const Navigation = () => {
             HoYo Mains
           </Link>
         </NavbarItem>
-        <Chip>
-          <Badge>Beta</Badge>
-        </Chip>
+        <Chip>Beta</Chip>
       </NavbarBrand>
       <NavbarContent className='hidden sm:flex gap-4' justify='center'>
         <NavbarItem>
