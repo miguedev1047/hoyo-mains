@@ -251,3 +251,10 @@ export const columns = [
   { name: 'MATERIALES', uid: 'materials' },
   { name: 'ACCIONES', uid: 'actions' }
 ]
+
+export const navigationItems = [
+  { label: 'Personajes', href: '/characters' },
+  { label: 'Equipos', href: '/teams' },
+  { label: 'Builds', href: '/builds' },
+  { label: 'Database', href: '/database' }
+]
