@@ -7,7 +7,11 @@ import {
   DropdownMenu,
   DropdownItem
 } from '@nextui-org/dropdown'
-import { IconArrowBarRight, IconUserFilled } from '@tabler/icons-react'
+import {
+  IconArrowBarRight,
+  IconHome,
+  IconUserFilled
+} from '@tabler/icons-react'
 import { signOut, useSession } from 'next-auth/react'
 import { toast } from 'sonner'
 
@@ -29,6 +33,14 @@ const UserButton = () => {
         </Button>
       </DropdownTrigger>
       <DropdownMenu aria-label='Admin Dropdown'>
+        <DropdownItem
+          key='home'
+          href='/'
+          textValue='Home'
+          startContent={<IconHome />}
+        >
+          Inicio
+        </DropdownItem>
         <DropdownItem
           key='log-out'
           color='danger'
