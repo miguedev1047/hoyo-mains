@@ -15,6 +15,7 @@ import { useSidebarStore } from '@/utils/store/use-open'
 import { Button } from '@nextui-org/button'
 import { Divider } from '@nextui-org/react'
 import Link from 'next/link'
+import clsx from 'clsx'
 
 const navInfo = {
   title: 'Admin Panel',
@@ -54,11 +55,12 @@ const Sidebar = () => {
 
   return (
     <nav
-      className={`${
+      className={clsx(
+        'hidden md:block transition-all ease-in-out duration-250',
         isOpen ? 'w-0 mr-0' : 'w-[275px] mr-2 lg:mr-4'
-      } hidden md:block transition-all ease-in-out duration-250`}
+      )}
     >
-      <Card className='h-[calc(100vh_-_1rem)] lg:h-[calc(100vh_-_2.5rem)] sticky top-2 lg:top-5 bg-color-dark z-20 space-y-4'>
+      <Card className='h-[calc(100vh_-_1rem)] sticky top-2 bg-color-dark z-20 space-y-4'>
         <CardHeader className=' h-full max-h-[96px] p-4'>
           <Button
             onPress={() => onOpenChange()}
