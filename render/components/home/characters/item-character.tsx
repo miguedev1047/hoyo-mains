@@ -18,6 +18,7 @@ const ItemCharacter = ({ character }: { character: Character | undefined }) => {
       >
         <Image
           isZoomed
+          loading='lazy'
           className='object-cover w-full h-full'
           src={character?.imageUrl!}
           alt={`Personaje: ${character?.name}`}
