@@ -13,6 +13,7 @@ import { Controller, useForm } from 'react-hook-form'
 import { toast } from 'sonner'
 import { CharacterItemError } from '@/render/components/UI/errors/character-error'
 import useSWR, { mutate } from 'swr'
+import { IconPlus } from '@tabler/icons-react'
 
 const WeaponSelector = ({
   character
@@ -141,6 +142,7 @@ const WeaponSelector = ({
 
       <Button
         fullWidth
+        startContent={<IconPlus />}
         isDisabled={isLoading}
         isLoading={isPending}
         className='bg-color-light text-color-darkest font-bold'

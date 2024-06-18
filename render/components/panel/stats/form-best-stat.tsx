@@ -12,6 +12,7 @@ import { toast } from 'sonner'
 import { useEditStatStore } from '@/utils/store/use-edit-substat'
 import { updateBestStats } from '@/render/services/panel/stats/update'
 import { mutate } from 'swr'
+import { IconDeviceFloppy, IconPencil } from '@tabler/icons-react'
 
 const FormBestStat = ({ character }: { character: Characters | undefined }) => {
   const [isPending, startTrasition] = useTransition()
@@ -169,6 +170,7 @@ const FormBestStat = ({ character }: { character: Characters | undefined }) => {
         size='lg'
         type='submit'
         color='success'
+        startContent={isActiveEdit ? <IconPencil /> : <IconDeviceFloppy />}
         isLoading={isPending}
         className='col-span-3 bg-color-light font-bold'
       >

@@ -14,6 +14,7 @@ import { toast } from 'sonner'
 import { selectorItemWrapper } from '@/utils/classes'
 import { CharacterItemError } from '@/render/components/UI/errors/character-error'
 import useSWR, { mutate } from 'swr'
+import { IconPlus } from '@tabler/icons-react'
 
 const MaterialSelector = ({
   character
@@ -25,7 +26,7 @@ const MaterialSelector = ({
     isLoading,
     error
   } = useSWR<Material[]>('/api/materials', fetcher)
-  
+
   const characterName = character?.name.toLowerCase().replace(/\s/g, '-')
   const allMaterials = character?.materials
   const disabledItems = allMaterials?.map((item) => item.item)
@@ -140,6 +141,8 @@ const MaterialSelector = ({
 
       <Button
         fullWidth
+        size='lg'
+        startContent={<IconPlus />}
         isDisabled={isLoading}
         isLoading={isPending}
         className='bg-color-light text-color-darkest font-bold'

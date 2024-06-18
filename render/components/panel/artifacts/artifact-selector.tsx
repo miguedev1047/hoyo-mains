@@ -12,6 +12,7 @@ import { Avatar, Button, Chip, Select, SelectItem } from '@nextui-org/react'
 import { selectorItemWrapper } from '@/utils/classes'
 import { toast } from 'sonner'
 import useSWR, { mutate } from 'swr'
+import { IconPlus } from '@tabler/icons-react'
 
 const ArtifactSelector = ({
   character
@@ -138,6 +139,7 @@ const ArtifactSelector = ({
 
       <Button
         fullWidth
+        startContent={<IconPlus />}
         isDisabled={isLoading}
         isLoading={isPending}
         className='bg-color-light text-color-darkest font-bold'

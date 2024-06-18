@@ -21,6 +21,7 @@ import { useState, useTransition } from 'react'
 import { Controller, useForm } from 'react-hook-form'
 import { toast } from 'sonner'
 import useSWR, { mutate } from 'swr'
+import { IconPlus } from '@tabler/icons-react'
 
 const FormCharacterAscension = ({
   character
@@ -112,7 +113,13 @@ const FormCharacterAscension = ({
       onOpenChange={(open) => setIsOpen(open)}
     >
       <PopoverTrigger>
-        <Button fullWidth className='bg-color-light font-bold' color='success'>
+        <Button
+          size='lg'
+          fullWidth
+          startContent={<IconPlus />}
+          color='success'
+          className='bg-color-light font-bold'
+        >
           Agregar Ascensión
         </Button>
       </PopoverTrigger>
