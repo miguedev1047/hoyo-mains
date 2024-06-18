@@ -8,7 +8,7 @@ interface FilterStore {
   setRarity: (rarity: number) => void
   setElement: (element: string) => void
   setWeapon: (weapon: string) => void
-  updateFilter: (state: any) => void
+  setSearchValue: (searchValue: string) => void
 }
 
 export const useFilterStore = create<FilterStore>((set) => ({
@@ -19,6 +19,5 @@ export const useFilterStore = create<FilterStore>((set) => ({
   setRarity: (rarity: number) => set({ rarity }),
   setElement: (element: string) => set({ element }),
   setWeapon: (weapon: string) => set({ weapon }),
-  updateFilter: ({ rarity = '', element = '', weapon = '' }) =>
-    set((state) => ({ ...state, rarity, element, weapon }))
+  setSearchValue: (searchValue: string) => set({ searchValue })
 }))

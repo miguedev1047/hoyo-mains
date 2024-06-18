@@ -1,9 +1,7 @@
+import { Card, CardBody, CardHeader } from '@nextui-org/card'
 import ListCharacter from '@/render/components/home/characters/list-character'
 import CharacterFilter from '@/render/components/home/filters/character-filter'
-import { InputWrapper } from '@/utils/classes'
-import { Card, CardBody, CardHeader } from '@nextui-org/card'
-import { Input } from '@nextui-org/input'
-import { IconSearch } from '@tabler/icons-react'
+import SearchCharacter from '@/render/components/home/characters/search-character'
 
 const SectionHome = () => {
   return (
@@ -15,16 +13,8 @@ const SectionHome = () => {
               <h2 className='text-base md:text-2xl font-bold'>
                 Lista de personajes
               </h2>
-
-              <Input
-                classNames={InputWrapper}
-                aria-label='Buscar'
-                placeholder='Buscar...'
-                className='max-w-[400px]'
-                startContent={<IconSearch />}
-                isClearable
-                size='lg'
-              />
+              
+              <SearchCharacter />
             </div>
             <CharacterFilter />
           </div>
