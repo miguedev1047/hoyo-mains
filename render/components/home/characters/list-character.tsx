@@ -29,11 +29,9 @@ const ListCharacter = () => {
 
   return (
     <ul className='relative grid grid-cols-6 overflow-hidden gap-4 min-h-[230px]'>
-      <AnimatePresence>
-        {filteredCharacters?.map((character) => (
+       {filteredCharacters?.map((character) => (
           <ItemCharacter key={character.id} character={character} />
         ))}
-      </AnimatePresence>
     </ul>
   )
 }
