@@ -4,7 +4,6 @@ import { Chip, Image } from '@nextui-org/react'
 import { Character } from '@prisma/client'
 import { useIsPresent } from 'framer-motion'
 import { MotionLi } from '@/render/components/motion/index'
-import NextImage from 'next/image'
 import clsx from 'clsx'
 
 const ItemCharacter = ({ character }: { character: Character | undefined }) => {
@@ -32,9 +31,6 @@ const ItemCharacter = ({ character }: { character: Character | undefined }) => {
       >
         <Image
           isZoomed
-          as={NextImage}
-          width={200}
-          height={200}
           className='object-cover w-full h-full'
           src={character?.imageUrl!}
           alt={`Personaje: ${character?.name}`}

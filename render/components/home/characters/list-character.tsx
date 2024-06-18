@@ -13,7 +13,7 @@ const ListCharacter = () => {
     data: characters,
     isLoading,
     error
-  } = useSWR<Character[]>('/api/characters', fetcher)
+  } = useSWR<Character[]>('/api/characters/list', fetcher)
 
   const filterStore = useFilterStore((state) => ({
     searchValue: state.searchValue,
@@ -28,7 +28,7 @@ const ListCharacter = () => {
   const filteredCharacters = homeFilterCharacter(filterStore, characters)
 
   return (
-    <ul className='grid grid-cols-6 gap-4 overflow-hidden'>
+    <ul className='relative grid grid-cols-8 overflow-hidden gap-4 min-h-[230px]'>
       <AnimatePresence>
         {filteredCharacters?.map((character) => (
           <ItemCharacter key={character.id} character={character} />
