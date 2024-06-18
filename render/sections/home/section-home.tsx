@@ -6,7 +6,7 @@ import SearchCharacter from '@/render/components/home/characters/search-characte
 const SectionHome = () => {
   return (
     <section className='rounded-xl'>
-      <Card isBlurred className='bg-color-darkest p-4'>
+      <Card className='bg-color-dark p-4'>
         <CardHeader>
           <div className='w-full space-y-5'>
             <div className='w-full flex justify-between items-center'>

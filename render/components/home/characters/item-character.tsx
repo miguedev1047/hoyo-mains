@@ -12,7 +12,7 @@ const ItemCharacter = ({ character }: { character: Character | undefined }) => {
       <Card
         isPressable
         className={clsx(
-          'bg-color-dark aspect-square w-full h-auto flex-none border',
+          'bg-color-darkest aspect-square w-full h-auto flex-none border',
           starCharacter
         )}
       >

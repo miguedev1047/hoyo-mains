@@ -1,25 +1,10 @@
 'use client'
 
-import {
-  Anemo,
-  Bow,
-  Catalyst,
-  Claymore,
-  Cryo,
-  Dendro,
-  Electro,
-  Geo,
-  Hydro,
-  Polearm,
-  Pyro,
-  Rarity4,
-  Rarity5,
-  Sword
-} from '@/assets'
+import { buttonFilters } from '@/constants'
 import { useFilterStore } from '@/utils/store/use-filter'
 import { Button } from '@nextui-org/button'
 import { Card } from '@nextui-org/card'
-import { Image } from '@nextui-org/react'
+import { Image, Tooltip } from '@nextui-org/react'
 import clsx from 'clsx'
 
 const CharacterFilter = () => {
@@ -56,180 +41,84 @@ const CharacterFilter = () => {
     <div className='w-full'>
       <Card className='bg-color-light p-4 flex justify-around flex-row'>
         <div className='space-x-2'>
-          <Button
-            onPress={() => handleChange('rarity', '4')}
-            size='lg'
-            isIconOnly
-            className={clsx('p-1.5', rarity === 4 && 'bg-color-dark')}
-          >
-            <Image
-              className='object-cover w-full h-full'
-              src={Rarity4.src}
-              alt='4 Star Image'
-            />
-          </Button>
-          <Button
-            onPress={() => handleChange('rarity', '5')}
-            size='lg'
-            isIconOnly
-            className={clsx('p-1.5', rarity === 5 && 'bg-color-dark')}
-          >
-            <Image
-              className='object-cover w-full h-full'
-              src={Rarity5.src}
-              alt='5 Star Image'
-            />
-          </Button>
+          {buttonFilters.rarity.map((rarityFilter) => (
+            <Tooltip
+              key={rarityFilter.value}
+              className='bg-color-dark text-color-light'
+              content={<p>{rarityFilter.name}</p>}
+              placement='bottom'
+            >
+              <Button
+                onPress={() => handleChange('rarity', rarityFilter.value)}
+                size='lg'
+                isIconOnly
+                className={clsx(
+                  'p-1.5',
+                  rarity === parseInt(rarityFilter.value) && 'bg-color-dark'
+                )}
+              >
+                <Image
+                  className='object-cover w-full h-full'
+                  src={rarityFilter.src}
+                  alt={`${rarityFilter.name} Img`}
+                />
+              </Button>
+            </Tooltip>
+          ))}
         </div>
 
         <div className='space-x-2'>
-          <Button
-            onPress={() => handleChange('element', 'anemo')}
-            size='lg'
-            isIconOnly
-            className={clsx('p-1.5', element === 'anemo' && 'bg-color-dark')}
-          >
-            <Image
-              className='object-cover w-full h-full'
-              src={Anemo.src}
-              alt='Anemo Image'
-            />
-          </Button>
-          <Button
-            onPress={() => handleChange('element', 'cryo')}
-            size='lg'
-            isIconOnly
-            className={clsx('p-1.5', element === 'cryo' && 'bg-color-dark')}
-          >
-            <Image
-              className='object-cover w-full h-full'
-              src={Cryo.src}
-              alt='Cryo Image'
-            />
-          </Button>
-          <Button
-            onPress={() => handleChange('element', 'electro')}
-            size='lg'
-            isIconOnly
-            className={clsx('p-1.5', element === 'electro' && 'bg-color-dark')}
-          >
-            <Image
-              className='object-cover w-full h-full'
-              src={Electro.src}
-              alt='Electro Image'
-            />
-          </Button>
-          <Button
-            onPress={() => handleChange('element', 'dendro')}
-            size='lg'
-            isIconOnly
-            className={clsx('p-1.5', element === 'dendro' && 'bg-color-dark')}
-          >
-            <Image
-              className='object-cover w-full h-full'
-              src={Dendro.src}
-              alt='Dendro Image'
-            />
-          </Button>
-          <Button
-            onPress={() => handleChange('element', 'geo')}
-            size='lg'
-            isIconOnly
-            className={clsx('p-1.5', element === 'geo' && 'bg-color-dark')}
-          >
-            <Image
-              className='object-cover w-full h-full'
-              src={Geo.src}
-              alt='Geo Image'
-            />
-          </Button>
-          <Button
-            onPress={() => handleChange('element', 'hydro')}
-            size='lg'
-            isIconOnly
-            className={clsx('p-1.5', element === 'hydro' && 'bg-color-dark')}
-          >
-            <Image
-              className='object-cover w-full h-full'
-              src={Hydro.src}
-              alt='Hydro Image'
-            />
-          </Button>
-          <Button
-            onPress={() => handleChange('element', 'pyro')}
-            size='lg'
-            isIconOnly
-            className={clsx('p-1.5', element === 'pyro' && 'bg-color-dark')}
-          >
-            <Image
-              className='object-cover w-full h-full'
-              src={Pyro.src}
-              alt='Pyro Image'
-            />
-          </Button>
+          {buttonFilters.elements.map((filterElement) => (
+            <Tooltip
+              key={filterElement.value}
+              className='bg-color-dark text-color-light'
+              content={<p>{filterElement.name}</p>}
+              placement='bottom'
+            >
+              <Button
+                onPress={() => handleChange('element', filterElement.value)}
+                size='lg'
+                isIconOnly
+                className={clsx(
+                  'p-1.5',
+                  element === filterElement.value && 'bg-color-dark'
+                )}
+              >
+                <Image
+                  className='object-cover w-full h-full'
+                  src={filterElement.src}
+                  alt={`${filterElement.name} Img`}
+                />
+              </Button>
+            </Tooltip>
+          ))}
         </div>
 
         <div className='space-x-2'>
-          <Button
-            onPress={() => handleChange('weapon', 'bow')}
-            size='lg'
-            isIconOnly
-            className={clsx('p-1.5', weapon === 'bow' && 'bg-color-dark')}
-          >
-            <Image
-              className='object-cover w-full h-full'
-              src={Bow.src}
-              alt='Bow Image'
-            />
-          </Button>
-          <Button
-            onPress={() => handleChange('weapon', 'catalyst')}
-            size='lg'
-            isIconOnly
-            className={clsx('p-1.5', weapon === 'catalyst' && 'bg-color-dark')}
-          >
-            <Image
-              className='object-cover w-full h-full'
-              src={Catalyst.src}
-              alt='Catalyst Image'
-            />
-          </Button>
-          <Button
-            onPress={() => handleChange('weapon', 'claymore')}
-            size='lg'
-            isIconOnly
-            className={clsx('p-1.5', weapon === 'claymore' && 'bg-color-dark')}
-          >
-            <Image
-              className='object-cover w-full h-full'
-              src={Claymore.src}
-              alt='Claymore Image'
-            />
-          </Button>
-          <Button
-            onPress={() => handleChange('weapon', 'polearm')}
-            size='lg'
-            isIconOnly
-            className={clsx('p-1.5', weapon === 'polearm' && 'bg-color-dark')}
-          >
-            <Image
-              className='object-cover w-full h-full'
-              src={Polearm.src}
-              alt='Polearm Image'
-            />
-          </Button>
-          <Button
-            onPress={() => handleChange('weapon', 'sword')}
-            size='lg'
-            isIconOnly
-            className={clsx('p-1.5', weapon === 'sword' && 'bg-color-dark')}
-          >
-            <Image
-              className='object-cover w-full h-full'
-              src={Sword.src}
-              alt='Sword Image'
-            />
-          </Button>
+          {buttonFilters.weapons.map((filterWeapon) => (
+            <Tooltip
+              key={filterWeapon.value}
+              className='bg-color-dark text-color-light'
+              content={<p>{filterWeapon.name}</p>}
+              placement='bottom'
+            >
+              <Button
+                onPress={() => handleChange('weapon', filterWeapon.value)}
+                size='lg'
+                isIconOnly
+                className={clsx(
+                  'p-1.5',
+                  weapon === filterWeapon.value && 'bg-color-dark'
+                )}
+              >
+                <Image
+                  className='object-cover w-full h-full'
+                  src={filterWeapon.src}
+                  alt={`${filterWeapon.name} Img`}
+                />
+              </Button>
+            </Tooltip>
+          ))}
         </div>
       </Card>
     </div>

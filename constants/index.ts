@@ -13,6 +13,8 @@ import {
   MaterialBackground,
   Polearm,
   Pyro,
+  Rarity4,
+  Rarity5,
   Sword,
   WeaponBackground
 } from '@/assets'
@@ -258,3 +260,26 @@ export const navigationItems = [
   { label: 'Builds', href: '/builds' },
   { label: 'Database', href: '/database' }
 ]
+
+export const buttonFilters = {
+  rarity: [
+    { name: '5 Estrellas', value: '5', src: Rarity5.src },
+    { name: '4 Estrellas', value: '4', src: Rarity4.src }
+  ],
+  elements: [
+    { name: 'Pyro', value: 'pyro', src: Pyro.src },
+    { name: 'Hydro', value: 'hydro', src: Hydro.src },
+    { name: 'Cryo', value: 'cryo', src: Cryo.src },
+    { name: 'Dendro', value: 'dendro', src: Dendro.src },
+    { name: 'Electro', value: 'electro', src: Electro.src },
+    { name: 'Anemo', value: 'anemo', src: Anemo.src },
+    { name: 'Geo', value: 'geo', src: Geo.src }
+  ],
+  weapons: [
+    { name: 'Espada', value: 'sword', src: Sword.src },
+    { name: 'Mandoble', value: 'claymore', src: Claymore.src },
+    { name: 'Lanza', value: 'polearm', src: Polearm.src },
+    { name: 'Catalizador', value: 'catalyst', src: Catalyst.src },
+    { name: 'Arco', value: 'bow', src: Bow.src }
+  ]
+}
