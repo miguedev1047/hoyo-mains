@@ -2,13 +2,27 @@ import { getStarBorderColor } from '@/utils/helpers/get-color'
 import { Card } from '@nextui-org/card'
 import { Chip, Image } from '@nextui-org/react'
 import { Character } from '@prisma/client'
+import { useIsPresent } from 'framer-motion'
+import { MotionLi } from '@/render/components/motion/index'
+import NextImage from 'next/image'
 import clsx from 'clsx'
 
 const ItemCharacter = ({ character }: { character: Character | undefined }) => {
+  const isPresent = useIsPresent()
   const starCharacter = getStarBorderColor(character?.stars || 0)
 
   return (
-    <li className='space-y-2'>
+    <MotionLi
+      style={{
+        position: isPresent ? 'static' : 'absolute'
+      }}
+      initial={{ scale: 0, opacity: 0 }}
+      animate={{ scale: 1, opacity: 1 }}
+      exit={{ scale: 0, opacity: 0 }}
+      transition={{ type: 'spring', stiffness: 900, damping: 40 }}
+      layout
+      className='space-y-2'
+    >
       <Card
         isPressable
         className={clsx(
@@ -18,6 +32,9 @@ const ItemCharacter = ({ character }: { character: Character | undefined }) => {
       >
         <Image
           isZoomed
+          as={NextImage}
+          width={200}
+          height={200}
           className='object-cover w-full h-full'
           src={character?.imageUrl!}
           alt={`Personaje: ${character?.name}`}
@@ -36,7 +53,7 @@ const ItemCharacter = ({ character }: { character: Character | undefined }) => {
       <Card className='bg-color-light text-color-darkest px-4 py-1 text-center'>
         <h2 className='capitalize font-bold line-clamp-1'>{character?.name}</h2>
       </Card>
-    </li>
+    </MotionLi>
   )
 }
 
