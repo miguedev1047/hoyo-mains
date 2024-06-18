@@ -28,7 +28,7 @@ const ListCharacter = () => {
   const filteredCharacters = homeFilterCharacter(filterStore, characters)
 
   return (
-    <ul className='relative grid grid-cols-8 overflow-hidden gap-4 min-h-[230px]'>
+    <ul className='relative grid grid-cols-6 overflow-hidden gap-4 min-h-[230px]'>
       <AnimatePresence>
         {filteredCharacters?.map((character) => (
           <ItemCharacter key={character.id} character={character} />
