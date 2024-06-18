@@ -1,3 +1,4 @@
+import ListCharacter from '@/render/components/home/characters/list-character'
 import CharacterFilter from '@/render/components/home/filters/character-filter'
 import { InputWrapper } from '@/utils/classes'
 import { Card, CardBody, CardHeader } from '@nextui-org/card'
@@ -28,7 +29,9 @@ const SectionHome = () => {
             <CharacterFilter />
           </div>
         </CardHeader>
-        <CardBody></CardBody>
+        <CardBody>
+          <ListCharacter />
+        </CardBody>
       </Card>
     </section>
   )

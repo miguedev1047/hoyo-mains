@@ -1,7 +1,16 @@
+import { Character } from '@prisma/client'
+
 interface Filters {
   searchValue: string
   element: string | undefined
   weapon: string | undefined
+}
+
+interface HomeFilters {
+  searchValue: string
+  element: string | undefined
+  weapon: string | undefined
+  rarity: number
 }
 
 export const filterCharacters = (
@@ -20,6 +29,30 @@ export const filterCharacters = (
       .includes(filters.searchValue.toLowerCase())
 
     return matchesElement && matchesSearchValue && matchesWeapon
+  })
+
+  return filtered
+}
+
+export const homeFilterCharacter = (
+  filters: HomeFilters,
+  characters: Character[] | undefined
+) => {
+  if (!characters) return undefined
+
+  const filtered = characters.filter((char) => {
+    const matchesElement =
+      filters.element === '' || filters.element === char.element
+    const matchesWeapon =
+      filters.weapon === '' || filters.weapon === char.weapon
+    const matchesRarity = filters.rarity === 0 || filters.rarity === char.stars
+    const matchesSearchValue = char.name
+      .toLowerCase()
+      .includes(filters.searchValue.toLowerCase())
+
+    return (
+      matchesElement && matchesSearchValue && matchesWeapon && matchesRarity
+    )
   })
 
   return filtered
