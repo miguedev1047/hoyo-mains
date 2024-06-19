@@ -19,15 +19,18 @@ const CharacterHeader = ({
       )}
 
       <div className='flex justify-between items-center'>
-        <div className='max-md:w-full flex justify-between md:items-center space-y-2 md:space-x-5 lg:space-x-10'>
-          <Image
-            isBlurred
-            width={120}
-            height={120}
-            className={clsx('bg-color-dark border-2 p-0 aspect-square')}
-            src={character?.imageUrl!}
-            alt={character?.name}
-          />
+        <div className='max-md:w-full flex justify-between md:items-center space-y-2 md:space-x-5 lg:space-x-8'>
+          <figure className='bg-color-dark border-2 p-0 w-[160px] h-[160px] rounded-xl overflow-hidden'>
+            <Image
+              isBlurred
+              className='object-cover'
+              classNames={{
+                wrapper: 'w-full h-full'
+              }}
+              src={character?.imageUrl!}
+              alt={character?.name}
+            />
+          </figure>
 
           <div className='flex flex-col max-md:space-y-3 md:hidden'>
             <h1 className='text-xl text-end font-bold capitalize'>
