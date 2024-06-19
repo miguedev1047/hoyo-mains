@@ -1,7 +1,7 @@
-import { EditorContent, useEditor } from '@tiptap/react'
-import { IconPencil, IconPlus } from '@tabler/icons-react'
-import { useEffect } from 'react'
-import { ScrollShadow } from '@nextui-org/react'
+import { EditorContent, BubbleMenu, useEditor } from '@tiptap/react'
+import { IconPencil, IconPlus, IconX } from '@tabler/icons-react'
+import { useEffect, useState } from 'react'
+import { Card, ScrollShadow } from '@nextui-org/react'
 import {
   Button,
   Popover,
@@ -42,6 +42,8 @@ const Editor = ({
     }
   })
 
+  const [isOpen, setIsOpen] = useState(false)
+
   useEffect(() => {
     if (!editor) return
 
@@ -55,36 +57,53 @@ const Editor = ({
   if (!editor) return null
 
   return (
-    <div className='col-span-2 flex flex-col space-y-1 justify-stretch'>
-      <Popover
-        backdrop='opaque'
-        placement='bottom'
-        classNames={{ arrow: 'bg-color-dark' }}
-        showArrow
-      >
-        <PopoverTrigger>
-          <Button
-            fullWidth
-            isDisabled={isPending}
-            color='success'
-            startContent={isEdit ? <IconPencil /> : <IconPlus />}
-            className='bg-secondary-color font-bold'
-          >
-            {isEdit ? 'Editar' : 'Añadir'} Descripción
-          </Button>
-        </PopoverTrigger>
-        <PopoverContent className='bg-color-dark max-w-full w-[875px] p-4 rounded-lg'>
-          <div className='space-y-2 w-full'>
-            <EditorToolbar editor={editor} />
-            <ScrollShadow size={0} hideScrollBar className='w-full h-[150px]'>
-              <EditorContent editor={editor} />
-            </ScrollShadow>
-          </div>
-        </PopoverContent>
-      </Popover>
+    <>
+      <BubbleMenu editor={editor}>
+        <Card className='bg-color-dark p-2'>
+          <EditorToolbar editor={editor} />
+        </Card>
+      </BubbleMenu>
 
-      <p className='text-danger-400 text-xs'>{errorMessage}</p>
-    </div>
+      <div className='col-span-2 flex flex-col space-y-1 justify-stretch'>
+        <Popover
+          isOpen={isOpen}
+          onOpenChange={setIsOpen}
+          backdrop='opaque'
+          placement='top'
+          classNames={{ arrow: 'bg-color-dark' }}
+          showArrow
+        >
+          <PopoverTrigger>
+            <Button
+              fullWidth
+              isDisabled={isPending}
+              color='success'
+              startContent={isEdit ? <IconPencil /> : <IconPlus />}
+              className='bg-secondary-color font-bold'
+            >
+              {isEdit ? 'Editar' : 'Añadir'} Descripción
+            </Button>
+          </PopoverTrigger>
+          <PopoverContent className='bg-color-dark max-w-full w-[875px] p-4 rounded-lg'>
+            <div className='space-y-2 w-full'>
+              <Button
+                isIconOnly
+                className='bg-color-red float-end mb-2'
+                color='danger'
+                onPress={() => setIsOpen(false)}
+              >
+                <IconX />
+              </Button>
+              <ScrollShadow size={0} hideScrollBar className='w-full h-[150px]'>
+                <EditorContent editor={editor} />
+              </ScrollShadow>
+            </div>
+          </PopoverContent>
+        </Popover>
+
+        <p className='text-danger-400 text-xs'>{errorMessage}</p>
+      </div>
+    </>
   )
 }
 
