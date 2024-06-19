@@ -1,6 +1,5 @@
 'use client'
 
-import { AnimatePresence } from 'framer-motion'
 import { fetcher } from '@/utils/helpers/fetcher'
 import { homeFilterCharacter } from '@/utils/helpers/filter-character'
 import { useFilterStore } from '@/utils/store/use-filter'
@@ -28,10 +27,10 @@ const ListCharacter = () => {
   const filteredCharacters = homeFilterCharacter(filterStore, characters)
 
   return (
-    <ul className='relative grid grid-cols-7 overflow-hidden gap-4 min-h-[230px]'>
-       {filteredCharacters?.map((character) => (
-          <ItemCharacter key={character.id} character={character} />
-        ))}
+    <ul className='relative grid grid-cols-7 overflow-hidden gap-4'>
+      {filteredCharacters?.map((character) => (
+        <ItemCharacter key={character.id} character={character} />
+      ))}
     </ul>
   )
 }
