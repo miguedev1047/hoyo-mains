@@ -93,14 +93,14 @@ const Navigation = () => {
               Artefactos
             </DropdownItem>
             <DropdownItem
-              key='materiales'
+              key='materials'
               href='/materials
             '
             >
               Materiales
             </DropdownItem>
             <DropdownItem
-              key='materiales'
+              key='elements'
               href='/elements
             '
             >
@@ -115,8 +115,8 @@ const Navigation = () => {
         className='sm:hidden'
       />
       <NavbarMenu className='rounded-xl'>
-        {navigationItems.map((item, index) => (
-          <NavbarMenuItem key={index}>
+        {navigationItems.map((item) => (
+          <NavbarMenuItem key={item.href}>
             <Link color='foreground' as={NextLink} href='/'>
               {item.label}
             </Link>
