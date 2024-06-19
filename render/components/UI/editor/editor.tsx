@@ -85,12 +85,13 @@ const Editor = ({
             </Button>
           </PopoverTrigger>
           <PopoverContent className='bg-color-dark max-w-full w-[875px] p-4 rounded-lg'>
-            <div className='space-y-2 w-full'>
+            <div className='space-y-2 w-full relative'>
               <Button
+                size='sm'
                 isIconOnly
-                className='bg-color-red float-end mb-2'
                 color='danger'
                 onPress={() => setIsOpen(false)}
+                className='bg-color-red absolute top-4 right-2 z-10'
               >
                 <IconX />
               </Button>
