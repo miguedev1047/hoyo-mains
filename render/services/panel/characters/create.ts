@@ -3,8 +3,8 @@
 import { z } from 'zod'
 import { currentRole } from '@/data/auth'
 import { CharacterSchema } from '@/schemas'
+import { getCharacterByName } from '@/render/services/panel/characters/data'
 import db from '@/libs/db'
-import { getCharacterByName } from './data'
 
 export const createCharacters = async (
   data: z.infer<typeof CharacterSchema>
@@ -24,7 +24,7 @@ export const createCharacters = async (
       status: 400
     }
 
-  const { element, name, id, imageUrl, stars, starsText, weapon, role } =
+  const { element, name, id, stars, starsText, weapon, role } =
     validateFields.data
 
   const isExistingCharacter = await getCharacterByName(name)
@@ -39,7 +39,6 @@ export const createCharacters = async (
     const character = await db.character.create({
       data: {
         id,
-        imageUrl,
         element,
         name,
         stars,

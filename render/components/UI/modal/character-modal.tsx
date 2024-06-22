@@ -13,7 +13,6 @@ import {
 import { Input } from '@nextui-org/input'
 import { Select, SelectItem } from '@nextui-org/select'
 import { Avatar } from '@nextui-org/avatar'
-
 import { Controller } from 'react-hook-form'
 import { elements, raritys, role, weapons } from '@/constants'
 import { InputWrapper, selectInputWrapper } from '@/utils/classes'
@@ -56,14 +55,14 @@ const CharacterModal = () => {
         className='bg-color-dark'
       >
         <ModalContent>
-          {(onClose) => (
+          {() => (
             <form onSubmit={onSubmit}>
               <ModalHeader className='flex flex-col gap-1 text-2xl capitalize'>
                 Nuevo personaje
               </ModalHeader>
               <ModalBody className='grid grid-cols-2'>
                 <DropImage />
-                
+
                 <Controller
                   name='name'
                   control={control}

@@ -1,4 +1,5 @@
-import { Card, CardFooter } from '@nextui-org/card'
+import { Card } from '@nextui-org/card'
+import { CircularProgress } from '@nextui-org/react'
 import { getStarBorderColor } from '@/utils/helpers/get-color'
 import { Tooltip } from '@nextui-org/tooltip'
 import { Character } from '@prisma/client'
@@ -19,6 +20,7 @@ interface Props {
 
 const ItemCharacter = ({ character }: Props) => {
   const [isPending, startTransition] = useTransition()
+
   const characterName = character.name.toLowerCase().replace(/\s/g, '-')
   const url = `/panel/characters/character?name=${characterName}`
 
@@ -58,13 +60,29 @@ const ItemCharacter = ({ character }: Props) => {
           getStarBorderColor(character.stars)
         )}
       >
-        <Image
-          classNames={{
-            wrapper: 'bg-color-darkest w-full h-full aspect-square'
-          }}
-          src={character.imageUrl!}
-          alt={character.name}
-        />
+        {character.imageUrl ? (
+          <Image
+            classNames={{
+              wrapper: 'bg-color-darkest w-full h-full aspect-square'
+            }}
+            className='object-cover w-full h-full'
+            src={character.imageUrl!}
+            alt={character.name}
+          />
+        ) : (
+          <CircularProgress
+            aria-label='Loading...'
+            className='absolute top-0 left-[50%] translate-x-[-50%] size-full'
+            size='lg'
+            classNames={{
+              svg: 'w-36 h-36 drop-shadow-md',
+              indicator: 'stroke-color-success',
+              track: 'stroke-white/10',
+              value: 'text-sm font-semibold text-white'
+            }}
+            strokeWidth={5}
+          />
+        )}
 
         <Button
           fullWidth

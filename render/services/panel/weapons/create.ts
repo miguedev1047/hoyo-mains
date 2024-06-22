@@ -4,6 +4,7 @@ import { z } from 'zod'
 import { currentRole } from '@/data/auth'
 import { WeaponSchema } from '@/schemas'
 import db from '@/libs/db'
+import { dataWeaponsByName } from './data'
 
 export const createWapons = async (data: z.infer<typeof WeaponSchema>) => {
   const currentAdminRole = await currentRole()
@@ -24,12 +25,20 @@ export const createWapons = async (data: z.infer<typeof WeaponSchema>) => {
   const { description, atk, id, imageUrl, stat, name, stars, starsText, type } =
     validateFields.data
 
+  const existsWeapon = await dataWeaponsByName(name)
+
+  if (existsWeapon)
+    return {
+      error: 'Ya existe un arma con ese nombre.',
+      status: 400
+    }
+
   try {
     const weapon = await db.weapon.create({
       data: {
         id,
         imageUrl,
-        description, 
+        description,
         atk: parseInt(atk),
         stat,
         name,

@@ -6,13 +6,14 @@ import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { raritys } from '@/constants'
 import { CharacterSchema } from '@/schemas'
-import { downloadImage } from '@/utils/helpers/download-image'
 import { createCharacters } from '@/render/services/panel/characters/create'
+import { useUploadImageToCloud } from '@/utils/hooks/panel/use-upload-image-to-cloud'
 import { toast } from 'sonner'
 import { mutate } from 'swr'
 
 export const useCreateCharacter = () => {
   const [isPending, startTransition] = useTransition()
+  const { handleUploadImage } = useUploadImageToCloud()
 
   // Estado globales
   const { name, onOpen, onOpenChange } = useModalStore((state) => ({
@@ -67,50 +68,17 @@ export const useCreateCharacter = () => {
   // Logica de la función onSubmit
   const onSubmit = handleSubmit(async (data) => {
     const uuid = crypto.randomUUID()
+    const END_POINT = '/api/characters'
 
     const starsNumber = Number(
       raritys.find((rarity) => rarity.name === data.starsText)?.title[0]
     )
 
-    // Logica para subir una imagen
-    async function uploadImage(
-      image: { file: File | null },
-      id: string | null
-    ) {
-      const { url, status, error } = await downloadImage({
-        id: id!,
-        path: 'characters',
-        imgFile: image.file!
-      })
-
-      return { url, status, error }
-    }
-
-    // Función para crear los personajes
-    async function handleCreate(
-      data: z.infer<typeof CharacterSchema>,
-      uuid: string,
-      url: string | null,
-      starsNumber: number
-    ) {
-      const newValues = {
-        ...data,
-        name: data.name.toLowerCase(),
-        id: uuid,
-        imageUrl: url!,
-        stars: starsNumber
-      }
-
-      const { message, status, error } = await createCharacters(newValues)
-
-      if (status === 201) {
-        toast.success(message)
-        handleReset()
-        mutate('/api/characters')
-        return
-      }
-
-      toast.error(error)
+    const newValues = {
+      ...data,
+      name: data.name.toLowerCase(),
+      id: uuid,
+      stars: starsNumber
     }
 
     startTransition(async () => {
@@ -121,14 +89,21 @@ export const useCreateCharacter = () => {
       }
 
       // Logica para subir la imagen y crear el personaje
-      const { url, status, error } = await uploadImage(image, uuid)
+      const { message, status, error } = await createCharacters(newValues)
 
       if (status === 201) {
-        await handleCreate(data, uuid, url, starsNumber)
+        handleUploadImage({
+          path: 'characters',
+          id: uuid,
+          endpoint: END_POINT
+        })
+        mutate(END_POINT)
+        handleReset()
+        toast.success(message)
         return
       }
 
-      toast.error(`${error} Intentalo denuevo.`)
+      toast.error(error)
     })
   })
 
