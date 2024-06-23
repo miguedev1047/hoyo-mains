@@ -30,7 +30,7 @@ const CharactersSection = () => {
   }
 
   const handleChangeElement = (element: Selection) => {
-    const data = Object.values(element)[0]
+    const [data] = Object.values(element)
 
     setCharacterFilters({
       ...characterFilters,
@@ -85,7 +85,13 @@ const CharactersSection = () => {
               value={weapon.name}
             >
               <div className='flex items-center gap-2'>
-                <Image className='size-8' src={weapon.icon} alt={weapon.name} />
+                <figure className='relative bg-primary-color w-8 h-8 flex-none rounded-md overflow-hidden'>
+                  <Image
+                    className='w-full h-full object-cover'
+                    src={weapon.icon}
+                    alt={weapon.name}
+                  />
+                </figure>
                 <p className='text-center capitalize'>{weapon.title}</p>
               </div>
             </SelectItem>
@@ -115,11 +121,13 @@ const CharactersSection = () => {
               value={element.name}
             >
               <div className='flex items-center gap-2'>
-                <Image
-                  className='size-8'
-                  src={element.icon}
-                  alt={element.name}
-                />
+                <figure className='relative bg-primary-color w-8 h-8 flex-none rounded-md overflow-hidden'>
+                  <Image
+                    className='w-full h-full object-cover'
+                    src={element.icon}
+                    alt={element.name}
+                  />
+                </figure>
                 <p className='text-center capitalize'>{element.name}</p>
               </div>
             </SelectItem>

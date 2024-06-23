@@ -21,7 +21,7 @@ const WeaponsSection = () => {
   const handleSelectWeapon = (weapon: Selection) => {
     setSelectedWeapon(weapon)
 
-    const data = Object.values(weapon)[0]
+    const [data] = Object.values(weapon)
     if (data === undefined) return router.push('/panel/weapons')
     router.push(data)
   }

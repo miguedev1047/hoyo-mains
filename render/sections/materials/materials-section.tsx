@@ -20,7 +20,7 @@ const MaterialsSection = () => {
   const handleSelectMaterial = (weapon: Selection) => {
     setSelectedMaterial(weapon)
 
-    const data = Object.values(weapon)[0]
+    const [data] = Object.values(weapon)
     if (data === undefined) return router.push('/panel/materials')
     router.push(data)
   }
