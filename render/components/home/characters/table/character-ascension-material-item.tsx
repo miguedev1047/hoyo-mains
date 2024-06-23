@@ -20,9 +20,9 @@ const CharacterAscensionMaterialItem = ({
   if (error) return null
 
   return (
-    <div className='flex items-center gap-2 cursor-pointer'>
+    <div className='flex items-center gap-2'>
       <Badge placement='top-left' content={material.quantity}>
-        <figure className='w-10 h-10 bg-primary-color p-1 rounded-md flex-none relative'>
+        <figure className='w-10 h-10 bg-primary-color p-1 rounded-md flex-none relative overflow-hidden'>
           <Image
             radius='sm'
             className='w-full h-full object-cover'

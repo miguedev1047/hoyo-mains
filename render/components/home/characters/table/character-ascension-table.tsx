@@ -65,7 +65,7 @@ const AscensionTable = ({
         )
       case 'materials':
         return (
-          <ol className='min-w-[975px] grid grid-cols-4'>
+          <ol className='min-w-[900px] grid grid-cols-4'>
             {ascension.materials.map((material: any) => (
               <CharacterAscensionMaterialItem
                 key={material.id}

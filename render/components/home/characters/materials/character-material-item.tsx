@@ -25,7 +25,7 @@ const CharacterMaterialItem = ({
   return (
     <Card className='p-5 bg-color-darkest'>
       <div className='flex gap-4 items-center select-none'>
-        <figure className='flex-none relative w-10 h-10 p-1 bg-primary-color rounded-md'>
+        <figure className='flex-none relative w-10 h-10 p-1 bg-primary-color rounded-md overflow-hidden'>
           <Image
             radius='sm'
             className='w-full h-full rounded-md object-cover'
