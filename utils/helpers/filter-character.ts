@@ -41,6 +41,8 @@ export const homeFilterCharacter = (
   if (!characters) return undefined
 
   const filtered = characters.filter((char) => {
+    if (!char) return
+
     const matchesElement =
       filters.element === '' || filters.element === char.element
     const matchesWeapon =

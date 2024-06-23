@@ -1,6 +1,5 @@
 'use client'
 
-import { InputWrapper } from '@/utils/classes'
 import { useFilterStore } from '@/utils/store/use-filter'
 import { Input } from '@nextui-org/input'
 import { IconSearch } from '@tabler/icons-react'
@@ -11,8 +10,8 @@ const SearchCharacter = () => {
 
   return (
     <Input
-      classNames={InputWrapper}
       aria-label='Buscar'
+      variant='underlined'
       value={searchCharacter}
       onValueChange={(value) => setSearchValue(value)}
       placeholder='Buscar...'
