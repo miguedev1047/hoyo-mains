@@ -5,6 +5,7 @@ import CharacterMaterials from '@/render/components/home/characters/materials/ch
 import CharacterBestStats from '@/render/components/home/characters/stats/character-best-stats'
 import CharacterAscensionTable from '@/render/components/home/characters/table/character-ascension-table'
 import CharacterWeapons from '@/render/components/home/characters/weapons/character-weapons'
+import CharacterVideo from '@/render/components/home/characters/yt/character-youtube'
 import {
   characterType,
   dataCharacterByName
@@ -45,7 +46,8 @@ const SectionCharacterHome = async ({
           <Divider className='col-span-4' />
           <CharacterBestStats character={character} />
           <Divider className='col-span-4' />
-          
+          <CharacterVideo character={character} />
+          <Divider className='col-span-4' />
         </CardBody>
       </Card>
     </section>
