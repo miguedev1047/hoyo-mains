@@ -24,15 +24,14 @@ export const updateConstellation = async (
       status: 400
     }
 
-  const { name, description, imageUrl } = validateFields.data
+  const { name, description } = validateFields.data
 
   try {
     const passives = await db.constellationsByCharacter.update({
       where: { id: dataId },
       data: {
         name,
-        description,
-        imageUrl
+        description
       }
     })
     return { data: passives, message: 'Constelación actualizada!', status: 201 }

@@ -32,6 +32,24 @@ export const uploadImageTheCloud = async ({ imageUrl, id, path }: Props) => {
       case 'materials':
         await db.material.update({ where: { id }, data: { imageUrl } })
         return { message: 'Imagen subida con éxito.', status: 201 }
+      case 'constellations':
+        await db.constellationsByCharacter.update({
+          where: { id },
+          data: { imageUrl }
+        })
+        return { message: 'Imagen subida con éxito.', status: 201 }
+      case 'passives':
+        await db.passivesByCharacter.update({
+          where: { id },
+          data: { imageUrl }
+        })
+        return { message: 'Imagen subida con éxito.', status: 201 }
+      case 'talents':
+        await db.talentsByCharacter.update({
+          where: { id },
+          data: { imageUrl }
+        })
+        return { message: 'Imagen subida con éxito.', status: 201 }
       default:
         return {
           error: 'No existe la ruta.',

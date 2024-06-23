@@ -74,7 +74,7 @@ export const useCreateCharacter = () => {
       raritys.find((rarity) => rarity.name === data.starsText)?.title[0]
     )
 
-    const newValues = {
+    const characterData = {
       ...data,
       name: data.name.toLowerCase(),
       id: uuid,
@@ -89,7 +89,7 @@ export const useCreateCharacter = () => {
       }
 
       // Logica para subir la imagen y crear el personaje
-      const { message, status, error } = await createCharacters(newValues)
+      const { message, status, error } = await createCharacters(characterData)
 
       if (status === 201) {
         handleUploadImage({

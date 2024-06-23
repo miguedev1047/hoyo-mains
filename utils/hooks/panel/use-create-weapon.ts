@@ -1,21 +1,21 @@
+import { z } from 'zod'
 import { raritys } from '@/constants'
-import { createWapons } from '@/render/services/panel/weapons/create'
 import { dataWeaponsById } from '@/render/services/panel/weapons/data'
+import { createWapons } from '@/render/services/panel/weapons/create'
 import { updateWapons } from '@/render/services/panel/weapons/update'
 import { WeaponSchema } from '@/schemas'
-import { downloadImage } from '@/utils/helpers/download-image'
 import { useDropImage } from '@/utils/store/use-drop-image'
 import { useModalStore } from '@/utils/store/use-open'
+import { useUploadImageToCloud } from '@/utils/hooks/panel/use-upload-image-to-cloud'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { useEffect, useState, useTransition } from 'react'
+import { useEffect, useTransition } from 'react'
 import { useForm } from 'react-hook-form'
 import { toast } from 'sonner'
 import { mutate } from 'swr'
-import { z } from 'zod'
 
 export const useCreateWeapon = () => {
   const [isPending, startTransition] = useTransition()
-  const [key, setKey] = useState(+new Date())
+  const { handleUploadImage } = useUploadImageToCloud()
 
   // Estado globales
   const { id, name, onOpen, onOpenChange } = useModalStore((state) => ({
@@ -74,7 +74,6 @@ export const useCreateWeapon = () => {
           setValue('atk', data?.atk.toString()!)
 
           setImage({ imgFile: null, imgPreview: data?.imageUrl! })
-          setKey(+new Date())
           return
         }
 
@@ -101,94 +100,37 @@ export const useCreateWeapon = () => {
   // Logica de la función onSubmit
   const onSubmit = handleSubmit((data) => {
     const uuid = crypto.randomUUID()
+    const END_POINT = '/api/weapons?'
 
     const starsNumber = Number(
       raritys.find((rarity) => rarity.name === data.starsText)?.title[0]
     )
 
-    // Logica para subir una imagen
-    async function uploadImage(
-      image: { file: File | null },
-      id: string | null
-    ) {
-      const { url, status, error } = await downloadImage({
-        id: id!,
-        path: 'weapons',
-        imgFile: image.file
-      })
-
-      mutate('/api/weapons')
-      return { url, status, error }
-    }
-
-    // Logica para actualizar
-    async function handleUpdate(
-      id: string,
-      data: z.infer<typeof WeaponSchema>,
-      uuid: string,
-      url: string | null,
-      starsNumber: number
-    ) {
-      const newValues = {
-        ...data,
-        id: uuid,
-        imageUrl: url!,
-        stars: starsNumber,
-        type: data.type.toLocaleLowerCase()
-      }
-
-      const { message, status, error } = await updateWapons(id, newValues)
-
-      if (status === 201) {
-        toast.success(message)
-        handleReset()
-        mutate('/api/weapons')
-        return
-      }
-
-      toast.error(error)
-    }
-
-    // Logica para crear
-    async function handleCreate(
-      data: z.infer<typeof WeaponSchema>,
-      uuid: string,
-      url: string | null,
-      starsNumber: number
-    ) {
-      const newValues = {
-        ...data,
-        id: uuid,
-        imageUrl: url!,
-        stars: starsNumber,
-        stat: data.stat.toLocaleLowerCase(),
-        type: data.type.toLocaleLowerCase()
-      }
-
-      const { message, status, error } = await createWapons(newValues)
-
-      if (status === 201) {
-        toast.success(message)
-        handleReset()
-        mutate('/api/weapons?')
-        return
-      }
-
-      toast.error(error)
+    const weaponData = {
+      ...data,
+      id: uuid,
+      stars: starsNumber
     }
 
     // Logica de la función onSubmit
     startTransition(async () => {
       // Si la edición está activa, se envían los datos para actualizar
       if (isEditActive) {
-        const { url, status, error } = await uploadImage(image, id)
+        const { message, status, error } = await updateWapons(id, weaponData)
 
         if (status === 201) {
-          await handleUpdate(id, data, uuid, url, starsNumber)
+          handleUploadImage({
+            path: 'weapons',
+            id,
+            endpoint: END_POINT
+          })
+          mutate(END_POINT)
+          handleReset()
+          toast.success(message)
           return
         }
 
-        toast.error(`${error} Intentalo denuevo.`)
+        toast.error(error)
         return
       }
 
@@ -199,19 +141,25 @@ export const useCreateWeapon = () => {
       }
 
       // Subir la imagen y creamos el arma
-      const { url, status, error } = await uploadImage(image, uuid)
+      const { message, status, error } = await createWapons(weaponData)
 
       if (status === 201) {
-        await handleCreate(data, uuid, url, starsNumber)
+        handleUploadImage({
+          path: 'weapons',
+          id: uuid,
+          endpoint: END_POINT
+        })
+        mutate(END_POINT)
+        handleReset()
+        toast.success(message)
         return
       }
 
-      toast.error(`${error} Intentalo denuevo.`)
+      toast.error(error)
     })
   })
 
   return {
-    key,
     control,
     errors,
     isPending,

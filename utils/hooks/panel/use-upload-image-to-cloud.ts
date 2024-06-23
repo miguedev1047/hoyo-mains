@@ -26,12 +26,13 @@ export const useUploadImageToCloud = () => {
   }))
 
   const handleUploadImage = ({ path, id, endpoint }: Props) => {
+    const imageFile = image.file!
     if (role !== 'ADMIN' && role !== 'OWNER') return
+    if (!imageFile) return
 
     const metadata = { contentType: 'image/webp' }
     const imageRef = ref(storage, `${path}/${id}`)
 
-    const imageFile = image.file!
     const uploadTask = uploadBytesResumable(imageRef, imageFile, metadata)
 
     uploadTask.on(

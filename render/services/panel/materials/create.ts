@@ -24,7 +24,6 @@ export const createMaterials = async (data: z.infer<typeof MaterialSchema>) => {
   const {
     description,
     id,
-    imageUrl,
     label,
     name,
     stars,
@@ -37,7 +36,6 @@ export const createMaterials = async (data: z.infer<typeof MaterialSchema>) => {
     const material = await db.material.create({
       data: {
         id,
-        imageUrl,
         description,
         label,
         name,

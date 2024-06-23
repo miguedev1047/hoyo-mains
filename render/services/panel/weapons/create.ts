@@ -3,8 +3,8 @@
 import { z } from 'zod'
 import { currentRole } from '@/data/auth'
 import { WeaponSchema } from '@/schemas'
+import { dataWeaponsByName } from '@/render/services/panel/weapons/data'
 import db from '@/libs/db'
-import { dataWeaponsByName } from './data'
 
 export const createWapons = async (data: z.infer<typeof WeaponSchema>) => {
   const currentAdminRole = await currentRole()
@@ -22,7 +22,7 @@ export const createWapons = async (data: z.infer<typeof WeaponSchema>) => {
       status: 400
     }
 
-  const { description, atk, id, imageUrl, stat, name, stars, starsText, type } =
+  const { description, atk, id, stat, name, stars, starsText, type } =
     validateFields.data
 
   const existsWeapon = await dataWeaponsByName(name)
@@ -37,7 +37,6 @@ export const createWapons = async (data: z.infer<typeof WeaponSchema>) => {
     const weapon = await db.weapon.create({
       data: {
         id,
-        imageUrl,
         description,
         atk: parseInt(atk),
         stat,

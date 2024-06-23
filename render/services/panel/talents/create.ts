@@ -24,13 +24,12 @@ export const createTalents = async (
       status: 400
     }
 
-  const { id, imageUrl, name, description } = validateFields.data
+  const { id, name, description } = validateFields.data
 
   try {
     const talents = await db.talentsByCharacter.create({
       data: {
         id,
-        imageUrl,
         characterId,
         name,
         description

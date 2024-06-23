@@ -21,20 +21,12 @@ export const createArtifacts = async (data: z.infer<typeof ArtifactSchema>) => {
       status: 400
     }
 
-  const {
-    id,
-    imageUrl,
-    name,
-    stars,
-    starsText,
-    description
-  } = validateFields.data
+  const { id, name, stars, starsText, description } = validateFields.data
 
   try {
     const artifact = await db.artifact.create({
       data: {
         id,
-        imageUrl,
         name,
         stars,
         starsText,

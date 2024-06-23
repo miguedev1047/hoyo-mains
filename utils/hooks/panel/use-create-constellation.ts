@@ -1,7 +1,6 @@
 import { z } from 'zod'
-import { useEffect, useState, useTransition } from 'react'
+import { useEffect, useTransition } from 'react'
 import { CharacterConstellationSchema } from '@/schemas'
-import { downloadImage } from '@/utils/helpers/download-image'
 import { useDropImage } from '@/utils/store/use-drop-image'
 import { useModalStore } from '@/utils/store/use-open'
 import { zodResolver } from '@hookform/resolvers/zod'
@@ -9,14 +8,15 @@ import { dataConstellationId } from '@/render/services/panel/constellations/data
 import { updateConstellation } from '@/render/services/panel/constellations/update'
 import { createContellations } from '@/render/services/panel/constellations/create'
 import { useForm } from 'react-hook-form'
+import { useUploadImageToCloud } from '@/utils/hooks/panel/use-upload-image-to-cloud'
 import { Characters } from '@/types'
-import { toast } from 'sonner'
 import { mutate } from 'swr'
+import { toast } from 'sonner'
 
 export const useCreateConstellation = (character: Characters | undefined) => {
   const characterName = character?.name.toLowerCase().replace(/\s/g, '-')
   const [isPending, startTransition] = useTransition()
-  const [key, setKey] = useState(+new Date())
+  const { handleUploadImage } = useUploadImageToCloud()
 
   // Estado globales
   const { id, name, onOpen, onOpenChange } = useModalStore((state) => ({
@@ -65,7 +65,6 @@ export const useCreateConstellation = (character: Characters | undefined) => {
           setValue('description', data?.description!)
 
           setImage({ imgFile: null, imgPreview: data?.imageUrl! })
-          setKey(+new Date())
           return
         }
 
@@ -93,86 +92,31 @@ export const useCreateConstellation = (character: Characters | undefined) => {
   const onSubmit = handleSubmit((data) => {
     const uuid = crypto.randomUUID()
     const characterId = character?.id
+    const END_POINT = `/api/characters/character?name=${characterName}`
 
-    // Logica para subir una imagen
-    async function uploadImage(
-      image: { file: File | null },
-      id: string | null
-    ) {
-      const { url, status, error } = await downloadImage({
-        id: id!,
-        path: 'constellations',
-        imgFile: image.file
-      })
-      return { url, status, error }
-    }
-
-    // Logica para actualizar
-    async function handleUpdate(
-      id: string,
-      data: z.infer<typeof CharacterConstellationSchema>,
-      uuid: string,
-      url: string | null
-    ) {
-      const newValues = {
-        ...data,
-        id: uuid,
-        imageUrl: url!
-      }
-
-      const { message, status, error } = await updateConstellation(
-        id,
-        newValues
-      )
-
-      if (status === 201) {
-        toast.success(message)
-        handleReset()
-        mutate(`/api/characters/character?name=${characterName}`)
-        return
-      }
-
-      toast.error(error)
-    }
-
-    // Logica para crear
-    async function handleCreate(
-      data: z.infer<typeof CharacterConstellationSchema>,
-      uuid: string,
-      url: string | null
-    ) {
-      const newValues = {
-        ...data,
-        id: uuid,
-        imageUrl: url!
-      }
-
-      const { message, status, error } = await createContellations(
-        newValues,
-        characterId
-      )
-
-      if (status === 201) {
-        toast.success(message)
-        handleReset()
-        mutate(`/api/characters/character?name=${characterName}`)
-        return
-      }
-
-      toast.error(error)
+    const values = {
+      ...data,
+      id: uuid
     }
 
     startTransition(async () => {
       // Si la edición está activa, se envían los datos para actualizar
       if (isEditActive) {
-        const { url, status, error } = await uploadImage(image, id)
+        const { status, message, error } = await updateConstellation(id, values)
 
         if (status === 201) {
-          await handleUpdate(id, data, uuid, url)
+          handleUploadImage({
+            path: 'constellations',
+            id,
+            endpoint: END_POINT
+          })
+          toast.success(message)
+          handleReset()
+          mutate(END_POINT)
           return
         }
 
-        toast.error(`${error} Intentalo denuevo.`)
+        toast.error(error)
         return
       }
 
@@ -183,19 +127,28 @@ export const useCreateConstellation = (character: Characters | undefined) => {
       }
 
       // Subir la imagen y creamos la pasiva
-      const { url, status, error } = await uploadImage(image, uuid)
+      const { status, message, error } = await createContellations(
+        values,
+        characterId
+      )
 
       if (status === 201) {
-        await handleCreate(data, uuid, url)
+        handleUploadImage({
+          path: 'constellations',
+          id: uuid,
+          endpoint: END_POINT
+        })
+        toast.success(message)
+        handleReset()
+        mutate(END_POINT)
         return
       }
 
-      toast.error(`${error} Intentalo denuevo.`)
+      toast.error(error)
     })
   })
 
   return {
-    key,
     isPending,
     errors,
     control,

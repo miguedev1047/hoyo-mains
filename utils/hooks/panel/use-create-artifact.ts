@@ -1,21 +1,21 @@
 import { z } from 'zod'
 import { raritys } from '@/constants'
-import { createArtifacts } from '@/render/services/panel/artifacts/create'
 import { dataArtifactById } from '@/render/services/panel/artifacts/data'
+import { createArtifacts } from '@/render/services/panel/artifacts/create'
 import { updateArtifacts } from '@/render/services/panel/artifacts/update'
 import { useModalStore } from '@/utils/store/use-open'
 import { ArtifactSchema } from '@/schemas'
-import { downloadImage } from '@/utils/helpers/download-image'
 import { useDropImage } from '@/utils/store/use-drop-image'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { useEffect, useState, useTransition } from 'react'
+import { useEffect, useTransition } from 'react'
 import { useForm } from 'react-hook-form'
+import { useUploadImageToCloud } from '@/utils/hooks/panel/use-upload-image-to-cloud'
 import { toast } from 'sonner'
 import { mutate } from 'swr'
 
 export const useCreateArtifact = () => {
   const [isPending, startTransition] = useTransition()
-  const [key, setKey] = useState(+new Date())
+  const { handleUploadImage } = useUploadImageToCloud()
 
   // Estado globales
   const { id, name, onOpen, onOpenChange } = useModalStore((state) => ({
@@ -55,7 +55,6 @@ export const useCreateArtifact = () => {
     }
   })
 
-  // Obtenemos los artefactos para rellenar el formulario
   useEffect(() => {
     if (isEditActive) {
       startTransition(async () => {
@@ -67,14 +66,13 @@ export const useCreateArtifact = () => {
           setValue('starsText', data?.starsText!)
 
           setImage({ imgFile: null, imgPreview: data?.imageUrl! })
-          setKey(+new Date())
           return
         }
 
         toast.error(error)
       })
     }
-  }, [isEditActive, id, setValue, setImage])
+  }, [id, isEditActive, setImage, setValue])
 
   // Reinicio de los valores del formulario
   useEffect(() => {
@@ -94,88 +92,35 @@ export const useCreateArtifact = () => {
   // Logica de la función onSubmit
   const onSubmit = handleSubmit((data) => {
     const uuid = crypto.randomUUID()
+    const END_POINT = '/api/artifacts'
 
     const starsNumber = Number(
       raritys.find((rarity) => rarity.name === data.starsText)?.title[0]
     )
 
-    // Logica para subir una imagen
-    async function uploadImage(
-      image: { file: File | null },
-      id: string | null
-    ) {
-      const { url, status, error } = await downloadImage({
-        id: id!,
-        path: 'artifacts',
-        imgFile: image.file
-      })
-      return { url, status, error }
-    }
-
-    // Logica para actualizar
-    async function handleUpdate(
-      id: string,
-      data: z.infer<typeof ArtifactSchema>,
-      uuid: string,
-      url: string | null,
-      starsNumber: number
-    ) {
-      const newValues = {
-        ...data,
-        id: uuid,
-        imageUrl: url!,
-        stars: starsNumber
-      }
-
-      const { message, status, error } = await updateArtifacts(id, newValues)
-
-      if (status === 201) {
-        toast.success(message)
-        handleReset()
-        mutate('/api/artifacts')
-        return
-      }
-
-      toast.error(error)
-    }
-
-    // Logica para crear
-    async function handleCreate(
-      data: z.infer<typeof ArtifactSchema>,
-      uuid: string,
-      url: string | null,
-      starsNumber: number
-    ) {
-      const newValues = {
-        ...data,
-        id: uuid,
-        imageUrl: url!,
-        stars: starsNumber
-      }
-
-      const { message, status, error } = await createArtifacts(newValues)
-
-      if (status === 201) {
-        toast.success(message)
-        handleReset()
-        mutate('/api/artifacts')
-        return
-      }
-
-      toast.error(error)
+    const artifactData = {
+      ...data,
+      id: uuid,
+      stars: starsNumber
     }
 
     startTransition(async () => {
       // Si la edición está activa, se envían los datos para actualizar
       if (isEditActive) {
-        const { url, status, error } = await uploadImage(image, id)
+        const { status, message, error } = await updateArtifacts(
+          id,
+          artifactData
+        )
 
         if (status === 201) {
-          await handleUpdate(id, data, uuid, url, starsNumber)
+          handleUploadImage({ path: 'artifacts', id, endpoint: END_POINT })
+          mutate(END_POINT)
+          handleReset()
+          toast.success(message)
           return
         }
 
-        toast.error(`${error} Intentalo denuevo.`)
+        toast.error(error)
         return
       }
 
@@ -186,19 +131,25 @@ export const useCreateArtifact = () => {
       }
 
       // Subir la imagen y creamos el artefacto
-      const { url, status, error } = await uploadImage(image, uuid)
+      const { status, message, error } = await createArtifacts(artifactData)
 
       if (status === 201) {
-        await handleCreate(data, uuid, url, starsNumber)
+        handleUploadImage({
+          path: 'artifacts',
+          id: uuid,
+          endpoint: END_POINT
+        })
+        mutate(END_POINT)
+        handleReset()
+        toast.success(message)
         return
       }
 
-      toast.error(`${error} Intentalo denuevo.`)
+      toast.error(error)
     })
   })
 
   return {
-    key,
     control,
     errors,
     isPending,

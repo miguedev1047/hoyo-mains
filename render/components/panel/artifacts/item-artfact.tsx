@@ -7,6 +7,7 @@ import { deleteImage } from '@/utils/helpers/delete-image'
 import { mutate } from 'swr'
 import {
   Avatar,
+  CircularProgress,
   Dropdown,
   DropdownItem,
   DropdownMenu,
@@ -68,13 +69,29 @@ const ItemArtifact = ({ artifact }: { artifact: Artifact }) => {
       )}
     >
       <CardBody className='flex flex-row gap-4 items-center justify-between'>
-        <article className='flex items-center gap-2'>
-          <Avatar
-            radius='sm'
-            className='p-1 object-cover'
-            src={artifact.imageUrl!}
-            alt={artifact.name}
-          />
+        <article className='flex items-center gap-4'>
+          <figure className='w-10 h-10 bg-primary-color p-1 rounded-md flex-none relative'>
+            {artifact.imageUrl ? (
+              <Avatar
+                radius='sm'
+                className='w-full h-full object-cover'
+                src={artifact.imageUrl!}
+                alt={artifact.name}
+              />
+            ) : (
+              <CircularProgress
+                aria-label='Loading...'
+                size='lg'
+                classNames={{
+                  svg: 'w-full h-full drop-shadow-md',
+                  indicator: 'stroke-color-success',
+                  track: 'stroke-white/10',
+                  value: 'text-sm font-semibold text-white'
+                }}
+                strokeWidth={5}
+              />
+            )}
+          </figure>
           <TooltipItemName item={artifact}>
             <h3 className='text-base font-semibold line-clamp-1'>
               {artifact.name}

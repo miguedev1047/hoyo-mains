@@ -2,11 +2,13 @@ import { Weapon } from '@prisma/client'
 import { Button } from '@nextui-org/button'
 import {
   Avatar,
+  CircularProgress,
   Dropdown,
   DropdownItem,
   DropdownMenu,
   DropdownSection,
-  DropdownTrigger
+  DropdownTrigger,
+  Image
 } from '@nextui-org/react'
 import { mutate } from 'swr'
 import { useModalStore } from '@/utils/store/use-open'
@@ -67,13 +69,29 @@ const ItemWeapon = ({ weapon }: { weapon: Weapon }) => {
       )}
     >
       <CardBody className='flex flex-row items-center justify-between'>
-        <article className='flex items-center gap-2'>
-          <Avatar
-            radius='sm'
-            className='p-1 object-cover'
-            src={weapon.imageUrl!}
-            alt={weapon.name}
-          />
+        <article className='flex items-center gap-4'>
+          <figure className='w-10 h-10 bg-primary-color p-1 rounded-md flex-none relative'>
+            {weapon.imageUrl ? (
+              <Image
+                radius='sm'
+                className='w-full h-full object-cover'
+                src={weapon.imageUrl!}
+                alt={weapon.name}
+              />
+            ) : (
+              <CircularProgress
+                aria-label='Loading...'
+                size='lg'
+                classNames={{
+                  svg: 'w-full h-full drop-shadow-md',
+                  indicator: 'stroke-color-success',
+                  track: 'stroke-white/10',
+                  value: 'text-sm font-semibold text-white'
+                }}
+                strokeWidth={5}
+              />
+            )}
+          </figure>
           <TooltipItemName item={weapon}>
             <h3 className='text-base font-semibold line-clamp-1'>
               {weapon.name}

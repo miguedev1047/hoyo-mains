@@ -26,7 +26,6 @@ const ArtifactModal = () => {
     control,
     errors,
     isPending,
-    key,
     modalName,
     onSubmit,
     onOpenModal,
@@ -92,11 +91,11 @@ const ArtifactModal = () => {
                         label='Selecciona la rareza'
                         className='max-w-full'
                         isDisabled={isPending}
+                        isLoading={isPending}
                         errorMessage={errors.starsText?.message}
                         isInvalid={!!errors.starsText}
                         classNames={selectInputWrapper}
-                        key={key}
-                        defaultSelectedKeys={isEditActive ? [field.value] : []}
+                        selectedKeys={[field.value]}
                         renderValue={(value) => {
                           return value.map(({ data, key }) => (
                             <div key={key} className='flex gap-2 items-center'>

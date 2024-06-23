@@ -26,7 +26,6 @@ const WeaponModal = () => {
     control,
     errors,
     isPending,
-    key,
     modalName,
     onSubmit,
     onOpenModal,
@@ -91,13 +90,11 @@ const WeaponModal = () => {
                       label='Selecciona la estadística'
                       className='max-w-full'
                       isDisabled={isPending}
+                      isLoading={isPending}
                       errorMessage={errors.stat?.message}
                       isInvalid={!!errors.stat}
                       classNames={selectInputWrapper}
-                      key={key}
-                      defaultSelectedKeys={
-                        isEditActive ? [field.value.toUpperCase()] : []
-                      }
+                      selectedKeys={[field.value.toUpperCase()]}
                       renderValue={(value) => {
                         return value.map(({ data, key }) => (
                           <div key={key}>
@@ -131,13 +128,11 @@ const WeaponModal = () => {
                       label='Tipo de arma'
                       className='max-w-full'
                       isDisabled={isPending}
+                      isLoading={isPending}
                       errorMessage={errors.type?.message}
                       isInvalid={!!errors.type}
                       classNames={selectInputWrapper}
-                      key={key}
-                      defaultSelectedKeys={
-                        isEditActive ? [field.value.toUpperCase()] : []
-                      }
+                      selectedKeys={[field.value]}
                       renderValue={(value) => {
                         return value.map(({ data, key }) => (
                           <div key={key}>
@@ -172,11 +167,11 @@ const WeaponModal = () => {
                         label='Selecciona la rareza'
                         className='max-w-full'
                         isDisabled={isPending}
+                        isLoading={isPending}
                         errorMessage={errors.starsText?.message}
                         isInvalid={!!errors.starsText}
                         classNames={selectInputWrapper}
-                        key={key}
-                        defaultSelectedKeys={isEditActive ? [field.value] : []}
+                        selectedKeys={[field.value]}
                         renderValue={(value) => {
                           return value.map(({ data, key }) => (
                             <div key={key} className='flex gap-2 items-center'>

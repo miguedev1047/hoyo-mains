@@ -22,7 +22,6 @@ import ModalButton from '@/render/components/UI/buttons/modal/modal-button'
 
 const MaterialModal = () => {
   const {
-    key,
     control,
     errors,
     isPending,
@@ -92,13 +91,11 @@ const MaterialModal = () => {
                       label='Tipo de material'
                       className='max-w-full'
                       isDisabled={isPending}
+                      isLoading={isPending}
                       errorMessage={errors.type?.message}
                       isInvalid={!!errors.type}
                       classNames={selectInputWrapper}
-                      key={key}
-                      defaultSelectedKeys={
-                        isEditActive ? [field.value.toUpperCase()] : []
-                      }
+                      selectedKeys={[field.value]}
                       renderValue={(value) => {
                         return value.map(({ data, key }) => (
                           <div key={key}>
@@ -129,15 +126,15 @@ const MaterialModal = () => {
                   render={({ field }) => {
                     return (
                       <Select
-                        key={key}
                         items={raritys}
                         label='Selecciona la rareza'
                         className='max-w-full'
                         isDisabled={isPending}
+                        isLoading={isPending}
                         errorMessage={errors.starsText?.message}
                         isInvalid={!!errors.starsText}
                         classNames={selectInputWrapper}
-                        defaultSelectedKeys={isEditActive ? [field.value] : []}
+                        selectedKeys={[field.value]}
                         renderValue={(value) => {
                           return value.map(({ data, key }) => (
                             <div key={key} className='flex gap-2 items-center'>

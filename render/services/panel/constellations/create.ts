@@ -24,13 +24,12 @@ export const createContellations = async (
       status: 400
     }
 
-  const { id, imageUrl, name, description } = validateFields.data
+  const { id, name, description } = validateFields.data
 
   try {
     const passives = await db.constellationsByCharacter.create({
       data: {
         id,
-        imageUrl,
         characterId,
         name,
         description

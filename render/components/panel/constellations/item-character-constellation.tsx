@@ -6,15 +6,16 @@ import {
   CardBody,
   CardFooter,
   CardHeader,
+  CircularProgress,
   Divider,
   Image
 } from '@nextui-org/react'
 import { useModalStore } from '@/utils/store/use-open'
 import { useTransition } from 'react'
 import { deleteImage } from '@/utils/helpers/delete-image'
+import { deleteConstellation } from '@/render/services/panel/constellations/delete'
 import { toast } from 'sonner'
 import { mutate } from 'swr'
-import { deleteConstellation } from '@/render/services/panel/constellations/delete'
 import Output from '@/render/components/UI/editor/output'
 
 const ItemCharacterConstellation = ({
@@ -68,11 +69,27 @@ const ItemCharacterConstellation = ({
     <Card as='li' className='px-2 py-5 md:px-8 bg-color-darkest space-y-3'>
       <CardHeader>
         <article className='w-full flex items-center max-md:justify-between gap-4'>
-          <Image
-            className='w-20 h-20 bg-primary-color p-4 object-cover'
-            src={constellation.imageUrl!}
-            alt={constellation.name}
-          />
+          <figure className='w-20 h-20 bg-primary-color p-1 rounded-full flex-none relative overflow-hidden'>
+            {constellation.imageUrl ? (
+              <Image
+                className='w-full h-full bg-primary-color object-cover'
+                src={constellation.imageUrl!}
+                alt={constellation.name}
+              />
+            ) : (
+              <CircularProgress
+                aria-label='Loading...'
+                size='lg'
+                classNames={{
+                  svg: 'w-full h-full drop-shadow-md',
+                  indicator: 'stroke-color-success',
+                  track: 'stroke-white/10',
+                  value: 'text-sm font-semibold text-white'
+                }}
+                strokeWidth={5}
+              />
+            )}
+          </figure>
           <h3 className='text-xl font-semibold text-secondary-color line-clamp-1'>
             {constellation.name}
           </h3>
