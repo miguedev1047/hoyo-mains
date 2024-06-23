@@ -32,13 +32,17 @@ const ItemCharacter = ({ character }: { character: Character | undefined }) => {
         <Image
           isZoomed
           loading='lazy'
-          className='object-cover w-full h-full'
+          classNames={{
+            wrapper: 'w-full h-full mx-auto',
+            zoomedWrapper: 'h-full'
+          }}
+          className='w-full h-full object-cover'
           src={character?.imageUrl!}
           alt={`Personaje: ${character?.name}`}
         />
         {character?.isNew && (
           <Chip
-            className='text-xs uppercase absolute top-0 left-0 z-50 m-1'
+            className='text-xs uppercase absolute top-0 left-0 z-20 m-1'
             color='success'
             variant='shadow'
           >
@@ -48,7 +52,9 @@ const ItemCharacter = ({ character }: { character: Character | undefined }) => {
       </Card>
 
       <Card className='bg-color-light text-color-darkest px-4 py-1 text-center'>
-        <h2 className='capitalize font-bold line-clamp-1'>{character?.name}</h2>
+        <h2 className='text-xs sm:text-sm md:text-base capitalize font-bold line-clamp-1'>
+          {character?.name}
+        </h2>
       </Card>
     </MotionLi>
   )

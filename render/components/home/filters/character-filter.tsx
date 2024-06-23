@@ -39,8 +39,8 @@ const CharacterFilter = () => {
 
   return (
     <div className='w-full'>
-      <Card className='bg-color-light p-4 flex justify-around flex-row'>
-        <div className='space-x-2'>
+      <Card className='bg-color-light p-4 flex flex-wrap gap-4 justify-around flex-row'>
+        <div className='flex flex-wrap justify-center gap-2'>
           {buttonFilters.rarity.map((rarityFilter) => (
             <Tooltip
               key={rarityFilter.value}
@@ -67,7 +67,7 @@ const CharacterFilter = () => {
           ))}
         </div>
 
-        <div className='space-x-2'>
+        <div className='flex flex-wrap justify-center gap-2'>
           {buttonFilters.elements.map((filterElement) => (
             <Tooltip
               key={filterElement.value}
@@ -94,7 +94,7 @@ const CharacterFilter = () => {
           ))}
         </div>
 
-        <div className='space-x-2'>
+        <div className='flex flex-wrap justify-center gap-2'>
           {buttonFilters.weapons.map((filterWeapon) => (
             <Tooltip
               key={filterWeapon.value}
