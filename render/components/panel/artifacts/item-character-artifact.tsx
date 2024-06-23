@@ -1,6 +1,6 @@
 import { IconGripVertical } from '@tabler/icons-react'
 import { fetcher } from '@/utils/helpers/fetcher'
-import { Weapon } from '@prisma/client'
+import { Artifact } from '@prisma/client'
 import { ItemArtifactError } from '@/render/components/UI/errors/character-error'
 import { Draggable } from '@hello-pangea/dnd'
 import { Characters, Data } from '@/types'
@@ -23,7 +23,7 @@ const ItemCharacterArtifact = ({
     data: dataArtifact,
     isLoading,
     error
-  } = useSWR<Weapon>(`/api/artifacts/artifact/${artifact.item}`, fetcher)
+  } = useSWR<Artifact>(`/api/artifacts/artifact/${artifact.item}`, fetcher)
 
   if (error)
     return (
