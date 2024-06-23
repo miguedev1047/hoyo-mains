@@ -1,11 +1,9 @@
 import { Characters } from '@/types'
 import { CharacterWarnning } from '@/render/components/UI/errors/character-error'
-import { getStarBorderColor } from '@/utils/helpers/get-color'
 import { getElementImage } from '@/utils/helpers/get-element-image'
 import { getRole } from '@/utils/helpers/get-role'
 import { getWeapon } from '@/utils/helpers/get-weapon'
 import { Chip, Image } from '@nextui-org/react'
-import clsx from 'clsx'
 
 const CharacterHeader = ({
   character
