@@ -1,5 +1,6 @@
 import AlertError from '@/render/components/UI/errors/alert-error'
 import CharacterHeader from '@/render/components/home/characters/character-header'
+import CharacterMaterials from '@/render/components/home/characters/materials/character-materials'
 import CharacterAscensionTable from '@/render/components/home/characters/table/character-ascension-table'
 import {
   characterType,
@@ -32,6 +33,11 @@ const SectionCharacterHome = async ({
         <Divider />
         <CardBody className='grid grid-cols-4 px-0 md:px-4 gap-12'>
           <CharacterAscensionTable character={character} />
+          <Divider className='col-span-4' />
+          <CharacterMaterials character={character} />
+          <Divider className='col-span-4' />
+          
+          <Divider className='col-span-4 lg:hidden' />
         </CardBody>
       </Card>
     </section>

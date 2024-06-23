@@ -1,5 +1,6 @@
 'use client'
 
+import { useCallback } from 'react'
 import { characterType } from '@/render/services/home/characters/data'
 import { columnsHome } from '@/constants'
 import { Ascension } from '@/types'
@@ -12,8 +13,7 @@ import {
   TableCell,
   Spinner
 } from '@nextui-org/react'
-import { useCallback } from 'react'
-import ItemAscensionMaterial from './item-ascension-material'
+import CharacterAscensionMaterialItem from '@/render/components/home/characters/table/character-ascension-material-item'
 
 const CharacterAscensionTable = ({
   character
@@ -67,7 +67,10 @@ const AscensionTable = ({
         return (
           <ol className='min-w-[975px] grid grid-cols-4'>
             {ascension.materials.map((material: any) => (
-              <ItemAscensionMaterial key={material.id} material={material} />
+              <CharacterAscensionMaterialItem
+                key={material.id}
+                material={material}
+              />
             ))}
           </ol>
         )

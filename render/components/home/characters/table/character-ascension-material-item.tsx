@@ -5,7 +5,7 @@ import { Badge, Image } from '@nextui-org/react'
 import { Material } from '@prisma/client'
 import useSWR from 'swr'
 
-const ItemAscensionMaterial = ({
+const CharacterAscensionMaterialItem = ({
   material
 }: {
   material: MaterialByAscension
@@ -36,4 +36,4 @@ const ItemAscensionMaterial = ({
   )
 }
 
-export default ItemAscensionMaterial
+export default CharacterAscensionMaterialItem
