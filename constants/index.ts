@@ -254,6 +254,13 @@ export const columns = [
   { name: 'ACCIONES', uid: 'actions' }
 ]
 
+export const columnsHome = [
+  { name: 'RANGO', uid: 'rank' },
+  { name: 'NIVEL', uid: 'level' },
+  { name: 'COSTO', uid: 'cost' },
+  { name: 'MATERIALES', uid: 'materials' },
+]
+
 export const navigationItems = [
   { label: 'Personajes', href: '/characters' },
   { label: 'Equipos', href: '/teams' },

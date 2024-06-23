@@ -5,10 +5,14 @@ import { Chip, Image } from '@nextui-org/react'
 import { Character } from '@prisma/client'
 import { MotionLi } from '@/render/components/motion'
 import clsx from 'clsx'
+import Link from 'next/link'
 
 const ItemCharacter = ({ character }: { character: Character | undefined }) => {
   const starCharacter = getStarBorderColor(character?.stars || 0)
   const isPresent = useIsPresent()
+
+  const characterName = character?.name.toLowerCase().replace(/\s/g, '-')
+  const url = `/characters/character?name=${characterName}`
 
   return (
     <MotionLi
@@ -24,6 +28,8 @@ const ItemCharacter = ({ character }: { character: Character | undefined }) => {
     >
       <Card
         isPressable
+        as={Link}
+        href={url}
         className={clsx(
           'bg-color-darkest aspect-square w-full h-auto flex-none border',
           starCharacter
