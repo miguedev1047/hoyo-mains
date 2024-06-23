@@ -8,12 +8,12 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { Button } from '@nextui-org/button'
 import { Avatar, Chip, Select, SelectItem } from '@nextui-org/react'
 import { Weapon } from '@prisma/client'
+import { IconPlus } from '@tabler/icons-react'
 import { useState, useTransition } from 'react'
 import { Controller, useForm } from 'react-hook-form'
 import { toast } from 'sonner'
 import { CharacterItemError } from '@/render/components/UI/errors/character-error'
 import useSWR, { mutate } from 'swr'
-import { IconPlus } from '@tabler/icons-react'
 
 const WeaponSelector = ({
   character
@@ -27,7 +27,8 @@ const WeaponSelector = ({
   } = useSWR<Weapon[]>('/api/weapons', fetcher)
 
   const filteredWeapons = weapons?.filter(
-    (item) => item.type === character?.weapon
+    (item) =>
+      item.type.toLocaleLowerCase() === character?.weapon.toLocaleLowerCase()
   )
 
   const characterName = character?.name.toLowerCase().replace(/\s/g, '-')

@@ -2,6 +2,7 @@ import AlertError from '@/render/components/UI/errors/alert-error'
 import CharacterHeader from '@/render/components/home/characters/character-header'
 import CharacterMaterials from '@/render/components/home/characters/materials/character-materials'
 import CharacterAscensionTable from '@/render/components/home/characters/table/character-ascension-table'
+import CharacterWeapons from '@/render/components/home/characters/weapons/character-weapons'
 import {
   characterType,
   dataCharacterByName
@@ -36,7 +37,7 @@ const SectionCharacterHome = async ({
           <Divider className='col-span-4' />
           <CharacterMaterials character={character} />
           <Divider className='col-span-4' />
-          
+          <CharacterWeapons character={character} />
           <Divider className='col-span-4 lg:hidden' />
         </CardBody>
       </Card>
