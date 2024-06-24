@@ -4,6 +4,7 @@ import CharacterHeader from '@/render/components/home/characters/character-heade
 import CharacterMaterials from '@/render/components/home/characters/materials/character-materials'
 import CharacterBestStats from '@/render/components/home/characters/stats/character-best-stats'
 import CharacterAscensionTable from '@/render/components/home/characters/table/character-ascension-table'
+import CharacterSkillsTabs from '@/render/components/home/characters/tabs/character-skills-tabs'
 import CharacterTeams from '@/render/components/home/characters/teams/character-teams'
 import CharacterWeapons from '@/render/components/home/characters/weapons/character-weapons'
 import CharacterVideo from '@/render/components/home/characters/yt/character-youtube'
@@ -50,6 +51,8 @@ const SectionCharacterHome = async ({
           <CharacterVideo character={character} />
           <Divider className='col-span-4' />
           <CharacterTeams character={character} />
+          <Divider className='col-span-4' />
+          <CharacterSkillsTabs character={character} />
         </CardBody>
       </Card>
     </section>

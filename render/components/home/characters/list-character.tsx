@@ -5,8 +5,8 @@ import { homeFilterCharacter } from '@/utils/helpers/filter-character'
 import { useFilterStore } from '@/utils/store/use-filter'
 import { HomeSkeletonCharacters } from '@/render/components/UI/skeletons'
 import { Character } from '@prisma/client'
+import { HomeCharacterList } from '@/render/components/UI/errors'
 import ItemCharacter from '@/render/components/home/characters/item-character'
-import CharacterListError from '@/render/components/UI/errors'
 import useSWR from 'swr'
 
 const ListCharacter = () => {
@@ -24,7 +24,7 @@ const ListCharacter = () => {
   }))
 
   if (isLoading) return <HomeSkeletonCharacters />
-  if (error) return <CharacterListError />
+  if (error) return <HomeCharacterList />
 
   const filteredCharacters = homeFilterCharacter(filterStore, characters)
 
