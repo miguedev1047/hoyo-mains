@@ -62,7 +62,7 @@ export interface BestStats {
 
 export interface Team {
   id: string
-  characterId: string
+  characterId: string | null
   order: number
   name: string
   createdDate: Date

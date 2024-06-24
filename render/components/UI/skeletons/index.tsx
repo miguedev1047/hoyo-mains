@@ -19,3 +19,11 @@ export const HomeSkeletonCharacters = () => {
     </ul>
   )
 }
+
+export const HomeSkeletonCharacterTeam = () => {
+  return (
+    <Card>
+      <Skeleton className={`aspect-square ${skeletonWrapper}`} />
+    </Card>
+  )
+}
