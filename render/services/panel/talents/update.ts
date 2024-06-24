@@ -24,15 +24,14 @@ export const updateTalents = async (
       status: 400
     }
 
-  const { name, description, imageUrl } = validateFields.data
+  const { name, description } = validateFields.data
 
   try {
     const talents = await db.talentsByCharacter.update({
       where: { id: dataId },
       data: {
         name,
-        description,
-        imageUrl
+        description
       }
     })
     return { data: talents, message: 'Talento actualizado!', status: 201 }

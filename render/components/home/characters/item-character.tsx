@@ -1,11 +1,12 @@
 import { useIsPresent } from 'framer-motion'
 import { getStarBorderColor } from '@/utils/helpers/get-color'
 import { Card } from '@nextui-org/card'
-import { Chip, Image } from '@nextui-org/react'
+import { Chip, Image, Tooltip } from '@nextui-org/react'
 import { Character } from '@prisma/client'
 import { MotionLi } from '@/render/components/motion'
 import clsx from 'clsx'
 import Link from 'next/link'
+import { getElementImage } from '@/utils/helpers/get-element-image'
 
 const ItemCharacter = ({ character }: { character: Character | undefined }) => {
   const starCharacter = getStarBorderColor(character?.stars || 0)
@@ -55,6 +56,24 @@ const ItemCharacter = ({ character }: { character: Character | undefined }) => {
             <p className='font-bold'>{character?.isNew ? 'Nuevo' : ''}</p>
           </Chip>
         )}
+
+        <Tooltip
+          className='bg-color-light'
+          content={
+            <p className='text-color-darkest capitalize font-medium text-center text-sm'>
+              {character?.element}
+            </p>
+          }
+        >
+          <Card className='w-10 h-10 bg-color-dark uppercase absolute bottom-0 left-0 z-20 m-2 p-2 rounded-full'>
+            <Image
+              isBlurred
+              className='w-full h-full object-cover'
+              src={getElementImage(character?.element!)!}
+              alt={`Elemento ${character?.element}`}
+            />
+          </Card>
+        </Tooltip>
       </Card>
 
       <Card className='bg-color-light text-color-darkest px-4 py-1 text-center'>

@@ -24,7 +24,7 @@ export const updatePassive = async (
       status: 400
     }
 
-  const { name, description, imageUrl } = validateFields.data
+  const { name, description } = validateFields.data
 
   try {
     const passives = await db.passivesByCharacter.update({
@@ -32,7 +32,6 @@ export const updatePassive = async (
       data: {
         name,
         description,
-        imageUrl
       }
     })
     return { data: passives, message: 'Pasiva actualizada!', status: 201 }
