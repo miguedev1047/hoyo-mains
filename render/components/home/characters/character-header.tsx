@@ -1,5 +1,4 @@
 import { characterType } from '@/render/services/home/characters/data'
-import { Characters } from '@/types'
 import { getElementImage } from '@/utils/helpers/get-element-image'
 import { getRole } from '@/utils/helpers/get-role'
 import { getWeapon } from '@/utils/helpers/get-weapon'
