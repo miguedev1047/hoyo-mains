@@ -4,10 +4,10 @@ interface CharacterLoaderProps {
   className?: string
 }
 
-const CharacterLoader = ({ className }: CharacterLoaderProps) => {
+const CharacterLoader = ({ className = 'h-[calc(100vh_-_64px)]' }: CharacterLoaderProps) => {
   return (
     <div
-      className={`w-full h-[calc(100vh_-_64px)] grid place-content-center ${className}`}
+      className={`w-full  ${className} grid place-content-center`}
     >
       <Grid
         visible={true}
