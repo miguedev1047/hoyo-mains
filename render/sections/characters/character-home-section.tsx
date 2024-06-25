@@ -1,4 +1,11 @@
+'use client'
+
+import { characterType } from '@/render/services/home/characters/data'
+import { fetcher } from '@/utils/helpers/fetcher'
+import { Card, CardBody, CardHeader } from '@nextui-org/card'
+import { Divider } from '@nextui-org/react'
 import AlertError from '@/render/components/UI/errors/alert-error'
+import CharacterLoader from '@/render/components/UI/loaders/character-loader'
 import CharacterArtifacts from '@/render/components/home/characters/artifacts/character-artifacts'
 import CharacterHeader from '@/render/components/home/characters/character-header'
 import CharacterMaterials from '@/render/components/home/characters/materials/character-materials'
@@ -8,24 +15,23 @@ import CharacterSkillsTabs from '@/render/components/home/characters/tabs/charac
 import CharacterTeams from '@/render/components/home/characters/teams/character-teams'
 import CharacterWeapons from '@/render/components/home/characters/weapons/character-weapons'
 import CharacterVideo from '@/render/components/home/characters/yt/character-youtube'
-import {
-  characterType,
-  dataCharacterByName
-} from '@/render/services/home/characters/data'
-import { Card, CardBody, CardHeader } from '@nextui-org/card'
-import { Divider } from '@nextui-org/react'
+import useSWR from 'swr'
 
-const SectionCharacterHome = async ({
-  characterName
-}: {
-  characterName: string
-}) => {
-  const character = (await dataCharacterByName(characterName)) as characterType
+const SectionCharacterHome = ({ characterName }: { characterName: string }) => {
+  const API_CHARACTERS = `/api/characters/character?name=${characterName}`
 
-  if (!character)
+  const {
+    data: character,
+    isLoading,
+    error
+  } = useSWR<characterType>(API_CHARACTERS, fetcher)
+
+  if (isLoading) return <CharacterLoader className='h-[calc(100vh_-_14rem)]' />
+
+  if (error || !character)
     return (
       <AlertError
-        className='h-[calc(100dvh_-_14rem)]'
+        className='h-[calc(100vh_-_14rem)]'
         message='Hubo un problema al cargar el personaje.'
       />
     )
