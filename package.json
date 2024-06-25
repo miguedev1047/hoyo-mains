@@ -53,6 +53,7 @@
     "next": "^14.2.3",
     "next-auth": "^5.0.0-beta.17",
     "next-themes": "^0.2.1",
+    "path-to-regexp": "^7.0.0",
     "postcss": "8.4.38",
     "prisma": "^5.14.0",
     "react": "^18.3.1",

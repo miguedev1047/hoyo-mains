@@ -29,7 +29,7 @@ export default auth(async (req) => {
   }
 
   if (!isLoggedIn && !isPublicRoute) {
-    const redirect = new URL('/admin/login', nextUrl).href
+    const redirect = new URL('/', nextUrl).href
     return Response.redirect(redirect)
   }
 
@@ -37,5 +37,5 @@ export default auth(async (req) => {
 })
 
 export const config = {
-  matcher: ['/', '/((?!.+\\.[\\w]+$|_next).*)', '/(api|trpc)(.*)']
+  matcher: ['/panel/:path*']
 }
