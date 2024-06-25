@@ -10,7 +10,7 @@ const CharacterWeaponList = ({
 
   return (
     <ol className='w-full space-y-4'>
-      {weapons.map((weapon) => (
+      {weapons. map((weapon) => (
         <li key={weapon.id}>
           <CharacterWeaponItem weapon={weapon} />
         </li>

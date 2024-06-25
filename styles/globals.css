@@ -77,6 +77,10 @@ svg {
   @apply border-gray-500;
 }
 
-.output-text p {
-  line-height: 32px;
+.output-text > p {
+  color: #d6d4e8 !important;
+}
+
+.output-text > span {
+  color: #d6d4e8 !important;
 }
