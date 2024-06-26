@@ -6,9 +6,9 @@ const CharacterArtifactList = ({ character }: { character: characterType }) => {
 
   return (
     <ol className='w-full space-y-4'>
-      {arfifacts.map((artifact) => (
+      {arfifacts.map((artifact, index) => (
         <li key={artifact.id}>
-          <CharacterArtifactItem artifact={artifact} />
+          <CharacterArtifactItem artifact={artifact} index={index} />
         </li>
       ))}
     </ol>

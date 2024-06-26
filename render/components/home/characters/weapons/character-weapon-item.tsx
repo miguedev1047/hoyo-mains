@@ -6,10 +6,16 @@ import { Card } from '@nextui-org/card'
 import { Image } from '@nextui-org/react'
 import { Weapon, WeaponByCharacter } from '@prisma/client'
 import SkeletonMaterialItems from '@/render/components/UI/skeletons/skeleton-material-items'
-import useSWR from 'swr'
 import TooltipItem from '@/render/components/UI/tooltip/tooltip-item'
+import useSWR from 'swr'
 
-const CharacterWeaponItem = ({ weapon }: { weapon: WeaponByCharacter }) => {
+const CharacterWeaponItem = ({
+  weapon,
+  index
+}: {
+  weapon: WeaponByCharacter
+  index: number
+}) => {
   const {
     data: dataWeapon,
     isLoading,
@@ -25,7 +31,7 @@ const CharacterWeaponItem = ({ weapon }: { weapon: WeaponByCharacter }) => {
         <Card className='p-5 bg-color-darkest'>
           <div className='flex gap-4 items-center select-none'>
             <div className='bg-color-dark w-8 h-8 grid place-items-center rounded-md'>
-              <span>{weapon.order++}</span>
+              <span>{index + 1}</span>
             </div>
             <figure className='flex-none relative w-10 h-10 p-1 bg-primary-color rounded-md overflow-hidden'>
               <Image

@@ -20,9 +20,11 @@ import {
 } from '@nextui-org/react'
 import { IconChevronDown } from '@tabler/icons-react'
 import NextLink from 'next/link'
+import { usePathname } from 'next/navigation'
 
 const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const pathname = usePathname()
 
   return (
     <Navbar
@@ -42,17 +44,17 @@ const Navigation = () => {
         <Chip>Beta</Chip>
       </NavbarBrand>
       <NavbarContent className='hidden sm:flex gap-4' justify='center'>
-        <NavbarItem>
-          <Link as={NextLink} color='foreground' href='/characters'>
+        <NavbarItem isActive={pathname === '/'}>
+          <Link as={NextLink} color='foreground' href='/'>
             Personajes
           </Link>
         </NavbarItem>
-        <NavbarItem>
+        <NavbarItem isActive={pathname === '/teams'}>
           <Link as={NextLink} color='foreground' href='/teams'>
             Equipos
           </Link>
         </NavbarItem>
-        <NavbarItem>
+        <NavbarItem isActive={pathname === '/builds'}>
           <Link as={NextLink} color='foreground' href='/builds'>
             Builds
           </Link>

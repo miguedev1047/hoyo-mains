@@ -23,21 +23,21 @@ const TooltipItem = ({ children, item }: TooltipItemProps) => {
   return (
     <Tooltip
       placement='bottom'
-      className='bg-color-dark w-[500px] rounded-md'
+      className='bg-color-dark w-[500px]'
       content={
         <>
           <Card className='select-none pointer-events-none w-full border-transparent bg-transparent shadow-none rounded-none'>
             <CardHeader>
               <div className='flex items-center gap-4'>
-                <figure className='bg-primary-color w-12 h-12 relative p-1 rounded-md overflow-hidden flex-none'>
+                <figure className='bg-primary-color w-12 h-12 relative p-1 rounded-xl overflow-hidden flex-none'>
                   <Image src={item?.imageUrl!} alt={item?.name} />
                 </figure>
-                <h3 className='text-sm font-bold line-clamp-1'>{item?.name}</h3>
+                <h3 className='text-base font-bold line-clamp-1'>{item?.name}</h3>
               </div>
             </CardHeader>
             <Divider />
             <CardBody>
-              <div className='leading-8 text-base text-pretty text-color-light output-text'>
+              <div className='leading-8 text-sm text-pretty text-color-light output-text'>
                 {parse(item?.description!)}
               </div>
             </CardBody>
