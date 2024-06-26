@@ -19,6 +19,7 @@ import { InputWrapper, selectInputWrapper } from '@/utils/classes'
 import { useCreateCharacter } from '@/utils/hooks/panel/use-create-character'
 import DropImage from '@/render/components/UI/drop-image'
 import ModalButton from '@/render/components/UI/buttons/modal/modal-button'
+import { Chip, Image } from '@nextui-org/react'
 
 const CharacterModal = () => {
   const {
@@ -95,15 +96,10 @@ const CharacterModal = () => {
                       classNames={selectInputWrapper}
                       renderValue={(value) => {
                         return value.map(({ data, key }) => (
-                          <div key={key} className='flex gap-2 items-center'>
-                            <Avatar
-                              className='w-6 h-6'
-                              size='sm'
-                              radius='sm'
-                              src={data?.icon}
-                              alt={data?.name}
-                            />
-                            <span className='capitalize'>{data?.name}</span>
+                          <div key={key}>
+                            <Chip radius='sm' size='sm'>
+                              <p className='capitalize'>{data?.name}</p>
+                            </Chip>
                           </div>
                         ))
                       }}
@@ -115,12 +111,14 @@ const CharacterModal = () => {
                           key={element.name}
                           value={element.name}
                         >
-                          <div className='flex gap-2 items-center'>
-                            <Avatar
-                              radius='sm'
-                              src={element.icon}
-                              alt={element.name}
-                            />
+                          <div className='flex items-center gap-2'>
+                            <figure className='w-10 h-10 p-1 bg-primary-color rounded-md relative overflow-hidden'>
+                              <Image
+                                className='w-full h-full object-cover'
+                                src={element.icon}
+                                alt={element.name}
+                              />
+                            </figure>
                             <span className='capitalize'>{element.name}</span>
                           </div>
                         </SelectItem>
@@ -143,8 +141,10 @@ const CharacterModal = () => {
                       classNames={selectInputWrapper}
                       renderValue={(value) => {
                         return value.map(({ data, key }) => (
-                          <div key={key} className='flex gap-2 items-center'>
-                            <span className='capitalize'>{data?.title}</span>
+                          <div key={key}>
+                            <Chip radius='sm' size='sm'>
+                              <p className='capitalize'>{data?.name}</p>
+                            </Chip>
                           </div>
                         ))
                       }}
@@ -179,14 +179,10 @@ const CharacterModal = () => {
                       classNames={selectInputWrapper}
                       renderValue={(value) => {
                         return value.map(({ data, key }) => (
-                          <div key={key} className='flex gap-2 items-center'>
-                            <Avatar
-                              src={data?.icon}
-                              size='sm'
-                              radius='sm'
-                              className='w-6 h-6'
-                            />
-                            <span className='capitalize'>{data?.title}</span>
+                          <div key={key}>
+                            <Chip radius='sm' size='sm'>
+                              <p className='capitalize'>{data?.title}</p>
+                            </Chip>
                           </div>
                         ))
                       }}
@@ -198,12 +194,14 @@ const CharacterModal = () => {
                           key={weapon.name}
                           value={weapon.title}
                         >
-                          <div className='flex gap-2 items-center'>
-                            <Avatar
-                              radius='sm'
-                              src={weapon.icon}
-                              alt={weapon.title}
-                            />
+                          <div className='flex items-center gap-2'>
+                            <figure className='w-10 h-10 p-1 bg-primary-color rounded-md relative overflow-hidden'>
+                              <Image
+                                className='w-full h-full object-cover'
+                                src={weapon.icon}
+                                alt={weapon.name}
+                              />
+                            </figure>
                             <span className='capitalize'>{weapon.title}</span>
                           </div>
                         </SelectItem>
@@ -226,12 +224,10 @@ const CharacterModal = () => {
                       classNames={selectInputWrapper}
                       renderValue={(value) => {
                         return value.map(({ data, key }) => (
-                          <div key={key} className='flex gap-2 items-center'>
-                            <IconStarFilled
-                              size={24}
-                              className='text-yellow-500'
-                            />
-                            <span className='capitalize'>{data?.title}</span>
+                          <div key={key}>
+                            <Chip radius='sm' size='sm'>
+                              <p className='capitalize'>{data?.title}</p>
+                            </Chip>
                           </div>
                         ))
                       }}

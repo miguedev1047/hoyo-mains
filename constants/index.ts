@@ -208,11 +208,11 @@ export const stats = [
 ]
 
 export const weaponTypes = [
-  { name: 'Espada', id: 'SWORD' },
-  { name: 'Mandoble', id: 'CLAYMORE' },
-  { name: 'Arco', id: 'BOW' },
-  { name: 'Lanza', id: 'POLEARM' },
-  { name: 'Catalizador', id: 'CATALYST' }
+  { name: 'Espada', id: 'SWORD', icon: Sword.src },
+  { name: 'Mandoble', id: 'CLAYMORE', icon: Claymore.src },
+  { name: 'Arco', id: 'BOW', icon: Bow.src },
+  { name: 'Lanza', id: 'POLEARM', icon: Polearm.src },
+  { name: 'Catalizador', id: 'CATALYST', icon: Catalyst.src }
 ]
 
 export const borderColorStars = {
@@ -258,7 +258,7 @@ export const columnsHome = [
   { name: 'RANGO', uid: 'rank' },
   { name: 'NIVEL', uid: 'level' },
   { name: 'COSTO', uid: 'cost' },
-  { name: 'MATERIALES', uid: 'materials' },
+  { name: 'MATERIALES', uid: 'materials' }
 ]
 
 export const navigationItems = [

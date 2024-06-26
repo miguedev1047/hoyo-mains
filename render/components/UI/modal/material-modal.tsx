@@ -19,6 +19,7 @@ import { useCreateMaterial } from '@/utils/hooks/panel/use-create-material'
 import Editor from '@/render/components/UI/editor/editor'
 import DropImage from '@/render/components/UI/drop-image'
 import ModalButton from '@/render/components/UI/buttons/modal/modal-button'
+import { Chip } from '@nextui-org/react'
 
 const MaterialModal = () => {
   const {
@@ -99,7 +100,9 @@ const MaterialModal = () => {
                       renderValue={(value) => {
                         return value.map(({ data, key }) => (
                           <div key={key}>
-                            <span>{data?.name}</span>
+                            <Chip radius='sm' size='sm'>
+                              <p>{data?.name}</p>
+                            </Chip>
                           </div>
                         ))
                       }}
@@ -137,12 +140,10 @@ const MaterialModal = () => {
                         selectedKeys={[field.value]}
                         renderValue={(value) => {
                           return value.map(({ data, key }) => (
-                            <div key={key} className='flex gap-2 items-center'>
-                              <IconStarFilled
-                                size={24}
-                                className='text-yellow-500'
-                              />
-                              <span className='capitalize'>{data?.title}</span>
+                            <div key={key}>
+                              <Chip radius='sm' size='sm'>
+                                <p className='capitalize'>{data?.title}</p>
+                              </Chip>
                             </div>
                           ))
                         }}

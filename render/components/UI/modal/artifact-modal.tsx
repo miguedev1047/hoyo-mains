@@ -19,6 +19,7 @@ import { raritys } from '@/constants'
 import Editor from '@/render/components/UI/editor/editor'
 import DropImage from '@/render/components/UI/drop-image'
 import ModalButton from '@/render/components/UI/buttons/modal/modal-button'
+import { Chip } from '@nextui-org/react'
 
 const ArtifactModal = () => {
   const {
@@ -98,13 +99,11 @@ const ArtifactModal = () => {
                         selectedKeys={[field.value]}
                         renderValue={(value) => {
                           return value.map(({ data, key }) => (
-                            <div key={key} className='flex gap-2 items-center'>
-                              <IconStarFilled
-                                size={24}
-                                className='text-yellow-500'
-                              />
-                              <span className='capitalize'>{data?.title}</span>
-                            </div>
+                            <div key={key}>
+                            <Chip radius='sm' size='sm'>
+                              <p className='capitalize'>{data?.title}</p>
+                            </Chip>
+                          </div>
                           ))
                         }}
                         {...field}

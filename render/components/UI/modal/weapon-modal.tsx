@@ -19,6 +19,7 @@ import { raritys, stats, weaponTypes } from '@/constants'
 import Editor from '@/render/components/UI/editor/editor'
 import DropImage from '@/render/components/UI/drop-image'
 import ModalButton from '@/render/components/UI/buttons/modal/modal-button'
+import { Chip, Image } from '@nextui-org/react'
 
 const WeaponModal = () => {
   const {
@@ -94,11 +95,13 @@ const WeaponModal = () => {
                       errorMessage={errors.stat?.message}
                       isInvalid={!!errors.stat}
                       classNames={selectInputWrapper}
-                      selectedKeys={[field.value.toUpperCase()]}
+                      selectedKeys={[field.value]}
                       renderValue={(value) => {
                         return value.map(({ data, key }) => (
                           <div key={key}>
-                            <span>{data?.name}</span>
+                            <Chip radius='sm' size='sm'>
+                              <p>{data?.name}</p>
+                            </Chip>
                           </div>
                         ))
                       }}
@@ -136,20 +139,29 @@ const WeaponModal = () => {
                       renderValue={(value) => {
                         return value.map(({ data, key }) => (
                           <div key={key}>
-                            <span className='capitalize'>{data?.name}</span>
+                            <Chip radius='sm' size='sm'>
+                              <p className='capitalize'>{data?.name}</p>
+                            </Chip>
                           </div>
                         ))
                       }}
                       {...field}
                     >
-                      {(element) => (
+                      {(weapon) => (
                         <SelectItem
-                          textValue={element.name}
-                          key={element.id}
-                          value={element.id}
+                          textValue={weapon.name}
+                          key={weapon.id}
+                          value={weapon.id}
                         >
-                          <div>
-                            <span className='capitalize'>{element.name}</span>
+                          <div className='flex items-center gap-2'>
+                            <figure className='w-10 h-10 p-1 bg-primary-color rounded-md relative overflow-hidden'>
+                              <Image
+                                className='w-full h-full object-cover'
+                                src={weapon.icon}
+                                alt={weapon.name}
+                              />
+                            </figure>
+                            <span className='capitalize'>{weapon.name}</span>
                           </div>
                         </SelectItem>
                       )}
@@ -174,12 +186,10 @@ const WeaponModal = () => {
                         selectedKeys={[field.value]}
                         renderValue={(value) => {
                           return value.map(({ data, key }) => (
-                            <div key={key} className='flex gap-2 items-center'>
-                              <IconStarFilled
-                                size={24}
-                                className='text-yellow-500'
-                              />
-                              <span className='capitalize'>{data?.title}</span>
+                            <div key={key}>
+                              <Chip radius='sm' size='sm'>
+                                <p className='capitalize'>{data?.title}</p>
+                              </Chip>
                             </div>
                           ))
                         }}
