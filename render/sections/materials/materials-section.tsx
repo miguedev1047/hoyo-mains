@@ -46,7 +46,7 @@ const MaterialsSection = () => {
           items={materialItems}
           startContent={<IconFilter />}
           placeholder='Selecciona un arma...'
-          defaultSelectedKeys={selectedMaterial}
+          selectedKeys={selectedMaterial}
           onSelectionChange={handleSelectMaterial}
           renderValue={(items) => {
             return items.map((item) => (

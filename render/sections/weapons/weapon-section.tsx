@@ -47,7 +47,7 @@ const WeaponsSection = () => {
           items={weaponItems}
           startContent={<IconFilter />}
           placeholder='Selecciona un arma...'
-          defaultSelectedKeys={selectedWeapon}
+          selectedKeys={selectedWeapon}
           onSelectionChange={handleSelectWeapon}
           renderValue={(items) => {
             return items.map((item) => (

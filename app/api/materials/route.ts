@@ -5,7 +5,7 @@ export const dynamic = 'force-dynamic'
 
 export async function GET(request: Request) {
   try {
-    const type = new URL(request.url).searchParams.get('type')!
+    const type = new URL(request.url).searchParams.get('type')?.toUpperCase()!
 
     if (type === 'all' || !type) {
       const materials = await db.material.findMany({
