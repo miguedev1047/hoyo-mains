@@ -85,7 +85,7 @@ const CharactersSection = () => {
               value={weapon.name}
             >
               <div className='flex items-center gap-2'>
-                <figure className='relative bg-primary-color w-8 h-8 flex-none rounded-md overflow-hidden'>
+                <figure className='relative bg-primary-color w-10 h-10 p-1 flex-none rounded-md overflow-hidden'>
                   <Image
                     className='w-full h-full object-cover'
                     src={weapon.icon}
@@ -121,7 +121,7 @@ const CharactersSection = () => {
               value={element.name}
             >
               <div className='flex items-center gap-2'>
-                <figure className='relative bg-primary-color w-8 h-8 flex-none rounded-md overflow-hidden'>
+                <figure className='relative bg-primary-color w-10 h-10 p-1 flex-none rounded-md overflow-hidden'>
                   <Image
                     className='w-full h-full object-cover'
                     src={element.icon}

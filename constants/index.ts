@@ -170,27 +170,33 @@ export const materialItems = [
 export const weaponItems = [
   {
     name: 'Todos',
-    url: '/panel/weapons'
+    url: '/panel/weapons',
+    icon: null
   },
   {
     name: 'Arcos',
-    url: '/panel/weapons?type=bow'
+    url: '/panel/weapons?type=bow',
+    icon: Bow.src
   },
   {
     name: 'Mandobles',
-    url: '/panel/weapons?type=claymore'
+    url: '/panel/weapons?type=claymore',
+    icon: Claymore.src
   },
   {
     name: 'Lanzas',
-    url: '/panel/weapons?type=polearm'
+    url: '/panel/weapons?type=polearm',
+    icon: Polearm.src
   },
   {
     name: 'Espadas',
-    url: '/panel/weapons?type=sword'
+    url: '/panel/weapons?type=sword',
+    icon: Sword.src
   },
   {
     name: 'Catalizadores',
-    url: '/panel/weapons?type=catalyst'
+    url: '/panel/weapons?type=catalyst',
+    icon: Catalyst.src
   }
 ]
 

@@ -6,7 +6,7 @@ import { Input } from '@nextui-org/input'
 import { IconFilter, IconSearch } from '@tabler/icons-react'
 import { useRouter } from 'next/navigation'
 import { weaponItems } from '@/constants'
-import { Chip, Select, SelectItem, Selection } from '@nextui-org/react'
+import { Chip, Image, Select, SelectItem, Selection } from '@nextui-org/react'
 import { InputWrapper, selectInputWrapper } from '@/utils/classes'
 import WeaponList from '@/render/components/panel/weapons/list-weapon'
 
@@ -59,7 +59,21 @@ const WeaponsSection = () => {
         >
           {(weapon) => (
             <SelectItem key={weapon.url} value={weapon.url}>
-              {weapon.name}
+              <div className='flex items-center gap-2'>
+                <figure className='w-10 h-10 p-1 bg-primary-color rounded-md relative overflow-hidden grid place-items-center'>
+                  {weapon.icon ? (
+                    <Image
+                      className='w-full h-full object-cover'
+                      src={weapon.icon!}
+                      alt={weapon.name}
+                    />
+                  ) : (
+                    <IconFilter />
+                  )}
+                </figure>
+
+                <span className='capitalize'>{weapon.name}</span>
+              </div>
             </SelectItem>
           )}
         </Select>
