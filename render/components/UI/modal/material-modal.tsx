@@ -16,10 +16,10 @@ import { Controller } from 'react-hook-form'
 import { Input } from '@nextui-org/input'
 import { InputWrapper, selectInputWrapper } from '@/utils/classes'
 import { useCreateMaterial } from '@/utils/hooks/panel/use-create-material'
+import { Chip } from '@nextui-org/react'
 import Editor from '@/render/components/UI/editor/editor'
 import DropImage from '@/render/components/UI/drop-image'
 import ModalButton from '@/render/components/UI/buttons/modal/modal-button'
-import { Chip } from '@nextui-org/react'
 
 const MaterialModal = () => {
   const {

@@ -9,6 +9,7 @@ import { deletePassive } from '@/render/services/panel/passives/delete'
 import { toast } from 'sonner'
 import { mutate } from 'swr'
 import Output from '@/render/components/UI/editor/output'
+import Figure from '@/render/components/UI/misc/figure'
 
 const ItemCharacterPassive = ({
   passive,
@@ -60,7 +61,7 @@ const ItemCharacterPassive = ({
     <Card as='li' className='p-2 py-5 md:px-8 bg-color-darkest space-y-3'>
       <CardHeader>
         <article className='w-full flex items-center max-md:justify-between gap-4'>
-          <figure className='w-20 h-20 bg-primary-color p-1 rounded-full flex-none relative overflow-hidden'>
+          <Figure radius='rounded-full' width='w-20' height='h-20'>
             {passive.imageUrl ? (
               <Image
                 className='w-full h-full bg-primary-color object-cover'
@@ -80,7 +81,7 @@ const ItemCharacterPassive = ({
                 strokeWidth={5}
               />
             )}
-          </figure>
+          </Figure>
           <h3 className='text-xl font-semibold text-secondary-color line-clamp-1'>
             {passive.name}
           </h3>

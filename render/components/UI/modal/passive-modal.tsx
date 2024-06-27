@@ -11,19 +11,15 @@ import {
 } from '@nextui-org/modal'
 import { IconPlus } from '@tabler/icons-react'
 import { Controller } from 'react-hook-form'
-import { useCreateConstellation } from '@/utils/hooks/panel/use-create-constellation'
+import { useCreatePassive } from '@/utils/hooks/panel/use-create-passive'
 import Editor from '@/render/components/UI/editor/editor'
 import DropImage from '@/render/components/UI/drop-image'
 import ModalButton from '@/render/components/UI/buttons/modal/modal-button'
 
-const ModalConstellation = ({
-  character
-}: {
-  character: Characters | undefined
-}) => {
-  const constellations = character?.constellations
-  const MAX_CONSTELLATIONS = 6
-  const CONSTELLATIONS_LENGTH = constellations?.length
+const PassiveModal = ({ character }: { character: Characters | undefined }) => {
+  const passives = character?.passives
+  const MAX_PASSIVES = 3
+  const TALENTS_LENGTH = passives?.length
 
   const {
     isPending,
@@ -34,11 +30,11 @@ const ModalConstellation = ({
     onOpenModal,
     onSubmit,
     onOpenChange
-  } = useCreateConstellation(character)
+  } = useCreatePassive(character)
 
   return (
     <>
-      {(CONSTELLATIONS_LENGTH ?? 0) !== MAX_CONSTELLATIONS && (
+      {(TALENTS_LENGTH ?? 0) !== MAX_PASSIVES && (
         <Button
           fullWidth
           size='lg'
@@ -47,7 +43,7 @@ const ModalConstellation = ({
           className=' bg-color-light font-bold'
           onPress={onOpenModal}
         >
-          Añadir Constelación
+          Añadir Pasiva
         </Button>
       )}
       <Modal
@@ -61,8 +57,7 @@ const ModalConstellation = ({
             <form onSubmit={onSubmit}>
               <ModalHeader className='flex flex-col gap-1'>
                 <h3 className='text-xl font-semibold capitalize text-secondary-color'>
-                  {character?.name} - {isEditActive ? 'Editar' : 'Crear'}{' '}
-                  Constelación
+                  {character?.name} - {isEditActive ? 'Editar' : 'Crear'} Pasiva
                 </h3>
               </ModalHeader>
               <ModalBody className='grid grid-cols-2'>
@@ -75,8 +70,8 @@ const ModalConstellation = ({
                     <Input
                       autoFocus
                       className='col-span-2'
-                      label='Nombre de la constelación'
-                      placeholder='Constelación 1'
+                      label='Nombre de la pasiva'
+                      placeholder='Ascensión 1'
                       isDisabled={isPending}
                       isInvalid={!!errors.name}
                       errorMessage={errors.name?.message}
@@ -94,7 +89,7 @@ const ModalConstellation = ({
                       isPending={isPending}
                       isEdit={isEditActive}
                       errorMessage={errors.description?.message}
-                      placeholder='Descripción de la constelación'
+                      placeholder='Descripción de la pasiva'
                       description={field.value}
                       onChange={field.onChange}
                     />
@@ -114,4 +109,4 @@ const ModalConstellation = ({
   )
 }
 
-export default ModalConstellation
+export default PassiveModal

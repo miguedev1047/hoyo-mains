@@ -5,7 +5,6 @@ import { IconPencil, IconSettings, IconTrash } from '@tabler/icons-react'
 import { useModalStore } from '@/utils/store/use-open'
 import { deleteImage } from '@/utils/helpers/delete-image'
 import {
-  Avatar,
   CircularProgress,
   Dropdown,
   DropdownItem,
@@ -19,6 +18,7 @@ import { deleteMaterial } from '@/render/services/panel/materials/delete'
 import { toast } from 'sonner'
 import { useTransition } from 'react'
 import { getStarBorderColor } from '@/utils/helpers/get-color'
+import Figure from '@/render/components/UI/misc/figure'
 import TooltipItemName from '@/render/components/UI/tooltip/tooltip-item-name'
 import clsx from 'clsx'
 
@@ -71,7 +71,7 @@ const ItemMaterial = ({ material }: { material: Material }) => {
     >
       <CardBody className='flex flex-row gap-4 items-center justify-between'>
         <article className='flex items-center gap-4'>
-          <figure className='w-10 h-10 bg-primary-color p-1 rounded-md flex-none relative'>
+          <Figure width='w-10' height='h-10'>
             {material.imageUrl ? (
               <Image
                 radius='sm'
@@ -92,8 +92,7 @@ const ItemMaterial = ({ material }: { material: Material }) => {
                 strokeWidth={5}
               />
             )}
-          </figure>
-
+          </Figure>
           <TooltipItemName item={material}>
             <h3 className='text-base font-semibold line-clamp-1'>
               {material.name}

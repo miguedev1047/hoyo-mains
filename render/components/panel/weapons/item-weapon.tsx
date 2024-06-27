@@ -1,7 +1,6 @@
 import { Weapon } from '@prisma/client'
 import { Button } from '@nextui-org/button'
 import {
-  Avatar,
   CircularProgress,
   Dropdown,
   DropdownItem,
@@ -19,6 +18,7 @@ import { deleteImage } from '@/utils/helpers/delete-image'
 import { deleteWeapon } from '@/render/services/panel/weapons/delete'
 import { getStarBorderColor } from '@/utils/helpers/get-color'
 import { toast } from 'sonner'
+import Figure from '@/render/components/UI/misc/figure'
 import TooltipItemName from '@/render/components/UI/tooltip/tooltip-item-name'
 import clsx from 'clsx'
 
@@ -70,7 +70,7 @@ const ItemWeapon = ({ weapon }: { weapon: Weapon }) => {
     >
       <CardBody className='flex flex-row items-center justify-between'>
         <article className='flex items-center gap-4'>
-          <figure className='w-10 h-10 bg-primary-color p-1 rounded-md flex-none relative'>
+          <Figure width='w-10' height='h-10'>
             {weapon.imageUrl ? (
               <Image
                 radius='sm'
@@ -91,7 +91,7 @@ const ItemWeapon = ({ weapon }: { weapon: Weapon }) => {
                 strokeWidth={5}
               />
             )}
-          </figure>
+          </Figure>
           <TooltipItemName item={weapon}>
             <h3 className='text-base font-semibold line-clamp-1'>
               {weapon.name}

@@ -7,6 +7,7 @@ import { Characters, Data } from '@/types'
 import { Card } from '@nextui-org/card'
 import { Image } from '@nextui-org/react'
 import ButtonDeleteArtifact from '@/render/components/UI/buttons/artifact/button-delete-artifact'
+import Figure from '@/render/components/UI/misc/figure'
 import SkeletonMaterialItems from '@/render/components/UI/skeletons/skeleton-material-items'
 import useSWR from 'swr'
 
@@ -44,14 +45,13 @@ const ItemCharacterArtifact = ({
           <Card className='flex flex-row items-center justify-between gap-4 p-5 bg-color-darkest'>
             <div className='flex gap-4 items-center select-none'>
               <IconGripVertical size={20} />
-              <Image
-                src={dataArtifact?.imageUrl!}
-                alt={dataArtifact?.name!}
-                classNames={{
-                  wrapper: 'size-10 bg-primary-color rounded-md'
-                }}
-                className='size-10 rounded-md object-cover p-1'
-              />
+              <Figure width='w-10' height='h-10'>
+                <Image
+                  src={dataArtifact?.imageUrl!}
+                  alt={dataArtifact?.name!}
+                  className='w-full h-full object-cover'
+                />
+              </Figure>
               <h3 className='text-xs md:text-lg font-semibold line-clamp-1'>
                 {dataArtifact?.name}
               </h3>

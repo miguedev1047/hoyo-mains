@@ -11,15 +11,19 @@ import {
 } from '@nextui-org/modal'
 import { IconPlus } from '@tabler/icons-react'
 import { Controller } from 'react-hook-form'
-import { useCreatePassive } from '@/utils/hooks/panel/use-create-passive'
+import { useCreateConstellation } from '@/utils/hooks/panel/use-create-constellation'
 import Editor from '@/render/components/UI/editor/editor'
 import DropImage from '@/render/components/UI/drop-image'
 import ModalButton from '@/render/components/UI/buttons/modal/modal-button'
 
-const ModalPassive = ({ character }: { character: Characters | undefined }) => {
-  const passives = character?.passives
-  const MAX_PASSIVES = 3
-  const TALENTS_LENGTH = passives?.length
+const ConstellationModal = ({
+  character
+}: {
+  character: Characters | undefined
+}) => {
+  const constellations = character?.constellations
+  const MAX_CONSTELLATIONS = 6
+  const CONSTELLATIONS_LENGTH = constellations?.length
 
   const {
     isPending,
@@ -30,11 +34,11 @@ const ModalPassive = ({ character }: { character: Characters | undefined }) => {
     onOpenModal,
     onSubmit,
     onOpenChange
-  } = useCreatePassive(character)
+  } = useCreateConstellation(character)
 
   return (
     <>
-      {(TALENTS_LENGTH ?? 0) !== MAX_PASSIVES && (
+      {(CONSTELLATIONS_LENGTH ?? 0) !== MAX_CONSTELLATIONS && (
         <Button
           fullWidth
           size='lg'
@@ -43,7 +47,7 @@ const ModalPassive = ({ character }: { character: Characters | undefined }) => {
           className=' bg-color-light font-bold'
           onPress={onOpenModal}
         >
-          Añadir Pasiva
+          Añadir Constelación
         </Button>
       )}
       <Modal
@@ -57,7 +61,8 @@ const ModalPassive = ({ character }: { character: Characters | undefined }) => {
             <form onSubmit={onSubmit}>
               <ModalHeader className='flex flex-col gap-1'>
                 <h3 className='text-xl font-semibold capitalize text-secondary-color'>
-                  {character?.name} - {isEditActive ? 'Editar' : 'Crear'} Pasiva
+                  {character?.name} - {isEditActive ? 'Editar' : 'Crear'}{' '}
+                  Constelación
                 </h3>
               </ModalHeader>
               <ModalBody className='grid grid-cols-2'>
@@ -70,8 +75,8 @@ const ModalPassive = ({ character }: { character: Characters | undefined }) => {
                     <Input
                       autoFocus
                       className='col-span-2'
-                      label='Nombre de la pasiva'
-                      placeholder='Ascensión 1'
+                      label='Nombre de la constelación'
+                      placeholder='Constelación 1'
                       isDisabled={isPending}
                       isInvalid={!!errors.name}
                       errorMessage={errors.name?.message}
@@ -89,7 +94,7 @@ const ModalPassive = ({ character }: { character: Characters | undefined }) => {
                       isPending={isPending}
                       isEdit={isEditActive}
                       errorMessage={errors.description?.message}
-                      placeholder='Descripción de la pasiva'
+                      placeholder='Descripción de la constelación'
                       description={field.value}
                       onChange={field.onChange}
                     />
@@ -109,4 +114,4 @@ const ModalPassive = ({ character }: { character: Characters | undefined }) => {
   )
 }
 
-export default ModalPassive
+export default ConstellationModal

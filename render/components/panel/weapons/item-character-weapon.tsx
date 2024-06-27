@@ -7,6 +7,7 @@ import { Card } from '@nextui-org/card'
 import { Image } from '@nextui-org/react'
 import { ItemWeaponError } from '@/render/components/UI/errors/character-error'
 import ButtonDeleteWeapon from '@/render/components/UI/buttons/weapon/button-delete-weapon'
+import Figure from '@/render/components/UI/misc/figure'
 import SkeletonMaterialItems from '@/render/components/UI/skeletons/skeleton-material-items'
 import useSWR from 'swr'
 
@@ -26,9 +27,7 @@ const ItemCharacterWeapon = ({
   } = useSWR<Weapon>(`/api/weapons/weapon/${weapon.item}`, fetcher)
 
   if (error)
-    return (
-      <ItemWeaponError message='Ha ocurrido un error al cargar el arma.' />
-    )
+    return <ItemWeaponError message='Ha ocurrido un error al cargar el arma.' />
 
   if (isLoading) return <SkeletonMaterialItems />
 
@@ -44,15 +43,17 @@ const ItemCharacterWeapon = ({
           <Card className='flex flex-row items-center justify-between gap-4 p-5 bg-color-darkest'>
             <div className='flex gap-4 items-center select-none'>
               <IconGripVertical size={20} />
-              <Image
-                src={dataWeapon?.imageUrl!}
-                alt={dataWeapon?.name!}
-                classNames={{
-                  wrapper: 'size-10 bg-primary-color rounded-md'
-                }}
-                className='size-10 rounded-md object-cover p-1'
-              />
-              <h3 className='text-xs md:text-lg font-semibold line-clamp-1'>{dataWeapon?.name}</h3>
+              <Figure width='w-10' height='h-10'>
+                <Image
+                  radius='sm'
+                  className='w-full h-full object-cover'
+                  src={dataWeapon?.imageUrl!}
+                  alt={dataWeapon?.name!}
+                />
+              </Figure>
+              <h3 className='text-xs md:text-lg font-semibold line-clamp-1'>
+                {dataWeapon?.name}
+              </h3>
             </div>
 
             <ButtonDeleteWeapon character={character} weapon={weapon} />

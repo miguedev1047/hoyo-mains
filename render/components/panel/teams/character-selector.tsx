@@ -7,12 +7,20 @@ import { Controller, useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { CharacterItemSchema } from '@/schemas'
 import { createCharactersCharacter } from '@/render/services/panel/teams/create'
-import { Avatar, Button, Chip, Select, SelectItem } from '@nextui-org/react'
+import {
+  Avatar,
+  Button,
+  Chip,
+  Image,
+  Select,
+  SelectItem
+} from '@nextui-org/react'
 import { selectorItemDarkwrapper } from '@/utils/classes'
 import { Character } from '@prisma/client'
+import { IconPlus } from '@tabler/icons-react'
 import { toast } from 'sonner'
 import useSWR, { mutate } from 'swr'
-import { IconPlus } from '@tabler/icons-react'
+import Figure from '@/render/components/UI/misc/figure'
 
 const CharacterSelector = ({
   character,
@@ -136,11 +144,13 @@ const CharacterSelector = ({
               {(character) => (
                 <SelectItem key={character.id} textValue={character.name}>
                   <div className='flex gap-2 items-center'>
-                    <Avatar
-                      radius='sm'
-                      src={character.imageUrl!}
-                      alt={character.name}
-                    />
+                    <Figure width='w-10' height='h-10'>
+                      <Image
+                        radius='sm'
+                        src={character.imageUrl!}
+                        alt={character.name}
+                      />
+                    </Figure>
                     <span className='capitalize'>{character.name}</span>
                   </div>
                 </SelectItem>

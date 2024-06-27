@@ -4,13 +4,13 @@ import { Characters, MaterialByAscension } from '@/types'
 import { fetcher } from '@/utils/helpers/fetcher'
 import { zodResolver } from '@hookform/resolvers/zod'
 import {
-  Avatar,
   Badge,
   Popover,
   PopoverTrigger,
   PopoverContent,
   Input,
-  Button
+  Button,
+  Image
 } from '@nextui-org/react'
 import { Material } from '@prisma/client'
 import { IconCheck } from '@tabler/icons-react'
@@ -20,6 +20,7 @@ import { InputWrapper } from '@/utils/classes'
 import { updateQuantityAscensionMaterial } from '@/render/services/panel/ascensions/update'
 import SkeletonTableMaterial from '@/render/components/UI/skeletons/skeleton-table-material'
 import { toast } from 'sonner'
+import Figure from '@/render/components/UI/misc/figure'
 import useSWR, { mutate } from 'swr'
 
 const ItemMaterial = ({
@@ -84,12 +85,14 @@ const ItemMaterial = ({
       <PopoverTrigger>
         <div className='flex items-center gap-2 cursor-pointer'>
           <Badge placement='top-left' content={material.quantity}>
-            <Avatar
-              radius='sm'
-              className='p-1'
-              src={dataMaterial?.imageUrl!}
-              alt={dataMaterial?.name}
-            />
+            <Figure width='w-10' height='h-10'>
+              <Image
+                radius='sm'
+                className='w-full h-full object-cover'
+                src={dataMaterial?.imageUrl!}
+                alt={dataMaterial?.name}
+              />
+            </Figure>
           </Badge>
           <h3 className='text-xs line-clamp-1'>{dataMaterial?.name}</h3>
         </div>

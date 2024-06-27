@@ -1,3 +1,4 @@
+import Figure from '@/render/components/UI/misc/figure'
 import SkeletonTableMaterial from '@/render/components/UI/skeletons/skeleton-table-material'
 import { MaterialByAscension } from '@/types'
 import { fetcher } from '@/utils/helpers/fetcher'
@@ -22,14 +23,14 @@ const CharacterAscensionMaterialItem = ({
   return (
     <div className='flex items-center gap-2'>
       <Badge placement='top-left' content={material.quantity}>
-        <figure className='w-10 h-10 bg-primary-color p-1 rounded-md flex-none relative overflow-hidden'>
+        <Figure width='w-10' height='w-10'>
           <Image
             radius='sm'
             className='w-full h-full object-cover'
             src={dataMaterial?.imageUrl!}
             alt={dataMaterial?.name}
           />
-        </figure>
+        </Figure>
       </Badge>
       <h3 className='text-xs line-clamp-1'>{dataMaterial?.name}</h3>
     </div>

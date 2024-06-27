@@ -17,6 +17,7 @@ import { deleteConstellation } from '@/render/services/panel/constellations/dele
 import { toast } from 'sonner'
 import { mutate } from 'swr'
 import Output from '@/render/components/UI/editor/output'
+import Figure from '../../UI/misc/figure'
 
 const ItemCharacterConstellation = ({
   constellation,
@@ -69,7 +70,7 @@ const ItemCharacterConstellation = ({
     <Card as='li' className='px-2 py-5 md:px-8 bg-color-darkest space-y-3'>
       <CardHeader>
         <article className='w-full flex items-center max-md:justify-between gap-4'>
-          <figure className='w-20 h-20 bg-primary-color p-1 rounded-full flex-none relative overflow-hidden'>
+          <Figure radius='rounded-full' width='w-20' height='h-20'>
             {constellation.imageUrl ? (
               <Image
                 className='w-full h-full bg-primary-color object-cover'
@@ -89,7 +90,7 @@ const ItemCharacterConstellation = ({
                 strokeWidth={5}
               />
             )}
-          </figure>
+          </Figure>
           <h3 className='text-xl font-semibold text-secondary-color line-clamp-1'>
             {constellation.name}
           </h3>

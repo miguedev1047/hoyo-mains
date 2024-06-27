@@ -14,12 +14,13 @@ import {
   ModalBody,
   ModalFooter
 } from '@nextui-org/modal'
+import { Chip, Image } from '@nextui-org/react'
 import { useCreateWeapon } from '@/utils/hooks/panel/use-create-weapon'
 import { raritys, stats, weaponTypes } from '@/constants'
 import Editor from '@/render/components/UI/editor/editor'
 import DropImage from '@/render/components/UI/drop-image'
 import ModalButton from '@/render/components/UI/buttons/modal/modal-button'
-import { Chip, Image } from '@nextui-org/react'
+import Figure from '@/render/components/UI/misc/figure'
 
 const WeaponModal = () => {
   const {
@@ -154,13 +155,13 @@ const WeaponModal = () => {
                           value={weapon.id}
                         >
                           <div className='flex items-center gap-2'>
-                            <figure className='w-10 h-10 p-1 bg-primary-color rounded-md relative overflow-hidden'>
+                            <Figure width='w-10' height='h-10'>
                               <Image
                                 className='w-full h-full object-cover'
                                 src={weapon.icon}
                                 alt={weapon.name}
                               />
-                            </figure>
+                            </Figure>
                             <span className='capitalize'>{weapon.name}</span>
                           </div>
                         </SelectItem>

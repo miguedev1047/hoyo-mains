@@ -12,14 +12,14 @@ import {
 } from '@nextui-org/modal'
 import { Input } from '@nextui-org/input'
 import { Select, SelectItem } from '@nextui-org/select'
-import { Avatar } from '@nextui-org/avatar'
 import { Controller } from 'react-hook-form'
 import { elements, raritys, role, weapons } from '@/constants'
 import { InputWrapper, selectInputWrapper } from '@/utils/classes'
 import { useCreateCharacter } from '@/utils/hooks/panel/use-create-character'
+import { Chip, Image } from '@nextui-org/react'
 import DropImage from '@/render/components/UI/drop-image'
 import ModalButton from '@/render/components/UI/buttons/modal/modal-button'
-import { Chip, Image } from '@nextui-org/react'
+import Figure from '@/render/components/UI/misc/figure'
 
 const CharacterModal = () => {
   const {
@@ -112,13 +112,13 @@ const CharacterModal = () => {
                           value={element.name}
                         >
                           <div className='flex items-center gap-2'>
-                            <figure className='w-10 h-10 p-1 bg-primary-color rounded-md relative overflow-hidden'>
+                            <Figure width='w-10' height='w-10'>
                               <Image
                                 className='w-full h-full object-cover'
                                 src={element.icon}
                                 alt={element.name}
                               />
-                            </figure>
+                            </Figure>
                             <span className='capitalize'>{element.name}</span>
                           </div>
                         </SelectItem>
@@ -195,13 +195,13 @@ const CharacterModal = () => {
                           value={weapon.title}
                         >
                           <div className='flex items-center gap-2'>
-                            <figure className='w-10 h-10 p-1 bg-primary-color rounded-md relative overflow-hidden'>
+                            <Figure width='w-10' height='h-10'>
                               <Image
                                 className='w-full h-full object-cover'
                                 src={weapon.icon}
                                 alt={weapon.name}
                               />
-                            </figure>
+                            </Figure>
                             <span className='capitalize'>{weapon.title}</span>
                           </div>
                         </SelectItem>

@@ -14,7 +14,8 @@ import {
   SelectItem,
   Popover,
   PopoverTrigger,
-  PopoverContent
+  PopoverContent,
+  Image
 } from '@nextui-org/react'
 import { Material } from '@prisma/client'
 import { useState, useTransition } from 'react'
@@ -22,6 +23,7 @@ import { Controller, useForm } from 'react-hook-form'
 import { toast } from 'sonner'
 import useSWR, { mutate } from 'swr'
 import { IconPlus } from '@tabler/icons-react'
+import Figure from '../../UI/misc/figure'
 
 const FormCharacterAscension = ({
   character
@@ -193,12 +195,14 @@ const FormCharacterAscension = ({
                   {(material) => (
                     <SelectItem textValue={material.name} key={material.id}>
                       <div className='flex gap-2 items-center'>
-                        <Avatar
-                          radius='sm'
-                          className='p-1'
-                          src={material.imageUrl!}
-                          alt={material.name}
-                        />
+                        <Figure width='w-10' height='h-10'>
+                          <Image
+                            radius='sm'
+                            className='w-full h-full object-cover'
+                            src={material.imageUrl!}
+                            alt={material.name}
+                          />
+                        </Figure>
                         <span className='line-clamp-1'>{material.name}</span>
                       </div>
                     </SelectItem>

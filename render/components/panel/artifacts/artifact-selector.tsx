@@ -8,11 +8,12 @@ import { useState, useTransition } from 'react'
 import { Controller, useForm } from 'react-hook-form'
 import { CharacterItemError } from '@/render/components/UI/errors/character-error'
 import { createArtifactCharacters } from '@/render/services/panel/artifacts/create'
-import { Avatar, Button, Chip, Select, SelectItem } from '@nextui-org/react'
+import { Button, Chip, Image, Select, SelectItem } from '@nextui-org/react'
 import { selectorItemWrapper } from '@/utils/classes'
-import { toast } from 'sonner'
-import useSWR, { mutate } from 'swr'
 import { IconPlus } from '@tabler/icons-react'
+import { toast } from 'sonner'
+import Figure from '@/render/components/UI/misc/figure'
+import useSWR, { mutate } from 'swr'
 
 const ArtifactSelector = ({
   character
@@ -121,12 +122,14 @@ const ArtifactSelector = ({
                 {(weapon) => (
                   <SelectItem key={weapon.id} textValue={weapon.name}>
                     <div className='flex gap-2 items-center'>
-                      <Avatar
-                        radius='sm'
-                        className='p-1 object-cover'
-                        src={weapon.imageUrl!}
-                        alt={weapon.name}
-                      />
+                      <Figure width='w-10' height='h-10'>
+                        <Image
+                          radius='sm'
+                          className='w-full h-full object-cover'
+                          src={weapon.imageUrl!}
+                          alt={weapon.name}
+                        />
+                      </Figure>
                       <span>{weapon.name}</span>
                     </div>
                   </SelectItem>

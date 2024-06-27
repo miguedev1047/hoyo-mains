@@ -2,9 +2,8 @@ import { z } from 'zod'
 import { CharacterItemSchema } from '@/schemas'
 import { fetcher } from '@/utils/helpers/fetcher'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { Avatar } from '@nextui-org/avatar'
 import { Button } from '@nextui-org/button'
-import { Chip, Select, SelectItem } from '@nextui-org/react'
+import { Chip, Image, Select, SelectItem } from '@nextui-org/react'
 import { useState, useTransition } from 'react'
 import { Controller, useForm } from 'react-hook-form'
 import { createMaterialCharacters } from '@/render/services/panel/materials/create'
@@ -13,8 +12,9 @@ import { Characters } from '@/types'
 import { toast } from 'sonner'
 import { selectorItemWrapper } from '@/utils/classes'
 import { CharacterItemError } from '@/render/components/UI/errors/character-error'
-import useSWR, { mutate } from 'swr'
 import { IconPlus } from '@tabler/icons-react'
+import useSWR, { mutate } from 'swr'
+import Figure from '@/render/components/UI/misc/figure'
 
 const MaterialSelector = ({
   character
@@ -123,12 +123,14 @@ const MaterialSelector = ({
                 {(material) => (
                   <SelectItem key={material.id} textValue={material.name}>
                     <div className='flex gap-2 items-center'>
-                      <Avatar
-                        radius='sm'
-                        className='p-1 object-cover'
-                        src={material.imageUrl!}
-                        alt={material.name}
-                      />
+                      <Figure width='w-10' height='h-10'>
+                        <Image
+                          radius='sm'
+                          className='w-full h-full object-cover'
+                          src={material.imageUrl!}
+                          alt={material.name}
+                        />
+                      </Figure>
                       <span>{material.name}</span>
                     </div>
                   </SelectItem>

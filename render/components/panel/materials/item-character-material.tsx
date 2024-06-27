@@ -7,6 +7,7 @@ import { Card } from '@nextui-org/card'
 import { Image } from '@nextui-org/react'
 import { ItemMaterialError } from '@/render/components/UI/errors/character-error'
 import ButtonDeleteMaterial from '@/render/components/UI/buttons/material/button-delete-material'
+import Figure from '@/render/components/UI/misc/figure'
 import SkeletonMaterialItems from '@/render/components/UI/skeletons/skeleton-material-items'
 import useSWR from 'swr'
 
@@ -44,14 +45,13 @@ const ItemCharacterMaterial = ({
           <Card className='flex flex-row items-center justify-between gap-4 p-5 bg-color-darkest'>
             <div className='flex gap-4 items-center select-none'>
               <IconGripVertical size={20} />
-              <Image
-                src={dataMaterial?.imageUrl!}
-                alt={dataMaterial?.name!}
-                classNames={{
-                  wrapper: 'size-10 bg-primary-color rounded-md'
-                }}
-                className='size-10 rounded-md object-cover p-1'
-              />
+              <Figure width='w-10' height='h-10'>
+                <Image
+                  src={dataMaterial?.imageUrl!}
+                  alt={dataMaterial?.name!}
+                  className='w-full h-full object-cover'
+                />
+              </Figure>
               <h3 className='text-xs md:text-lg font-semibold line-clamp-1'>
                 {dataMaterial?.name}
               </h3>

@@ -1,10 +1,11 @@
 import { Draggable } from '@hello-pangea/dnd'
-import { Avatar, Card } from '@nextui-org/react'
+import { Card, Image } from '@nextui-org/react'
 import { IconGripVertical } from '@tabler/icons-react'
 import { ItemCharacterError } from '@/render/components/UI/errors/character-error'
 import { Characters, CharactersByTeam } from '@/types'
 import { fetcher } from '@/utils/helpers/fetcher'
 import ButtonDeleteCharacter from '@/render/components/UI/buttons/team/button-delete-character'
+import Figure from '@/render/components/UI/misc/figure'
 import SkeletonTeamCharacters from '@/render/components/UI/skeletons/skeleton-team-characters'
 import useSWR from 'swr'
 
@@ -48,12 +49,14 @@ const CharacterItemCharacter = ({
                 <span className='max-md:hidden'>
                   <IconGripVertical size={20} />
                 </span>
-                <Avatar
-                  radius='sm'
-                  className='bg-primary-color'
-                  src={dataCharacter?.imageUrl!}
-                  alt={dataCharacter?.name}
-                />
+                <Figure width='w-12' height='h-12' padding='p-0'>
+                  <Image
+                    radius='sm'
+                    className='w-full h-full object-cover'
+                    src={dataCharacter?.imageUrl!}
+                    alt={dataCharacter?.name}
+                  />
+                </Figure>
                 <h3 className='text-sm md:text-lg font-semibold capitalize line-clamp-1'>
                   {dataCharacter?.name}
                 </h3>
