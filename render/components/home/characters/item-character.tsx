@@ -4,9 +4,9 @@ import { Card } from '@nextui-org/card'
 import { Chip, Image, Tooltip } from '@nextui-org/react'
 import { Character } from '@prisma/client'
 import { MotionLi } from '@/render/components/motion'
+import { getElementImage } from '@/utils/helpers/get-element-image'
 import clsx from 'clsx'
 import Link from 'next/link'
-import { getElementImage } from '@/utils/helpers/get-element-image'
 
 const ItemCharacter = ({ character }: { character: Character | undefined }) => {
   const starCharacter = getStarBorderColor(character?.stars || 0)
