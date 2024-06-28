@@ -13,7 +13,7 @@ const CharacterVideo = ({ character }: { character: characterType }) => {
         </h3>
       </article>
       {characterVideo && (
-        <Card className='p-4 md:p-8 space-y-4 bg-color-darkest'>
+        <Card className='p-4 md:p-8 space-y-4 bg-color-darkest select-none'>
           <h3 className='text-lg'>
             <span className='capitalize'>{character?.name}</span> video guía
             por&nbsp;

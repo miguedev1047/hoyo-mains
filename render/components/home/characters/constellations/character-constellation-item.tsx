@@ -10,7 +10,7 @@ const CharacterConstellationItem = ({
   constellation: ConstellationsByCharacter
 }) => {
   return (
-    <Card className='px-2 py-5 md:px-8 bg-color-darkest space-y-3'>
+    <Card className='px-2 py-5 md:px-8 bg-color-darkest space-y-3 select-none'>
       <CardHeader>
         <article className='w-full flex items-center max-md:justify-between gap-4'>
           <Figure radius='rounded-full' width='w-20' height='h-20'>

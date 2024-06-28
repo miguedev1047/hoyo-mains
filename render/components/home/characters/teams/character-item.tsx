@@ -41,7 +41,7 @@ const CharacterItem = ({
       }
     >
       <Link href={url}>
-        <Card className='bg-color-dark aspect-square'>
+        <Card className='bg-color-dark aspect-square select-none'>
           <Figure
             radius='rounded-sm'
             padding='p-0'
