@@ -17,9 +17,9 @@ export const filterCharacters = (
   filters: Filters,
   characters: Array<any> | undefined
 ) => {
-  if (!characters) return undefined
+  if (!characters && !filters) return undefined
 
-  const filtered = characters.filter((char) => {
+  const filtered = characters?.filter((char) => {
     const matchesElement =
       filters.element === undefined || filters.element === char.element
     const matchesWeapon =
@@ -38,9 +38,9 @@ export const homeFilterCharacter = (
   filters: HomeFilters,
   characters: Character[] | undefined
 ) => {
-  if (!characters) return undefined
+  if (!characters && !filters) return undefined
 
-  const filtered = characters.filter((char) => {
+  const filtered = characters?.filter((char) => {
     if (!char) return
 
     const matchesElement =
