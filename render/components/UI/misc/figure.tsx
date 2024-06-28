@@ -1,10 +1,10 @@
 interface FigureProps {
-  width: string
-  height: string
-  children: React.ReactNode
-  className?: string
+  width?: string
+  height?: string
   radius?: string
   padding?: string
+  className?: string
+  children: React.ReactNode
 }
 
 const Figure = ({

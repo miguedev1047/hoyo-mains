@@ -6,6 +6,7 @@ import { Card, Image } from '@nextui-org/react'
 import { Artifact, ArtifactByCharacter } from '@prisma/client'
 import SkeletonMaterialItems from '@/render/components/UI/skeletons/skeleton-material-items'
 import TooltipItem from '@/render/components/UI/tooltip/tooltip-item'
+import Figure from '@/render/components/UI/misc/figure'
 import useSWR from 'swr'
 
 const CharacterArtifactItem = ({
@@ -32,14 +33,14 @@ const CharacterArtifactItem = ({
             <div className='bg-color-dark w-8 h-8 grid place-items-center rounded-md'>
               <span>{index + 1}</span>
             </div>
-            <figure className='flex-none relative w-10 h-10 p-1 bg-primary-color rounded-md overflow-hidden'>
+            <Figure width='w-10' height='h-10'>
               <Image
                 radius='sm'
-                className='w-full h-full rounded-md object-cover'
+                className='w-full h-full object-cover'
                 src={dataArtifact?.imageUrl!}
                 alt={dataArtifact?.name!}
               />
-            </figure>
+            </Figure>
             <h3 className='text-xs md:text-lg font-semibold line-clamp-1'>
               {dataArtifact?.name}
             </h3>

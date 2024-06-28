@@ -6,8 +6,9 @@ import { Material, MaterialsByCharacter } from '@prisma/client'
 import { Card } from '@nextui-org/card'
 import { Image } from '@nextui-org/react'
 import SkeletonMaterialItems from '@/render/components/UI/skeletons/skeleton-material-items'
-import useSWR from 'swr'
 import TooltipItem from '@/render/components/UI/tooltip/tooltip-item'
+import Figure from '@/render/components/UI/misc/figure'
+import useSWR from 'swr'
 
 const CharacterMaterialItem = ({
   material
@@ -27,14 +28,14 @@ const CharacterMaterialItem = ({
     <TooltipItem item={dataMaterial}>
       <Card className='p-5 bg-color-darkest'>
         <div className='flex gap-4 items-center select-none'>
-          <figure className='flex-none relative w-10 h-10 p-1 bg-primary-color rounded-md overflow-hidden'>
+          <Figure width='w-10' height='h-10'>
             <Image
               radius='sm'
               className='w-full h-full rounded-md object-cover'
               src={dataMaterial?.imageUrl!}
               alt={dataMaterial?.name!}
             />
-          </figure>
+          </Figure>
           <h3 className='text-xs md:text-lg font-semibold line-clamp-1'>
             {dataMaterial?.name}
           </h3>

@@ -1,12 +1,12 @@
 'use client'
 
 import { HomeCharacterTeamError } from '@/render/components/UI/errors'
-import { HomeCharacterTeamLoader } from '@/render/components/UI/loaders'
 import { HomeSkeletonCharacterTeam } from '@/render/components/UI/skeletons'
 import { Characters } from '@/types'
 import { fetcher } from '@/utils/helpers/fetcher'
 import { Card, Image, Tooltip } from '@nextui-org/react'
 import { CharacterByTeam } from '@prisma/client'
+import Figure from '@/render/components/UI/misc/figure'
 import Link from 'next/link'
 import useSWR from 'swr'
 
@@ -41,15 +41,20 @@ const CharacterItem = ({
       }
     >
       <Link href={url}>
-        <Card className='bg-color-dark'>
-          <figure className='relative w-full h-auto aspect-square flex-none bg-primary-color rounded-md overflow-hidden'>
+        <Card className='bg-color-dark aspect-square'>
+          <Figure
+            radius='rounded-sm'
+            padding='p-0'
+            width='w-full'
+            height='h-full'
+          >
             <Image
               radius='sm'
               className='w-full h-full object-cover'
               src={dataCharacter?.imageUrl!}
               alt={dataCharacter?.name}
             />
-          </figure>
+          </Figure>
         </Card>
       </Link>
     </Tooltip>

@@ -7,6 +7,7 @@ import { Image } from '@nextui-org/react'
 import { Weapon, WeaponByCharacter } from '@prisma/client'
 import SkeletonMaterialItems from '@/render/components/UI/skeletons/skeleton-material-items'
 import TooltipItem from '@/render/components/UI/tooltip/tooltip-item'
+import Figure from '@/render/components/UI/misc/figure'
 import useSWR from 'swr'
 
 const CharacterWeaponItem = ({
@@ -33,14 +34,14 @@ const CharacterWeaponItem = ({
             <div className='bg-color-dark w-8 h-8 grid place-items-center rounded-md'>
               <span>{index + 1}</span>
             </div>
-            <figure className='flex-none relative w-10 h-10 p-1 bg-primary-color rounded-md overflow-hidden'>
+            <Figure width='w-10' height='h-10'>
               <Image
                 radius='sm'
                 className='w-full h-full rounded-md object-cover'
                 src={dataWeapon?.imageUrl!}
                 alt={dataWeapon?.name!}
               />
-            </figure>
+            </Figure>
             <h3 className='text-xs md:text-lg font-semibold line-clamp-1'>
               {dataWeapon?.name}
             </h3>

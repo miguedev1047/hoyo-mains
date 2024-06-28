@@ -1,9 +1,9 @@
-import Figure from '@/render/components/UI/misc/figure'
-import SkeletonTableMaterial from '@/render/components/UI/skeletons/skeleton-table-material'
 import { MaterialByAscension } from '@/types'
 import { fetcher } from '@/utils/helpers/fetcher'
 import { Badge, Image } from '@nextui-org/react'
 import { Material } from '@prisma/client'
+import Figure from '@/render/components/UI/misc/figure'
+import SkeletonTableMaterial from '@/render/components/UI/skeletons/skeleton-table-material'
 import useSWR from 'swr'
 
 const CharacterAscensionMaterialItem = ({
