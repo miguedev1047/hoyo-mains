@@ -1,9 +1,9 @@
 import { Characters } from '@/types'
-import { CharacterWarnning } from '@/render/components/UI/errors/character-error'
 import { getElementImage } from '@/utils/helpers/get-element-image'
 import { getRole } from '@/utils/helpers/get-role'
 import { getWeapon } from '@/utils/helpers/get-weapon'
 import { Chip, Image } from '@nextui-org/react'
+import { Alert } from '@/render/components/UI/alerts'
 
 const CharacterHeader = ({
   character
@@ -13,7 +13,10 @@ const CharacterHeader = ({
   return (
     <div className='w-full flex flex-col'>
       {!character?.public && (
-        <CharacterWarnning message='¡Aviso! Este personaje está configurado como privado. Ajusta esta opción en la configuración para hacerlo público.' />
+        <Alert
+          type='warning'
+          message='¡Aviso! Este personaje está configurado como privado. Ajusta esta opción en la configuración para hacerlo público.'
+        />
       )}
 
       <div className='flex justify-between items-center'>

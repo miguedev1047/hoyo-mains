@@ -5,10 +5,10 @@ import { fetcher } from '@/utils/helpers/fetcher'
 import { Weapon } from '@prisma/client'
 import { Card } from '@nextui-org/card'
 import { Image } from '@nextui-org/react'
-import { ItemWeaponError } from '@/render/components/UI/errors/character-error'
+import { PanelErrorItem } from '@/render/components/UI/errors'
+import { PanelSkeletonItem } from '@/render/components/UI/skeletons'
 import ButtonDeleteWeapon from '@/render/components/UI/buttons/weapon/button-delete-weapon'
 import Figure from '@/render/components/UI/misc/figure'
-import SkeletonMaterialItems from '@/render/components/UI/skeletons/skeleton-material-items'
 import useSWR from 'swr'
 
 const ItemCharacterWeapon = ({
@@ -26,10 +26,8 @@ const ItemCharacterWeapon = ({
     error
   } = useSWR<Weapon>(`/api/weapons/weapon/${weapon.item}`, fetcher)
 
-  if (error)
-    return <ItemWeaponError message='Ha ocurrido un error al cargar el arma.' />
-
-  if (isLoading) return <SkeletonMaterialItems />
+  if (error) return <PanelErrorItem />
+  if (isLoading) return <PanelSkeletonItem />
 
   return (
     <Draggable draggableId={weapon.id} index={index}>

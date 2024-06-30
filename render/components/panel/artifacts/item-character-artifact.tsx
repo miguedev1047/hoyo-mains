@@ -1,14 +1,14 @@
 import { IconGripVertical } from '@tabler/icons-react'
 import { fetcher } from '@/utils/helpers/fetcher'
 import { Artifact } from '@prisma/client'
-import { ItemArtifactError } from '@/render/components/UI/errors/character-error'
 import { Draggable } from '@hello-pangea/dnd'
 import { Characters, Data } from '@/types'
 import { Card } from '@nextui-org/card'
 import { Image } from '@nextui-org/react'
+import { PanelSkeletonItem } from '@/render/components/UI/skeletons'
+import { PanelErrorItem } from '@/render/components/UI/errors'
 import ButtonDeleteArtifact from '@/render/components/UI/buttons/artifact/button-delete-artifact'
 import Figure from '@/render/components/UI/misc/figure'
-import SkeletonMaterialItems from '@/render/components/UI/skeletons/skeleton-material-items'
 import useSWR from 'swr'
 
 const ItemCharacterArtifact = ({
@@ -26,12 +26,8 @@ const ItemCharacterArtifact = ({
     error
   } = useSWR<Artifact>(`/api/artifacts/artifact/${artifact.item}`, fetcher)
 
-  if (error)
-    return (
-      <ItemArtifactError message='Ha ocurrido un error al cargar el artefacto.' />
-    )
-
-  if (isLoading) return <SkeletonMaterialItems />
+  if (error) return <PanelErrorItem />
+  if (isLoading) return <PanelSkeletonItem />
 
   return (
     <Draggable draggableId={artifact.id} index={index}>

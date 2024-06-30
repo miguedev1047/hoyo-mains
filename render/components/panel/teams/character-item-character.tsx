@@ -1,12 +1,12 @@
 import { Draggable } from '@hello-pangea/dnd'
 import { Card, Image } from '@nextui-org/react'
 import { IconGripVertical } from '@tabler/icons-react'
-import { ItemCharacterError } from '@/render/components/UI/errors/character-error'
 import { Characters, CharactersByTeam } from '@/types'
 import { fetcher } from '@/utils/helpers/fetcher'
+import { PanelSkeletonTeamCharacters } from '@/render/components/UI/skeletons'
+import { PanelErrorItem } from '@/render/components/UI/errors'
 import ButtonDeleteCharacter from '@/render/components/UI/buttons/team/button-delete-character'
 import Figure from '@/render/components/UI/misc/figure'
-import SkeletonTeamCharacters from '@/render/components/UI/skeletons/skeleton-team-characters'
 import useSWR from 'swr'
 
 const CharacterItemCharacter = ({
@@ -27,12 +27,8 @@ const CharacterItemCharacter = ({
     fetcher
   )
 
-  if (error)
-    return (
-      <ItemCharacterError message='Ha ocurrido un error al cargar el personaje.' />
-    )
-
-  if (isLoading) return <SkeletonTeamCharacters />
+  if (error) return <PanelErrorItem />
+  if (isLoading) return <PanelSkeletonTeamCharacters />
 
   return (
     <Draggable draggableId={team.id} index={index}>

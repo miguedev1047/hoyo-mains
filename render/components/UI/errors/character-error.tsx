@@ -6,40 +6,6 @@ interface Props {
   className?: string
 }
 
-export const CharacterWarnning = ({ message, className }: Props) => {
-  return (
-    <Card
-      isBlurred
-      className={`p-5 text-warning-500 dark:bg-warning-500/20 border-[1px] border-warning-500/40 mb-4 ${className}`}
-    >
-      <div className='flex items-center gap-2'>
-        <span className='max-md:hidden'>
-          <IconAlertCircle size={32} />
-        </span>
-        <p className='text-xs sm:text-base lg:text-lg font-semibold'>
-          {message ? message : 'Ha ocurrido un error.'}
-        </p>
-      </div>
-    </Card>
-  )
-}
-
-export const ItemCharacterError = ({ message, className }: Props) => {
-  return (
-    <Card
-      isBlurred
-      className={`p-2 mx-2 text-color-red dark:bg-color-red/20 border-[1px] border-color-red/40 mb-4 ${className}`}
-    >
-      <div className='flex items-center gap-2'>
-        <IconAlertCircle size={64} />
-        <p className='text-lg font-semibold'>
-          {message ? message : 'Ha ocurrido un error.'}
-        </p>
-      </div>
-    </Card>
-  )
-}
-
 export const CharacterItemError = ({ message, className }: Props) => {
   return (
     <Card
