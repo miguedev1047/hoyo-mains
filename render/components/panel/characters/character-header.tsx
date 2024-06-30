@@ -19,6 +19,13 @@ const CharacterHeader = ({
         />
       )}
 
+      {character?.public && (
+        <Alert
+          type='success'
+          message='¡Aviso! Este personaje está configurado como público. Cualquier usuario puede verlo.'
+        />
+      )}
+
       <div className='flex justify-between items-center'>
         <div className='max-md:w-full flex justify-between md:items-center space-y-2 md:space-x-5 lg:space-x-8'>
           <figure className='bg-color-dark border-2 p-0 w-[160px] h-[160px] rounded-xl overflow-hidden'>
