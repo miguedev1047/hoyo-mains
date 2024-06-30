@@ -11,7 +11,7 @@ import { Material } from '@prisma/client'
 import { Characters } from '@/types'
 import { toast } from 'sonner'
 import { selectorItemWrapper } from '@/utils/classes'
-import { CharacterItemError } from '@/render/components/UI/errors/character-error'
+import { HomeErrorItem } from '@/render/components/UI/errors'
 import { IconPlus } from '@tabler/icons-react'
 import useSWR, { mutate } from 'swr'
 import Figure from '@/render/components/UI/misc/figure'
@@ -79,11 +79,8 @@ const MaterialSelector = ({
     })
   })
 
-  if (error)
-    return <CharacterItemError message='No se ha podido cargar el selector.' />
-
+  if (error) return <HomeErrorItem />
   if (isLoading) return null
-
   if (allMaterials?.length === MAX_ITEMS) return null
 
   return (

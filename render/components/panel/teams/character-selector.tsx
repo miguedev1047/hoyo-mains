@@ -2,7 +2,6 @@ import { z } from 'zod'
 import { Characters, Team } from '@/types'
 import { fetcher } from '@/utils/helpers/fetcher'
 import { useState, useTransition } from 'react'
-import { CharacterItemError } from '@/render/components/UI/errors/character-error'
 import { Controller, useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { CharacterItemSchema } from '@/schemas'
@@ -18,6 +17,7 @@ import {
 import { selectorItemDarkwrapper } from '@/utils/classes'
 import { Character } from '@prisma/client'
 import { IconPlus } from '@tabler/icons-react'
+import { HomeErrorItem } from '@/render/components/UI/errors'
 import { toast } from 'sonner'
 import useSWR, { mutate } from 'swr'
 import Figure from '@/render/components/UI/misc/figure'
@@ -93,11 +93,8 @@ const CharacterSelector = ({
     })
   })
 
-  if (error)
-    return <CharacterItemError message='No se ha podido cargar el selector.' />
-
+  if (error) return <HomeErrorItem />
   if (isLoading) return null
-
   if ((allCharacters?.length ?? 0) >= MAX_ITEMS) return null
 
   return (

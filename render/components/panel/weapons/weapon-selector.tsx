@@ -12,8 +12,8 @@ import { IconPlus } from '@tabler/icons-react'
 import { useState, useTransition } from 'react'
 import { Controller, useForm } from 'react-hook-form'
 import { toast } from 'sonner'
-import { CharacterItemError } from '@/render/components/UI/errors/character-error'
 import useSWR, { mutate } from 'swr'
+import { HomeErrorItem } from '../../UI/errors'
 
 const WeaponSelector = ({
   character
@@ -83,11 +83,8 @@ const WeaponSelector = ({
     })
   })
 
-  if (error)
-    return <CharacterItemError message='No se ha podido cargar el selector.' />
-
+  if (error) return <HomeErrorItem />
   if (isLoading) return null
-
   if (allMaterials?.length === MAX_ITEMS) return null
 
   return (

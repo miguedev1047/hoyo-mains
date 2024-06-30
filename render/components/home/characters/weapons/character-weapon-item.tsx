@@ -1,11 +1,11 @@
 'use client'
 
-import { ItemWeaponError } from '@/render/components/UI/errors/character-error'
 import { fetcher } from '@/utils/helpers/fetcher'
 import { Card } from '@nextui-org/card'
 import { Image } from '@nextui-org/react'
 import { Weapon, WeaponByCharacter } from '@prisma/client'
-import SkeletonMaterialItems from '@/render/components/UI/skeletons/skeleton-material-items'
+import { HomeErrorItem } from '@/render/components/UI/errors'
+import { HomeSkeletonItem } from '@/render/components/UI/skeletons'
 import TooltipItem from '@/render/components/UI/tooltip/tooltip-item'
 import Figure from '@/render/components/UI/misc/figure'
 import useSWR from 'swr'
@@ -23,8 +23,8 @@ const CharacterWeaponItem = ({
     error
   } = useSWR<Weapon>(`/api/weapons/weapon/${weapon.item}`, fetcher)
 
-  if (error) return <ItemWeaponError message='Ha ocurrido un error.' />
-  if (isLoading) return <SkeletonMaterialItems />
+  if (error) return <HomeErrorItem />
+  if (isLoading) return <HomeSkeletonItem />
 
   return (
     <>

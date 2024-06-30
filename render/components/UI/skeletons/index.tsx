@@ -21,6 +21,35 @@ export const HomeSkeletonCharacters = () => {
   )
 }
 
+export const HomeSkeletonTableItem = () => {
+  return (
+    <div className='flex items-center gap-2'>
+      <Skeleton className='size-10 dark:bg-primary-color rounded-md' />
+      <div>
+        <Skeleton className='min-w-[150px] w-full h-5 dark:bg-primary-color rounded-md' />
+      </div>
+    </div>
+  )
+}
+
+export const HomeSkeletonItem = () => {
+  return (
+    <Card className='flex flex-row items-center justify-between gap-4 p-5 bg-color-darkest mb-4'>
+      <div className='flex items-center gap-4'>
+        <div className='bg-color-dark w-8 h-8 grid place-items-center rounded-md'>
+          <Skeleton className='w-full h-full dark:bg-color-dark rounded-md' />
+        </div>
+        <div className='flex items-center gap-7'>
+          <Skeleton className='size-10 dark:bg-primary-color rounded-md' />
+        </div>
+        <div>
+          <Skeleton className='min-w-48 w-full h-5 dark:bg-primary-color rounded-md' />
+        </div>
+      </div>
+    </Card>
+  )
+}
+
 export const HomeSkeletonCharacterTeam = () => {
   return (
     <Card>
@@ -30,6 +59,17 @@ export const HomeSkeletonCharacterTeam = () => {
 }
 
 export const PanelSkeletonTeamCharacters = () => {
+  return (
+    <div className='flex items-center gap-2'>
+      <Skeleton className='size-10 dark:bg-primary-color rounded-md' />
+      <div>
+        <Skeleton className='min-w-[150px] w-full h-5 dark:bg-primary-color rounded-md' />
+      </div>
+    </div>
+  )
+}
+
+export const PanelSkeletonTableItem = () => {
   return (
     <Card className='flex flex-row items-center justify-between gap-2 p-5 bg-color-dark max-xl:mb-4 mx-2'>
       <div className='flex items-center gap-4'>

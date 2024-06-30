@@ -2,8 +2,8 @@ import { MaterialByAscension } from '@/types'
 import { fetcher } from '@/utils/helpers/fetcher'
 import { Badge, Image } from '@nextui-org/react'
 import { Material } from '@prisma/client'
+import { HomeSkeletonTableItem } from '@/render/components/UI/skeletons'
 import Figure from '@/render/components/UI/misc/figure'
-import SkeletonTableMaterial from '@/render/components/UI/skeletons/skeleton-table-material'
 import useSWR from 'swr'
 
 const CharacterAscensionMaterialItem = ({
@@ -17,7 +17,7 @@ const CharacterAscensionMaterialItem = ({
     error
   } = useSWR<Material>(`/api/materials/${material.materialId}`, fetcher)
 
-  if (isLoading) return <SkeletonTableMaterial />
+  if (isLoading) return <HomeSkeletonTableItem />
   if (error) return null
 
   return (

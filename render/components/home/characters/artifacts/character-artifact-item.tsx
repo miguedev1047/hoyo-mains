@@ -1,10 +1,10 @@
 'use client'
 
 import { fetcher } from '@/utils/helpers/fetcher'
-import { ItemArtifactError } from '@/render/components/UI/errors/character-error'
 import { Card, Image } from '@nextui-org/react'
 import { Artifact, ArtifactByCharacter } from '@prisma/client'
-import SkeletonMaterialItems from '@/render/components/UI/skeletons/skeleton-material-items'
+import { HomeErrorItem } from '@/render/components/UI/errors'
+import { HomeSkeletonItem } from '@/render/components/UI/skeletons'
 import TooltipItem from '@/render/components/UI/tooltip/tooltip-item'
 import Figure from '@/render/components/UI/misc/figure'
 import useSWR from 'swr'
@@ -22,8 +22,8 @@ const CharacterArtifactItem = ({
     error
   } = useSWR<Artifact>(`/api/artifacts/artifact/${artifact.item}`, fetcher)
 
-  if (error) return <ItemArtifactError message='Ha ocurrido un error.' />
-  if (isLoading) return <SkeletonMaterialItems />
+  if (error) return <HomeErrorItem />
+  if (isLoading) return <HomeSkeletonItem />
 
   return (
     <>

@@ -25,7 +25,7 @@ const CharacterItem = ({
   )
 
   if (error) return <HomeCharacterTeamError />
-  if (isLoading) return <HomeSkeletonCharacterTeam />
+  if (!isLoading) return <HomeSkeletonCharacterTeam />
 
   const characterName = dataCharacter?.name.replace(/\s/g, '-').toLowerCase()
   const url = `/characters/character?name=${characterName}`

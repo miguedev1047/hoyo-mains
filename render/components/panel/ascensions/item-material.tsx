@@ -18,8 +18,8 @@ import { useState, useTransition } from 'react'
 import { Controller, useForm } from 'react-hook-form'
 import { InputWrapper } from '@/utils/classes'
 import { updateQuantityAscensionMaterial } from '@/render/services/panel/ascensions/update'
-import SkeletonTableMaterial from '@/render/components/UI/skeletons/skeleton-table-material'
 import { toast } from 'sonner'
+import { PanelSkeletonTeamCharacters } from '@/render/components/UI/skeletons'
 import Figure from '@/render/components/UI/misc/figure'
 import useSWR, { mutate } from 'swr'
 
@@ -73,7 +73,7 @@ const ItemMaterial = ({
     })
   })
 
-  if (isLoading) return <SkeletonTableMaterial />
+  if (isLoading) return <PanelSkeletonTeamCharacters />
   if (error) return null
 
   return (

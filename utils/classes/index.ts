@@ -94,4 +94,4 @@ export const selectorItemDarkwrapper:
 }
 
 export const skeletonWrapper =
-  'dark:bg-color-darkest before:bg-gradient-to-r dark:before:from-color-dark/10 dark:before:via-color-dark dark:before:to-color-dark/10 before:border-0'
+  'dark:bg-pri before:bg-gradient-to-r dark:before:from-color-dark/10 dark:before:via-color-dark dark:before:to-color-dark/10 before:border-0'
