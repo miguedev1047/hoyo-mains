@@ -1,32 +1,19 @@
-import { useIsPresent } from 'framer-motion'
 import { getStarBorderColor } from '@/utils/helpers/get-color'
 import { Card } from '@nextui-org/card'
 import { Chip, Image, Tooltip } from '@nextui-org/react'
 import { Character } from '@prisma/client'
-import { MotionLi } from '@/render/components/motion'
 import { getElementImage } from '@/utils/helpers/get-element-image'
 import clsx from 'clsx'
 import Link from 'next/link'
 
 const ItemCharacter = ({ character }: { character: Character | undefined }) => {
   const starCharacter = getStarBorderColor(character?.stars || 0)
-  const isPresent = useIsPresent()
 
   const characterName = character?.name.toLowerCase().replace(/\s/g, '-')
   const url = `/characters/character?name=${characterName}`
 
   return (
-    <MotionLi
-      style={{
-        position: isPresent ? 'static' : 'absolute'
-      }}
-      initial={{ opacity: 0, scale: 0 }}
-      animate={{ opacity: 1, scale: 1 }}
-      exit={{ opacity: 0, scale: 0 }}
-      transition={{ type: 'spring', stiffness: 900, damping: 40 }}
-      layout
-      className='space-y-2'
-    >
+    <li className='space-y-2'>
       <Card
         isPressable
         as={Link}
@@ -81,7 +68,7 @@ const ItemCharacter = ({ character }: { character: Character | undefined }) => {
           {character?.name}
         </h2>
       </Card>
-    </MotionLi>
+    </li>
   )
 }
 
