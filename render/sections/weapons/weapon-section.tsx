@@ -58,7 +58,11 @@ const WeaponsSection = () => {
           }}
         >
           {(weapon) => (
-            <SelectItem key={weapon.url} value={weapon.url}>
+            <SelectItem
+              key={weapon.url}
+              textValue={weapon.name}
+              value={weapon.url}
+            >
               <div className='flex items-center gap-2'>
                 <figure className='w-10 h-10 p-1 bg-primary-color rounded-md relative overflow-hidden grid place-items-center'>
                   {weapon.icon ? (
