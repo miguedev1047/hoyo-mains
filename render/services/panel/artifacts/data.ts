@@ -22,6 +22,29 @@ export const dataArtifacts = async () => {
   }
 }
 
+export const dataArtifactByName = async (name: string) => {
+  const currentAdminRole = await currentRole()
+
+  if (currentAdminRole !== 'ADMIN' && currentAdminRole !== 'OWNER') {
+    return {
+      error: 'No tienes permisos para realizar esta acción.',
+      status: 403
+    }
+  }
+
+  try {
+    const artifact = await db.artifact.findFirst({
+      where: {
+        name
+      }
+    })
+
+    return artifact
+  } catch (error: any) {
+    return null
+  }
+}
+
 export const dataArtifactById = async (id: string) => {
   const currentAdminRole = await currentRole()
 

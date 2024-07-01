@@ -3,7 +3,7 @@
 import { z } from 'zod'
 import { currentRole } from '@/data/auth'
 import { WeaponSchema } from '@/schemas'
-import { dataWeaponsByName } from '@/render/services/panel/weapons/data'
+import { dataWeaponByName } from '@/render/services/panel/weapons/data'
 import db from '@/libs/db'
 
 export const createWapons = async (data: z.infer<typeof WeaponSchema>) => {
@@ -25,7 +25,7 @@ export const createWapons = async (data: z.infer<typeof WeaponSchema>) => {
   const { description, atk, id, stat, name, stars, starsText, type } =
     validateFields.data
 
-  const existsWeapon = await dataWeaponsByName(name)
+  const existsWeapon = await dataWeaponByName(name)
 
   if (existsWeapon)
     return {

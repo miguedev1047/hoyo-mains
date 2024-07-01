@@ -21,7 +21,7 @@ export const dataWeapons = async () => {
   }
 }
 
-export const dataWeaponsByName = async (name: string) => {
+export const dataWeaponByName = async (name: string) => {
   const currentAdminRole = await currentRole()
 
   if (currentAdminRole !== 'ADMIN' && currentAdminRole !== 'OWNER') {

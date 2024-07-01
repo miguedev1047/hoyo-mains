@@ -4,6 +4,7 @@ import { z } from 'zod'
 import { currentRole } from '@/data/auth'
 import { ArtifactSchema } from '@/schemas'
 import db from '@/libs/db'
+import { dataArtifactByName } from './data'
 
 export const createArtifacts = async (data: z.infer<typeof ArtifactSchema>) => {
   const currentAdminRole = await currentRole()
@@ -22,6 +23,15 @@ export const createArtifacts = async (data: z.infer<typeof ArtifactSchema>) => {
     }
 
   const { id, name, stars, starsText, description } = validateFields.data
+
+  const existsArtifact = await dataArtifactByName(name)
+
+  if (existsArtifact) {
+    return {
+      error: 'Ya existe un artefacto con ese nombre.',
+      status: 400
+    }
+  }
 
   try {
     const artifact = await db.artifact.create({

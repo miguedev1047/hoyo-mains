@@ -22,6 +22,29 @@ export const dataMaterials = async () => {
   }
 }
 
+export const dataMaterialByName = async (name: string) => {
+  const currentAdminRole = await currentRole()
+
+  if (currentAdminRole !== 'ADMIN' && currentAdminRole !== 'OWNER') {
+    return {
+      error: 'No tienes permisos para realizar esta acción.',
+      status: 403
+    }
+  }
+
+  try {
+    const material = await db.material.findFirst({
+      where: {
+        name
+      }
+    })
+
+    return material
+  } catch (error: any) {
+    return null
+  }
+}
+
 export const dataMaterialById = async (id: string) => {
   const currentAdminRole = await currentRole()
 

@@ -4,6 +4,7 @@ import { z } from 'zod'
 import { currentRole } from '@/data/auth'
 import { MaterialSchema } from '@/schemas'
 import db from '@/libs/db'
+import { dataMaterialByName } from './data'
 
 export const createMaterials = async (data: z.infer<typeof MaterialSchema>) => {
   const currentAdminRole = await currentRole()
@@ -21,16 +22,17 @@ export const createMaterials = async (data: z.infer<typeof MaterialSchema>) => {
       status: 400
     }
 
-  const {
-    description,
-    id,
-    label,
-    name,
-    stars,
-    starsText,
-    type,
-    value
-  } = validateFields.data
+  const { description, id, label, name, stars, starsText, type, value } =
+    validateFields.data
+
+  const existsMaterial = await dataMaterialByName(name)
+
+  if (existsMaterial) {
+    return {
+      error: 'Ya existe un material con ese nombre.',
+      status: 400
+    }
+  }
 
   try {
     const material = await db.material.create({
