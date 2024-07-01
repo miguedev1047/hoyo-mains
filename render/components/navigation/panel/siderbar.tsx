@@ -14,10 +14,9 @@ import { usePathname } from 'next/navigation'
 import { useSidebarStore } from '@/utils/store/use-open'
 import { Button } from '@nextui-org/button'
 import { Divider } from '@nextui-org/react'
-import Link from 'next/link'
 import clsx from 'clsx'
 
-const navInfo = {
+const navigationItems = {
   title: 'Admin Panel',
   items: [
     {
@@ -73,11 +72,10 @@ const Sidebar = () => {
         </CardHeader>
         <Divider />
         <CardBody className='py-0'>
-          <Listbox aria-label='Panel Dashboard'>
-            {navInfo.items.map((item, index) => (
+          <Listbox aria-label='Panel Sidebar'>
+            {navigationItems.items.map((item) => (
               <ListboxItem
-                as={Link}
-                key={index}
+                key={item.title}
                 href={item.href}
                 textValue={item.title}
                 startContent={item.icon}
