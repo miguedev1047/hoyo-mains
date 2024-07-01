@@ -6,6 +6,13 @@ import WeaponsSection from '@/render/sections/weapons/weapon-section'
 import WeaponModal from '@/render/components/UI/modal/weapon-modal'
 import PanelWrapper from '@/render/components/UI/panel-wrapper'
 
+export async function generateMetadata() {
+  return {
+    title: 'HoYo Panel | Armas',
+    description: 'Panel de administración de HoYo Mains.'
+  }
+}
+
 const WeaponsPage = () => {
   return (
     <Suspense fallback={<SectionFallback />}>

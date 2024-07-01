@@ -5,6 +5,13 @@ import Header from '@/render/components/panel/header'
 import PanelWrapper from '@/render/components/UI/panel-wrapper'
 import HomeSection from '@/render/sections/panel/home-section'
 
+export async function generateMetadata() {
+  return {
+    title: 'HoYo Panel | Inicio',
+    description: 'Panel de administración de HoYo Mains.'
+  }
+}
+
 const PanelHome = async () => {
   const user = await currentUser()
   
