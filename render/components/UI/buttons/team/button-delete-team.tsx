@@ -31,7 +31,6 @@ const ButtonDeleteTeam = ({
 
   return (
     <Button
-      size='sm'
       isIconOnly
       color='danger'
       isLoading={isPending}

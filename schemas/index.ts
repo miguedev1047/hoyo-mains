@@ -123,6 +123,12 @@ export const CharacterItemSchema = z.object({
   })
 })
 
+export const CharacterTeamSchema = z.object({
+  name: z.string().min(1, {
+    message: 'Escribe un nombre válido.'
+  })
+})
+
 export const CharacterBestStatsSchema = z.object({
   sandStat: z.string().min(1, {
     message: 'Estadistica requerida.'

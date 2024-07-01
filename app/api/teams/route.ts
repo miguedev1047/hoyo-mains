@@ -11,11 +11,11 @@ export async function GET(request: Request) {
           order: 'asc'
         },
         {
-          name: 'asc'
+          createdDate: 'asc'
         },
         {
-          createdDate: 'asc'
-        }
+          name: 'asc'
+        },
       ],
       include: {
         characters: true
