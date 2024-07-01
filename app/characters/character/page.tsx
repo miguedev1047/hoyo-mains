@@ -1,6 +1,25 @@
 import Header from '@/render/components/home/header/header'
 import SectionCharacterHome from '@/render/sections/characters/character-home-section'
-import { Suspense } from 'react'
+
+import type { ResolvingMetadata } from 'next'
+
+type Props = {
+  params: { id: string }
+  searchParams: { [key: string]: string | string[] | undefined }
+}
+
+export async function generateMetadata(
+  { params, searchParams }: Props,
+  parent: ResolvingMetadata
+) {
+  const queryName = searchParams.name?.toString().replace(/-/g, ' ')
+  const characterName = queryName?.replace(/\b\w/g, (l) => l.toUpperCase())
+
+  return {
+    title: `HoYo Mains | ${characterName}`,
+    description: `Información sobre el personaje ${characterName}.`
+  }
+}
 
 const CharacterPage = ({
   searchParams

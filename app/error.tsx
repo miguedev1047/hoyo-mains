@@ -3,6 +3,12 @@
 import { Button } from '@nextui-org/button'
 import { useEffect } from 'react'
 
+export async function generateMetadata() {
+  return {
+    title: 'HoYo Mains | Error'
+  }
+}
+
 export default function Error({
   error,
   reset
