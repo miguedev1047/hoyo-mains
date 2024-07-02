@@ -32,9 +32,10 @@ const ButtonDeleteWeapon = ({
 
   return (
     <Button
+      isIconOnly
       color='danger'
       isLoading={isPending}
-      isIconOnly
+      className='bg-color-red'
       onPress={() => handleDeleteMaterial(weapon.id)}
     >
       <IconTrash />

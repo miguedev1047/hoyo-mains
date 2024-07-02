@@ -34,9 +34,10 @@ const ButtonDeleteArtifact = ({
 
   return (
     <Button
+      isIconOnly
       color='danger'
       isLoading={isPending}
-      isIconOnly
+      className='bg-color-red'
       onPress={() => handleDeleteArtifact(artifact.id)}
     >
       <IconTrash />
