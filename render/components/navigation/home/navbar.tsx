@@ -49,14 +49,14 @@ const Navigation = () => {
             Personajes
           </Link>
         </NavbarItem>
-        <NavbarItem isActive={pathname === '/teams'}>
-          <Link as={NextLink} color='foreground' href='/teams'>
-            Equipos
-          </Link>
-        </NavbarItem>
         <NavbarItem isActive={pathname === '/builds'}>
           <Link as={NextLink} color='foreground' href='/builds'>
             Builds
+          </Link>
+        </NavbarItem>
+        <NavbarItem isActive={pathname === '/teams'}>
+          <Link as={NextLink} color='foreground' href='/teams'>
+            Equipos
           </Link>
         </NavbarItem>
         <Dropdown className='bg-color-dark'>
