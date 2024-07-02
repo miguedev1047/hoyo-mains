@@ -1,6 +1,6 @@
 import { Card, CardBody, CardHeader } from '@nextui-org/card'
 import ListCharacter from '@/render/components/home/characters/list-character'
-import CharacterFilter from '@/render/components/home/filters/character-filter'
+import CharacterFilter from '@/render/components/UI/filters/character-filter'
 import SearchCharacter from '@/render/components/home/characters/search-character'
 
 const SectionHome = () => {
