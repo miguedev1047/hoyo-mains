@@ -4,7 +4,7 @@ import { Skeleton } from '@nextui-org/react'
 import { IconGripVertical } from '@tabler/icons-react'
 
 export const HomeSkeletonCharacters = () => {
-  const skeletonArray = Array.from({ length: 70 }, (_, i) => i)
+  const skeletonArray = Array.from({ length: 60 }, (_, i) => i)
   return (
     <ul className='relative grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 overflow-hidden gap-4 select-none'>
       {skeletonArray.map((index) => (
@@ -14,6 +14,36 @@ export const HomeSkeletonCharacters = () => {
           </Card>
           <Card>
             <Skeleton className={`h-10 ${skeletonWrapper}`} />
+          </Card>
+        </li>
+      ))}
+    </ul>
+  )
+}
+
+export const BuildSkeletonCharacters = () => {
+  const skeletonArray = Array.from({ length: 20 }, (_, i) => i)
+  return (
+    <ul className='relative grid grid-cols-1 overflow-hidden gap-4 select-none'>
+      {skeletonArray.map((index) => (
+        <li key={index}>
+          <Card className=' bg-color-dark p-4'>
+            <div className='flex justify-between items-center'>
+              <Skeleton className={`w-32 h-32 rounded-md ${skeletonWrapper}`} />
+              <div className='flex gap-2 mr-12'>
+                <div className='grid grid-cols-1 gap-2'>
+                  <Skeleton
+                    className={`max-w-full w-[396px] h-[56px] rounded-md ${skeletonWrapper}`}
+                  />
+                  <Skeleton
+                    className={`max-w-full w-[396px] h-[56px] rounded-md ${skeletonWrapper}`}
+                  />
+                </div>
+                <Skeleton
+                  className={`max-w-full w-[396px] h-[120px] rounded-md ${skeletonWrapper}`}
+                />
+              </div>
+            </div>
           </Card>
         </li>
       ))}

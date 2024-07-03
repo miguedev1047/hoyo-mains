@@ -6,6 +6,7 @@ import { homeFilterCharacter } from '@/utils/helpers/filter-character'
 import { useFilterStore } from '@/utils/store/use-filter'
 import { ItemCardComponent } from '@/render/components/home/builds/card/item-card-build'
 import useSWR from 'swr'
+import { BuildSkeletonCharacters } from '../../UI/skeletons'
 
 const ListBuilds = () => {
   const {
@@ -21,7 +22,7 @@ const ListBuilds = () => {
     weapon: state.weapon
   }))
 
-  if (isLoading) return 'Loading...'
+  if (isLoading) return <BuildSkeletonCharacters />
   if (error) return 'Error...'
 
   const filteredBuilds = homeFilterCharacter(
