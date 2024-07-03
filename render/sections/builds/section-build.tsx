@@ -1,7 +1,7 @@
 import { Card, CardBody, CardHeader } from '@nextui-org/card'
 import CharacterFilter from '@/render/components/UI/filters/character-filter'
-import ListBuilds from '@/render/components/home/builds/list-builds'
 import SearchCharacter from '@/render/components/home/characters/search-character'
+import ListBuilds from '@/render/components/home/builds/list-builds'
 
 const SectionBuild = () => {
   return (

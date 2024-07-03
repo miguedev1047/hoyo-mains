@@ -22,7 +22,7 @@ export const HomeErrorItem = ({ message, className }: Props) => {
   )
 }
 
-export const HomeCharacterList = () => {
+export const HomeErrorList = () => {
   return (
     <div className='text-center'>
       <div className='flex items-center justify-center gap-2 text-color-red'>
@@ -56,6 +56,19 @@ export const BuildErrorItem = ({ message, className }: Props) => {
         </p>
       </div>
     </Card>
+  )
+}
+
+export const BuildErrorList = () => {
+  return (
+    <div className='text-center'>
+      <div className='flex items-center justify-center gap-2 text-color-red'>
+        <IconAlertCircle size={32} className='animate-pulse' />
+        <h2 className='text-base md:text-xl'>
+          No se han podido cargar las builds
+        </h2>
+      </div>
+    </div>
   )
 }
 
