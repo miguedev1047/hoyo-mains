@@ -32,7 +32,7 @@ const ListBuilds = () => {
   ) as characterType[]
 
   return (
-    <ul className='relative grid grid-cols-1 overflow-hidden select-none'>
+    <ul className='relative grid grid-cols-1 gap-4 overflow-hidden select-none'>
       {filteredBuilds?.map((build) => (
         <li key={build?.id}>
           <ItemCardComponent character={build} />
