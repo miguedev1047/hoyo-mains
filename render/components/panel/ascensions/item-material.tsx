@@ -97,7 +97,7 @@ const ItemMaterial = ({
           <h3 className='text-xs line-clamp-1'>{dataMaterial?.name}</h3>
         </div>
       </PopoverTrigger>
-      <PopoverContent className='bg-color-dark p-2 rounded-md'>
+      <PopoverContent className='bg-color-dark p-3'>
         <div>
           <form onSubmit={onSubmit} className='flex gap-2 items-center'>
             <Controller
@@ -105,6 +105,7 @@ const ItemMaterial = ({
               name='quantity'
               render={({ field }) => (
                 <Input
+                  autoFocus
                   label='Cantidad'
                   placeholder='Cantidad de material'
                   type='number'
