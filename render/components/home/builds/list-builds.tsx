@@ -1,10 +1,10 @@
 'use client'
 
-import { characterType } from '@/types'
 import { fetcher } from '@/utils/helpers/fetcher'
+import { characterType } from '@/types'
 import { homeFilterCharacter } from '@/utils/helpers/filter-character'
 import { useFilterStore } from '@/utils/store/use-filter'
-import ItemBuild from '@/render/components/home/builds/item-build'
+import { ItemCardComponent } from '@/render/components/home/builds/card/item-card-build'
 import useSWR from 'swr'
 
 const ListBuilds = () => {
@@ -33,7 +33,7 @@ const ListBuilds = () => {
     <ul className='relative grid grid-cols-1 overflow-hidden select-none'>
       {filteredBuilds?.map((build) => (
         <li key={build?.id}>
-          <ItemBuild character={build} />
+          <ItemCardComponent character={build} />
         </li>
       ))}
     </ul>
