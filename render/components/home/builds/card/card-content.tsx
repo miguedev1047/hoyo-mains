@@ -12,13 +12,19 @@ interface CardContentProps {
 }
 
 const CardContent = ({ character, weapons, artifacts }: CardContentProps) => {
-  const isOpen = useViewBuildStore((state) => state.isOpen)
+  const { isOpen, cardId } = useViewBuildStore((state) => ({
+    isOpen: state.isOpen,
+    cardId: state.cardId
+  }))
+
+  const characterId = character?.id
+  const checkSameCard = characterId === cardId
 
   return (
     <div
       className={clsx(
         'flex justify-between gap-5',
-        isOpen ? 'items-start' : 'items-center'
+        isOpen && checkSameCard ? 'items-start' : 'items-center'
       )}
     >
       <CharacterImage character={character} />

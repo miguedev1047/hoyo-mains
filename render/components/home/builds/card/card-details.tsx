@@ -12,26 +12,32 @@ interface CardDetailsProps {
 }
 
 const CardDetails = ({ character, weapons, artifacts }: CardDetailsProps) => {
-  const isOpen = useViewBuildStore((state) => state.isOpen)
+  const { isOpen, cardId } = useViewBuildStore((state) => ({
+    isOpen: state.isOpen,
+    cardId: state.cardId
+  }))
+
+  const characterId = character?.id
+  const checkSameCard = characterId === cardId
 
   return (
     <div className='flex gap-4 items-start'>
       <div className='w-[800px] grid grid-cols-4 gap-2'>
-        {!isOpen ? (
-          <CompactView
-            character={character}
-            firstWeapon={weapons![0]}
-            firstArtifact={artifacts![0]}
-          />
-        ) : (
+        {isOpen && checkSameCard ? (
           <ExpandedView
             character={character}
             weapons={weapons}
             artifacts={artifacts}
           />
+        ) : (
+          <CompactView
+            character={character}
+            firstWeapon={weapons![0]}
+            firstArtifact={artifacts![0]}
+          />
         )}
       </div>
-      <ViewToggle />
+      <ViewToggle characterId={characterId} />
     </div>
   )
 }

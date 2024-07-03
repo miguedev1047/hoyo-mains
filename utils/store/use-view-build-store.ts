@@ -2,10 +2,12 @@ import { create } from 'zustand'
 
 interface ViewBuildStore {
   isOpen: boolean
-  setIsOpen: (isOpen: boolean) => void
+  cardId: string
+  setIsOpen: (isOpen: boolean, cardId: string) => void
 }
 
 export const useViewBuildStore = create<ViewBuildStore>((set) => ({
   isOpen: false,
-  setIsOpen: (isOpen: boolean) => set({ isOpen })
+  cardId: '',
+  setIsOpen: (isOpen: boolean, cardId: string) => set({ isOpen, cardId })
 }))

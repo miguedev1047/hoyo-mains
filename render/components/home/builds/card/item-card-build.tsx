@@ -9,7 +9,13 @@ export const ItemCardComponent = ({
 }: {
   character: characterType | undefined
 }) => {
-  const isOpen = useViewBuildStore((state) => state.isOpen)
+  const { isOpen, cardId } = useViewBuildStore((state) => ({
+    isOpen: state.isOpen,
+    cardId: state.cardId
+  }))
+
+  const characterId = character?.id
+  const checkSameCard = characterId === cardId
 
   const weapons = character?.weapons ?? []
   const artifacts = character?.artifacts ?? []
@@ -18,7 +24,7 @@ export const ItemCardComponent = ({
     <Card
       className={clsx(
         'bg-color-darkest p-4',
-        isOpen ? 'border-[1px] border-color-lightest' : ''
+        isOpen && checkSameCard ? 'border-[1px] border-color-lightest' : ''
       )}
     >
       <CardContent
