@@ -6,6 +6,7 @@ import { BuildSkeletonItem } from '@/render/components/UI/skeletons'
 import { BuildErrorItem } from '@/render/components/UI/errors'
 import Figure from '@/render/components/UI/misc/figure'
 import useSWR from 'swr'
+import TooltipItem from '@/render/components/UI/tooltip/tooltip-item'
 
 interface Props {
   item: string
@@ -26,17 +27,19 @@ export const ItemBuildFirstWeapon = ({ weapon }: { weapon: Props }) => {
   if (error) return <BuildErrorItem />
 
   return (
-    <Card className='bg-color-darkest p-2 rounded-md'>
-      <div className='flex items-center gap-3'>
-        <Figure>
-          <Image
-            src={weaponData?.imageUrl!}
-            alt={`Arma: ${weaponData?.name}`}
-          />
-        </Figure>
-        <h2>{weaponData?.name}</h2>
-      </div>
-    </Card>
+    <TooltipItem item={weaponData}>
+      <Card className='bg-color-darkest p-2 rounded-md'>
+        <div className='flex items-center gap-3'>
+          <Figure>
+            <Image
+              src={weaponData?.imageUrl!}
+              alt={`Arma: ${weaponData?.name}`}
+            />
+          </Figure>
+          <h2>{weaponData?.name}</h2>
+        </div>
+      </Card>
+    </TooltipItem>
   )
 }
 
@@ -53,16 +56,18 @@ export const ItemBuildWeapon = ({ weapon }: { weapon: Props }) => {
   if (error) return <BuildErrorItem />
 
   return (
-    <Card className='bg-color-darkest p-2 rounded-md'>
-      <div className='flex items-center gap-3'>
-        <Figure>
-          <Image
-            src={weaponData?.imageUrl!}
-            alt={`Arma: ${weaponData?.name}`}
-          />
-        </Figure>
-        <h2>{weaponData?.name}</h2>
-      </div>
-    </Card>
+    <TooltipItem item={weaponData}>
+      <Card className='bg-color-darkest p-2 rounded-md'>
+        <div className='flex items-center gap-3'>
+          <Figure>
+            <Image
+              src={weaponData?.imageUrl!}
+              alt={`Arma: ${weaponData?.name}`}
+            />
+          </Figure>
+          <h2>{weaponData?.name}</h2>
+        </div>
+      </Card>
+    </TooltipItem>
   )
 }
