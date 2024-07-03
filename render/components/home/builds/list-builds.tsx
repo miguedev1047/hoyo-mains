@@ -32,7 +32,9 @@ const ListBuilds = () => {
   return (
     <ul className='relative grid grid-cols-1 overflow-hidden select-none'>
       {filteredBuilds?.map((build) => (
-        <ItemBuild key={build?.id} character={build} />
+        <li key={build?.id}>
+          <ItemBuild character={build} />
+        </li>
       ))}
     </ul>
   )

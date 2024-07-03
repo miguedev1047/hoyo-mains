@@ -34,7 +34,7 @@ export const HomeSkeletonTableItem = () => {
 
 export const HomeSkeletonItem = () => {
   return (
-    <Card className='flex flex-row items-center justify-between gap-4 p-5 bg-color-darkest mb-4'>
+    <Card className='flex flex-row items-center justify-between gap-4 p-5 bg-color-darkest mb-2'>
       <div className='flex items-center gap-4'>
         <div className='bg-color-dark w-8 h-8 grid place-items-center rounded-md'>
           <Skeleton className='w-full h-full dark:bg-color-dark rounded-md' />
@@ -54,6 +54,19 @@ export const HomeSkeletonCharacterTeam = () => {
   return (
     <Card>
       <Skeleton className={`aspect-square ${skeletonWrapper}`} />
+    </Card>
+  )
+}
+
+export const BuildSkeletonItem = () => {
+  return (
+    <Card className='bg-color-darkest p-2 rounded-md'>
+      <div className='flex items-center gap-3'>
+        <Skeleton className='size-10 dark:bg-primary-color rounded-md' />
+        <div>
+          <Skeleton className='min-w-[150px] w-full h-5 dark:bg-primary-color rounded-md' />
+        </div>
+      </div>
     </Card>
   )
 }
