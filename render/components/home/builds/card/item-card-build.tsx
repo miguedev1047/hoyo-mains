@@ -17,8 +17,8 @@ export const ItemCardComponent = ({
   return (
     <Card
       className={clsx(
-        'bg-color-dark p-4',
-        isOpen ? 'border-[1px] border-color-success' : ''
+        'bg-color-darkest p-4',
+        isOpen ? 'border-[1px] border-color-lightest' : ''
       )}
     >
       <CardContent

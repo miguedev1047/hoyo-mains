@@ -14,7 +14,7 @@ export const ItemCharacterStatsFull = ({
     <div className='w-full col-span-4 flex gap-2 mt-2'>
       <div className='w-full space-y-2'>
         <h2>Mejores Estadisticas</h2>
-        <Card className='p-4 min-h-[152px] bg-color-darkest rounded-md flex justify-center'>
+        <Card className='p-4 min-h-[152px] bg-color-dark rounded-md flex justify-center'>
           <div className='space-y-2'>
             <h2>
               <span className='font-bold'>Reloj</span>: {stats?.sandStat}
@@ -30,7 +30,7 @@ export const ItemCharacterStatsFull = ({
       </div>
       <div className='w-full space-y-2'>
         <h2>Mejores Estadisticas Secundarias</h2>
-        <Card className='p-4 min-h-[152px] bg-color-darkest rounded-md flex justify-center'>
+        <Card className='p-4 min-h-[152px] bg-color-dark rounded-md flex justify-center'>
           <ol className='space-y-2'>
             {priorityStats?.map((stat, index) => (
               <li key={index}>
@@ -54,7 +54,7 @@ export const ItemCharacterStats = ({
   const stats = character?.bestStats
 
   return (
-    <Card className='w-full h-full p-4 col-span-2 bg-color-darkest rounded-md flex justify-center'>
+    <Card className='w-full h-full p-4 col-span-2 bg-color-dark rounded-md flex justify-center'>
       <div className='space-y-2'>
         <h2>
           <span className='font-bold'>Reloj</span>: {stats?.sandStat}

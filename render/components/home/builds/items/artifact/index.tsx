@@ -31,7 +31,7 @@ export const ItemBuildFirstArtifact = ({ artifact }: { artifact: Props }) => {
 
   return (
     <TooltipItem item={artifactData}>
-      <Card className='bg-color-darkest p-2 rounded-md'>
+      <Card className='bg-color-dark p-2 rounded-md'>
         <div className='flex items-center gap-3'>
           <Figure>
             <Image
@@ -63,7 +63,7 @@ export const ItemBuildArtifact = ({ artifact }: { artifact: Props }) => {
 
   return (
     <TooltipItem item={artifactData}>
-      <Card className='bg-color-darkest p-2 rounded-md'>
+      <Card className='bg-color-dark p-2 rounded-md'>
         <div className='flex items-center gap-3'>
           <Figure>
             <Image

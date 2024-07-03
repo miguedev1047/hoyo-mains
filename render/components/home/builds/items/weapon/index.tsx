@@ -28,7 +28,7 @@ export const ItemBuildFirstWeapon = ({ weapon }: { weapon: Props }) => {
 
   return (
     <TooltipItem item={weaponData}>
-      <Card className='bg-color-darkest p-2 rounded-md'>
+      <Card className='bg-color-dark p-2 rounded-md'>
         <div className='flex items-center gap-3'>
           <Figure>
             <Image
@@ -57,7 +57,7 @@ export const ItemBuildWeapon = ({ weapon }: { weapon: Props }) => {
 
   return (
     <TooltipItem item={weaponData}>
-      <Card className='bg-color-darkest p-2 rounded-md'>
+      <Card className='bg-color-dark p-2 rounded-md'>
         <div className='flex items-center gap-3'>
           <Figure>
             <Image
