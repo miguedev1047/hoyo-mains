@@ -39,7 +39,9 @@ export const ItemBuildFirstArtifact = ({ artifact }: { artifact: Props }) => {
               alt={`Artefacto: ${artifactData?.name}`}
             />
           </Figure>
-          <h2>{artifactData?.name}</h2>
+          <h2 className='text-sm lg:text-base line-clamp-1'>
+            {artifactData?.name}
+          </h2>
         </div>
       </Card>
     </TooltipItem>
@@ -71,7 +73,9 @@ export const ItemBuildArtifact = ({ artifact }: { artifact: Props }) => {
               alt={`Artefacto: ${artifactData?.name}`}
             />
           </Figure>
-          <h2>{artifactData?.name}</h2>
+          <h2 className='text-sm lg:text-base line-clamp-1'>
+            {artifactData?.name}
+          </h2>
         </div>
       </Card>
     </TooltipItem>

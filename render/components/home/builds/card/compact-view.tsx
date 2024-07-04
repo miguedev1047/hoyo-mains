@@ -16,7 +16,7 @@ const CompactView = ({
   firstArtifact
 }: CompactViewProps) => (
   <>
-    <div className='col-span-2 space-y-2'>
+    <div className='w-full col-span-4 xl:col-span-2 space-y-2'>
       <ItemBuildFirstWeapon weapon={firstWeapon!} />
       <ItemBuildFirstArtifact artifact={firstArtifact!} />
     </div>

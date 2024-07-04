@@ -1,9 +1,8 @@
 import { characterType } from '@/types'
-import { useViewBuildStore } from '@/utils/store/use-view-build-store'
 import { WeaponByCharacter } from '@prisma/client'
 import CharacterImage from '@/render/components/home/builds/character-image'
 import CardDetails from '@/render/components/home/builds/card/card-details'
-import clsx from 'clsx'
+import ViewToggle from '@/render/components/home/builds/card/view-toggle'
 
 interface CardContentProps {
   character: characterType | undefined
@@ -12,22 +11,17 @@ interface CardContentProps {
 }
 
 const CardContent = ({ character, weapons, artifacts }: CardContentProps) => {
-  const { isOpen, cardId } = useViewBuildStore((state) => ({
-    isOpen: state.isOpen,
-    cardId: state.cardId
-  }))
-
   const characterId = character?.id
-  const checkSameCard = characterId === cardId
 
   return (
-    <div
-      className={clsx(
-        'flex justify-between gap-5',
-        isOpen && checkSameCard ? 'items-start' : 'items-center'
-      )}
-    >
-      <CharacterImage character={character} />
+    <div className='flex justify-between flex-wrap md:flex-nowrap gap-5 items-start'>
+      <article className='max-md:w-full flex justify-between items-center'>
+        <CharacterImage character={character} />
+        <div className='block md:hidden'>
+          <ViewToggle characterId={characterId} />
+        </div>
+      </article>
+
       <CardDetails
         character={character}
         weapons={weapons}

@@ -7,7 +7,7 @@ const ListWeapons = ({
   weapon: WeaponByCharacter[] | undefined
 }) => {
   return (
-    <div className='col-span-2 space-y-2'>
+    <div className='col-span-4 xl:col-span-2 space-y-2'>
       <h2>Mejores armas</h2>
       <ul className='w-full grid grid-cols-1 gap-2'>
         {weapon?.map((item) => (

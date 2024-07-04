@@ -16,8 +16,8 @@ const CharacterImage = ({
     <div className='flex items-center gap-5'>
       <Figure
         padding='p-0'
-        width='w-32'
-        height='h-32'
+        width='w-24 lg:w-32'
+        height='h-24 lg:h-32'
         radius='rounded-lg'
         className={clsx(' border-[1px]', starCharacter)}
       >

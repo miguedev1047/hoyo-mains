@@ -36,7 +36,9 @@ export const ItemBuildFirstWeapon = ({ weapon }: { weapon: Props }) => {
               alt={`Arma: ${weaponData?.name}`}
             />
           </Figure>
-          <h2>{weaponData?.name}</h2>
+          <h2 className='text-sm lg:text-base line-clamp-1'>
+            {weaponData?.name}
+          </h2>
         </div>
       </Card>
     </TooltipItem>
@@ -65,7 +67,9 @@ export const ItemBuildWeapon = ({ weapon }: { weapon: Props }) => {
               alt={`Arma: ${weaponData?.name}`}
             />
           </Figure>
-          <h2>{weaponData?.name}</h2>
+          <h2 className='text-sm lg:text-base line-clamp-1'>
+            {weaponData?.name}
+          </h2>
         </div>
       </Card>
     </TooltipItem>

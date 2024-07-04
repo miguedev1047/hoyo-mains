@@ -21,8 +21,8 @@ const CardDetails = ({ character, weapons, artifacts }: CardDetailsProps) => {
   const checkSameCard = characterId === cardId
 
   return (
-    <div className='flex gap-4 items-start'>
-      <div className='w-[800px] grid grid-cols-4 gap-2'>
+    <div className='w-full max-w-[800px] flex gap-4 items-start'>
+      <div className='w-full grid grid-cols-4 gap-2'>
         {isOpen && checkSameCard ? (
           <ExpandedView
             character={character}
@@ -37,7 +37,9 @@ const CardDetails = ({ character, weapons, artifacts }: CardDetailsProps) => {
           />
         )}
       </div>
-      <ViewToggle characterId={characterId} />
+      <div className='hidden md:block'>
+        <ViewToggle characterId={characterId} />
+      </div>
     </div>
   )
 }
