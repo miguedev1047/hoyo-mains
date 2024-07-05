@@ -56,7 +56,7 @@ export const fetchCharactersByName = async ({
 }: FetchCharactersByNameTypes) => {
   try {
     const where = {
-      public: true,
+      // public: true,
       ...(name && { name: { contains: name } }),
       ...(element && { element: { contains: element } }),
       ...(stars && { stars: { equals: stars } }),
@@ -86,9 +86,9 @@ export const fetchCharactersByName = async ({
     }
 
     const characters = await db.character.findMany({
-      where: {
-        public: true
-      },
+      // where: {
+      //   public: true
+      // },
       orderBy: [
         {
           isNew: 'desc'
