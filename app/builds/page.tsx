@@ -1,3 +1,4 @@
+import { Suspense } from 'react'
 import Header from '@/render/components/home/header/header'
 import SectionBuild from '@/render/sections/builds/section-build'
 
@@ -14,7 +15,9 @@ const BuildPage = () => {
     <>
       <Header />
       <main className='max-w-[1280px] my-10 mx-auto'>
-        <SectionBuild />
+        <Suspense>
+          <SectionBuild />
+        </Suspense>
       </main>
     </>
   )

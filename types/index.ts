@@ -170,3 +170,7 @@ export type characterType = Prisma.CharacterGetPayload<{
     }
   }
 }>
+
+export interface SearchParamsTypes {
+  searchParams: { character: string }
+}

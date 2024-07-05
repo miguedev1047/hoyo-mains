@@ -91,3 +91,58 @@ export const dataCharacterByName = async (name: string) => {
     return null
   }
 }
+
+export const getCharactersByName = async ({ name }: { name: string }) => {
+  try {
+    if (name) {
+      const characters = await db.character.findMany({
+        where: {
+          public: true,
+          name: {
+            contains: name
+          }
+        },
+        orderBy: [
+          {
+            isNew: 'desc'
+          },
+          {
+            stars: 'desc'
+          },
+          {
+            name: 'asc'
+          },
+          {
+            createdDate: 'asc'
+          }
+        ]
+      })
+
+      return characters
+    }
+
+    const characters = await db.character.findMany({
+      where: {
+        public: true
+      },
+      orderBy: [
+        {
+          isNew: 'desc'
+        },
+        {
+          stars: 'desc'
+        },
+        {
+          name: 'asc'
+        },
+        {
+          createdDate: 'asc'
+        }
+      ]
+    })
+
+    return characters
+  } catch (error) {
+    return null
+  }
+}

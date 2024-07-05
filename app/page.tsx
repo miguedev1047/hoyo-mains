@@ -1,3 +1,6 @@
+import { characterType, SearchParamsTypes } from '@/types'
+import { getCharactersByName } from '@/render/services/home/characters/data'
+import { Suspense } from 'react'
 import Header from '@/render/components/home/header/header'
 import SectionHome from '@/render/sections/home/section-home'
 
@@ -9,12 +12,20 @@ export async function generateMetadata() {
   }
 }
 
-export default function Home() {
+export default async function Home({ searchParams }: SearchParamsTypes) {
+  const characterName = searchParams.character?.toLowerCase()
+
+  const characters = (await getCharactersByName({
+    name: characterName
+  })) as characterType[]
+
   return (
     <>
       <Header />
       <main className='max-w-[1280px] my-10 mx-auto'>
-        <SectionHome />
+        <Suspense>
+          <SectionHome characters={characters} />
+        </Suspense>
       </main>
     </>
   )

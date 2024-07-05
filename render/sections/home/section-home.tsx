@@ -1,9 +1,14 @@
 import { Card, CardBody, CardHeader } from '@nextui-org/card'
-import ListCharacter from '@/render/components/home/characters/list-character'
+import { characterType } from '@/types'
+import { ListCharacter } from '@/render/components/home/characters/list-character'
 import CharacterFilter from '@/render/components/UI/filters/character-filter'
 import SearchCharacter from '@/render/components/home/characters/search-character'
 
-const SectionHome = () => {
+interface ListCharacterProps {
+  characters: characterType[]
+}
+
+const SectionHome = ({ characters }: ListCharacterProps) => {
   return (
     <section className='rounded-xl'>
       <Card className='bg-color-dark p-4'>
@@ -13,14 +18,14 @@ const SectionHome = () => {
               <h2 className='text-base md:text-2xl font-bold'>
                 Lista de personajes
               </h2>
-              
+
               <SearchCharacter />
             </div>
             <CharacterFilter />
           </div>
         </CardHeader>
         <CardBody>
-          <ListCharacter />
+          <ListCharacter characters={characters} />
         </CardBody>
       </Card>
     </section>
