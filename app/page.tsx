@@ -1,5 +1,5 @@
 import { characterType, SearchParamsTypes } from '@/types'
-import { getCharactersByName } from '@/render/services/home/characters/data'
+import { fetchCharactersByName } from '@/render/services/home/characters/data'
 import { Suspense } from 'react'
 import Header from '@/render/components/home/header/header'
 import SectionHome from '@/render/sections/home/section-home'
@@ -13,10 +13,18 @@ export async function generateMetadata() {
 }
 
 export default async function Home({ searchParams }: SearchParamsTypes) {
-  const characterName = searchParams.character?.toLowerCase()
+  const { name, element, stars, weapon } = {
+    name: searchParams.character?.toLowerCase(),
+    element: searchParams.element?.toLowerCase(),
+    stars: parseInt(searchParams.stars),
+    weapon: searchParams.weapon?.toLowerCase()
+  }
 
-  const characters = (await getCharactersByName({
-    name: characterName
+  const characters = (await fetchCharactersByName({
+    element,
+    name,
+    stars,
+    weapon
   })) as characterType[]
 
   return (

@@ -172,5 +172,10 @@ export type characterType = Prisma.CharacterGetPayload<{
 }>
 
 export interface SearchParamsTypes {
-  searchParams: { character: string }
+  searchParams: {
+    character: string
+    element: string
+    stars: string
+    weapon: string
+  }
 }
