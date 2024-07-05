@@ -1,6 +1,6 @@
 import { fetcher } from '@/utils/helpers/fetcher'
 import { Card } from '@nextui-org/card'
-import { Image, Tooltip } from '@nextui-org/react'
+import { Image } from '@nextui-org/react'
 import { Weapon } from '@prisma/client'
 import { BuildSkeletonItem } from '@/render/components/UI/skeletons'
 import { BuildErrorItem } from '@/render/components/UI/errors'
@@ -15,7 +15,9 @@ interface Props {
 }
 
 export const ItemBuildFirstArtifact = ({ artifact }: { artifact: Props }) => {
-  const artifactId = artifact.item
+  const artifactId = artifact?.item
+
+  console.log(artifactId)
 
   const {
     data: artifactData,
@@ -27,7 +29,7 @@ export const ItemBuildFirstArtifact = ({ artifact }: { artifact: Props }) => {
   )
 
   if (isLoading) return <BuildSkeletonItem />
-  if (error) return <BuildErrorItem />
+  if (error || !artifactData || !artifactId) return <BuildErrorItem />
 
   return (
     <TooltipItem item={artifactData}>
@@ -61,7 +63,7 @@ export const ItemBuildArtifact = ({ artifact }: { artifact: Props }) => {
   )
 
   if (isLoading) return <BuildSkeletonItem />
-  if (error) return <BuildErrorItem />
+  if (error || !artifactData || !artifactId) return <BuildErrorItem />
 
   return (
     <TooltipItem item={artifactData}>

@@ -1,3 +1,5 @@
+'use client'
+
 import { characterType } from '@/types'
 import { useViewBuildStore } from '@/utils/store/use-view-build-store'
 import { Card } from '@nextui-org/card'

@@ -1,11 +1,14 @@
 import { WeaponByCharacter } from '@prisma/client'
 import { ItemBuildWeapon } from '@/render/components/home/builds/items/weapon/index'
+import { BuildErrorItem } from '@/render/components/UI/errors'
 
 const ListWeapons = ({
   weapon
 }: {
   weapon: WeaponByCharacter[] | undefined
 }) => {
+  if (!weapon?.length) return <BuildErrorItem />
+
   return (
     <div className='col-span-4 xl:col-span-2 space-y-2'>
       <h2>Mejores armas</h2>

@@ -15,7 +15,9 @@ interface Props {
 }
 
 export const ItemBuildFirstWeapon = ({ weapon }: { weapon: Props }) => {
-  const weaponId = weapon.item
+  const weaponId = weapon?.item
+
+  console.log(weaponId)
 
   const {
     data: weaponData,
@@ -24,24 +26,26 @@ export const ItemBuildFirstWeapon = ({ weapon }: { weapon: Props }) => {
   } = useSWR<Weapon | undefined>(`/api/weapons/weapon/${weaponId}`, fetcher)
 
   if (isLoading) return <BuildSkeletonItem />
-  if (error) return <BuildErrorItem />
+  if (error || !weaponData || !weaponId) return <BuildErrorItem />
 
   return (
-    <TooltipItem item={weaponData}>
-      <Card className='bg-color-dark p-2 rounded-md'>
-        <div className='flex items-center gap-3'>
-          <Figure>
-            <Image
-              src={weaponData?.imageUrl!}
-              alt={`Arma: ${weaponData?.name}`}
-            />
-          </Figure>
-          <h2 className='text-sm lg:text-base line-clamp-1'>
-            {weaponData?.name}
-          </h2>
-        </div>
-      </Card>
-    </TooltipItem>
+    <li>
+      <TooltipItem item={weaponData}>
+        <Card className='bg-color-dark p-2 rounded-md'>
+          <div className='flex items-center gap-3'>
+            <Figure>
+              <Image
+                src={weaponData?.imageUrl!}
+                alt={`Arma: ${weaponData?.name}`}
+              />
+            </Figure>
+            <h2 className='text-sm lg:text-base line-clamp-1'>
+              {weaponData?.name}
+            </h2>
+          </div>
+        </Card>
+      </TooltipItem>
+    </li>
   )
 }
 
@@ -58,20 +62,22 @@ export const ItemBuildWeapon = ({ weapon }: { weapon: Props }) => {
   if (error) return <BuildErrorItem />
 
   return (
-    <TooltipItem item={weaponData}>
-      <Card className='bg-color-dark p-2 rounded-md'>
-        <div className='flex items-center gap-3'>
-          <Figure>
-            <Image
-              src={weaponData?.imageUrl!}
-              alt={`Arma: ${weaponData?.name}`}
-            />
-          </Figure>
-          <h2 className='text-sm lg:text-base line-clamp-1'>
-            {weaponData?.name}
-          </h2>
-        </div>
-      </Card>
-    </TooltipItem>
+    <li>
+      <TooltipItem item={weaponData}>
+        <Card className='bg-color-dark p-2 rounded-md'>
+          <div className='flex items-center gap-3'>
+            <Figure>
+              <Image
+                src={weaponData?.imageUrl!}
+                alt={`Arma: ${weaponData?.name}`}
+              />
+            </Figure>
+            <h2 className='text-sm lg:text-base line-clamp-1'>
+              {weaponData?.name}
+            </h2>
+          </div>
+        </Card>
+      </TooltipItem>
+    </li>
   )
 }

@@ -1,9 +1,10 @@
 import { Card, CardBody, CardHeader } from '@nextui-org/card'
+import { CharacterTypes } from '@/types/characters-types'
 import CharacterFilter from '@/render/components/UI/filters/character-filter'
 import SearchCharacter from '@/render/components/home/characters/search-character'
 import ListBuilds from '@/render/components/home/builds/list-builds'
 
-const SectionBuild = () => {
+const SectionBuild = ({ characters }: { characters: CharacterTypes[] }) => {
   return (
     <section className='rounded-xl'>
       <Card className='bg-color-dark p-4'>
@@ -20,7 +21,7 @@ const SectionBuild = () => {
           </div>
         </CardHeader>
         <CardBody>
-          <ListBuilds />
+          <ListBuilds characters={characters} />
         </CardBody>
       </Card>
     </section>

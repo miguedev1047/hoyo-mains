@@ -7,6 +7,7 @@ export const ItemCharacterStatsFull = ({
   character: characterType | undefined
 }) => {
   const stats = character?.bestStats
+  if (!stats) return null
 
   const priorityStats = stats?.substatPriority.split('>')
 

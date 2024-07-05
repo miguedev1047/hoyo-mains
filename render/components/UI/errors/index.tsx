@@ -47,7 +47,7 @@ export const BuildErrorItem = ({ message, className }: Props) => {
   return (
     <Card
       isBlurred
-      className={`p-2 text-color-red dark:bg-color-red/20 border-[1px] border-color-red/40 mb-2 rounded-md lg:mx-2 ${className}`}
+      className={`col-span-2 w-full px-2 py-3 text-color-red dark:bg-color-red/20 border-[1px] border-color-red/40 mb-2 rounded-md lg:mr-2 ${className}`}
     >
       <div className='flex items-center gap-2'>
         <IconAlertCircle size={32} />

@@ -32,7 +32,9 @@ const TooltipItem = ({ children, item }: TooltipItemProps) => {
                 <figure className='bg-primary-color w-12 h-12 relative p-1 rounded-xl overflow-hidden flex-none'>
                   <Image src={item?.imageUrl!} alt={item?.name} />
                 </figure>
-                <h3 className='text-base font-bold line-clamp-1'>{item?.name}</h3>
+                <h3 className='text-base font-bold line-clamp-1'>
+                  {item?.name}
+                </h3>
               </div>
             </CardHeader>
             <Divider />
