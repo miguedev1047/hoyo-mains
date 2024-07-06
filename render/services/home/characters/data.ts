@@ -43,12 +43,12 @@ export type characterType = Prisma.CharacterGetPayload<{
 
 export interface FetchCharactersByNameTypes {
   name: string
-  element: string
-  stars: number
-  weapon: string
+  element?: string
+  stars?: number
+  weapon?: string
 }
 
-export const fetchCharactersByName = async ({
+export const fetchCharacters = async ({
   name,
   element,
   weapon,
@@ -180,6 +180,57 @@ export const fetchCharactersByName = async ({
     })
 
     return characters
+  } catch (error) {
+    return null
+  }
+}
+
+export const fetchCharactersByName = async (name: string) => {
+  try {
+    const character = await db.character.findFirst({
+      where: {
+        name
+      },
+      include: {
+        materials: true,
+        weapons: true,
+        artifacts: true,
+        bestStats: true,
+        videoGuide: true,
+        teams: {
+          include: {
+            characters: true
+          }
+        },
+        talents: {
+          orderBy: {
+            createdDate: 'asc'
+          }
+        },
+        passives: {
+          orderBy: {
+            createdDate: 'asc'
+          }
+        },
+        constellations: {
+          orderBy: {
+            createdDate: 'asc'
+          }
+        },
+        ascensions: {
+          orderBy: [{ level: 'asc' }, { cost: 'asc' }],
+          include: {
+            materials: {
+              orderBy: {
+                order: 'asc'
+              }
+            }
+          }
+        }
+      }
+    })
+
+    return character
   } catch (error) {
     return null
   }

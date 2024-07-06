@@ -6,7 +6,11 @@ import CharacterTalentList from '@/render/components/home/characters/talents/cha
 import CharacterPassiveList from '@/render/components/home/characters/passives/character-passive-list'
 import CharacterConstellationList from '@/render/components/home/characters/constellations/character-constellation-list'
 
-const CharacterSkillsTabs = ({ character }: { character: CharacterTypes }) => {
+const CharacterSkillsTabs = ({
+  character
+}: {
+  character: CharacterTypes | undefined
+}) => {
   return (
     <div className='col-span-4 w-full'>
       <Tabs

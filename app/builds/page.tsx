@@ -1,6 +1,6 @@
 import { Suspense } from 'react'
 import { SearchParamsTypes } from '@/types'
-import { fetchCharactersByName } from '@/render/services/home/characters/data'
+import { fetchCharacters } from '@/render/services/home/characters/data'
 import { CharacterTypes } from '@/types'
 import Header from '@/render/components/home/header/header'
 import SectionBuild from '@/render/sections/builds/section-build'
@@ -21,7 +21,7 @@ const BuildPage = async ({ searchParams }: SearchParamsTypes) => {
     weapon: searchParams.weapon?.toLowerCase()
   }
 
-  const characters = (await fetchCharactersByName({
+  const characters = (await fetchCharacters({
     element,
     name,
     stars,

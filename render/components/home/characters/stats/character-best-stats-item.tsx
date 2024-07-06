@@ -4,7 +4,7 @@ import { Card } from '@nextui-org/card'
 const CharacterBestStatsItem = ({
   character
 }: {
-  character: CharacterTypes
+  character: CharacterTypes | undefined
 }) => {
   const stats = character?.bestStats
   if (!stats) return null

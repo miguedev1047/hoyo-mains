@@ -2,7 +2,7 @@ import { CharacterTypes } from '@/types'
 import { Card } from '@nextui-org/card'
 import { Link } from '@nextui-org/link'
 
-const CharacterVideo = ({ character }: { character: CharacterTypes }) => {
+const CharacterVideo = ({ character }: { character: CharacterTypes | undefined }) => {
   const characterVideo = character?.videoGuide
 
   return (

@@ -1,8 +1,12 @@
 import { CharacterTypes } from '@/types'
 import CharacterTalentItem from '@/render/components/home/characters/talents/character-talent-item'
 
-const CharacterTalentList = ({ character }: { character: CharacterTypes }) => {
-  const { talents } = character
+const CharacterTalentList = ({
+  character
+}: {
+  character: CharacterTypes | undefined
+}) => {
+  const { talents } = character ?? { talents: [] }
 
   return (
     <ol className='space-y-4'>

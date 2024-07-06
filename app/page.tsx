@@ -1,5 +1,5 @@
 import { CharacterTypes, SearchParamsTypes } from '@/types'
-import { fetchCharactersByName } from '@/render/services/home/characters/data'
+import { fetchCharacters } from '@/render/services/home/characters/data'
 import { Suspense } from 'react'
 import Header from '@/render/components/home/header/header'
 import SectionHome from '@/render/sections/home/section-home'
@@ -20,7 +20,7 @@ export default async function Home({ searchParams }: SearchParamsTypes) {
     weapon: searchParams.weapon?.toLowerCase()
   }
 
-  const characters = (await fetchCharactersByName({
+  const characters = (await fetchCharacters({
     element,
     name,
     stars,

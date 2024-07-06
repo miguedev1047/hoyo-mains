@@ -4,9 +4,9 @@ import CharacterConstellationItem from '@/render/components/home/characters/cons
 const CharacterConstellationList = ({
   character
 }: {
-  character: CharacterTypes
+  character: CharacterTypes | undefined
 }) => {
-  const { constellations } = character
+  const { constellations } = character ?? { constellations: [] }
   return (
     <ol className='space-y-4'>
       {constellations.map((constellation) => (

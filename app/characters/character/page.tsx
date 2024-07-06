@@ -1,5 +1,7 @@
-import Header from '@/render/components/home/header/header'
+import { fetchCharactersByName } from '@/render/services/home/characters/data'
+import { CharacterTypes } from '@/types'
 import SectionCharacterHome from '@/render/sections/characters/character-home-section'
+import Header from '@/render/components/home/header/header'
 
 import type { ResolvingMetadata } from 'next'
 
@@ -21,7 +23,7 @@ export async function generateMetadata(
   }
 }
 
-const CharacterPage = ({
+const CharacterPage = async ({
   searchParams
 }: {
   searchParams: {
@@ -29,12 +31,15 @@ const CharacterPage = ({
   }
 }) => {
   const characterName = searchParams.name.replace(/-/g, ' ')
+  const character = (await fetchCharactersByName(
+    characterName
+  )) as CharacterTypes
 
   return (
     <>
       <Header />
       <main className='max-w-[1280px] my-10 mx-auto'>
-        <SectionCharacterHome characterName={characterName} />
+        <SectionCharacterHome character={character} />
       </main>
     </>
   )

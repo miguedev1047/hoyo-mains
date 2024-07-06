@@ -1,8 +1,12 @@
 import { CharacterTypes } from '@/types'
 import CharacterArtifactItem from '@/render/components/home/characters/artifacts/character-artifact-item'
 
-const CharacterArtifactList = ({ character }: { character: CharacterTypes }) => {
-  const arfifacts = character.artifacts ?? []
+const CharacterArtifactList = ({
+  character
+}: {
+  character: CharacterTypes | undefined
+}) => {
+  const arfifacts = character?.artifacts ?? []
 
   return (
     <ol className='w-full space-y-4'>

@@ -1,7 +1,7 @@
 import { CharacterTypes } from '@/types'
 import CharacterBestStatsItem from '@/render/components/home/characters/stats/character-best-stats-item'
 
-const CharacterBestStats = ({ character }: { character: CharacterTypes }) => {
+const CharacterBestStats = ({ character }: { character: CharacterTypes | undefined }) => {
   return (
     <div className='col-span-4 space-y-4'>
       <h3 className='text-xl font-semibold capitalize text-secondary-color'>
