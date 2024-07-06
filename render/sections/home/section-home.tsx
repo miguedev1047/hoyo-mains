@@ -5,7 +5,7 @@ import CharacterFilter from '@/render/components/UI/filters/character-filter'
 import SearchCharacter from '@/render/components/home/characters/search-character'
 
 interface ListCharacterProps {
-  characters: characterType[]
+  characters: CharacterTypes[]
 }
 
 const SectionHome = ({ characters }: ListCharacterProps) => {
