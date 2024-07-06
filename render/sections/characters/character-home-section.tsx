@@ -1,5 +1,4 @@
 import { CharacterTypes } from '@/types'
-import { fetcher } from '@/utils/helpers/fetcher'
 import { Card, CardBody, CardHeader } from '@nextui-org/card'
 import { Divider } from '@nextui-org/react'
 import CharacterArtifacts from '@/render/components/home/characters/artifacts/character-artifacts'
