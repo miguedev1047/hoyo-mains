@@ -1,7 +1,7 @@
-import { characterType } from '@/render/services/home/characters/data'
+import { CharacterTypes } from '@/types'
 import CharacterTalentItem from '@/render/components/home/characters/talents/character-talent-item'
 
-const CharacterTalentList = ({ character }: { character: characterType }) => {
+const CharacterTalentList = ({ character }: { character: CharacterTypes }) => {
   const { talents } = character
 
   return (

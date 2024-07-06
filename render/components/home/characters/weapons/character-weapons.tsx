@@ -1,10 +1,10 @@
-import { characterType } from '@/render/services/home/characters/data'
+import { CharacterTypes } from '@/types'
 import CharacterWeaponList from '@/render/components/home/characters/weapons/character-weapon-list'
 
 const CharacterWeapons = ({
   character
 }: {
-  character: characterType | undefined
+  character: CharacterTypes | undefined
 }) => {
   return (
     <div className='col-span-4 lg:col-span-2 space-y-4'>

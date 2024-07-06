@@ -1,10 +1,10 @@
-import { characterType } from '@/render/services/home/characters/data'
+import { CharacterTypes } from '@/types'
 import CharacterConstellationItem from '@/render/components/home/characters/constellations/character-constellation-item'
 
 const CharacterConstellationList = ({
   character
 }: {
-  character: characterType
+  character: CharacterTypes
 }) => {
   const { constellations } = character
   return (

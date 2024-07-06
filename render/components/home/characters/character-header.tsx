@@ -1,4 +1,4 @@
-import { characterType } from '@/render/services/home/characters/data'
+import { CharacterTypes } from '@/types'
 import { getElementImage } from '@/utils/helpers/get-element-image'
 import { getRole } from '@/utils/helpers/get-role'
 import { getWeapon } from '@/utils/helpers/get-weapon'
@@ -7,7 +7,7 @@ import { Chip, Image } from '@nextui-org/react'
 const CharacterHeader = ({
   character
 }: {
-  character: characterType | undefined
+  character: CharacterTypes | undefined
 }) => {
   return (
     <div className='w-full flex flex-col'>

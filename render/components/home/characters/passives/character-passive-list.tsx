@@ -1,7 +1,7 @@
-import { characterType } from '@/render/services/home/characters/data'
+import { CharacterTypes } from '@/types'
 import CharacterPassiveItem from '@/render/components/home/characters/passives/charcter-passive-item'
 
-const CharacterPassiveList = ({ character }: { character: characterType }) => {
+const CharacterPassiveList = ({ character }: { character: CharacterTypes }) => {
   const { passives } = character
 
   return (

@@ -1,7 +1,7 @@
-import { characterType } from '@/render/services/home/characters/data'
+import { CharacterTypes } from '@/types'
 import CharacterTeamItem from './character-team-item'
 
-const CharacterTeamList = ({ character }: { character: characterType }) => {
+const CharacterTeamList = ({ character }: { character: CharacterTypes }) => {
   const teams = character.teams ?? []
 
   return (

@@ -1,7 +1,7 @@
 'use client'
 
 import { useCallback } from 'react'
-import { characterType } from '@/render/services/home/characters/data'
+import { CharacterTypes } from '@/types'
 import { columnsHome } from '@/constants'
 import { Ascension } from '@/types'
 import {
@@ -18,7 +18,7 @@ import CharacterAscensionMaterialItem from '@/render/components/home/characters/
 const CharacterAscensionTable = ({
   character
 }: {
-  character: characterType | undefined
+  character: CharacterTypes | undefined
 }) => {
   return (
     <div className='col-span-4 space-y-4'>
@@ -34,7 +34,7 @@ const CharacterAscensionTable = ({
 const AscensionTable = ({
   character
 }: {
-  character: characterType | undefined
+  character: CharacterTypes | undefined
 }) => {
   const ascension = character?.ascensions.map((ascension, index) => ({
     ...ascension,

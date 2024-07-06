@@ -1,10 +1,10 @@
-import { characterType } from '@/render/services/home/characters/data'
+import { CharacterTypes } from '@/types'
 import CharacterMaterialItem from '@/render/components/home/characters/materials/character-material-item'
 
 const CharacterMaterialList = ({
   character
 }: {
-  character: characterType | undefined
+  character: CharacterTypes | undefined
 }) => {
   const materials = character?.materials ?? []
 

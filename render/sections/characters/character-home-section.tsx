@@ -1,6 +1,6 @@
 'use client'
 
-import { characterType } from '@/render/services/home/characters/data'
+import { CharacterTypes } from '@/types'
 import { fetcher } from '@/utils/helpers/fetcher'
 import { Card, CardBody, CardHeader } from '@nextui-org/card'
 import { Divider } from '@nextui-org/react'
@@ -24,7 +24,7 @@ const SectionCharacterHome = ({ characterName }: { characterName: string }) => {
     data: character,
     isLoading,
     error
-  } = useSWR<characterType>(API_CHARACTERS, fetcher)
+  } = useSWR<CharacterTypes>(API_CHARACTERS, fetcher)
 
   if (isLoading) return <CharacterLoader className='h-[calc(100vh_-_14rem)]' />
 

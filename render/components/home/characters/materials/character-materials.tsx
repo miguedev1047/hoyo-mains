@@ -1,10 +1,10 @@
-import { characterType } from '@/render/services/home/characters/data'
+import { CharacterTypes } from '@/types'
 import CharacterMaterialList from '@/render/components/home/characters/materials/character-material-list'
 
 const CharacterMaterials = ({
   character
 }: {
-  character: characterType | undefined
+  character: CharacterTypes | undefined
 }) => {
   return (
     <div className='col-span-4 space-y-4'>

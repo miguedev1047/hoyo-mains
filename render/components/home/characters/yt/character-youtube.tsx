@@ -1,8 +1,8 @@
-import { characterType } from '@/render/services/home/characters/data'
+import { CharacterTypes } from '@/types'
 import { Card } from '@nextui-org/card'
 import { Link } from '@nextui-org/link'
 
-const CharacterVideo = ({ character }: { character: characterType }) => {
+const CharacterVideo = ({ character }: { character: CharacterTypes }) => {
   const characterVideo = character?.videoGuide
 
   return (

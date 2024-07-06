@@ -1,10 +1,10 @@
-import { characterType } from '@/render/services/home/characters/data'
+import { CharacterTypes } from '@/types'
 import { Card } from '@nextui-org/card'
 
 const CharacterBestStatsItem = ({
   character
 }: {
-  character: characterType
+  character: CharacterTypes
 }) => {
   const stats = character?.bestStats
   if (!stats) return null

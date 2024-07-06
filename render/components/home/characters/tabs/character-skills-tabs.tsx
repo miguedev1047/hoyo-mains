@@ -1,12 +1,12 @@
 'use client'
 
-import { characterType } from '@/render/services/home/characters/data'
+import { CharacterTypes } from '@/types'
 import { Tab, Tabs } from '@nextui-org/react'
 import CharacterTalentList from '@/render/components/home/characters/talents/character-talent-list'
 import CharacterPassiveList from '@/render/components/home/characters/passives/character-passive-list'
 import CharacterConstellationList from '@/render/components/home/characters/constellations/character-constellation-list'
 
-const CharacterSkillsTabs = ({ character }: { character: characterType }) => {
+const CharacterSkillsTabs = ({ character }: { character: CharacterTypes }) => {
   return (
     <div className='col-span-4 w-full'>
       <Tabs
