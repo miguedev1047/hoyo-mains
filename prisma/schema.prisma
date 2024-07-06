@@ -99,6 +99,31 @@ model Artifact {
   updatedDate DateTime @updatedAt
 }
 
+model Team {
+  id   String @id @unique @default(uuid())
+  name String
+
+  order Int @default(0)
+
+  createdDate DateTime        @default(now())
+  updatedDate DateTime        @updatedAt
+
+  characters  TeamCharacter[]
+}
+
+model TeamCharacter {
+  id          String  @id @unique @default(uuid())
+  characterId String?
+  teamId      String?
+
+  order Int @default(0)
+
+  createdDate DateTime @default(now())
+  updatedDate DateTime @updatedAt
+
+  team Team? @relation(fields: [teamId], references: [id])
+}
+
 model MaterialsByCharacter {
   id          String  @id @unique @default(uuid())
   item        String
