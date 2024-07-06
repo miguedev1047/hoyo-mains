@@ -3,7 +3,6 @@ import { WeaponByCharacter } from '@prisma/client'
 import CharacterImage from '@/render/components/home/builds/character-image'
 import CardDetails from '@/render/components/home/builds/card/card-details'
 import ViewToggle from '@/render/components/home/builds/card/view-toggle'
-import Link from 'next/link'
 
 interface CardContentProps {
   character: CharacterTypes | undefined
