@@ -4,9 +4,9 @@ import { Card } from '@nextui-org/card'
 export const ItemCharacterStatsFull = ({
   character
 }: {
-  character: CharacterTypes
+  character: CharacterTypes | undefined
 }) => {
-  const stats = character.bestStats
+  const stats = character?.bestStats
   const priorityStats = stats?.substatPriority.split('>')
 
   return (
