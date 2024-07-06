@@ -1,11 +1,11 @@
-import { characterType } from '@/types'
+import { CharacterTypes } from '@/types'
 import { ArtifactByCharacter, WeaponByCharacter } from '@prisma/client'
 import { ItemCharacterStatsFull } from '@/render/components/home/builds/items/stats'
 import ListWeapons from '@/render/components/home/builds/items/weapon/list-weapons'
 import ListArtifacts from '@/render/components/home/builds/items/artifact/list-artifacts'
 
 interface ExpandedViewProps {
-  character: characterType | undefined
+  character: CharacterTypes | undefined
   weapons: WeaponByCharacter[] | undefined
   artifacts: ArtifactByCharacter[] | undefined
 }

@@ -8,16 +8,14 @@ import Figure from '@/render/components/UI/misc/figure'
 import useSWR from 'swr'
 import TooltipItem from '@/render/components/UI/tooltip/tooltip-item'
 
-interface Props {
+interface WeaponItemProps {
   item: string
   createdDate: Date
   updatedDate: Date
 }
 
-export const ItemBuildFirstWeapon = ({ weapon }: { weapon: Props }) => {
+export const ItemBuildFirstWeapon = ({ weapon }: { weapon: WeaponItemProps }) => {
   const weaponId = weapon?.item
-
-  console.log(weaponId)
 
   const {
     data: weaponData,
@@ -49,7 +47,7 @@ export const ItemBuildFirstWeapon = ({ weapon }: { weapon: Props }) => {
   )
 }
 
-export const ItemBuildWeapon = ({ weapon }: { weapon: Props }) => {
+export const ItemBuildWeapon = ({ weapon }: { weapon: WeaponItemProps }) => {
   const weaponId = weapon.item
 
   const {

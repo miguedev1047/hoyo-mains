@@ -8,16 +8,14 @@ import Figure from '@/render/components/UI/misc/figure'
 import useSWR from 'swr'
 import TooltipItem from '@/render/components/UI/tooltip/tooltip-item'
 
-interface Props {
+interface ArtifactItemProps {
   item: string
   createdDate: Date
   updatedDate: Date
 }
 
-export const ItemBuildFirstArtifact = ({ artifact }: { artifact: Props }) => {
+export const ItemBuildFirstArtifact = ({ artifact }: { artifact: ArtifactItemProps }) => {
   const artifactId = artifact?.item
-
-  console.log(artifactId)
 
   const {
     data: artifactData,
@@ -50,7 +48,7 @@ export const ItemBuildFirstArtifact = ({ artifact }: { artifact: Props }) => {
   )
 }
 
-export const ItemBuildArtifact = ({ artifact }: { artifact: Props }) => {
+export const ItemBuildArtifact = ({ artifact }: { artifact: ArtifactItemProps }) => {
   const artifactId = artifact.item
 
   const {

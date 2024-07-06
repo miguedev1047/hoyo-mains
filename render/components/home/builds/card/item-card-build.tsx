@@ -1,16 +1,12 @@
 'use client'
 
-import { characterType } from '@/types'
+import { CharacterTypes } from '@/types'
 import { useViewBuildStore } from '@/utils/store/use-view-build-store'
 import { Card } from '@nextui-org/card'
 import CardContent from '@/render/components/home/builds/card/card-content'
 import clsx from 'clsx'
 
-export const ItemCardComponent = ({
-  character
-}: {
-  character: characterType | undefined
-}) => {
+export const ItemCardComponent = ({ character }: { character: CharacterTypes }) => {
   const { isOpen, cardId } = useViewBuildStore((state) => ({
     isOpen: state.isOpen,
     cardId: state.cardId

@@ -1,5 +1,5 @@
 import { ItemCardComponent } from '@/render/components/home/builds/card/item-card-build'
-import { CharacterTypes } from '@/types/characters-types'
+import { CharacterTypes } from '@/types'
 
 const NoAvailableCharacters = () => (
   <div className='text-color-light/50 text-lg md:text-2xl text-center font-bold'>
@@ -22,9 +22,9 @@ const ListBuilds = ({ characters }: { characters: CharacterTypes[] }) => {
 
   return (
     <ul className='relative grid grid-cols-1 gap-4 overflow-hidden select-none'>
-      {characters?.map((build) => (
-        <li key={build?.id}>
-          <ItemCardComponent character={build} />
+      {characters?.map((character) => (
+        <li key={character?.id}>
+          <ItemCardComponent character={character} />
         </li>
       ))}
     </ul>

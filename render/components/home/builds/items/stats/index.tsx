@@ -1,14 +1,12 @@
-import { characterType } from '@/types'
+import { CharacterTypes } from '@/types'
 import { Card } from '@nextui-org/card'
 
 export const ItemCharacterStatsFull = ({
   character
 }: {
-  character: characterType | undefined
+  character: CharacterTypes
 }) => {
-  const stats = character?.bestStats
-  if (!stats) return null
-
+  const stats = character.bestStats
   const priorityStats = stats?.substatPriority.split('>')
 
   return (
@@ -50,7 +48,7 @@ export const ItemCharacterStatsFull = ({
 export const ItemCharacterStats = ({
   character
 }: {
-  character: characterType | undefined
+  character: CharacterTypes | undefined
 }) => {
   const stats = character?.bestStats
 

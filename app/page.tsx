@@ -1,4 +1,4 @@
-import { characterType, SearchParamsTypes } from '@/types'
+import { CharacterTypes, SearchParamsTypes } from '@/types'
 import { fetchCharactersByName } from '@/render/services/home/characters/data'
 import { Suspense } from 'react'
 import Header from '@/render/components/home/header/header'
@@ -25,7 +25,7 @@ export default async function Home({ searchParams }: SearchParamsTypes) {
     name,
     stars,
     weapon
-  })) as characterType[]
+  })) as CharacterTypes[]
 
   return (
     <>

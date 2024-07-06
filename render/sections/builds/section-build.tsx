@@ -1,5 +1,5 @@
 import { Card, CardBody, CardHeader } from '@nextui-org/card'
-import { CharacterTypes } from '@/types/characters-types'
+import { CharacterTypes } from '@/types'
 import CharacterFilter from '@/render/components/UI/filters/character-filter'
 import SearchCharacter from '@/render/components/home/characters/search-character'
 import ListBuilds from '@/render/components/home/builds/list-builds'

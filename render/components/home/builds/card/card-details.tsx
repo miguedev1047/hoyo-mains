@@ -1,4 +1,4 @@
-import { characterType } from '@/types'
+import { CharacterTypes } from '@/types'
 import { useViewBuildStore } from '@/utils/store/use-view-build-store'
 import { ArtifactByCharacter, WeaponByCharacter } from '@prisma/client'
 import CompactView from '@/render/components/home/builds/card/compact-view'
@@ -6,7 +6,7 @@ import ExpandedView from '@/render/components/home/builds/card/expanded-view'
 import ViewToggle from '@/render/components/home/builds/card/view-toggle'
 
 interface CardDetailsProps {
-  character: characterType | undefined
+  character: CharacterTypes | undefined
   weapons: WeaponByCharacter[] | undefined
   artifacts: ArtifactByCharacter[] | undefined
 }

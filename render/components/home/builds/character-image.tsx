@@ -1,4 +1,4 @@
-import { characterType } from '@/types'
+import { CharacterTypes } from '@/types'
 import { getStarBorderColor } from '@/utils/helpers/get-color'
 import { getRole } from '@/utils/helpers/get-role'
 import { Chip, Image } from '@nextui-org/react'
@@ -8,7 +8,7 @@ import clsx from 'clsx'
 const CharacterImage = ({
   character
 }: {
-  character: characterType | undefined
+  character: CharacterTypes | undefined
 }) => {
   const starCharacter = getStarBorderColor(character?.stars || 0)
 

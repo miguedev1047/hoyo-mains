@@ -1,8 +1,8 @@
-import { characterType } from '@/types'
+import { CharacterTypes } from '@/types'
 import ItemCharacter from '@/render/components/home/characters/item-character'
 
 interface ListCharacterProps {
-  characters: characterType[]
+  characters: CharacterTypes[]
 }
 
 const NoAvailableCharacters = () => (

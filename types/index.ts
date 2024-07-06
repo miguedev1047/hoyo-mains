@@ -131,7 +131,7 @@ export interface MaterialByAscension {
   quantity: number
 }
 
-export type characterType = Prisma.CharacterGetPayload<{
+export type CharacterTypes = Prisma.CharacterGetPayload<{
   include: {
     materials: true
     weapons: true

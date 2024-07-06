@@ -1,11 +1,11 @@
-import { characterType } from '@/types'
+import { CharacterTypes } from '@/types'
 import { ArtifactByCharacter, WeaponByCharacter } from '@prisma/client'
 import { ItemBuildFirstArtifact } from '@/render/components/home/builds/items/artifact'
 import { ItemCharacterStats } from '@/render/components/home/builds/items/stats'
 import { ItemBuildFirstWeapon } from '@/render/components/home/builds/items/weapon'
 
 interface CompactViewProps {
-  character: characterType | undefined
+  character: CharacterTypes | undefined
   firstWeapon: WeaponByCharacter | undefined
   firstArtifact: ArtifactByCharacter | undefined
 }
