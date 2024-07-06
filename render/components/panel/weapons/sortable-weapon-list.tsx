@@ -1,5 +1,5 @@
 import { updatedOrderWeapon } from '@/render/services/panel/weapons/update'
-import { Characters } from '@/types'
+import { CharacterTypes } from '@/types'
 import { reOrder } from '@/utils/helpers/re-order'
 import { DragDropContext, Droppable } from '@hello-pangea/dnd'
 import { WeaponByCharacter } from '@prisma/client'
@@ -10,7 +10,7 @@ import ItemCharacterWeapon from '@/render/components/panel/weapons/item-characte
 const SortableWeaponList = ({
   character
 }: {
-  character: Characters | undefined
+  character: CharacterTypes | undefined
 }) => {
   const weapons = useMemo(() => character?.weapons ?? [], [character])
   const [data, setData] = useState<WeaponByCharacter[]>(weapons)

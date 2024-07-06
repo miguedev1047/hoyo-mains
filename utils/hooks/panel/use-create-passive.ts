@@ -1,4 +1,5 @@
 import { z } from 'zod'
+import { CharacterTypes } from '@/types'
 import { CharactersPassiveSchema } from '@/schemas'
 import { useDropImage } from '@/utils/store/use-drop-image'
 import { useModalStore } from '@/utils/store/use-open'
@@ -9,11 +10,10 @@ import { dataPassiveId } from '@/render/services/panel/passives/data'
 import { updatePassive } from '@/render/services/panel/passives/update'
 import { useForm } from 'react-hook-form'
 import { useUploadImageToCloud } from '@/utils/hooks/panel/use-upload-image-to-cloud'
-import { Characters } from '@/types'
 import { toast } from 'sonner'
 import { mutate } from 'swr'
 
-export const useCreatePassive = (character: Characters | undefined) => {
+export const useCreatePassive = (character: CharacterTypes | undefined) => {
   const characterName = character?.name.toLowerCase().replace(/\s/g, '-')
   const [isPending, startTransition] = useTransition()
   const { handleUploadImage } = useUploadImageToCloud()

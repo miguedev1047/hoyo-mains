@@ -1,6 +1,6 @@
 import { z } from 'zod'
 import { CharacterItemSchema } from '@/schemas'
-import { Characters } from '@/types'
+import { CharacterTypes } from '@/types'
 import { fetcher } from '@/utils/helpers/fetcher'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { Artifact } from '@prisma/client'
@@ -10,15 +10,15 @@ import { createArtifactCharacters } from '@/render/services/panel/artifacts/crea
 import { Button, Chip, Image, Select, SelectItem } from '@nextui-org/react'
 import { selectorItemWrapper } from '@/utils/classes'
 import { IconPlus } from '@tabler/icons-react'
+import { HomeErrorItem } from '@/render/components/UI/errors'
 import { toast } from 'sonner'
 import Figure from '@/render/components/UI/misc/figure'
 import useSWR, { mutate } from 'swr'
-import { HomeErrorItem } from '../../UI/errors'
 
 const ArtifactSelector = ({
   character
 }: {
-  character: Characters | undefined
+  character: CharacterTypes | undefined
 }) => {
   const {
     data: artifacts,

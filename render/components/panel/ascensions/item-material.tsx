@@ -1,6 +1,6 @@
 import { z } from 'zod'
 import { AscensionQuantitySchema } from '@/schemas'
-import { Characters, MaterialByAscension } from '@/types'
+import { CharacterTypes, MaterialByAscension } from '@/types'
 import { fetcher } from '@/utils/helpers/fetcher'
 import { zodResolver } from '@hookform/resolvers/zod'
 import {
@@ -28,7 +28,7 @@ const ItemMaterial = ({
   character
 }: {
   material: MaterialByAscension
-  character: Characters | undefined
+  character: CharacterTypes | undefined
 }) => {
   const [isPending, startTransition] = useTransition()
   const [isOpen, setIsOpen] = useState(false)

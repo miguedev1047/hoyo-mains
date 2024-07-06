@@ -1,5 +1,5 @@
 import { deleteCharacterTeam } from '@/render/services/panel/teams/delete'
-import { Characters, CharactersByTeam } from '@/types'
+import { CharacterTypes, CharactersByTeam } from '@/types'
 import { Button } from '@nextui-org/button'
 import { IconTrash } from '@tabler/icons-react'
 import { useTransition } from 'react'
@@ -11,7 +11,7 @@ const ButtonDeleteCharacter = ({
   character
 }: {
   team: CharactersByTeam | undefined
-  character: Characters | undefined
+  character: CharacterTypes | undefined
 }) => {
   const [isPending, startTransition] = useTransition()
   const characterName = character?.name.toLowerCase().replace(/\s/g, '-')

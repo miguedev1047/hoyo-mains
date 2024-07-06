@@ -1,14 +1,16 @@
-import { Characters } from '@/types'
+import { CharacterTypes } from '@/types'
 import ItemCharacterConstellation from '@/render/components/panel/constellations/item-character-constellation'
 
 const ListCharacterConstellation = ({
   character
 }: {
-  character: Characters | undefined
+  character: CharacterTypes | undefined
 }) => {
+  const constellations = character?.constellations
+
   return (
     <ol className='space-y-4'>
-      {character?.constellations.map((constellation) => (
+      {constellations?.map((constellation) => (
         <ItemCharacterConstellation
           key={constellation.id}
           character={character}

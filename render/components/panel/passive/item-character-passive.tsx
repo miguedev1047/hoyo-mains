@@ -1,7 +1,7 @@
 import { Card, CardBody, CardFooter, CardHeader } from '@nextui-org/card'
 import { Button, CircularProgress, Divider, Image } from '@nextui-org/react'
 import { IconPencil, IconTrash } from '@tabler/icons-react'
-import { CharacterPassives, Characters } from '@/types'
+import { CharacterPassives, CharacterTypes } from '@/types'
 import { deleteImage } from '@/utils/helpers/delete-image'
 import { useModalStore } from '@/utils/store/use-open'
 import { useTransition } from 'react'
@@ -16,7 +16,7 @@ const ItemCharacterPassive = ({
   character
 }: {
   passive: CharacterPassives
-  character: Characters | undefined
+  character: CharacterTypes | undefined
 }) => {
   const [isPending, startTransition] = useTransition()
   const characterName = character?.name.toLowerCase().replace(/\s/g, '-')

@@ -1,5 +1,5 @@
 import { deleteCharacterMaterial } from '@/render/services/panel/materials/delete'
-import { Characters, Data } from '@/types'
+import { CharacterTypes, Data } from '@/types'
 import { Button } from '@nextui-org/button'
 import { IconTrash } from '@tabler/icons-react'
 import { useTransition } from 'react'
@@ -11,7 +11,7 @@ const ButtonDeleteMaterial = ({
   character
 }: {
   material: Data
-  character: Characters | undefined
+  character: CharacterTypes | undefined
 }) => {
   const [isPending, starTransition] = useTransition()
   const characterName = character?.name.toLowerCase().replace(/\s/g, '-')

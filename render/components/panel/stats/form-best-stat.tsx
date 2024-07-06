@@ -1,7 +1,7 @@
 import { z } from 'zod'
 import { createBestStats } from '@/render/services/panel/stats/create'
 import { CharacterBestStatsSchema } from '@/schemas'
-import { Characters } from '@/types'
+import { CharacterTypes } from '@/types'
 import { InputWrapper } from '@/utils/classes'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { Button } from '@nextui-org/button'
@@ -14,7 +14,7 @@ import { updateBestStats } from '@/render/services/panel/stats/update'
 import { mutate } from 'swr'
 import { IconDeviceFloppy, IconPencil } from '@tabler/icons-react'
 
-const FormBestStat = ({ character }: { character: Characters | undefined }) => {
+const FormBestStat = ({ character }: { character: CharacterTypes | undefined }) => {
   const [isPending, startTrasition] = useTransition()
   const characterName = character?.name.toLowerCase().replace(/\s/g, '-')
 

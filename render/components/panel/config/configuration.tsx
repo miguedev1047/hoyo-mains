@@ -1,7 +1,7 @@
 import { z } from 'zod'
 import { updateCharacterConfig } from '@/render/services/panel/characters/update'
 import { CharacterConfigurationSchema } from '@/schemas'
-import { Characters } from '@/types'
+import { CharacterTypes } from '@/types'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { Button } from '@nextui-org/button'
 import { Popover, PopoverContent, PopoverTrigger } from '@nextui-org/react'
@@ -15,7 +15,7 @@ import { IconSettings } from '@tabler/icons-react'
 const Configuration = ({
   character
 }: {
-  character: Characters | undefined
+  character: CharacterTypes | undefined
 }) => {
   const [isPending, startTransition] = useTransition()
   const [isOpen, setIsOpen] = useState(false)

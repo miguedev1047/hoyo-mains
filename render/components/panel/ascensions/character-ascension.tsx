@@ -1,11 +1,11 @@
-import { Characters } from '@/types'
+import { CharacterTypes } from '@/types'
 import FormCharacterAscension from '@/render/components/panel/ascensions/form-character-ascension'
 import TableCharacterAscension from '@/render/components/panel/ascensions/table/table-character-ascension'
 
 const CharacterAscension = ({
   character
 }: {
-  character: Characters | undefined
+  character: CharacterTypes | undefined
 }) => {
   return (
     <div className='col-span-4 space-y-4'>

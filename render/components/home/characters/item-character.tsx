@@ -1,12 +1,12 @@
-import { getStarBorderColor } from '@/utils/helpers/get-color'
 import { Card } from '@nextui-org/card'
 import { Chip, Image, Tooltip } from '@nextui-org/react'
-import { Character } from '@prisma/client'
+import { getStarBorderColor } from '@/utils/helpers/get-color'
 import { getElementImage } from '@/utils/helpers/get-element-image'
+import { CharacterTypes } from '@/types'
 import clsx from 'clsx'
 import Link from 'next/link'
 
-const ItemCharacter = ({ character }: { character: Character | undefined }) => {
+const ItemCharacter = ({ character }: { character: CharacterTypes | undefined }) => {
   const starCharacter = getStarBorderColor(character?.stars || 0)
 
   const characterName = character?.name.toLowerCase().replace(/\s/g, '-')

@@ -1,5 +1,5 @@
 import { updatedOrderTeams } from '@/render/services/panel/teams/update'
-import { Characters, Team } from '@/types'
+import { CharacterTypes, Team } from '@/types'
 import { reOrder } from '@/utils/helpers/re-order'
 import { DragDropContext, Droppable } from '@hello-pangea/dnd'
 import { useEffect, useMemo, useState } from 'react'
@@ -9,7 +9,7 @@ import CharacterItemTeam from '@/render/components/panel/teams/character-item-te
 const SortableTeamList = ({
   character
 }: {
-  character: Characters | undefined
+  character: CharacterTypes | undefined
 }) => {
   const teams = useMemo(() => character?.teams ?? [], [character])
   const [orderedList, setOrderedList] = useState<Team[]>(teams)

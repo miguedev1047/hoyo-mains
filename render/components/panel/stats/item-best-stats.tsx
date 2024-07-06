@@ -1,10 +1,10 @@
 import { IconPencil } from '@tabler/icons-react'
-import { Characters } from '@/types'
+import { CharacterTypes } from '@/types'
 import { useEditStatStore } from '@/utils/store/use-edit-substat'
 import { Button } from '@nextui-org/button'
 import { Card } from '@nextui-org/card'
 
-const ItemBestStat = ({ character }: { character: Characters | undefined }) => {
+const ItemBestStat = ({ character }: { character: CharacterTypes | undefined }) => {
   const UNDEFINED_STATS = character?.bestStats === null
 
   const editStat = useEditStatStore((state) => state.isEditingStat)

@@ -1,14 +1,16 @@
-import { Characters } from '@/types'
+import { CharacterTypes } from '@/types'
 import ItemCharacterPassive from '@/render/components/panel/passive/item-character-passive'
 
 const ListCharacterPassive = ({
   character
 }: {
-  character: Characters | undefined
+  character: CharacterTypes | undefined
 }) => {
+  const passive = character?.passives
+
   return (
     <ol className='space-y-4'>
-      {character?.passives.map((passive) => (
+      {passive?.map((passive) => (
         <ItemCharacterPassive
           key={passive.id}
           character={character}

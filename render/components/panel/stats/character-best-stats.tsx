@@ -1,11 +1,11 @@
-import { Characters } from '@/types'
+import { CharacterTypes } from '@/types'
 import FormBestStat from '@/render/components/panel/stats/form-best-stat'
 import ItemBestStat from '@/render/components/panel/stats/item-best-stats'
 
 const CharacterBestStats = ({
   character
 }: {
-  character: Characters | undefined
+  character: CharacterTypes | undefined
 }) => {
   return (
     <div className='col-span-4 space-y-4'>

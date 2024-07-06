@@ -1,8 +1,8 @@
+import { fetcher } from '@/utils/helpers/fetcher'
 import { Draggable } from '@hello-pangea/dnd'
 import { Card, Image } from '@nextui-org/react'
 import { IconGripVertical } from '@tabler/icons-react'
-import { Characters, CharactersByTeam } from '@/types'
-import { fetcher } from '@/utils/helpers/fetcher'
+import { CharacterTypes, CharactersByTeam } from '@/types'
 import { PanelSkeletonTeamCharacters } from '@/render/components/UI/skeletons'
 import { PanelErrorItem } from '@/render/components/UI/errors'
 import ButtonDeleteCharacter from '@/render/components/UI/buttons/team/button-delete-character'
@@ -15,14 +15,14 @@ const CharacterItemCharacter = ({
   index
 }: {
   team: CharactersByTeam
-  character: Characters | undefined
+  character: CharacterTypes | undefined
   index: number
 }) => {
   const {
     data: dataCharacter,
     isLoading,
     error
-  } = useSWR<Characters>(
+  } = useSWR<CharacterTypes>(
     `/api/characters/character/${team.characterItem}`,
     fetcher
   )

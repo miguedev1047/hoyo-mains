@@ -1,5 +1,5 @@
 import { z } from 'zod'
-import { Characters, Team } from '@/types'
+import { CharacterTypes, Team } from '@/types'
 import { fetcher } from '@/utils/helpers/fetcher'
 import { useState, useTransition } from 'react'
 import { Controller, useForm } from 'react-hook-form'
@@ -26,7 +26,7 @@ const CharacterSelector = ({
   character,
   team
 }: {
-  character: Characters | undefined
+  character: CharacterTypes | undefined
   team: Team
 }) => {
   const {

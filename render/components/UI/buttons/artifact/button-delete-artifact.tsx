@@ -1,5 +1,5 @@
 import { deleteCharacterArtifact } from '@/render/services/panel/artifacts/delete'
-import { Characters, Data } from '@/types'
+import { CharacterTypes, Data } from '@/types'
 import { Button } from '@nextui-org/button'
 import { IconTrash } from '@tabler/icons-react'
 import { useTransition } from 'react'
@@ -11,7 +11,7 @@ const ButtonDeleteArtifact = ({
   character
 }: {
   artifact: Data
-  character: Characters | undefined
+  character: CharacterTypes | undefined
 }) => {
   const [isPending, starTransition] = useTransition()
   const characterName = character?.name.toLowerCase().replace(/\s/g, '-')

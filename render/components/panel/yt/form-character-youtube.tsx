@@ -2,7 +2,7 @@ import { z } from 'zod'
 import { createvideoGuide } from '@/render/services/panel/yt/create'
 import { updatevideoGuide } from '@/render/services/panel/yt/update'
 import { CharacterYoutubeSchema } from '@/schemas'
-import { Characters } from '@/types'
+import { CharacterTypes } from '@/types'
 import { InputWrapper } from '@/utils/classes'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { Button } from '@nextui-org/button'
@@ -17,7 +17,7 @@ import { mutate } from 'swr'
 const FormCharacterYoutube = ({
   character
 }: {
-  character: Characters | undefined
+  character: CharacterTypes | undefined
 }) => {
   const [isPending, startTransition] = useTransition()
   const [isOpen, setIsOpen] = useState(false)

@@ -1,4 +1,4 @@
-import { Characters } from '@/types'
+import { CharacterTypes } from '@/types'
 import { InputWrapper } from '@/utils/classes'
 import { Button } from '@nextui-org/button'
 import { Input } from '@nextui-org/input'
@@ -19,7 +19,7 @@ import ModalButton from '@/render/components/UI/buttons/modal/modal-button'
 const ConstellationModal = ({
   character
 }: {
-  character: Characters | undefined
+  character: CharacterTypes | undefined
 }) => {
   const constellations = character?.constellations
   const MAX_CONSTELLATIONS = 6

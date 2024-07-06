@@ -1,7 +1,7 @@
 import { z } from 'zod'
 import { createAscension } from '@/render/services/panel/ascensions/create'
 import { CharacterAscensionSchema } from '@/schemas'
-import { Characters } from '@/types'
+import { CharacterTypes } from '@/types'
 import { InputWrapper, selectorItemWrapper } from '@/utils/classes'
 import { fetcher } from '@/utils/helpers/fetcher'
 import { zodResolver } from '@hookform/resolvers/zod'
@@ -20,15 +20,15 @@ import {
 import { Material } from '@prisma/client'
 import { useState, useTransition } from 'react'
 import { Controller, useForm } from 'react-hook-form'
+import { IconPlus } from '@tabler/icons-react'
 import { toast } from 'sonner'
 import useSWR, { mutate } from 'swr'
-import { IconPlus } from '@tabler/icons-react'
-import Figure from '../../UI/misc/figure'
+import Figure from '@/render/components/UI/misc/figure'
 
 const FormCharacterAscension = ({
   character
 }: {
-  character: Characters | undefined
+  character: CharacterTypes | undefined
 }) => {
   const [isPending, startTransition] = useTransition()
   const [isOpen, setIsOpen] = useState(false)

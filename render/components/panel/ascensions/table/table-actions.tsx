@@ -1,5 +1,5 @@
 import { deleteAscension } from '@/render/services/panel/ascensions/delete'
-import { Ascension, Characters } from '@/types'
+import { Ascension, CharacterTypes } from '@/types'
 import { Button, Tooltip } from '@nextui-org/react'
 import { IconTrash } from '@tabler/icons-react'
 import { useTransition } from 'react'
@@ -11,7 +11,7 @@ const TableActions = ({
   character
 }: {
   ascension: Ascension
-  character: Characters | undefined
+  character: CharacterTypes | undefined
 }) => {
   const [isPending, startTransition] = useTransition()
   const characterName = character?.name.toLowerCase().replace(/\s/g, '-')

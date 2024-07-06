@@ -1,5 +1,5 @@
 import { columns } from '@/constants'
-import { Ascension, Characters } from '@/types'
+import { Ascension, CharacterTypes } from '@/types'
 import {
   Table,
   TableHeader,
@@ -15,7 +15,7 @@ import TableActions from '@/render/components/panel/ascensions/table/table-actio
 const TableCharacterAscension = ({
   character
 }: {
-  character: Characters | undefined
+  character: CharacterTypes | undefined
 }) => {
   const ascension = character?.ascensions.map((ascension, index) => ({
     ...ascension,
@@ -23,7 +23,7 @@ const TableCharacterAscension = ({
   }))
 
   const renderCell = useCallback(
-    (ascension: Ascension, columnKey: React.Key) => {
+    (ascension: any, columnKey: React.Key) => {
       const cellValue = ascension[columnKey as keyof Ascension]
 
       switch (columnKey) {
@@ -48,7 +48,7 @@ const TableCharacterAscension = ({
         case 'materials':
           return (
             <ol className='min-w-[975px] grid grid-cols-4'>
-              {ascension.materials.map((material) => (
+              {ascension.materials.map((material: any) => (
                 <ItemMaterial
                   key={material.id}
                   character={character}

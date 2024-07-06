@@ -1,4 +1,4 @@
-import { Characters, Data } from '@/types'
+import { CharacterTypes, Data } from '@/types'
 import { IconGripVertical } from '@tabler/icons-react'
 import { Draggable } from '@hello-pangea/dnd'
 import { fetcher } from '@/utils/helpers/fetcher'
@@ -17,7 +17,7 @@ const ItemCharacterMaterial = ({
   index
 }: {
   material: Data
-  character: Characters | undefined
+  character: CharacterTypes | undefined
   index: number
 }) => {
   const {

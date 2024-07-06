@@ -1,9 +1,9 @@
 import { z } from 'zod'
+import { CharacterTypes } from '@/types'
 import { createTalents } from '@/render/services/panel/talents/create'
 import { dataTalentById } from '@/render/services/panel/talents/data'
 import { updateTalents } from '@/render/services/panel/talents/update'
 import { CharacterTalentSchema } from '@/schemas'
-import { downloadImage } from '@/utils/helpers/download-image'
 import { useDropImage } from '@/utils/store/use-drop-image'
 import { useModalStore } from '@/utils/store/use-open'
 import { zodResolver } from '@hookform/resolvers/zod'
@@ -12,9 +12,8 @@ import { useEffect, useTransition } from 'react'
 import { useForm } from 'react-hook-form'
 import { toast } from 'sonner'
 import { mutate } from 'swr'
-import { Characters } from '@/types'
 
-export const useCreateTalent = (character: Characters | undefined) => {
+export const useCreateTalent = (character: CharacterTypes | undefined) => {
   const characterName = character?.name.toLowerCase().replace(/\s/g, '-')
   const [isPending, startTransition] = useTransition()
   const { handleUploadImage } = useUploadImageToCloud()

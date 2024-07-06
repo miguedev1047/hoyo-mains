@@ -3,7 +3,7 @@
 import { fetcher } from '@/utils/helpers/fetcher'
 import { Card, CardBody, CardHeader } from '@nextui-org/card'
 import { Divider } from '@nextui-org/divider'
-import { Characters } from '@/types'
+import { CharacterTypes } from '@/types'
 import CharacterMaterials from '@/render/components/panel/materials/character-materials'
 import CharacterLoader from '@/render/components/UI/loaders/character-loader'
 import AlertError from '@/render/components/UI/errors/alert-error'
@@ -15,9 +15,9 @@ import CharacterTeams from '@/render/components/panel/teams/character-teams'
 import CharacterAscension from '@/render/components/panel/ascensions/character-ascension'
 import Configuration from '@/render/components/panel/config/configuration'
 import CharacterHeader from '@/render/components/panel/characters/character-header'
-import useSWR from 'swr'
 import SkillsTabs from '@/render/components/UI/tabs/skills-tabs'
 import InfoHeader from '@/render/components/panel/info-header'
+import useSWR from 'swr'
 
 const CharacterSection = ({ characterName }: { characterName: string }) => {
   const API_CHARACTERS = `/api/characters/character?name=${characterName}`
@@ -26,7 +26,7 @@ const CharacterSection = ({ characterName }: { characterName: string }) => {
     data: character,
     isLoading,
     error
-  } = useSWR<Characters>(API_CHARACTERS, fetcher)
+  } = useSWR<CharacterTypes | undefined>(API_CHARACTERS, fetcher)
 
   if (isLoading) return <CharacterLoader />
 

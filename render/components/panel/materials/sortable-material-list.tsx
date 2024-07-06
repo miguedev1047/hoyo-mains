@@ -1,6 +1,6 @@
 import { DragDropContext, Droppable } from '@hello-pangea/dnd'
 import { useEffect, useMemo, useState } from 'react'
-import { Characters } from '@/types'
+import { CharacterTypes } from '@/types'
 import { reOrder } from '@/utils/helpers/re-order'
 import { updatedOrderMaterial } from '@/render/services/panel/materials/update'
 import { MaterialsByCharacter } from '@prisma/client'
@@ -10,7 +10,7 @@ import ItemCharacterMaterial from '@/render/components/panel/materials/item-char
 const SorteableMaterialList = ({
   character
 }: {
-  character: Characters | undefined
+  character: CharacterTypes | undefined
 }) => {
   const materials = useMemo(() => character?.materials ?? [], [character])
   const [data, setData] = useState<MaterialsByCharacter[]>(materials)

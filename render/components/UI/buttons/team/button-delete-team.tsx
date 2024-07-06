@@ -1,5 +1,5 @@
 import { deleteTeam } from '@/render/services/panel/teams/delete'
-import { Characters, Team } from '@/types'
+import { CharacterTypes, Team } from '@/types'
 import { Button } from '@nextui-org/button'
 import { IconTrash } from '@tabler/icons-react'
 import { useTransition } from 'react'
@@ -10,7 +10,7 @@ const ButtonDeleteTeam = ({
   character,
   team
 }: {
-  character: Characters | undefined
+  character: CharacterTypes | undefined
   team: Team | undefined
 }) => {
   const [isPending, startTransition] = useTransition()

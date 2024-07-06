@@ -1,5 +1,5 @@
 import { deleteCharacterWeapon } from '@/render/services/panel/weapons/delete'
-import { Characters, Data } from '@/types'
+import { CharacterTypes, Data } from '@/types'
 import { Button } from '@nextui-org/button'
 import { IconTrash } from '@tabler/icons-react'
 import { useTransition } from 'react'
@@ -11,7 +11,7 @@ const ButtonDeleteWeapon = ({
   character
 }: {
   weapon: Data
-  character: Characters | undefined
+  character: CharacterTypes | undefined
 }) => {
   const [isPending, starTransition] = useTransition()
   const characterName = character?.name.toLowerCase().replace(/\s/g, '-')

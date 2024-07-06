@@ -1,11 +1,11 @@
-import { Characters } from '@/types'
+import { CharacterTypes } from '@/types'
 import ListCharacterTalent from '@/render/components/panel/talents/list-character-talent'
 import TalentModal from '@/render/components/UI/modal/talent-modal'
 
 const CharacterTalents = ({
   character
 }: {
-  character: Characters | undefined
+  character: CharacterTypes | undefined
 }) => {
   return (
     <div className='col-span-4 space-y-4'>

@@ -27,7 +27,7 @@ export interface Characters {
   bestStats: BestStats
   talents: CharacterTalents[]
   passives: CharacterPassives[]
-  constellations: Constellations[]
+  constellations: CharacterConstellations[]
   ascensions: Ascension[]
 }
 
@@ -82,35 +82,35 @@ export interface CharactersByTeam {
 
 export interface CharacterTalents {
   id: string
-  characterId: string
-  order: number
+  characterId: string | null
   name: string
+  description: string
+  imageUrl: string | null
+  order: number
   createdDate: Date
   updatedDate: Date
-  description?: string
-  imageUrl?: string
 }
 
 export interface CharacterPassives {
-  id: string
-  characterId: string
-  order: number
-  name: string
-  createdDate: Date
-  updatedDate: Date
-  description?: string
-  imageUrl?: string
+  id: string;
+  characterId: string | null;
+  name: string;
+  description: string;
+  imageUrl: string | null;
+  order: number;
+  createdDate: Date;
+  updatedDate: Date;
 }
 
-export interface Constellations {
-  id: string
-  characterId: string
-  order: number
-  name: string
-  createdDate: Date
-  updatedDate: Date
-  description?: string
-  imageUrl?: string
+export interface CharacterConstellations {
+  id: string;
+  characterId: string | null;
+  name: string;
+  description: string;
+  imageUrl: string | null;
+  order: number;
+  createdDate: Date;
+  updatedDate: Date;
 }
 
 export interface Ascension {

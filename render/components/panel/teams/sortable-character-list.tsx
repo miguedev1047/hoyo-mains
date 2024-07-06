@@ -1,18 +1,18 @@
 import { updatedOrderCharacters } from '@/render/services/panel/teams/update'
-import { Characters, Team } from '@/types'
+import { CharacterTypes, Team } from '@/types'
 import { CharacterByTeam } from '@prisma/client'
 import { DragDropContext, Droppable } from '@hello-pangea/dnd'
 import { useEffect, useMemo, useState } from 'react'
 import { reOrder } from '@/utils/helpers/re-order'
 import { toast } from 'sonner'
-import CharacterItemCharacter from '@/render/components/panel/teams/character-item-character'
 import { useMediaQuery } from '@/utils/hooks/general/use-media-query'
+import CharacterItemCharacter from '@/render/components/panel/teams/character-item-character'
 
 const SortableCharacterList = ({
   character,
   team
 }: {
-  character: Characters | undefined
+  character: CharacterTypes | undefined
   team: Team
 }) => {
   const isDesktop = useMediaQuery('(min-width: 1280px)')

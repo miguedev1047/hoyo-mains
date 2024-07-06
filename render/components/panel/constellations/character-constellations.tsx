@@ -1,11 +1,11 @@
-import { Characters } from '@/types'
+import { CharacterTypes } from '@/types'
 import ListCharacterConstellation from '@/render/components/panel/constellations/list-character-constellation'
 import ConstellationModal from '@/render/components/UI/modal/constellation-modal'
 
 const CharacterConstellations = ({
   character
 }: {
-  character: Characters | undefined
+  character: CharacterTypes | undefined
 }) => {
   return (
     <div className='col-span-4 space-y-4'>

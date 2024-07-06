@@ -1,14 +1,16 @@
-import { Characters } from '@/types'
+import { CharacterTypes } from '@/types'
 import ItemCharacterTalent from '@/render/components/panel/talents/item-character-talent'
 
 const ListCharacterTalent = ({
   character
 }: {
-  character: Characters | undefined
+  character: CharacterTypes | undefined
 }) => {
-  return (
+  const talents = character?.talents
+
+  return ( 
     <ol className='space-y-4'>
-      {character?.talents.map((talent) => (
+      {talents?.map((talent) => (
         <ItemCharacterTalent
           key={talent.id}
           character={character}

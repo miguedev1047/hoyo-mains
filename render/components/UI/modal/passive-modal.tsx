@@ -1,4 +1,4 @@
-import { Characters } from '@/types'
+import { CharacterTypes } from '@/types'
 import { InputWrapper } from '@/utils/classes'
 import { Button } from '@nextui-org/button'
 import { Input } from '@nextui-org/input'
@@ -16,7 +16,7 @@ import Editor from '@/render/components/UI/editor/editor'
 import DropImage from '@/render/components/UI/drop-image'
 import ModalButton from '@/render/components/UI/buttons/modal/modal-button'
 
-const PassiveModal = ({ character }: { character: Characters | undefined }) => {
+const PassiveModal = ({ character }: { character: CharacterTypes | undefined }) => {
   const passives = character?.passives
   const MAX_PASSIVES = 3
   const TALENTS_LENGTH = passives?.length

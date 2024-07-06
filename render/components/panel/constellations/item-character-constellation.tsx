@@ -1,4 +1,4 @@
-import { Characters, Constellations } from '@/types'
+import { CharacterTypes, CharacterConstellations } from '@/types'
 import { IconPencil, IconTrash } from '@tabler/icons-react'
 import {
   Button,
@@ -17,14 +17,14 @@ import { deleteConstellation } from '@/render/services/panel/constellations/dele
 import { toast } from 'sonner'
 import { mutate } from 'swr'
 import Output from '@/render/components/UI/editor/output'
-import Figure from '../../UI/misc/figure'
+import Figure from '@/render/components/UI/misc/figure'
 
 const ItemCharacterConstellation = ({
   constellation,
   character
 }: {
-  constellation: Constellations
-  character: Characters | undefined
+  constellation: CharacterConstellations
+  character: CharacterTypes | undefined
 }) => {
   const [isPending, startTransition] = useTransition()
   const characterName = character?.name.toLowerCase().replace(/\s/g, '-')

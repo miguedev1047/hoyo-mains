@@ -1,7 +1,7 @@
 import { z } from 'zod'
 import { updateNameTeam } from '@/render/services/panel/teams/update'
 import { CharacterTeamSchema } from '@/schemas'
-import { Characters, Team } from '@/types'
+import { CharacterTypes, Team } from '@/types'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { Input } from '@nextui-org/input'
 import { CircularProgress, Tooltip } from '@nextui-org/react'
@@ -15,7 +15,7 @@ const CharacterTeamTitle = ({
   character
 }: {
   team: Team
-  character: Characters | undefined
+  character: CharacterTypes | undefined
 }) => {
   const [isPending, startTransition] = useTransition()
   const [isEdit, setIsEdit] = useState(false)

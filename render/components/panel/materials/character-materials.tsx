@@ -1,11 +1,11 @@
-import { Characters } from '@/types'
+import { CharacterTypes } from '@/types'
 import MaterialSelector from '@/render/components/panel/materials/material-selector'
 import SorteableMaterialList from '@/render/components/panel/materials/sortable-material-list'
 
 const CharacterMaterials = ({
   character
 }: {
-  character: Characters | undefined
+  character: CharacterTypes | undefined
 }) => {
   return (
     <div className='col-span-4 space-y-4'>

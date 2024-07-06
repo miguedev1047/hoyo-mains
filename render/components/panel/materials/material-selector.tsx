@@ -8,7 +8,7 @@ import { useState, useTransition } from 'react'
 import { Controller, useForm } from 'react-hook-form'
 import { createMaterialCharacters } from '@/render/services/panel/materials/create'
 import { Material } from '@prisma/client'
-import { Characters } from '@/types'
+import { CharacterTypes } from '@/types'
 import { toast } from 'sonner'
 import { selectorItemWrapper } from '@/utils/classes'
 import { HomeErrorItem } from '@/render/components/UI/errors'
@@ -19,7 +19,7 @@ import Figure from '@/render/components/UI/misc/figure'
 const MaterialSelector = ({
   character
 }: {
-  character: Characters | undefined
+  character: CharacterTypes | undefined
 }) => {
   const {
     data: materials,

@@ -1,10 +1,10 @@
-import { Characters } from '@/types'
+import { CharacterTypes } from '@/types'
 import { Tab, Tabs } from '@nextui-org/react'
 import CharacterTalents from '@/render/components/panel/talents/character-talents'
 import CharacterPassive from '@/render/components/panel/passive/character-passive'
 import CharacterConstellations from '@/render/components/panel/constellations/character-constellations'
 
-const SkillsTabs = ({ character }: { character: Characters | undefined }) => {
+const SkillsTabs = ({ character }: { character: CharacterTypes | undefined }) => {
   return (
     <div className='col-span-4 w-full'>
       <Tabs

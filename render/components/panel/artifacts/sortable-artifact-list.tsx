@@ -1,5 +1,5 @@
 import { updatedOrderArtifact } from '@/render/services/panel/artifacts/update'
-import { Characters } from '@/types'
+import { CharacterTypes } from '@/types'
 import { reOrder } from '@/utils/helpers/re-order'
 import { DragDropContext, Droppable } from '@hello-pangea/dnd'
 import { ArtifactByCharacter } from '@prisma/client'
@@ -10,7 +10,7 @@ import ItemCharacterArtifact from '@/render/components/panel/artifacts/item-char
 const SortableArtifactList = ({
   character
 }: {
-  character: Characters | undefined
+  character: CharacterTypes | undefined
 }) => {
   const artifacts = useMemo(() => character?.artifacts ?? [], [character])
   const [data, setData] = useState<ArtifactByCharacter[]>(artifacts)

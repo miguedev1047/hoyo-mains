@@ -2,7 +2,7 @@ import { IconGripVertical } from '@tabler/icons-react'
 import { fetcher } from '@/utils/helpers/fetcher'
 import { Artifact } from '@prisma/client'
 import { Draggable } from '@hello-pangea/dnd'
-import { Characters, Data } from '@/types'
+import { CharacterTypes, Data } from '@/types'
 import { Card } from '@nextui-org/card'
 import { Image } from '@nextui-org/react'
 import { PanelSkeletonItem } from '@/render/components/UI/skeletons'
@@ -17,7 +17,7 @@ const ItemCharacterArtifact = ({
   index
 }: {
   artifact: Data
-  character: Characters | undefined
+  character: CharacterTypes | undefined
   index: number
 }) => {
   const {

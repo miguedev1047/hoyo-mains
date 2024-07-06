@@ -1,4 +1,5 @@
 import { z } from 'zod'
+import { CharacterTypes } from '@/types'
 import { useEffect, useTransition } from 'react'
 import { CharacterConstellationSchema } from '@/schemas'
 import { useDropImage } from '@/utils/store/use-drop-image'
@@ -9,11 +10,10 @@ import { updateConstellation } from '@/render/services/panel/constellations/upda
 import { createContellations } from '@/render/services/panel/constellations/create'
 import { useForm } from 'react-hook-form'
 import { useUploadImageToCloud } from '@/utils/hooks/panel/use-upload-image-to-cloud'
-import { Characters } from '@/types'
 import { mutate } from 'swr'
 import { toast } from 'sonner'
 
-export const useCreateConstellation = (character: Characters | undefined) => {
+export const useCreateConstellation = (character: CharacterTypes | undefined) => {
   const characterName = character?.name.toLowerCase().replace(/\s/g, '-')
   const [isPending, startTransition] = useTransition()
   const { handleUploadImage } = useUploadImageToCloud()

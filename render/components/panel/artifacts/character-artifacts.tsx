@@ -1,11 +1,11 @@
-import { Characters } from '@/types'
+import { CharacterTypes } from '@/types'
 import SortableArtifactList from '@/render/components/panel/artifacts/sortable-artifact-list'
 import ArtifactSelector from '@/render/components/panel/artifacts/artifact-selector'
 
 const CharacterArtifacts = ({
   character
 }: {
-  character: Characters | undefined
+  character: CharacterTypes | undefined
 }) => {
   return (
     <div className='col-span-4 lg:col-span-2 space-y-4'>

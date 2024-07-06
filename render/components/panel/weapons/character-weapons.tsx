@@ -1,11 +1,11 @@
-import { Characters } from '@/types'
+import { CharacterTypes } from '@/types'
 import SortableWeaponList from '@/render/components/panel/weapons/sortable-weapon-list'
 import WeaponSelector from '@/render/components/panel/weapons/weapon-selector'
 
 const CharacterWeapons = ({
   character
 }: {
-  character: Characters | undefined
+  character: CharacterTypes | undefined
 }) => {
   return (
     <div className='col-span-4 lg:col-span-2 space-y-4'>

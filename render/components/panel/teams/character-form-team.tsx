@@ -2,7 +2,7 @@
 
 import { z } from 'zod'
 import { CharacterItemSchema } from '@/schemas'
-import { Characters } from '@/types'
+import { CharacterTypes } from '@/types'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { Button, Input } from '@nextui-org/react'
 import { Controller, useForm } from 'react-hook-form'
@@ -16,7 +16,7 @@ import { mutate } from 'swr'
 const CharacterFormTeam = ({
   character
 }: {
-  character: Characters | undefined
+  character: CharacterTypes | undefined
 }) => {
   const [isPending, startTransition] = useTransition()
 

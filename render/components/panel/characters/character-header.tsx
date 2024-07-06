@@ -1,4 +1,4 @@
-import { Characters } from '@/types'
+import { CharacterTypes } from '@/types'
 import { getElementImage } from '@/utils/helpers/get-element-image'
 import { getRole } from '@/utils/helpers/get-role'
 import { getWeapon } from '@/utils/helpers/get-weapon'
@@ -8,7 +8,7 @@ import { Alert } from '@/render/components/UI/alerts'
 const CharacterHeader = ({
   character
 }: {
-  character: Characters | undefined
+  character: CharacterTypes | undefined
 }) => {
   return (
     <div className='w-full flex flex-col'>

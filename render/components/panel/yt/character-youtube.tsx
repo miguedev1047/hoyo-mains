@@ -1,4 +1,4 @@
-import { Characters } from '@/types'
+import { CharacterTypes } from '@/types'
 import { Link } from '@nextui-org/link'
 import { Card } from '@nextui-org/card'
 import { IconMovieOff } from '@tabler/icons-react'
@@ -8,7 +8,7 @@ import FormCharacterYoutube from '@/render/components/panel/yt/form-character-yo
 const CharacterYoutube = ({
   character
 }: {
-  character: Characters | undefined
+  character: CharacterTypes | undefined
 }) => {
   const videoGuide = character?.videoGuide
   const videoIsNull = null

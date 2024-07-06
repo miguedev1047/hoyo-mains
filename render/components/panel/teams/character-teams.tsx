@@ -1,11 +1,11 @@
-import { Characters } from '@/types'
+import { CharacterTypes } from '@/types'
 import CharacterFormTeam from '@/render/components/panel/teams/character-form-team'
 import SortableTeamList from '@/render/components/panel/teams/sortable-team-list'
 
 const CharacterTeams = ({
   character
 }: {  
-  character: Characters | undefined
+  character: CharacterTypes | undefined
 }) => {
   return (
     <div className='col-span-4 space-y-4'>

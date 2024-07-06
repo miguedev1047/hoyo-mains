@@ -1,7 +1,7 @@
 import { z } from 'zod'
 import { createWeaponCharacters } from '@/render/services/panel/weapons/create'
 import { CharacterItemSchema } from '@/schemas'
-import { Characters } from '@/types'
+import { CharacterTypes } from '@/types'
 import { selectorItemWrapper } from '@/utils/classes'
 import { fetcher } from '@/utils/helpers/fetcher'
 import { zodResolver } from '@hookform/resolvers/zod'
@@ -12,13 +12,13 @@ import { IconPlus } from '@tabler/icons-react'
 import { useState, useTransition } from 'react'
 import { Controller, useForm } from 'react-hook-form'
 import { toast } from 'sonner'
+import { HomeErrorItem } from '@/render/components/UI/errors'
 import useSWR, { mutate } from 'swr'
-import { HomeErrorItem } from '../../UI/errors'
 
 const WeaponSelector = ({
   character
 }: {
-  character: Characters | undefined
+  character: CharacterTypes | undefined
 }) => {
   const {
     data: weapons,

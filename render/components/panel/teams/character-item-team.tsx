@@ -1,10 +1,10 @@
-import { Characters, Team } from '@/types'
+import { CharacterTypes, Team } from '@/types'
 import { Draggable } from '@hello-pangea/dnd'
 import { Card } from '@nextui-org/react'
 import CharacterSelector from '@/render/components/panel/teams/character-selector'
 import SortableCharacterList from '@/render/components/panel/teams/sortable-character-list'
 import ButtonDeleteTeam from '@/render/components/UI/buttons/team/button-delete-team'
-import CharacterTeamTitle from './character-team-title'
+import CharacterTeamTitle from '@/render/components/panel/teams/character-team-title'
 
 const CharacterItemTeam = ({
   team,
@@ -12,7 +12,7 @@ const CharacterItemTeam = ({
   index
 }: {
   team: Team
-  character: Characters | undefined
+  character: CharacterTypes | undefined
   index: number
 }) => {
   return (
