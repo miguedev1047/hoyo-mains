@@ -17,7 +17,7 @@ const Figure = ({
 }: FigureProps) => {
   return (
     <figure
-      className={`grid place-items-center bg-primary-color flex-none relative overflow-hidden ${className} ${width} ${height} ${radius} ${padding}`}
+      className={`grid place-items-center bg-primary-color flex-none relative overflow-hidden aspect-square ${className} ${width} ${height} ${radius} ${padding}`}
     >
       {children}
     </figure>
