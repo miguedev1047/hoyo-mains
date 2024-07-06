@@ -14,7 +14,7 @@ const CharacterImage = ({
   const starCharacter = getStarBorderColor(character?.stars || 0)
 
   const characterName = character?.name.toLowerCase().replace(/\s/g, '-')
-  const url = `/characters/character?name=${characterName}`
+  const url = `/character?name=${characterName}`
 
   return (
     <div className='flex items-center gap-5'>

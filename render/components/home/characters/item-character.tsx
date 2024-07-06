@@ -10,7 +10,7 @@ const ItemCharacter = ({ character }: { character: CharacterTypes | undefined })
   const starCharacter = getStarBorderColor(character?.stars || 0)
 
   const characterName = character?.name.toLowerCase().replace(/\s/g, '-')
-  const url = `/characters/character?name=${characterName}`
+  const url = `/character?name=${characterName}`
 
   return (
     <li className='space-y-2'>
