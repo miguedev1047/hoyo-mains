@@ -4,7 +4,7 @@ import { reOrder } from '@/utils/helpers/re-order'
 import { DragDropContext, Droppable } from '@hello-pangea/dnd'
 import { useEffect, useMemo, useState } from 'react'
 import { toast } from 'sonner'
-import CharacterItemTeam from '@/render/components/panel/teams/character-item-team'
+import CharacterItemTeam from '@/render/components/panel/teams/characters-teams/character-item-team'
 
 const SortableTeamList = ({
   character

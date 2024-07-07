@@ -6,7 +6,7 @@ import { useEffect, useMemo, useState } from 'react'
 import { reOrder } from '@/utils/helpers/re-order'
 import { toast } from 'sonner'
 import { useMediaQuery } from '@/utils/hooks/general/use-media-query'
-import CharacterItemCharacter from '@/render/components/panel/teams/character-item-character'
+import CharacterItemCharacter from '@/render/components/panel/teams/characters-teams/character-item-character'
 
 const SortableCharacterList = ({
   character,

@@ -11,7 +11,7 @@ import CharacterWeapons from '@/render/components/panel/weapons/character-weapon
 import CharacterArtifacts from '@/render/components/panel/artifacts/character-artifacts'
 import CharacterBestStats from '@/render/components/panel/stats/character-best-stats'
 import CharacterYoutube from '@/render/components/panel/yt/character-youtube'
-import CharacterTeams from '@/render/components/panel/teams/character-teams'
+import CharacterTeams from '@/render/components/panel/teams/characters-teams/character-teams'
 import CharacterAscension from '@/render/components/panel/ascensions/character-ascension'
 import Configuration from '@/render/components/panel/config/configuration'
 import CharacterHeader from '@/render/components/panel/characters/character-header'

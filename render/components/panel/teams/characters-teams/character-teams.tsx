@@ -1,6 +1,6 @@
 import { CharacterTypes } from '@/types'
-import CharacterFormTeam from '@/render/components/panel/teams/character-form-team'
-import SortableTeamList from '@/render/components/panel/teams/sortable-team-list'
+import CharacterFormTeam from '@/render/components/panel/teams/characters-teams/character-form-team'
+import SortableTeamList from '@/render/components/panel/teams/characters-teams/sortable-team-list'
 
 const CharacterTeams = ({
   character

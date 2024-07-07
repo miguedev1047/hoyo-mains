@@ -67,6 +67,8 @@ const CharacterTeamTitle = ({
               autoFocus
               size='sm'
               isDisabled={isPending}
+              isInvalid={!!errors.name}
+              errorMessage={errors.name?.message}
               onBlur={handleBlur}
               variant='underlined'
               value={field.value}
