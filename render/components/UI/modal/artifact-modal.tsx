@@ -16,10 +16,10 @@ import {
 } from '@nextui-org/modal'
 import { useCreateArtifact } from '@/utils/hooks/panel/use-create-artifact'
 import { raritys } from '@/constants'
+import { Chip } from '@nextui-org/react'
 import Editor from '@/render/components/UI/editor/editor'
 import DropImage from '@/render/components/UI/drop-image'
 import ModalButton from '@/render/components/UI/buttons/modal/modal-button'
-import { Chip } from '@nextui-org/react'
 
 const ArtifactModal = () => {
   const {

@@ -92,25 +92,25 @@ export interface CharacterTalents {
 }
 
 export interface CharacterPassives {
-  id: string;
-  characterId: string | null;
-  name: string;
-  description: string;
-  imageUrl: string | null;
-  order: number;
-  createdDate: Date;
-  updatedDate: Date;
+  id: string
+  characterId: string | null
+  name: string
+  description: string
+  imageUrl: string | null
+  order: number
+  createdDate: Date
+  updatedDate: Date
 }
 
 export interface CharacterConstellations {
-  id: string;
-  characterId: string | null;
-  name: string;
-  description: string;
-  imageUrl: string | null;
-  order: number;
-  createdDate: Date;
-  updatedDate: Date;
+  id: string
+  characterId: string | null
+  name: string
+  description: string
+  imageUrl: string | null
+  order: number
+  createdDate: Date
+  updatedDate: Date
 }
 
 export interface Ascension {
@@ -174,8 +174,8 @@ export type CharacterTypes = Prisma.CharacterGetPayload<{
 export interface SearchParamsTypes {
   searchParams: {
     character: string
-    element: string
-    stars: string
-    weapon: string
+    element?: string
+    stars?: string
+    weapon?: string
   }
 }

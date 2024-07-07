@@ -6,17 +6,18 @@ import {
   IconLayoutSidebar,
   IconSquareRotated,
   IconSword,
-  IconUsers
+  IconUsers,
+  IconUsersGroup
 } from '@tabler/icons-react'
 import { Card, CardBody, CardHeader } from '@nextui-org/card'
-import { Listbox, ListboxItem } from '@nextui-org/listbox'
+import { Listbox, ListboxItem, ListboxSection } from '@nextui-org/listbox'
 import { usePathname } from 'next/navigation'
 import { useSidebarStore } from '@/utils/store/use-open'
 import { Button } from '@nextui-org/button'
 import { Divider } from '@nextui-org/react'
 import clsx from 'clsx'
 
-const navigationItems = {
+const navItems = {
   title: 'Admin Panel',
   items: [
     {
@@ -28,6 +29,11 @@ const navigationItems = {
       href: '/panel/characters',
       icon: <IconUsers />,
       title: 'Personajes'
+    },
+    {
+      href: '/panel/teams',
+      icon: <IconUsersGroup />,
+      title: 'Equipos'
     },
     {
       href: '/panel/weapons',
@@ -48,6 +54,9 @@ const navigationItems = {
 }
 
 const Sidebar = () => {
+  const dashboadrItems = navItems.items.slice(0, 1)
+  const adminItems = navItems.items.slice(1)
+
   const pathname = usePathname()
   const isOpen = useSidebarStore((state) => state.isOpen)
   const onOpenChange = useSidebarStore((state) => state.onOpenChange)
@@ -70,25 +79,38 @@ const Sidebar = () => {
             Admin Panel
           </Button>
         </CardHeader>
-        <Divider />
         <CardBody className='py-0'>
-          <Listbox aria-label='Panel Sidebar'>
-            {navigationItems.items.map((item) => (
-              <ListboxItem
-                key={item.title}
-                href={item.href}
-                textValue={item.title}
-                startContent={item.icon}
-                className={`text-color-gray ${
-                  pathname === item.href
-                    ? 'bg-primary-color'
-                    : 'hover:bg-color-primary'
-                }`}
-              >
-                <span className='ml-2'>{item.title}</span>
-              </ListboxItem>
-            ))}
+          <Divider />
+          <Listbox className='my-2' aria-label='Panel Dashboard Sidebar'>
+            <ListboxSection title='Dashboard'>
+              {dashboadrItems.map((item) => (
+                <ListboxItem
+                  key={item.href}
+                  href={item.href}
+                  className={clsx(pathname === item.href && 'bg-primary-color')}
+                  startContent={item.icon}
+                >
+                  {item.title}
+                </ListboxItem>
+              ))}
+            </ListboxSection>
           </Listbox>
+          <Divider />
+          <Listbox className='my-2' aria-label='Panel Admin Sidebar'>
+            <ListboxSection title='Administrar'>
+              {adminItems.map((item) => (
+                <ListboxItem
+                  key={item.href}
+                  href={item.href}
+                  className={clsx(pathname === item.href && 'bg-primary-color')}
+                  startContent={item.icon}
+                >
+                  {item.title}
+                </ListboxItem>
+              ))}
+            </ListboxSection>
+          </Listbox>
+          <Divider />
         </CardBody>
       </Card>
     </nav>
