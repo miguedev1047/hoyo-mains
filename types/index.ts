@@ -171,6 +171,8 @@ export type CharacterTypes = Prisma.CharacterGetPayload<{
   }
 }>
 
+export type TeamProps = Prisma.TeamGetPayload<{ include: { characters: true } }>
+
 export interface SearchParamsTypes {
   searchParams: {
     character: string

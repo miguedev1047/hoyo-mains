@@ -7,7 +7,6 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { CharacterItemSchema } from '@/schemas'
 import { createCharactersCharacter } from '@/render/services/panel/teams/create'
 import {
-  Avatar,
   Button,
   Chip,
   Image,
@@ -95,6 +94,7 @@ const CharacterSelector = ({
 
   if (error) return <HomeErrorItem />
   if (isLoading) return null
+
   if ((allCharacters?.length ?? 0) >= MAX_ITEMS) return null
 
   return (
@@ -122,17 +122,9 @@ const CharacterSelector = ({
               renderValue={(value) => {
                 return value.map(({ data, key }) => (
                   <div key={key} className='flex flex-wrap items-center gap-2'>
-                    <div className='flex items-center gap-2'>
-                      <Avatar
-                        radius='sm'
-                        size='sm'
-                        src={data?.imageUrl!}
-                        alt={data?.name}
-                      />
-                      <Chip className='bg-color-darkest capitalize px-2 py-1 rounded-md'>
-                        {data?.name}
-                      </Chip>
-                    </div>
+                    <Chip className='bg-color-darkest capitalize px-2 py-1 rounded-md'>
+                      {data?.name}
+                    </Chip>
                   </div>
                 ))
               }}
@@ -140,8 +132,8 @@ const CharacterSelector = ({
             >
               {(character) => (
                 <SelectItem key={character.id} textValue={character.name}>
-                  <div className='flex gap-2 items-center'>
-                    <Figure width='w-10' height='h-10'>
+                  <div className='flex items-center gap-2'>
+                    <Figure padding='p-0' width='w-10' height='h-10'>
                       <Image
                         radius='sm'
                         src={character.imageUrl!}

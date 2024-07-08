@@ -39,9 +39,12 @@ export const CharacterSchema = z.object({
 export const TeamSchema = z.object({
   name: z.string().min(1, {
     message: 'Escribe un nombre válido.'
-  }),
-  characters: z.string().min(1, {
-    message: 'Selecciona al menos un personaje.'
+  })
+})
+
+export const ItemSchema = z.object({
+  items: z.string().min(1, {
+    message: 'Selecciona al menos un elemento.'
   })
 })
 

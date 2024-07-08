@@ -39,6 +39,7 @@ export const selectInputWrapper:
   trigger:
     'bg-color-darkest data-[hover=true]:bg-color-dark-hover group-data-[focus=true]:bg-color-dark-hover',
   popoverContent: 'bg-color-darkest',
+  value: 'flex flex-wrap py-2 gap-2',
   listbox:
     'data-[hover=true]:bg-red-500 data-[hover=true]:text-default-foreground'
 }
