@@ -1,35 +1,119 @@
+import { updatedOrderCharacters } from '@/render/services/panel/teams/update'
 import { Card, CardBody, CardHeader } from '@nextui-org/card'
-import CharacterItem from './character-item'
-import CharacterSelector from './character-selector'
+import { CharacterTypes, TeamProps } from '@/types'
+import { useEffect, useState } from 'react'
+import { DragDropContext, Draggable, Droppable } from '@hello-pangea/dnd'
+import { reOrder } from '@/utils/helpers/re-order'
+import { toast } from 'sonner'
+import CharacterSelector from '@/render/components/panel/teams/general-teams/character-selector'
+import CharacterItem from '@/render/components/panel/teams/general-teams/character-item'
+
+interface Props {
+  id: string
+  characterId: string | null
+  teamId: string | null
+  order: number
+  createdDate: Date
+  updatedDate: Date
+}
 
 const GeneralTeamItem = ({
   team,
-  characters
+  characters,
+  index
 }: {
-  team: any
-  characters: any
+  team: TeamProps
+  characters: CharacterTypes[]
+  index: number
 }) => {
   const teamMembers = team.characters
+  const [orderedList, setOrderedList] = useState<Props[]>(teamMembers)
+
+  useEffect(() => {
+    setOrderedList(teamMembers)
+  }, [teamMembers])
+
+  const onDragEnd = async (result: any) => {
+    const { destination, source, type } = result
+
+    if (!destination) {
+      return
+    }
+
+    // Si es arrastrado en la misma posición
+    if (
+      destination.droppableId === source.droppableId &&
+      destination.index === source.index
+    ) {
+      return
+    }
+
+    // Ordenamos en la lista
+    if (type === 'characterList') {
+      const items = reOrder(orderedList, source.index, destination.index).map(
+        (item, index) => ({ ...item, order: index })
+      )
+
+      setOrderedList(items)
+      const { status, message } = await updatedOrderCharacters(items)
+      if (status === 201) {
+        toast.success(message)
+        return
+      }
+    }
+  }
+
+  if (!orderedList.length) return null
 
   return (
-    <Card className='bg-color-dark p-3'>
-      <CardHeader>
-        <article>
-          {/* TODO: Add delete button */}
-          <h2 className='capitalize text-base md:text-lg font-medium'>
-            {team.name}
-          </h2>
-        </article>
-      </CardHeader>
-      <CardBody className='space-y-4'>
-        <ol className='grid grid-cols-4 gap-4'>
-          {teamMembers.map((character: any) => (
-            <CharacterItem key={character.id} character={character} />
-          ))}
-        </ol>
-        <CharacterSelector team={team} characters={characters} />
-      </CardBody>
-    </Card>
+    <Draggable draggableId={team.id} index={index}>
+      {(provided) => (
+        <li
+          ref={provided.innerRef}
+          {...provided.draggableProps}
+          {...provided.dragHandleProps}
+          className='mb-4'
+        >
+          <Card className='bg-color-dark p-3'>
+            <CardHeader>
+              <article>
+                {/* TODO: Add delete button */}
+                <h2 className='capitalize text-base md:text-lg font-medium'>
+                  {team.name}
+                </h2>
+              </article>
+            </CardHeader>
+            <CardBody className='space-y-2'>
+              <DragDropContext onDragEnd={onDragEnd}>
+                <Droppable
+                  direction='horizontal'
+                  droppableId='characterList'
+                  type='characterList'
+                >
+                  {(provided) => (
+                    <ol
+                      className='grid grid-cols-4'
+                      ref={provided.innerRef}
+                      {...provided.droppableProps}
+                    >
+                      {teamMembers.map((character, index) => (
+                        <CharacterItem
+                          key={character.id}
+                          character={character}
+                          index={index}
+                        />
+                      ))}
+                      {provided.placeholder}
+                    </ol>
+                  )}
+                </Droppable>
+              </DragDropContext>
+              <CharacterSelector team={team} characters={characters} />
+            </CardBody>
+          </Card>
+        </li>
+      )}
+    </Draggable>
   )
 }
 

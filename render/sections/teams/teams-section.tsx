@@ -10,7 +10,7 @@ interface TeamsSectionProps {
 
 const TeamsSection = ({ teams, characters }: TeamsSectionProps) => {
   return (
-    <section className='space-y-4'>
+    <section>
       <GeneralTeamList characters={characters} teams={teams} />
     </section>
   )

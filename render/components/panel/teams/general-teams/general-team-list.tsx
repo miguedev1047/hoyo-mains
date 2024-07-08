@@ -1,4 +1,9 @@
-import { TeamProps } from '@/types'
+import { CharacterTypes, TeamProps } from '@/types'
+import { useEffect, useState } from 'react'
+import { DragDropContext, Droppable } from '@hello-pangea/dnd'
+import { updatedOrderTeams } from '@/render/services/panel/teams/general-teams/update'
+import { reOrder } from '@/utils/helpers/re-order'
+import { toast } from 'sonner'
 import GeneralTeamItem from '@/render/components/panel/teams/general-teams/general-team-item'
 
 const CharacterGeneralTeamList = ({
@@ -6,14 +11,64 @@ const CharacterGeneralTeamList = ({
   characters
 }: {
   teams: TeamProps[]
-  characters: any
+  characters: CharacterTypes[]
 }) => {
+  const [orderedList, setOrderedList] = useState<TeamProps[]>(teams)
+
+  useEffect(() => {
+    setOrderedList(teams)
+  }, [teams])
+
+  const onDragEnd = async (result: any) => {
+    const { destination, source, type } = result
+
+    if (!destination) {
+      return
+    }
+
+    // Si es arrastrado en la misma posición
+    if (
+      destination.droppableId === source.droppableId &&
+      destination.index === source.index
+    ) {
+      return
+    }
+
+    // Ordenamos en la lista
+    if (type === 'teamList') {
+      const items = reOrder(orderedList, source.index, destination.index).map(
+        (item, index) => ({ ...item, order: index })
+      )
+
+      setOrderedList(items)
+      const { status, message } = await updatedOrderTeams(items)
+      if (status === 201) {
+        toast.success(message)
+        return
+      }
+    }
+  }
+
+  if (!orderedList.length) return null
+
   return (
-    <ol className='space-y-4'>
-      {teams?.map((team) => (
-        <GeneralTeamItem key={team.id} characters={characters} team={team} />
-      ))}
-    </ol>
+    <DragDropContext onDragEnd={onDragEnd}>
+      <Droppable direction='vertical' droppableId='teamList' type='teamList'>
+        {(provided) => (
+          <ol ref={provided.innerRef} {...provided.droppableProps}>
+            {orderedList?.map((team, index) => (
+              <GeneralTeamItem
+                key={team.id}
+                index={index}
+                team={team}
+                characters={characters}
+              />
+            ))}
+            {provided.placeholder}
+          </ol>
+        )}
+      </Droppable>
+    </DragDropContext>
   )
 }
 
