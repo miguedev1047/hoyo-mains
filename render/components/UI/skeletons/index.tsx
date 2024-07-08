@@ -130,7 +130,7 @@ export const PanelSkeletonTableItem = () => {
 
 export const PanelSkeletonItem = () => {
   return (
-    <Card className='flex flex-row items-center justify-between gap-4 p-5 bg-color-darkest'>
+    <Card className='flex flex-row items-center justify-between gap-4 p-5 bg-color-darkest mx-2'>
       <div className='flex items-center gap-4'>
         <IconGripVertical size={20} />
         <div className='flex items-center gap-7'>

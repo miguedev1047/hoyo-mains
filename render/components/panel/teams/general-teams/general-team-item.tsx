@@ -1,7 +1,7 @@
-import { updatedOrderCharacters } from '@/render/services/panel/teams/update'
+import { updatedOrderCharacters } from '@/render/services/panel/teams/general-teams/update'
 import { Card, CardBody, CardHeader } from '@nextui-org/card'
 import { CharacterTypes, TeamProps } from '@/types'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { DragDropContext, Draggable, Droppable } from '@hello-pangea/dnd'
 import { reOrder } from '@/utils/helpers/re-order'
 import { toast } from 'sonner'
@@ -28,10 +28,6 @@ const GeneralTeamItem = ({
 }) => {
   const teamMembers = team.characters
   const [orderedList, setOrderedList] = useState<Props[]>(teamMembers)
-
-  useEffect(() => {
-    setOrderedList(teamMembers)
-  }, [teamMembers])
 
   const onDragEnd = async (result: any) => {
     const { destination, source, type } = result
@@ -78,6 +74,7 @@ const GeneralTeamItem = ({
             <CardHeader>
               <article>
                 {/* TODO: Add delete button */}
+                {/* TODO: Add title component */}
                 <h2 className='capitalize text-base md:text-lg font-medium'>
                   {team.name}
                 </h2>
@@ -96,7 +93,7 @@ const GeneralTeamItem = ({
                       ref={provided.innerRef}
                       {...provided.droppableProps}
                     >
-                      {teamMembers.map((character, index) => (
+                      {orderedList.map((character, index) => (
                         <CharacterItem
                           key={character.id}
                           character={character}

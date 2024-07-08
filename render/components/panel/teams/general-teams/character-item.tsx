@@ -1,5 +1,3 @@
-'use client'
-
 import { Draggable } from '@hello-pangea/dnd'
 import { PanelErrorItem } from '@/render/components/UI/errors'
 import { PanelSkeletonItem } from '@/render/components/UI/skeletons'
@@ -9,11 +7,20 @@ import { Image } from '@nextui-org/react'
 import { IconGripVertical } from '@tabler/icons-react'
 import Figure from '@/render/components/UI/misc/figure'
 
+interface Props {
+  id: string
+  characterId: string | null
+  teamId: string | null
+  order: number
+  createdDate: Date
+  updatedDate: Date
+}
+
 const CharacterItem = ({
   character,
   index
 }: {
-  character: any
+  character: Props
   index: number
 }) => {
   const characterId = character?.characterId
@@ -32,7 +39,7 @@ const CharacterItem = ({
           ref={provided.innerRef}
           {...provided.draggableProps}
           {...provided.dragHandleProps}
-          className='mb-4 lg:mx-2'
+          className='lg:mx-2'
         >
           <Card className='bg-color-darkest p-5'>
             <article className='flex items-center gap-4'>

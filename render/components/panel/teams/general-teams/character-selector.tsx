@@ -1,6 +1,6 @@
 'use client'
 
-import Figure from '@/render/components/UI/misc/figure'
+import { z } from 'zod'
 import { createMembersTeam } from '@/render/services/panel/teams/general-teams/create'
 import { ItemSchema } from '@/schemas'
 import { selectInputWrapper } from '@/utils/classes'
@@ -11,7 +11,7 @@ import { useRouter } from 'next/navigation'
 import { useTransition } from 'react'
 import { Controller, useForm } from 'react-hook-form'
 import { toast } from 'sonner'
-import { z } from 'zod'
+import Figure from '@/render/components/UI/misc/figure'
 
 const CharacterSelector = ({
   characters,

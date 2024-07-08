@@ -46,7 +46,7 @@ export const updatedOrderCharacters = async (items: any) => {
 
   try {
     const transaction = items.map((list: any) =>
-      db.characterByTeam.update({
+      db.characterTeam.update({
         where: {
           id: list.id
         },
@@ -55,8 +55,9 @@ export const updatedOrderCharacters = async (items: any) => {
         }
       })
     )
-
+    
     await db.$transaction(transaction)
+
 
     return {
       status: 201,
