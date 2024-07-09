@@ -1,5 +1,5 @@
 import { CharacterTypes, TeamProps } from '@/types'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { DragDropContext, Droppable } from '@hello-pangea/dnd'
 import { reOrder } from '@/utils/helpers/re-order'
 import { toast } from 'sonner'
@@ -14,6 +14,10 @@ const CharacterGeneralTeamList = ({
   characters: CharacterTypes[]
 }) => {
   const [orderedList, setOrderedList] = useState<TeamProps[]>(teams)
+
+  useEffect(() => {
+    setOrderedList(teams)
+  }, [teams])
 
   const onDragEnd = async (result: any) => {
     const { destination, source, type } = result
@@ -49,22 +53,26 @@ const CharacterGeneralTeamList = ({
 
   return (
     <DragDropContext onDragEnd={onDragEnd}>
-      <Droppable direction='vertical' droppableId='teamList' type='teamList'>
-        {(provided) => (
-          <ol className='select-none' ref={provided.innerRef} {...provided.droppableProps}>
-            {orderedList?.map((team, index) => (
-              <GeneralTeamItem
-                team={team}
-                index={index}
-                key={team.id}
-                characters={characters}
-              />
-            ))}
-            {provided.placeholder}
-          </ol>
-        )}
-      </Droppable>
-    </DragDropContext>
+        <Droppable direction='vertical' droppableId='teamList' type='teamList'>
+          {(provided) => (
+            <ol
+              className='select-none'
+              ref={provided.innerRef}
+              {...provided.droppableProps}
+            >
+              {orderedList.map((team, index) => (
+                <GeneralTeamItem
+                  team={team}
+                  index={index}
+                  key={team.id}
+                  characters={characters}
+                />
+              ))}
+              {provided.placeholder}
+            </ol>
+          )}
+        </Droppable>
+      </DragDropContext>
   )
 }
 

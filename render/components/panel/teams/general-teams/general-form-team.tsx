@@ -1,18 +1,17 @@
 'use client'
 
+import { z } from 'zod'
 import { createTeam } from '@/render/services/panel/teams/general-teams/create'
 import { TeamSchema } from '@/schemas'
 import { InputWrapper } from '@/utils/classes'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { Button } from '@nextui-org/button'
 import { Input } from '@nextui-org/input'
-import { IconPlus, IconUsersGroup } from '@tabler/icons-react'
+import { IconPlus } from '@tabler/icons-react'
 import { useRouter } from 'next/navigation'
 import { useTransition } from 'react'
 import { Controller, useForm } from 'react-hook-form'
 import { toast } from 'sonner'
-import { mutate } from 'swr'
-import { z } from 'zod'
 
 const GeneralFormTeam = () => {
   const [isPending, startTransition] = useTransition()
@@ -54,13 +53,12 @@ const GeneralFormTeam = () => {
           <Input
             size='lg'
             className='w-full'
+            placeholder='Nombre del equipo'
             label='Crear equipo'
             isDisabled={isPending}
             classNames={InputWrapper}
             isInvalid={!!errors.name}
             errorMessage={errors.name?.message}
-            startContent={<IconUsersGroup size={24} />}
-            placeholder='Nombre del equipo'
             {...field}
           />
         )}

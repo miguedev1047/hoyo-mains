@@ -8,7 +8,7 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { Button, Chip, Image, Select, SelectItem } from '@nextui-org/react'
 import { IconPlus } from '@tabler/icons-react'
 import { useRouter } from 'next/navigation'
-import { useTransition } from 'react'
+import { useState, useTransition } from 'react'
 import { Controller, useForm } from 'react-hook-form'
 import { toast } from 'sonner'
 import Figure from '@/render/components/UI/misc/figure'
@@ -21,6 +21,8 @@ const CharacterSelector = ({
   team: any
 }) => {
   const [isPending, startTransition] = useTransition()
+  const [defaultKey, setKey] = useState<string>('default-key')
+
   const { refresh } = useRouter()
 
   const MAX_ITEMS = 4
@@ -40,6 +42,10 @@ const CharacterSelector = ({
       items: ''
     }
   })
+
+  const handleGenerateKey = () => {
+    setKey(crypto.randomUUID())
+  }
 
   const onSubmit = handleSubmit((data) => {
     const teamId = team?.id
@@ -64,6 +70,7 @@ const CharacterSelector = ({
         toast.success(message)
         refresh()
         reset()
+        handleGenerateKey()
         return
       }
 
@@ -84,6 +91,7 @@ const CharacterSelector = ({
             items={characters}
             className='w-full'
             isMultiline={true}
+            key={defaultKey}
             selectionMode='multiple'
             aria-label='Character Selector'
             placeholder='Selecciona los personajes'

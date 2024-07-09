@@ -1,12 +1,13 @@
 import { updatedOrderCharacters } from '@/render/services/panel/teams/general-teams/update'
 import { Card, CardBody, CardHeader } from '@nextui-org/card'
 import { CharacterTypes, TeamProps } from '@/types'
-import { useState } from 'react'
 import { DragDropContext, Draggable, Droppable } from '@hello-pangea/dnd'
 import { reOrder } from '@/utils/helpers/re-order'
+import { useEffect, useState } from 'react'
 import { toast } from 'sonner'
 import CharacterSelector from '@/render/components/panel/teams/general-teams/character-selector'
 import CharacterItem from '@/render/components/panel/teams/general-teams/character-item'
+import TeamTitle from '@/render/components/panel/teams/general-teams/general-team-title'
 
 interface Props {
   id: string
@@ -28,6 +29,10 @@ const GeneralTeamItem = ({
 }) => {
   const teamMembers = team.characters
   const [orderedList, setOrderedList] = useState<Props[]>(teamMembers)
+
+  useEffect(() => {
+    setOrderedList(teamMembers)
+  }, [teamMembers])
 
   const onDragEnd = async (result: any) => {
     const { destination, source, type } = result
@@ -59,8 +64,6 @@ const GeneralTeamItem = ({
     }
   }
 
-  if (!orderedList.length) return null
-
   return (
     <Draggable draggableId={team.id} index={index}>
       {(provided) => (
@@ -72,13 +75,7 @@ const GeneralTeamItem = ({
         >
           <Card className='bg-color-dark p-3'>
             <CardHeader>
-              <article>
-                {/* TODO: Add delete button */}
-                {/* TODO: Add title component */}
-                <h2 className='capitalize text-base md:text-lg font-medium'>
-                  {team.name}
-                </h2>
-              </article>
+              <TeamTitle team={team} />
             </CardHeader>
             <CardBody className='space-y-2'>
               <DragDropContext onDragEnd={onDragEnd}>
@@ -93,7 +90,7 @@ const GeneralTeamItem = ({
                       ref={provided.innerRef}
                       {...provided.droppableProps}
                     >
-                      {orderedList.map((character, index) => (
+                      {orderedList?.map((character, index) => (
                         <CharacterItem
                           key={character.id}
                           character={character}

@@ -3,7 +3,6 @@
 import { Suspense } from 'react'
 import { Input } from '@nextui-org/input'
 import { Spinner } from '@nextui-org/react'
-import { IconSearch } from '@tabler/icons-react'
 import { usePathname, useSearchParams } from 'next/navigation'
 import { useRouter } from 'next/navigation'
 import { InputWrapper } from '@/utils/classes'
@@ -41,13 +40,12 @@ export const Search = ({
   return (
     <Suspense fallback={<Spinner />}>
       <Input
-        aria-label={label}
+        label={label}
         defaultValue={searchParams.get(searchQuery)?.toString()}
         onValueChange={(value) => handleSearch(value)}
         placeholder={placeholder}
         className={className}
         classNames={InputWrapper}
-        startContent={<IconSearch />}
         isClearable
         size='lg'
       />

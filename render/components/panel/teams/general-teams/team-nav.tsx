@@ -4,17 +4,19 @@ import GeneralFormTeam from '@/render/components/panel/teams/general-teams/gener
 
 const TeamNav = () => {
   return (
-    <nav className='space-y-4'>
+    <>
       <Divider />
-      <Search
-        label='Buscar personaje'
-        placeholder='Buscar...'
-        searchQuery='character'
-        className={'w-full'}
-      />
-      <GeneralFormTeam />
+      <nav className='grid grid-cols-2 gap-4'>
+        <Search
+          label='Buscar personaje'
+          placeholder='Buscar...'
+          searchQuery='character'
+          className={'w-full'}
+        />
+        <GeneralFormTeam />
+      </nav>
       <Divider />
-    </nav>
+    </>
   )
 }
 
