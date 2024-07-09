@@ -1,19 +1,17 @@
+import { Card } from '@nextui-org/card'
 import { useFetch } from '@/utils/hooks/general/use-fetch'
 import { Draggable } from '@hello-pangea/dnd'
 import { PanelErrorItem } from '@/render/components/UI/errors'
 import { PanelSkeletonItem } from '@/render/components/UI/skeletons'
 import { IconGripVertical, IconTrash } from '@tabler/icons-react'
-import { Card } from '@nextui-org/card'
-import { Button, Image } from '@nextui-org/react'
+import { Image } from '@nextui-org/react'
+import { deleteTeamCharacters } from '@/render/services/panel/teams/best-teams/delete'
+import { DeleteButton } from '@/render/components/UI/buttons/delete/delete-button'
 import Figure from '@/render/components/UI/misc/figure'
-import { useTransition } from 'react'
-import { deleteTeamCharacters } from '@/render/services/panel/teams/general-teams/delete'
-import { toast } from 'sonner'
-import { useRouter } from 'next/navigation'
 
-interface Props {
+interface CharacterItemTypes {
   id: string
-  characterId: string | null
+  characterId: string
   teamId: string | null
   order: number
   createdDate: Date
@@ -24,13 +22,10 @@ const CharacterItem = ({
   character,
   index
 }: {
-  character: Props
+  character: CharacterItemTypes
   index: number
 }) => {
   const characterId = character?.characterId
-
-  const [isPending, startTransition] = useTransition()
-  const { refresh } = useRouter()
 
   const { data, isLoading, error } = useFetch(
     `/api/characters/character/${characterId}`
@@ -38,19 +33,6 @@ const CharacterItem = ({
 
   if (isLoading) return <PanelSkeletonItem />
   if (error) return <PanelErrorItem />
-
-  const handleDelete = (characterId: string) => {
-    startTransition(async () => {
-      const { status, message, error } = await deleteTeamCharacters(characterId)
-      if (status === 201) {
-        toast.success(message)
-        refresh()
-        return
-      }
-
-      toast.error(error)
-    })
-  }
 
   return (
     <Draggable draggableId={character.id} index={index}>
@@ -72,15 +54,9 @@ const CharacterItem = ({
                   {data.name}
                 </h2>
               </article>
-              <Button
-                size='sm'
-                isIconOnly
-                color='danger'
-                className='bg-color-red'
-                onPress={() => handleDelete(character.id)}
-              >
+              <DeleteButton id={character.id} onCallback={deleteTeamCharacters}>
                 <IconTrash size={20} />
-              </Button>
+              </DeleteButton>
             </div>
           </Card>
         </li>

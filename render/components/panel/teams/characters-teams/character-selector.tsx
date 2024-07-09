@@ -5,7 +5,7 @@ import { useState, useTransition } from 'react'
 import { Controller, useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { CharacterItemSchema } from '@/schemas'
-import { createCharactersCharacter } from '@/render/services/panel/teams/create'
+import { createCharactersCharacter } from '@/render/services/panel/teams/character-teams/create'
 import {
   Button,
   Chip,

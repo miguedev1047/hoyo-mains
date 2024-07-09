@@ -6,14 +6,14 @@ export const fetchTeamByName = async (name: string) => {
   try {
     const character = await db.character.findFirst({ where: { name } })
 
-    const bestTeamCharacter = await db.characterTeam.findFirst({
+    const bestTeamCharacter = await db.bestTeamCharacter.findFirst({
       where: { characterId: character?.id }
     })
     
     const characterId = bestTeamCharacter?.characterId
 
     if (characterId) {
-      const team = await db.team.findMany({
+      const team = await db.bestTeam.findMany({
         include: {
           characters: true
         },
@@ -29,7 +29,7 @@ export const fetchTeamByName = async (name: string) => {
       return team
     }
 
-    const teams = await db.team.findMany({
+    const teams = await db.bestTeam.findMany({
       include: {
         characters: true
       }

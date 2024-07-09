@@ -1,7 +1,7 @@
 'use client'
 
 import { z } from 'zod'
-import { createTeam } from '@/render/services/panel/teams/general-teams/create'
+import { createTeam } from '@/render/services/panel/teams/best-teams/create'
 import { TeamSchema } from '@/schemas'
 import { InputWrapper } from '@/utils/classes'
 import { zodResolver } from '@hookform/resolvers/zod'
@@ -13,7 +13,7 @@ import { useTransition } from 'react'
 import { Controller, useForm } from 'react-hook-form'
 import { toast } from 'sonner'
 
-const GeneralFormTeam = () => {
+const BestTeamForm = () => {
   const [isPending, startTransition] = useTransition()
   const { refresh } = useRouter()
 
@@ -76,4 +76,4 @@ const GeneralFormTeam = () => {
   )
 }
 
-export default GeneralFormTeam
+export default BestTeamForm

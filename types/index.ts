@@ -171,7 +171,9 @@ export type CharacterTypes = Prisma.CharacterGetPayload<{
   }
 }>
 
-export type TeamProps = Prisma.TeamGetPayload<{ include: { characters: true } }>
+export type BestTeamType = Prisma.BestTeamGetPayload<{
+  include: { characters: true }
+}>
 
 export interface SearchParamsTypes {
   searchParams: {
@@ -180,4 +182,10 @@ export interface SearchParamsTypes {
     stars?: string
     weapon?: string
   }
+}
+
+export interface DragTypes {
+  item: Array<any>
+  name: string
+  callback: (items: Array<any>) => Promise<any>
 }

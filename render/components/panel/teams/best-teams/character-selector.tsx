@@ -1,7 +1,8 @@
 'use client'
 
 import { z } from 'zod'
-import { createMembersTeam } from '@/render/services/panel/teams/general-teams/create'
+import { BestTeamType, CharacterTypes } from '@/types'
+import { createMembersTeam } from '@/render/services/panel/teams/best-teams/create'
 import { ItemSchema } from '@/schemas'
 import { selectInputWrapper } from '@/utils/classes'
 import { zodResolver } from '@hookform/resolvers/zod'
@@ -13,13 +14,12 @@ import { Controller, useForm } from 'react-hook-form'
 import { toast } from 'sonner'
 import Figure from '@/render/components/UI/misc/figure'
 
-const CharacterSelector = ({
-  characters,
-  team
-}: {
-  characters: any
-  team: any
-}) => {
+interface CharacterSelectorTypes {
+  characters: CharacterTypes[]
+  team: BestTeamType
+}
+
+const CharacterSelector = ({ characters, team }: CharacterSelectorTypes) => {
   const [isPending, startTransition] = useTransition()
   const [defaultKey, setKey] = useState<string>('default-key')
 

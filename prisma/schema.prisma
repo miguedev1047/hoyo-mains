@@ -99,7 +99,7 @@ model Artifact {
   updatedDate DateTime @updatedAt
 }
 
-model Team {
+model BestTeam {
   id   String @id @unique @default(uuid())
   name String
 
@@ -108,10 +108,10 @@ model Team {
   createdDate DateTime @default(now())
   updatedDate DateTime @updatedAt
 
-  characters CharacterTeam[]
+  characters BestTeamCharacter[]
 }
 
-model CharacterTeam {
+model BestTeamCharacter {
   id          String  @id @unique @default(uuid())
   characterId String?
   teamId      String?
@@ -121,7 +121,7 @@ model CharacterTeam {
   createdDate DateTime @default(now())
   updatedDate DateTime @updatedAt
 
-  team Team? @relation(fields: [teamId], references: [id])
+  team BestTeam? @relation(fields: [teamId], references: [id])
 }
 
 model MaterialsByCharacter {

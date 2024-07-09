@@ -1,6 +1,6 @@
 import { Search } from '@/render/components/UI/search/search'
 import { Divider } from '@nextui-org/react'
-import GeneralFormTeam from '@/render/components/panel/teams/general-teams/general-form-team'
+import BestTeamForm from '@/render/components/panel/teams/best-teams/best-team-form'
 
 const TeamNav = () => {
   return (
@@ -13,7 +13,7 @@ const TeamNav = () => {
           searchQuery='character'
           className={'w-full'}
         />
-        <GeneralFormTeam />
+        <BestTeamForm />
       </nav>
       <Divider />
     </>

@@ -28,7 +28,7 @@ export const updateNameTeam = async (
   const { name } = validateFields.data
 
   try {
-    await db.team.update({
+    await db.bestTeam.update({
       where: {
         id: teamId
       },
@@ -57,7 +57,7 @@ export const updatedOrderTeams = async (items: any) => {
 
   try {
     const transaction = items.map((list: any) =>
-      db.team.update({
+      db.bestTeam.update({
         where: {
           id: list.id
         },
@@ -89,7 +89,7 @@ export const updatedOrderCharacters = async (items: any) => {
 
   try {
     const transaction = items.map((list: any) =>
-      db.characterTeam.update({
+      db.bestTeamCharacter.update({
         where: {
           id: list.id
         },

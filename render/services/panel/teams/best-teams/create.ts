@@ -24,7 +24,7 @@ export const createTeam = async (data: z.infer<typeof TeamSchema>) => {
   const { name } = validateFields.data
 
   try {
-    const team = await db.team.create({
+    const team = await db.bestTeam.create({
       data: {
         name
       }
@@ -49,7 +49,7 @@ export const createMembersTeam = async (data: any) => {
     }
 
   try {
-    const characters = await db.characterTeam.createMany({
+    const characters = await db.bestTeamCharacter.createMany({
       data,
       skipDuplicates: true
     })

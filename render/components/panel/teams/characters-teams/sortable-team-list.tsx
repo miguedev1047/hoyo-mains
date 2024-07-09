@@ -1,4 +1,4 @@
-import { updatedOrderTeams } from '@/render/services/panel/teams/update'
+import { updatedOrderTeams } from '@/render/services/panel/teams/character-teams/update'
 import { CharacterTypes, Team } from '@/types'
 import { reOrder } from '@/utils/helpers/re-order'
 import { DragDropContext, Droppable } from '@hello-pangea/dnd'

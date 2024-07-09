@@ -1,5 +1,5 @@
 import { z } from 'zod'
-import { updateNameTeam } from '@/render/services/panel/teams/update'
+import { updateNameTeam } from '@/render/services/panel/teams/character-teams/update'
 import { CharacterTeamSchema } from '@/schemas'
 import { CharacterTypes, Team } from '@/types'
 import { zodResolver } from '@hookform/resolvers/zod'

@@ -1,4 +1,4 @@
-import { deleteTeam } from '@/render/services/panel/teams/delete'
+import { deleteTeam } from '@/render/services/panel/teams/character-teams/delete'
 import { CharacterTypes, Team } from '@/types'
 import { Button } from '@nextui-org/button'
 import { IconTrash } from '@tabler/icons-react'

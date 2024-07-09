@@ -1,4 +1,4 @@
-import { updatedOrderCharacters } from '@/render/services/panel/teams/update'
+import { updatedOrderCharacters } from '@/render/services/panel/teams/character-teams/update'
 import { CharacterTypes, Team } from '@/types'
 import { CharacterByTeam } from '@prisma/client'
 import { DragDropContext, Droppable } from '@hello-pangea/dnd'
