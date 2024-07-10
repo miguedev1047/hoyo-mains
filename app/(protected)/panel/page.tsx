@@ -1,9 +1,9 @@
-import { currentUser } from '@/data/auth'
-import { IconHome } from '@tabler/icons-react'
 import { Divider } from '@nextui-org/divider'
-import Header from '@/render/components/panel/header'
-import PanelWrapper from '@/render/components/UI/panel-wrapper'
-import HomeSection from '@/render/sections/panel/home-section'
+import { currentUser } from '@/render/src/shared/utilities/auth'
+import { IconHome } from '@tabler/icons-react'
+import Panel from '@/render/src/panel/home/panel'
+import PanelWrapper from '@/render/src/panel/shared/components/ui/panel-wrapper'
+import PanelHeader from '@/render/src/panel/shared/components/ui/panel-header'
 
 export async function generateMetadata() {
   return {
@@ -14,14 +14,12 @@ export async function generateMetadata() {
 
 const PanelHome = async () => {
   const user = await currentUser()
-  
+
   return (
     <PanelWrapper>
-      <Header title='Inicio' startContent={<IconHome size={32} />} />
-
+      <PanelHeader title='Inicio' startContent={<IconHome size={32} />} />
       <Divider />
-
-      <HomeSection user={user!} />
+      <Panel user={user} />
     </PanelWrapper>
   )
 }

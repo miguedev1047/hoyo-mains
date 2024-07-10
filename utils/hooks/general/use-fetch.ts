@@ -1,3 +1,5 @@
+'use client'
+
 import { fetcher } from '@/utils/helpers/fetcher'
 import useSWR from 'swr'
 
