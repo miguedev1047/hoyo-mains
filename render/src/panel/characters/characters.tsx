@@ -6,7 +6,7 @@ interface FetchCharactersTypes {
   characters: CharacterType[]
 }
 
-export default function Characters({ characters }: FetchCharactersTypes) {
+const Characters = ({ characters }: FetchCharactersTypes) => {
   if (!characters?.length) return <CharacterNoItems />
 
   return (
@@ -15,3 +15,5 @@ export default function Characters({ characters }: FetchCharactersTypes) {
     </>
   )
 }
+
+export default Characters

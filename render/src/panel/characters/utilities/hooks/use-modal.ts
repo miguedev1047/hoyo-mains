@@ -9,7 +9,7 @@ import { useRouter } from 'next/navigation'
 import { useModalStore } from '@/render/src/panel/shared/utilities/store/use-modal-store'
 import { useDropImageStore } from '@/render/src/panel/shared/utilities/store/use-drop-image-store'
 import { useUploadImageToCloud } from '@/render/src/panel/shared/utilities/hooks/use-upload-image-to-cloud'
-import { createCharacters } from '@/render/src/panel/characters/utilities/service/create'
+import { createCharacters } from '@/render/src/panel/characters/utilities/services/create'
 
 export const useModal = () => {
   const [isPending, startTransition] = useTransition()

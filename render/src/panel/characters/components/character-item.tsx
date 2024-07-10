@@ -5,7 +5,7 @@ import { generateCharacterUrl } from '@/render/src/shared/utilities/helpers/gene
 import { CircularProgress, Image, Tooltip } from '@nextui-org/react'
 import { Card } from '@nextui-org/card'
 import { Link } from '@nextui-org/link'
-import { deleteCharacter } from '@/render/src/panel/characters/utilities/service/delete'
+import { deleteCharacter } from '@/render/src/panel/characters/utilities/services/delete'
 import DeleteButton from '@/render/src/panel/shared/components/buttons/delete-button'
 import Figure from '@/render/src/shared/components/ui/figure'
 import clsx from 'clsx'
