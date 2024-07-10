@@ -5,6 +5,7 @@ import { useCurrentRole } from '@/utils/hooks/auth/use-current-role'
 import { uploadImageTheCloud } from '@/render/services/cloud/updateImageTheCloud'
 import { useImageStatusStore } from '@/utils/store/use-image-status'
 import { mutate } from 'swr'
+import { useRouter } from 'next/navigation'
 
 interface Props {
   path: string
@@ -13,6 +14,7 @@ interface Props {
 }
 
 export const useUploadImageToCloud = () => {
+  const { refresh } = useRouter()
   const role = useCurrentRole()
 
   const { setProgress, setStatus } = useImageStatusStore((state) => ({
@@ -57,6 +59,7 @@ export const useUploadImageToCloud = () => {
             setImage({ imgFile: null, imgPreview: '' })
             setProgress(0)
             setStatus('idle')
+            refresh()
             mutate(endpoint)
           }
 

@@ -10,9 +10,11 @@ import { createCharacters } from '@/render/services/panel/characters/create'
 import { useUploadImageToCloud } from '@/utils/hooks/panel/use-upload-image-to-cloud'
 import { toast } from 'sonner'
 import { mutate } from 'swr'
+import { useRouter } from 'next/navigation'
 
 export const useCreateCharacter = () => {
   const [isPending, startTransition] = useTransition()
+  const { refresh } = useRouter()
   const { handleUploadImage } = useUploadImageToCloud()
 
   // Estado globales
@@ -97,8 +99,8 @@ export const useCreateCharacter = () => {
           id: uuid,
           endpoint: END_POINT
         })
-        mutate(END_POINT)
         handleReset()
+        refresh()
         toast.success(message)
         return
       }

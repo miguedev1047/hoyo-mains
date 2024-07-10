@@ -1,3 +1,5 @@
+'use client'
+
 import { Card } from '@nextui-org/card'
 import { CircularProgress } from '@nextui-org/react'
 import { getStarBorderColor } from '@/utils/helpers/get-color'
@@ -13,6 +15,8 @@ import { mutate } from 'swr'
 import { Image } from '@nextui-org/image'
 import Link from 'next/link'
 import clsx from 'clsx'
+import { useRouter } from 'next/navigation'
+import { DeleteButton } from '../../UI/buttons/delete/delete-button'
 
 interface Props {
   character: Character
@@ -20,6 +24,7 @@ interface Props {
 
 const ItemCharacter = ({ character }: Props) => {
   const [isPending, startTransition] = useTransition()
+  const { refresh } = useRouter()
 
   const characterName = character.name.toLowerCase().replace(/\s/g, '-')
   const url = `/panel/character?name=${characterName}`
@@ -31,12 +36,7 @@ const ItemCharacter = ({ character }: Props) => {
       if (status === 201) {
         toast.success(message)
 
-        await deleteImage({
-          path: 'characters',
-          id: characterId
-        })
-
-        mutate('/api/characters')
+        refresh()
         return
       }
 
@@ -84,18 +84,15 @@ const ItemCharacter = ({ character }: Props) => {
           />
         )}
 
-        <Button
-          fullWidth
-          isIconOnly
-          size='sm'
-          radius='sm'
-          color='danger'
-          isLoading={isPending}
-          onPress={() => handleDelete(character.id)}
+        <DeleteButton
+          id={character.id}
+          onCallback={deleteCharacter}
           className='bg-color-red absolute right-0 bottom-0 z-10 m-2'
+          deleteType='image'
+          path='characters'
         >
           <IconTrash size={18} />
-        </Button>
+        </DeleteButton>
       </Card>
     </Tooltip>
   )
