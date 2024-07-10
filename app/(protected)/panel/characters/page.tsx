@@ -1,10 +1,11 @@
 import { fetchCharacters } from '@/render/services/panel/characters/data'
-import { CharacterTypes } from '@/types'
+import { CharacterType } from '@/render/src/types'
 import { IconUsers } from '@tabler/icons-react'
-import Header from '@/render/components/panel/header'
-import PanelWrapper from '@/render/components/UI/panel-wrapper'
-import CharacterModal from '@/render/components/UI/modal/character-modal'
-import CharactersSection from '@/render/sections/characters/characters-section'
+import Characters from '@/render/src/panel/characters/characters'
+import PanelWrapper from '@/render/src/panel/shared/components/ui/panel-wrapper'
+import PanelHeader from '@/render/src/panel/shared/components/ui/panel-header'
+import CharacterMenubar from '@/render/src/panel/characters/components/character-menubar'
+import CharacterModal from '@/render/src/panel/characters/components/character-modal'
 
 interface FetchCharactersByNameTypes {
   searchParams: {
@@ -21,28 +22,30 @@ export async function generateMetadata() {
   }
 }
 
-const CharactersPage = async ({ searchParams }: FetchCharactersByNameTypes) => {
+export default async function CharactersPage({
+  searchParams
+}: FetchCharactersByNameTypes) {
   const { name, element, weapon } = {
     name: searchParams.name?.toLocaleLowerCase(),
-    element: searchParams.element,
-    weapon: searchParams.weapon
+    element: searchParams?.element,
+    weapon: searchParams?.weapon
   }
 
   const characters = (await fetchCharacters({
     name,
     element,
     weapon
-  })) as CharacterTypes[]
+  })) as CharacterType[]
 
   return (
     <PanelWrapper>
-      <Header title='Personajes' startContent={<IconUsers size={32} />} />
+      <PanelHeader title='Personajes' startContent={<IconUsers size={32} />} />
 
-      <CharactersSection characters={characters} />
+      <CharacterMenubar />
+
+      <Characters characters={characters} />
 
       <CharacterModal />
     </PanelWrapper>
   )
 }
-
-export default CharactersPage

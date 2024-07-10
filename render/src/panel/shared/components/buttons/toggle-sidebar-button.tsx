@@ -1,7 +1,7 @@
 'use client'
 
 import { Button } from '@nextui-org/button'
-import { useMediaQuery } from '@/render/src/panel/shared/utilities/hooks/use-media-query'
+import { useMediaQuery } from '@/render/src/shared/utilities/hooks/use-media-query'
 import { useSidebarStore } from '@/render/src/panel/shared/utilities/store/use-sidebar-store'
 import { IconLayoutSidebar } from '@tabler/icons-react'
 

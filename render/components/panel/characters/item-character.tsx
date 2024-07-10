@@ -23,26 +23,9 @@ interface Props {
 }
 
 const ItemCharacter = ({ character }: Props) => {
-  const [isPending, startTransition] = useTransition()
-  const { refresh } = useRouter()
 
   const characterName = character.name.toLowerCase().replace(/\s/g, '-')
   const url = `/panel/character?name=${characterName}`
-
-  const handleDelete = async (characterId: string) => {
-    startTransition(async () => {
-      const { status, message, error } = await deleteCharacter(characterId)
-
-      if (status === 201) {
-        toast.success(message)
-
-        refresh()
-        return
-      }
-
-      toast.error(error)
-    })
-  }
 
   return (
     <Tooltip
@@ -54,7 +37,6 @@ const ItemCharacter = ({ character }: Props) => {
         as={Link}
         href={url}
         isPressable
-        isDisabled={isPending}
         className={clsx(
           'bg-color-dark border-2 p-0 aspect-square',
           getStarBorderColor(character.stars)
