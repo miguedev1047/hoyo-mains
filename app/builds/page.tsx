@@ -17,7 +17,7 @@ const BuildPage = async ({ searchParams }: SearchParamsTypes) => {
   const { name, element, stars, weapon } = {
     name: searchParams.character?.toLowerCase(),
     element: searchParams.element?.toLowerCase(),
-    stars: parseInt(searchParams.stars),
+    stars: parseInt(searchParams?.stars!),
     weapon: searchParams.weapon?.toLowerCase()
   }
 
