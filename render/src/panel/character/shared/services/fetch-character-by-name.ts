@@ -3,7 +3,7 @@
 import { currentRole } from '@/render/src/shared/utilities/auth'
 import db from '@/libs/db'
 
-const fetchCharacterByName = async (name: string) => {
+export const fetchCharacterByName = async (name: string) => {
   const role = await currentRole()
 
   if (role !== 'ADMIN' && role !== 'OWNER')
@@ -59,5 +59,3 @@ const fetchCharacterByName = async (name: string) => {
     return null
   }
 }
-
-export default fetchCharacterByName

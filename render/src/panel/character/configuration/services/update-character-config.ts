@@ -10,7 +10,6 @@ export const updateCharacterConfig = async (
   characterId: string | undefined
 ) => {
   const currentAdminRole = await currentRole()
-  const validateFields = CharacterConfigurationSchema.safeParse(data)
 
   if (currentAdminRole !== 'ADMIN' && currentAdminRole !== 'OWNER')
     return {
@@ -18,6 +17,8 @@ export const updateCharacterConfig = async (
       status: 403
     }
 
+  const validateFields = CharacterConfigurationSchema.safeParse(data)
+  
   if (!validateFields.success)
     return {
       error: 'Campos inválidos.',

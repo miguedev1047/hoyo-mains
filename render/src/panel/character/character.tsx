@@ -1,13 +1,14 @@
-import { CharacterTypes } from '@/types'
+import { CharacterType } from '@/render/src/types'
 import { Card, CardBody, CardHeader } from '@nextui-org/card'
 import { Divider } from '@nextui-org/react'
 import { redirect } from 'next/navigation'
-import InfoHeader from '@/render/src/panel/character/components/character/info-header'
-import Configuration from '@/render/src/panel/character/components/configuration/configuration'
+import InfoHeader from '@/render/src/panel/character/info-header'
+import Configuration from '@/render/src/panel/character/configuration/configuration'
 
 interface CharacterProps {
-  character: CharacterTypes
+  character: CharacterType
 }
+
 const Character = ({ character }: CharacterProps) => {
   if (!character) return redirect('/panel/characters')
 

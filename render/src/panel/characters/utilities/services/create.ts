@@ -53,27 +53,3 @@ export const createCharacters = async (
     return { error: 'Error al crear el personaje.', status: 500 }
   }
 }
-
-export const createMaterialCharacters = async (data: any[]) => {
-  const currentAdminRole = await currentRole()
-
-  if (currentAdminRole !== 'ADMIN' && currentAdminRole !== 'OWNER')
-    return {
-      error: 'No tienes permisos para realizar esta acción.',
-      status: 403
-    }
-  try {
-    const materials = await db.materialsByCharacter.createMany({
-      data,
-      skipDuplicates: true
-    })
-
-    return {
-      data: materials,
-      message: 'Los material/es han sido creado/s!',
-      status: 201
-    }
-  } catch (error) {
-    return { error: 'Error al crear el/los material/es.', status: 500 }
-  }
-}

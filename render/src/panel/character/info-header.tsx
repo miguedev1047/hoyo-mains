@@ -1,10 +1,15 @@
 import { Chip, Image } from '@nextui-org/react'
-import { Alert } from '@/render/src/panel/character/components/ui/alert'
+import { IconAlertCircle } from '@tabler/icons-react'
+import {
+  Alert,
+  AlertDescription,
+  AlertTitle
+} from '@/render/src/panel/character/shared/components/alert'
 import { CharacterType } from '@/render/src/types'
-import { getWeapon } from '@/render/src/panel/character/utilities/helpers/get-weapon'
-import { getRole } from '@/render/src/panel/character/utilities/helpers/get-role'
-import { getElementImage } from '@/render/src/panel/character/utilities/helpers/get-element-image'
+import { getRole } from '@/render/src/panel/character/shared/utilities/helpers/get-role'
+import { getElementImage } from '@/render/src/panel/character/shared/utilities/helpers/get-element-image'
 import Figure from '@/render/src/shared/components/ui/figure'
+import { getWeapon } from './shared/utilities/helpers/get-weapon'
 
 const InfoHeader = ({ character }: { character: CharacterType }) => {
   const weaponType = getWeapon(character?.weapon!)!
@@ -14,17 +19,25 @@ const InfoHeader = ({ character }: { character: CharacterType }) => {
   return (
     <div className='w-full flex flex-col'>
       {!character?.public && (
-        <Alert
-          type='warning'
-          message='¡Aviso! Este personaje está configurado como privado. Ajusta esta opción en la configuración para hacerlo público.'
-        />
+        <Alert variant='warning'>
+          <IconAlertCircle />
+          <AlertTitle>¡Aviso!</AlertTitle>
+          <AlertDescription>
+            Este personaje está configurado como privado. Ajusta esta opción en
+            la configuración para hacerlo público.
+          </AlertDescription>
+        </Alert>
       )}
 
       {character?.public && (
-        <Alert
-          type='success'
-          message='¡Aviso! Este personaje está configurado como público. Cualquier usuario puede verlo.'
-        />
+        <Alert variant='success'>
+          <IconAlertCircle />
+          <AlertTitle>¡Aviso!</AlertTitle>
+          <AlertDescription>
+            Este personaje está configurado como público. Los demás usuarios
+            pueden verlo.
+          </AlertDescription>
+        </Alert>
       )}
 
       <div className='flex justify-between items-center'>

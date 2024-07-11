@@ -1,3 +1,5 @@
+'use client'
+
 import { CharacterType } from '@/render/src/types'
 import {
     Button,
@@ -8,7 +10,7 @@ import {
 } from '@nextui-org/react'
 import { Controller } from 'react-hook-form'
 import { IconSettings } from '@tabler/icons-react'
-import useConfiguration from '@/render/src/panel/character/utilities/hooks/use-configuration'
+import useConfiguration from '@/render/src/panel/character/configuration/hooks/use-configuration'
 
 interface ConfigurationProps {
   character: CharacterType

@@ -1,5 +1,5 @@
 import { CharacterType } from '@/render/src/types'
-import { updateCharacterConfig } from '@/render/src/panel/character/utilities/services/update/update-character-config'
+import { updateCharacterConfig } from '@/render/src/panel/character/configuration/services/update-character-config'
 import { CharacterConfigurationSchema } from '@/schemas'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useState, useTransition } from 'react'

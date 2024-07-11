@@ -39,3 +39,9 @@ export type CharacterType = Prisma.CharacterGetPayload<{
     }
   }
 }>
+
+export type MaterialItemType = Prisma.MaterialsByCharacterGetPayload<{
+  include: {
+    character: true
+  }
+}>

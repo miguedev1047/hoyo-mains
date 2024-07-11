@@ -8,12 +8,12 @@ import {
   Spinner
 } from '@nextui-org/react'
 import { useCallback } from 'react'
-import ItemMaterial from '@/render/components/panel/ascensions/item-material'
-import TableActions from '@/render/components/panel/ascensions/table/table-actions'
 import { CharacterType } from '@/render/src/types'
 import { columns } from '@/render/src/shared/constants'
+import ItemMaterial from '@/render/components/panel/ascensions/item-material'
+import TableActions from '@/render/components/panel/ascensions/table/table-actions'
 
-const AscensionTable = ({ character }: { character: CharacterType }) => {
+const Ascension = ({ character }: { character: CharacterType }) => {
   const ascension = character?.ascensions.map((ascension, index) => ({
     ...ascension,
     index: 1 + index++
@@ -107,4 +107,4 @@ const AscensionTable = ({ character }: { character: CharacterType }) => {
   )
 }
 
-export default AscensionTable
+export default Ascension

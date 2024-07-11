@@ -1,7 +1,5 @@
-'use client'
-
 import { CharacterType } from '@/render/src/types'
-import ConfigurationPopover from '@/render/src/panel/character/components/configuration/configuration-popover'
+import ConfigurationPopover from '@/render/src/panel/character/configuration/components/configuration-popover'
 
 interface ConfigurationProps {
   character: CharacterType

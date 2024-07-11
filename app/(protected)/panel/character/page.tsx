@@ -1,9 +1,9 @@
 import type { ResolvingMetadata } from 'next'
 import { CharacterType } from '@/render/src/types'
+import { fetchCharacterByName } from '@/render/src/panel/character/shared/services/fetch-character-by-name'
 import Character from '@/render/src/panel/character/character'
 import PanelWrapper from '@/render/src/panel/shared/components/ui/panel-wrapper'
-import Header from '@/render/src/panel/character/components/character/header'
-import fetchCharacterByName from '@/render/src/panel/character/utilities/services/fetch/fetch-character-by-name'
+import Header from '@/render/src/panel/character/header'
 
 type Props = {
   params: { id: string }
@@ -29,7 +29,9 @@ const CharacterPage = async ({
   searchParams: { name: string }
 }) => {
   const characterName = searchParams.name.toLowerCase().replace(/-/g, ' ')
-  const character = (await fetchCharacterByName(characterName)) as CharacterType
+  const character = (await fetchCharacterByName(
+    characterName
+  )) as CharacterType
 
   return (
     <PanelWrapper>
