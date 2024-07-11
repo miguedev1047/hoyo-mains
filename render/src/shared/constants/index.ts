@@ -78,3 +78,11 @@ export const weapons = [
     icon: Bow.src
   }
 ]
+
+export const columns = [
+  { name: 'RANGO', uid: 'rank' },
+  { name: 'NIVEL', uid: 'level' },
+  { name: 'COSTO', uid: 'cost' },
+  { name: 'MATERIALES', uid: 'materials' },
+  { name: 'ACCIONES', uid: 'actions' }
+]

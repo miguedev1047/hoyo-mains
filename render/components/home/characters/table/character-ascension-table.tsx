@@ -82,39 +82,35 @@ const AscensionTable = ({
   if (!ascension) return null
 
   return (
-    <>
-      <Table
-        classNames={{
-          wrapper: 'bg-color-darkest select-none',
-          th: 'text-color-lightest bg-color-dark'
-        }}
-        aria-label='Materials'
+    <Table
+      classNames={{
+        wrapper: 'bg-color-darkest select-none',
+        th: 'text-color-lightest bg-color-dark'
+      }}
+      aria-label='Materials'
+    >
+      <TableHeader columns={columnsHome}>
+        {(column) => <TableColumn key={column.uid}>{column.name}</TableColumn>}
+      </TableHeader>
+      <TableBody
+        emptyContent='No hay nada para mostrar.'
+        isLoading={!ascension}
+        loadingContent={<Spinner />}
+        items={ascension}
       >
-        <TableHeader columns={columnsHome}>
-          {(column) => (
-            <TableColumn key={column.uid}>{column.name}</TableColumn>
-          )}
-        </TableHeader>
-        <TableBody
-          emptyContent='No hay nada para mostrar.'
-          isLoading={!ascension}
-          loadingContent={<Spinner />}
-          items={ascension}
-        >
-          {(item) => (
-            <TableRow key={item.id}>
-              {(columnKey) => {
-                return (
-                  <TableCell>
-                    {renderCell(item, columnKey) as React.ReactNode}
-                  </TableCell>
-                )
-              }}
-            </TableRow>
-          )}
-        </TableBody>
-      </Table>
-    </>
+        {(item) => (
+          <TableRow key={item.id}>
+            {(columnKey) => {
+              return (
+                <TableCell>
+                  {renderCell(item, columnKey) as React.ReactNode}
+                </TableCell>
+              )
+            }}
+          </TableRow>
+        )}
+      </TableBody>
+    </Table>
   )
 }
 

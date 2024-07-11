@@ -1,12 +1,12 @@
-import { Chip } from '@nextui-org/react'
 import {
   Navbar,
   NavbarBrand,
   NavbarContent,
   NavbarItem
 } from '@nextui-org/navbar'
-import ButtonMenu from '@/render/components/UI/buttons/header/button-menu'
-import UserButton from '@/render/components/panel/user-button'
+import { Chip } from '@nextui-org/react'
+import UserButton from '@/render/src/panel/shared/components/buttons/user-button'
+import ToggleSidebarButton from '@/render/src/panel/shared/components/buttons/toggle-sidebar-button'
 
 interface HeaderProps {
   title?: string
@@ -23,12 +23,12 @@ const Header = ({ title, startContent }: HeaderProps) => {
         }}
       >
         <NavbarBrand className='space-x-3'>
-          <ButtonMenu />
+          <ToggleSidebarButton />
           <Chip className='max-xs:hidden bg-color-dark rounded-3xl px-5 py-8'>
             <div className='flex items-center gap-2'>
               {startContent}
               <h1 className='text-lg md:text-2xl font-medium capitalize'>
-                {title}
+                {title ?? 'Indefinido'}
               </h1>
             </div>
           </Chip>

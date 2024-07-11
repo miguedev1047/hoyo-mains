@@ -1,7 +1,9 @@
-import CharacterSection from '@/render/sections/characters/character-section'
-import PanelWrapper from '@/render/components/UI/panel-wrapper'
-
 import type { ResolvingMetadata } from 'next'
+import { CharacterType } from '@/render/src/types'
+import Character from '@/render/src/panel/character/character'
+import PanelWrapper from '@/render/src/panel/shared/components/ui/panel-wrapper'
+import Header from '@/render/src/panel/character/components/character/header'
+import fetchCharacterByName from '@/render/src/panel/character/utilities/services/fetch/fetch-character-by-name'
 
 type Props = {
   params: { id: string }
@@ -21,16 +23,18 @@ export async function generateMetadata(
   }
 }
 
-const CharacterPage = ({
+const CharacterPage = async ({
   searchParams
 }: {
   searchParams: { name: string }
 }) => {
-  const characterName = searchParams.name
+  const characterName = searchParams.name.toLowerCase().replace(/-/g, ' ')
+  const character = (await fetchCharacterByName(characterName)) as CharacterType
 
   return (
     <PanelWrapper>
-      <CharacterSection characterName={characterName} />
+      <Header title={character?.name} />
+      <Character character={character} />
     </PanelWrapper>
   )
 }

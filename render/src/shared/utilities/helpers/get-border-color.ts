@@ -1,4 +1,4 @@
-export function getStarBorderColor(stars: number) {
+export function getStarBorderColor(stars: number) {;
   const starColors = {
     5: 'five-star',
     4: 'four-star',

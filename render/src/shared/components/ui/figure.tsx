@@ -16,7 +16,7 @@ const Figure = ({
   className,
   ...props
 }: FigureProps) => {
-  const figureClassName = `${background} ${padding} ${width} ${height} ${className}`
+  const figureClassName = `${background} ${padding} ${width} ${height} ${className}  overflow-hidden relative`
 
   return (
     <figure {...props} className={figureClassName}>
