@@ -6,10 +6,10 @@ import {
   AlertTitle
 } from '@/render/src/panel/character/shared/components/alert'
 import { CharacterType } from '@/render/src/types'
-import { getRole } from '@/render/src/panel/character/shared/utilities/helpers/get-role'
 import { getElementImage } from '@/render/src/panel/character/shared/utilities/helpers/get-element-image'
+import { getRole } from '@/render/src/panel/character/shared/utilities/helpers/get-role'
+import { getWeapon } from '@/render/src/panel/character/shared/utilities/helpers/get-weapon'
 import Figure from '@/render/src/shared/components/figure'
-import { getWeapon } from './shared/utilities/helpers/get-weapon'
 
 const InfoHeader = ({ character }: { character: CharacterType }) => {
   const weaponType = getWeapon(character?.weapon!)!
