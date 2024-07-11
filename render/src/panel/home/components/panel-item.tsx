@@ -1,6 +1,6 @@
 import { Card, CardFooter } from '@nextui-org/card'
 import { Image } from '@nextui-org/react'
-import Figure from '@/render/src/shared/components/ui/figure'
+import Figure from '@/render/src/shared/components/figure'
 import Link from 'next/link'
 import Countup from '@/render/src/panel/home/components/countup'
 

@@ -5,7 +5,7 @@ import { Card } from '@nextui-org/card'
 import { Image } from '@nextui-org/react'
 import { useFetch } from '@/render/src/shared/utilities/hooks/use-fetch'
 import { MaterialItemType } from '@/render/src/types'
-import Figure from '@/render/src/shared/components/ui/figure'
+import Figure from '@/render/src/shared/components/figure'
 
 const MaterialItem = ({
   material,

@@ -8,7 +8,7 @@ import {
 import { CharacterType } from '@/render/src/types'
 import { getRole } from '@/render/src/panel/character/shared/utilities/helpers/get-role'
 import { getElementImage } from '@/render/src/panel/character/shared/utilities/helpers/get-element-image'
-import Figure from '@/render/src/shared/components/ui/figure'
+import Figure from '@/render/src/shared/components/figure'
 import { getWeapon } from './shared/utilities/helpers/get-weapon'
 
 const InfoHeader = ({ character }: { character: CharacterType }) => {

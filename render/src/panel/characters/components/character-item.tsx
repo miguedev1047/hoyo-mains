@@ -7,7 +7,7 @@ import { Card } from '@nextui-org/card'
 import { Link } from '@nextui-org/link'
 import { deleteCharacter } from '@/render/src/panel/characters/utilities/services/delete'
 import DeleteButton from '@/render/src/panel/shared/components/buttons/delete-button'
-import Figure from '@/render/src/shared/components/ui/figure'
+import Figure from '@/render/src/shared/components/figure'
 import clsx from 'clsx'
 
 interface CharacterListProps {
