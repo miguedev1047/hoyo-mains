@@ -6,6 +6,7 @@ import {
   Image
 } from '@nextui-org/react'
 import { Material, MaterialByAscension } from '@prisma/client'
+import { ItemSkeleton } from '@/render/src/panel/character/ascension/components/skeletons'
 import { useFetch } from '@/utils/hooks/general/use-fetch'
 import QuantityForm from '@/render/src/panel/character/ascension/components/forms/quantity-form'
 import Figure from '@/render/src/shared/components/figure'
@@ -21,8 +22,8 @@ const AscensionItem = ({ material }: AscensionProps) => {
     error
   } = useFetch<Material>(`/api/materials/${material.materialId}`)
 
-  if (isLoading) return null
-  if (error) return null
+  if (isLoading) return <ItemSkeleton />
+  if (error) return <ItemSkeleton />
 
   return (
     <Popover placement='bottom'>

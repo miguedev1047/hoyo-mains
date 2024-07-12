@@ -118,4 +118,5 @@ export const selectItemDark:
   popoverContent: 'bg-color-dark'
 }
 
-export const skeletonWrapper = 'dark:bg-primary-color bg-primary-color'
+export const skeletonWrapper =
+  'dark:bg-primary-color bg-primary-color rounded-lg'
