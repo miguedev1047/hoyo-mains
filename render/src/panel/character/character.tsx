@@ -4,6 +4,7 @@ import { Divider } from '@nextui-org/react'
 import { redirect } from 'next/navigation'
 import InfoHeader from '@/render/src/panel/character/info-header'
 import Configuration from '@/render/src/panel/character/configuration/configuration'
+import Ascension from '@/render/src/panel/character/ascension/ascension'
 
 interface CharacterProps {
   character: CharacterType
@@ -18,8 +19,11 @@ const Character = ({ character }: CharacterProps) => {
         <InfoHeader character={character} />
       </CardHeader>
       <Divider />
-      <CardBody className='grid grid-cols-4 px-0 md:px-4 gap-12'>
+      <CardBody className='grid grid-cols-4 px-0 md:px-4 gap-10'>
         <Configuration character={character} />
+        <Divider className='col-span-4' />
+        <Ascension character={character} />
+        <Divider className='col-span-4' />
         <Divider className='col-span-4' />
       </CardBody>
     </Card>

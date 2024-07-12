@@ -2,6 +2,7 @@
 
 import { Button, Tooltip } from '@nextui-org/react'
 import useDelete from '@/render/src/panel/shared/utilities/hooks/use-delete'
+import { cn } from '@/libs/utils'
 
 interface DeleteButtonProps {
   id: string
@@ -37,7 +38,7 @@ const DeleteButton = ({
         size='sm'
         isIconOnly
         color='danger'
-        className={`bg-color-red ${className}`}
+        className={cn('bg-color-red', className)}
         isLoading={isPending}
         isDisabled={isPending}
         onPress={handleDelete}

@@ -7,7 +7,7 @@ import { usePathname, useSearchParams } from 'next/navigation'
 import { useRouter } from 'next/navigation'
 import Figure from '@/render/components/UI/misc/figure'
 import { IconFilter } from '@tabler/icons-react'
-import { InputWrapper, selectWrapperDarkest } from '@/render/src/shared/utilities/classes'
+import { InputWrapper, selectWrapperDark } from '@/render/src/shared/utilities/classes'
 
 interface SearchProps {
   label: string
@@ -94,7 +94,7 @@ export const SearchSelect = ({
         size='lg'
         label={label}
         className={className}
-        classNames={selectWrapperDarkest}
+        classNames={selectWrapperDark}
         items={items}
         defaultSelectedKeys={[searchParams.get(searchQuery)?.toString() ?? '']}
         startContent={<IconFilter />}
