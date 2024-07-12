@@ -50,9 +50,7 @@ const AscensionForm = ({ character }: AscensionFormProps) => {
     setIsOpen
   } = useAscensionForm({ character })
 
-  if (isLoading) return <FormLoader>Agregar Ascensión</FormLoader>
-  
-  if (error || !materials)
+  if (error)
     return (
       <Alert variant='error'>
         <AlertTitle>¡Error!</AlertTitle>
@@ -60,6 +58,8 @@ const AscensionForm = ({ character }: AscensionFormProps) => {
       </Alert>
     )
 
+  if (isLoading) return null
+  
   if (FULL_ITEMS) return null
 
   return (

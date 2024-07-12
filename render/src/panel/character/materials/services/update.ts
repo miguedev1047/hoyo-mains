@@ -4,9 +4,9 @@ import { currentRole } from '@/data/auth'
 import db from '@/libs/db'
 
 export const updatedOrderMaterial = async (items: any) => {
-  const currentAdminRole = await currentRole()
+  const role = await currentRole()
 
-  if (currentAdminRole !== 'ADMIN' && currentAdminRole !== 'OWNER')
+  if (role !== 'ADMIN' && role !== 'OWNER')
     return {
       error: 'No tienes permisos para realizar esta acción.',
       status: 403
@@ -27,7 +27,7 @@ export const updatedOrderMaterial = async (items: any) => {
     await db.$transaction(transaction)
 
     return {
-      status: 200,
+      status: 201,
       message: 'Cambios guardados!'
     }
   } catch (error) {

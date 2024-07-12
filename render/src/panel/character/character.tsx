@@ -5,6 +5,7 @@ import { redirect } from 'next/navigation'
 import InfoHeader from '@/render/src/panel/character/info-header'
 import Configuration from '@/render/src/panel/character/configuration/configuration'
 import Ascension from '@/render/src/panel/character/ascension/ascension'
+import Materials from '@/render/src/panel/character/materials/materials'
 
 interface CharacterProps {
   character: CharacterType
@@ -24,6 +25,7 @@ const Character = ({ character }: CharacterProps) => {
         <Divider className='col-span-4' />
         <Ascension character={character} />
         <Divider className='col-span-4' />
+        <Materials character={character} />
         <Divider className='col-span-4' />
       </CardBody>
     </Card>

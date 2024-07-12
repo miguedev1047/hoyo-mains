@@ -7,8 +7,13 @@ import { Material } from '@prisma/client'
 import { selectorItemWrapper } from '@/utils/classes'
 import { IconPlus } from '@tabler/icons-react'
 import { CharacterType } from '@/render/src/types'
+import { useMaterialSelector } from '@/render/src/panel/character/materials/hooks/use-material-selector'
 import { useFetch } from '@/render/src/shared/utilities/hooks/use-fetch'
-import { useMaterialSelector } from '../hooks/use-material-selector'
+import {
+  Alert,
+  AlertDescription,
+  AlertTitle
+} from '@/render/src/panel/character/shared/components/alert'
 import Figure from '@/render/components/UI/misc/figure'
 
 interface CharacterProps {
@@ -32,8 +37,16 @@ const MaterialSelector = ({ character }: CharacterProps) => {
     onSubmit
   } = useMaterialSelector({ character })
 
-  if (error) return null
-  if (isLoading) return null
+  if (error)
+    return (
+      <Alert variant='error'>
+        <AlertTitle>¡Error!</AlertTitle>
+        <AlertDescription>
+          Ha ocurrido un error inesperado al cargar el selector.
+        </AlertDescription>
+      </Alert>
+    )
+
   if (FULL_ITEMS) return null
 
   return (
@@ -51,7 +64,7 @@ const MaterialSelector = ({ character }: CharacterProps) => {
                 className='w-full'
                 isMultiline={true}
                 key={defaultKey}
-                items={materials}
+                items={materials ?? []}
                 isLoading={isLoading}
                 isDisabled={isLoading}
                 classNames={selectorItemWrapper}
@@ -96,7 +109,7 @@ const MaterialSelector = ({ character }: CharacterProps) => {
         fullWidth
         startContent={<IconPlus />}
         isDisabled={isLoading}
-        isLoading={isPending}
+        isLoading={isPending || isLoading}
         className='bg-color-light text-color-darkest font-bold'
         type='submit'
       >

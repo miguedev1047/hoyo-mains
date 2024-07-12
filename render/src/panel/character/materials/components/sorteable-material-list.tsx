@@ -1,8 +1,10 @@
+'use client'
+
 import { DragDropContext, Droppable } from '@hello-pangea/dnd'
 import { CharacterType } from '@/render/src/types'
 import { useDrag } from '@/render/src/panel/shared/utilities/hooks/use-drag'
-import { updatedOrderMaterial } from '../services/update'
-import MaterialItem from './material-item'
+import { updatedOrderMaterial } from '@/render/src/panel/character/materials/services/update'
+import MaterialItem from '@/render/src/panel/character/materials/components/material-item'
 
 const SorteableMaterialList = ({ character }: { character: CharacterType }) => {
   const { orderedList, onDragEnd } = useDrag({

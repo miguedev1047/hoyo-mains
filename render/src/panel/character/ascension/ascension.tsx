@@ -1,6 +1,6 @@
 import { CharacterType } from '@/render/src/types'
-import AscensionTable from './components/ascension-table'
-import AscensionForm from './components/forms/ascension-form'
+import AscensionTable from '@/render/src/panel/character/ascension/components/ascension-table'
+import AscensionForm from '@/render/src/panel/character/ascension/components/forms/ascension-form'
 
 interface AscensionProps {
   character: CharacterType
