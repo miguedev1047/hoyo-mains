@@ -1,7 +1,7 @@
 import { CharacterType } from '@/render/src/types'
+import { redirect } from 'next/navigation'
 import { Card, CardBody, CardHeader } from '@nextui-org/card'
 import { Divider } from '@nextui-org/react'
-import { redirect } from 'next/navigation'
 import InfoHeader from '@/render/src/panel/character/info-header'
 import Configuration from '@/render/src/panel/character/configuration/configuration'
 import Ascension from '@/render/src/panel/character/ascension/ascension'
@@ -9,6 +9,7 @@ import Materials from '@/render/src/panel/character/materials/materials'
 import Weapons from '@/render/src/panel/character/weapons/weapons'
 import Artifacts from '@/render/src/panel/character/artifacts/artifacts'
 import BestStats from '@/render/src/panel/character/best-stats/best-stats'
+import Video from '@/render/src/panel/character/video/video'
 
 interface CharacterProps {
   character: CharacterType
@@ -35,6 +36,11 @@ const Character = ({ character }: CharacterProps) => {
         <Artifacts character={character} />
         <Divider className='col-span-4' />
         <BestStats character={character} />
+        <Divider className='col-span-4' />
+        <Video character={character} />
+        <Divider className='col-span-4' />
+        <Divider className='col-span-4' />
+        <Divider className='col-span-4' />
       </CardBody>
     </Card>
   )
