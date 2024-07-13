@@ -1,12 +1,12 @@
 import { IconGripVertical, IconTrash } from '@tabler/icons-react'
 import { Draggable } from '@hello-pangea/dnd'
-import { ItemSkeleton } from '@/render/src/panel/character/materials/components/skeletons'
 import { Material } from '@prisma/client'
 import { Card } from '@nextui-org/card'
 import { Image } from '@nextui-org/react'
 import { deleteMaterial } from '@/render/src/panel/character/materials/services/delete'
 import { useFetch } from '@/render/src/shared/utilities/hooks/use-fetch'
 import { MaterialItemType } from '@/render/src/types'
+import { ItemSkeleton } from '@/render/src/panel/shared/components/skeletons'
 import Figure from '@/render/src/shared/components/figure'
 import DeleteButton from '@/render/src/panel/shared/components/buttons/delete-button'
 

@@ -1,5 +1,5 @@
 import { CharacterType } from '@/render/src/types'
-import SorteableMaterialList from '@/render/src/panel/character/materials/components/sorteable-material-list'
+import SortableMaterialList from '@/render/src/panel/character/materials/components/sortable-material-list'
 import MaterialSelector from '@/render/src/panel/character/materials/components/material-selector'
 
 interface CharacterProps {
@@ -12,7 +12,7 @@ const Materials = ({ character }: CharacterProps) => {
       <h3 className='text-xl font-semibold capitalize text-secondary-color'>
         {character?.name} Materiales
       </h3>
-      <SorteableMaterialList character={character} />
+      <SortableMaterialList character={character} />
       <MaterialSelector character={character} />
     </div>
   )

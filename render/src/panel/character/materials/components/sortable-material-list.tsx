@@ -10,7 +10,7 @@ interface SortebleMaterialListProps {
   character: CharacterType
 }
 
-const SorteableMaterialList = ({ character }: SortebleMaterialListProps) => {
+const SortableMaterialList = ({ character }: SortebleMaterialListProps) => {
   const { orderedList, onDragEnd } = useDrag({
     item: character.materials,
     name: 'materialList',
@@ -37,4 +37,4 @@ const SorteableMaterialList = ({ character }: SortebleMaterialListProps) => {
   )
 }
 
-export default SorteableMaterialList
+export default SortableMaterialList

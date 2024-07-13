@@ -1,5 +1,5 @@
 import { CharacterType } from '@/render/src/types'
-import SortableWeaponList from '@/render/src/panel/character/weapons/components/sorteable-weapon-list'
+import SortableWeaponList from '@/render/src/panel/character/weapons/components/sortable-weapon-list'
 import WeaponSelector from '@/render/src/panel/character/weapons/components/weapon-selector'
 
 interface WeaponProps {
