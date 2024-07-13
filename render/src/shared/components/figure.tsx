@@ -25,7 +25,10 @@ const Figure = ({
   return (
     <figure
       {...props}
-      className={cn(`overflow-hidden relative ${figureClassName}`, className)}
+      className={cn(
+        `overflow-hidden relative grid place-content-center ${figureClassName}`,
+        className
+      )}
     >
       {children}
     </figure>
