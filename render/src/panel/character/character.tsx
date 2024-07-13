@@ -6,6 +6,7 @@ import InfoHeader from '@/render/src/panel/character/info-header'
 import Configuration from '@/render/src/panel/character/configuration/configuration'
 import Ascension from '@/render/src/panel/character/ascension/ascension'
 import Materials from '@/render/src/panel/character/materials/materials'
+import Weapons from './weapons/weapons'
 
 interface CharacterProps {
   character: CharacterType
@@ -26,6 +27,10 @@ const Character = ({ character }: CharacterProps) => {
         <Ascension character={character} />
         <Divider className='col-span-4' />
         <Materials character={character} />
+        <Divider className='col-span-4' />
+        <Weapons character={character} />
+        <Divider className='col-span-4 lg:hidden' />
+        
         <Divider className='col-span-4' />
       </CardBody>
     </Card>

@@ -1,34 +1,34 @@
 import { IconGripVertical, IconTrash } from '@tabler/icons-react'
 import { Draggable } from '@hello-pangea/dnd'
-import { ItemSkeleton } from '@/render/src/panel/character/materials/components/skeletons'
-import { Material } from '@prisma/client'
+import { Weapon } from '@prisma/client'
 import { Card } from '@nextui-org/card'
 import { Image } from '@nextui-org/react'
-import { deleteMaterial } from '@/render/src/panel/character/materials/services/delete'
 import { useFetch } from '@/render/src/shared/utilities/hooks/use-fetch'
-import { MaterialItemType } from '@/render/src/types'
+import { WeaponItemType } from '@/render/src/types'
+import { deleteWeapon } from '@/render/src/panel/character/weapons/services/delete'
+import { ItemSkeleton } from '@/render/src/panel/character/weapons/components/skeletons'
 import Figure from '@/render/src/shared/components/figure'
 import DeleteButton from '@/render/src/panel/shared/components/buttons/delete-button'
 
-interface MaterialItemProps {
-  material: MaterialItemType
+interface WeaponItemProps {
+  weapon: WeaponItemType
   index: number
 }
 
-const MaterialItem = ({ material, index }: MaterialItemProps) => {
-  const materialId = material.item
+const WeaponItem = ({ weapon, index }: WeaponItemProps) => {
+  const weaponId = weapon.item
 
   const {
-    data: fetchedMaterial,
+    data: fetchedWeapon,
     isLoading,
     error
-  } = useFetch<Material>(`/api/materials/${materialId}`)
+  } = useFetch<Weapon>(`/api/weapons/weapon/${weaponId}`)
 
   if (error) return <ItemSkeleton />
   if (isLoading) return <ItemSkeleton />
 
   return (
-    <Draggable draggableId={material.id} index={index}>
+    <Draggable draggableId={weapon.id} index={index}>
       {(provided) => (
         <li
           ref={provided.innerRef}
@@ -41,17 +41,17 @@ const MaterialItem = ({ material, index }: MaterialItemProps) => {
               <IconGripVertical size={20} />
               <Figure background='bg-primary-color' width='w-10' height='h-10'>
                 <Image
-                  src={fetchedMaterial?.imageUrl!}
-                  alt={fetchedMaterial?.name!}
+                  src={fetchedWeapon?.imageUrl!}
+                  alt={fetchedWeapon?.name!}
                   className='w-full h-full object-cover'
                 />
               </Figure>
               <h3 className='text-xs md:text-lg font-semibold line-clamp-1'>
-                {fetchedMaterial?.name}
+                {fetchedWeapon?.name}
               </h3>
             </div>
 
-            <DeleteButton id={material.id} onCallback={deleteMaterial}>
+            <DeleteButton id={weapon.id} onCallback={deleteWeapon}>
               <IconTrash />
             </DeleteButton>
           </Card>
@@ -61,4 +61,4 @@ const MaterialItem = ({ material, index }: MaterialItemProps) => {
   )
 }
 
-export default MaterialItem
+export default WeaponItem

@@ -16,11 +16,11 @@ import {
 } from '@/render/src/panel/character/shared/components/alert'
 import Figure from '@/render/components/UI/misc/figure'
 
-interface CharacterProps {
+interface MaterialSelectorProps {
   character: CharacterType
 }
 
-const MaterialSelector = ({ character }: CharacterProps) => {
+const MaterialSelector = ({ character }: MaterialSelectorProps) => {
   const {
     data: materials,
     isLoading,
@@ -65,8 +65,8 @@ const MaterialSelector = ({ character }: CharacterProps) => {
                 isMultiline={true}
                 key={defaultKey}
                 items={materials ?? []}
-                isLoading={isLoading}
-                isDisabled={isLoading}
+                isLoading={isLoading || isPending}
+                isDisabled={isLoading || isPending}
                 classNames={selectorItemWrapper}
                 disabledKeys={disabledItems}
                 onSelectionChange={field.onChange}
@@ -108,8 +108,8 @@ const MaterialSelector = ({ character }: CharacterProps) => {
         size='lg'
         fullWidth
         startContent={<IconPlus />}
-        isDisabled={isLoading}
-        isLoading={isPending || isLoading}
+        isLoading={isLoading || isPending}
+        isDisabled={isLoading || isPending}
         className='bg-color-light text-color-darkest font-bold'
         type='submit'
       >

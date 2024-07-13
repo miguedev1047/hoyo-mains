@@ -6,7 +6,11 @@ import { useDrag } from '@/render/src/panel/shared/utilities/hooks/use-drag'
 import { updatedOrderMaterial } from '@/render/src/panel/character/materials/services/update'
 import MaterialItem from '@/render/src/panel/character/materials/components/material-item'
 
-const SorteableMaterialList = ({ character }: { character: CharacterType }) => {
+interface SortebleMaterialListProps {
+  character: CharacterType
+}
+
+const SorteableMaterialList = ({ character }: SortebleMaterialListProps) => {
   const { orderedList, onDragEnd } = useDrag({
     item: character.materials,
     name: 'materialList',
