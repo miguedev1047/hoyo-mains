@@ -8,6 +8,7 @@ import Ascension from '@/render/src/panel/character/ascension/ascension'
 import Materials from '@/render/src/panel/character/materials/materials'
 import Weapons from '@/render/src/panel/character/weapons/weapons'
 import Artifacts from '@/render/src/panel/character/artifacts/artifacts'
+import BestStats from '@/render/src/panel/character/best-stats/best-stats'
 
 interface CharacterProps {
   character: CharacterType
@@ -33,6 +34,7 @@ const Character = ({ character }: CharacterProps) => {
         <Divider className='col-span-4 lg:hidden' />
         <Artifacts character={character} />
         <Divider className='col-span-4' />
+        <BestStats character={character} />
       </CardBody>
     </Card>
   )
