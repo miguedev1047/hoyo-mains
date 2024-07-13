@@ -7,7 +7,7 @@ import Configuration from '@/render/src/panel/character/configuration/configurat
 import Ascension from '@/render/src/panel/character/ascension/ascension'
 import Materials from '@/render/src/panel/character/materials/materials'
 import Weapons from '@/render/src/panel/character/weapons/weapons'
-import Artifacts from './artifacts/artifacts'
+import Artifacts from '@/render/src/panel/character/artifacts/artifacts'
 
 interface CharacterProps {
   character: CharacterType
