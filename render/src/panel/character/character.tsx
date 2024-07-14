@@ -10,6 +10,7 @@ import Weapons from '@/render/src/panel/character/weapons/weapons'
 import Artifacts from '@/render/src/panel/character/artifacts/artifacts'
 import BestStats from '@/render/src/panel/character/best-stats/best-stats'
 import Video from '@/render/src/panel/character/video/video'
+import Teams from '@/render/src/panel/character/teams/teams'
 
 interface CharacterProps {
   character: CharacterType
@@ -39,6 +40,7 @@ const Character = ({ character }: CharacterProps) => {
         <Divider className='col-span-4' />
         <Video character={character} />
         <Divider className='col-span-4' />
+        <Teams character={character} />
         <Divider className='col-span-4' />
         <Divider className='col-span-4' />
       </CardBody>

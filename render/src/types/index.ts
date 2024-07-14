@@ -51,3 +51,16 @@ export type WeaponItemType = Prisma.WeaponByCharacterGetPayload<{
     character: true
   }
 }>
+
+export type TeamItemType = Prisma.TeamByCharacterGetPayload<{
+  include: {
+    characters: true
+    character: true
+  }
+}>
+
+export type TeamCharacterItemType = Prisma.CharacterByTeamGetPayload<{
+  include: {
+    characters: true
+  }
+}>
