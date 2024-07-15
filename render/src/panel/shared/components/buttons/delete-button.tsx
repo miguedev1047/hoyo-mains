@@ -1,8 +1,8 @@
 'use client'
 
 import { Button, Tooltip } from '@nextui-org/react'
-import useDelete from '@/render/src/panel/shared/utilities/hooks/use-delete'
 import { cn } from '@/libs/utils'
+import useDelete from '@/render/src/panel/shared/utilities/hooks/use-delete'
 
 interface DeleteButtonProps {
   id: string
@@ -10,6 +10,9 @@ interface DeleteButtonProps {
   className?: string
   path?: string
   deleteType?: 'normal' | 'image'
+  isIconOnly?: boolean
+  startContent?: React.ReactNode
+  size?: 'sm' | 'md' | 'lg' | undefined
   onCallback: (characterId: string) => Promise<any>
 }
 
@@ -19,6 +22,9 @@ const DeleteButton = ({
   path,
   className,
   deleteType = 'normal',
+  startContent,
+  isIconOnly = true,
+  size = 'sm',
   onCallback,
   ...props
 }: DeleteButtonProps) => {
@@ -35,16 +41,17 @@ const DeleteButton = ({
       content={<p className='font-bold'>Eliminar</p>}
     >
       <Button
-        size='sm'
-        isIconOnly
         color='danger'
+        size={size}
+        isIconOnly={isIconOnly}
+        startContent={startContent}
         className={cn('bg-color-red', className)}
         isLoading={isPending}
         isDisabled={isPending}
         onPress={handleDelete}
         {...props}
       >
-        {children}
+        <>{children}</>
       </Button>
     </Tooltip>
   )

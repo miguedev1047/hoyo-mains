@@ -1,6 +1,6 @@
 import { create } from 'zustand'
 
-interface modalStore {
+interface ModalStore {
   activeModal: {
     id: string
     name: string
@@ -10,7 +10,7 @@ interface modalStore {
   setModalId: (id: string) => void
 }
 
-export const useModalStore = create<modalStore>((set) => ({
+export const useModalStore = create<ModalStore>((set) => ({
   activeModal: {
     id: '',
     name: ''

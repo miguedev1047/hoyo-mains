@@ -64,3 +64,9 @@ export type TeamCharacterItemType = Prisma.CharacterByTeamGetPayload<{
     characters: true
   }
 }>
+
+export type TalentsType = Prisma.TalentsByCharacterGetPayload<{
+  include: {
+    talents: true
+  }
+}>
