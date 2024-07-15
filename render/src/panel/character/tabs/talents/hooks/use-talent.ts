@@ -7,9 +7,9 @@ import { useEffect, useTransition } from 'react'
 import { useForm } from 'react-hook-form'
 import { CharacterTalentSchema } from '@/schemas'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { fetchTalentById } from '../services/fetch'
-import { updateTalent } from '../services/update'
-import { createTalent } from '../services/create'
+import { fetchTalentById } from '@/render/src/panel/character/tabs/talents/services/fetch'
+import { updateTalent } from '@/render/src/panel/character/tabs/talents/services/update'
+import { createTalent } from '@/render/src/panel/character/tabs/talents/services/create'
 import { toast } from 'sonner'
 
 interface TalentType {
@@ -126,10 +126,7 @@ export const useCreateTalent = ({ character }: TalentType) => {
       }
 
       // Subir la imagen y creamos el talento
-      const { status, message, error } = await createTalent(
-        values,
-        characterId
-      )
+      const { status, message, error } = await createTalent(values, characterId)
 
       if (status === 201) {
         handleUploadImage({

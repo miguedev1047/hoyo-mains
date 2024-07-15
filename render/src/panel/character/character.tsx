@@ -11,7 +11,7 @@ import Artifacts from '@/render/src/panel/character/artifacts/artifacts'
 import BestStats from '@/render/src/panel/character/best-stats/best-stats'
 import Video from '@/render/src/panel/character/video/video'
 import Teams from '@/render/src/panel/character/teams/teams'
-import TabContainer from './tabs/tabs'
+import TabContainer from '@/render/src/panel/character/tabs/tabs'
 
 interface CharacterProps {
   character: CharacterType

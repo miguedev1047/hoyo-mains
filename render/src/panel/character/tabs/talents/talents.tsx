@@ -1,6 +1,6 @@
 import { CharacterType } from '@/render/src/types'
-import TalentList from './components/talent-list'
-import TalentModal from './components/talent-modal'
+import TalentList from '@/render/src/panel/character/tabs/talents/components/talent-list'
+import TalentModal from '@/render/src/panel/character/tabs/talents/components/talent-modal'
 
 interface TalentsProps {
   character: CharacterType

@@ -2,7 +2,7 @@
 
 import { CharacterType } from '@/render/src/types'
 import { Tabs, Tab } from '@nextui-org/react'
-import Talents from './talents/talents'
+import Talents from '@/render/src/panel/character/tabs/talents/talents'
 
 interface TabContainerProps {
   character: CharacterType

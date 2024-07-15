@@ -1,5 +1,5 @@
 import { CharacterType, TalentsType } from '@/render/src/types'
-import TalentItem from './talent-item'
+import TalentItem from '@/render/src/panel/character/tabs/talents/components/talent-item'
 
 interface TalentListProps {
   character: CharacterType
