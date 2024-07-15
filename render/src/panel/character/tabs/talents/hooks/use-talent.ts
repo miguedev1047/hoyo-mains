@@ -11,12 +11,14 @@ import { fetchTalentById } from '@/render/src/panel/character/tabs/talents/servi
 import { updateTalent } from '@/render/src/panel/character/tabs/talents/services/update'
 import { createTalent } from '@/render/src/panel/character/tabs/talents/services/create'
 import { toast } from 'sonner'
+import { useRouter } from 'next/navigation'
 
 interface TalentType {
   character: CharacterType
 }
 
 export const useCreateTalent = ({ character }: TalentType) => {
+  const { refresh } = useRouter()
   const [isPending, startTransition] = useTransition()
   const { handleUploadImage } = useUploadImageToCloud()
 
@@ -112,6 +114,7 @@ export const useCreateTalent = ({ character }: TalentType) => {
           })
           toast.success(message)
           handleReset()
+          refresh()
           return
         }
 
@@ -135,6 +138,7 @@ export const useCreateTalent = ({ character }: TalentType) => {
         })
         toast.success(message)
         handleReset()
+        refresh()
         return
       }
 
