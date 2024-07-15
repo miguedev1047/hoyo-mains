@@ -76,3 +76,9 @@ export type PassivesType = Prisma.PassivesByCharacterGetPayload<{
     passives: true
   }
 }>
+
+export type ConstellationsType = Prisma.ConstellationsByCharacterGetPayload<{
+  include: {
+    constellations: true
+  }
+}>

@@ -4,12 +4,13 @@ import { CharacterType } from '@/render/src/types'
 import { Tabs, Tab } from '@nextui-org/react'
 import Talents from '@/render/src/panel/character/tabs/talents/talents'
 import Passives from '@/render/src/panel/character/tabs/passives/passives'
+import Constellations from '@/render/src/panel/character/tabs/constellations/constellations'
 
-interface TabContainerProps {
+interface TabSkillsProps {
   character: CharacterType
 }
 
-const TabContainer = ({ character }: TabContainerProps) => {
+const TabSkills = ({ character }: TabSkillsProps) => {
   return (
     <div className='flex col-span-4 flex-col'>
       <Tabs
@@ -26,11 +27,11 @@ const TabContainer = ({ character }: TabContainerProps) => {
           <Passives character={character} />
         </Tab>
         <Tab key='Constellations' title='Constelacion'>
-          ...
+          <Constellations character={character} />
         </Tab>
       </Tabs>
     </div>
   )
 }
 
-export default TabContainer
+export default TabSkills

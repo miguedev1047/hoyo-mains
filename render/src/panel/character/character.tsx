@@ -11,7 +11,7 @@ import Artifacts from '@/render/src/panel/character/artifacts/artifacts'
 import BestStats from '@/render/src/panel/character/best-stats/best-stats'
 import Video from '@/render/src/panel/character/video/video'
 import Teams from '@/render/src/panel/character/teams/teams'
-import TabContainer from '@/render/src/panel/character/tabs/tabs'
+import TabSkills from '@/render/src/panel/character/tabs/tabs'
 
 interface CharacterProps {
   character: CharacterType
@@ -43,7 +43,7 @@ const Character = ({ character }: CharacterProps) => {
         <Divider className='col-span-4' />
         <Teams character={character} />
         <Divider className='col-span-4' />
-        <TabContainer character={character} />
+        <TabSkills character={character} />
         <Divider className='col-span-4' />
       </CardBody>
     </Card>
