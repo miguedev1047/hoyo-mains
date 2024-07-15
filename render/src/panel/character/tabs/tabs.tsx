@@ -3,6 +3,7 @@
 import { CharacterType } from '@/render/src/types'
 import { Tabs, Tab } from '@nextui-org/react'
 import Talents from '@/render/src/panel/character/tabs/talents/talents'
+import Passives from '@/render/src/panel/character/tabs/passives/passives'
 
 interface TabContainerProps {
   character: CharacterType
@@ -22,7 +23,7 @@ const TabContainer = ({ character }: TabContainerProps) => {
           <Talents character={character} />
         </Tab>
         <Tab key='Passives' title='Pasivas'>
-          ...
+          <Passives character={character} />
         </Tab>
         <Tab key='Constellations' title='Constelacion'>
           ...

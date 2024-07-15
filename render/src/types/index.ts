@@ -70,3 +70,9 @@ export type TalentsType = Prisma.TalentsByCharacterGetPayload<{
     talents: true
   }
 }>
+
+export type PassivesType = Prisma.PassivesByCharacterGetPayload<{
+  include: {
+    passives: true
+  }
+}>
