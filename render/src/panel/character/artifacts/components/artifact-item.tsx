@@ -8,7 +8,7 @@ import { Image } from '@nextui-org/react'
 import { useFetch } from '@/render/src/shared/utilities/hooks/use-fetch'
 import { WeaponItemType } from '@/render/src/types'
 import { ItemSkeleton } from '@/render/src/panel/shared/components/skeletons'
-import { deleteArtifact } from '@/render/src/panel/character/artifacts/services/delete'
+import { deleteArtifact } from '@/render/src/panel/character/artifacts/utilities/services/delete'
 import Figure from '@/render/src/shared/components/figure'
 import DeleteButton from '@/render/src/panel/shared/components/buttons/delete-button'
 

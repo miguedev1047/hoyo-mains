@@ -12,7 +12,7 @@ import {
   AlertTitle
 } from '@/render/src/panel/character/shared/components/alert'
 import { useFetch } from '@/render/src/shared/utilities/hooks/use-fetch'
-import { useCharacterSelector } from '@/render/src/panel/character/teams/hooks/use-character-selector'
+import { useCharacterSelector } from '@/render/src/panel/character/teams/utilities/hooks/use-character-selector'
 import Figure from '@/render/src/shared/components/figure'
 
 interface CharacterSelectorProps {

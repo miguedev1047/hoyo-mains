@@ -1,6 +1,6 @@
 import { CharacterType, TeamItemType } from '@/render/src/types'
 import { Draggable } from '@hello-pangea/dnd'
-import { deleteTeam } from '@/render/src/panel/character/teams/services/delete'
+import { deleteTeam } from '@/render/src/panel/character/teams/utilities/services/delete'
 import { Card } from '@nextui-org/react'
 import { IconTrash } from '@tabler/icons-react'
 import TeamTitle from '@/render/src/panel/character/teams/components/team-title'

@@ -1,7 +1,7 @@
 import { Input } from '@nextui-org/input'
 import { CircularProgress, Tooltip } from '@nextui-org/react'
 import { Controller } from 'react-hook-form'
-import { useTitleForm } from '../hooks/use-title'
+import { useTitleForm } from '@/render/src/panel/character/teams/utilities/hooks/use-title'
 import { TeamItemType } from '@/render/src/types'
 
 interface TeamTileProps {

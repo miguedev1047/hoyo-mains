@@ -2,7 +2,7 @@
 
 import { DragDropContext, Droppable } from '@hello-pangea/dnd'
 import { useDrag } from '@/render/src/panel/shared/utilities/hooks/use-drag'
-import { updatedOrderArtifact } from '@/render/src/panel/character/artifacts/services/update'
+import { updatedOrderArtifact } from '@/render/src/panel/character/artifacts/utilities/services/update'
 import { CharacterType } from '@/render/src/types'
 import ArtifactItem from '@/render/src/panel/character/artifacts/components/artifact-item'
 

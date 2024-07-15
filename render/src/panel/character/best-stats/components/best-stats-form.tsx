@@ -6,7 +6,7 @@ import { Controller } from 'react-hook-form'
 import { IconDeviceFloppy, IconPencil } from '@tabler/icons-react'
 import { InputWrapper } from '@/render/src/shared/utilities/classes'
 import { CharacterType } from '@/render/src/types'
-import { useBestStatsForm } from '@/render/src/panel/character/best-stats/hooks/use-best-stats-form'
+import { useBestStatsForm } from '@/render/src/panel/character/best-stats/utilities/hooks/use-best-stats-form'
 
 interface BestStatsFormProps {
   character: CharacterType

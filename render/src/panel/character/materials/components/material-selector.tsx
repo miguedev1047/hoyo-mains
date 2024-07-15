@@ -7,7 +7,7 @@ import { Material } from '@prisma/client'
 import { selectorItemWrapper } from '@/utils/classes'
 import { IconPlus } from '@tabler/icons-react'
 import { CharacterType } from '@/render/src/types'
-import { useMaterialSelector } from '@/render/src/panel/character/materials/hooks/use-material-selector'
+import { useMaterialSelector } from '@/render/src/panel/character/materials/utilities/hooks/use-material-selector'
 import { useFetch } from '@/render/src/shared/utilities/hooks/use-fetch'
 import {
   Alert,

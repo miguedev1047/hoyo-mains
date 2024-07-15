@@ -11,7 +11,7 @@ import {
 } from '@nextui-org/react'
 import { IconPlus } from '@tabler/icons-react'
 import { Controller } from 'react-hook-form'
-import { useCreateConstellation } from '@/render/src/panel/character/tabs/constellations/hooks/use-constellations'
+import { useCreateConstellation } from '@/render/src/panel/character/tabs/constellations/utilities/hooks/use-constellations'
 import ModalButton from '@/render/src/panel/shared/components/buttons/modal-button'
 import DropImage from '@/render/src/panel/shared/components/ui/drop-image'
 import Editor from '@/render/src/shared/components/editor/editor'

@@ -6,8 +6,8 @@ import { Button } from '@nextui-org/button'
 import { Avatar, Chip, Select, SelectItem } from '@nextui-org/react'
 import { IconPlus } from '@tabler/icons-react'
 import { Controller } from 'react-hook-form'
-import { useFilteredWeapons } from '@/render/src/panel/character/weapons/hooks/use-filtered-weapons'
-import { useWeaponSelector } from '@/render/src/panel/character/weapons/hooks/use-weapon-selector'
+import { useFilteredWeapons } from '@/render/src/panel/character/weapons/utilities/hooks/use-filtered-weapons'
+import { useWeaponSelector } from '@/render/src/panel/character/weapons/utilities/hooks/use-weapon-selector'
 import {
   Alert,
   AlertDescription,

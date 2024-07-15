@@ -1,9 +1,9 @@
 import { DragDropContext, Droppable } from '@hello-pangea/dnd'
 import { useMediaQuery } from '@/utils/hooks/general/use-media-query'
-import { useDrag } from '../../../shared/utilities/hooks/use-drag'
+import { useDrag } from '@/render/src/panel/shared/utilities/hooks/use-drag'
 import { TeamItemType } from '@/render/src/types'
-import { updatedOrderCharacters } from '../services/update'
-import CharacterItem from './character-item'
+import { updatedOrderCharacters } from '@/render/src/panel/character/teams/utilities/services/update'
+import CharacterItem from '@/render/src/panel/character/teams/components/character-item'
 
 interface SortableCharacterListProps {
   team: TeamItemType

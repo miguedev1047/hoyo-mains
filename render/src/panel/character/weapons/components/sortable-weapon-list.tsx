@@ -1,7 +1,7 @@
 'use client'
 
 import { DragDropContext, Droppable } from '@hello-pangea/dnd'
-import { updatedOrderWeapon } from '@/render/src/panel/character/weapons/services/update'
+import { updatedOrderWeapon } from '@/render/src/panel/character/weapons/utilities/services/update'
 import { CharacterType } from '@/render/src/types'
 import { useDrag } from '@/render/src/panel/shared/utilities/hooks/use-drag'
 import WeaponItem from '@/render/src/panel/character/weapons/components/weapon-item'

@@ -1,7 +1,7 @@
 import { storage } from '@/libs/firebase-config'
 import { getDownloadURL, ref, uploadBytesResumable } from 'firebase/storage'
 import { useDropImageStore } from '@/render/src/panel/shared/utilities/store/use-drop-image-store'
-import { uploadImageTheCloud } from '@/render/src/panel/shared/services/upload'
+import { uploadImageTheCloud } from '@/render/src/panel/shared/utilities/services/upload'
 import { useImageStatusStore } from '@/render/src/panel/shared/utilities/store/use-image-status-store'
 import { useCurrentRole } from '@/render/src/shared/utilities/hooks/use-sesion'
 import { useRouter } from 'next/navigation'

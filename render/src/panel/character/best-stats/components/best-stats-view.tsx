@@ -4,7 +4,7 @@ import { IconPencil } from '@tabler/icons-react'
 import { Button } from '@nextui-org/button'
 import { Card } from '@nextui-org/card'
 import { CharacterType } from '@/render/src/types'
-import { useEditStatStore } from '@/render/src/panel/character/best-stats/store/use-edit-stat-store'
+import { useEditStatStore } from '@/render/src/panel/character/best-stats/utilities/store/use-edit-stat-store'
 
 interface BestStatsViewProps {
   character: CharacterType

@@ -14,7 +14,7 @@ import {
 } from '@nextui-org/react'
 import { IconPlus } from '@tabler/icons-react'
 import { Controller } from 'react-hook-form'
-import { useAscensionForm } from '@/render/src/panel/character/ascension/hooks/use-ascension-form'
+import { useAscensionForm } from '@/render/src/panel/character/ascension/utilities/hooks/use-ascension-form'
 import { useFetch } from '@/utils/hooks/general/use-fetch'
 import { Material } from '@prisma/client'
 import {
@@ -22,12 +22,11 @@ import {
   selectWrapperDark
 } from '@/render/src/shared/utilities/classes'
 import Figure from '@/render/src/shared/components/figure'
-import { FormLoader } from '../loaders'
 import {
   Alert,
   AlertDescription,
   AlertTitle
-} from '../../../shared/components/alert'
+} from '@/render/src/panel/character/shared/components/alert'
 
 interface AscensionFormProps {
   character: CharacterType

@@ -5,7 +5,7 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { useRouter } from 'next/navigation'
 import { useState, useTransition } from 'react'
 import { useForm } from 'react-hook-form'
-import { updateTeamName } from '../services/update'
+import { updateTeamName } from '@/render/src/panel/character/teams/utilities/services/update'
 import { toast } from 'sonner'
 
 interface TileProps {

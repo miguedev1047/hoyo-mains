@@ -11,7 +11,7 @@ import {
   AlertDescription,
   AlertTitle
 } from '@/render/src/panel/character/shared/components/alert'
-import { useArtifactSelector } from '@/render/src/panel/character/artifacts/hooks/use-artifact-selector'
+import { useArtifactSelector } from '@/render/src/panel/character/artifacts/utilities/hooks/use-artifact-selector'
 import { CharacterType } from '@/render/src/types'
 import Figure from '@/render/components/UI/misc/figure'
 

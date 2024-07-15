@@ -10,7 +10,7 @@ import {
 } from '@nextui-org/react'
 import { Controller } from 'react-hook-form'
 import { IconSettings } from '@tabler/icons-react'
-import useConfiguration from '@/render/src/panel/character/configuration/hooks/use-configuration'
+import useConfiguration from '@/render/src/panel/character/configuration/utilities/hooks/use-configuration'
 
 interface ConfigurationProps {
   character: CharacterType

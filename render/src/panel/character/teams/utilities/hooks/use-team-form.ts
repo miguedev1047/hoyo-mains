@@ -4,7 +4,7 @@ import { CharacterItemSchema } from '@/schemas'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useTransition } from 'react'
 import { useForm } from 'react-hook-form'
-import { createTeam } from '@/render/src/panel/character/teams/services/create'
+import { createTeam } from '@/render/src/panel/character/teams/utilities/services/create'
 import { useRouter } from 'next/navigation'
 import { toast } from 'sonner'
 

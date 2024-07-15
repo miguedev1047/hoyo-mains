@@ -2,7 +2,7 @@ import { Input } from '@nextui-org/input'
 import { Controller } from 'react-hook-form'
 import { InputWrapper } from '@/render/src/shared/utilities/classes'
 import { MaterialByAscension } from '@prisma/client'
-import { useAscensionQuantity } from '../../hooks/use-ascension-quantity'
+import { useAscensionQuantity } from '../../utilities/hooks/use-ascension-quantity'
 
 interface AscensionProps {
   material: MaterialByAscension

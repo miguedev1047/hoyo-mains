@@ -3,10 +3,10 @@ import { Card, Image } from '@nextui-org/react'
 import { IconGripVertical, IconTrash } from '@tabler/icons-react'
 import { CharacterType, TeamCharacterItemType } from '@/render/src/types'
 import { useFetch } from '@/render/src/shared/utilities/hooks/use-fetch'
-import { deleteCharacter } from '../services/delete'
-import { ItemSkeleton } from './skeletons'
+import { deleteCharacter } from '@/render/src/panel/character/teams/utilities/services/delete'
+import { ItemSkeleton } from '@/render/src/panel/character/teams/components/skeletons'
 import Figure from '@/render/src/shared/components/figure'
-import DeleteButton from '../../../shared/components/buttons/delete-button'
+import DeleteButton from '@/render/src/panel/shared/components/buttons/delete-button'
 
 interface CharacterItemProps {
   character: TeamCharacterItemType

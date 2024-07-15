@@ -13,7 +13,7 @@ import { useCallback } from 'react'
 import { CharacterType } from '@/render/src/types'
 import { columns } from '@/render/src/shared/constants'
 import { IconTrash } from '@tabler/icons-react'
-import { deleteAscension } from '@/render/src/panel/character/ascension/services/delete'
+import { deleteAscension } from '@/render/src/panel/character/ascension/utilities/services/delete'
 import AscensionItem from '@/render/src/panel/character/ascension/components/ascension-item'
 import DeleteButton from '@/render/src/panel/shared/components/buttons/delete-button'
 

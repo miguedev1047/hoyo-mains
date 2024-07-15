@@ -6,7 +6,7 @@ import { Input } from '@nextui-org/input'
 import { IconPlus } from '@tabler/icons-react'
 import { Controller } from 'react-hook-form'
 import { CharacterType } from '@/render/src/types'
-import { useVideo } from '@/render/src/panel/character/video/hooks/use-video'
+import { useVideo } from '@/render/src/panel/character/video/utilities/hooks/use-video'
 import { InputWrapper } from '@/render/src/shared/utilities/classes'
 
 interface FormVideoProps {

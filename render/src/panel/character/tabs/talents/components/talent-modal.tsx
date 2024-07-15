@@ -10,7 +10,7 @@ import {
   ModalFooter,
   ModalHeader
 } from '@nextui-org/react'
-import { useCreateTalent } from '@/render/src/panel/character/tabs/talents/hooks/use-talent'
+import { useCreateTalent } from '@/render/src/panel/character/tabs/talents/utilities/hooks/use-talent'
 import { CharacterType } from '@/render/src/types'
 import DropImage from '@/render/src/panel/shared/components/ui/drop-image'
 import ModalButton from '@/render/src/panel/shared/components/buttons/modal-button'

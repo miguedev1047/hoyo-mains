@@ -6,7 +6,7 @@ import { useRouter } from 'next/navigation'
 import { useState, useTransition } from 'react'
 import { useForm } from 'react-hook-form'
 import { toast } from 'sonner'
-import { createAscension } from '@/render/src/panel/character/ascension/services/create'
+import { createAscension } from '@/render/src/panel/character/ascension/utilities/services/create'
 
 interface AscensionFormProps {
   character: CharacterType

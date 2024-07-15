@@ -10,7 +10,7 @@ import {
 import { IconPlus } from '@tabler/icons-react'
 import { Controller } from 'react-hook-form'
 import { CharacterType } from '@/render/src/types'
-import { useCreatePassive } from '@/render/src/panel/character/tabs/passives/hooks/use-passive'
+import { useCreatePassive } from '@/render/src/panel/character/tabs/passives/utilities/hooks/use-passive'
 import { InputWrapper } from '@/render/src/shared/utilities/classes'
 import DropImage from '@/render/src/panel/shared/components/ui/drop-image'
 import ModalButton from '@/render/src/panel/shared/components/buttons/modal-button'

@@ -3,7 +3,7 @@
 import { DragDropContext, Droppable } from '@hello-pangea/dnd'
 import { CharacterType } from '@/render/src/types'
 import { useDrag } from '@/render/src/panel/shared/utilities/hooks/use-drag'
-import { updatedOrderTeams } from '@/render/src/panel/character/teams/services/update'
+import { updatedOrderTeams } from '@/render/src/panel/character/teams/utilities/services/update'
 import TeamItem from '@/render/src/panel/character/teams/components/team-item'
 
 const SortableTeamList = ({ character }: { character: CharacterType }) => {

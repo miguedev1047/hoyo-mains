@@ -4,7 +4,7 @@ import { useTransition } from 'react'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { AscensionQuantitySchema } from '@/schemas'
 import { MaterialByAscension } from '@prisma/client'
-import { updateQuantity } from '@/render/src/panel/character/ascension/services/update'
+import { updateQuantity } from '@/render/src/panel/character/ascension/utilities/services/update'
 import { useRouter } from 'next/navigation'
 import { toast } from 'sonner'
 
