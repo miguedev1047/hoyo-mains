@@ -17,13 +17,10 @@ const BuildPage = async ({ searchParams }: SearchParamsTypes) => {
     weapon: searchParams.weapon?.toLowerCase()
   }
 
-
   return (
     <>
       <Header />
-      <main className='max-w-[1280px] my-10 mx-auto'>
-       
-      </main>
+      <main className='max-w-[1280px] my-10 mx-auto'></main>
     </>
   )
 }
