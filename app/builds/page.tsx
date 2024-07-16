@@ -1,9 +1,5 @@
-import { Suspense } from 'react'
 import { SearchParamsTypes } from '@/types'
-import { fetchCharacters } from '@/render/services/home/characters/data'
-import { CharacterTypes } from '@/types'
 import Header from '@/render/components/home/header/header'
-import SectionBuild from '@/render/sections/builds/section-build'
 
 export async function generateMetadata() {
   return {
@@ -21,21 +17,12 @@ const BuildPage = async ({ searchParams }: SearchParamsTypes) => {
     weapon: searchParams.weapon?.toLowerCase()
   }
 
-  const characters = (await fetchCharacters({
-    element,
-    name,
-    stars,
-    weapon
-  })) as CharacterTypes[]
-
 
   return (
     <>
       <Header />
       <main className='max-w-[1280px] my-10 mx-auto'>
-        <Suspense>
-          <SectionBuild characters={characters} />
-        </Suspense>
+       
       </main>
     </>
   )
