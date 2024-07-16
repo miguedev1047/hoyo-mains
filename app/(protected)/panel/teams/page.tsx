@@ -1,12 +1,13 @@
+import { IconUsersGroup } from '@tabler/icons-react'
 import {
   fetchCharacters,
   fetchTeamByName
-} from '@/render/services/panel/teams/best-teams/data'
-import { IconUsersGroup } from '@tabler/icons-react'
-import { SearchParamsTypes, BestTeamType } from '@/types'
-import Header from '@/render/components/panel/header'
-import PanelWrapper from '@/render/components/UI/panel-wrapper'
-import BestTeamSection from '@/render/sections/teams/teams-section'
+} from '@/render/src/panel/teams/utilities/services/fetch'
+import { BestTeamsType, CharacterType, SearchTypes } from '@/render/src/types'
+import PanelWrapper from '@/render/src/panel/shared/components/ui/panel-wrapper'
+import PanelHeader from '@/render/src/panel/shared/components/ui/panel-header'
+import TeamMenubar from '@/render/src/panel/teams/components/team-menubar'
+import Teams from '@/render/src/panel/teams/teams'
 
 export async function generateMetadata() {
   return {
@@ -15,16 +16,22 @@ export async function generateMetadata() {
   }
 }
 
-const BestTeamPage = async ({ searchParams }: SearchParamsTypes) => {
+const BestTeamPage = async ({ searchParams }: SearchTypes) => {
   const characterName = searchParams.character?.toLowerCase()
 
-  const teams = (await fetchTeamByName(characterName)) as BestTeamType[]
-  const characters = await fetchCharacters()
+  const characters = (await fetchCharacters()) as CharacterType[]
+  const teams = (await fetchTeamByName(characterName)) as BestTeamsType[]
 
   return (
     <PanelWrapper>
-      <Header title='Equipos' startContent={<IconUsersGroup size={30} />} />
-      <BestTeamSection teams={teams} characters={characters} />
+      <PanelHeader
+        title='Equipos'
+        startContent={<IconUsersGroup size={32} />}
+      />
+
+      <TeamMenubar />
+
+      <Teams teams={teams} characters={characters} />
     </PanelWrapper>
   )
 }

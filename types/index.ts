@@ -175,6 +175,7 @@ export type BestTeamType = Prisma.BestTeamGetPayload<{
   include: { characters: true }
 }>
 
+
 export interface SearchParamsTypes {
   searchParams: {
     character: string

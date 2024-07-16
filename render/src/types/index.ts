@@ -82,3 +82,20 @@ export type ConstellationsType = Prisma.ConstellationsByCharacterGetPayload<{
     constellations: true
   }
 }>
+
+export type BestTeamsType = Prisma.BestTeamGetPayload<{
+  include: { characters: true }
+}>
+
+export type BestTeamCharacterType = Prisma.BestTeamCharacterGetPayload<{
+  include: { team: true }
+}>
+
+export interface SearchTypes {
+  searchParams: {
+    character: string
+    element?: string
+    stars?: string
+    weapon?: string
+  }
+}
