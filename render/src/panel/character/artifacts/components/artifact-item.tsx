@@ -41,7 +41,7 @@ const ArtifactItem = ({ artifact, index }: ArtifactItemProps) => {
           <Card className='flex flex-row items-center justify-between gap-4 p-5 bg-color-darkest'>
             <div className='flex gap-4 items-center select-none'>
               <IconGripVertical size={20} />
-              <Figure>
+              <Figure size='sm'>
                 <Image
                   src={fetchedArtifact?.imageUrl!}
                   alt={fetchedArtifact?.name!}

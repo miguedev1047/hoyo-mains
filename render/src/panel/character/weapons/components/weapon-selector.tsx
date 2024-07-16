@@ -42,6 +42,8 @@ const WeaponSelector = ({ character }: WeaponSelectorProps) => {
       </Alert>
     )
 
+  console.log(weapons)
+
   if (FULL_ITEMS) return null
 
   return (
@@ -83,11 +85,11 @@ const WeaponSelector = ({ character }: WeaponSelectorProps) => {
                     <Figure size='sm'>
                       <Image
                         className='w-full h-full object-cover'
-                        src={character.imageUrl!}
-                        alt={character.name}
+                        src={weapon.imageUrl!}
+                        alt={weapon.name}
                       />
                     </Figure>
-                    <span className='capitalize'>{character.name}</span>
+                    <span className='capitalize'>{weapon.name}</span>
                   </div>
                 </SelectItem>
               )}

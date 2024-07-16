@@ -85,7 +85,7 @@ const ArtifactSelector = ({ character }: ArtifactSelectorProps) => {
                 {(artifact) => (
                   <SelectItem key={artifact.id} textValue={artifact.name}>
                     <div className='flex gap-2 items-center'>
-                      <Figure size='md'>
+                      <Figure size='sm'>
                         <Image
                           radius='sm'
                           className='w-full h-full object-cover'
