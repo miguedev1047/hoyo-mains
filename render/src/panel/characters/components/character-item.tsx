@@ -1,13 +1,13 @@
 import { IconTrash } from '@tabler/icons-react'
 import { getStarBorderColor } from '@/render/src/shared/utilities/helpers/get-border-color'
+import { deleteCharacter } from '@/render/src/panel/characters/utilities/services/delete'
 import { CharacterType } from '@/render/src/types'
 import { generateCharacterUrl } from '@/render/src/shared/utilities/helpers/generate-character-url'
 import { CircularProgress, Image, Tooltip } from '@nextui-org/react'
 import { Card } from '@nextui-org/card'
 import { Link } from '@nextui-org/link'
-import { deleteCharacter } from '@/render/src/panel/characters/utilities/services/delete'
+import { Figure } from '@/render/src/shared/components/figure'
 import DeleteButton from '@/render/src/panel/shared/components/buttons/delete-button'
-import Figure from '@/render/src/shared/components/figure'
 import clsx from 'clsx'
 
 interface CharacterListProps {
@@ -34,7 +34,7 @@ const CharacterItem = ({ item }: CharacterListProps) => {
         )}
       >
         {item.imageUrl ? (
-          <Figure width='w-full' height='w-full' background='bg-darkest'>
+          <Figure className='w-full h-full bg-transparent'>
             <Image
               isZoomed
               className='object-cover w-full h-full'

@@ -9,7 +9,7 @@ import { CharacterType } from '@/render/src/types'
 import { getElementImage } from '@/render/src/panel/character/shared/utilities/helpers/get-element-image'
 import { getRole } from '@/render/src/panel/character/shared/utilities/helpers/get-role'
 import { getWeapon } from '@/render/src/panel/character/shared/utilities/helpers/get-weapon'
-import Figure from '@/render/src/shared/components/figure'
+import { Figure } from '../../shared/components/figure'
 
 const InfoHeader = ({ character }: { character: CharacterType }) => {
   const weaponType = getWeapon(character?.weapon!)!
@@ -43,12 +43,14 @@ const InfoHeader = ({ character }: { character: CharacterType }) => {
       <div className='flex justify-between items-center'>
         <div className='max-md:w-full flex justify-between md:items-center space-y-2 md:space-x-5 lg:space-x-8'>
           <Figure
-            width='w-[160px]'
-            height='h-[160px]'
-            background='bg-darkest'
-            className='border-[1px] border-color-lightest rounded-lg'
+            radius='lg'
+            className='size-[160px] bg-color-darkest border-[1px] border-color-lightest'
           >
-            <Image src={character?.imageUrl!} alt={character?.name} />
+            <Image
+              className='w-full h-full object-cover'
+              src={character?.imageUrl!}
+              alt={character?.name}
+            />
           </Figure>
 
           <div className='flex flex-col max-md:space-y-3 md:hidden'>

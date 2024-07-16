@@ -14,7 +14,7 @@ import {
   AlertDescription,
   AlertTitle
 } from '@/render/src/panel/character/shared/components/alert'
-import Figure from '@/render/components/UI/misc/figure'
+import { Figure } from '@/render/src/shared/components/figure'
 
 interface MaterialSelectorProps {
   character: CharacterType
@@ -86,7 +86,7 @@ const MaterialSelector = ({ character }: MaterialSelectorProps) => {
                 {(material) => (
                   <SelectItem key={material.id} textValue={material.name}>
                     <div className='flex gap-2 items-center'>
-                      <Figure width='w-10' height='h-10'>
+                      <Figure size='md'>
                         <Image
                           radius='sm'
                           className='w-full h-full object-cover'

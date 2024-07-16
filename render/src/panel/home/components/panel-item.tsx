@@ -1,6 +1,6 @@
 import { Card, CardFooter } from '@nextui-org/card'
 import { Image } from '@nextui-org/react'
-import Figure from '@/render/src/shared/components/figure'
+import { Figure } from '@/render/src/shared/components/figure'
 import Link from 'next/link'
 import Countup from '@/render/src/panel/home/components/countup'
 
@@ -25,7 +25,7 @@ const PanelItem = ({ item }: PanelItemProps) => {
           isFooterBlurred
           className='w-full h-full bg-color-dark'
         >
-          <Figure width='w-full' height='h-full'>
+          <Figure className='bg-transparent w-full h-full'>
             <Image
               className='object-cover w-full h-full'
               classNames={{

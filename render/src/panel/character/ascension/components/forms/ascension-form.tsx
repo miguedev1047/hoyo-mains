@@ -12,21 +12,21 @@ import {
   Select,
   SelectItem
 } from '@nextui-org/react'
-import { IconPlus } from '@tabler/icons-react'
-import { Controller } from 'react-hook-form'
-import { useAscensionForm } from '@/render/src/panel/character/ascension/utilities/hooks/use-ascension-form'
-import { useFetch } from '@/utils/hooks/general/use-fetch'
-import { Material } from '@prisma/client'
-import {
-  InputWrapper,
-  selectWrapperDark
-} from '@/render/src/shared/utilities/classes'
-import Figure from '@/render/src/shared/components/figure'
 import {
   Alert,
   AlertDescription,
   AlertTitle
 } from '@/render/src/panel/character/shared/components/alert'
+import {
+  InputWrapper,
+  selectWrapperDark
+} from '@/render/src/shared/utilities/classes'
+import { IconPlus } from '@tabler/icons-react'
+import { Controller } from 'react-hook-form'
+import { useAscensionForm } from '@/render/src/panel/character/ascension/utilities/hooks/use-ascension-form'
+import { useFetch } from '@/utils/hooks/general/use-fetch'
+import { Material } from '@prisma/client'
+import { Figure } from '@/render/src/shared/components/figure'
 
 interface AscensionFormProps {
   character: CharacterType
@@ -58,7 +58,7 @@ const AscensionForm = ({ character }: AscensionFormProps) => {
     )
 
   if (isLoading) return null
-  
+
   if (FULL_ITEMS) return null
 
   return (
@@ -149,7 +149,7 @@ const AscensionForm = ({ character }: AscensionFormProps) => {
                   {(material) => (
                     <SelectItem textValue={material.name} key={material.id}>
                       <div className='flex gap-2 items-center'>
-                        <Figure width='w-10' height='h-10'>
+                        <Figure size='sm'>
                           <Image
                             radius='sm'
                             className='w-full h-full object-cover'

@@ -9,9 +9,10 @@ import { cn } from '@/libs/utils'
 const skeletonVariants = cva('flex flex-row items-center justify-between p-5', {
   variants: {
     variant: {
+      transparent: 'bg-transparent',
       default: 'bg-color-darkest',
       dark: 'bg-color-dark',
-      darkest: 'bg-color-darkest'
+      darkest: 'bg-color-darkest',
     },
     size: {
       sm: 'size-10',

@@ -13,7 +13,7 @@ import {
 } from '@/render/src/panel/character/shared/components/alert'
 import { useArtifactSelector } from '@/render/src/panel/character/artifacts/utilities/hooks/use-artifact-selector'
 import { CharacterType } from '@/render/src/types'
-import Figure from '@/render/components/UI/misc/figure'
+import { Figure } from '@/render/src/shared/components/figure'
 
 interface ArtifactSelectorProps {
   character: CharacterType
@@ -85,7 +85,7 @@ const ArtifactSelector = ({ character }: ArtifactSelectorProps) => {
                 {(artifact) => (
                   <SelectItem key={artifact.id} textValue={artifact.name}>
                     <div className='flex gap-2 items-center'>
-                      <Figure width='w-10' height='h-10'>
+                      <Figure size='md'>
                         <Image
                           radius='sm'
                           className='w-full h-full object-cover'

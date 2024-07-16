@@ -9,7 +9,7 @@ import { useFetch } from '@/render/src/shared/utilities/hooks/use-fetch'
 import { WeaponItemType } from '@/render/src/types'
 import { ItemSkeleton } from '@/render/src/panel/shared/components/skeletons'
 import { deleteArtifact } from '@/render/src/panel/character/artifacts/utilities/services/delete'
-import Figure from '@/render/src/shared/components/figure'
+import { Figure } from '@/render/src/shared/components/figure'
 import DeleteButton from '@/render/src/panel/shared/components/buttons/delete-button'
 
 interface ArtifactItemProps {
@@ -41,7 +41,7 @@ const ArtifactItem = ({ artifact, index }: ArtifactItemProps) => {
           <Card className='flex flex-row items-center justify-between gap-4 p-5 bg-color-darkest'>
             <div className='flex gap-4 items-center select-none'>
               <IconGripVertical size={20} />
-              <Figure background='bg-primary-color' width='w-10' height='h-10'>
+              <Figure>
                 <Image
                   src={fetchedArtifact?.imageUrl!}
                   alt={fetchedArtifact?.name!}

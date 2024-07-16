@@ -8,8 +8,8 @@ import {
 import { Material, MaterialByAscension } from '@prisma/client'
 import { ItemSkeleton } from '@/render/src/panel/character/ascension/components/skeletons'
 import { useFetch } from '@/utils/hooks/general/use-fetch'
+import { Figure } from '@/render/src/shared/components/figure'
 import QuantityForm from '@/render/src/panel/character/ascension/components/forms/quantity-form'
-import Figure from '@/render/src/shared/components/figure'
 
 interface AscensionProps {
   material: MaterialByAscension
@@ -30,7 +30,7 @@ const AscensionItem = ({ material }: AscensionProps) => {
       <PopoverTrigger>
         <div className='flex items-center gap-2 cursor-pointer'>
           <Badge placement='top-left' content={material.quantity}>
-            <Figure background='bg-primary-color' width='w-10' height='h-10'>
+            <Figure size='sm'>
               <Image
                 radius='sm'
                 className='w-full h-full object-cover'

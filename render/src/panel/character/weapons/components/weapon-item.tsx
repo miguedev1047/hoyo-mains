@@ -7,8 +7,8 @@ import { useFetch } from '@/render/src/shared/utilities/hooks/use-fetch'
 import { WeaponItemType } from '@/render/src/types'
 import { deleteWeapon } from '@/render/src/panel/character/weapons/utilities/services/delete'
 import { ItemSkeleton } from '@/render/src/panel/shared/components/skeletons'
-import Figure from '@/render/src/shared/components/figure'
 import DeleteButton from '@/render/src/panel/shared/components/buttons/delete-button'
+import { Figure } from '@/render/src/shared/components/figure'
 
 interface WeaponItemProps {
   weapon: WeaponItemType
@@ -39,7 +39,7 @@ const WeaponItem = ({ weapon, index }: WeaponItemProps) => {
           <Card className='flex flex-row items-center justify-between gap-4 p-5 bg-color-darkest'>
             <div className='flex gap-4 items-center select-none'>
               <IconGripVertical size={20} />
-              <Figure background='bg-primary-color' width='w-10' height='h-10'>
+              <Figure size='sm'>
                 <Image
                   src={fetchedWeapon?.imageUrl!}
                   alt={fetchedWeapon?.name!}

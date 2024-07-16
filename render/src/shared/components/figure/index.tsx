@@ -3,7 +3,7 @@ import { cva, type VariantProps } from 'class-variance-authority'
 import { cn } from '@/libs/utils'
 
 const figureVariants = cva(
-  'overflow-hidden relative grid place-content-center bg-primary-color',
+  'overflow-hidden relative grid place-content-center aspect-square bg-primary-color',
   {
     variants: {
       size: {
@@ -12,7 +12,8 @@ const figureVariants = cva(
         lg: 'size-14',
         xl: 'size-16',
         '2xl': 'size-20',
-        '3xl': 'size-24'
+        '3xl': 'size-24',
+        square: 'w-[160px] h-[160px]'
       },
       radius: {
         none: 'rounded-none',
@@ -24,7 +25,7 @@ const figureVariants = cva(
     },
     defaultVariants: {
       size: 'md',
-      radius: 'md'
+      radius: 'lg'
     }
   }
 )
@@ -32,10 +33,10 @@ const figureVariants = cva(
 const Figure = React.forwardRef<
   HTMLDivElement,
   React.HTMLAttributes<HTMLDivElement> & VariantProps<typeof figureVariants>
->(({ className, size, ...props }, ref) => {
+>(({ className, size, radius, ...props }, ref) => {
   return (
     <figure
-      className={cn(figureVariants({ size: 'md', radius: 'lg' }), className)}
+      className={cn(figureVariants({ size, radius }), className)}
       {...props}
       ref={ref}
     />

@@ -5,8 +5,8 @@ import { CharacterType, TeamCharacterItemType } from '@/render/src/types'
 import { useFetch } from '@/render/src/shared/utilities/hooks/use-fetch'
 import { deleteCharacter } from '@/render/src/panel/character/teams/utilities/services/delete'
 import { ItemSkeleton } from '@/render/src/panel/character/teams/components/skeletons'
-import Figure from '@/render/src/shared/components/figure'
 import DeleteButton from '@/render/src/panel/shared/components/buttons/delete-button'
+import { Figure } from '@/render/src/shared/components/figure'
 
 interface CharacterItemProps {
   character: TeamCharacterItemType
@@ -40,11 +40,7 @@ const CharacterItem = ({ character, index }: CharacterItemProps) => {
                 <span className='max-md:hidden'>
                   <IconGripVertical size={20} />
                 </span>
-                <Figure
-                  background='bg-primary-color'
-                  width='w-12'
-                  height='h-12'
-                >
+                <Figure size='md'>
                   <Image
                     radius='sm'
                     className='w-full h-full object-cover'

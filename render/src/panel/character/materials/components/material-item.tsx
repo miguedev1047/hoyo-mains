@@ -7,8 +7,9 @@ import { deleteMaterial } from '@/render/src/panel/character/materials/utilities
 import { useFetch } from '@/render/src/shared/utilities/hooks/use-fetch'
 import { MaterialItemType } from '@/render/src/types'
 import { ItemSkeleton } from '@/render/src/panel/shared/components/skeletons'
-import Figure from '@/render/src/shared/components/figure'
+
 import DeleteButton from '@/render/src/panel/shared/components/buttons/delete-button'
+import { Figure } from '@/render/src/shared/components/figure'
 
 interface MaterialItemProps {
   material: MaterialItemType
@@ -39,7 +40,7 @@ const MaterialItem = ({ material, index }: MaterialItemProps) => {
           <Card className='flex flex-row items-center justify-between gap-4 p-5 bg-color-darkest'>
             <div className='flex gap-4 items-center select-none'>
               <IconGripVertical size={20} />
-              <Figure background='bg-primary-color' width='w-10' height='h-10'>
+              <Figure size='sm'>
                 <Image
                   src={fetchedMaterial?.imageUrl!}
                   alt={fetchedMaterial?.name!}

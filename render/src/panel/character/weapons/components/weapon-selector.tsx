@@ -1,18 +1,19 @@
 'use client'
 
-import { CharacterTypes } from '@/types'
-import { selectorItemWrapper } from '@/utils/classes'
-import { Button } from '@nextui-org/button'
-import { Avatar, Chip, Select, SelectItem } from '@nextui-org/react'
-import { IconPlus } from '@tabler/icons-react'
-import { Controller } from 'react-hook-form'
-import { useFilteredWeapons } from '@/render/src/panel/character/weapons/utilities/hooks/use-filtered-weapons'
-import { useWeaponSelector } from '@/render/src/panel/character/weapons/utilities/hooks/use-weapon-selector'
 import {
   Alert,
   AlertDescription,
   AlertTitle
 } from '@/render/src/panel/character/shared/components/alert'
+import { CharacterTypes } from '@/types'
+import { selectorItemWrapper } from '@/utils/classes'
+import { Button } from '@nextui-org/button'
+import { Chip, Image, Select, SelectItem } from '@nextui-org/react'
+import { IconPlus } from '@tabler/icons-react'
+import { Controller } from 'react-hook-form'
+import { useFilteredWeapons } from '@/render/src/panel/character/weapons/utilities/hooks/use-filtered-weapons'
+import { useWeaponSelector } from '@/render/src/panel/character/weapons/utilities/hooks/use-weapon-selector'
+import { Figure } from '@/render/src/shared/components/figure'
 
 interface WeaponSelectorProps {
   character: CharacterTypes
@@ -78,14 +79,15 @@ const WeaponSelector = ({ character }: WeaponSelectorProps) => {
             >
               {(weapon) => (
                 <SelectItem key={weapon.id} textValue={weapon.name}>
-                  <div className='flex gap-2 items-center'>
-                    <Avatar
-                      radius='sm'
-                      className='p-1 object-cover'
-                      src={weapon.imageUrl!}
-                      alt={weapon.name}
-                    />
-                    <span>{weapon.name}</span>
+                  <div className='flex items-center gap-2'>
+                    <Figure size='sm'>
+                      <Image
+                        className='w-full h-full object-cover'
+                        src={character.imageUrl!}
+                        alt={character.name}
+                      />
+                    </Figure>
+                    <span className='capitalize'>{character.name}</span>
                   </div>
                 </SelectItem>
               )}

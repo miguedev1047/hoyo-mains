@@ -13,7 +13,7 @@ import {
 } from '@/render/src/panel/character/shared/components/alert'
 import { useFetch } from '@/render/src/shared/utilities/hooks/use-fetch'
 import { useCharacterSelector } from '@/render/src/panel/character/teams/utilities/hooks/use-character-selector'
-import Figure from '@/render/src/shared/components/figure'
+import { Figure } from '@/render/src/shared/components/figure'
 
 interface CharacterSelectorProps {
   character: CharacterType
@@ -85,11 +85,7 @@ const CharacterSelector = ({ character, team }: CharacterSelectorProps) => {
               {(character) => (
                 <SelectItem key={character.id} textValue={character.name}>
                   <div className='flex items-center gap-2'>
-                    <Figure
-                      background='bg-primary-color'
-                      width='w-10'
-                      height='h-10'
-                    >
+                    <Figure size='sm'>
                       <Image
                         className='w-full h-full object-cover'
                         src={character.imageUrl!}
