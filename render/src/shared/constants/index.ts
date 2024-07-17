@@ -10,6 +10,9 @@ import {
   Hydro,
   Polearm,
   Pyro,
+  Rarity3,
+  Rarity4,
+  Rarity5,
   Sword
 } from '@/assets'
 
@@ -79,10 +82,60 @@ export const weapons = [
   }
 ]
 
+export const stars = [
+  { title: '5 Estrellas', name: 'five_star', value: '5', icon: Rarity5.src },
+  { title: '4 Estrellas', name: 'four_star', value: '4', icon: Rarity4.src },
+  { title: '3 Estrellas', name: 'three_star', value: '3', icon: Rarity3.src }
+]
+
 export const columns = [
   { name: 'RANGO', uid: 'rank' },
   { name: 'NIVEL', uid: 'level' },
   { name: 'COSTO', uid: 'cost' },
   { name: 'MATERIALES', uid: 'materials' },
   { name: 'ACCIONES', uid: 'actions' }
+]
+
+export const buttonFilters = {
+  rarity: [
+    { name: '5 Estrellas', value: '5', src: Rarity5.src },
+    { name: '4 Estrellas', value: '4', src: Rarity4.src }
+  ],
+  elements: [
+    { name: 'Pyro', value: 'pyro', src: Pyro.src },
+    { name: 'Hydro', value: 'hydro', src: Hydro.src },
+    { name: 'Cryo', value: 'cryo', src: Cryo.src },
+    { name: 'Dendro', value: 'dendro', src: Dendro.src },
+    { name: 'Electro', value: 'electro', src: Electro.src },
+    { name: 'Anemo', value: 'anemo', src: Anemo.src },
+    { name: 'Geo', value: 'geo', src: Geo.src }
+  ],
+  weapons: [
+    { name: 'Espada', value: 'sword', src: Sword.src },
+    { name: 'Mandoble', value: 'claymore', src: Claymore.src },
+    { name: 'Lanza', value: 'polearm', src: Polearm.src },
+    { name: 'Catalizador', value: 'catalyst', src: Catalyst.src },
+    { name: 'Arco', value: 'bow', src: Bow.src }
+  ]
+}
+
+export const stats = [
+  { name: 'Prob. critica', id: 'PROB_CRIT' },
+  { name: 'Daño critico', id: 'DMG_CRIT' },
+  { name: 'Recarga de energia', id: 'ENERGY_RECHARGE' },
+  { name: 'Maestria elemental', id: 'ELEMENTAL_MASTERY' },
+  { name: 'Atq. porcentual', id: 'ATQ_PERCENTUAL' },
+  { name: 'Vida porcentual', id: 'HP_PERCENTUAL' },
+  { name: 'Def. porcentual', id: 'DEF_PERCENTUAL' },
+  { name: 'Atq. plano', id: 'ATQ_FLAT' },
+  { name: 'Vida plano', id: 'HP_FLAT' },
+  { name: 'Def. plano', id: 'DEF_FLAT' }
+]
+
+export const weaponTypes = [
+  { name: 'Espada', id: 'SWORD', icon: Sword.src },
+  { name: 'Mandoble', id: 'CLAYMORE', icon: Claymore.src },
+  { name: 'Arco', id: 'BOW', icon: Bow.src },
+  { name: 'Lanza', id: 'POLEARM', icon: Polearm.src },
+  { name: 'Catalizador', id: 'CATALYST', icon: Catalyst.src }
 ]

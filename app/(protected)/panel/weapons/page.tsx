@@ -1,10 +1,11 @@
-import { SectionFallback } from '@/render/components/UI/fallbacks'
-import { Suspense } from 'react'
 import { IconSword } from '@tabler/icons-react'
-import Header from '@/render/components/panel/header'
-import WeaponsSection from '@/render/sections/weapons/weapon-section'
-import WeaponModal from '@/render/components/UI/modal/weapon-modal'
-import PanelWrapper from '@/render/components/UI/panel-wrapper'
+import { fetchWeapons } from '@/render/src/panel/weapons/utilities/services/fetch'
+import { Weapon } from '@prisma/client'
+import PanelHeader from '@/render/src/panel/shared/components/ui/panel-header'
+import PanelWrapper from '@/render/src/panel/shared/components/ui/panel-wrapper'
+import WeaponMenubar from '@/render/src/panel/weapons/components/weapon-menubar'
+import Weapons from '@/render/src/panel/weapons/weapons'
+import WeaponModal from '@/render/src/panel/weapons/components/weapon-modal'
 
 export async function generateMetadata() {
   return {
@@ -13,17 +14,33 @@ export async function generateMetadata() {
   }
 }
 
-const WeaponsPage = () => {
+interface WeaponsPageProps {
+  searchParams: {
+    name: string
+    stars: string
+    type: string
+  }
+}
+
+const WeaponsPage = async ({ searchParams }: WeaponsPageProps) => {
+  const { name, stars, type } = {
+    name: searchParams.name?.toLocaleLowerCase(),
+    type: searchParams?.type,
+    stars: parseInt(searchParams?.stars)
+  }
+
+  const weapons = (await fetchWeapons({ name, stars, type })) as Weapon[]
+
   return (
-    <Suspense fallback={<SectionFallback />}>
-      <PanelWrapper>
-        <Header title='Armas' startContent={<IconSword size={32} />} />
+    <PanelWrapper>
+      <PanelHeader title='Armas' startContent={<IconSword size={32} />} />
 
-        <WeaponsSection />
+      <WeaponMenubar />
 
-        <WeaponModal />
-      </PanelWrapper>
-    </Suspense>
+      <Weapons weapons={weapons} />
+
+      <WeaponModal />
+    </PanelWrapper>
   )
 }
 

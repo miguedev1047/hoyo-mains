@@ -115,15 +115,15 @@ const ItemWeapon = ({ weapon }: { weapon: Weapon }) => {
             <DropdownSection title='Acciones'>
               <DropdownItem
                 key='edit'
-                onPress={() => handleEdit(weapon.id)}
                 startContent={<IconPencil />}
+                onPress={() => handleEdit(weapon.id)}
               >
                 Editar
               </DropdownItem>
               <DropdownItem
                 key='delete'
-                onPress={() => handleDelete(weapon.id)}
                 startContent={<IconTrash />}
+                onPress={() => handleDelete(weapon.id)}
                 color='danger'
                 className='text-color-red'
               >

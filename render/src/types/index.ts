@@ -40,6 +40,8 @@ export type CharacterType = Prisma.CharacterGetPayload<{
   }
 }>
 
+export type WeaponType = Prisma.WeaponGetPayload<{}>
+
 export type MaterialItemType = Prisma.MaterialsByCharacterGetPayload<{
   include: {
     character: true
