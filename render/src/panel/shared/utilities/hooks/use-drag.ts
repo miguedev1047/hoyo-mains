@@ -1,7 +1,12 @@
-import { DragTypes } from '@/types'
-import { reOrder } from '@/utils/helpers/re-order'
 import { useEffect, useState } from 'react'
+import { reOrder } from '@/render/src/panel/shared/utilities/helpers/re-order'
 import { toast } from 'sonner'
+
+export interface DragTypes {
+  item: Array<any>
+  name: string
+  callback: (items: Array<any>) => Promise<any>
+}
 
 export const useDrag = ({ item, name, callback }: DragTypes) => {
   const [orderedList, setOrderedList] = useState<Array<any>>(item)

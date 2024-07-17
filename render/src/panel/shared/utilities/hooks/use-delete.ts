@@ -1,6 +1,6 @@
 'use client'
 
-import { deleteImage } from '@/utils/helpers/delete-image'
+import { deleteImage } from '@/render/src/shared/utilities/helpers/delete-image'
 import { useRouter } from 'next/navigation'
 import { useTransition } from 'react'
 import { toast } from 'sonner'
