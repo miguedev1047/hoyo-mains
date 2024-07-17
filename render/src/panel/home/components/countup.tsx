@@ -12,12 +12,10 @@ const Countup = ({ url }: { url: string }) => {
   if (isLoading)
     return <span className='text-color-red text-xl font-semibold'>0</span>
 
-  const dataLength = data?.length as number
-
   return (
     <CountUp
       className='text-color-red text-xl font-semibold'
-      end={dataLength}
+      end={20}
       duration={5}
     />
   )

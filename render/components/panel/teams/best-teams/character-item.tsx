@@ -45,15 +45,6 @@ const CharacterItem = ({
         >
           <Card className='bg-color-darkest p-5'>
             <div className='flex items-center justify-between gap-2'>
-              <article className='flex items-center gap-4'>
-                <IconGripVertical size={20} />
-                <Figure padding='p-0'>
-                  <Image src={data.imageUrl!} alt={data.name} />
-                </Figure>
-                <h2 className='capitalize line-clamp-1 text-base md:text-lg font-medium'>
-                  {data.name}
-                </h2>
-              </article>
               <DeleteButton id={character.id} onCallback={deleteTeamCharacters}>
                 <IconTrash size={20} />
               </DeleteButton>
