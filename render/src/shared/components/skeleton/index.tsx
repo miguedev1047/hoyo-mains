@@ -12,17 +12,28 @@ const skeletonVariants = cva('flex flex-row items-center justify-between p-5', {
       transparent: 'bg-transparent',
       default: 'bg-color-darkest',
       dark: 'bg-color-dark',
-      darkest: 'bg-color-darkest',
+      darkest: 'bg-color-darkest'
     },
     size: {
       sm: 'size-10',
       md: 'size-12',
       lg: 'size-14'
+    },
+    radius: {
+      sm: 'rounded-sm',
+      md: 'rounded-md',
+      lg: 'rounded-lg',
+      xl: 'rounded-xl',
+      none: 'rounded-none'
+    },
+    showDragIcon: {
+      true: 'cursor-move'
     }
   },
   defaultVariants: {
     variant: 'default',
-    size: 'md'
+    size: 'md',
+    radius: 'xl'
   }
 })
 
@@ -31,24 +42,24 @@ const SkeletonCard = React.forwardRef<
   React.HTMLAttributes<HTMLDivElement> &
     VariantProps<typeof skeletonVariants> &
     CardProps
->(({ className, variant, ...props }, ref) => {
+>(({ className, showDragIcon, radius, variant, size, ...props }, ref) => {
   return (
     <Card
       className={cn(
-        skeletonVariants({ variant }),
-        `w-full h-full max-w-[388px] max-h-[88px] ${className}`
+        skeletonVariants({ variant, radius }),
+        `w-full h-full shadow-none ${className}`
       )}
       {...props}
       ref={ref}
     >
       <div className='flex items-center gap-4'>
-        <span className='max-md:hidden'>
-          <IconGripVertical size={20} />
-        </span>
+        {showDragIcon && (
+          <span className='max-md:hidden'>
+            <IconGripVertical size={20} />
+          </span>
+        )}
         <Skeleton
-          className={`${cn(
-            skeletonVariants({ size: 'md' })
-          )} ${skeletonWrapper}`}
+          className={`${cn(skeletonVariants({ size }))} ${skeletonWrapper}`}
         />
         <div>
           <Skeleton className={`min-w-[150px] h-4 ${skeletonWrapper}`} />

@@ -5,10 +5,10 @@ import { Card } from '@nextui-org/card'
 import { Image } from '@nextui-org/react'
 import { useFetch } from '@/render/src/shared/utilities/hooks/use-fetch'
 import { WeaponItemType } from '@/render/src/types'
-import { deleteWeapon } from '@/render/src/panel/character/weapons/utilities/services/delete'
-import { ItemSkeleton } from '@/render/src/panel/shared/components/skeletons'
-import DeleteButton from '@/render/src/panel/shared/components/buttons/delete-button'
 import { Figure } from '@/render/src/shared/components/figure'
+import { deleteWeapon } from '@/render/src/panel/character/weapons/utilities/services/delete'
+import { SkeletonCard } from '@/render/src/shared/components/skeleton'
+import DeleteButton from '@/render/src/panel/shared/components/buttons/delete-button'
 
 interface WeaponItemProps {
   weapon: WeaponItemType
@@ -24,8 +24,8 @@ const WeaponItem = ({ weapon, index }: WeaponItemProps) => {
     error
   } = useFetch<Weapon>(`/api/weapons/weapon/${weaponId}`)
 
-  if (error) return <ItemSkeleton />
-  if (isLoading) return <ItemSkeleton />
+  if (error) return <SkeletonCard showDragIcon size='sm' className='mb-4' />
+  if (isLoading) return <SkeletonCard showDragIcon size='sm' className='mb-4' />
 
   return (
     <Draggable draggableId={weapon.id} index={index}>

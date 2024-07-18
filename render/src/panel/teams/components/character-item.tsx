@@ -6,7 +6,6 @@ import { useFetch } from '@/render/src/shared/utilities/hooks/use-fetch'
 import { BestTeamCharacterType, CharacterType } from '@/render/src/types'
 import { deleteCharacter } from '@/render/src/panel/teams/utilities/services/delete'
 import { SkeletonCard } from '@/render/src/shared/components/skeleton'
-import { getDraggingStyle } from '@/render/src/shared/utilities/helpers/get-dragging-style'
 import { Figure } from '@/render/src/shared/components/figure'
 import DeleteButton from '@/render/src/panel/shared/components/buttons/delete-button'
 import clsx from 'clsx'
@@ -23,8 +22,8 @@ const CharacterItem = ({ character, index }: CharacterItemProps) => {
     `/api/characters/character/${characterId}`
   )
 
-  if (isLoading) return <SkeletonCard />
-  if (error) return <SkeletonCard />
+  if (error) return <SkeletonCard showDragIcon variant='darkest' />
+  if (isLoading) return <SkeletonCard showDragIcon variant='darkest' />
 
   return (
     <Draggable draggableId={character.id} index={index}>
@@ -37,11 +36,7 @@ const CharacterItem = ({ character, index }: CharacterItemProps) => {
           <Card
             className={clsx(
               'bg-color-darkest p-5',
-              getDraggingStyle({
-                isDragging: snapshot.isDragging,
-                marginClass: 'mr-4',
-                index: index
-              })
+              snapshot.isDragging && 'border-[1px] border-color-lightest'
             )}
           >
             <div className='flex items-center justify-between gap-2'>
@@ -49,6 +44,7 @@ const CharacterItem = ({ character, index }: CharacterItemProps) => {
                 <IconGripVertical size={20} />
                 <Figure>
                   <Image
+                    radius='sm'
                     src={data?.imageUrl!}
                     alt={data?.name}
                     className='w-ful h-full object-cover'

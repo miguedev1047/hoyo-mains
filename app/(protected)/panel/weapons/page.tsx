@@ -24,7 +24,7 @@ interface WeaponsPageProps {
 
 const WeaponsPage = async ({ searchParams }: WeaponsPageProps) => {
   const { name, stars, type } = {
-    name: searchParams.name?.toLocaleLowerCase(),
+    name: searchParams.name,
     type: searchParams?.type,
     stars: parseInt(searchParams?.stars)
   }

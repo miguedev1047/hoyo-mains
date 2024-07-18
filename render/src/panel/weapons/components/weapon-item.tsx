@@ -22,6 +22,7 @@ const WeaponItem = ({ weapon }: WeaponItemProps) => {
         <article className='flex items-center gap-4'>
           <Figure size='md'>
             <Image
+              radius='sm'
               src={weapon.imageUrl!}
               alt={weapon.name}
               width={200}

@@ -7,7 +7,7 @@ import { Card } from '@nextui-org/card'
 import { Image } from '@nextui-org/react'
 import { useFetch } from '@/render/src/shared/utilities/hooks/use-fetch'
 import { WeaponItemType } from '@/render/src/types'
-import { ItemSkeleton } from '@/render/src/panel/shared/components/skeletons'
+import { SkeletonCard } from '@/render/src/shared/components/skeleton'
 import { deleteArtifact } from '@/render/src/panel/character/artifacts/utilities/services/delete'
 import { Figure } from '@/render/src/shared/components/figure'
 import DeleteButton from '@/render/src/panel/shared/components/buttons/delete-button'
@@ -26,8 +26,8 @@ const ArtifactItem = ({ artifact, index }: ArtifactItemProps) => {
     error
   } = useFetch<Artifact>(`/api/artifacts/artifact/${artifactId}`)
 
-  if (error) return <ItemSkeleton />
-  if (isLoading) return <ItemSkeleton />
+  if (error) return <SkeletonCard showDragIcon size='sm' className='mb-4' />
+  if (isLoading) return <SkeletonCard showDragIcon size='sm' className='mb-4' />
 
   return (
     <Draggable draggableId={artifact.id} index={index}>

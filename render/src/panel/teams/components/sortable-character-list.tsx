@@ -26,7 +26,7 @@ const SortableCharacterList = ({ team }: SortableCharacterListTypes) => {
       >
         {(provided) => (
           <ol
-            className='grid grid-cols-4 select-none'
+            className='grid grid-cols-4 gap-4 select-none'
             ref={provided.innerRef}
             {...provided.droppableProps}
           >

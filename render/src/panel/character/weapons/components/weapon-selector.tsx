@@ -42,8 +42,6 @@ const WeaponSelector = ({ character }: WeaponSelectorProps) => {
       </Alert>
     )
 
-  console.log(weapons)
-
   if (FULL_ITEMS) return null
 
   return (

@@ -6,10 +6,9 @@ import { Image } from '@nextui-org/react'
 import { deleteMaterial } from '@/render/src/panel/character/materials/utilities/services/delete'
 import { useFetch } from '@/render/src/shared/utilities/hooks/use-fetch'
 import { MaterialItemType } from '@/render/src/types'
-import { ItemSkeleton } from '@/render/src/panel/shared/components/skeletons'
-
-import DeleteButton from '@/render/src/panel/shared/components/buttons/delete-button'
+import { SkeletonCard } from '@/render/src/shared/components/skeleton'
 import { Figure } from '@/render/src/shared/components/figure'
+import DeleteButton from '@/render/src/panel/shared/components/buttons/delete-button'
 
 interface MaterialItemProps {
   material: MaterialItemType
@@ -25,8 +24,8 @@ const MaterialItem = ({ material, index }: MaterialItemProps) => {
     error
   } = useFetch<Material>(`/api/materials/${materialId}`)
 
-  if (error) return <ItemSkeleton />
-  if (isLoading) return <ItemSkeleton />
+  if (error) return <SkeletonCard showDragIcon size='sm' className='mb-4' />
+  if (isLoading) return <SkeletonCard showDragIcon size='sm' className='mb-4' />
 
   return (
     <Draggable draggableId={material.id} index={index}>

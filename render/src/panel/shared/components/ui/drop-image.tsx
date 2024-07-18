@@ -3,6 +3,7 @@ import { useCallback, useEffect } from 'react'
 import { useDropzone } from 'react-dropzone'
 import { Image } from '@nextui-org/image'
 import { IconPhoto } from '@tabler/icons-react'
+import { Figure } from '@/render/src/shared/components/figure'
 
 const DropImage = () => {
   const { image, setImage } = useDropImageStore((state) => ({
@@ -44,29 +45,27 @@ const DropImage = () => {
       }`}
       {...getRootProps()}
     >
-      <div className='aspect-square size-40 grid place-items-center rounded-xl overflow-hidden'>
-        <input {...getInputProps()} />
-        {isDragActive ? (
-          <IconPhoto size={96} />
-        ) : image.file ? (
-          <Image
-            width={120}
-            height={120}
-            className='size-24 object-cover'
-            src={URL.createObjectURL(image.file)}
-            alt='Imagen de personaje'
-          />
-        ) : image.preview ? (
-          <Image
-            width={120}
-            height={120}
-            className='size-24 object-cover'
-            src={image.preview}
-            alt='Imagen de personaje'
-          />
-        ) : (
-          <IconPhoto size={96} />
-        )}
+      <div>
+        <Figure size='4xl'>
+          <input {...getInputProps()} />
+          {isDragActive ? (
+            <IconPhoto size={96} />
+          ) : image.file ? (
+            <Image
+              className='w-full h-full object-cover'
+              src={URL.createObjectURL(image.file)}
+              alt='Imagen de personaje'
+            />
+          ) : image.preview ? (
+            <Image
+              className='w-full h-full object-cover'
+              src={image.preview}
+              alt='Imagen de personaje'
+            />
+          ) : (
+            <IconPhoto size={96} />
+          )}
+        </Figure>
       </div>
 
       <div className='w-full'>

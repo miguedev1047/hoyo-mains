@@ -10,6 +10,7 @@ import { ItemSkeleton } from '@/render/src/panel/character/ascension/components/
 import { useFetch } from '@/utils/hooks/general/use-fetch'
 import { Figure } from '@/render/src/shared/components/figure'
 import QuantityForm from '@/render/src/panel/character/ascension/components/forms/quantity-form'
+import { SkeletonCard } from '@/render/src/shared/components/skeleton'
 
 interface AscensionProps {
   material: MaterialByAscension
@@ -22,8 +23,24 @@ const AscensionItem = ({ material }: AscensionProps) => {
     error
   } = useFetch<Material>(`/api/materials/${material.materialId}`)
 
-  if (isLoading) return <ItemSkeleton />
-  if (error) return <ItemSkeleton />
+  if (isLoading)
+    return (
+      <SkeletonCard
+        size='sm'
+        variant='transparent'
+        radius='none'
+        className='p-0'
+      />
+    )
+  if (error)
+    return (
+      <SkeletonCard
+        size='sm'
+        variant='transparent'
+        radius='none'
+        className='p-0'
+      />
+    )
 
   return (
     <Popover placement='bottom'>

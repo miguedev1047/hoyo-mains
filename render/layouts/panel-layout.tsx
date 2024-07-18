@@ -1,4 +1,4 @@
-import Sidebar from '@/render/components/navigation/panel/siderbar'
+import Sidebar from "../src/panel/shared/components/sidebar"
 
 const PanelLayout = ({ children }: { children: React.ReactNode }) => {
   return (
