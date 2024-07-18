@@ -1,2 +1,3 @@
-import LoginLayout from '@/render/layouts/login-layout'
+import LoginLayout from '@/render/src/shared/layouts/login-layout'
+
 export default LoginLayout
