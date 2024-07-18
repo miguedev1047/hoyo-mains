@@ -1,5 +1,16 @@
-import { SearchParamsTypes } from '@/types'
-import Header from '@/render/components/home/header/header'
+import { fetchCharacters } from '@/render/src/home/utilities/services/fetch'
+import { Character } from '@prisma/client'
+import Home from '@/render/src/home/home'
+import Navigation from '@/render/src/shared/components/navigation'
+
+interface HomePageProps {
+  searchParams: {
+    name: string
+    element: string
+    stars: string
+    weapon: string
+  }
+}
 
 export async function generateMetadata() {
   return {
@@ -9,12 +20,26 @@ export async function generateMetadata() {
   }
 }
 
-export default async function Home({ searchParams }: SearchParamsTypes) {
+export default async function HomePage({ searchParams }: HomePageProps) {
+  const { name, element, stars, weapon } = {
+    name: searchParams.name,
+    element: searchParams.element,
+    stars: parseInt(searchParams.stars!),
+    weapon: searchParams.weapon
+  }
+
+  const characters = (await fetchCharacters({
+    name,
+    element,
+    weapon,
+    stars
+  })) as Character[]
+
   return (
     <>
-      <Header />
+      <Navigation />
       <main className='max-w-[1280px] my-10 mx-auto'>
-       
+        <Home characters={characters} />
       </main>
     </>
   )

@@ -1,22 +1,23 @@
 'use client'
 
+import {
+  InputWrapper,
+  selectWrapperDark
+} from '@/render/src/shared/utilities/classes'
+import { Figure } from '@/render/src/shared/components/figure'
 import { Suspense } from 'react'
 import { Input } from '@nextui-org/input'
 import { Chip, Image, Select, SelectItem, Spinner } from '@nextui-org/react'
 import { usePathname, useSearchParams } from 'next/navigation'
 import { useRouter } from 'next/navigation'
-import Figure from '@/render/components/UI/misc/figure'
 import { IconFilter } from '@tabler/icons-react'
-import {
-  InputWrapper,
-  selectWrapperDark
-} from '@/render/src/shared/utilities/classes'
 
 interface SearchProps {
   label: string
   placeholder: string
   searchQuery: string
   className?: string
+  variant?: 'flat' | 'underlined' | undefined
 }
 
 interface SelectSearchProps {
@@ -31,6 +32,7 @@ export const Search = ({
   label,
   placeholder,
   searchQuery,
+  variant = 'flat',
   className
 }: SearchProps) => {
   const searchParams = useSearchParams()
@@ -53,12 +55,13 @@ export const Search = ({
   return (
     <Suspense fallback={<Spinner />}>
       <Input
+        variant={variant}
         label={label}
         defaultValue={searchParams.get(searchQuery)?.toString()}
         onValueChange={(value) => handleSearch(value)}
         placeholder={placeholder}
         className={className}
-        classNames={InputWrapper}
+        classNames={variant !== 'underlined' ? InputWrapper : {}}
         isClearable
         size='lg'
       />
@@ -115,7 +118,7 @@ export const SearchSelect = ({
           <SelectItem textValue={item.name} key={item.value} value={item.value}>
             <div className='flex items-center gap-4'>
               {item.icon && (
-                <Figure padding='p-0' width='w-10' height='h-10'>
+                <Figure size='sm' className='p-1'>
                   <Image
                     className='w-full h-full object-cover'
                     src={item.icon}
