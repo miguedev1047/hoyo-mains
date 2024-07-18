@@ -4,6 +4,14 @@ import { Toaster } from 'sonner'
 import { Providers } from '@/app/providers'
 import clsx from 'clsx'
 
+export async function generateMetadata() {
+  return {
+    title: 'HoYo Panel',
+    description: 'Panel de administración de HoYo Mains.'
+  }
+}
+
+
 export default function RootLayout({
   children
 }: {
