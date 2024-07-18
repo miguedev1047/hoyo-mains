@@ -92,6 +92,22 @@ export const stars = [
   { title: '1 Estrella', name: 'one_star', value: '1', icon: Star1.src }
 ]
 
+export const role = [
+  {
+    name: 'dps',
+    title: 'dps'
+  },
+  {
+    name: 'sub_dps',
+    title: 'sub dps'
+  },
+  {
+    name: 'support',
+    title: 'soporte'
+  }
+]
+
+
 export const columns = [
   { name: 'RANGO', uid: 'rank' },
   { name: 'NIVEL', uid: 'level' },

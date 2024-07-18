@@ -2,7 +2,6 @@ import { z } from 'zod'
 import { useEffect, useTransition } from 'react'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { raritys } from '@/constants'
 import { CharacterSchema } from '@/schemas'
 import { toast } from 'sonner'
 import { useRouter } from 'next/navigation'
@@ -10,8 +9,9 @@ import { useModalStore } from '@/render/src/panel/shared/utilities/store/use-mod
 import { useDropImageStore } from '@/render/src/panel/shared/utilities/store/use-drop-image-store'
 import { useUploadImageToCloud } from '@/render/src/panel/shared/utilities/hooks/use-upload-image-to-cloud'
 import { createCharacters } from '@/render/src/panel/characters/utilities/services/create'
+import { stars } from '@/render/src/shared/constants'
 
-export const useModal = () => {
+export const useCreateCharacter = () => {
   const [isPending, startTransition] = useTransition()
   const { refresh } = useRouter()
   const { handleUploadImage } = useUploadImageToCloud()
@@ -71,7 +71,7 @@ export const useModal = () => {
     const uuid = crypto.randomUUID()
 
     const starsNumber = Number(
-      raritys.find((rarity) => rarity.name === data.starsText)?.title[0]
+      stars.find((star) => star.name === data.starsText)?.value[0]
     )
 
     const characterData = {

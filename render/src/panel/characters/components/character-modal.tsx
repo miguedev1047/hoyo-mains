@@ -1,25 +1,30 @@
 'use client'
 
-import { Tooltip } from '@nextui-org/tooltip'
-import { Button } from '@nextui-org/button'
-import { IconPlus, IconStarFilled } from '@tabler/icons-react'
 import {
+  Button,
+  Chip,
+  Image,
+  Input,
   Modal,
-  ModalContent,
-  ModalHeader,
   ModalBody,
-  ModalFooter
-} from '@nextui-org/modal'
-import { Input } from '@nextui-org/input'
-import { Select, SelectItem } from '@nextui-org/select'
+  ModalContent,
+  ModalFooter,
+  ModalHeader,
+  Select,
+  SelectItem,
+  Tooltip
+} from '@nextui-org/react'
+import {
+  InputWrapper,
+  selectInputWrapperDarkest
+} from '@/render/src/shared/utilities/classes'
+import { useCreateCharacter } from '@/render/src/panel/characters/utilities/hooks/use-create-character'
+import { IconPlus, IconStarFilled } from '@tabler/icons-react'
 import { Controller } from 'react-hook-form'
-import { elements, raritys, role, weapons } from '@/constants'
-import { InputWrapper, selectInputWrapper } from '@/utils/classes'
-import { useModal } from '@/render/src/panel/characters/utilities/hooks/use-modal'
-import { Chip, Image } from '@nextui-org/react'
-import ModalButton from '@/render/components/UI/buttons/modal/modal-button'
-import Figure from '@/render/components/UI/misc/figure'
+import { elements, role, stars, weapons } from '@/render/src/shared/constants'
+import { Figure } from '@/render/src/shared/components/figure'
 import DropImage from '@/render/src/panel/shared/components/ui/drop-image'
+import ModalButton from '@/render/src/panel/shared/components/buttons/modal-button'
 
 const CharacterModal = () => {
   const {
@@ -30,7 +35,7 @@ const CharacterModal = () => {
     onSubmit,
     onOpenModal,
     onOpenChange
-  } = useModal()
+  } = useCreateCharacter()
 
   return (
     <>
@@ -93,7 +98,7 @@ const CharacterModal = () => {
                       isDisabled={isPending}
                       errorMessage={errors.element?.message}
                       isInvalid={!!errors.element}
-                      classNames={selectInputWrapper}
+                      classNames={selectInputWrapperDarkest}
                       renderValue={(value) => {
                         return value.map(({ data, key }) => (
                           <div key={key}>
@@ -112,7 +117,7 @@ const CharacterModal = () => {
                           value={element.name}
                         >
                           <div className='flex items-center gap-2'>
-                            <Figure width='w-10' height='w-10'>
+                            <Figure>
                               <Image
                                 className='w-full h-full object-cover'
                                 src={element.icon}
@@ -138,7 +143,7 @@ const CharacterModal = () => {
                       isDisabled={isPending}
                       errorMessage={errors.role?.message}
                       isInvalid={!!errors.role}
-                      classNames={selectInputWrapper}
+                      classNames={selectInputWrapperDarkest}
                       renderValue={(value) => {
                         return value.map(({ data, key }) => (
                           <div key={key}>
@@ -176,7 +181,7 @@ const CharacterModal = () => {
                       isDisabled={isPending}
                       errorMessage={errors.weapon?.message}
                       isInvalid={!!errors.weapon}
-                      classNames={selectInputWrapper}
+                      classNames={selectInputWrapperDarkest}
                       renderValue={(value) => {
                         return value.map(({ data, key }) => (
                           <div key={key}>
@@ -195,7 +200,7 @@ const CharacterModal = () => {
                           value={weapon.title}
                         >
                           <div className='flex items-center gap-2'>
-                            <Figure width='w-10' height='h-10'>
+                            <Figure>
                               <Image
                                 className='w-full h-full object-cover'
                                 src={weapon.icon}
@@ -215,13 +220,13 @@ const CharacterModal = () => {
                   control={control}
                   render={({ field }) => (
                     <Select
-                      items={raritys.slice(0, 2)}
+                      items={stars.slice(0, 2)}
                       label='Selecciona la rareza'
                       className='max-w-full'
                       isDisabled={isPending}
                       errorMessage={errors.starsText?.message}
                       isInvalid={!!errors.starsText}
-                      classNames={selectInputWrapper}
+                      classNames={selectInputWrapperDarkest}
                       renderValue={(value) => {
                         return value.map(({ data, key }) => (
                           <div key={key}>
@@ -233,18 +238,18 @@ const CharacterModal = () => {
                       }}
                       {...field}
                     >
-                      {(rarity) => (
+                      {(stars) => (
                         <SelectItem
-                          textValue={rarity.name}
-                          value={rarity.name}
-                          key={rarity.name}
+                          textValue={stars.name}
+                          value={stars.name}
+                          key={stars.name}
                         >
                           <div className='flex gap-2 items-center'>
                             <IconStarFilled
                               size={24}
                               className='text-yellow-500'
                             />
-                            <span className='capitalize'>{rarity.title}</span>
+                            <span className='capitalize'>{stars.title}</span>
                           </div>
                         </SelectItem>
                       )}
