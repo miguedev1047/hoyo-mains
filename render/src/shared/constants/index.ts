@@ -21,36 +21,43 @@ import {
 export const elements = [
   {
     name: 'pyro',
+    value: 'pyro',
     title: 'Pyro',
     icon: Pyro.src
   },
   {
     name: 'hydro',
+    value: 'hydro',
     title: 'Hydro',
     icon: Hydro.src
   },
   {
     name: 'cryo',
+    value: 'cryo',
     title: 'Cryo',
     icon: Cryo.src
   },
   {
     name: 'dendro',
+    value: 'dendro',
     title: 'Dendro',
     icon: Dendro.src
   },
   {
     name: 'electro',
+    value: 'electro',
     title: 'Electro',
     icon: Electro.src
   },
   {
     name: 'anemo',
+    value: 'anemo',
     title: 'Anemo',
     icon: Anemo.src
   },
   {
     name: 'geo',
+    value: 'geo',
     title: 'Geo',
     icon: Geo.src
   }
