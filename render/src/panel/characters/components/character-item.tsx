@@ -5,10 +5,10 @@ import { CharacterType } from '@/render/src/types'
 import { generateCharacterUrl } from '@/render/src/shared/utilities/helpers/generate-character-url'
 import { CircularProgress, Image, Tooltip } from '@nextui-org/react'
 import { Card } from '@nextui-org/card'
-import { Link } from '@nextui-org/link'
 import { Figure } from '@/render/src/shared/components/figure'
 import DeleteButton from '@/render/src/panel/shared/components/buttons/delete-button'
 import clsx from 'clsx'
+import Link from 'next/link'
 
 interface CharacterListProps {
   item: CharacterType

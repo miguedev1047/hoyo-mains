@@ -16,6 +16,7 @@ import { useSidebarStore } from '@/render/src/panel/shared/utilities/store/use-s
 import { Button } from '@nextui-org/button'
 import { Divider } from '@nextui-org/react'
 import clsx from 'clsx'
+import Link from 'next/link'
 
 const navItems = {
   title: 'Admin Panel',
@@ -85,9 +86,12 @@ const Sidebar = () => {
             <ListboxSection title='Dashboard'>
               {dashboadrItems.map((item) => (
                 <ListboxItem
+                  as={Link}
                   key={item.href}
                   href={item.href}
-                  className={clsx(pathname === item.href && 'bg-primary-color line-clamp-1')}
+                  className={clsx(
+                    pathname === item.href && 'bg-primary-color line-clamp-1'
+                  )}
                   startContent={item.icon}
                 >
                   {item.title}
@@ -102,7 +106,9 @@ const Sidebar = () => {
                 <ListboxItem
                   key={item.href}
                   href={item.href}
-                  className={clsx(pathname === item.href && 'bg-primary-color line-clamp-1')}
+                  className={clsx(
+                    pathname === item.href && 'bg-primary-color line-clamp-1'
+                  )}
                   startContent={item.icon}
                 >
                   {item.title}

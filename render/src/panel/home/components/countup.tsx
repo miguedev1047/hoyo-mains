@@ -12,7 +12,8 @@ const Countup = ({ url }: { url: string }) => {
   if (isLoading)
     return <span className='text-color-red text-xl font-semibold'>0</span>
 
-  if (!data) return 
+  if (!data)
+    return <span className='text-color-red text-xl font-semibold'>0</span>
 
   return (
     <CountUp
