@@ -13,8 +13,8 @@ import {
   MaterialBackground,
   Polearm,
   Pyro,
-  Rarity4,
-  Rarity5,
+  Star4,
+  Star5,
   Sword,
   WeaponBackground
 } from '@/assets'
@@ -283,8 +283,8 @@ export const navigationItems = [
 
 export const buttonFilters = {
   rarity: [
-    { name: '5 Estrellas', value: '5', src: Rarity5.src },
-    { name: '4 Estrellas', value: '4', src: Rarity4.src }
+    { name: '5 Estrellas', value: '5', src: Star5.src },
+    { name: '4 Estrellas', value: '4', src: Star4.src }
   ],
   elements: [
     { name: 'Pyro', value: 'pyro', src: Pyro.src },
