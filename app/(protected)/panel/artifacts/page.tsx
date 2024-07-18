@@ -1,8 +1,17 @@
+import { fetchArtifacts } from '@/render/src/panel/artifacts/utilities/services/fetch'
+import { Artifact } from '@prisma/client'
 import { IconHourglassEmpty } from '@tabler/icons-react'
-import ArtifactModal from '@/render/components/UI/modal/artifact-modal'
-import Header from '@/render/components/panel/header'
-import ArtifactSection from '@/render/sections/artifacts/artifact-section'
+import PanelHeader from '@/render/src/panel/shared/components/ui/panel-header'
 import PanelWrapper from '@/render/components/UI/panel-wrapper'
+import ArtifactMenubar from '@/render/src/panel/artifacts/components/artifact-menubar'
+import Artifacts from '@/render/src/panel/artifacts/artifacts'
+import ArtifactModal from '@/render/src/panel/artifacts/components/artifact-modal'
+
+interface ArtifactsPageProps {
+  searchParams: {
+    name: string
+  }
+}
 
 export async function generateMetadata() {
   return {
@@ -11,15 +20,21 @@ export async function generateMetadata() {
   }
 }
 
-const ArtifactsPage = () => {
+const ArtifactsPage = async ({ searchParams }: ArtifactsPageProps) => {
+  const name = searchParams.name
+
+  const artifacts = (await fetchArtifacts({ name })) as Artifact[]
+
   return (
     <PanelWrapper>
-      <Header
+      <PanelHeader
         title='Artefactos'
-        startContent={<IconHourglassEmpty size={30} />}
+        startContent={<IconHourglassEmpty size={32} />}
       />
 
-      <ArtifactSection />
+      <ArtifactMenubar />
+
+      <Artifacts artifacts={artifacts} />
 
       <ArtifactModal />
     </PanelWrapper>

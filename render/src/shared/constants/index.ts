@@ -10,9 +10,11 @@ import {
   Hydro,
   Polearm,
   Pyro,
-  Rarity3,
-  Rarity4,
-  Rarity5,
+  Star1,
+  Star2,
+  Star3,
+  Star4,
+  Star5,
   Sword
 } from '@/assets'
 
@@ -83,9 +85,11 @@ export const weapons = [
 ]
 
 export const stars = [
-  { title: '5 Estrellas', name: 'five_star', value: '5', icon: Rarity5.src },
-  { title: '4 Estrellas', name: 'four_star', value: '4', icon: Rarity4.src },
-  { title: '3 Estrellas', name: 'three_star', value: '3', icon: Rarity3.src }
+  { title: '5 Estrellas', name: 'five_star', value: '5', icon: Star5.src },
+  { title: '4 Estrellas', name: 'four_star', value: '4', icon: Star4.src },
+  { title: '3 Estrellas', name: 'three_star', value: '3', icon: Star3.src },
+  { title: '2 Estrellas', name: 'two_star', value: '2', icon: Star2.src },
+  { title: '1 Estrella', name: 'one_star', value: '1', icon: Star1.src }
 ]
 
 export const columns = [
@@ -98,8 +102,8 @@ export const columns = [
 
 export const buttonFilters = {
   rarity: [
-    { name: '5 Estrellas', value: '5', src: Rarity5.src },
-    { name: '4 Estrellas', value: '4', src: Rarity4.src }
+    { name: '5 Estrellas', value: '5', src: Star5.src },
+    { name: '4 Estrellas', value: '4', src: Star4.src }
   ],
   elements: [
     { name: 'Pyro', value: 'pyro', src: Pyro.src },

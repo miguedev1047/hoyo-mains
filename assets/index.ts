@@ -16,11 +16,13 @@ import Claymore from '@/assets/images/weaponTypes/weapon_claymore.png'
 import Polearm from '@/assets/images/weaponTypes/weapon_polearm.png'
 import Sword from '@/assets/images/weaponTypes/weapon_sword.png'
 
-// Rarity images
+// Stars images
 
-import Rarity3 from '@/assets/images/rarityTypes/rarity_3.png'
-import Rarity4 from '@/assets/images/rarityTypes/rarity_4.png'
-import Rarity5 from '@/assets/images/rarityTypes/rarity_5.png'
+import Star1 from '@/assets/images/stars/star_1.png'
+import Star2 from '@/assets/images/stars/star_2.png'
+import Star3 from '@/assets/images/stars/star_3.png'
+import Star4 from '@/assets/images/stars/star_4.png'
+import Star5 from '@/assets/images/stars/star_5.png'
 
 // Brands
 
@@ -49,12 +51,14 @@ export {
   Claymore,
   Polearm,
   Sword,
-  Rarity3,
-  Rarity4,
-  Rarity5,
   NoelleBrand,
   CharacterBackground,
   ArtifactBackground,
   WeaponBackground,
-  MaterialBackground
+  MaterialBackground,
+  Star1,
+  Star2,
+  Star3,
+  Star4,
+  Star5
 }
