@@ -15,7 +15,7 @@ export const fetchWeapons = async ({ name, stars, weapon }: any) => {
 
   try {
     const where = {
-      ...(name && { name: { contains: name } }),
+      ...(name && { name: { contains: name, mode: 'insensitive' } }),
       ...(stars && { stars: { contains: stars } }),
       ...(weapon && { weapon: { contains: weapon } })
     }
@@ -102,4 +102,3 @@ export const fetchWeaponsById = async (id: string) => {
     return { error: 'Error al obtener el arma', status: 500 }
   }
 }
-
