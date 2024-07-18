@@ -1,10 +1,19 @@
-import { SectionFallback } from '@/render/components/UI/fallbacks'
-import { Suspense } from 'react'
+import { fetchMaterials } from '@/render/src/panel/materials/utilities/services/fetch'
 import { IconSquareRotated } from '@tabler/icons-react'
-import Header from '@/render/components/panel/header'
+import { Material } from '@prisma/client'
 import PanelWrapper from '@/render/components/UI/panel-wrapper'
-import MaterialModal from '@/render/components/UI/modal/material-modal'
-import MaterialsSection from '@/render/sections/materials/materials-section'
+import MaterialMenubar from '@/render/src/panel/materials/components/material-menubar'
+import Materials from '@/render/src/panel/materials/materials'
+import PanelHeader from '@/render/src/panel/shared/components/ui/panel-header'
+import MaterialModal from '@/render/src/panel/materials/components/material-modal'
+
+interface MaterialPageProps {
+  searchParams: {
+    name: string
+    type: string
+    stars: string
+  }
+}
 
 export async function generateMetadata() {
   return {
@@ -13,20 +22,28 @@ export async function generateMetadata() {
   }
 }
 
-const MaterialPage = () => {
+const MaterialPage = async ({ searchParams }: MaterialPageProps) => {
+  const { name, stars, type } = {
+    name: searchParams.name,
+    type: searchParams.type,
+    stars: parseInt(searchParams.stars)
+  }
+
+  const materials = (await fetchMaterials({ name, type, stars })) as Material[]
+
   return (
-    <Suspense fallback={<SectionFallback />}>
-      <PanelWrapper>
-        <Header
-          title='Materiales'
-          startContent={<IconSquareRotated size={32} />}
-        />
+    <PanelWrapper>
+      <PanelHeader
+        title='Materiales'
+        startContent={<IconSquareRotated size={32} />}
+      />
 
-        <MaterialsSection />
+      <MaterialMenubar />
 
-        <MaterialModal />
-      </PanelWrapper>
-    </Suspense>
+      <Materials materials={materials} />
+
+      <MaterialModal />
+    </PanelWrapper>
   )
 }
 

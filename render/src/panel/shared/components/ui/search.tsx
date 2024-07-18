@@ -7,7 +7,10 @@ import { usePathname, useSearchParams } from 'next/navigation'
 import { useRouter } from 'next/navigation'
 import Figure from '@/render/components/UI/misc/figure'
 import { IconFilter } from '@tabler/icons-react'
-import { InputWrapper, selectWrapperDark } from '@/render/src/shared/utilities/classes'
+import {
+  InputWrapper,
+  selectWrapperDark
+} from '@/render/src/shared/utilities/classes'
 
 interface SearchProps {
   label: string
@@ -109,16 +112,18 @@ export const SearchSelect = ({
         }}
       >
         {(item) => (
-          <SelectItem textValue={item.name} key={item.name} value={item.name}>
+          <SelectItem textValue={item.name} key={item.value} value={item.value}>
             <div className='flex items-center gap-4'>
-              <Figure padding='p-0' width='w-10' height='h-10'>
-                <Image
-                  className='w-full h-full object-cover'
-                  src={item.icon}
-                  alt={item.name}
-                />
-              </Figure>
-              <p className='text-center capitalize'>{item.title}</p>
+              {item.icon && (
+                <Figure padding='p-0' width='w-10' height='h-10'>
+                  <Image
+                    className='w-full h-full object-cover'
+                    src={item.icon}
+                    alt={item.name}
+                  />
+                </Figure>
+              )}
+              <p className='text-center'>{item.title}</p>
             </div>
           </SelectItem>
         )}

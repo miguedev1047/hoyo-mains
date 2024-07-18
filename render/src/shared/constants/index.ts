@@ -59,26 +59,31 @@ export const elements = [
 export const weapons = [
   {
     name: 'sword',
+    value: 'sword',
     title: 'Espada',
     icon: Sword.src
   },
   {
     name: 'claymore',
+    value: 'claymore',
     title: 'Mandoble',
     icon: Claymore.src
   },
   {
     name: 'polearm',
+    value: 'polearm',
     title: 'Lanza',
     icon: Polearm.src
   },
   {
     name: 'catalyst',
+    value: 'catalyst',
     title: 'Catalizador',
     icon: Catalyst.src
   },
   {
     name: 'bow',
+    value: 'bow',
     title: 'Arco',
     icon: Bow.src
   }
@@ -107,6 +112,40 @@ export const role = [
   }
 ]
 
+export const materialType = [
+  {
+    title: 'Material de ascension',
+    name: 'MATERIAL_UPGRADE',
+    value: 'material_upgrade'
+  },
+  { title: 'Material local', name: 'MATERIAL_LOCAL', value: 'material_local' },
+  {
+    title: 'Material comun',
+    name: 'MATERIAL_COMMON',
+    value: 'material_common'
+  },
+  { title: 'Material de jefe', name: 'MATERIAL_BOSS', value: 'material_boss' },
+  {
+    title: 'Material de jefe semanal',
+    name: 'MATERIAL_WEEKLY_BOSS',
+    value: 'material_weekly_boss'
+  },
+  {
+    title: 'Material de talento',
+    name: 'MATERIAL_TALENT',
+    value: 'material_talent'
+  },
+  {
+    title: 'Mejora de arma',
+    name: 'MATERIAL_UPGRADE_WEAPON',
+    value: 'material_upgrade_weapon'
+  },
+  {
+    title: 'Mejora de personaje',
+    name: 'MATERIAL_UPGRADE_CHARACTER',
+    value: 'material_upgrade_character'
+  }
+]
 
 export const columns = [
   { name: 'RANGO', uid: 'rank' },
