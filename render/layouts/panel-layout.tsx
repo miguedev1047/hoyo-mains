@@ -1,4 +1,11 @@
-import Sidebar from "../src/panel/shared/components/sidebar"
+import Sidebar from '@/render/src/panel/shared/components/sidebar'
+
+export async function generateMetadata() {
+  return {
+    title: 'HoYo Panel',
+    description: 'Panel de administración de HoYo Mains.'
+  }
+}
 
 const PanelLayout = ({ children }: { children: React.ReactNode }) => {
   return (
