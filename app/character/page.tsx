@@ -1,6 +1,8 @@
-import Header from '@/render/components/home/header/header'
-
 import type { ResolvingMetadata } from 'next'
+import { fetchCharacterByName } from '@/render/src/character/utilities/services/fetch'
+import { CharacterType } from '@/render/src/types'
+import Navigation from '@/render/src/shared/components/navigation'
+import Character from '@/render/src/character/character'
 
 type Props = {
   params: { id: string }
@@ -29,10 +31,15 @@ const CharacterPage = async ({
 }) => {
   const characterName = searchParams.name.replace(/-/g, ' ')
 
+  const character = (await fetchCharacterByName({
+    name: characterName
+  })) as CharacterType
+
   return (
     <>
-      <Header />
+      <Navigation />
       <main className='max-w-[1280px] my-10 mx-auto'>
+        <Character character={character} />
       </main>
     </>
   )
