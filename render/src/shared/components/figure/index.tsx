@@ -14,7 +14,8 @@ const figureVariants = cva(
         '2xl': 'size-20',
         '3xl': 'size-24',
         '4xl': 'size-32',
-        square: 'w-[160px] h-[160px]'
+        square: 'w-[160px] h-[160px]',
+        full: 'w-full h-full'
       },
       radius: {
         none: 'rounded-none',

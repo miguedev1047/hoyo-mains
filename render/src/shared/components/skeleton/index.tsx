@@ -17,7 +17,8 @@ const skeletonVariants = cva('flex flex-row items-center justify-between p-5', {
     size: {
       sm: 'size-10',
       md: 'size-12',
-      lg: 'size-14'
+      lg: 'size-14',
+      full: 'w-full h-full'
     },
     radius: {
       sm: 'rounded-sm',
@@ -71,4 +72,55 @@ const SkeletonCard = React.forwardRef<
 
 SkeletonCard.displayName = 'SkeletonCard'
 
-export { SkeletonCard }
+const skeletonSquareVariants = cva(
+  'size-full bg-color-darkest aspect-square select-none',
+  {
+    variants: {
+      size: {
+        sm: 'size-10',
+        md: 'size-12',
+        lg: 'size-14',
+        xl: 'size-16',
+        '2xl': 'size-20',
+        '3xl': 'size-24',
+        '4xl': 'size-32',
+        square: 'w-[160px] h-[160px]',
+        full: 'w-full h-full'
+      },
+      radius: {
+        sm: 'rounded-sm',
+        md: 'rounded-md',
+        lg: 'rounded-lg',
+        xl: 'rounded-xl',
+        none: 'rounded-none'
+      }
+    },
+    defaultVariants: {
+      size: 'md',
+      radius: 'xl'
+    }
+  }
+)
+
+const SkeletonSquare = React.forwardRef<
+  HTMLDivElement,
+  React.HTMLAttributes<HTMLDivElement> &
+    VariantProps<typeof skeletonSquareVariants> &
+    CardProps
+>(({ className, radius, size, ...props }, ref) => {
+  return (
+    <Card
+      className={cn(skeletonSquareVariants({ radius }), className)}
+      {...props}
+      ref={ref}
+    >
+      <Skeleton
+        className={`${cn(skeletonSquareVariants({ size }))} ${skeletonWrapper}`}
+      />
+    </Card>
+  )
+})
+
+SkeletonSquare.displayName = 'SkeletonSquare'
+
+export { SkeletonCard, SkeletonSquare }
