@@ -85,6 +85,12 @@ export type ConstellationsType = Prisma.ConstellationsByCharacterGetPayload<{
   }
 }>
 
+export type TeamByCharacterType = Prisma.TeamByCharacterGetPayload<{
+  include: {
+    characters: true
+  }
+}>
+
 export type BestTeamsType = Prisma.BestTeamGetPayload<{
   include: { characters: true }
 }>
