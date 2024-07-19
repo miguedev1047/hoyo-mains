@@ -25,7 +25,7 @@ const CharacterItem = ({ character }: CharacterItemProps) => {
   if (isLoading) return <SkeletonSquare size='full' />
 
   const characterName = fetchedCharacter?.name.replace(/\s/g, '-').toLowerCase()
-  const url = `/characters/character?name=${characterName}`
+  const url = `/character?name=${characterName}`
 
   return (
     <Tooltip
