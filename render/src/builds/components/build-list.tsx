@@ -2,11 +2,11 @@ import {
   NotFound,
   NotFoundTitle
 } from '@/render/src/panel/shared/components/ui/no-items-found'
-import { Character } from '@prisma/client'
-import BuildItem from './build-item'
+import { CharacterType } from '@/render/src/types'
+import BuildItem from '@/render/src/builds/components/build-item'
 
 interface BuildListProps {
-  builds: Character[]
+  builds: CharacterType[]
 }
 
 const BuildList = ({ builds }: BuildListProps) => {

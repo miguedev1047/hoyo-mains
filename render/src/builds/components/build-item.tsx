@@ -1,9 +1,9 @@
 'use client'
 
-import { useViewStore } from '../utilities/store/use-view-store'
-import { CharacterType } from '../../types'
-import CardBuild from './cards/card-build/card-build'
-import CardBuildExpanded from './cards/card-build-expanded/card-build-expanded'
+import { useViewStore } from '@/render/src/builds/utilities/store/use-view-store'
+import { CharacterType } from '@/render/src/types'
+import CardBuild from '@/render/src/builds/components/cards/card-build/card-build'
+import CardBuildExpanded from '@/render/src/builds/components/cards/card-build-expanded/card-build-expanded'
 
 interface BuildItemProps {
   build: CharacterType

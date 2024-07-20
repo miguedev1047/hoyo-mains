@@ -1,9 +1,8 @@
-import React from 'react'
-import { Figure } from '../../shared/components/figure'
-import { getStarBorderColor } from '../../shared/utilities/helpers/get-border-color'
-import { CharacterType } from '../../types'
+import { Figure } from '@/render/src/shared/components/figure'
+import { getStarBorderColor } from '@/render/src/shared/utilities/helpers/get-border-color'
+import { CharacterType } from '@/render/src/types'
 import { Chip, Image } from '@nextui-org/react'
-import { getRole } from '../../shared/utilities/helpers/get-role'
+import { getRole } from '@/render/src/shared/utilities/helpers/get-role'
 
 interface CharacterImageProps {
   build: CharacterType

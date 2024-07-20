@@ -1,5 +1,5 @@
 import { CharacterType } from '@/render/src/types'
-import ArtifactItem from '../items/artifact-item'
+import ArtifactItem from '@/render/src/builds/components/cards/card-build-expanded/items/artifact-item'
 
 interface ArtifactListProps {
   build: CharacterType

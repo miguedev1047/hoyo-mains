@@ -1,5 +1,5 @@
 import { CharacterType } from '@/render/src/types'
-import WeaponItem from '../items/weapon-item'
+import WeaponItem from '@/render/src/builds/components/cards/card-build-expanded/items/weapon-item'
 
 interface WeaponListProps {
   build: CharacterType

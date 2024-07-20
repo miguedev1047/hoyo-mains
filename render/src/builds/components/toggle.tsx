@@ -1,13 +1,13 @@
 import { Button } from '@nextui-org/button'
 import { IconChevronDown, IconChevronUp } from '@tabler/icons-react'
-import { useViewStore } from '../utilities/store/use-view-store'
-import { CharacterType } from '../../types'
+import { useViewStore } from '@/render/src/builds/utilities/store/use-view-store'
+import { CharacterType } from '@/render/src/types'
 
 interface ToggleProps {
   build: CharacterType
 }
 
-const Toggle = ({ build }: ToggleProps) => {
+export const Toggle = ({ build }: ToggleProps) => {
   const { isOpen, cardId, updateOpen } = useViewStore((state) => ({
     isOpen: state.isOpen,
     cardId: state.cardId,
@@ -34,5 +34,3 @@ const Toggle = ({ build }: ToggleProps) => {
     </Button>
   )
 }
-
-export default Toggle

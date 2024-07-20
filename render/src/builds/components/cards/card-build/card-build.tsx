@@ -1,10 +1,10 @@
 import { CharacterType } from '@/render/src/types'
-import CardContainer from '../card-container'
-import WeaponFirstItem from './weapon-first-item'
-import ArtifactFirstItem from './artifact-first-item'
-import BestStats from './best-stats'
-import CharacterImage from '../../character-image'
-import Toggle from '../../toggle'
+import { Toggle } from '@/render/src/builds/components/toggle'
+import CardContainer from '@/render/src/builds/components/cards/card-container'
+import WeaponFirstItem from '@/render/src/builds/components/cards/card-build/weapon-first-item'
+import ArtifactFirstItem from '@/render/src/builds/components/cards/card-build/artifact-first-item'
+import BestStats from '@/render/src/builds/components/cards/card-build/best-stats'
+import CharacterImage from '@/render/src/builds/components/character-image'
 
 interface CardBuildProps {
   build: CharacterType
