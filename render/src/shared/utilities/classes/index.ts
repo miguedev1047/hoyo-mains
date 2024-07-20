@@ -62,7 +62,7 @@ export const selectInputWrapperDarkest:
     'data-[hover=true]:bg-red-500 data-[hover=true]:text-default-foreground'
 }
 
-export const selectWrapperDark:
+export const selectInputWrapperDark:
   | SlotsToClasses<
       | 'description'
       | 'errorMessage'

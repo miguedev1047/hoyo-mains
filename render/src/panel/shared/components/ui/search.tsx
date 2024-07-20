@@ -2,7 +2,7 @@
 
 import {
   InputWrapper,
-  selectWrapperDark
+  selectInputWrapperDark
 } from '@/render/src/shared/utilities/classes'
 import { Figure } from '@/render/src/shared/components/figure'
 import { Suspense } from 'react'
@@ -100,7 +100,7 @@ export const SearchSelect = ({
         size='lg'
         label={label}
         className={className}
-        classNames={selectWrapperDark}
+        classNames={selectInputWrapperDark}
         items={items}
         defaultSelectedKeys={[searchParams.get(searchQuery)?.toString() ?? '']}
         startContent={<IconFilter />}

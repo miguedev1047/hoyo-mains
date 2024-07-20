@@ -6,7 +6,6 @@ import {
   AlertTitle
 } from '@/render/src/panel/character/shared/components/alert'
 import { CharacterTypes } from '@/types'
-import { selectorItemWrapper } from '@/utils/classes'
 import { Button } from '@nextui-org/button'
 import { Chip, Image, Select, SelectItem } from '@nextui-org/react'
 import { IconPlus } from '@tabler/icons-react'
@@ -14,6 +13,7 @@ import { Controller } from 'react-hook-form'
 import { useFilteredWeapons } from '@/render/src/panel/character/weapons/utilities/hooks/use-filtered-weapons'
 import { useWeaponSelector } from '@/render/src/panel/character/weapons/utilities/hooks/use-weapon-selector'
 import { Figure } from '@/render/src/shared/components/figure'
+import { selectInputWrapperDark } from '@/render/src/shared/utilities/classes'
 
 interface WeaponSelectorProps {
   character: CharacterTypes
@@ -61,7 +61,7 @@ const WeaponSelector = ({ character }: WeaponSelectorProps) => {
               items={weapons ?? []}
               isLoading={isLoading || isPending}
               isDisabled={isLoading || isPending}
-              classNames={selectorItemWrapper}
+              classNames={selectInputWrapperDark}
               disabledKeys={disabledItems}
               onSelectionChange={field.onChange}
               isInvalid={!!errors.items}

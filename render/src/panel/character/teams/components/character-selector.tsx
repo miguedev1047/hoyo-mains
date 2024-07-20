@@ -2,7 +2,6 @@
 
 import { CharacterType, TeamItemType } from '@/render/src/types'
 import { Button, Chip, Image, Select, SelectItem } from '@nextui-org/react'
-import { selectorItemDarkwrapper } from '@/utils/classes'
 import { Character } from '@prisma/client'
 import { IconPlus } from '@tabler/icons-react'
 import { Controller } from 'react-hook-form'
@@ -14,6 +13,7 @@ import {
 import { useFetch } from '@/render/src/shared/utilities/hooks/use-fetch'
 import { useCharacterSelector } from '@/render/src/panel/character/teams/utilities/hooks/use-character-selector'
 import { Figure } from '@/render/src/shared/components/figure'
+import { selectInputWrapperDark } from '@/render/src/shared/utilities/classes'
 
 interface CharacterSelectorProps {
   character: CharacterType
@@ -66,7 +66,7 @@ const CharacterSelector = ({ character, team }: CharacterSelectorProps) => {
               items={characters ?? []}
               isDisabled={isLoading || isPending}
               isLoading={isLoading || isPending}
-              classNames={selectorItemDarkwrapper}
+              classNames={selectInputWrapperDark}
               disabledKeys={disabledItems}
               onSelectionChange={field.onChange}
               isInvalid={!!errors.items}

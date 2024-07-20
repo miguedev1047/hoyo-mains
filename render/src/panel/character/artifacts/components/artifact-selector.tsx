@@ -3,7 +3,6 @@
 import { Artifact } from '@prisma/client'
 import { Controller } from 'react-hook-form'
 import { Button, Chip, Image, Select, SelectItem } from '@nextui-org/react'
-import { selectorItemWrapper } from '@/utils/classes'
 import { IconPlus } from '@tabler/icons-react'
 import { useFetch } from '@/render/src/shared/utilities/hooks/use-fetch'
 import {
@@ -11,6 +10,7 @@ import {
   AlertDescription,
   AlertTitle
 } from '@/render/src/panel/character/shared/components/alert'
+import { selectInputWrapperDark } from '@/render/src/shared/utilities/classes'
 import { useArtifactSelector } from '@/render/src/panel/character/artifacts/utilities/hooks/use-artifact-selector'
 import { CharacterType } from '@/render/src/types'
 import { Figure } from '@/render/src/shared/components/figure'
@@ -66,7 +66,7 @@ const ArtifactSelector = ({ character }: ArtifactSelectorProps) => {
                 items={artifacts ?? []}
                 isDisabled={isLoading || isPending}
                 isLoading={isLoading || isPending}
-                classNames={selectorItemWrapper}
+                classNames={selectInputWrapperDark}
                 disabledKeys={disabledItems}
                 onSelectionChange={field.onChange}
                 isInvalid={!!errors.items}

@@ -9,7 +9,7 @@ import {
 } from '@nextui-org/modal'
 import {
   InputWrapper,
-  selectWrapperDark
+  selectInputWrapperDark
 } from '@/render/src/shared/utilities/classes'
 import { Tooltip } from '@nextui-org/tooltip'
 import { Button } from '@nextui-org/button'
@@ -98,7 +98,7 @@ const ArtifactModal = () => {
                         isLoading={isPending}
                         errorMessage={errors.starsText?.message}
                         isInvalid={!!errors.starsText}
-                        classNames={selectWrapperDark}
+                        classNames={selectInputWrapperDark}
                         selectedKeys={[field.value]}
                         renderValue={(value) => {
                           return value.map(({ data, key }) => (

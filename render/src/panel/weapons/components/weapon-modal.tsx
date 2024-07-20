@@ -16,7 +16,7 @@ import {
 } from '@nextui-org/react'
 import {
   InputWrapper,
-  selectWrapperDark
+  selectInputWrapperDark
 } from '@/render/src/shared/utilities/classes'
 import { IconPlus, IconStarFilled } from '@tabler/icons-react'
 import { useCreateWeapon } from '@/render/src/panel/weapons/utilities/hooks/use-create-weapon'
@@ -100,7 +100,7 @@ const WeaponModal = () => {
                       isLoading={isPending}
                       errorMessage={errors.stat?.message}
                       isInvalid={!!errors.stat}
-                      classNames={selectWrapperDark}
+                      classNames={selectInputWrapperDark}
                       selectedKeys={[field.value]}
                       renderValue={(value) => {
                         return value.map(({ data, key }) => (
@@ -140,7 +140,7 @@ const WeaponModal = () => {
                       isLoading={isPending}
                       errorMessage={errors.type?.message}
                       isInvalid={!!errors.type}
-                      classNames={selectWrapperDark}
+                      classNames={selectInputWrapperDark}
                       selectedKeys={[field.value]}
                       renderValue={(value) => {
                         return value.map(({ data, key }) => (
@@ -188,7 +188,7 @@ const WeaponModal = () => {
                         isLoading={isPending}
                         errorMessage={errors.stars?.message}
                         isInvalid={!!errors.stars}
-                        classNames={selectWrapperDark}
+                        classNames={selectInputWrapperDark}
                         selectedKeys={[field.value]}
                         renderValue={(value) => {
                           return value.map(({ data, key }) => (

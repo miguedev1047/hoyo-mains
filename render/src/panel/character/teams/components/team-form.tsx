@@ -2,10 +2,10 @@
 
 import { Button, Input } from '@nextui-org/react'
 import { Controller } from 'react-hook-form'
-import { InputWrapper } from '@/utils/classes'
 import { CharacterType } from '@/render/src/types'
 import { IconPlus } from '@tabler/icons-react'
 import { useTeamForm } from '@/render/src/panel/character/teams/utilities/hooks/use-team-form'
+import { InputWrapper } from '@/render/src/shared/utilities/classes'
 
 const FormTeam = ({ character }: { character: CharacterType }) => {
   const { isPending, control, errors, FULL_ITEMS, onSubmit } = useTeamForm({

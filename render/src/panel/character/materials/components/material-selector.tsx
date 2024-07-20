@@ -1,20 +1,20 @@
 'use client'
 
-import { Button } from '@nextui-org/button'
-import { Chip, Image, Select, SelectItem } from '@nextui-org/react'
-import { Controller } from 'react-hook-form'
-import { Material } from '@prisma/client'
-import { selectorItemWrapper } from '@/utils/classes'
-import { IconPlus } from '@tabler/icons-react'
-import { CharacterType } from '@/render/src/types'
-import { useMaterialSelector } from '@/render/src/panel/character/materials/utilities/hooks/use-material-selector'
-import { useFetch } from '@/render/src/shared/utilities/hooks/use-fetch'
 import {
   Alert,
   AlertDescription,
   AlertTitle
 } from '@/render/src/panel/character/shared/components/alert'
+import { Button } from '@nextui-org/button'
+import { Chip, Image, Select, SelectItem } from '@nextui-org/react'
+import { Controller } from 'react-hook-form'
+import { Material } from '@prisma/client'
+import { IconPlus } from '@tabler/icons-react'
+import { CharacterType } from '@/render/src/types'
+import { useMaterialSelector } from '@/render/src/panel/character/materials/utilities/hooks/use-material-selector'
+import { useFetch } from '@/render/src/shared/utilities/hooks/use-fetch'
 import { Figure } from '@/render/src/shared/components/figure'
+import { selectInputWrapperDark } from '@/render/src/shared/utilities/classes'
 
 interface MaterialSelectorProps {
   character: CharacterType
@@ -67,7 +67,7 @@ const MaterialSelector = ({ character }: MaterialSelectorProps) => {
                 items={materials ?? []}
                 isLoading={isLoading || isPending}
                 isDisabled={isLoading || isPending}
-                classNames={selectorItemWrapper}
+                classNames={selectInputWrapperDark}
                 disabledKeys={disabledItems}
                 onSelectionChange={field.onChange}
                 isInvalid={!!errors.items}
