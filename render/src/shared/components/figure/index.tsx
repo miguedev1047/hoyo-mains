@@ -3,7 +3,7 @@ import { cva, type VariantProps } from 'class-variance-authority'
 import { cn } from '@/libs/utils'
 
 const figureVariants = cva(
-  'overflow-hidden relative grid place-content-center aspect-square bg-primary-color',
+  'overflow-hidden relative grid place-content-center  bg-primary-color',
   {
     variants: {
       size: {

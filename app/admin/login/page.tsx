@@ -1,4 +1,5 @@
-import LoginForm from "@/render/components/auth/login-form"
+import LoginBrand from '@/render/src/admin/login/components/login-brand'
+import LoginForm from '@/render/src/admin/login/login'
 
 export async function generateMetadata() {
   return {
@@ -7,10 +8,10 @@ export async function generateMetadata() {
   }
 }
 
-
 const LoginPage = () => {
   return (
-    <section className='w-full'>
+    <section className='w-full h-full flex gap-4'>
+      <LoginBrand />
       <LoginForm />
     </section>
   )

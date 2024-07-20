@@ -27,6 +27,7 @@ import Star5 from '@/assets/images/stars/star_5.png'
 // Brands
 
 import NoelleBrand from '@/assets/images/noelle-brand-image.webp'
+import NoelleLoginBrand from '@/assets/images/noelle-login-brand.jpg'
 
 // Backgrounds
 
@@ -52,6 +53,7 @@ export {
   Polearm,
   Sword,
   NoelleBrand,
+  NoelleLoginBrand,
   CharacterBackground,
   ArtifactBackground,
   WeaponBackground,
