@@ -1,5 +1,4 @@
 import { CharacterType } from '@/render/src/types'
-import React from 'react'
 import WeaponItem from '../items/weapon-item'
 
 interface WeaponListProps {
@@ -10,11 +9,16 @@ const WeaponList = ({ build }: WeaponListProps) => {
   const weapons = build.weapons
 
   return (
-    <ol className='space-y-2'>
-      {weapons.map((weapon) => (
-        <WeaponItem key={weapon.id} weapon={weapon} />
-      ))}
-    </ol>
+    <div className='space-y-4'>
+      <h2 className='text-lg capitalize font-bold text-secondary-color'>
+        Mejores armas
+      </h2>
+      <ol className='space-y-2'>
+        {weapons.map((weapon) => (
+          <WeaponItem key={weapon.id} weapon={weapon} />
+        ))}
+      </ol>
+    </div>
   )
 }
 
