@@ -1,47 +1,14 @@
 'use client'
 
-import { useTransition } from 'react'
 import { Card, CardHeader, CardBody, CardFooter } from '@nextui-org/card'
 import { Input } from '@nextui-org/input'
 import { Button } from '@nextui-org/button'
-import { useForm, Controller } from 'react-hook-form'
-import { zodResolver } from '@hookform/resolvers/zod'
-import { LoginSchema } from '@/schemas'
-import { login } from './utilities/services/login'
-import { toast } from 'sonner'
-import {
-  InputWrapper,
-  InputWrapperDarkest
-} from '../../shared/utilities/classes'
+import { Controller } from 'react-hook-form'
+import { InputWrapperDarkest } from '@/render/src/shared/utilities/classes'
+import { useLogin } from '@/render/src/admin/login/utilities/hooks/use-login'
 
 const LoginForm = () => {
-  const [isPending, startTransition] = useTransition()
-
-  const {
-    handleSubmit,
-    control,
-    formState: { errors }
-  } = useForm({
-    resolver: zodResolver(LoginSchema),
-    defaultValues: {
-      email: '',
-      password: ''
-    }
-  })
-
-  const onSubmit = handleSubmit((data) => {
-    startTransition(async () => {
-      const { message, status, error } = await login(data)
-
-      if (status === 201) {
-        toast.success(message)
-        return
-      }
-
-      toast.error(error)
-      return
-    })
-  })
+  const { isPending, control, errors, onSubmit } = useLogin()
 
   return (
     <div className='w-full h-full max-w-1/2 flex items-center'>
