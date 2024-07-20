@@ -1,6 +1,5 @@
 import { cn } from '@/libs/utils'
 import { Card } from '@nextui-org/card'
-import { useViewStore } from '../../utilities/store/use-view-store'
 
 interface CardContainerProps {
   children: React.ReactNode
