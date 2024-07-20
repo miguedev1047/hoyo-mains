@@ -1,6 +1,5 @@
 'use server'
 
-import { currentRole } from '@/data/auth'
 import db from '@/libs/db'
 
 interface FetchCharactersProps {
@@ -8,15 +7,6 @@ interface FetchCharactersProps {
 }
 
 export const fetchCharacterByName = async ({ name }: FetchCharactersProps) => {
-  const role = await currentRole()
-
-  if (role !== 'ADMIN' && role !== 'OWNER') {
-    return {
-      error: 'No tienes permisos para realizar esta acción.',
-      status: 403
-    }
-  }
-
   try {
     const character = await db.character.findFirst({
       where: {

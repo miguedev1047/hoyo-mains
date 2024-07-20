@@ -19,10 +19,10 @@ interface AscensionTableProps {
 }
 
 const AscensionTable = ({ character }: AscensionTableProps) => {
-  const ascension = character?.ascensions.map((ascension, index) => ({
+  const ascension = character?.ascensions?.map((ascension, index) => ({
     ...ascension,
     index: 1 + index++
-  }))
+  })) ?? []
 
   const renderCell = useCallback((ascension: any, columnKey: React.Key) => {
     const cellValue = ascension[columnKey as keyof any]
