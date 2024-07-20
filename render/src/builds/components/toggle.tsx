@@ -2,6 +2,7 @@ import { Button } from '@nextui-org/button'
 import { IconChevronDown, IconChevronUp } from '@tabler/icons-react'
 import { useViewStore } from '@/render/src/builds/utilities/store/use-view-store'
 import { CharacterType } from '@/render/src/types'
+import clsx from 'clsx'
 
 interface ToggleProps {
   build: CharacterType
@@ -27,7 +28,7 @@ export const Toggle = ({ build }: ToggleProps) => {
       size='sm'
       isIconOnly
       disableAnimation
-      className='ml-4 bg-transparent'
+      className={clsx('ml-4 bg-transparent', isExpanded ? 'mt-16' : '')}
       onPress={handleClick}
     >
       {isExpanded ? <IconChevronUp /> : <IconChevronDown />}
