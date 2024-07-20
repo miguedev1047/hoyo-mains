@@ -19,6 +19,7 @@ export const fetchCharacters = async ({
     if (name || element || weapon || stars) {
       const characters = await db.character.findMany({
         where: {
+          public: true,
           ...(name && { name: { contains: name, mode: 'insensitive' } }),
           ...(element && { element: { equals: element } }),
           ...(weapon && { weapon: { equals: weapon } }),
@@ -44,6 +45,9 @@ export const fetchCharacters = async ({
     }
 
     const characters = await db.character.findMany({
+      where: {
+        public: true
+      },
       orderBy: [
         {
           isNew: 'desc'
