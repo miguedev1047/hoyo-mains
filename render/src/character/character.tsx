@@ -8,8 +8,8 @@ import Weapons from '@/render/src/character/components/weapons/weapons'
 import Artifacts from '@/render/src/character/components/artifacts/artifacts'
 import BestStats from '@/render/src/character/components/best-stats/best-stats'
 import Video from '@/render/src/character/components/video/video'
-import Teams from './components/teams/teams'
-import Skills from './components/skills/skills'
+import Teams from '@/render/src/character/components/teams/teams'
+import Skills from '@/render/src/character/components/skills/skills'
 
 interface CharacterProps {
   character: CharacterType

@@ -5,7 +5,6 @@ import {
   AlertDescription,
   AlertTitle
 } from '@/render/src/panel/character/shared/components/alert'
-import { CharacterTypes } from '@/types'
 import { Button } from '@nextui-org/button'
 import { Chip, Image, Select, SelectItem } from '@nextui-org/react'
 import { IconPlus } from '@tabler/icons-react'
@@ -14,9 +13,10 @@ import { useFilteredWeapons } from '@/render/src/panel/character/weapons/utiliti
 import { useWeaponSelector } from '@/render/src/panel/character/weapons/utilities/hooks/use-weapon-selector'
 import { Figure } from '@/render/src/shared/components/figure'
 import { selectInputWrapperDark } from '@/render/src/shared/utilities/classes'
+import { CharacterType } from '@/render/src/types'
 
 interface WeaponSelectorProps {
-  character: CharacterTypes
+  character: CharacterType
 }
 
 const WeaponSelector = ({ character }: WeaponSelectorProps) => {

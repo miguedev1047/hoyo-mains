@@ -6,11 +6,10 @@ import {
   Image
 } from '@nextui-org/react'
 import { Material, MaterialByAscension } from '@prisma/client'
-import { ItemSkeleton } from '@/render/src/panel/character/ascension/components/skeletons'
+import { SkeletonCard } from '@/render/src/shared/components/skeleton'
 import { useFetch } from '@/render/src/shared/utilities/hooks/use-fetch'
 import { Figure } from '@/render/src/shared/components/figure'
 import QuantityForm from '@/render/src/panel/character/ascension/components/forms/quantity-form'
-import { SkeletonCard } from '@/render/src/shared/components/skeleton'
 
 interface AscensionProps {
   material: MaterialByAscension

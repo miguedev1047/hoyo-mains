@@ -1,8 +1,8 @@
-import { CharacterTypes } from '@/types'
+import { CharacterType } from '@/render/src/types'
 import VideoIframe from '@/render/src/character/components/video/video-iframe'
 
 interface VideoProps {
-  character: CharacterTypes
+  character: CharacterType
 }
 
 const Video = ({ character }: VideoProps) => {

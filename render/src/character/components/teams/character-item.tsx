@@ -1,12 +1,11 @@
 'use client'
 
-import { Characters } from '@/types'
 import { Card, Image, Tooltip } from '@nextui-org/react'
-import { CharacterByTeam } from '@prisma/client'
+import { Character, CharacterByTeam } from '@prisma/client'
 import { useFetch } from '@/render/src/shared/utilities/hooks/use-fetch'
 import { Figure } from '@/render/src/shared/components/figure'
-import Link from 'next/link'
 import { SkeletonSquare } from '@/render/src/shared/components/skeleton'
+import Link from 'next/link'
 
 interface CharacterItemProps {
   character: CharacterByTeam
@@ -17,7 +16,7 @@ const CharacterItem = ({ character }: CharacterItemProps) => {
     data: fetchedCharacter,
     isLoading,
     error
-  } = useFetch<Characters>(
+  } = useFetch<Character>(
     `/api/characters/character/${character.characterItem}`
   )
 

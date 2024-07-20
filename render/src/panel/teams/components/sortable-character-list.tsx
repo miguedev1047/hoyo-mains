@@ -1,11 +1,11 @@
-import { BestTeamType } from '@/types'
+import { BestTeamsType } from '@/render/src/types'
 import { useDrag } from '@/render/src/panel/shared/utilities/hooks/use-drag'
 import { updatedOrderCharacters } from '@/render/src/panel/teams/utilities/services/update'
 import { DragDropContext, Droppable } from '@hello-pangea/dnd'
 import CharacterItem from '@/render/src/panel/teams/components/character-item'
 
 interface SortableCharacterListTypes {
-  team: BestTeamType
+  team: BestTeamsType
 }
 
 const SortableCharacterList = ({ team }: SortableCharacterListTypes) => {
