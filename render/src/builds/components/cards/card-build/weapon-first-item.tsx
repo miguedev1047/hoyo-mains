@@ -7,6 +7,7 @@ import { useFetch } from '@/utils/hooks/general/use-fetch'
 import { Card } from '@nextui-org/card'
 import { Image } from '@nextui-org/react'
 import { Weapon } from '@prisma/client'
+import Tooltip from '@/render/src/shared/components/tooltip'
 
 interface WeaponFirstItemProps {
   build: CharacterType
@@ -25,12 +26,14 @@ const WeaponFirstItem = ({ build }: WeaponFirstItemProps) => {
   if (error) return <SkeletonCard variant='dark' className='p-4 h-20' />
 
   return (
-    <Card className='bg-color-dark p-4 flex flex-row items-center gap-4'>
-      <Figure>
-        <Image src={weapon?.imageUrl!} alt={weapon?.name} />
-      </Figure>
-      <h4 className='font-medium line-clamp-1'>{weapon?.name}</h4>
-    </Card>
+    <Tooltip item={weapon}>
+      <Card className='bg-color-dark p-4 flex flex-row items-center gap-4'>
+        <Figure>
+          <Image src={weapon?.imageUrl!} alt={weapon?.name} />
+        </Figure>
+        <h4 className='font-medium line-clamp-1'>{weapon?.name}</h4>
+      </Card>
+    </Tooltip>
   )
 }
 

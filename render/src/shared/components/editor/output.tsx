@@ -19,7 +19,7 @@ const Output = ({ description }: { description: string }) => {
   if (!editor) return null
 
   return (
-    <div className='w-auto text-sm md:text-base output-text'>
+    <div className='w-auto text-sm md:text-base [&>p]:leading-8 [&>strong]:text-color-lightest [&>p]:text-color-lightest [&>span]:text-color-lightest'>
       {parse(editor.getHTML())}
     </div>
   )

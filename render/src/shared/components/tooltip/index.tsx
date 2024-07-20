@@ -7,18 +7,22 @@ import {
   Tooltip as TooltipComponent
 } from '@nextui-org/react'
 import { Figure } from '@/render/src/shared/components/figure'
-import parse from 'html-react-parser'
+import { cn } from '@/libs/utils'
+import Output from '@/render/src/shared/components/editor/output'
 
 interface TooltipProps {
   item: any
   children: React.ReactNode
+  className?: string
 }
 
-const Tooltip = ({ item, children }: TooltipProps) => {
+const Tooltip = ({ item, children, className }: TooltipProps) => {
+  if (!item) return null
+
   return (
     <TooltipComponent
       placement='bottom'
-      className='bg-color-dark w-[500px]'
+      className={cn('bg-color-dark w-[500px]', className)}
       content={
         <>
           <Card className='select-none pointer-events-none w-full border-transparent bg-transparent shadow-none rounded-none'>
@@ -38,9 +42,7 @@ const Tooltip = ({ item, children }: TooltipProps) => {
             </CardHeader>
             <Divider />
             <CardBody>
-              <div className='leading-8 text-sm text-pretty text-color-light output-text'>
-                {parse(item?.description!)}
-              </div>
+              <Output description={item?.description} />
             </CardBody>
           </Card>
         </>
