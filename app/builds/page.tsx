@@ -1,4 +1,6 @@
-
+import { fetchBuilds } from '@/render/src/builds/utilities/services/fetch'
+import { CharacterType } from '@/render/src/types'
+import Builds from '@/render/src/builds/builds'
 import Navigation from '@/render/src/shared/components/navigation'
 
 interface BuildPageProps {
@@ -18,7 +20,6 @@ export async function generateMetadata() {
   }
 }
 
-
 const BuildPage = async ({ searchParams }: BuildPageProps) => {
   const { name, element, stars, weapon } = {
     name: searchParams.character?.toLowerCase(),
@@ -27,10 +28,19 @@ const BuildPage = async ({ searchParams }: BuildPageProps) => {
     weapon: searchParams.weapon?.toLowerCase()
   }
 
+  const builds = (await fetchBuilds({
+    name,
+    element,
+    stars,
+    weapon
+  })) as CharacterType[]
+
   return (
     <>
       <Navigation />
-      <main className='max-w-[1280px] my-10 mx-auto'></main>
+      <main className='max-w-[1280px] my-10 mx-auto'>
+        <Builds builds={builds} />
+      </main>
     </>
   )
 }
