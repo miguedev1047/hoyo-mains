@@ -17,8 +17,6 @@ interface CharacterProps {
 }
 
 const Character = ({ character }: CharacterProps) => {
-  console.log(character);
-
   if (!character) return redirect('/')
 
   return (
