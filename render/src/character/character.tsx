@@ -10,6 +10,7 @@ import BestStats from '@/render/src/character/components/best-stats/best-stats'
 import Video from '@/render/src/character/components/video/video'
 import Teams from '@/render/src/character/components/teams/teams'
 import Skills from '@/render/src/character/components/skills/skills'
+import Materials from '@/render/src/character/components/materials/materials'
 
 interface CharacterProps {
   character: CharacterType
@@ -27,6 +28,7 @@ const Character = ({ character }: CharacterProps) => {
         <Divider className='col-span-4' />
         <Ascension character={character} />
         <Divider className='col-span-4' />
+        <Materials character={character} />
         <Weapons character={character} />
         <Divider className='col-span-4 lg:hidden' />
         <Artifacts character={character} />

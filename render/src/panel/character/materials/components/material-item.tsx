@@ -22,7 +22,7 @@ const MaterialItem = ({ material, index }: MaterialItemProps) => {
     data: fetchedMaterial,
     isLoading,
     error
-  } = useFetch<Material>(`/api/materials/${materialId}`)
+  } = useFetch<Material>(`/api/materials/material/${materialId}`)
 
   if (error) return <SkeletonCard showDragIcon size='sm' className='mb-4' />
   if (isLoading) return <SkeletonCard showDragIcon size='sm' className='mb-4' />
