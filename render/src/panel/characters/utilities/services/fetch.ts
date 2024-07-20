@@ -1,5 +1,6 @@
 'use server'
 
+import { currentRole } from '@/data/auth'
 import db from '@/libs/db'
 
 interface FetchCharactersByNameTypes {
@@ -15,6 +16,15 @@ export const fetchCharacters = async ({
   weapon,
   stars
 }: FetchCharactersByNameTypes) => {
+  const role = await currentRole()
+
+  if (role !== 'ADMIN' && role !== 'OWNER') {
+    return {
+      error: 'No tienes permisos para realizar esta acción.',
+      status: 403
+    }
+  }
+
   try {
     const where = {
       ...(name && { name: { contains: name } }),
@@ -63,6 +73,29 @@ export const fetchCharacters = async ({
     })
 
     return characters
+  } catch (error) {
+    return null
+  }
+}
+
+export const fetchCharacterByName = async (name: string) => {
+  const role = await currentRole()
+
+  if (role !== 'ADMIN' && role !== 'OWNER') {
+    return {
+      error: 'No tienes permisos para realizar esta acción.',
+      status: 403
+    }
+  }
+
+  try {
+    const character = await db.character.findFirst({
+      where: {
+        name
+      }
+    })
+
+    return character
   } catch (error) {
     return null
   }

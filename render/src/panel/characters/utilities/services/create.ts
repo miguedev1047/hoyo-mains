@@ -1,9 +1,9 @@
 'use server'
 
 import { z } from 'zod'
+import { fetchCharacterByName } from '@/render/src/panel/characters/utilities/services/fetch'
 import { currentRole } from '@/data/auth'
 import { CharacterSchema } from '@/schemas'
-import { getCharacterByName } from '@/render/services/panel/characters/data'
 import db from '@/libs/db'
 
 export const createCharacters = async (
@@ -27,7 +27,7 @@ export const createCharacters = async (
   const { element, name, id, stars, starsText, weapon, role } =
     validateFields.data
 
-  const isExistingCharacter = await getCharacterByName(name)
+  const isExistingCharacter = await fetchCharacterByName(name)
 
   if (isExistingCharacter)
     return {

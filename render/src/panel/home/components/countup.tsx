@@ -1,6 +1,6 @@
 'use client'
 
-import { useFetch } from '@/utils/hooks/general/use-fetch'
+import { useFetch } from '@/render/src/shared/utilities/hooks/use-fetch'
 import CountUp from 'react-countup'
 
 const Countup = ({ url }: { url: string }) => {

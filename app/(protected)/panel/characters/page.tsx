@@ -1,4 +1,4 @@
-import { fetchCharacters } from '@/render/services/panel/characters/data'
+import { fetchCharacters } from '@/render/src/panel/characters/utilities/services/fetch'
 import { CharacterType } from '@/render/src/types'
 import { IconUsers } from '@tabler/icons-react'
 import Characters from '@/render/src/panel/characters/characters'

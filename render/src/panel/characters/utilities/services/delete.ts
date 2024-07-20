@@ -2,8 +2,8 @@
 
 import { currentRole } from '@/data/auth'
 import { getFullCharacterById } from '@/data/character'
-import { deleteImage } from '@/utils/helpers/delete-image'
 import db from '@/libs/db'
+import { deleteImage } from '@/render/src/shared/utilities/helpers/delete-image'
 
 export const deleteCharacter = async (id: string) => {
   const currentAdminRole = await currentRole()

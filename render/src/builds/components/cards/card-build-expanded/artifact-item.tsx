@@ -2,10 +2,10 @@
 
 import { Figure } from '@/render/src/shared/components/figure'
 import { SkeletonCard } from '@/render/src/shared/components/skeleton'
-import { useFetch } from '@/utils/hooks/general/use-fetch'
 import { Card } from '@nextui-org/card'
 import { Image } from '@nextui-org/react'
 import { Artifact, ArtifactByCharacter } from '@prisma/client'
+import { useFetch } from '@/render/src/shared/utilities/hooks/use-fetch'
 import Tooltip from '@/render/src/shared/components/tooltip'
 
 interface ArtifactItemProps {

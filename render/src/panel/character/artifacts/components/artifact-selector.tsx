@@ -5,7 +5,7 @@ import { Controller } from 'react-hook-form'
 import { Button, Chip, Image, Select, SelectItem } from '@nextui-org/react'
 import { selectorItemWrapper } from '@/utils/classes'
 import { IconPlus } from '@tabler/icons-react'
-import { useFetch } from '@/utils/hooks/general/use-fetch'
+import { useFetch } from '@/render/src/shared/utilities/hooks/use-fetch'
 import {
   Alert,
   AlertDescription,

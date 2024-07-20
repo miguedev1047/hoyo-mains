@@ -3,7 +3,7 @@
 import { Figure } from '@/render/src/shared/components/figure'
 import { SkeletonCard } from '@/render/src/shared/components/skeleton'
 import { CharacterType } from '@/render/src/types'
-import { useFetch } from '@/utils/hooks/general/use-fetch'
+import { useFetch } from '@/render/src/shared/utilities/hooks/use-fetch'
 import { Card } from '@nextui-org/card'
 import { Image } from '@nextui-org/react'
 import { Weapon } from '@prisma/client'

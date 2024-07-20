@@ -11,9 +11,9 @@ import {
   PopoverContent,
   PopoverTrigger
 } from '@nextui-org/react'
-import EditorToolbar from '@/render/components/UI/editor/editor-toolbar'
 import TextStyle from '@tiptap/extension-text-style'
 import StarterKit from '@tiptap/starter-kit'
+import EditorToolbar from '@/render/src/shared/components/editor/editor-toolbar'
 
 const Editor = ({
   description,

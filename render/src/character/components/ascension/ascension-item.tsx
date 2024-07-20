@@ -1,6 +1,6 @@
 import { Badge, Image } from '@nextui-org/react'
 import { Material, MaterialByAscension } from '@prisma/client'
-import { useFetch } from '@/utils/hooks/general/use-fetch'
+import { useFetch } from '@/render/src/shared/utilities/hooks/use-fetch'
 import { Figure } from '@/render/src/shared/components/figure'
 import { SkeletonCard } from '@/render/src/shared/components/skeleton'
 

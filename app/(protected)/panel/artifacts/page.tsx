@@ -2,10 +2,10 @@ import { fetchArtifacts } from '@/render/src/panel/artifacts/utilities/services/
 import { Artifact } from '@prisma/client'
 import { IconHourglassEmpty } from '@tabler/icons-react'
 import PanelHeader from '@/render/src/panel/shared/components/ui/panel-header'
-import PanelWrapper from '@/render/components/UI/panel-wrapper'
 import ArtifactMenubar from '@/render/src/panel/artifacts/components/artifact-menubar'
 import Artifacts from '@/render/src/panel/artifacts/artifacts'
 import ArtifactModal from '@/render/src/panel/artifacts/components/artifact-modal'
+import PanelWrapper from '@/render/src/panel/shared/components/ui/panel-wrapper'
 
 interface ArtifactsPageProps {
   searchParams: {

@@ -1,11 +1,11 @@
 import { fetchMaterials } from '@/render/src/panel/materials/utilities/services/fetch'
 import { IconSquareRotated } from '@tabler/icons-react'
 import { Material } from '@prisma/client'
-import PanelWrapper from '@/render/components/UI/panel-wrapper'
 import MaterialMenubar from '@/render/src/panel/materials/components/material-menubar'
 import Materials from '@/render/src/panel/materials/materials'
 import PanelHeader from '@/render/src/panel/shared/components/ui/panel-header'
 import MaterialModal from '@/render/src/panel/materials/components/material-modal'
+import PanelWrapper from '@/render/src/panel/shared/components/ui/panel-wrapper'
 
 interface MaterialPageProps {
   searchParams: {

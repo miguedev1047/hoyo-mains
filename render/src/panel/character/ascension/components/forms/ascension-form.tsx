@@ -24,7 +24,7 @@ import {
 import { IconPlus } from '@tabler/icons-react'
 import { Controller } from 'react-hook-form'
 import { useAscensionForm } from '@/render/src/panel/character/ascension/utilities/hooks/use-ascension-form'
-import { useFetch } from '@/utils/hooks/general/use-fetch'
+import { useFetch } from '@/render/src/shared/utilities/hooks/use-fetch'
 import { Material } from '@prisma/client'
 import { Figure } from '@/render/src/shared/components/figure'
 

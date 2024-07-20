@@ -2,8 +2,8 @@
 
 import { Figure } from '@/render/src/shared/components/figure'
 import { SkeletonCard } from '@/render/src/shared/components/skeleton'
-import { useFetch } from '@/utils/hooks/general/use-fetch'
 import { Card } from '@nextui-org/card'
+import { useFetch } from '@/render/src/shared/utilities/hooks/use-fetch'
 import { Image } from '@nextui-org/react'
 import { Weapon, WeaponByCharacter } from '@prisma/client'
 import Tooltip from '@/render/src/shared/components/tooltip'
