@@ -15,12 +15,14 @@ const BuildItem = ({ build }: BuildItemProps) => {
     cardId: state.cardId
   }))
 
-  return (
-    <>
-      <CardBuild build={build} />
-      <CardBuildExpanded build={build} />
-    </>
-  )
+  const buildId = build.id
+  const isExpanded = isOpen && cardId === buildId
+
+  if (isExpanded) {
+    return <CardBuildExpanded build={build} />
+  }
+
+  return <CardBuild build={build} />
 }
 
 export default BuildItem

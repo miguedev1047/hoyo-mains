@@ -22,7 +22,7 @@ const CardBuildExpanded = ({ build }: CardBuildExpandedProps) => {
             <ArtifactList build={build} />
           </div>
 
-          <Toggle />
+          <Toggle build={build} />
         </div>
       </div>
     </CardContainer>

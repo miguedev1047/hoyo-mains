@@ -25,7 +25,7 @@ const CardBuild = ({ build }: CardBuildProps) => {
             <BestStats build={build} />
           </div>
 
-          <Toggle />
+          <Toggle build={build} />
         </div>
       </div>
     </CardContainer>
