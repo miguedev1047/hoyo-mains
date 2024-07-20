@@ -5,7 +5,7 @@ import Navigation from '@/render/src/shared/components/navigation'
 
 interface BuildPageProps {
   searchParams: {
-    character: string
+    name: string
     element: string
     stars: string
     weapon: string
@@ -22,7 +22,7 @@ export async function generateMetadata() {
 
 const BuildPage = async ({ searchParams }: BuildPageProps) => {
   const { name, element, stars, weapon } = {
-    name: searchParams.character?.toLowerCase(),
+    name: searchParams.name?.toLowerCase(),
     element: searchParams.element?.toLowerCase(),
     stars: parseInt(searchParams?.stars!),
     weapon: searchParams.weapon?.toLowerCase()
