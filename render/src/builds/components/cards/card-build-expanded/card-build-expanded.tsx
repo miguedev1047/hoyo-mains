@@ -2,8 +2,8 @@ import { CharacterType } from '@/render/src/types'
 import { Toggle } from '@/render/src/builds/components/toggle'
 import CardContainer from '@/render/src/builds/components/cards/card-container'
 import CharacterImage from '@/render/src/builds/components/character-image'
-import WeaponList from '@/render/src/builds/components/cards/card-build-expanded/lists/weapon-list'
-import ArtifactList from '@/render/src/builds/components/cards/card-build-expanded/lists/artifact-list'
+import WeaponList from '@/render/src/builds/components/cards/card-build-expanded/weapon-list'
+import ArtifactList from '@/render/src/builds/components/cards/card-build-expanded/artifact-list'
 
 interface CardBuildExpandedProps {
   build: CharacterType
