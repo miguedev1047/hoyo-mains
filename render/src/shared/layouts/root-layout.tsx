@@ -1,4 +1,5 @@
 import '@/styles/globals.css'
+import '@/styles/borders.css'
 import { fontDM_Sans } from '@/config/fonts'
 import { Toaster } from 'sonner'
 import { Providers } from '@/app/providers'

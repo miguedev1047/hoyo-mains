@@ -1,0 +1,31 @@
+.five-star {
+  @apply border-yellow-500;
+}
+
+.four-star {
+  @apply border-purple-500;
+}
+
+.three-star {
+  @apply border-blue-500;
+}
+
+.two-star {
+  @apply border-green-500;
+}
+
+.one-star {
+  @apply border-gray-500;
+}
+
+.default {
+  @apply border-gray-500;
+}
+
+.output-text > p {
+  color: #d6d4e8 !important;
+}
+
+.output-text > span {
+  color: #d6d4e8 !important;
+}
