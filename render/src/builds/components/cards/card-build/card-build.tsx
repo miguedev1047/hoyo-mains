@@ -13,11 +13,16 @@ interface CardBuildProps {
 const CardBuild = ({ build }: CardBuildProps) => {
   return (
     <CardContainer>
-      <div className='flex justify-between items-center gap-4'>
-        <CharacterImage build={build} />
+      <div className='flex justify-between flex-wrap items-center gap-4'>
+        <div className='max-xl:w-full flex items-center justify-between'>
+          <CharacterImage build={build} />
+          <div className='block xl:hidden'>
+            <Toggle build={build} />
+          </div>
+        </div>
 
-        <div className='w-full max-w-[800px] flex items-center'>
-          <div className='w-full grid grid-cols-2 gap-2'>
+        <div className='w-full xl:max-w-[800px] flex items-center'>
+          <div className='w-full grid grid-cols-1 lg:grid-cols-2 gap-2'>
             <div className='space-y-2'>
               <WeaponFirstItem build={build} />
               <ArtifactFirstItem build={build} />
@@ -25,7 +30,9 @@ const CardBuild = ({ build }: CardBuildProps) => {
             <BestStats build={build} />
           </div>
 
-          <Toggle build={build} />
+          <div className='max-xl:hidden'>
+            <Toggle build={build} />
+          </div>
         </div>
       </div>
     </CardContainer>
