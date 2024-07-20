@@ -1,5 +1,6 @@
-import { CharacterType } from '@/render/src/types'
+import { useViewStore } from '@/render/src/builds/utilities/store/use-view-store'
 import { Toggle } from '@/render/src/builds/components/toggle'
+import { CharacterType } from '@/render/src/types'
 import CardContainer from '@/render/src/builds/components/cards/card-container'
 import CharacterImage from '@/render/src/builds/components/character-image'
 import WeaponList from '@/render/src/builds/components/cards/card-build-expanded/weapon-list'
@@ -12,8 +13,16 @@ interface CardBuildExpandedProps {
 }
 
 const CardBuildExpanded = ({ build }: CardBuildExpandedProps) => {
+  const { isOpen, cardId } = useViewStore((state) => ({
+    isOpen: state.isOpen,
+    cardId: state.cardId
+  }))
+
+  const buildId = build.id
+  const isExpanded = isOpen && cardId === buildId
+
   return (
-    <CardContainer>
+    <CardContainer isExpanded={isExpanded}>
       <div className='flex justify-between flex-wrap items-start gap-4'>
         <div className='max-xl:w-full flex items-center justify-between'>
           <CharacterImage build={build} />
