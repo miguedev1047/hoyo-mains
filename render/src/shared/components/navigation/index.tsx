@@ -29,7 +29,7 @@ const Navigation = () => {
   return (
     <Navbar
       onMenuOpenChange={setIsMenuOpen}
-      className='max-w-[1280px] rounded-xl container mx-auto transition-all ease-in-out duration-300'
+      className='max-w-[1280px] rounded-xl container mx-auto transition-all ease-in-out duration-300 bg-color-dark/80'
     >
       <NavbarBrand className='space-x-2'>
         <NavbarItem>

@@ -21,7 +21,7 @@ const Character = ({ character }: CharacterProps) => {
   if (!character) return redirect('/panel/characters')
 
   return (
-    <Card className='dark:bg-color-dark/50 py-4 px-1 sm:px-4 md:px-8'>
+    <Card className='dark:bg-color-dark/80 py-4 px-1 sm:px-4 md:px-8'>
       <CardHeader>
         <InfoHeader character={character} />
       </CardHeader>

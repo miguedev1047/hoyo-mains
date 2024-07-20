@@ -19,7 +19,7 @@ const Character = ({ character }: CharacterProps) => {
   if (!character) return redirect('/')
 
   return (
-    <Card className='dark:bg-color-dark/50 p-1 md:p-4 space-y-4'>
+    <Card className='dark:bg-color-dark/80 p-1 md:p-4 space-y-4'>
       <CardHeader>
         <InfoHeader character={character} />
       </CardHeader>
