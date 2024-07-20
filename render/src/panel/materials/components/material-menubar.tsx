@@ -1,5 +1,8 @@
+import {
+  Search,
+  SearchSelect
+} from '@/render/src/panel/shared/components/ui/search'
 import { Divider } from '@nextui-org/react'
-import { Search, SearchSelect } from '@/render/src/panel/shared/components/ui/search'
 import { materialType, stars } from '@/render/src/shared/constants'
 
 const MaterialMenubar = () => {
@@ -9,7 +12,7 @@ const MaterialMenubar = () => {
       <nav className='grid grid-cols-6 gap-4'>
         <Search
           label='Buscar por nombre'
-          placeholder='Aquila favonia...'
+          placeholder='Trozo de ágata agnidus...'
           searchQuery='name'
           className='col-span-6 lg:col-span-4'
         />
