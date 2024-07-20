@@ -3,6 +3,7 @@ import { getStarBorderColor } from '@/render/src/shared/utilities/helpers/get-bo
 import { CharacterType } from '@/render/src/types'
 import { Chip, Image } from '@nextui-org/react'
 import { getRole } from '@/render/src/shared/utilities/helpers/get-role'
+import Link from 'next/link'
 
 interface CharacterImageProps {
   build: CharacterType
@@ -12,15 +13,21 @@ const CharacterImage = ({ build }: CharacterImageProps) => {
   const stars = getStarBorderColor(build.stars || 0)
   const role = getRole(build.role)
 
+  const characterName = build?.name.toLowerCase().replace(/\s/g, '-')
+  const url = `/character?name=${characterName}`
+
   return (
     <article className='flex items-center gap-4'>
-      <Figure size='square' className={`border ${stars}`}>
-        <Image
-          src={build.imageUrl!}
-          alt={build.name}
-          className='w-full h-full object-cover'
-        />
-      </Figure>
+      <Link href={url}>
+        <Figure size='square' className={`border ${stars}`}>
+          <Image
+            isZoomed
+            src={build.imageUrl!}
+            alt={build.name}
+            className='w-full h-full object-cover'
+          />
+        </Figure>
+      </Link>
 
       <div className='space-y-2'>
         <h2 className='text-xl font-medium capitalize'>{build.name}</h2>
