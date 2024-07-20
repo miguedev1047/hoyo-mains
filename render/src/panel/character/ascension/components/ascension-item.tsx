@@ -20,7 +20,7 @@ const AscensionItem = ({ material }: AscensionProps) => {
     data: fetchedMaterialData,
     isLoading,
     error
-  } = useFetch<Material>(`/api/materials/${material.materialId}`)
+  } = useFetch<Material>(`/api/materials/material/${material.materialId}`)
 
   if (isLoading)
     return (
