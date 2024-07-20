@@ -3,7 +3,7 @@
 import { Card } from '@nextui-org/card'
 import { Image } from '@nextui-org/react'
 import { buttonFilters } from '@/render/src/shared/constants'
-import { Toggle } from '@/render/src/panel/shared/components/ui/toggle'
+import { Toggle } from '@/render/src/shared/components/toggle'
 
 const BuildFilters = () => {
   return (
