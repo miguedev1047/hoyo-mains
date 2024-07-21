@@ -15,7 +15,7 @@ export const fetchWeapons = async ({ name, stars, weapon }: any) => {
 
   try {
     const where = {
-      ...(name && { name: { contains: name, mode: 'insensitive' } }),
+      ...(name && { name: { contains: name } }),
       ...(stars && { stars: { contains: stars } }),
       ...(weapon && { weapon: { contains: weapon } })
     }

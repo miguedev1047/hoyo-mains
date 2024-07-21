@@ -20,7 +20,7 @@ export const fetchCharacters = async ({
       const characters = await db.character.findMany({
         where: {
           public: true,
-          ...(name && { name: { contains: name, mode: 'insensitive' } }),
+          ...(name && { name: { contains: name } }),
           ...(element && { element: { equals: element } }),
           ...(weapon && { weapon: { equals: weapon } }),
           ...(stars && { stars: { equals: stars } })

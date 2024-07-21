@@ -10,7 +10,7 @@ interface ArtifactListProps {
 }
 
 const ArtifactList = ({ artifacts }: ArtifactListProps) => {
-  if (!artifacts.length) {
+  if (!artifacts?.length) {
     return (
       <NotFound>
         <NotFoundTitle>No se encontraron artefactos</NotFoundTitle>

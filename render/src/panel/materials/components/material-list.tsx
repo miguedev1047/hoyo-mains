@@ -10,7 +10,7 @@ interface MaterialListProps {
 }
 
 const MaterialList = ({ materials }: MaterialListProps) => {
-  if (!materials.length) {
+  if (!materials?.length) {
     return (
       <NotFound>
         <NotFoundTitle>No se encontraron materiales</NotFoundTitle>

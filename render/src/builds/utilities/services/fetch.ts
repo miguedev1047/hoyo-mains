@@ -20,7 +20,7 @@ export const fetchBuilds = async ({
       const builds = await db.character.findMany({
         where: {
           public: true,
-          ...(name && { name: { contains: name, mode: 'insensitive' } }),
+          ...(name && { name: { contains: name } }),
           ...(element && { element: { equals: element } }),
           ...(stars && { stars: { equals: stars } }),
           ...(weapon && { weapon: { equals: weapon } })

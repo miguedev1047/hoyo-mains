@@ -23,7 +23,7 @@ export const fetchMaterials = async ({
   try {
     const materials = await db.material.findMany({
       where: {
-        ...(name && { name: { contains: name, mode: 'insensitive' } }),
+        ...(name && { name: { contains: name } }),
         ...(type && { type: { contains: type, mode: 'insensitive' } }),
         ...(stars && { stars: stars })
       },

@@ -10,7 +10,7 @@ interface CharacterListProps {
 }
 
 const CharacterList = ({ characters }: CharacterListProps) => {
-  if (!characters.length) {
+  if (!characters?.length) {
     return (
       <NotFound>
         <NotFoundTitle>No se encontraron personajes</NotFoundTitle>

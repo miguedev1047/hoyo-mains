@@ -1,3 +1,7 @@
+import {
+  NotFound,
+  NotFoundTitle
+} from '@/render/src/panel/shared/components/ui/no-items-found'
 import { BestTeamsType, CharacterType } from '@/render/src/types'
 import { useDrag } from '@/render/src/panel/shared/utilities/hooks/use-drag'
 import { updatedOrderTeams } from '@/render/src/panel/teams/utilities/services/update'
@@ -15,6 +19,13 @@ const SortableTeamList = ({ teams, characters }: SortableTeamListProps) => {
     name: 'teamList',
     callback: updatedOrderTeams
   })
+
+  if (!orderedList)
+    return (
+      <NotFound>
+        <NotFoundTitle>No se encontraron equipos</NotFoundTitle>
+      </NotFound>
+    )
 
   return (
     <DragDropContext onDragEnd={onDragEnd}>
