@@ -10,6 +10,7 @@ import { SkeletonCard } from '@/render/src/shared/components/skeleton'
 import { useFetch } from '@/render/src/shared/utilities/hooks/use-fetch'
 import { Figure } from '@/render/src/shared/components/figure'
 import QuantityForm from '@/render/src/panel/character/ascension/components/forms/quantity-form'
+import { useOpen } from '../utilities/hooks/use-open-popover'
 
 interface AscensionProps {
   material: MaterialByAscension
@@ -21,6 +22,8 @@ const AscensionItem = ({ material }: AscensionProps) => {
     isLoading,
     error
   } = useFetch<Material>(`/api/materials/material/${material.materialId}`)
+
+  const { isOpen, handleOpen } = useOpen({ material })
 
   if (isLoading)
     return (
@@ -42,7 +45,11 @@ const AscensionItem = ({ material }: AscensionProps) => {
     )
 
   return (
-    <Popover placement='bottom'>
+    <Popover
+      isOpen={isOpen}
+      onOpenChange={(open) => handleOpen(open, material.id)}
+      placement='bottom'
+    >
       <PopoverTrigger>
         <div className='flex items-center gap-2 cursor-pointer'>
           <Badge placement='top-left' content={material.quantity}>

@@ -7,6 +7,7 @@ import { MaterialByAscension } from '@prisma/client'
 import { updateQuantity } from '@/render/src/panel/character/ascension/utilities/services/update'
 import { useRouter } from 'next/navigation'
 import { toast } from 'sonner'
+import { useOpen } from './use-open-popover'
 
 interface QuantityFormProps {
   material: MaterialByAscension
@@ -16,6 +17,7 @@ export const useAscensionQuantity = ({ material }: QuantityFormProps) => {
   const materialId = material?.id!
 
   const [isPending, startTransition] = useTransition()
+  const { handleClose } = useOpen({ material })
   const { refresh } = useRouter()
 
   const {
@@ -39,6 +41,8 @@ export const useAscensionQuantity = ({ material }: QuantityFormProps) => {
         quantiyId,
         quantity
       )
+
+      handleClose()
 
       if (status === 201) {
         toast.success(message)
