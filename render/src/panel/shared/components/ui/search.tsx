@@ -10,7 +10,7 @@ import { Input } from '@nextui-org/input'
 import { Chip, Image, Select, SelectItem, Spinner } from '@nextui-org/react'
 import { usePathname, useSearchParams } from 'next/navigation'
 import { useRouter } from 'next/navigation'
-import { IconFilter } from '@tabler/icons-react'
+import { IconFilter, IconSearch } from '@tabler/icons-react'
 
 interface SearchProps {
   label: string
@@ -61,6 +61,7 @@ export const Search = ({
         onValueChange={(value) => handleSearch(value)}
         placeholder={placeholder}
         className={className}
+        startContent={<IconSearch />}
         classNames={variant !== 'underlined' ? InputWrapper : {}}
         isClearable
         size='lg'

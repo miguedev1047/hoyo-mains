@@ -22,7 +22,7 @@ const Home = ({ characters }: HomeProps) => {
               label='Buscar personaje'
               placeholder='Hu tao...'
               searchQuery='name'
-              className='max-w-[375px]'
+              className='w-full md:max-w-[375px]'
               variant='underlined'
             />
           </div>
