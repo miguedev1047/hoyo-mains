@@ -9,11 +9,11 @@ interface FetchArtifactsProps {
 
 export const fetchArtifacts = async ({ name }: FetchArtifactsProps) => {
   const role = await currentRole()
-
+  
   if (role !== 'ADMIN' && role !== 'OWNER') {
     return null
   }
-
+  
   try {
     if (name) {
       const artifacts = await db.artifact.findMany({
@@ -26,6 +26,7 @@ export const fetchArtifacts = async ({ name }: FetchArtifactsProps) => {
     }
 
     const artifacts = await db.artifact.findMany()
+
     return artifacts
   } catch (error) {
     return null

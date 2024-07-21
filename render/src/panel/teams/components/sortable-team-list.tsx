@@ -20,7 +20,7 @@ const SortableTeamList = ({ teams, characters }: SortableTeamListProps) => {
     callback: updatedOrderTeams
   })
 
-  if (!orderedList)
+  if (!orderedList?.length)
     return (
       <NotFound>
         <NotFoundTitle>No se encontraron equipos</NotFoundTitle>
