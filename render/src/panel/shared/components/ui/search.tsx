@@ -1,8 +1,8 @@
 'use client'
 
 import {
-  InputWrapper,
-  selectInputWrapperDark
+  InputWrapperDarkest,
+  selectInputWrapperDarkest
 } from '@/render/src/shared/utilities/classes'
 import { Figure } from '@/render/src/shared/components/figure'
 import { Suspense } from 'react'
@@ -62,7 +62,7 @@ export const Search = ({
         placeholder={placeholder}
         className={className}
         startContent={<IconSearch />}
-        classNames={variant !== 'underlined' ? InputWrapper : {}}
+        classNames={variant !== 'underlined' ? InputWrapperDarkest : {}}
         isClearable
         size='lg'
       />
@@ -101,7 +101,7 @@ export const SearchSelect = ({
         size='lg'
         label={label}
         className={className}
-        classNames={selectInputWrapperDark}
+        classNames={selectInputWrapperDarkest}
         items={items}
         defaultSelectedKeys={[searchParams.get(searchQuery)?.toString() ?? '']}
         startContent={<IconFilter />}

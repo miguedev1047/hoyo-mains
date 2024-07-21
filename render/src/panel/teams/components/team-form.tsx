@@ -5,7 +5,7 @@ import { Input } from '@nextui-org/input'
 import { IconPlus } from '@tabler/icons-react'
 import { Controller } from 'react-hook-form'
 import { useTeam } from '@/render/src/panel/teams/utilities/hooks/use-team-'
-import { InputWrapper } from '@/render/src/shared/utilities/classes'
+import { InputWrapperDarkest } from '@/render/src/shared/utilities/classes'
 
 const TeamForm = () => {
   const { control, errors, isPending, onSubmit } = useTeam()
@@ -22,7 +22,7 @@ const TeamForm = () => {
             placeholder='Nombre del equipo'
             label='Crear equipo'
             isDisabled={isPending}
-            classNames={InputWrapper}
+            classNames={InputWrapperDarkest}
             isInvalid={!!errors.name}
             errorMessage={errors.name?.message}
             {...field}

@@ -5,7 +5,7 @@ import { Controller } from 'react-hook-form'
 import { CharacterType } from '@/render/src/types'
 import { IconPlus } from '@tabler/icons-react'
 import { useTeamForm } from '@/render/src/panel/character/teams/utilities/hooks/use-team-form'
-import { InputWrapper } from '@/render/src/shared/utilities/classes'
+import { InputWrapperDarkest } from '@/render/src/shared/utilities/classes'
 
 const FormTeam = ({ character }: { character: CharacterType }) => {
   const { isPending, control, errors, FULL_ITEMS, onSubmit } = useTeamForm({
@@ -26,7 +26,7 @@ const FormTeam = ({ character }: { character: CharacterType }) => {
               placeholder='Escribe el nombre del equipo.'
               isInvalid={!!errors.items}
               errorMessage={errors.items?.message}
-              classNames={InputWrapper}
+              classNames={InputWrapperDarkest}
               isDisabled={isPending}
               {...field}
             />

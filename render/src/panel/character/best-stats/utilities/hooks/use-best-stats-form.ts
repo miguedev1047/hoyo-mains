@@ -22,10 +22,6 @@ export const useBestStatsForm = ({ character }: BestStatsFormProps) => {
   const isActiveEdit = !!bestStats?.id
   const bestStatId = bestStats?.id
 
-  const classEdit = isActiveEdit
-    ? 'border-secondary-color'
-    : 'border-transparent'
-
   const editStat = useEditStatStore((state) => state.isEditingStat)
   const updatedStat = useEditStatStore((state) => state.startEditingStat)
 
@@ -92,7 +88,6 @@ export const useBestStatsForm = ({ character }: BestStatsFormProps) => {
     control,
     errors,
     isPending,
-    classEdit,
     editStat,
     bestStatId,
     isActiveEdit,

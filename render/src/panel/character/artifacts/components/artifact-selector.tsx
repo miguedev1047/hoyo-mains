@@ -1,16 +1,16 @@
 'use client'
 
-import { Artifact } from '@prisma/client'
-import { Controller } from 'react-hook-form'
-import { Button, Chip, Image, Select, SelectItem } from '@nextui-org/react'
-import { IconPlus } from '@tabler/icons-react'
-import { useFetch } from '@/render/src/shared/utilities/hooks/use-fetch'
 import {
   Alert,
   AlertDescription,
   AlertTitle
 } from '@/render/src/panel/character/shared/components/alert'
-import { selectInputWrapperDark } from '@/render/src/shared/utilities/classes'
+import { Artifact } from '@prisma/client'
+import { Controller } from 'react-hook-form'
+import { Button, Chip, Image, Select, SelectItem } from '@nextui-org/react'
+import { IconPlus } from '@tabler/icons-react'
+import { useFetch } from '@/render/src/shared/utilities/hooks/use-fetch'
+import { selectInputWrapperDarkest } from '@/render/src/shared/utilities/classes'
 import { useArtifactSelector } from '@/render/src/panel/character/artifacts/utilities/hooks/use-artifact-selector'
 import { CharacterType } from '@/render/src/types'
 import { Figure } from '@/render/src/shared/components/figure'
@@ -66,7 +66,7 @@ const ArtifactSelector = ({ character }: ArtifactSelectorProps) => {
                 items={artifacts ?? []}
                 isDisabled={isLoading || isPending}
                 isLoading={isLoading || isPending}
-                classNames={selectInputWrapperDark}
+                classNames={selectInputWrapperDarkest}
                 disabledKeys={disabledItems}
                 onSelectionChange={field.onChange}
                 isInvalid={!!errors.items}
@@ -87,7 +87,6 @@ const ArtifactSelector = ({ character }: ArtifactSelectorProps) => {
                     <div className='flex gap-2 items-center'>
                       <Figure size='sm'>
                         <Image
-                          radius='sm'
                           className='w-full h-full object-cover'
                           src={artifact.imageUrl!}
                           alt={artifact.name}

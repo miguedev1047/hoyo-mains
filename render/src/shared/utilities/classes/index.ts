@@ -15,25 +15,25 @@ export const InputWrapper:
     >
   | undefined = {
   inputWrapper:
-    'bg-color-darkest data-[hover=true]:bg-color-dark-hover group-data-[focus=true]:bg-color-dark-hover'
+    'bg-color-dark data-[hover=true]:bg-color-dark-hover group-data-[focus=true]:bg-color-dark-hover'
 }
 
 export const InputWrapperDarkest:
-| SlotsToClasses<
-    | 'description'
-    | 'errorMessage'
-    | 'label'
-    | 'base'
-    | 'mainWrapper'
-    | 'innerWrapper'
-    | 'helperWrapper'
-    | 'input'
-    | 'inputWrapper'
-    | 'clearButton'
-  >
-| undefined = {
-inputWrapper:
-  'bg-color-dark data-[hover=true]:bg-color-dark-hover group-data-[focus=true]:bg-color-darkest-hover'
+  | SlotsToClasses<
+      | 'description'
+      | 'errorMessage'
+      | 'label'
+      | 'base'
+      | 'mainWrapper'
+      | 'innerWrapper'
+      | 'helperWrapper'
+      | 'input'
+      | 'inputWrapper'
+      | 'clearButton'
+    >
+  | undefined = {
+  inputWrapper:
+    'bg-color-darkest data-[hover=true]:bg-color-darkest-hover group-data-[focus=true]:bg-color-darkest-hover'
 }
 
 export const selectInputWrapperDarkest:
@@ -55,7 +55,7 @@ export const selectInputWrapperDarkest:
     >
   | undefined = {
   trigger:
-    'bg-color-darkest data-[hover=true]:bg-color-dark-hover group-data-[focus=true]:bg-color-darkest-hover',
+    'bg-color-darkest data-[hover=true]:bg-color-darkest-hover group-data-[focus=true]:bg-color-darkest-hover',
   popoverContent: 'bg-color-darkest',
   value: 'flex flex-wrap py-2 gap-2',
   listbox:

@@ -8,8 +8,8 @@ import {
   ModalFooter
 } from '@nextui-org/modal'
 import {
-  InputWrapper,
-  selectInputWrapperDark
+  InputWrapperDarkest,
+  selectInputWrapperDarkest
 } from '@/render/src/shared/utilities/classes'
 import { Tooltip } from '@nextui-org/tooltip'
 import { Button } from '@nextui-org/button'
@@ -77,7 +77,7 @@ const ArtifactModal = () => {
                       type='text'
                       label='Nombre'
                       isDisabled={isPending}
-                      classNames={InputWrapper}
+                      classNames={InputWrapperDarkest}
                       errorMessage={errors.name?.message}
                       isInvalid={!!errors.name}
                       {...field}
@@ -98,7 +98,7 @@ const ArtifactModal = () => {
                         isLoading={isPending}
                         errorMessage={errors.starsText?.message}
                         isInvalid={!!errors.starsText}
-                        classNames={selectInputWrapperDark}
+                        classNames={selectInputWrapperDarkest}
                         selectedKeys={[field.value]}
                         renderValue={(value) => {
                           return value.map(({ data, key }) => (

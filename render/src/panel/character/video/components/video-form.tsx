@@ -7,7 +7,7 @@ import { IconPlus } from '@tabler/icons-react'
 import { Controller } from 'react-hook-form'
 import { CharacterType } from '@/render/src/types'
 import { useVideo } from '@/render/src/panel/character/video/utilities/hooks/use-video'
-import { InputWrapper } from '@/render/src/shared/utilities/classes'
+import { InputWrapperDarkest } from '@/render/src/shared/utilities/classes'
 
 interface FormVideoProps {
   character: CharacterType
@@ -60,7 +60,7 @@ const FormVideo = ({ character }: FormVideoProps) => {
                   isDisabled={isPending}
                   label='Nombre del youtuber'
                   placeholder='taNNa'
-                  classNames={InputWrapper}
+                  classNames={InputWrapperDarkest}
                   isInvalid={!!errors.youtuberName}
                   errorMessage={errors.youtuberName?.message}
                   {...field}
@@ -76,7 +76,7 @@ const FormVideo = ({ character }: FormVideoProps) => {
                   isDisabled={isPending}
                   label='URL del canal'
                   placeholder='https://www.youtube.com/...'
-                  classNames={InputWrapper}
+                  classNames={InputWrapperDarkest}
                   isInvalid={!!errors.youtuberChannel}
                   errorMessage={errors.youtuberChannel?.message}
                   {...field}
@@ -92,7 +92,7 @@ const FormVideo = ({ character }: FormVideoProps) => {
                   isDisabled={isPending}
                   label='URL embed del video'
                   placeholder='https://www.youtube.com/embed/...'
-                  classNames={InputWrapper}
+                  classNames={InputWrapperDarkest}
                   isInvalid={!!errors.embedVideoUrl}
                   errorMessage={errors.embedVideoUrl?.message}
                   {...field}

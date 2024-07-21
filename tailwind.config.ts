@@ -29,8 +29,8 @@ module.exports = {
         'primary-color': '#534A5D',
         'secondary-color': '#668CF6',
         'color-success': '#22C55E',
-        'color-dark-hover': '#121026',
-        'color-darkest-hover': '#08071a'
+        'color-dark-hover': '#1c1943',
+        'color-darkest-hover': '#0c0b1e'
       },
       transitionTimingFunction: {
         'in-beizer': 'cubic-bezier(0.25, .4, 0.45, 1.4)'

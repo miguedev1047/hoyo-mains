@@ -15,7 +15,7 @@ import {
   Tooltip
 } from '@nextui-org/react'
 import {
-  InputWrapper,
+  InputWrapperDarkest,
   selectInputWrapperDarkest
 } from '@/render/src/shared/utilities/classes'
 import { useCreateCharacter } from '@/render/src/panel/characters/utilities/hooks/use-create-character'
@@ -81,7 +81,7 @@ const CharacterModal = () => {
                       isDisabled={isPending}
                       errorMessage={errors.name?.message}
                       isInvalid={!!errors.name}
-                      classNames={InputWrapper}
+                      classNames={InputWrapperDarkest}
                       {...field}
                     />
                   )}

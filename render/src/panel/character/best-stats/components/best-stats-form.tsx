@@ -4,7 +4,7 @@ import { Button } from '@nextui-org/button'
 import { Input } from '@nextui-org/input'
 import { Controller } from 'react-hook-form'
 import { IconDeviceFloppy, IconPencil } from '@tabler/icons-react'
-import { InputWrapper } from '@/render/src/shared/utilities/classes'
+import { InputWrapperDarkest } from '@/render/src/shared/utilities/classes'
 import { CharacterType } from '@/render/src/types'
 import { useBestStatsForm } from '@/render/src/panel/character/best-stats/utilities/hooks/use-best-stats-form'
 
@@ -16,7 +16,6 @@ const BestStatsForm = ({ character }: BestStatsFormProps) => {
   const {
     isPending,
     bestStatId,
-    classEdit,
     control,
     editStat,
     errors,
@@ -37,8 +36,8 @@ const BestStatsForm = ({ character }: BestStatsFormProps) => {
             label='Reloj'
             isInvalid={!!errors.sandStat}
             errorMessage={errors.sandStat?.message}
-            className={`col-span-3 lg:col-span-1 rounded-xl border-2 ${classEdit}`}
-            classNames={InputWrapper}
+            className={`col-span-3 lg:col-span-1 rounded-xl border-2`}
+            classNames={InputWrapperDarkest}
             placeholder='Recarga de Energía'
             size='lg'
             {...field}
@@ -55,8 +54,8 @@ const BestStatsForm = ({ character }: BestStatsFormProps) => {
             label='Caliz'
             isInvalid={!!errors.globetStat}
             errorMessage={errors.globetStat?.message}
-            className={`col-span-3 lg:col-span-1 rounded-xl border-2 ${classEdit}`}
-            classNames={InputWrapper}
+            className={`col-span-3 lg:col-span-1 rounded-xl border-2`}
+            classNames={InputWrapperDarkest}
             placeholder='Bono daño Hydro'
             size='lg'
             {...field}
@@ -73,8 +72,8 @@ const BestStatsForm = ({ character }: BestStatsFormProps) => {
             label='Tiara'
             isInvalid={!!errors.circletStat}
             errorMessage={errors.circletStat?.message}
-            className={`col-span-3 lg:col-span-1 rounded-xl border-2 ${classEdit}`}
-            classNames={InputWrapper}
+            className={`col-span-3 lg:col-span-1 rounded-xl border-2`}
+            classNames={InputWrapperDarkest}
             placeholder='Daño Crítico / Probabilidad Crítico'
             size='lg'
             {...field}
@@ -91,8 +90,8 @@ const BestStatsForm = ({ character }: BestStatsFormProps) => {
             label='Estadísticas secundarias'
             isInvalid={!!errors.substatPriority}
             errorMessage={errors.substatPriority?.message}
-            className={`col-span-3 rounded-xl border-2 ${classEdit}`}
-            classNames={InputWrapper}
+            className={`col-span-3 rounded-xl border-2`}
+            classNames={InputWrapperDarkest}
             placeholder='Recarga de Energia > Daño Crít. / Prob. Crít. > Ataque Porcentual'
             size='lg'
             {...field}

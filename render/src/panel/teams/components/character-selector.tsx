@@ -65,7 +65,7 @@ const CharacterSelector = ({ characters, team }: CharacterSelectorTypes) => {
                 key={character.id}
                 value={character.id}
               >
-                <div className='flex items-center gap-2'>
+                <div className='flex items-center gap-4'>
                   <Figure>
                     <Image
                       radius='sm'

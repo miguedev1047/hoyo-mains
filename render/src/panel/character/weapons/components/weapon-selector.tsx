@@ -12,7 +12,7 @@ import { Controller } from 'react-hook-form'
 import { useFilteredWeapons } from '@/render/src/panel/character/weapons/utilities/hooks/use-filtered-weapons'
 import { useWeaponSelector } from '@/render/src/panel/character/weapons/utilities/hooks/use-weapon-selector'
 import { Figure } from '@/render/src/shared/components/figure'
-import { selectInputWrapperDark } from '@/render/src/shared/utilities/classes'
+import { selectInputWrapperDarkest } from '@/render/src/shared/utilities/classes'
 import { CharacterType } from '@/render/src/types'
 
 interface WeaponSelectorProps {
@@ -61,7 +61,7 @@ const WeaponSelector = ({ character }: WeaponSelectorProps) => {
               items={weapons ?? []}
               isLoading={isLoading || isPending}
               isDisabled={isLoading || isPending}
-              classNames={selectInputWrapperDark}
+              classNames={selectInputWrapperDarkest}
               disabledKeys={disabledItems}
               onSelectionChange={field.onChange}
               isInvalid={!!errors.items}

@@ -18,8 +18,8 @@ import {
   AlertTitle
 } from '@/render/src/panel/character/shared/components/alert'
 import {
-  InputWrapper,
-  selectInputWrapperDark
+  InputWrapperDarkest,
+  selectInputWrapperDarkest
 } from '@/render/src/shared/utilities/classes'
 import { IconPlus } from '@tabler/icons-react'
 import { Controller } from 'react-hook-form'
@@ -90,7 +90,7 @@ const AscensionForm = ({ character }: AscensionFormProps) => {
               control={control}
               render={({ field }) => (
                 <Input
-                  classNames={InputWrapper}
+                  classNames={InputWrapperDarkest}
                   isInvalid={!!errors.level}
                   errorMessage={errors.level?.message}
                   type='number'
@@ -106,7 +106,7 @@ const AscensionForm = ({ character }: AscensionFormProps) => {
               control={control}
               render={({ field }) => (
                 <Input
-                  classNames={InputWrapper}
+                  classNames={InputWrapperDarkest}
                   isInvalid={!!errors.cost}
                   errorMessage={errors.cost?.message}
                   type='number'
@@ -131,7 +131,7 @@ const AscensionForm = ({ character }: AscensionFormProps) => {
                   items={materials}
                   isLoading={isLoading}
                   isDisabled={isLoading}
-                  classNames={selectInputWrapperDark}
+                  classNames={selectInputWrapperDarkest}
                   onSelectionChange={field.onChange}
                   isInvalid={!!errors.materials}
                   errorMessage={errors.materials?.message}

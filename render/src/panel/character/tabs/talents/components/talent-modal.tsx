@@ -2,7 +2,7 @@ import { Button } from '@nextui-org/button'
 import { Input } from '@nextui-org/input'
 import { IconPlus } from '@tabler/icons-react'
 import { Controller } from 'react-hook-form'
-import { InputWrapper } from '@/render/src/shared/utilities/classes'
+import { InputWrapperDarkest } from '@/render/src/shared/utilities/classes'
 import {
   Modal,
   ModalBody,
@@ -83,7 +83,7 @@ const TalentModal = ({ character }: TalentModalProps) => {
                       isDisabled={isPending}
                       isInvalid={!!errors.name}
                       errorMessage={errors.name?.message}
-                      classNames={InputWrapper}
+                      classNames={InputWrapperDarkest}
                       {...field}
                     />
                   )}

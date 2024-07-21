@@ -1,4 +1,4 @@
-import { InputWrapper } from '@/render/src/shared/utilities/classes'
+import { InputWrapperDarkest } from '@/render/src/shared/utilities/classes'
 import { CharacterType } from '@/render/src/types'
 import { Button } from '@nextui-org/button'
 import {
@@ -82,7 +82,7 @@ const ConstellationModal = ({ character }: ConstellationModalProps) => {
                       isDisabled={isPending}
                       isInvalid={!!errors.name}
                       errorMessage={errors.name?.message}
-                      classNames={InputWrapper}
+                      classNames={InputWrapperDarkest}
                       {...field}
                     />
                   )}

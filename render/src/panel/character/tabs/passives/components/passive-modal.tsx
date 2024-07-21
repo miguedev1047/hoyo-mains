@@ -11,7 +11,7 @@ import { IconPlus } from '@tabler/icons-react'
 import { Controller } from 'react-hook-form'
 import { CharacterType } from '@/render/src/types'
 import { useCreatePassive } from '@/render/src/panel/character/tabs/passives/utilities/hooks/use-passive'
-import { InputWrapper } from '@/render/src/shared/utilities/classes'
+import { InputWrapperDarkest } from '@/render/src/shared/utilities/classes'
 import DropImage from '@/render/src/panel/shared/components/ui/drop-image'
 import ModalButton from '@/render/src/panel/shared/components/buttons/modal-button'
 import Editor from '@/render/src/shared/components/editor/editor'
@@ -81,7 +81,7 @@ const PassiveModal = ({ character }: PassiveModalProps) => {
                       isDisabled={isPending}
                       isInvalid={!!errors.name}
                       errorMessage={errors.name?.message}
-                      classNames={InputWrapper}
+                      classNames={InputWrapperDarkest}
                       {...field}
                     />
                   )}

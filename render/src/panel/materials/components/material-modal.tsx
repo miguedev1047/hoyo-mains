@@ -17,7 +17,7 @@ import { useCreateMaterial } from '@/render/src/panel/materials/utilities/hooks/
 import { IconPlus, IconStarFilled } from '@tabler/icons-react'
 import { Controller } from 'react-hook-form'
 import { materialType, stars } from '@/render/src/shared/constants'
-import { InputWrapper, selectInputWrapperDarkest } from '@/render/src/shared/utilities/classes'
+import { InputWrapperDarkest, selectInputWrapperDarkest } from '@/render/src/shared/utilities/classes'
 import Editor from '@/render/src/shared/components/editor/editor'
 import DropImage from '@/render/src/panel/shared/components/ui/drop-image'
 import ModalButton from '@/render/src/panel/shared/components/buttons/modal-button'
@@ -78,7 +78,7 @@ const MaterialModal = () => {
                       isDisabled={isPending}
                       errorMessage={errors.name?.message}
                       isInvalid={!!errors.name}
-                      classNames={InputWrapper}
+                      classNames={InputWrapperDarkest}
                       {...field}
                     />
                   )}

@@ -15,8 +15,8 @@ import {
   Tooltip
 } from '@nextui-org/react'
 import {
-  InputWrapper,
-  selectInputWrapperDark
+  InputWrapperDarkest,
+  selectInputWrapperDarkest
 } from '@/render/src/shared/utilities/classes'
 import { IconPlus, IconStarFilled } from '@tabler/icons-react'
 import { useCreateWeapon } from '@/render/src/panel/weapons/utilities/hooks/use-create-weapon'
@@ -80,7 +80,7 @@ const WeaponModal = () => {
                       type='text'
                       label='Nombre'
                       isDisabled={isPending}
-                      classNames={InputWrapper}
+                      classNames={InputWrapperDarkest}
                       errorMessage={errors.name?.message}
                       isInvalid={!!errors.name}
                       {...field}
@@ -100,7 +100,7 @@ const WeaponModal = () => {
                       isLoading={isPending}
                       errorMessage={errors.stat?.message}
                       isInvalid={!!errors.stat}
-                      classNames={selectInputWrapperDark}
+                      classNames={selectInputWrapperDarkest}
                       selectedKeys={[field.value]}
                       renderValue={(value) => {
                         return value.map(({ data, key }) => (
@@ -140,7 +140,7 @@ const WeaponModal = () => {
                       isLoading={isPending}
                       errorMessage={errors.type?.message}
                       isInvalid={!!errors.type}
-                      classNames={selectInputWrapperDark}
+                      classNames={selectInputWrapperDarkest}
                       selectedKeys={[field.value]}
                       renderValue={(value) => {
                         return value.map(({ data, key }) => (
@@ -188,7 +188,7 @@ const WeaponModal = () => {
                         isLoading={isPending}
                         errorMessage={errors.stars?.message}
                         isInvalid={!!errors.stars}
-                        classNames={selectInputWrapperDark}
+                        classNames={selectInputWrapperDarkest}
                         selectedKeys={[field.value]}
                         renderValue={(value) => {
                           return value.map(({ data, key }) => (
@@ -230,7 +230,7 @@ const WeaponModal = () => {
                       type='number'
                       label='ATQ. base'
                       isDisabled={isPending}
-                      classNames={InputWrapper}
+                      classNames={InputWrapperDarkest}
                       errorMessage={errors.atk?.message}
                       isInvalid={!!errors.atk}
                       {...field}

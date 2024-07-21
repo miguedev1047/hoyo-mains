@@ -14,7 +14,7 @@ import { CharacterType } from '@/render/src/types'
 import { useMaterialSelector } from '@/render/src/panel/character/materials/utilities/hooks/use-material-selector'
 import { useFetch } from '@/render/src/shared/utilities/hooks/use-fetch'
 import { Figure } from '@/render/src/shared/components/figure'
-import { selectInputWrapperDark } from '@/render/src/shared/utilities/classes'
+import { selectInputWrapperDarkest } from '@/render/src/shared/utilities/classes'
 
 interface MaterialSelectorProps {
   character: CharacterType
@@ -67,7 +67,7 @@ const MaterialSelector = ({ character }: MaterialSelectorProps) => {
                 items={materials ?? []}
                 isLoading={isLoading || isPending}
                 isDisabled={isLoading || isPending}
-                classNames={selectInputWrapperDark}
+                classNames={selectInputWrapperDarkest}
                 disabledKeys={disabledItems}
                 onSelectionChange={field.onChange}
                 isInvalid={!!errors.items}
@@ -86,9 +86,8 @@ const MaterialSelector = ({ character }: MaterialSelectorProps) => {
                 {(material) => (
                   <SelectItem key={material.id} textValue={material.name}>
                     <div className='flex gap-2 items-center'>
-                      <Figure size='md'>
+                      <Figure size='sm'>
                         <Image
-                          radius='sm'
                           className='w-full h-full object-cover'
                           src={material.imageUrl!}
                           alt={material.name}
