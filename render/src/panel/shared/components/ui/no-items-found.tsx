@@ -5,7 +5,7 @@ const NotFound = React.forwardRef<
   HTMLDivElement,
   React.HTMLAttributes<HTMLDivElement>
 >(({ className, ...props }, ref) => (
-  <h2
+  <div
     ref={ref}
     className={cn(
       'w-full h-full max-h-[calc(100vh_-_16rem)] grid place-items-center ',

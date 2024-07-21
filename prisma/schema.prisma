@@ -2,17 +2,13 @@
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
 
 generator client {
-  provider = "prisma-client-js"
+  provider        = "prisma-client-js"
+  previewFeatures = ["driverAdapters"]
 }
 
 datasource db {
-  provider = "postgresql"
-  url      = env("DATABASE_URL")
-}
-
-enum Role {
-  ADMIN
-  OWNER
+  provider = "sqlite"
+  url      = "file:./dev.db"
 }
 
 model User {
@@ -20,7 +16,7 @@ model User {
   email    String  @unique
   name     String?
   password String
-  role     Role    @default(ADMIN)
+  role     String    @default("ADMIN")
 }
 
 model Character {
