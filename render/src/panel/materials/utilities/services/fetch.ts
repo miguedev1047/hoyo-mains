@@ -57,12 +57,12 @@ export const fetchMaterialById = async (id: string) => {
   }
 
   try {
-    const material = await db.artifact.findUnique({
+    const material = await db.material.findUnique({
       where: { id }
     })
 
-    return material
+    return { data: material, message: 'Material obtenido!', status: 201 }
   } catch (error: any) {
-    return null
+    return { error: 'Error al obtener el material', status: 500 }
   }
 }
