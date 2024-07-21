@@ -55,7 +55,7 @@ export const selectInputWrapperDarkest:
     >
   | undefined = {
   trigger:
-    'bg-color-darkest data-[hover=true]:bg-color-dark-hover group-data-[focus=true]:bg-color-dark-hover',
+    'bg-color-darkest data-[hover=true]:bg-color-dark-hover group-data-[focus=true]:bg-color-darkest-hover',
   popoverContent: 'bg-color-darkest',
   value: 'flex flex-wrap py-2 gap-2',
   listbox:
@@ -81,9 +81,9 @@ export const selectInputWrapperDark:
     >
   | undefined = {
   trigger:
-    'min-h-12 py-2 flex bg-color-darkest data-[hover=true]:bg-color-dark-hover group-data-[focus=true]:bg-color-dark-hover',
+    'bg-color-dark data-[hover=true]:bg-color-dark-hover group-data-[focus=true]:bg-color-dark-hover',
   value: 'flex flex-wrap py-2 gap-2',
-  popoverContent: 'bg-color-darkest',
+  popoverContent: 'bg-color-dark',
   listbox:
     'data-[hover=true]:bg-red-500 data-[hover=true]:text-default-foreground'
 }
