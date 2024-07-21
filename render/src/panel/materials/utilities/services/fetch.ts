@@ -24,7 +24,7 @@ export const fetchMaterials = async ({
     const materials = await db.material.findMany({
       where: {
         ...(name && { name: { contains: name } }),
-        ...(type && { type: { contains: type, mode: 'insensitive' } }),
+        ...(type && { type: { contains: type } }),
         ...(stars && { stars: stars })
       },
       orderBy: [
@@ -66,4 +66,3 @@ export const fetchMaterialById = async (id: string) => {
     return { error: 'Error al obtener el material', status: 500 }
   }
 }
-

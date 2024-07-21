@@ -40,8 +40,7 @@ export const createAscension = async (
     })
 
     await db.materialByAscension.createMany({
-      data: materials,
-      skipDuplicates: true
+      data: materials
     })
 
     return { message: 'Ascensión creada!', status: 201 }

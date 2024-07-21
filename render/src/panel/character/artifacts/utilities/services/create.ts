@@ -13,8 +13,7 @@ export const createArtifact = async (data: any[]) => {
     }
   try {
     const artifact = await db.artifactByCharacter.createMany({
-      data,
-      skipDuplicates: true
+      data
     })
 
     return {

@@ -13,8 +13,7 @@ export const createMaterialCharacters = async (data: any[]) => {
     }
   try {
     const materials = await db.materialsByCharacter.createMany({
-      data,
-      skipDuplicates: true
+      data
     })
 
     return {

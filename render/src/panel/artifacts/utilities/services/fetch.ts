@@ -18,10 +18,7 @@ export const fetchArtifacts = async ({ name }: FetchArtifactsProps) => {
     if (name) {
       const artifacts = await db.artifact.findMany({
         where: {
-          name: {
-            contains: name,
-            mode: 'insensitive'
-          }
+          name: { contains: name }
         }
       })
 
