@@ -16,9 +16,21 @@ export const getFullCharacterById = async (id: string) => {
     const character = await db.character.findUnique({
       where: { id },
       include: {
-        materials: true,
-        weapons: true,
-        artifacts: true,
+        materials: {
+          orderBy: {
+            order: 'asc'
+          }
+        },
+        weapons: {
+          orderBy: {
+            order: 'asc'
+          }
+        },
+        artifacts: {
+          orderBy: {
+            order: 'asc'
+          }
+        },
         bestStats: true,
         videoGuide: true,
         teams: {

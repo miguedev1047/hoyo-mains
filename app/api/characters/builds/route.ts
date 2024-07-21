@@ -21,9 +21,21 @@ export async function GET(request: Request) {
         }
       ],
       include: {
-        materials: true,
-        weapons: true,
-        artifacts: true,
+        materials: {
+          orderBy: {
+            order: 'asc'
+          }
+        },
+        weapons: {
+          orderBy: {
+            order: 'asc'
+          }
+        },
+        artifacts: {
+          orderBy: {
+            order: 'asc'
+          }
+        },
         bestStats: true,
         videoGuide: true,
         teams: {
