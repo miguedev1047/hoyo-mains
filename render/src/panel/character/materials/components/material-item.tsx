@@ -46,7 +46,7 @@ const MaterialItem = ({ material, index }: MaterialItemProps) => {
                   className='w-full h-full object-cover'
                 />
               </Figure>
-              <h3 className='text-xs md:text-lg font-semibold line-clamp-1'>
+              <h3 className=' text-xs md:text-lg font-semibold line-clamp-1'>
                 {fetchedMaterial?.name}
               </h3>
             </div>
