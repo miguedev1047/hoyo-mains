@@ -24,7 +24,7 @@ const TeamItem = ({ team, characters, index }: TeamItemProps) => {
           {...provided.dragHandleProps}
           className='mb-4'
         >
-          <Card className='flex flex-col gap-4 p-5 bg-color-dark'>
+          <Card className='flex flex-col gap-4 p-2.5 lg:p-5 bg-color-dark'>
             <article className='flex items-center gap-4'>
               <DeleteButton id={team.id} onCallback={deleteTeam}>
                 <IconTrash />

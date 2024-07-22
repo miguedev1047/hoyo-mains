@@ -29,6 +29,7 @@ const CharacterItem = ({ character, index }: CharacterItemProps) => {
     <Draggable draggableId={character.id} index={index}>
       {(provided, snapshot) => (
         <li
+          className='max-lg:mb-4'
           ref={provided.innerRef}
           {...provided.draggableProps}
           {...provided.dragHandleProps}
