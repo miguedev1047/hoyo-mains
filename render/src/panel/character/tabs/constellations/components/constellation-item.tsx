@@ -27,7 +27,7 @@ const ConstellationItem = ({ constellation }: ConstellationItemProps) => {
     <li className='w-full'>
       <Card className='px-2 py-5 md:px-8 bg-color-darkest space-y-3'>
         <CardHeader>
-          <article className='w-full flex items-center max-md:justify-between gap-4'>
+          <article className='w-full flex items-center gap-4'>
             <Figure size='lg' radius='lg'>
               {constellation.imageUrl ? (
                 <Image
@@ -49,7 +49,7 @@ const ConstellationItem = ({ constellation }: ConstellationItemProps) => {
                 />
               )}
             </Figure>
-            <h3 className='text-xl font-semibold text-secondary-color line-clamp-1'>
+            <h3 className='texb-base md:text-xl font-semibold text-secondary-color line-clamp-1'>
               {constellation.name}
             </h3>
           </article>

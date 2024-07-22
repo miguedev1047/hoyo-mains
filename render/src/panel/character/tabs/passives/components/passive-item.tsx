@@ -26,7 +26,7 @@ const PassiveItem = ({ passive }: PassiveItemProps) => {
     <li className='w-full'>
       <Card className='px-2 py-5 md:px-8 bg-color-darkest space-y-3'>
         <CardHeader>
-          <article className='w-full flex items-center max-md:justify-between gap-4'>
+          <article className='w-full flex items-center gap-4'>
             <Figure size='lg' radius='lg'>
               {passive.imageUrl ? (
                 <Image
@@ -48,7 +48,7 @@ const PassiveItem = ({ passive }: PassiveItemProps) => {
                 />
               )}
             </Figure>
-            <h3 className='text-xl font-semibold text-secondary-color line-clamp-1'>
+            <h3 className='texb-base md:text-xl font-semibold text-secondary-color line-clamp-1'>
               {passive.name}
             </h3>
           </article>
