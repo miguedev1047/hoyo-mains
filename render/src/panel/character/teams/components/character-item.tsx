@@ -39,6 +39,7 @@ const CharacterItem = ({ character, index }: CharacterItemProps) => {
           ref={provided.innerRef}
           {...provided.draggableProps}
           {...provided.dragHandleProps}
+          className='max-xl:mb-4'
         >
           <Card
             className={clsx(
