@@ -14,21 +14,21 @@ const MaterialMenubar = () => {
           label='Buscar por nombre'
           placeholder='Trozo de ágata agnidus...'
           searchQuery='name'
-          className='col-span-6 lg:col-span-4'
+          className='col-span-6 lg:col-span-2 xl:col-span-4'
         />
         <SearchSelect
           label='Filtrar por tipo'
           placeholder='Selecciona un tipo'
           items={materialType}
           searchQuery='type'
-          className='col-span-6 lg:col-span-1'
+          className='col-span-6 lg:col-span-2 xl:col-span-1'
         />
         <SearchSelect
           label='Filtrar por estrellas'
           placeholder='Selecciona un rango'
           items={stars}
           searchQuery='stars'
-          className='col-span-6 lg:col-span-1'
+          className='col-span-6 lg:col-span-2 xl:col-span-1'
         />
       </nav>
       <Divider />

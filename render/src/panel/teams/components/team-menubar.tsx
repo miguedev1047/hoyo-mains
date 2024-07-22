@@ -6,7 +6,7 @@ const TeamMenubar = () => {
   return (
     <>
       <Divider />
-      <nav className='grid grid-cols-2 gap-4'>
+      <nav className='grid grid-cols-1 lg:grid-cols-2 gap-4'>
         <Search
           label='Buscar personaje'
           placeholder='Buscar...'
