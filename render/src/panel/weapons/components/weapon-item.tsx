@@ -22,11 +22,9 @@ const WeaponItem = ({ weapon }: WeaponItemProps) => {
         <article className='flex items-center gap-4'>
           <Figure size='md'>
             <Image
-              radius='sm'
+              className='w-full h-full object-cover'
               src={weapon.imageUrl!}
               alt={weapon.name}
-              width={200}
-              height={200}
             />
           </Figure>
           <h3 className='text-sm font-medium line-clamp-1'>{weapon.name}</h3>

@@ -22,11 +22,9 @@ const ArtifactItem = ({ artifact }: ArtifactItemProps) => {
         <article className='flex items-center gap-4'>
           <Figure size='md'>
             <Image
-              radius='sm'
+              className='w-full h-full object-cover'
               src={artifact.imageUrl!}
               alt={artifact.name}
-              width={200}
-              height={200}
             />
           </Figure>
           <h3 className='text-sm font-medium line-clamp-1'>{artifact.name}</h3>

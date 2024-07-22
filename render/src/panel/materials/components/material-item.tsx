@@ -22,11 +22,9 @@ const MaterialItem = ({ material }: MaterialItemProps) => {
         <article className='flex items-center gap-4'>
           <Figure size='md'>
             <Image
-              radius='sm'
+              className='w-full h-full object-cover'
               src={material.imageUrl!}
               alt={material.name}
-              width={200}
-              height={200}
             />
           </Figure>
           <h3 className='text-sm font-medium line-clamp-1'>{material.name}</h3>
