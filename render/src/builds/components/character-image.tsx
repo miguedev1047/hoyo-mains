@@ -1,10 +1,10 @@
+import { Card, Chip, Image, Tooltip } from '@nextui-org/react'
 import { Figure } from '@/render/src/shared/components/figure'
 import { getStarBorderColor } from '@/render/src/shared/utilities/helpers/get-border-color'
+import { getElementImage } from '@/render/src/shared/utilities/helpers/get-element-image'
 import { CharacterType } from '@/render/src/types'
-import { Card, Chip, Image, Tooltip } from '@nextui-org/react'
 import { getRole } from '@/render/src/shared/utilities/helpers/get-role'
 import Link from 'next/link'
-import { getElementImage } from '../../shared/utilities/helpers/get-element-image'
 
 interface CharacterImageProps {
   build: CharacterType
