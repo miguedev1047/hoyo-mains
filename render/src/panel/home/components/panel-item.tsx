@@ -14,22 +14,19 @@ interface PanelItemProps {
 
 const PanelItem = ({ item }: PanelItemProps) => {
   return (
-    <li
-      key={item.title}
-      className='w-full h-[400px] flex-1 hover:flex-[5] transition-all duration-700 ease-in-beizer select-none'
-    >
+    <li key={item.title}>
       <Link href={item.url}>
         <Card
           isPressable
           isBlurred
           isFooterBlurred
-          className='w-full h-full bg-color-dark'
+          className='w-full aspect-square bg-color-dark'
         >
           <Figure className='bg-transparent w-full h-full'>
             <Image
               className='object-cover w-full h-full'
               classNames={{
-                wrapper: 'aspect-square'
+                wrapper: 'w-full h-full aspect-square object-cover'
               }}
               src={item.background}
               alt={item.title}
