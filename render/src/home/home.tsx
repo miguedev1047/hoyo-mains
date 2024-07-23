@@ -1,39 +1,17 @@
-import { Card, CardBody, CardHeader } from '@nextui-org/card'
-import { Search } from '@/render/src/panel/shared/components/ui/search'
-import { Character } from '@prisma/client'
-import HomeFilters from '@/render/src/home/components/home-filters'
-import CharacterList from '@/render/src/home/components/character-list'
+import { CharacterType } from '@/render/src/types'
+import CharacterContainer from '@/render/src/home/containers/character-container'
+import HeroContainer from '@/render/src/home/containers/hero-container'
 
 interface HomeProps {
-  characters: Character[]
+  characters: CharacterType[]
 }
 
 const Home = ({ characters }: HomeProps) => {
   return (
-    <Card className='bg-color-dark p-4'>
-      <CardHeader>
-        <div className='w-full space-y-5'>
-          <div className='w-full flex flex-wrap gap-4 justify-between items-center'>
-            <h2 className='text-base md:text-2xl font-bold'>
-              Lista de personajes
-            </h2>
-
-            <Search
-              label='Buscar personaje'
-              placeholder='Hu tao...'
-              searchQuery='name'
-              className='w-full md:max-w-[375px]'
-              variant='underlined'
-            />
-          </div>
-
-          <HomeFilters />
-        </div>
-      </CardHeader>
-      <CardBody>
-        <CharacterList characters={characters} />
-      </CardBody> 
-    </Card>
+    <div className='space-y-4'>
+      <HeroContainer />
+      <CharacterContainer characters={characters} />
+    </div>
   )
 }
 
