@@ -1,16 +1,16 @@
+import { useMediaQuery } from '@/render/src/shared/utilities/hooks/use-media-query'
 import { BestTeamsType } from '@/render/src/types'
 import { useDrag } from '@/render/src/panel/shared/utilities/hooks/use-drag'
 import { updatedOrderCharacters } from '@/render/src/panel/teams/utilities/services/update'
 import { DragDropContext, Droppable } from '@hello-pangea/dnd'
 import CharacterItem from '@/render/src/panel/teams/components/character-item'
-import { useMediaQuery } from '@/render/src/shared/utilities/hooks/use-media-query'
 
 interface SortableCharacterListTypes {
   team: BestTeamsType
 }
 
 const SortableCharacterList = ({ team }: SortableCharacterListTypes) => {
-  const isDesktop = useMediaQuery('(min-width: 1024px)')
+  const isDesktop = useMediaQuery('(min-width: 1280px)')
 
   const teamMembers = team.characters
 
@@ -24,7 +24,7 @@ const SortableCharacterList = ({ team }: SortableCharacterListTypes) => {
     return (
       <DragDropContext onDragEnd={onDragEnd}>
         <Droppable
-          direction='horizontal'
+          direction='vertical'
           droppableId='characterList'
           type='characterList'
         >
@@ -57,7 +57,7 @@ const SortableCharacterList = ({ team }: SortableCharacterListTypes) => {
       >
         {(provided) => (
           <ol
-            className='grid grid-cols-4 gap-4 select-none'
+            className='grid grid-cols-4 select-none'
             ref={provided.innerRef}
             {...provided.droppableProps}
           >

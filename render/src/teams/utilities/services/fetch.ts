@@ -23,7 +23,8 @@ export const fetchTeamsByName = async (name: string) => {
               characterId: characterId
             }
           }
-        }
+        },
+        orderBy: [{ order: 'asc' }, { createdDate: 'desc' }]
       })
 
       return team
@@ -32,7 +33,8 @@ export const fetchTeamsByName = async (name: string) => {
     const teams = await db.bestTeam.findMany({
       include: {
         characters: true
-      }
+      },
+      orderBy: [{ order: 'asc' }, { createdDate: 'desc' }]
     })
     return teams
   } catch (error) {
@@ -41,14 +43,14 @@ export const fetchTeamsByName = async (name: string) => {
 }
 
 export const fetchCharacterById = async (id: string) => {
-    try {
-      const character = await db.character.findMany({
-        where: {
-          id
-        }
-      })
-      return character
-    } catch (error) {
-      return null
-    }
+  try {
+    const character = await db.character.findMany({
+      where: {
+        id
+      }
+    })
+    return character
+  } catch (error) {
+    return null
   }
+}

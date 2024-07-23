@@ -22,14 +22,24 @@ const CharacterItem = ({ character, index }: CharacterItemProps) => {
     `/api/characters/character/${characterId}`
   )
 
-  if (error) return <SkeletonCard showDragIcon variant='darkest' />
-  if (isLoading) return <SkeletonCard showDragIcon variant='darkest' />
+  if (error)
+    return (
+      <li className='m-2'>
+        <SkeletonCard showDragIcon variant='darkest' />
+      </li>
+    )
+  if (isLoading)
+    return (
+      <li className='m-2'>
+        <SkeletonCard showDragIcon variant='darkest' />
+      </li>
+    )
 
   return (
     <Draggable draggableId={character.id} index={index}>
       {(provided, snapshot) => (
         <li
-          className='max-lg:mb-4'
+          className='p-2'
           ref={provided.innerRef}
           {...provided.draggableProps}
           {...provided.dragHandleProps}

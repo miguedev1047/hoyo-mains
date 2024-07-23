@@ -9,7 +9,7 @@ export const fetchTeamByName = async (name: string) => {
     const bestTeamCharacter = await db.bestTeamCharacter.findFirst({
       where: { characterId: character?.id }
     })
-    
+
     const characterId = bestTeamCharacter?.characterId
 
     if (characterId) {
@@ -20,10 +20,11 @@ export const fetchTeamByName = async (name: string) => {
         where: {
           characters: {
             some: {
-              characterId: characterId  
+              characterId: characterId
             }
           }
-        }
+        },
+        orderBy: [{ order: 'asc' }, { createdDate: 'desc' }]
       })
 
       return team
@@ -32,7 +33,8 @@ export const fetchTeamByName = async (name: string) => {
     const teams = await db.bestTeam.findMany({
       include: {
         characters: true
-      }
+      },
+      orderBy: [{ order: 'asc' }, { createdDate: 'desc' }]
     })
     return teams
   } catch (error) {
