@@ -1,6 +1,6 @@
 import { Star1, Star2, Star3, Star4, Star5 } from '@/assets'
 
-export const getWeaponStar = (star: number) => {
+export const getStar = (star: number) => {
   switch (star) {
     case 1:
       return Star1.src

@@ -20,9 +20,9 @@ import { weaponColumns } from '@/render/src/shared/constants'
 import { WeaponType } from '@/render/src/types'
 import { Weapon } from '@prisma/client'
 import { useCallback } from 'react'
-import { getWeaponStar } from '@/render/src/database/weapons/utilities/helpers/get-weapon-star'
 import { getWeaponStat } from '@/render/src/database/weapons/utilities/helpers/get-weapon-stat'
 import { getStarBorderColor } from '@/render/src/shared/utilities/helpers/get-border-color'
+import { getStar } from '@/render/src/shared/utilities/helpers/get-star'
 import { cn } from '@/libs/utils'
 
 interface WeaponTableProps {
@@ -59,7 +59,7 @@ const WeaponTable = ({ weapons }: WeaponTableProps) => {
       case 'stars':
         return (
           <Figure className='bg-transparent p-2' size='sm'>
-            <Image src={getWeaponStar(weapon.stars)} alt={weapon.starsText} />
+            <Image src={getStar(weapon.stars)} alt={weapon.starsText} />
           </Figure>
         )
 
