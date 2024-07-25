@@ -22,6 +22,8 @@ import { Weapon } from '@prisma/client'
 import { useCallback } from 'react'
 import { getWeaponStar } from '@/render/src/database/weapons/utilities/helpers/get-weapon-star'
 import { getWeaponStat } from '@/render/src/database/weapons/utilities/helpers/get-weapon-stat'
+import { getStarBorderColor } from '@/render/src/shared/utilities/helpers/get-border-color'
+import { cn } from '@/libs/utils'
 
 interface WeaponTableProps {
   weapons: WeaponType[]
@@ -35,7 +37,7 @@ const WeaponTable = ({ weapons }: WeaponTableProps) => {
       case 'weapon':
         return (
           <div className='flex items-center gap-3'>
-            <Figure>
+            <Figure className={cn('border', getStarBorderColor(weapon.stars))}>
               <Image src={weapon.imageUrl!} alt={weapon.name} />
             </Figure>
             <p className='text-color-light'>{weapon.name}</p>
