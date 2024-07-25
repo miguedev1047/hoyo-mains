@@ -10,7 +10,7 @@ const BuildFilters = () => {
     <div className='w-full'>
       <Card className='bg-color-light p-4 flex flex-wrap gap-4 justify-around flex-row'>
         <div className='flex flex-wrap justify-center gap-2'>
-          {buttonFilters.rarity.map((filter) => (
+          {buttonFilters.rarity.slice(0, 2).map((filter) => (
             <Toggle
               name='stars'
               value={filter.value}
