@@ -1,5 +1,5 @@
 import { fetchCharacters } from '@/render/src/home/utilities/services/fetch'
-import { Character } from '@prisma/client'
+import { CharacterType } from '@/render/src/types'
 import Home from '@/render/src/home/home'
 import Navigation from '@/render/src/shared/components/navigation'
 
@@ -33,7 +33,7 @@ export default async function HomePage({ searchParams }: HomePageProps) {
     element,
     weapon,
     stars
-  })) as Character[]
+  })) as CharacterType[]
 
   return (
     <>

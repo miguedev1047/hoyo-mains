@@ -154,18 +154,11 @@ export const materialType = [
   }
 ]
 
-export const columns = [
-  { name: 'RANGO', uid: 'rank' },
-  { name: 'NIVEL', uid: 'level' },
-  { name: 'COSTO', uid: 'cost' },
-  { name: 'MATERIALES', uid: 'materials' },
-  { name: 'ACCIONES', uid: 'actions' }
-]
-
 export const buttonFilters = {
   rarity: [
     { name: '5 Estrellas', value: '5', src: Star5.src },
-    { name: '4 Estrellas', value: '4', src: Star4.src }
+    { name: '4 Estrellas', value: '4', src: Star4.src },
+    { name: '3 Estrellas', value: '3', src: Star3.src }
   ],
   elements: [
     { name: 'Pyro', value: 'pyro', src: Pyro.src },
@@ -204,4 +197,20 @@ export const weaponTypes = [
   { name: 'Arco', id: 'BOW', icon: Bow.src },
   { name: 'Lanza', id: 'POLEARM', icon: Polearm.src },
   { name: 'Catalizador', id: 'CATALYST', icon: Catalyst.src }
+]
+
+export const columns = [
+  { name: 'RANGO', uid: 'rank' },
+  { name: 'NIVEL', uid: 'level' },
+  { name: 'COSTO', uid: 'cost' },
+  { name: 'MATERIALES', uid: 'materials' },
+  { name: 'ACCIONES', uid: 'actions' }
+]
+
+export const weaponColumns = [
+  { name: 'ARMA', uid: 'weapon' },
+  { name: 'TIPO', uid: 'type' },
+  { name: 'ESTRELLAS', uid: 'stars' },
+  { name: 'ATQ', uid: 'atk' },
+  { name: 'ESTADISTICA PRINCIPAL', uid: 'main_stat' }
 ]
