@@ -1,19 +1,19 @@
 'use client'
 
 import {
-    Table,
-    TableHeader,
-    TableColumn,
-    TableBody,
-    TableRow,
-    TableCell,
-    Spinner,
-    Image,
-    Tooltip
+  Table,
+  TableHeader,
+  TableColumn,
+  TableBody,
+  TableRow,
+  TableCell,
+  Spinner,
+  Image,
+  Tooltip
 } from '@nextui-org/react'
 import {
-    getWeaponType,
-    getWeaponTypeAlt
+  getWeaponType,
+  getWeaponTypeAlt
 } from '@/render/src/database/weapons/utilities/helpers/get-weapon-type'
 import { Figure } from '@/render/src/shared/components/figure'
 import { weaponColumns } from '@/render/src/shared/constants'
@@ -91,7 +91,7 @@ const WeaponTable = ({ weapons }: WeaponTableProps) => {
       <TableBody
         emptyContent='No hay nada para mostrar.'
         loadingContent={<Spinner />}
-        items={weapons}
+        items={weapons ?? []}
       >
         {(item) => (
           <TableRow key={item.id}>

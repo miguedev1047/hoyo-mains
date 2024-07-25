@@ -1,5 +1,5 @@
 import { Card, CardBody, CardHeader } from '@nextui-org/card'
-import { Search } from '@/render/src/panel/shared/components/ui/search'
+import { Search } from '@/render/src/shared/components/search'
 import { WeaponType } from '@/render/src/types'
 import WeaponFilters from '@/render/src/database/weapons/components/weapon-filters'
 import WeaponTable from '@/render/src/database/weapons/components/weapon-table'

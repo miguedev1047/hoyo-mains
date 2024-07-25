@@ -1,5 +1,5 @@
 import { Card, CardBody, CardHeader } from '@nextui-org/card'
-import { Search } from '@/render/src/panel/shared/components/ui/search'
+import { Search } from '@/render/src/shared/components/search'
 import { CharacterType } from '@/render/src/types'
 import BuildFilters from '@/render/src/builds/components/build-filters'
 import BuildList from '@/render/src/builds/components/build-list'

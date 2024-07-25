@@ -1,5 +1,5 @@
 import { Divider } from '@nextui-org/react'
-import { Search } from '@/render/src/panel/shared/components/ui/search'
+import { Search } from '@/render/src/shared/components/search'
 import TeamForm from '@/render/src/panel/teams/components/team-form'
 
 const TeamMenubar = () => {

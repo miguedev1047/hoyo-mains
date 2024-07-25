@@ -1,6 +1,6 @@
 import { CharacterType } from '@/render/src/types'
 import { Card, CardBody, CardHeader } from '@nextui-org/card'
-import { Search } from '@/render/src/panel/shared/components/ui/search'
+import { Search } from '@/render/src/shared/components/search'
 import HomeFilters from '@/render/src/home/components/home-filters'
 import CharacterList from '@/render/src/home/components/character-list'
 

@@ -1,5 +1,5 @@
 import { Divider } from '@nextui-org/react'
-import { Search, SearchSelect } from '../../shared/components/ui/search'
+import { Search, SearchSelect } from '@/render/src/shared/components/search'
 import { stars, weapons } from '@/render/src/shared/constants'
 
 const WeaponMenubar = () => {

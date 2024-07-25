@@ -1,7 +1,4 @@
-import {
-  Search,
-  SearchSelect
-} from '@/render/src/panel/shared/components/ui/search'
+import { Search, SearchSelect } from '@/render/src/shared/components/search'
 import { Divider } from '@nextui-org/react'
 import { materialType, stars } from '@/render/src/shared/constants'
 
