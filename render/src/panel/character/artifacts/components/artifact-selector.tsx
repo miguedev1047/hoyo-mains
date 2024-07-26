@@ -57,6 +57,7 @@ const ArtifactSelector = ({ character }: ArtifactSelectorProps) => {
           return (
             <>
               <Select
+                size='lg'
                 aria-label='Artifact Selector'
                 placeholder='Selecciona los artefactos'
                 selectionMode='multiple'

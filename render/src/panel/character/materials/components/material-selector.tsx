@@ -58,6 +58,7 @@ const MaterialSelector = ({ character }: MaterialSelectorProps) => {
           return (
             <>
               <Select
+                size='lg'
                 aria-label='Material Selector'
                 placeholder='Selecciona los materiales'
                 selectionMode='multiple'

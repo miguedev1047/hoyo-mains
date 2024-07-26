@@ -57,6 +57,7 @@ const CharacterSelector = ({ character, team }: CharacterSelectorProps) => {
         render={({ field }) => {
           return (
             <Select
+              size='lg'
               aria-label='Character Selector'
               placeholder='Selecciona los personajes'
               selectionMode='multiple'

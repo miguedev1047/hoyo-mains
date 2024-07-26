@@ -52,6 +52,7 @@ const WeaponSelector = ({ character }: WeaponSelectorProps) => {
         render={({ field }) => (
           <>
             <Select
+              size='lg'
               aria-label='Weapon Selector'
               placeholder='Selecciona las armas'
               selectionMode='multiple'
