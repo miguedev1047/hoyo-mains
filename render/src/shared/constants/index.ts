@@ -214,3 +214,9 @@ export const weaponColumns = [
   { name: 'ATQ', uid: 'atk' },
   { name: 'ESTADISTICA PRINCIPAL', uid: 'main_stat' }
 ]
+
+export const artifactColumns = [
+  { name: 'ARTEFACTO', uid: 'name' },
+  { name: 'ESTRELLAS', uid: 'stars' },
+  { name: 'DESCRIPCION', uid: 'description' },
+]
