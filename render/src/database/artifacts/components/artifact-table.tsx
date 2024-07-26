@@ -16,6 +16,8 @@ import { Artifact } from '@prisma/client'
 import { useCallback } from 'react'
 import { getStar } from '@/render/src/shared/utilities/helpers/get-star'
 import Output from '@/render/src/shared/components/editor/output'
+import { cn } from '@/libs/utils'
+import { getStarBorderColor } from '@/render/src/shared/utilities/helpers/get-border-color'
 
 interface ArtifactTableProps {
   artifacts: Artifact[]
@@ -29,7 +31,9 @@ const ArtifactTable = ({ artifacts }: ArtifactTableProps) => {
       case 'name':
         return (
           <div className='flex items-center gap-3 w-[240px]'>
-            <Figure>
+            <Figure
+              className={cn('border', getStarBorderColor(artifact.stars))}
+            >
               <Image src={artifact.imageUrl!} alt={artifact.name} />
             </Figure>
             <h2 className='text-color-light text-balance'>{artifact.name}</h2>

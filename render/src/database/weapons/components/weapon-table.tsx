@@ -40,7 +40,7 @@ const WeaponTable = ({ weapons }: WeaponTableProps) => {
             <Figure className={cn('border', getStarBorderColor(weapon.stars))}>
               <Image src={weapon.imageUrl!} alt={weapon.name} />
             </Figure>
-            <p className='text-color-light'>{weapon.name}</p>
+            <h2 className='text-color-light text-balance'>{weapon.name}</h2>
           </div>
         )
 
