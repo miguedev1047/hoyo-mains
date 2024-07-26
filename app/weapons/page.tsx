@@ -11,6 +11,14 @@ interface WeaponsPageProps {
   }
 }
 
+export async function generateMetadata() {
+  return {
+    title: 'HoYo Mains | Armas',
+    description:
+      'HoYo Mains es una comunidad de Genshin Impact en español. Aquí encontrarás guías, builds, y más sobre el juego.'
+  }
+}
+
 const WeaponsPage = async ({ searchParams }: WeaponsPageProps) => {
   const { name, stars, type } = {
     name: searchParams?.name,

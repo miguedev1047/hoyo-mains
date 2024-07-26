@@ -14,7 +14,7 @@ const Weapons = ({ weapons }: WeaponsProps) => {
       <CardHeader>
         <div className='w-full space-y-5'>
           <div className='w-full flex flex-wrap gap-4 justify-between items-center'>
-            <h2 className='text-base md:text-2xl font-bold'>Armas</h2>
+            <h2 className='text-base md:text-2xl font-bold'>Lista de Armas</h2>
 
             <Search
               label='Buscar arma'
