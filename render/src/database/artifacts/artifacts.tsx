@@ -2,7 +2,7 @@ import { Card, CardBody, CardHeader } from '@nextui-org/card'
 import { Artifact } from '@prisma/client'
 import { Search } from '@/render/src/shared/components/search'
 import ArtifactFilters from '@/render/src/database/artifacts/components/artifact-filters'
-import ArtifactTable from './components/artifact-table'
+import ArtifactTable from '@/render/src/database/artifacts/components/artifact-table'
 
 interface ArtifactsProps {
   artifacts: Artifact[]

@@ -14,9 +14,7 @@ import { Figure } from '@/render/src/shared/components/figure'
 import { artifactColumns } from '@/render/src/shared/constants'
 import { Artifact } from '@prisma/client'
 import { useCallback } from 'react'
-import { getStarBorderColor } from '@/render/src/shared/utilities/helpers/get-border-color'
 import { getStar } from '@/render/src/shared/utilities/helpers/get-star'
-import { cn } from '@/libs/utils'
 import Output from '@/render/src/shared/components/editor/output'
 
 interface ArtifactTableProps {
@@ -61,7 +59,7 @@ const ArtifactTable = ({ artifacts }: ArtifactTableProps) => {
     <Table
       classNames={{
         wrapper: 'bg-color-darkest',
-        th: 'text-color-lightest bg-color-dark',
+        th: 'text-color-lightest bg-color-dark'
       }}
       aria-label='Artifacts'
     >
@@ -78,7 +76,7 @@ const ArtifactTable = ({ artifacts }: ArtifactTableProps) => {
         items={artifacts ?? []}
       >
         {(item) => (
-          <TableRow  key={item.id}>
+          <TableRow key={item.id}>
             {(columnKey) => {
               return (
                 <TableCell>
