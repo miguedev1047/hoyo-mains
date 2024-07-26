@@ -49,7 +49,7 @@ const CharacterModal = () => {
           color='success'
           variant='shadow'
           onPress={onOpenModal}
-          className='bg-color-success w-16 h-16 fixed bottom-8 right-8'
+          className='bg-color-success w-16 h-16 fixed bottom-8 right-8 z-40'
         >
           <IconPlus size={40} />
         </Button>
