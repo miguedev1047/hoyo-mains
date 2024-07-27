@@ -5,7 +5,7 @@ import MaterialMenubar from '@/render/src/panel/materials/components/material-me
 import Materials from '@/render/src/panel/materials/materials'
 import PanelHeader from '@/render/src/panel/shared/components/ui/panel-header'
 import MaterialModal from '@/render/src/panel/materials/components/material-modal'
-import PanelWrapper from '@/render/src/panel/shared/components/ui/panel-wrapper'
+import PanelContainer from '@/render/src/shared/components/containers/panel-container'
 
 interface MaterialPageProps {
   searchParams: {
@@ -32,7 +32,7 @@ const MaterialPage = async ({ searchParams }: MaterialPageProps) => {
   const materials = (await fetchMaterials({ name, type, stars })) as Material[]
 
   return (
-    <PanelWrapper>
+    <PanelContainer>
       <PanelHeader
         title='Materiales'
         startContent={<IconSquareRotated size={32} />}
@@ -43,7 +43,7 @@ const MaterialPage = async ({ searchParams }: MaterialPageProps) => {
       <Materials materials={materials} />
 
       <MaterialModal />
-    </PanelWrapper>
+    </PanelContainer>
   )
 }
 

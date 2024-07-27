@@ -1,7 +1,7 @@
 import type { ResolvingMetadata } from 'next'
 import { fetchCharacterByName } from '@/render/src/character/utilities/services/fetch'
 import { CharacterType } from '@/render/src/types'
-import Navigation from '@/render/src/shared/components/navigation'
+import RootContainer from '@/render/src/shared/components/containers/root-container'
 import Character from '@/render/src/character/character'
 
 type Props = {
@@ -36,12 +36,9 @@ const CharacterPage = async ({
   })) as CharacterType
 
   return (
-    <>
-      <Navigation />
-      <main className='max-w-[1280px] my-10 mx-auto'>
-        <Character character={character} />
-      </main>
-    </>
+    <RootContainer>
+      <Character character={character} />
+    </RootContainer>
   )
 }
 

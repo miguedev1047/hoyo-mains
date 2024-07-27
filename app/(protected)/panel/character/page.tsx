@@ -1,9 +1,9 @@
 import type { ResolvingMetadata } from 'next'
 import { CharacterType } from '@/render/src/types'
 import { fetchCharacterByName } from '@/render/src/panel/character/shared/utilities/services/fetch-character-by-name'
-import Character from '@/render/src/panel/character/character'
-import PanelWrapper from '@/render/src/panel/shared/components/ui/panel-wrapper'
 import Header from '@/render/src/panel/character/header'
+import Character from '@/render/src/panel/character/character'
+import PanelContainer from '@/render/src/shared/components/containers/panel-container'
 
 type Props = {
   params: { id: string }
@@ -34,10 +34,10 @@ const CharacterPage = async ({
   )) as CharacterType
 
   return (
-    <PanelWrapper>
+    <PanelContainer>
       <Header title={character?.name} />
       <Character character={character} />
-    </PanelWrapper>
+    </PanelContainer>
   )
 }
 

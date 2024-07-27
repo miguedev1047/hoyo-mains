@@ -1,7 +1,7 @@
 import { fetchBuilds } from '@/render/src/builds/utilities/services/fetch'
 import { CharacterType } from '@/render/src/types'
+import RootContainer from '@/render/src/shared/components/containers/root-container'
 import Builds from '@/render/src/builds/builds'
-import Navigation from '@/render/src/shared/components/navigation'
 
 interface BuildPageProps {
   searchParams: {
@@ -36,12 +36,9 @@ const BuildPage = async ({ searchParams }: BuildPageProps) => {
   })) as CharacterType[]
 
   return (
-    <>
-      <Navigation />
-      <main className='max-w-[1280px] my-10 mx-auto'>
-        <Builds builds={builds} />
-      </main>
-    </>
+    <RootContainer>
+      <Builds builds={builds} />
+    </RootContainer>
   )
 }
 

@@ -5,7 +5,7 @@ import PanelHeader from '@/render/src/panel/shared/components/ui/panel-header'
 import ArtifactMenubar from '@/render/src/panel/artifacts/components/artifact-menubar'
 import Artifacts from '@/render/src/panel/artifacts/artifacts'
 import ArtifactModal from '@/render/src/panel/artifacts/components/artifact-modal'
-import PanelWrapper from '@/render/src/panel/shared/components/ui/panel-wrapper'
+import PanelContainer from '@/render/src/shared/components/containers/panel-container'
 
 interface ArtifactsPageProps {
   searchParams: {
@@ -26,7 +26,7 @@ const ArtifactsPage = async ({ searchParams }: ArtifactsPageProps) => {
   const artifacts = (await fetchArtifacts({ name })) as Artifact[]
 
   return (
-    <PanelWrapper>
+    <PanelContainer>
       <PanelHeader
         title='Artefactos'
         startContent={<IconHourglassEmpty size={32} />}
@@ -37,7 +37,7 @@ const ArtifactsPage = async ({ searchParams }: ArtifactsPageProps) => {
       <Artifacts artifacts={artifacts} />
 
       <ArtifactModal />
-    </PanelWrapper>
+    </PanelContainer>
   )
 }
 

@@ -1,11 +1,11 @@
-import { IconUsersGroup } from '@tabler/icons-react'
 import {
   fetchCharacters,
   fetchTeamByName
 } from '@/render/src/panel/teams/utilities/services/fetch'
+import { IconUsersGroup } from '@tabler/icons-react'
 import { BestTeamsType, CharacterType, SearchTypes } from '@/render/src/types'
-import PanelWrapper from '@/render/src/panel/shared/components/ui/panel-wrapper'
 import PanelHeader from '@/render/src/panel/shared/components/ui/panel-header'
+import PanelContainer from '@/render/src/shared/components/containers/panel-container'
 import TeamMenubar from '@/render/src/panel/teams/components/team-menubar'
 import Teams from '@/render/src/panel/teams/teams'
 
@@ -23,7 +23,7 @@ const BestTeamPage = async ({ searchParams }: SearchTypes) => {
   const teams = (await fetchTeamByName(characterName)) as BestTeamsType[]
 
   return (
-    <PanelWrapper>
+    <PanelContainer>
       <PanelHeader
         title='Equipos'
         startContent={<IconUsersGroup size={32} />}
@@ -32,7 +32,7 @@ const BestTeamPage = async ({ searchParams }: SearchTypes) => {
       <TeamMenubar />
 
       <Teams teams={teams} characters={characters} />
-    </PanelWrapper>
+    </PanelContainer>
   )
 }
 

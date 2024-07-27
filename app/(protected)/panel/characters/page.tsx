@@ -2,10 +2,10 @@ import { fetchCharacters } from '@/render/src/panel/characters/utilities/service
 import { CharacterType } from '@/render/src/types'
 import { IconUsers } from '@tabler/icons-react'
 import Characters from '@/render/src/panel/characters/characters'
-import PanelWrapper from '@/render/src/panel/shared/components/ui/panel-wrapper'
 import PanelHeader from '@/render/src/panel/shared/components/ui/panel-header'
 import CharacterMenubar from '@/render/src/panel/characters/components/character-menubar'
 import CharacterModal from '@/render/src/panel/characters/components/character-modal'
+import PanelContainer from '@/render/src/shared/components/containers/panel-container'
 
 interface FetchCharactersByNameTypes {
   searchParams: {
@@ -38,7 +38,7 @@ export default async function CharactersPage({
   })) as CharacterType[]
 
   return (
-    <PanelWrapper>
+    <PanelContainer>
       <PanelHeader title='Personajes' startContent={<IconUsers size={32} />} />
 
       <CharacterMenubar />
@@ -46,6 +46,6 @@ export default async function CharactersPage({
       <Characters characters={characters} />
 
       <CharacterModal />
-    </PanelWrapper>
+    </PanelContainer>
   )
 }

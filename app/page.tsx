@@ -1,7 +1,7 @@
 import { fetchCharacters } from '@/render/src/home/utilities/services/fetch'
 import { CharacterType } from '@/render/src/types'
+import RootContainer from '@/render/src/shared/components/containers/root-container'
 import Home from '@/render/src/home/home'
-import Navigation from '@/render/src/shared/components/navigation'
 
 interface HomePageProps {
   searchParams: {
@@ -36,11 +36,8 @@ export default async function HomePage({ searchParams }: HomePageProps) {
   })) as CharacterType[]
 
   return (
-    <>
-      <Navigation />
-      <main className='max-w-[1280px] my-10 mx-auto'>
-        <Home characters={characters} />
-      </main>
-    </>
+    <RootContainer>
+      <Home characters={characters} />
+    </RootContainer>
   )
 }

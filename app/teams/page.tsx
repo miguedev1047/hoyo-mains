@@ -1,7 +1,7 @@
-import Navigation from '@/render/src/shared/components/navigation'
-import Teams from '@/render/src/teams/teams'
-import { fetchTeamsByName } from '@/render/src/teams/utilities/services/fetch'
 import { BestTeamsType } from '@/render/src/types'
+import { fetchTeamsByName } from '@/render/src/teams/utilities/services/fetch'
+import RootContainer from '@/render/src/shared/components/containers/root-container'
+import Teams from '@/render/src/teams/teams'
 
 interface TeamPageProps {
   searchParams: {
@@ -23,12 +23,9 @@ const TeamPage = async ({ searchParams }: TeamPageProps) => {
   const teams = (await fetchTeamsByName(characterName)) as BestTeamsType[]
 
   return (
-    <>
-      <Navigation />
-      <main className='max-w-[1280px] my-10 mx-auto'>
-        <Teams teams={teams} />
-      </main>
-    </>
+    <RootContainer>
+      <Teams teams={teams} />
+    </RootContainer>
   )
 }
 
