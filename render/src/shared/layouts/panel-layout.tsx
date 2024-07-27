@@ -1,4 +1,4 @@
-import Sidebar from '@/render/src/panel/shared/components/sidebar'
+import { Sidebar } from '@/render/src/panel/shared/components/sidebar'
 
 export async function generateMetadata() {
   return {
