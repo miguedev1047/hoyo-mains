@@ -13,7 +13,7 @@ const Home = ({ characters }: HomeProps) => {
       <Hero
         src={HuTaoHeroBrand.src}
         title='¡Bienvenido!'
-        description='Explora a fondo todos los personajes de Genshin Impact con nuestra completa base de datos. Encuentra información detallada sobre habilidades, builds, y equipos para llevar tu experiencia de juego al siguiente nivel.'
+        description='Explora a fondo todos los personajes de Genshin Impact. Encuentra información detallada sobre habilidades, builds, y equipos para llevar tu experiencia de juego al siguiente nivel.'
       />
       <CharacterContainer characters={characters} />
     </div>

@@ -11,7 +11,7 @@ interface TeamPageProps {
 
 export async function generateMetadata() {
   return {
-    title: 'HoYo Mains | Eequipos',
+    title: 'HoYo Mains | Equipos',
     description:
       'Mira las mejores builds de los personajes de Genshin Impact. Encuentra la mejor build para tu personaje favorito.'
   }
