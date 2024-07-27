@@ -1,3 +1,5 @@
+'use client'
+
 import {
   Card,
   CardBody,
@@ -22,7 +24,7 @@ const Tooltip = ({ item, children, className }: TooltipProps) => {
   return (
     <TooltipComponent
       placement='bottom'
-      className={cn('bg-color-dark w-[500px]', className)}
+      className={cn('bg-color-dark w-full max-w-[500px]', className)}
       content={
         <>
           <Card className='select-none pointer-events-none w-full border-transparent bg-transparent shadow-none rounded-none'>

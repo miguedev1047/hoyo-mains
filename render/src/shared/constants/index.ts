@@ -158,7 +158,9 @@ export const buttonFilters = {
   rarity: [
     { name: '5 Estrellas', value: '5', src: Star5.src },
     { name: '4 Estrellas', value: '4', src: Star4.src },
-    { name: '3 Estrellas', value: '3', src: Star3.src }
+    { name: '3 Estrellas', value: '3', src: Star3.src },
+    { name: '2 Estrellas', value: '2', src: Star2.src },
+    { name: '1 Estrella', value: '1', src: Star1.src }
   ],
   elements: [
     { name: 'Pyro', value: 'pyro', src: Pyro.src },
@@ -218,5 +220,5 @@ export const weaponColumns = [
 export const artifactColumns = [
   { name: 'ARTEFACTO', uid: 'name' },
   { name: 'ESTRELLAS', uid: 'stars' },
-  { name: 'DESCRIPCION', uid: 'description' },
+  { name: 'DESCRIPCION', uid: 'description' }
 ]
