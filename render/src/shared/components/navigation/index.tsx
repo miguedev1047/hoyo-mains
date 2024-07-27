@@ -49,16 +49,19 @@ const Navigation = () => {
             Personajes
           </Link>
         </NavbarItem>
+        
         <NavbarItem isActive={pathname === '/builds'}>
           <Link as={NextLink} color='foreground' href='/builds'>
             Builds
           </Link>
         </NavbarItem>
+
         <NavbarItem isActive={pathname === '/teams'}>
           <Link as={NextLink} color='foreground' href='/teams'>
             Equipos
           </Link>
         </NavbarItem>
+
         <Dropdown className='bg-color-dark'>
           <NavbarItem>
             <DropdownTrigger>
@@ -80,32 +83,16 @@ const Navigation = () => {
               base: 'gap-4'
             }}
           >
-            <DropdownItem
-              key='weapons'
-              href='/weapons
-            '
-            >
+            <DropdownItem key='weapons' href='/weapons' as={NextLink}>
               Armas
             </DropdownItem>
-            <DropdownItem
-              key='artifacts'
-              href='/artifacts
-            '
-            >
+            <DropdownItem key='artifacts' href='/artifacts' as={NextLink}>
               Artefactos
             </DropdownItem>
-            <DropdownItem
-              key='materials'
-              href='/materials
-            '
-            >
+            <DropdownItem key='materials' href='/materials' as={NextLink}>
               Materiales
             </DropdownItem>
-            <DropdownItem
-              key='elements'
-              href='/elements
-            '
-            >
+            <DropdownItem key='elements' href='/elements' as={NextLink}>
               Elementos
             </DropdownItem>
           </DropdownMenu>
