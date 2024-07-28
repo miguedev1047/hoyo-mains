@@ -8,7 +8,8 @@ import parse from 'html-react-parser'
 const Output = ({ description }: { description: string }) => {
   const editor = useEditor({
     extensions: [StarterKit.configure(), Color, TextStyle],
-    content: description
+    content: description,
+    immediatelyRender: true
   })
 
   useEffect(() => {

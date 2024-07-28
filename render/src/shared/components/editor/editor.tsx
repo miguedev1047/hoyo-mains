@@ -33,6 +33,7 @@ const Editor = ({
   const editor = useEditor({
     extensions: [StarterKit.configure(), TextStyle, Color],
     content: description || placeholder,
+    immediatelyRender: true,
     editorProps: {
       attributes: {
         class:
