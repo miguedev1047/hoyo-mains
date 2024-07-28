@@ -3,7 +3,7 @@
 import { EditorContent, useEditor } from '@tiptap/react'
 import { IconPencil, IconPlus, IconX } from '@tabler/icons-react'
 import { useEffect, useState } from 'react'
-import { ScrollShadow } from '@nextui-org/react'
+import { Card, ScrollShadow } from '@nextui-org/react'
 import { Color } from '@tiptap/extension-color'
 import {
   Button,
@@ -34,8 +34,7 @@ const Editor = ({
     immediatelyRender: true,
     editorProps: {
       attributes: {
-        class:
-          'bg-color-darkest rounded-lg h-full min-h-[200px] border-color-lightest p-3 focus:outline-none'
+        class: 'bg-transparent h-full min-h-[200px] focus:outline-none'
       }
     },
     onUpdate({ editor }) {
@@ -57,8 +56,8 @@ const Editor = ({
 
   return (
     <>
-      <div className='col-span-2 flex flex-col space-y-1 justify-stretch'>
-        <div className='space-y-2 w-full relative'>
+      <Card className='bg-color-darkest flex flex-col space-y-1 justify-stretch p-4'>
+        <div className='space-y-3 w-full relative'>
           <EditorToolbar editor={editor} />
 
           <ScrollShadow
@@ -69,9 +68,10 @@ const Editor = ({
             <EditorContent editor={editor} />
           </ScrollShadow>
         </div>
-
+      </Card>
+      {errorMessage && (
         <p className='text-danger-400 text-xs'>{errorMessage}</p>
-      </div>
+      )}
     </>
   )
 }
