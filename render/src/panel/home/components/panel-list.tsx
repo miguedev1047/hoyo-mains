@@ -1,5 +1,5 @@
-import { homeItems } from '@/constants'
 import PanelItem from '@/render/src/panel/home/components/panel-item'
+import { homeItems } from '@/render/src/shared/constants'
 
 const PanelList = () => {
   return (

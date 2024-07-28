@@ -1,13 +1,16 @@
 import {
   Anemo,
+  ArtifactBackground,
   Bow,
   Catalyst,
+  CharacterBackground,
   Claymore,
   Cryo,
   Dendro,
   Electro,
   Geo,
   Hydro,
+  MaterialBackground,
   Polearm,
   Pyro,
   Star1,
@@ -15,7 +18,8 @@ import {
   Star3,
   Star4,
   Star5,
-  Sword
+  Sword,
+  WeaponBackground
 } from '@/assets'
 
 export const elements = [
@@ -228,4 +232,27 @@ export const navigationItems = [
   { label: 'Equipos', href: '/teams' },
   { label: 'Builds', href: '/builds' },
   { label: 'Database', href: '/database' }
+]
+
+export const homeItems = [
+  {
+    title: 'Personajes',
+    url: '/panel/characters',
+    background: CharacterBackground.src
+  },
+  {
+    title: 'Armas',
+    url: '/panel/weapons',
+    background: ArtifactBackground.src
+  },
+  {
+    title: 'Artefactos',
+    url: '/panel/artifacts',
+    background: WeaponBackground.src
+  },
+  {
+    title: 'Materiales',
+    url: '/panel/materials',
+    background: MaterialBackground.src
+  }
 ]
