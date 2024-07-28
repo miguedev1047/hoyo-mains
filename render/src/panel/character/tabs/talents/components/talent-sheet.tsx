@@ -23,9 +23,9 @@ interface TalentModalProps {
 const TalentSheet = ({ character }: TalentModalProps) => {
   const talents = character?.talents
 
-  const MAX_TALENTS = 3
+  const TALENT_LIMIT = 3
   const TALENTS_LENGTH = talents?.length
-  const MAX_ITEMS = TALENTS_LENGTH === MAX_TALENTS
+  const MAX_TALENTS_LIMIT = TALENTS_LENGTH === TALENT_LIMIT
 
   const {
     isPending,
@@ -40,11 +40,13 @@ const TalentSheet = ({ character }: TalentModalProps) => {
 
   return (
     <Sheet>
-      {!MAX_ITEMS && (
-        <SheetTrigger fullWidth onPress={onOpenModal}>
-          Añadir Talento
-        </SheetTrigger>
-      )}
+      <SheetTrigger
+        fullWidth
+        onPress={onOpenModal}
+        isVisible={MAX_TALENTS_LIMIT}
+      >
+        Añadir Talento
+      </SheetTrigger>
       <SheetContent
         isOpen={isOpen}
         onOpenChange={onOpenChange}

@@ -22,10 +22,16 @@ const Sheet = React.forwardRef<
 })
 Sheet.displayName = 'Sheet'
 
+interface SheetTriggerProps extends PrimitivieTriggerProps {
+  isVisible?: boolean
+}
+
 const SheetTrigger = React.forwardRef<
   HTMLButtonElement,
-  React.HTMLAttributes<HTMLButtonElement> & PrimitivieTriggerProps
->(({ className, ...props }, ref) => {
+  React.HTMLAttributes<HTMLButtonElement> & SheetTriggerProps
+>(({ className, isVisible = false, ...props }, ref) => {
+  if (isVisible) return null
+
   return (
     <PrimitiveTrigger
       color='success'
