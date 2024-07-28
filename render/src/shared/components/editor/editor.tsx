@@ -20,13 +20,11 @@ const Editor = ({
   placeholder,
   errorMessage,
   isEdit,
-  isPending,
   onChange
 }: {
   description: string
   placeholder?: string
   errorMessage?: string
-  isPending: boolean
   isEdit: boolean
   onChange: (richText: string) => void
 }) => {
@@ -37,15 +35,13 @@ const Editor = ({
     editorProps: {
       attributes: {
         class:
-          'bg-color-darkest rounded-lg h-full min-h-[150px] border-color-lightest p-3 focus:outline-none'
+          'bg-color-darkest rounded-lg h-full min-h-[200px] border-color-lightest p-3 focus:outline-none'
       }
     },
     onUpdate({ editor }) {
       onChange(editor.getHTML())
     }
   })
-
-  const [isOpen, setIsOpen] = useState(false)
 
   useEffect(() => {
     if (!editor) return
@@ -62,45 +58,17 @@ const Editor = ({
   return (
     <>
       <div className='col-span-2 flex flex-col space-y-1 justify-stretch'>
-        <Popover
-          isOpen={isOpen}
-          onOpenChange={setIsOpen}
-          backdrop='opaque'
-          placement='top'
-          classNames={{ arrow: 'bg-color-dark' }}
-          showArrow
-        >
-          <PopoverTrigger>
-            <Button
-              fullWidth
-              isDisabled={isPending}
-              color='success'
-              startContent={isEdit ? <IconPencil /> : <IconPlus />}
-              className='bg-secondary-color font-bold'
-            >
-              {isEdit ? 'Editar' : 'Añadir'} Descripción
-            </Button>
-          </PopoverTrigger>
-          <PopoverContent className='bg-color-dark max-w-full w-[875px] p-4 rounded-lg'>
-            <div className='space-y-2 w-full relative'>
-              <div className='flex justify-between items-center gap-4'>
-                <EditorToolbar editor={editor} />
-                <Button
-                  size='sm'
-                  isIconOnly
-                  color='danger'
-                  onPress={() => setIsOpen(false)}
-                  className='bg-color-red'
-                >
-                  <IconX />
-                </Button>
-              </div>
-              <ScrollShadow size={0} hideScrollBar className='w-full h-[150px]'>
-                <EditorContent editor={editor} />
-              </ScrollShadow>
-            </div>
-          </PopoverContent>
-        </Popover>
+        <div className='space-y-2 w-full relative'>
+          <EditorToolbar editor={editor} />
+
+          <ScrollShadow
+            size={0}
+            hideScrollBar
+            className='w-full h-[200px] rounded-xl'
+          >
+            <EditorContent editor={editor} />
+          </ScrollShadow>
+        </div>
 
         <p className='text-danger-400 text-xs'>{errorMessage}</p>
       </div>

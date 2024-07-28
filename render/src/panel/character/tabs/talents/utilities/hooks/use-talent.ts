@@ -37,7 +37,7 @@ export const useCreateTalent = ({ character }: TalentType) => {
 
   // Función para abrir el modal
   const onOpenModal = () => onOpen({ name: 'talent' })
-  const modalName = name === 'talent'
+  const isOpen = name === 'talent'
 
   // Verificar si la edición está activa
   const isEditActive = !!id
@@ -60,7 +60,7 @@ export const useCreateTalent = ({ character }: TalentType) => {
 
   // Obtenemos los talentos para rellenar el formulario
   useEffect(() => {
-    if (isEditActive && modalName) {
+    if (isEditActive && isOpen) {
       startTransition(async () => {
         const { status, data, error } = await fetchTalentById(id)
 
@@ -75,15 +75,15 @@ export const useCreateTalent = ({ character }: TalentType) => {
         toast.error(error)
       })
     }
-  }, [isEditActive, id, modalName, setValue, setImage])
+  }, [isEditActive, id, isOpen, setValue, setImage])
 
   // Reinicio de los valores del formulario
   useEffect(() => {
-    if (!modalName && !isEditActive) {
+    if (!isOpen && !isEditActive) {
       setImage({ imgFile: null, imgPreview: '' })
       reset()
     }
-  }, [reset, setImage, modalName, isEditActive])
+  }, [reset, setImage, isOpen, isEditActive])
 
   // Función para resetear el formulario
   const handleReset = () => {
@@ -151,7 +151,7 @@ export const useCreateTalent = ({ character }: TalentType) => {
     errors,
     control,
     isEditActive,
-    modalName,
+    isOpen,
     onSubmit,
     onOpenModal,
     onOpenChange
