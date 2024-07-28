@@ -37,7 +37,7 @@ export const useCreatePassive = ({ character }: PassiveType) => {
 
   // Función para abrir el modal
   const onOpenModal = () => onOpen({ name: 'passive' })
-  const modalName = name === 'passive'
+  const isOpen = name === 'passive'
 
   // Verificar si la edición está activa
   const isEditActive = !!id
@@ -60,7 +60,7 @@ export const useCreatePassive = ({ character }: PassiveType) => {
 
   // Obtenemos los artefactos para rellenar el formulario
   useEffect(() => {
-    if (isEditActive && modalName) {
+    if (isEditActive && isOpen) {
       startTransition(async () => {
         const { status, data, error } = await fetchPassiveById(id)
 
@@ -75,15 +75,15 @@ export const useCreatePassive = ({ character }: PassiveType) => {
         toast.error(error)
       })
     }
-  }, [isEditActive, modalName, id, setValue, setImage])
+  }, [isEditActive, isOpen, id, setValue, setImage])
 
   // Reinicio de los valores del formulario
   useEffect(() => {
-    if (!modalName && !isEditActive) {
+    if (!isOpen && !isEditActive) {
       setImage({ imgFile: null, imgPreview: '' })
       reset()
     }
-  }, [reset, setImage, modalName, isEditActive])
+  }, [reset, setImage, isOpen, isEditActive])
 
   // Función para resetear el formulario
   const handleReset = () => {
@@ -154,7 +154,7 @@ export const useCreatePassive = ({ character }: PassiveType) => {
     errors,
     control,
     isEditActive,
-    modalName,
+    isOpen,
     onSubmit,
     onOpenModal,
     onOpenChange
