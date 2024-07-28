@@ -1,7 +1,5 @@
 'use client'
 
-import { useState } from 'react'
-import { navigationItems } from '@/constants'
 import {
   Navbar,
   NavbarBrand,
@@ -18,8 +16,10 @@ import {
   DropdownMenu,
   DropdownItem
 } from '@nextui-org/react'
-import { IconChevronDown } from '@tabler/icons-react'
+import { useState } from 'react'
 import { usePathname } from 'next/navigation'
+import { navigationItems } from '@/render/src/shared/constants'
+import { IconChevronDown } from '@tabler/icons-react'
 import NextLink from 'next/link'
 
 const Navigation = () => {
@@ -49,7 +49,7 @@ const Navigation = () => {
             Personajes
           </Link>
         </NavbarItem>
-        
+
         <NavbarItem isActive={pathname === '/builds'}>
           <Link as={NextLink} color='foreground' href='/builds'>
             Builds

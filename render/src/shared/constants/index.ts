@@ -222,3 +222,10 @@ export const artifactColumns = [
   { name: 'ESTRELLAS', uid: 'stars' },
   { name: 'DESCRIPCION', uid: 'description' }
 ]
+
+export const navigationItems = [
+  { label: 'Personajes', href: '/characters' },
+  { label: 'Equipos', href: '/teams' },
+  { label: 'Builds', href: '/builds' },
+  { label: 'Database', href: '/database' }
+]
