@@ -7,6 +7,7 @@ import { useState, useTransition } from 'react'
 import { useForm } from 'react-hook-form'
 import { toast } from 'sonner'
 import { createAscension } from '@/render/src/panel/character/ascension/utilities/services/create'
+import { useDisclosure } from '@nextui-org/react'
 
 interface AscensionFormProps {
   character: CharacterType
@@ -14,7 +15,7 @@ interface AscensionFormProps {
 
 export const useAscensionForm = ({ character }: AscensionFormProps) => {
   const [isPending, startTransition] = useTransition()
-  const [isOpen, setIsOpen] = useState(false)
+  const { isOpen, onOpen, onOpenChange } = useDisclosure()
   const { refresh } = useRouter()
 
   const characterId = character?.id
@@ -41,13 +42,15 @@ export const useAscensionForm = ({ character }: AscensionFormProps) => {
   const onSubmit = handleSubmit((data) => {
     const ascensionId = crypto.randomUUID()
 
-    const selectedMaterials = data.materials.split(',').map((materialId, index) => ({
-      ascensionId: ascensionId,
-      materialId: materialId,
-      characterId: characterId,
-      quantity: 0,
-      order: index++
-    }))
+    const selectedMaterials = data.materials
+      .split(',')
+      .map((materialId, index) => ({
+        ascensionId: ascensionId,
+        materialId: materialId,
+        characterId: characterId,
+        quantity: 0,
+        order: index++
+      }))
 
     const MAX_ITEMS = 4
     const MATERIALS_LENGTH = selectedMaterials?.length
@@ -71,7 +74,7 @@ export const useAscensionForm = ({ character }: AscensionFormProps) => {
       if (status === 201) {
         reset()
         refresh()
-        setIsOpen(false)
+        onOpenChange()
         toast.success(message)
         return
       }
@@ -86,7 +89,8 @@ export const useAscensionForm = ({ character }: AscensionFormProps) => {
     control,
     errors,
     FULL_ITEMS,
-    setIsOpen,
+    onOpen,
+    onOpenChange,
     onSubmit
   }
 }
