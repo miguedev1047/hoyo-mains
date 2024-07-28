@@ -37,7 +37,7 @@ export const useCreateConstellation = ({ character }: ConstellationsProps) => {
 
   // Función para abrir el modal
   const onOpenModal = () => onOpen({ name: 'constellation' })
-  const modalName = name === 'constellation'
+  const isOpen = name === 'constellation'
 
   // Verificar si la edición está activa
   const isEditActive = !!id
@@ -60,7 +60,7 @@ export const useCreateConstellation = ({ character }: ConstellationsProps) => {
 
   // Obtenemos las constelaciones para rellenar el formulario
   useEffect(() => {
-    if (isEditActive && modalName) {
+    if (isEditActive && isOpen) {
       startTransition(async () => {
         const { status, data, error } = await fetchConstellationById(id)
 
@@ -75,15 +75,15 @@ export const useCreateConstellation = ({ character }: ConstellationsProps) => {
         toast.error(error)
       })
     }
-  }, [isEditActive, modalName, id, setValue, setImage])
+  }, [isEditActive, isOpen, id, setValue, setImage])
 
   // Reinicio de los valores del formulario
   useEffect(() => {
-    if (!modalName && !isEditActive) {
+    if (!isOpen && !isEditActive) {
       setImage({ imgFile: null, imgPreview: '' })
       reset()
     }
-  }, [reset, setImage, modalName, isEditActive])
+  }, [reset, setImage, isOpen, isEditActive])
 
   // Función para resetear el formulario
   const handleReset = () => {
@@ -153,7 +153,7 @@ export const useCreateConstellation = ({ character }: ConstellationsProps) => {
     errors,
     control,
     isEditActive,
-    modalName,
+    isOpen,
     onSubmit,
     onOpenModal,
     onOpenChange
