@@ -20,6 +20,7 @@ const Sheet = React.forwardRef<
 >(({ ...props }, ref) => {
   return <div {...props} ref={ref} />
 })
+Sheet.displayName = 'Sheet'
 
 const SheetTrigger = React.forwardRef<
   HTMLButtonElement,
@@ -36,6 +37,7 @@ const SheetTrigger = React.forwardRef<
     />
   )
 })
+SheetTrigger.displayName = 'SheetTrigger'
 
 const sheetVariants = cva('fixed z-50 gap-4 bg-default-50 p-6 shadow-lg', {
   variants: {
@@ -89,6 +91,7 @@ const SheetContent = React.forwardRef<
     )
   }
 )
+SheetContent.displayName = 'SheetContent'
 
 const SheetHeader = React.forwardRef<
   HTMLElement,
@@ -105,6 +108,7 @@ const SheetHeader = React.forwardRef<
     />
   )
 })
+SheetHeader.displayName = 'SheetHeader'
 
 const SheetTitle = React.forwardRef<
   HTMLHeadingElement,
@@ -118,6 +122,7 @@ const SheetTitle = React.forwardRef<
     />
   )
 })
+SheetTitle.displayName = 'SheetTitle'
 
 const SheetDescription = React.forwardRef<
   HTMLParagraphElement,
@@ -131,6 +136,7 @@ const SheetDescription = React.forwardRef<
     />
   )
 })
+SheetDescription.displayName = 'SheetDescription'
 
 const SheetBody = React.forwardRef<
   HTMLDivElement,
@@ -138,12 +144,13 @@ const SheetBody = React.forwardRef<
 >(({ className, ...props }, ref) => {
   return (
     <PrimitiveBody
-      className={cn('space-y-4 p-0', className)}
+      className={cn('space-y-2 p-0', className)}
       ref={ref}
       {...props}
     />
   )
 })
+SheetBody.displayName = 'SheetBody'
 
 const SheetFooter = React.forwardRef<
   HTMLDivElement,
@@ -160,6 +167,7 @@ const SheetFooter = React.forwardRef<
     />
   )
 })
+SheetFooter.displayName = 'SheetFooter'
 
 export {
   Sheet,
