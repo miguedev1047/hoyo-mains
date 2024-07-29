@@ -31,15 +31,8 @@ import { Figure } from '@/render/src/shared/components/figure'
 import DropImage from '@/render/src/panel/shared/components/ui/drop-image'
 
 const CharacterSheet = () => {
-  const {
-    errors,
-    isPending,
-    control,
-    isOpen,
-    onSubmit,
-    onOpenSheet,
-    onOpenChange
-  } = useCreateCharacter()
+  const { errors, isPending, control, isOpen, onSubmit, onOpen, onOpenChange } =
+    useCreateCharacter()
 
   return (
     <Sheet>
@@ -52,7 +45,7 @@ const CharacterSheet = () => {
           radius='full'
           color='success'
           variant='shadow'
-          onPress={onOpenSheet}
+          onPress={onOpen}
           className='bg-color-success w-16 h-16 fixed bottom-8 right-8 z-40'
         >
           <IconPlus size={40} />

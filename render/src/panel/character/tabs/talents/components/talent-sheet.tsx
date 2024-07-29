@@ -33,18 +33,14 @@ const TalentSheet = ({ character }: TalentModalProps) => {
     control,
     isEditActive,
     isOpen,
-    onOpenModal,
+    onOpen,
     onOpenChange,
     onSubmit
   } = useCreateTalent({ character })
 
   return (
     <Sheet>
-      <SheetTrigger
-        fullWidth
-        onPress={onOpenModal}
-        isVisible={MAX_TALENTS_LIMIT}
-      >
+      <SheetTrigger fullWidth onPress={onOpen} isVisible={MAX_TALENTS_LIMIT}>
         Añadir Talento
       </SheetTrigger>
       <SheetContent

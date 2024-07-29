@@ -33,7 +33,7 @@ const PassiveModal = ({ character }: PassiveModalProps) => {
     control,
     isEditActive,
     isOpen,
-    onOpenModal,
+    onOpen,
     onOpenChange,
     onSubmit
   } = useCreatePassive({ character })
@@ -42,7 +42,7 @@ const PassiveModal = ({ character }: PassiveModalProps) => {
     <Sheet>
       <SheetTrigger
         fullWidth
-        onPress={onOpenModal}
+        onPress={onOpen}
         isVisible={MAX_PASSIVES_LIMIT}
       >
         Añadir Pasiva

@@ -5,7 +5,7 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { CharacterSchema } from '@/schemas'
 import { toast } from 'sonner'
 import { useRouter } from 'next/navigation'
-import { useModalStore } from '@/render/src/panel/shared/utilities/store/use-modal-store'
+import { useOpenStore } from '@/render/src/panel/shared/utilities/store/use-open'
 import { useDropImageStore } from '@/render/src/panel/shared/utilities/store/use-drop-image-store'
 import { useUploadImageToCloud } from '@/render/src/panel/shared/utilities/hooks/use-upload-image-to-cloud'
 import { createCharacters } from '@/render/src/panel/characters/utilities/services/create'
@@ -17,9 +17,9 @@ export const useCreateCharacter = () => {
   const { handleUploadImage } = useUploadImageToCloud()
 
   // Estado globales
-  const { name, onOpen, onOpenChange } = useModalStore((state) => ({
-    name: state.activeModal.name,
-    onOpen: state.onOpen,
+  const { name, onOpenThis, onOpenChange } = useOpenStore((state) => ({
+    name: state.active.name,
+    onOpenThis: state.onOpenThis,
     onOpenChange: state.onOpenChange
   }))
 
@@ -29,7 +29,7 @@ export const useCreateCharacter = () => {
   }))
 
   // Función para abrir el modal
-  const onOpenSheet = () => onOpen({ name: 'character' })
+  const onOpen = () => onOpenThis({ name: 'character' })
   const isOpen = name === 'character'
 
   const {
@@ -109,7 +109,7 @@ export const useCreateCharacter = () => {
     control,
     isOpen,
     onSubmit,
-    onOpenSheet,
+    onOpen,
     onOpenChange
   }
 }

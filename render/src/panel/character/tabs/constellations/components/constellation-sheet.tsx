@@ -33,7 +33,7 @@ const ConstellationSheet = ({ character }: ConstellationModalProps) => {
     control,
     isOpen,
     isEditActive,
-    onOpenModal,
+    onOpen,
     onSubmit,
     onOpenChange
   } = useCreateConstellation({ character })
@@ -42,7 +42,7 @@ const ConstellationSheet = ({ character }: ConstellationModalProps) => {
     <Sheet>
       <SheetTrigger
         fullWidth
-        onPress={onOpenModal}
+        onPress={onOpen}
         isVisible={MAX_CONSTELLATIONS_LIMIT}
       >
         Añadir Constelación

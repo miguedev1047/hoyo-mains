@@ -2,7 +2,7 @@ import { z } from 'zod'
 import { CharacterType } from '@/render/src/types'
 import { useUploadImageToCloud } from '@/render/src/panel/shared/utilities/hooks/use-upload-image-to-cloud'
 import { useDropImageStore } from '@/render/src/panel/shared/utilities/store/use-drop-image-store'
-import { useModalStore } from '@/render/src/panel/shared/utilities/store/use-modal-store'
+import { useOpenStore } from '@/render/src/panel/shared/utilities/store/use-open'
 import { useEffect, useTransition } from 'react'
 import { useForm } from 'react-hook-form'
 import { CharacterTalentSchema } from '@/schemas'
@@ -23,10 +23,10 @@ export const useCreateTalent = ({ character }: TalentType) => {
   const { handleUploadImage } = useUploadImageToCloud()
 
   // Estado globales
-  const { id, name, onOpen, onOpenChange } = useModalStore((state) => ({
-    id: state.activeModal.id,
-    name: state.activeModal.name,
-    onOpen: state.onOpen,
+  const { id, name, onOpenThis, onOpenChange } = useOpenStore((state) => ({
+    id: state.active.id,
+    name: state.active.name,
+    onOpenThis: state.onOpenThis,
     onOpenChange: state.onOpenChange
   }))
 
@@ -36,7 +36,7 @@ export const useCreateTalent = ({ character }: TalentType) => {
   }))
 
   // Función para abrir el modal
-  const onOpenModal = () => onOpen({ name: 'talent' })
+  const onOpen = () => onOpenThis({ name: 'talent' })
   const isOpen = name === 'talent'
 
   // Verificar si la edición está activa
@@ -153,7 +153,7 @@ export const useCreateTalent = ({ character }: TalentType) => {
     isEditActive,
     isOpen,
     onSubmit,
-    onOpenModal,
+    onOpen,
     onOpenChange
   }
 }

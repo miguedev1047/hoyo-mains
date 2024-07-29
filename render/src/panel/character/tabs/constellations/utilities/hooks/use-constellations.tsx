@@ -8,7 +8,7 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
 import { CharacterType } from '@/render/src/types'
 import { useUploadImageToCloud } from '@/render/src/panel/shared/utilities/hooks/use-upload-image-to-cloud'
-import { useModalStore } from '@/render/src/panel/shared/utilities/store/use-modal-store'
+import { useOpenStore } from '@/render/src/panel/shared/utilities/store/use-open'
 import { useDropImageStore } from '@/render/src/panel/shared/utilities/store/use-drop-image-store'
 import { useRouter } from 'next/navigation'
 import { toast } from 'sonner'
@@ -23,10 +23,10 @@ export const useCreateConstellation = ({ character }: ConstellationsProps) => {
   const { handleUploadImage } = useUploadImageToCloud()
 
   // Estado globales
-  const { id, name, onOpen, onOpenChange } = useModalStore((state) => ({
-    id: state.activeModal.id,
-    name: state.activeModal.name,
-    onOpen: state.onOpen,
+  const { id, name, onOpenThis, onOpenChange } = useOpenStore((state) => ({
+    id: state.active.id,
+    name: state.active.name,
+    onOpenThis: state.onOpenThis,
     onOpenChange: state.onOpenChange
   }))
 
@@ -36,7 +36,7 @@ export const useCreateConstellation = ({ character }: ConstellationsProps) => {
   }))
 
   // Función para abrir el modal
-  const onOpenModal = () => onOpen({ name: 'constellation' })
+  const onOpen = () => onOpenThis({ name: 'constellation' })
   const isOpen = name === 'constellation'
 
   // Verificar si la edición está activa
@@ -155,7 +155,7 @@ export const useCreateConstellation = ({ character }: ConstellationsProps) => {
     isEditActive,
     isOpen,
     onSubmit,
-    onOpenModal,
+    onOpen,
     onOpenChange
   }
 }

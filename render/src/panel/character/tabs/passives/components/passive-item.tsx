@@ -1,5 +1,5 @@
+import { useOpenStore } from '@/render/src/panel/shared/utilities/store/use-open'
 import { PassivesType } from '@/render/src/types'
-import { useModalStore } from '@/render/src/panel/shared/utilities/store/use-modal-store'
 import { Button, CircularProgress, Divider, Image } from '@nextui-org/react'
 import { Card, CardBody, CardHeader } from '@nextui-org/card'
 import { deletePassive } from '@/render/src/panel/character/tabs/passives/utilities/services/delete'
@@ -12,14 +12,14 @@ interface PassiveItemProps {
   passive: PassivesType
 }
 const PassiveItem = ({ passive }: PassiveItemProps) => {
-  const { onOpen, setModalId } = useModalStore((state) => ({
-    onOpen: state.onOpen,
-    setModalId: state.setModalId
+  const { onOpenThis, setId } = useOpenStore((state) => ({
+    onOpenThis: state.onOpenThis,
+    setId: state.setId
   }))
 
   const handleEdit = (passiveId: string) => {
-    setModalId(passiveId)
-    onOpen({ name: 'passive' })
+    setId(passiveId)
+    onOpenThis({ name: 'passive' })
   }
 
   return (

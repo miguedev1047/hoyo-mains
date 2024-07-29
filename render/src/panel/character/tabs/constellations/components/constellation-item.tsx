@@ -1,4 +1,4 @@
-import { useModalStore } from '@/render/src/panel/shared/utilities/store/use-modal-store'
+import { useOpenStore } from '@/render/src/panel/shared/utilities/store/use-open'
 import { ConstellationsType } from '@/render/src/types'
 import { Card, CardBody, CardHeader } from '@nextui-org/card'
 import { Button, CircularProgress, Divider, Image } from '@nextui-org/react'
@@ -13,14 +13,14 @@ interface ConstellationItemProps {
 }
 
 const ConstellationItem = ({ constellation }: ConstellationItemProps) => {
-  const { onOpen, setModalId } = useModalStore((state) => ({
-    onOpen: state.onOpen,
-    setModalId: state.setModalId
+  const { onOpenThis, setId } = useOpenStore((state) => ({
+    onOpenThis: state.onOpenThis,
+    setId: state.setId
   }))
 
   const handleEdit = (constellationId: string) => {
-    setModalId(constellationId)
-    onOpen({ name: 'constellation' })
+    setId(constellationId)
+    onOpenThis({ name: 'constellation' })
   }
 
   return (
