@@ -22,8 +22,8 @@ const WeaponFirstItem = ({ build }: WeaponFirstItemProps) => {
     error
   } = useFetch<Weapon>(`/api/weapons/weapon/${firstWeapon.item}`)
 
-  if (error) return <SkeletonCard variant='dark' size='sm' />
-  if (isLoading) return <SkeletonCard variant='dark' size='sm' />
+  if (error) return <SkeletonCard variant='dark' />
+  if (isLoading) return <SkeletonCard variant='dark' />
 
   return (
     <Tooltip item={weapon}>

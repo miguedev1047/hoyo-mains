@@ -19,8 +19,8 @@ const ArtifactItem = ({ artifact }: ArtifactItemProps) => {
     error
   } = useFetch<Artifact>(`/api/artifacts/artifact/${artifact.item}`)
 
-  if (error) return <SkeletonCard variant='dark' size='sm' />
-  if (isLoading) return <SkeletonCard variant='dark' size='sm' />
+  if (error) return <SkeletonCard variant='dark' />
+  if (isLoading) return <SkeletonCard variant='dark' />
 
   return (
     <Tooltip item={fetchedArtifact}>

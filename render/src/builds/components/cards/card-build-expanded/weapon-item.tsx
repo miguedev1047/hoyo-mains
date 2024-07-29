@@ -19,8 +19,8 @@ const WeaponItem = ({ weapon }: WeaponItemProps) => {
     error
   } = useFetch<Weapon>(`/api/weapons/weapon/${weapon.item}`)
 
-  if (error) return <SkeletonCard variant='dark' size='sm' />
-  if (isLoading) return <SkeletonCard variant='dark' size='sm' />
+  if (error) return <SkeletonCard variant='dark' />
+  if (isLoading) return <SkeletonCard variant='dark' />
 
   return (
     <Tooltip item={fetchedWeapon}>
