@@ -112,7 +112,7 @@ const CharacterSheet = () => {
                       value={element.name}
                     >
                       <div className='flex items-center gap-2'>
-                        <Figure>
+                        <Figure size='sm' className='p-1'>
                           <Image
                             className='w-full h-full object-cover'
                             src={element.icon}
@@ -193,7 +193,7 @@ const CharacterSheet = () => {
                       value={weapon.title}
                     >
                       <div className='flex items-center gap-2'>
-                        <Figure>
+                        <Figure size='sm' className='p-1'>
                           <Image
                             className='w-full h-full object-cover'
                             src={weapon.icon}
