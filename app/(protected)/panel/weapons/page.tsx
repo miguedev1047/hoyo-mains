@@ -4,7 +4,7 @@ import { Weapon } from '@prisma/client'
 import PanelHeader from '@/render/src/panel/shared/components/ui/panel-header'
 import WeaponMenubar from '@/render/src/panel/weapons/components/weapon-menubar'
 import Weapons from '@/render/src/panel/weapons/weapons'
-import WeaponModal from '@/render/src/panel/weapons/components/weapon-modal'
+import WeaponSheet from '@/render/src/panel/weapons/components/weapon-sheet'
 import PanelContainer from '@/render/src/shared/components/containers/panel-container'
 
 export async function generateMetadata() {
@@ -39,7 +39,7 @@ const WeaponsPage = async ({ searchParams }: WeaponsPageProps) => {
 
       <Weapons weapons={weapons} />
 
-      <WeaponModal />
+      <WeaponSheet />
     </PanelContainer>
   )
 }

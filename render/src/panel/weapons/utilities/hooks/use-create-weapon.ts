@@ -32,8 +32,8 @@ export const useCreateWeapon = () => {
   }))
 
   // Función para abrir el modal
-  const onOpenModal = () => onOpen({ name: 'weapon' })
-  const modalName = name === 'weapon'
+  const onOpenSheet = () => onOpen({ name: 'weapon' })
+  const isOpen = name === 'weapon'
 
   // Verificar si la edición está activa
   const isEditActive = !!id
@@ -85,11 +85,11 @@ export const useCreateWeapon = () => {
 
   // Reinicio de los valores del formulario
   useEffect(() => {
-    if (!modalName && !isEditActive) {
+    if (!isOpen && !isEditActive) {
       setImage({ imgFile: null, imgPreview: '' })
       reset()
     }
-  }, [reset, setImage, modalName, isEditActive])
+  }, [reset, setImage, isOpen, isEditActive])
 
   // Función para resetear el formulario
   const handleReset = () => {
@@ -162,9 +162,9 @@ export const useCreateWeapon = () => {
     errors,
     isPending,
     isEditActive,
-    modalName,
+    isOpen,
     onSubmit,
-    onOpenModal,
+    onOpenSheet,
     onOpenChange
   }
 }
