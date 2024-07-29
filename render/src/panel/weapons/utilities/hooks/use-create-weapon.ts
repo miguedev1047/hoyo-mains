@@ -2,7 +2,7 @@ import { z } from 'zod'
 import { stars } from '@/render/src/shared/constants'
 import { useUploadImageToCloud } from '@/render/src/panel/shared/utilities/hooks/use-upload-image-to-cloud'
 import { useDropImageStore } from '@/render/src/panel/shared/utilities/store/use-drop-image-store'
-import { useModalStore } from '@/render/src/panel/shared/utilities/store/use-modal-store'
+import { useOpenStore } from '@/render/src/panel/shared/utilities/store/use-open'
 import { WeaponSchema } from '@/schemas'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useRouter } from 'next/navigation'
@@ -19,10 +19,10 @@ export const useCreateWeapon = () => {
   const { handleUploadImage } = useUploadImageToCloud()
 
   // Estado globales
-  const { id, name, onOpen, onOpenChange } = useModalStore((state) => ({
-    id: state.activeModal.id,
-    name: state.activeModal.name,
-    onOpen: state.onOpen,
+  const { id, name, onOpenThis, onOpenChange } = useOpenStore((state) => ({
+    id: state.active.id,
+    name: state.active.name,
+    onOpenThis: state.onOpenThis,
     onOpenChange: state.onOpenChange
   }))
 
@@ -32,7 +32,7 @@ export const useCreateWeapon = () => {
   }))
 
   // Función para abrir el modal
-  const onOpenSheet = () => onOpen({ name: 'weapon' })
+  const onOpen = () => onOpenThis({ name: 'weapon' })
   const isOpen = name === 'weapon'
 
   // Verificar si la edición está activa
@@ -164,7 +164,7 @@ export const useCreateWeapon = () => {
     isEditActive,
     isOpen,
     onSubmit,
-    onOpenSheet,
+    onOpen,
     onOpenChange
   }
 }

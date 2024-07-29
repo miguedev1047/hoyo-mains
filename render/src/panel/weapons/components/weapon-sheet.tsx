@@ -39,7 +39,7 @@ const WeaponSheet = () => {
     isPending,
     isOpen,
     onSubmit,
-    onOpenSheet,
+    onOpen,
     onOpenChange
   } = useCreateWeapon()
 
@@ -54,7 +54,7 @@ const WeaponSheet = () => {
           radius='full'
           color='success'
           variant='shadow'
-          onPress={onOpenSheet}
+          onPress={onOpen}
           className='bg-color-success w-16 h-16 fixed bottom-8 right-8 z-40'
         >
           <IconPlus size={40} />
