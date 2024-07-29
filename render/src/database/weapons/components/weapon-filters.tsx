@@ -12,7 +12,7 @@ import { Toggle } from '@/render/src/shared/components/toggle'
 const WeaponFilters = () => {
   return (
     <Filter>
-      <FilterContent className='bg-color-light'>
+      <FilterContent className='bg-color-light grid grid-cols-2'>
         <FilterItem>
           {buttonFilters.rarity.slice(0, 3).map((filter) => (
             <Toggle
