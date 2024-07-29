@@ -32,7 +32,7 @@ const CardBuildExpanded = ({ build }: CardBuildExpandedProps) => {
         </div>
 
         <div className='w-full xl:max-w-[800px] flex items-start'>
-          <div className='w-full grid grid-cols-1 lg:grid-cols-2 gap-2 gap-y-8'>
+          <div className='w-full grid grid-cols-1 lg:grid-cols-2 gap-2 gap-y-4 md:gap-y-8'>
             <WeaponList build={build} />
             <ArtifactList build={build} />
             <MainStatsList build={build} />

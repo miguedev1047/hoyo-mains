@@ -22,16 +22,16 @@ const ArtifactFirstItem = ({ build }: ArtifactFirstItemProps) => {
     error
   } = useFetch<Weapon>(`/api/artifacts/artifact/${firstArtifact.item}`)
 
-  if (isLoading) return <SkeletonCard variant='dark' className='p-4 h-20' />
-  if (error) return <SkeletonCard variant='dark' className='p-4 h-20' />
+  if (isLoading) return <SkeletonCard variant='dark' className='p-2 md:p-4 h-20 max-md:rounded-md' />
+  if (error) return <SkeletonCard variant='dark' className='p-2 md:p-4 h-20 max-md:rounded-md' />
 
   return (
     <Tooltip item={artifact}>
-      <Card className='bg-color-dark p-4 flex flex-row items-center gap-4'>
-        <Figure>
+      <Card className='bg-color-dark p-2 md:p-4 flex flex-row items-center gap-2 md:gap-4 max-md:rounded-md'>
+        <Figure size='sm' className='p-1'>
           <Image src={artifact?.imageUrl!} alt={artifact?.name} />
         </Figure>
-        <h4 className='font-medium line-clamp-1'>{artifact?.name}</h4>
+        <h4 className='text-sm md:text-base font-medium line-clamp-1'>{artifact?.name}</h4>
       </Card>
     </Tooltip>
   )

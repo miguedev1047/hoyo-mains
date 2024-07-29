@@ -14,7 +14,7 @@ const SubstatsList = ({ build }: SubstatsListProps) => {
       <h2 className='text-lg capitalize font-bold text-secondary-color'>
         Estadisticas secundarias
       </h2>
-      <Card className='bg-color-dark text-color-lightest space-y-3 p-4'>
+      <Card className='bg-color-dark text-sm md:text-base text-color-lightest space-y-3 p-2 md:p-4 max-md:rounded-md'>
         <ol className='space-y-3'>
           {substats?.map((substat, index) => (
             <li key={index}>

@@ -21,7 +21,7 @@ const CharacterImage = ({ build }: CharacterImageProps) => {
   return (
     <article className='flex items-center gap-4'>
       <Link href={url} className='relative'>
-        <Figure size='square' className={`border ${starsCharacter}`}>
+        <Figure className={`size-20 md:size-[160px] border ${starsCharacter}`}>
           <Image
             isZoomed
             src={build.imageUrl!}
@@ -38,7 +38,7 @@ const CharacterImage = ({ build }: CharacterImageProps) => {
             </p>
           }
         >
-          <Card className='w-10 h-10 bg-color-dark uppercase absolute bottom-0 left-0 z-20 m-2 p-2 rounded-full'>
+          <Card className='size-10 max-md:hidden bg-color-dark uppercase absolute bottom-0 left-0 z-20 m-2 p-2 rounded-full'>
             <Image
               isBlurred
               className='w-full h-full object-cover'
@@ -50,9 +50,13 @@ const CharacterImage = ({ build }: CharacterImageProps) => {
       </Link>
 
       <div className='space-y-2'>
-        <h2 className='text-xl font-medium capitalize'>{build.name}</h2>
+        <h2 className='text-base md:text-xl font-medium capitalize'>
+          {build.name}
+        </h2>
         <Chip className='bg-color-gray text-color-darkest rounded-md'>
-          <span className='font-bold'>{roleCharacter}</span>
+          <span className='text-xs md:text-base font-bold'>
+            {roleCharacter}
+          </span>
         </Chip>
       </div>
     </article>

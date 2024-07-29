@@ -9,7 +9,7 @@ const BestStats = ({ build }: BestStatsProps) => {
   const bestStats = build?.bestStats
 
   return (
-    <Card className='bg-color-dark text-color-lightest space-y-3 p-4'>
+    <Card className='bg-color-dark text-sm md:text-base text-color-lightest space-y-3 p-2 md:p-4 max-md:rounded-md'>
       <h2>
         <span className='font-bold'>Reloj:</span> {bestStats?.sandStat}
       </h2>

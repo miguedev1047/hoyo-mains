@@ -19,17 +19,16 @@ const WeaponItem = ({ weapon }: WeaponItemProps) => {
     error
   } = useFetch<Weapon>(`/api/weapons/weapon/${weapon.item}`)
 
-  if (error) return <SkeletonCard variant='dark' className='p-4 h-20' />
-  if (isLoading) return <SkeletonCard variant='dark' className='p-4 h-20' />
+  if (isLoading) return <SkeletonCard variant='dark' className='p-2 md:p-4 h-20 max-md:rounded-md' />
+  if (error) return <SkeletonCard variant='dark' className='p-2 md:p-4 h-20 max-md:rounded-md' />
 
   return (
     <Tooltip item={fetchedWeapon}>
-      <Card className='bg-color-dark p-4 flex flex-row items-center gap-4'>
-        <Figure>
+      <Card className='bg-color-dark p-2 md:p-4 flex flex-row items-center gap-2 md:gap-4 max-md:rounded-md'>
+        <Figure size='sm' className='p-1'>
           <Image src={fetchedWeapon?.imageUrl!} alt={fetchedWeapon?.name} />
         </Figure>
-
-        <h2 className='font-semibold line-clamp-1'>{fetchedWeapon?.name}</h2>
+        <h4 className='text-sm md:text-base font-medium line-clamp-1'>{fetchedWeapon?.name}</h4>
       </Card>
     </Tooltip>
   )

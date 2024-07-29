@@ -13,7 +13,7 @@ const MainStatsList = ({ build }: MainStatsListProps) => {
       <h2 className='text-lg capitalize font-bold text-secondary-color'>
         Estadisticas principales
       </h2>
-      <Card className='bg-color-dark text-color-lightest space-y-3 p-4'>
+      <Card className='bg-color-dark text-sm md:text-base text-color-lightest space-y-3 p-2 md:p-4 max-md:rounded-md'>
         <h2>
           <span className='font-bold'>Reloj:</span> {bestStats?.sandStat}
         </h2>
