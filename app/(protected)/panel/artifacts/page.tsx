@@ -4,7 +4,7 @@ import { IconHourglassEmpty } from '@tabler/icons-react'
 import PanelHeader from '@/render/src/panel/shared/components/ui/panel-header'
 import ArtifactMenubar from '@/render/src/panel/artifacts/components/artifact-menubar'
 import Artifacts from '@/render/src/panel/artifacts/artifacts'
-import ArtifactModal from '@/render/src/panel/artifacts/components/artifact-modal'
+import ArtifactSheet from '@/render/src/panel/artifacts/components/artifact-sheet'
 import PanelContainer from '@/render/src/shared/components/containers/panel-container'
 
 interface ArtifactsPageProps {
@@ -36,7 +36,7 @@ const ArtifactsPage = async ({ searchParams }: ArtifactsPageProps) => {
 
       <Artifacts artifacts={artifacts} />
 
-      <ArtifactModal />
+      <ArtifactSheet />
     </PanelContainer>
   )
 }

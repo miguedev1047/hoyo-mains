@@ -1,6 +1,6 @@
 import { useTransition } from 'react'
 import { useRouter } from 'next/navigation'
-import { useModalStore } from '@/render/src/panel/shared/utilities/store/use-modal-store'
+import { useOpenStore } from '@/render/src/panel/shared/utilities/store/use-open'
 import { deleteImage } from '@/render/src/shared/utilities/helpers/delete-image'
 import { deleteArtifact } from '@/render/src/panel/artifacts/utilities/services/delete'
 import { toast } from 'sonner'
@@ -9,14 +9,14 @@ export const useDropdownOptions = () => {
   const [isPending, starTransition] = useTransition()
   const { refresh } = useRouter()
 
-  const { onOpen, setModalId } = useModalStore((state) => ({
-    onOpen: state.onOpen,
-    setModalId: state.setModalId
+  const { onOpenThis, setId } = useOpenStore((state) => ({
+    onOpenThis: state.onOpenThis,
+    setId: state.setId
   }))
 
   const handleEdit = (artifactId: string) => {
-    setModalId(artifactId)
-    onOpen({ name: 'artifact' })
+    setId(artifactId)
+    onOpenThis({ name: 'artifact' })
   }
 
   const handleDelete = (artifactId: string) => {
