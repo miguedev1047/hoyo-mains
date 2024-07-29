@@ -57,7 +57,19 @@ export const fetchCharacterById = async (id: string) => {
 
 export const fetchCharacters = async () => {
   try {
-    const characters = await db.character.findMany()
+    const characters = await db.character.findMany({
+      orderBy: [
+        {
+          stars: 'desc'
+        },
+        {
+          name: 'asc'
+        },
+        {
+          createdDate: 'asc'
+        }
+      ]
+    })
     return characters
   } catch (error) {
     return null

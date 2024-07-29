@@ -109,7 +109,6 @@ const CharacterSelector = ({ character, team }: CharacterSelectorProps) => {
         color='success'
         startContent={<IconPlus />}
         isDisabled={isLoading || isPending}
-        isLoading={isLoading || isPending}
         className='bg-color-light font-bold'
       >
         Añadir Personajes
