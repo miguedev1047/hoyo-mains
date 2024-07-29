@@ -18,7 +18,7 @@ export const Hero = ({ description, src, title }: HeroProps) => {
             size='full'
             radius='xl'
           >
-            <div className='absolute inset-0 size-full bg-black/50 z-50 grid place-content-center'>
+            <div className='absolute inset-0 size-full bg-black/50 z-20 grid place-content-center'>
               <h1 className='text-5xl font-bold uppercase'>{title}</h1>
             </div>
             <Image src={src} alt='Hu tao brand' />
