@@ -3,7 +3,7 @@ import { BoxCard, BoxCardBody } from '@/render/src/shared/components/box'
 
 interface HeroProps {
   description: string
-  src: string
+  src?: string
   title: string
 }
 
@@ -13,16 +13,18 @@ export const Hero = ({ description, src, title }: HeroProps) => {
       <BoxCardBody>
         <div className='space-y-4 text-color-lightest max-md:rounded-md'>
           <Figure className='bg-transparent h-40 relative' size='full'>
-            <div
-              style={{
-                background: `url(${src})`,
-                backgroundAttachment: 'scroll',
-                backgroundSize: 'cover',
-                backgroundPosition: 'center',
-                backgroundRepeat: 'no-repeat'
-              }}
-              className='w-full h-full'
-            />
+            {src && (
+              <div
+                style={{
+                  background: `url(${src})`,
+                  backgroundAttachment: 'scroll',
+                  backgroundSize: 'cover',
+                  backgroundPosition: 'center',
+                  backgroundRepeat: 'no-repeat'
+                }}
+                className='w-full h-full'
+              />
+            )}
 
             <div className='absolute inset-0 flex items-center justify-center z-[10] size-full bg-black/50'>
               <h1 className='text-xl md:text-5xl font-bold uppercase'>

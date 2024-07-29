@@ -11,6 +11,10 @@ const Home = ({ characters }: HomeProps) => {
   return (
     <section className='space-y-4'>
       <Hero
+        title='ESTA EN BETA CAREMONDA'
+        description='Papi esta monda esta en beta, si no se entienda una monda es porque esta en beta esta porqueria, si hay errores es porque el que programa esta vaina de vaina sabe sumar, muchas gracias por su atención.'
+      />
+      <Hero
         src={HuTaoHeroBrand.src}
         title='¡Bienvenido! Caremonda'
         description='Explora a fondo todos los personajes de Genshin Impact. Encuentra información detallada sobre habilidades, builds, y equipos para llevar tu experiencia de juego al siguiente nivel.'
