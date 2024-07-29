@@ -1,6 +1,6 @@
-import { Card, CardBody } from '@nextui-org/card'
 import { Figure } from '@/render/src/shared/components/figure'
 import { Image } from '@nextui-org/react'
+import { BoxCard, BoxCardBody } from '@/render/src/shared/components/box'
 
 interface HeroProps {
   description: string
@@ -10,8 +10,8 @@ interface HeroProps {
 
 export const Hero = ({ description, src, title }: HeroProps) => {
   return (
-    <Card className='bg-color-dark select-none max-md:rounded-md'>
-      <CardBody className='max-md:p-1'>
+    <BoxCard className='bg-color-dark'>
+      <BoxCardBody>
         <div className='space-y-4 text-color-lightest max-md:rounded-md'>
           <Figure className='bg-transparent h-36 relative' size='full'>
             <div className='absolute inset-0 size-full bg-black/50 z-20 grid place-content-center'>
@@ -25,7 +25,7 @@ export const Hero = ({ description, src, title }: HeroProps) => {
             {description}
           </p>
         </div>
-      </CardBody>
-    </Card>
+      </BoxCardBody>
+    </BoxCard>
   )
 }

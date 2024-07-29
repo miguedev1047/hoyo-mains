@@ -8,7 +8,7 @@ const BoxCard = React.forwardRef<
 >(({ className, ...props }, ref) => {
   return (
     <Card
-      className={cn('bg-default-50 max-md:rounded-md', className)}
+      className={cn('bg-default-50 max-md:rounded-md px-2 md:px-4 py-4 space-y-4', className)}
       ref={ref}
       {...props}
     />
@@ -21,7 +21,7 @@ const BoxCardHeader = React.forwardRef<
   React.HTMLAttributes<HTMLElement> & CardProps
 >(({ className, children, ...props }, ref) => {
   return (
-    <CardHeader className='max-md:p-1' ref={ref} {...props}>
+    <CardHeader className='p-0' ref={ref} {...props}>
       <div
         className={cn(
           'w-full flex flex-wrap gap-4 justify-between items-center',
@@ -54,7 +54,7 @@ const BoxCardBody = React.forwardRef<
   React.HTMLAttributes<HTMLDivElement> & CardProps
 >(({ className, ...props }, ref) => {
   return (
-    <CardBody className={cn('max-md:p-1', className)} ref={ref} {...props} />
+    <CardBody className={cn('p-0', className)} ref={ref} {...props} />
   )
 })
 BoxCardBody.displayName = 'BoxCardBody'
@@ -64,7 +64,7 @@ const BoxCardFooter = React.forwardRef<
   React.HTMLAttributes<HTMLDivElement> & CardProps
 >(({ className, ...props }, ref) => {
   return (
-    <CardBody className={cn('max-md:p-1', className)} ref={ref} {...props} />
+    <CardBody className={cn('p-0', className)} ref={ref} {...props} />
   )
 })
 BoxCardFooter.displayName = 'BoxCardFooter'
