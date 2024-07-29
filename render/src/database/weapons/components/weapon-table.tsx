@@ -36,7 +36,7 @@ const WeaponTable = ({ weapons }: WeaponTableProps) => {
     switch (columnKey) {
       case 'weapon':
         return (
-          <div className='flex items-center gap-3'>
+          <div className='w-[280px] flex items-center gap-3'>
             <Figure className={cn('border', getStarBorderColor(weapon.stars))}>
               <Image src={weapon.imageUrl!} alt={weapon.name} />
             </Figure>
