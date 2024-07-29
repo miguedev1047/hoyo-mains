@@ -29,15 +29,16 @@ interface SheetTriggerProps extends PrimitivieTriggerProps {
 const SheetTrigger = React.forwardRef<
   HTMLButtonElement,
   React.HTMLAttributes<HTMLButtonElement> & SheetTriggerProps
->(({ className, isVisible = false, ...props }, ref) => {
+>(({ className, isIconOnly, isVisible = false, ...props }, ref) => {
   if (isVisible) return null
 
   return (
     <PrimitiveTrigger
       color='success'
       size='lg'
-      startContent={<IconPlus />}
-      className='bg-color-light font-bold'
+      isIconOnly={isIconOnly}
+      startContent={!isIconOnly && <IconPlus />}
+      className={cn('bg-color-light font-bold', className)}
       ref={ref}
       {...props}
     />

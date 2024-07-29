@@ -29,8 +29,8 @@ export const useCreateCharacter = () => {
   }))
 
   // Función para abrir el modal
-  const onOpenModal = () => onOpen({ name: 'character' })
-  const modalName = name === 'character'
+  const onOpenSheet = () => onOpen({ name: 'character' })
+  const isOpen = name === 'character'
 
   const {
     handleSubmit,
@@ -53,11 +53,11 @@ export const useCreateCharacter = () => {
 
   // Función para resetear el formulario
   useEffect(() => {
-    if (!modalName) {
+    if (!isOpen) {
       setImage({ imgFile: null, imgPreview: '' })
       reset()
     }
-  }, [reset, setImage, modalName])
+  }, [reset, setImage, isOpen])
 
   // Función para resetear el formulario
   const handleReset = () => {
@@ -107,9 +107,9 @@ export const useCreateCharacter = () => {
     errors,
     isPending,
     control,
-    modalName,
+    isOpen,
     onSubmit,
-    onOpenModal,
+    onOpenSheet,
     onOpenChange
   }
 }
