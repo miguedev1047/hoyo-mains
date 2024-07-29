@@ -9,15 +9,14 @@ interface BuildsProps {
 
 const Builds = ({ builds }: BuildsProps) => {
   return (
-    <div className='space-y-4'>
+    <section className='space-y-4'>
       <Hero
         src={HuTaoHeroBrand.src}
         title='Builds'
         description='Aprende a armar a tus personajes favoritos con nuestra lista de builds. Encuentra la mejor combinación de artefactos, armas y talentos para maximizar el potencial de tu personaje.'
       />
-
       <BuildContainer builds={builds} />
-    </div>
+    </section>
   )
 }
 
