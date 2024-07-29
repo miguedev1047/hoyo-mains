@@ -10,7 +10,7 @@ import { Image } from '@nextui-org/react'
 const MaterialFilters = () => {
   return (
     <Filter>
-      <FilterContent className='bg-color-light'>
+      <FilterContent className='bg-color-light grid lg:grid-cols-1'>
         <FilterItem>
           {buttonFilters.rarity.map((filter) => (
             <Toggle
