@@ -1,33 +1,31 @@
 'use client'
 
 import { EditorContent, useEditor } from '@tiptap/react'
-import { IconPencil, IconPlus, IconX } from '@tabler/icons-react'
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import { Card, ScrollShadow } from '@nextui-org/react'
 import { Color } from '@tiptap/extension-color'
-import {
-  Button,
-  Popover,
-  PopoverContent,
-  PopoverTrigger
-} from '@nextui-org/react'
 import TextStyle from '@tiptap/extension-text-style'
 import StarterKit from '@tiptap/starter-kit'
 import EditorToolbar from '@/render/src/shared/components/editor/editor-toolbar'
+import { cn } from '@/libs/utils'
+
+interface EditorProps {
+  description: string
+  placeholder?: string
+  errorMessage?: string
+  className?: string
+  isEdit: boolean
+  onChange: (richText: string) => void
+}
 
 const Editor = ({
   description,
   placeholder,
   errorMessage,
+  className,
   isEdit,
   onChange
-}: {
-  description: string
-  placeholder?: string
-  errorMessage?: string
-  isEdit: boolean
-  onChange: (richText: string) => void
-}) => {
+}: EditorProps) => {
   const editor = useEditor({
     extensions: [StarterKit.configure(), TextStyle, Color],
     content: description || placeholder,
@@ -56,7 +54,12 @@ const Editor = ({
 
   return (
     <>
-      <Card className='bg-color-darkest flex flex-col space-y-1 justify-stretch p-4'>
+      <Card
+        className={cn(
+          'bg-color-darkest flex flex-col space-y-1 justify-stretch p-4',
+          className
+        )}
+      >
         <div className='space-y-3 w-full relative'>
           <EditorToolbar editor={editor} />
 

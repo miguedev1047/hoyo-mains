@@ -73,184 +73,190 @@ const WeaponSheet = () => {
             </SheetDescription>
           </SheetHeader>
           <SheetBody>
-            <DropImage />
+            <div className='grid grid-cols-2 gap-2'>
+              <DropImage />
 
-            <Controller
-              name='name'
-              control={control}
-              render={({ field }) => (
-                <Input
-                  autoFocus
-                  type='text'
-                  label='Nombre'
-                  isDisabled={isPending}
-                  classNames={InputWrapperDarkest}
-                  errorMessage={errors.name?.message}
-                  isInvalid={!!errors.name}
-                  {...field}
-                />
-              )}
-            />
+              <Controller
+                name='name'
+                control={control}
+                render={({ field }) => (
+                  <Input
+                    autoFocus
+                    type='text'
+                    label='Nombre'
+                    isDisabled={isPending}
+                    classNames={InputWrapperDarkest}
+                    errorMessage={errors.name?.message}
+                    isInvalid={!!errors.name}
+                    {...field}
+                  />
+                )}
+              />
 
-            <Controller
-              name='atk'
-              control={control}
-              render={({ field }) => (
-                <Input
-                  type='number'
-                  label='ATQ. base'
-                  isDisabled={isPending}
-                  classNames={InputWrapperDarkest}
-                  errorMessage={errors.atk?.message}
-                  isInvalid={!!errors.atk}
-                  {...field}
-                />
-              )}
-            />
+              <Controller
+                name='atk'
+                control={control}
+                render={({ field }) => (
+                  <Input
+                    type='number'
+                    label='ATQ. base'
+                    isDisabled={isPending}
+                    classNames={InputWrapperDarkest}
+                    errorMessage={errors.atk?.message}
+                    isInvalid={!!errors.atk}
+                    {...field}
+                  />
+                )}
+              />
 
-            <Controller
-              name='stat'
-              control={control}
-              render={({ field }) => (
-                <Select
-                  items={stats}
-                  label='Selecciona la estadística'
-                  isDisabled={isPending}
-                  isLoading={isPending}
-                  errorMessage={errors.stat?.message}
-                  isInvalid={!!errors.stat}
-                  classNames={selectInputWrapperDarkest}
-                  selectedKeys={[field.value]}
-                  renderValue={(value) => {
-                    return value.map(({ data, key }) => (
-                      <div key={key}>
-                        <Chip radius='sm' size='sm'>
-                          <p>{data?.name}</p>
-                        </Chip>
-                      </div>
-                    ))
-                  }}
-                  {...field}
-                >
-                  {(element) => (
-                    <SelectItem
-                      textValue={element.name}
-                      key={element.id}
-                      value={element.id}
-                    >
-                      <div>
-                        <span>{element.name}</span>
-                      </div>
-                    </SelectItem>
-                  )}
-                </Select>
-              )}
-            />
-
-            <Controller
-              name='type'
-              control={control}
-              render={({ field }) => (
-                <Select
-                  items={weaponTypes}
-                  label='Tipo de arma'
-                  isDisabled={isPending}
-                  isLoading={isPending}
-                  errorMessage={errors.type?.message}
-                  isInvalid={!!errors.type}
-                  classNames={selectInputWrapperDarkest}
-                  selectedKeys={[field.value]}
-                  renderValue={(value) => {
-                    return value.map(({ data, key }) => (
-                      <div key={key}>
-                        <Chip radius='sm' size='sm'>
-                          <p className='capitalize'>{data?.name}</p>
-                        </Chip>
-                      </div>
-                    ))
-                  }}
-                  {...field}
-                >
-                  {(weapon) => (
-                    <SelectItem
-                      textValue={weapon.name}
-                      key={weapon.id}
-                      value={weapon.id}
-                    >
-                      <div className='flex items-center gap-2'>
-                        <Figure size='sm'>
-                          <Image
-                            className='w-full h-full object-cover'
-                            src={weapon.icon}
-                            alt={weapon.name}
-                          />
-                        </Figure>
-                        <span className='capitalize'>{weapon.name}</span>
-                      </div>
-                    </SelectItem>
-                  )}
-                </Select>
-              )}
-            />
-
-            <Controller
-              name='starsText'
-              control={control}
-              render={({ field }) => {
-                return (
+              <Controller
+                name='stat'
+                control={control}
+                render={({ field }) => (
                   <Select
-                    items={stars}
-                    label='Selecciona la rareza'
+                    items={stats}
+                    label='Selecciona la estadística'
                     isDisabled={isPending}
                     isLoading={isPending}
-                    errorMessage={errors.stars?.message}
-                    isInvalid={!!errors.stars}
+                    errorMessage={errors.stat?.message}
+                    isInvalid={!!errors.stat}
+                    className='col-span-2'
                     classNames={selectInputWrapperDarkest}
                     selectedKeys={[field.value]}
                     renderValue={(value) => {
                       return value.map(({ data, key }) => (
                         <div key={key}>
                           <Chip radius='sm' size='sm'>
-                            <p className='capitalize'>{data?.title}</p>
+                            <p>{data?.name}</p>
                           </Chip>
                         </div>
                       ))
                     }}
                     {...field}
                   >
-                    {(star) => (
+                    {(element) => (
                       <SelectItem
-                        textValue={star.name}
-                        value={star.name}
-                        key={star.name}
+                        textValue={element.name}
+                        key={element.id}
+                        value={element.id}
                       >
-                        <div className='flex gap-2 items-center'>
-                          <IconStarFilled
-                            size={24}
-                            className='text-yellow-500'
-                          />
-                          <span className='capitalize'>{star.title}</span>
+                        <div>
+                          <span>{element.name}</span>
                         </div>
                       </SelectItem>
                     )}
                   </Select>
-                )
-              }}
-            />
+                )}
+              />
 
-            <Controller
-              name='description'
-              control={control}
-              render={({ field }) => (
-                <Editor
-                  isEdit={isEditActive}
-                  errorMessage={errors.description?.message}
-                  placeholder='Descripción del arma'
-                  description={field.value}
-                  onChange={field.onChange}
-                />
-              )}
-            />
+              <Controller
+                name='type'
+                control={control}
+                render={({ field }) => (
+                  <Select
+                    items={weaponTypes}
+                    label='Tipo de arma'
+                    isDisabled={isPending}
+                    isLoading={isPending}
+                    errorMessage={errors.type?.message}
+                    isInvalid={!!errors.type}
+                    className='col-span-2'
+                    classNames={selectInputWrapperDarkest}
+                    selectedKeys={[field.value]}
+                    renderValue={(value) => {
+                      return value.map(({ data, key }) => (
+                        <div key={key}>
+                          <Chip radius='sm' size='sm'>
+                            <p className='capitalize'>{data?.name}</p>
+                          </Chip>
+                        </div>
+                      ))
+                    }}
+                    {...field}
+                  >
+                    {(weapon) => (
+                      <SelectItem
+                        textValue={weapon.name}
+                        key={weapon.id}
+                        value={weapon.id}
+                      >
+                        <div className='flex items-center gap-2'>
+                          <Figure size='sm'>
+                            <Image
+                              className='w-full h-full object-cover'
+                              src={weapon.icon}
+                              alt={weapon.name}
+                            />
+                          </Figure>
+                          <span className='capitalize'>{weapon.name}</span>
+                        </div>
+                      </SelectItem>
+                    )}
+                  </Select>
+                )}
+              />
+
+              <Controller
+                name='starsText'
+                control={control}
+                render={({ field }) => {
+                  return (
+                    <Select
+                      items={stars}
+                      label='Selecciona la rareza'
+                      isDisabled={isPending}
+                      isLoading={isPending}
+                      errorMessage={errors.stars?.message}
+                      isInvalid={!!errors.stars}
+                      className='col-span-2'
+                      classNames={selectInputWrapperDarkest}
+                      selectedKeys={[field.value]}
+                      renderValue={(value) => {
+                        return value.map(({ data, key }) => (
+                          <div key={key}>
+                            <Chip radius='sm' size='sm'>
+                              <p className='capitalize'>{data?.title}</p>
+                            </Chip>
+                          </div>
+                        ))
+                      }}
+                      {...field}
+                    >
+                      {(star) => (
+                        <SelectItem
+                          textValue={star.name}
+                          value={star.name}
+                          key={star.name}
+                        >
+                          <div className='flex gap-2 items-center'>
+                            <IconStarFilled
+                              size={24}
+                              className='text-yellow-500'
+                            />
+                            <span className='capitalize'>{star.title}</span>
+                          </div>
+                        </SelectItem>
+                      )}
+                    </Select>
+                  )
+                }}
+              />
+
+              <Controller
+                name='description'
+                control={control}
+                render={({ field }) => (
+                  <Editor
+                    isEdit={isEditActive}
+                    className='col-span-2'
+                    errorMessage={errors.description?.message}
+                    placeholder='Descripción del arma'
+                    description={field.value}
+                    onChange={field.onChange}
+                  />
+                )}
+              />
+            </div>
           </SheetBody>
           <SheetFooter>
             <Button

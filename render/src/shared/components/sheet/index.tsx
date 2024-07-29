@@ -58,19 +58,22 @@ const SheetTrigger = React.forwardRef<
 )
 SheetTrigger.displayName = 'SheetTrigger'
 
-const sheetVariants = cva('fixed z-50 gap-4 bg-default-50 p-6 shadow-lg', {
-  variants: {
-    side: {
-      top: 'inset-x-0 top-0 max-h-[440px]',
-      bottom: 'inset-x-0 bottom-0 max-h-[440px]',
-      left: 'inset-y-0 left-0 h-full w-[480px]',
-      right: 'inset-y-0 right-0 h-full w-[480px]'
+const sheetVariants = cva(
+  'fixed z-50 gap-4 bg-default-50 py-6 px-5 shadow-lg',
+  {
+    variants: {
+      side: {
+        top: 'inset-x-0 top-0 max-h-[440px]',
+        bottom: 'inset-x-0 bottom-0 max-h-[440px]',
+        left: 'inset-y-0 left-0 h-full w-[480px]',
+        right: 'inset-y-0 right-0 h-full w-[480px]'
+      }
+    },
+    defaultVariants: {
+      side: 'right'
     }
-  },
-  defaultVariants: {
-    side: 'right'
   }
-})
+)
 
 interface SheetContentProps extends PrimitiveProps {
   side?: 'left' | 'right' | 'top' | 'bottom'
@@ -125,7 +128,7 @@ const SheetHeader = React.forwardRef<
   return (
     <PrimitiveHeader
       className={cn(
-        'flex flex-col space-y-2 text-center sm:text-left p-0 pb-2',
+        'flex flex-col space-y-2 text-center sm:text-left p-0 pb-3',
         className
       )}
       ref={ref}
@@ -169,7 +172,7 @@ const SheetBody = React.forwardRef<
 >(({ className, ...props }, ref) => {
   return (
     <PrimitiveBody
-      className={cn('space-y-2 p-0', className)}
+      className={cn('p-0 gap-2', className)}
       ref={ref}
       {...props}
     />
