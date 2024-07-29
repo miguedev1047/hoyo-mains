@@ -10,23 +10,23 @@ const BestStatsView = ({ character }: BestStatsViewProps) => {
 
   return (
     <div className='grid grid-cols-3 gap-4'>
-      <Card className='col-span-3 lg:col-span-1 bg-color-darkest p-5 capitalize select-none'>
-        <h3 className='text-base text-center capitalize font-light'>
+      <Card className='col-span-3 lg:col-span-1 bg-color-darkest p-2 md:p-5 max-md:rounded-md capitalize select-none'>
+        <h3 className='text-sm md:text-base text-center capitalize font-light'>
           <span className='font-bold'>Reloj:</span> {stats?.sandStat}
         </h3>
       </Card>
-      <Card className='col-span-3 lg:col-span-1 bg-color-darkest p-5 capitalize select-none'>
-        <h3 className='text-base text-center capitalize font-light'>
+      <Card className='col-span-3 lg:col-span-1 bg-color-darkest p-2 md:p-5 max-md:rounded-md capitalize select-none'>
+        <h3 className='text-sm md:text-base text-center capitalize font-light'>
           <span className='font-bold'>Caliz:</span> {stats?.globetStat}
         </h3>
       </Card>
-      <Card className='col-span-3 lg:col-span-1 bg-color-darkest p-5 capitalize select-none'>
-        <h3 className='text-base text-center capitalize font-light'>
+      <Card className='col-span-3 lg:col-span-1 bg-color-darkest p-2 md:p-5 max-md:rounded-md capitalize select-none'>
+        <h3 className='text-sm md:text-base text-center capitalize font-light'>
           <span className='font-bold'>Tiara:</span> {stats?.circletStat}
         </h3>
       </Card>
-      <Card className='col-span-3 bg-color-darkest p-5 capitalize select-none'>
-        <h3 className='text-base text-center capitalize font-light'>
+      <Card className='col-span-3 bg-color-darkest p-2 md:p-5 max-md:rounded-md capitalize select-none'>
+        <h3 className='text-sm md:text-base text-center capitalize font-light'>
           <span className='font-bold'>Substats:</span> {stats?.substatPriority}
         </h3>
       </Card>

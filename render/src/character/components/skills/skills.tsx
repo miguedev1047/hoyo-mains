@@ -16,7 +16,8 @@ const Skills = ({ character }: SkillsProps) => {
       <Tabs
         size='lg'
         classNames={{
-          tabList: 'bg-color-darkest'
+          tabList: 'bg-color-darkest max-md:rounded-md',
+          cursor: 'max-md:rounded-md'
         }}
         aria-label='skills'
       >

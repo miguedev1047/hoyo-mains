@@ -10,14 +10,14 @@ const VideoIframe = ({ character }: VideoIframeProps) => {
   const characterVideo = character?.videoGuide
 
   return (
-    <Card className='p-4 md:p-8 space-y-4 bg-color-darkest select-none'>
-      <h3 className='text-lg'>
+    <Card className='p-2 sm:p-4 md:p-8 max-md:rounded-md space-y-4 bg-color-darkest select-none'>
+      <h3 className='text-xs md:text-lg'>
         <span className='capitalize'>{character?.name}</span> video guía
         por&nbsp;
         <Link
           isExternal
           href={characterVideo?.youtuberChannel}
-          className='text-lg text-secondary-color'
+          className='text-xs md:text-lg text-secondary-color'
         >
           <span>{characterVideo?.youtuberName} ¡Mira su contenido!</span>
         </Link>

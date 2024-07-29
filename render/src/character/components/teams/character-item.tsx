@@ -37,10 +37,10 @@ const CharacterItem = ({ character }: CharacterItemProps) => {
       }
     >
       <Link href={url}>
-        <Card className='bg-color-dark aspect-square select-none'>
+        <Card className='bg-color-dark aspect-square max-md:rounded-md select-none'>
           <Figure size='full'>
             <Image
-              className='w-full h-full object-cover'
+              className='w-full rounded-none h-full object-cover'
               src={fetchedCharacter?.imageUrl!}
               alt={fetchedCharacter?.name}
             />

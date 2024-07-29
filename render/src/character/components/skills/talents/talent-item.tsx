@@ -10,7 +10,7 @@ interface TalentItemProps {
 
 const TalentItem = ({ talent }: TalentItemProps) => {
   return (
-    <Card className='px-2 py-5 md:px-8 bg-color-darkest space-y-3 select-none'>
+    <Card className='px-2 py-5 md:px-8 max-md:rounded-md bg-color-darkest space-y-3 select-none'>
       <CardHeader>
         <article className='w-full flex items-center max-md:justify-between gap-4'>
           <Figure size='lg'>

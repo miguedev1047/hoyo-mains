@@ -66,8 +66,9 @@ const AscensionTable = ({ character }: AscensionTableProps) => {
     <>
       <Table
         classNames={{
-          wrapper: 'bg-color-darkest',
-          th: 'text-color-lightest bg-color-dark'
+          wrapper: 'bg-color-darkest max-md:rounded-md',
+          th: 'text-color-lightest bg-color-dark',
+          thead: 'max-md:rounded-md'
         }}
         className='col-span-4 select-none'
         aria-label='Materials'

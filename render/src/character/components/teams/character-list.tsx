@@ -9,7 +9,7 @@ const CharacterList = ({ team }: CharacterListProps) => {
   const characters = team?.characters ?? []
 
   return (
-    <ol className='grid grid-cols-4 gap-4'>
+    <ol className='grid grid-cols-4 gap-2 md:gap-4'>
       {characters.map((character) => (
         <li key={character.id}>
           <CharacterItem character={character} />
