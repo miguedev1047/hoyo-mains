@@ -1,9 +1,9 @@
 import {
   NotFound,
   NotFoundTitle
-} from '../../panel/shared/components/ui/no-items-found'
-import { BestTeamsType } from '../../types'
-import TeamItem from './team-item'
+} from '@/render/src/panel/shared/components/ui/no-items-found'
+import { BestTeamsType } from '@/render/src/types'
+import TeamItem from '@/render/src/teams/components/team-item'
 
 interface ListTeamsProps {
   teams: BestTeamsType[]
@@ -12,7 +12,7 @@ interface ListTeamsProps {
 const ListTeams = ({ teams }: ListTeamsProps) => {
   if (!teams?.length)
     return (
-      <NotFound>
+      <NotFound className='h-40'>
         <NotFoundTitle>No se encontraron equipos</NotFoundTitle>
       </NotFound>
     )
