@@ -12,7 +12,7 @@ const Home = ({ characters }: HomeProps) => {
     <section className='space-y-4'>
       <Hero
         title='ESTA EN BETA CAREMONDA'
-        description='Papi esta monda esta en beta, si no se entienda una monda es porque esta en beta esta porqueria, si hay errores es porque el que programa esta vaina de vaina sabe sumar, muchas gracias por su atención.'
+        description='Hey perro malparido soplamonda esta monda esta en beta, si usted no entiende una monda es porque esta en beta esta porqueria, si hay errores es porque el que programa esta vaina de vaina sabe sumar, muchas gracias por su atención.'
       />
       <Hero
         src={HuTaoHeroBrand.src}
