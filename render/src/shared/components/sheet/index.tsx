@@ -114,7 +114,7 @@ const SheetHeader = React.forwardRef<
   return (
     <PrimitiveHeader
       className={cn(
-        'flex flex-col space-y-2 text-center sm:text-left p-0',
+        'flex flex-col space-y-2 text-center sm:text-left p-0 pb-2',
         className
       )}
       ref={ref}

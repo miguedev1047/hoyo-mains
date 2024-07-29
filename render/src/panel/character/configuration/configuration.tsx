@@ -1,5 +1,5 @@
 import { CharacterType } from '@/render/src/types'
-import ConfigurationPopover from '@/render/src/panel/character/configuration/components/configuration-popover'
+import ConfigurationSheet from '@/render/src/panel/character/configuration/components/configuration-sheet'
 
 interface ConfigurationProps {
   character: CharacterType
@@ -11,7 +11,7 @@ const Configuration = ({ character }: ConfigurationProps) => {
       <h3 className='text-xl font-semibold text-secondary-color'>
         Configuraciones
       </h3>
-      <ConfigurationPopover character={character} />
+      <ConfigurationSheet character={character} />
     </div>
   )
 }

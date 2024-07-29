@@ -1,51 +1,46 @@
 'use client'
 
-import { CharacterType } from '@/render/src/types'
 import {
-    Button,
-    Popover,
-    PopoverContent,
-    PopoverTrigger,
-    Switch
-} from '@nextui-org/react'
+  Sheet,
+  SheetBody,
+  SheetContent,
+  SheetDescription,
+  SheetFooter,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger
+} from '@/render/src/shared/components/sheet'
+import { Button, Switch } from '@nextui-org/react'
+import { CharacterType } from '@/render/src/types'
 import { Controller } from 'react-hook-form'
-import { IconSettings } from '@tabler/icons-react'
 import useConfiguration from '@/render/src/panel/character/configuration/utilities/hooks/use-configuration'
 
 interface ConfigurationProps {
   character: CharacterType
 }
 
-const ConfigurationPopover = ({ character }: ConfigurationProps) => {
-  const { isOpen, control, isPending, handleOpen, onSubmit } = useConfiguration(
-    { character }
-  )
+const ConfigurationSheet = ({ character }: ConfigurationProps) => {
+  const { isOpen, control, isPending, onOpen, onOpenChange, onSubmit } =
+    useConfiguration({ character })
 
   return (
-    <Popover
-      isOpen={isOpen}
-      onOpenChange={handleOpen}
-      backdrop='opaque'
-      placement='bottom'
-    >
-      <PopoverTrigger>
-        <Button
-          fullWidth
-          size='lg'
-          color='success'
-          startContent={<IconSettings />}
-          className='bg-color-light font-bold'
-        >
-          Configuración del personaje
-        </Button>
-      </PopoverTrigger>
-      <PopoverContent className='bg-color-darkest p-4 w-[275px] xs:w-[375px] sm:w-[480px] md:w-[640px]'>
-        <div className='w-full space-y-4'>
-          <h3 className='text-base md:text-xl font-semibold text-secondary-color'>
-            Configuraciones
-          </h3>
-
-          <form onSubmit={onSubmit} className='flex flex-col space-y-4'>
+    <Sheet>
+      <SheetTrigger fullWidth isDisabled={isPending} onPress={onOpen}>
+        Configuración del personaje
+      </SheetTrigger>
+      <SheetContent
+        className='bg-color-dark w-[400px] sm:w-[640px]'
+        isOpen={isOpen}
+        onOpenChange={onOpenChange}
+      >
+        <form onSubmit={onSubmit} className='w-full space-y-4'>
+          <SheetHeader>
+            <SheetTitle>Configuraciones de {character?.name}</SheetTitle>
+            <SheetDescription>
+              Configura las opciones de visibilidad de este personaje
+            </SheetDescription>
+          </SheetHeader>
+          <SheetBody>
             <Controller
               control={control}
               name='public'
@@ -77,9 +72,10 @@ const ConfigurationPopover = ({ character }: ConfigurationProps) => {
                 </Switch>
               )}
             />
-
+          </SheetBody>
+          <SheetFooter>
             <Button
-              fullWidth
+              radius='sm'
               size='lg'
               type='submit'
               color='success'
@@ -88,11 +84,11 @@ const ConfigurationPopover = ({ character }: ConfigurationProps) => {
             >
               Guardar
             </Button>
-          </form>
-        </div>
-      </PopoverContent>
-    </Popover>
+          </SheetFooter>
+        </form>
+      </SheetContent>
+    </Sheet>
   )
 }
 
-export default ConfigurationPopover
+export default ConfigurationSheet

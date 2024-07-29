@@ -1,12 +1,13 @@
+import { z } from 'zod'
 import { CharacterType } from '@/render/src/types'
 import { updateCharacterConfig } from '@/render/src/panel/character/configuration/utilities/services/update-character-config'
 import { CharacterConfigurationSchema } from '@/schemas'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { useState, useTransition } from 'react'
+import { useTransition } from 'react'
 import { useForm } from 'react-hook-form'
 import { toast } from 'sonner'
-import { z } from 'zod'
 import { useRouter } from 'next/navigation'
+import { useDisclosure } from '@nextui-org/react'
 
 interface ConfigurationProps {
   character: CharacterType
@@ -16,7 +17,7 @@ const useConfiguration = ({ character }: ConfigurationProps) => {
   const [isPending, startTransition] = useTransition()
   const { refresh } = useRouter()
 
-  const [isOpen, setIsOpen] = useState(false)
+  const { isOpen, onOpen, onOpenChange } = useDisclosure()
   const characterId = character?.id
 
   const { handleSubmit, control } = useForm<
@@ -29,10 +30,6 @@ const useConfiguration = ({ character }: ConfigurationProps) => {
     }
   })
 
-  const handleOpen = () => {
-    setIsOpen(!isOpen)
-  }
-
   const onSubmit = handleSubmit((data) => {
     startTransition(async () => {
       const { status, message, error } = await updateCharacterConfig(
@@ -42,7 +39,7 @@ const useConfiguration = ({ character }: ConfigurationProps) => {
 
       if (status === 201) {
         toast.success(message)
-        setIsOpen(false)
+        onOpenChange()
         refresh()
         return
       }
@@ -55,7 +52,8 @@ const useConfiguration = ({ character }: ConfigurationProps) => {
     isPending,
     isOpen,
     control,
-    handleOpen,
+    onOpen,
+    onOpenChange,
     onSubmit
   }
 }
