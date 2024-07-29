@@ -2,7 +2,7 @@ import { z } from 'zod'
 import { useRouter } from 'next/navigation'
 import { useEffect, useTransition } from 'react'
 import { useUploadImageToCloud } from '@/render/src/panel/shared/utilities/hooks/use-upload-image-to-cloud'
-import { useModalStore } from '@/render/src/panel/shared/utilities/store/use-modal-store'
+import { useOpenStore } from '@/render/src/panel/shared/utilities/store/use-open'
 import { useDropImageStore } from '@/render/src/panel/shared/utilities/store/use-drop-image-store'
 import { useForm } from 'react-hook-form'
 import { MaterialSchema } from '@/schemas'
@@ -19,10 +19,10 @@ export const useCreateMaterial = () => {
   const { handleUploadImage } = useUploadImageToCloud()
 
   // Estado globales
-  const { id, name, onOpen, onOpenChange } = useModalStore((state) => ({
-    id: state.activeModal.id,
-    name: state.activeModal.name,
-    onOpen: state.onOpen,
+  const { id, name, onOpenThis, onOpenChange } = useOpenStore((state) => ({
+    id: state.active.id,
+    name: state.active.name,
+    onOpenThis: state.onOpenThis,
     onOpenChange: state.onOpenChange
   }))
 
@@ -32,8 +32,8 @@ export const useCreateMaterial = () => {
   }))
 
   // Función para abrir el modal
-  const onOpenModal = () => onOpen({ name: 'material' })
-  const modalName = name === 'material'
+  const onOpen = () => onOpenThis({ name: 'material' })
+  const isOpen = name === 'material'
 
   // Verificar si la edición está activa
   const isEditActive = !!id
@@ -83,11 +83,11 @@ export const useCreateMaterial = () => {
 
   // Reinicio de los valores del formulario
   useEffect(() => {
-    if (!modalName && !isEditActive) {
+    if (!isOpen && !isEditActive) {
       setImage({ imgFile: null, imgPreview: '' })
       reset()
     }
-  }, [reset, setImage, modalName, isEditActive])
+  }, [reset, setImage, isOpen, isEditActive])
 
   // Función para resetear el formulario
   const handleReset = () => {
@@ -99,7 +99,6 @@ export const useCreateMaterial = () => {
   // Logica de la función onSubmit
   const onSubmit = handleSubmit((data) => {
     const uuid = crypto.randomUUID()
-    const END_POINT = '/api/materials?'
 
     const starsNumber = Number(
       stars.find((star) => star.name === data.starsText)?.value[0]
@@ -160,9 +159,9 @@ export const useCreateMaterial = () => {
     errors,
     isPending,
     isEditActive,
-    modalName,
+    isOpen,
     onSubmit,
-    onOpenModal,
+    onOpen,
     onOpenChange
   }
 }

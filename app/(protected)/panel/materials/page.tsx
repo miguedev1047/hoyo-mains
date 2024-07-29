@@ -4,7 +4,7 @@ import { Material } from '@prisma/client'
 import MaterialMenubar from '@/render/src/panel/materials/components/material-menubar'
 import Materials from '@/render/src/panel/materials/materials'
 import PanelHeader from '@/render/src/panel/shared/components/ui/panel-header'
-import MaterialModal from '@/render/src/panel/materials/components/material-modal'
+import MaterialSheet from '@/render/src/panel/materials/components/material-sheet'
 import PanelContainer from '@/render/src/shared/components/containers/panel-container'
 
 interface MaterialPageProps {
@@ -42,7 +42,7 @@ const MaterialPage = async ({ searchParams }: MaterialPageProps) => {
 
       <Materials materials={materials} />
 
-      <MaterialModal />
+      <MaterialSheet />
     </PanelContainer>
   )
 }
