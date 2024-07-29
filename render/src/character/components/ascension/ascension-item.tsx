@@ -15,24 +15,8 @@ const AscensionItem = ({ material }: AscensionProps) => {
     error
   } = useFetch<Material>(`/api/materials/material/${material.materialId}`)
 
-  if (isLoading)
-    return (
-      <SkeletonCard
-        size='sm'
-        variant='transparent'
-        radius='none'
-        className='p-0'
-      />
-    )
-  if (error)
-    return (
-      <SkeletonCard
-        size='sm'
-        variant='transparent'
-        radius='none'
-        className='p-0'
-      />
-    )
+  if (error) return <SkeletonCard size='sm' variant='transparent' />
+  if (isLoading) return <SkeletonCard size='sm' variant='transparent' />
 
   return (
     <div className='flex items-center gap-2'>

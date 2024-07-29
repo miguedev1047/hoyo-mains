@@ -6,10 +6,10 @@ import { Card, CardProps } from '@nextui-org/card'
 import { cva, type VariantProps } from 'class-variance-authority'
 import { cn } from '@/libs/utils'
 
-const skeletonVariants = cva('w-full p-0 max-md:rounded-md', {
+const skeletonVariants = cva('w-full p-2 md:p-5 max-md:rounded-md shadow-none', {
   variants: {
     variant: {
-      transparent: 'bg-transparent',
+      transparent: 'bg-transparent !p-0 !rounded-none shadow-none',
       default: 'bg-color-darkest',
       dark: 'bg-color-dark',
       darkest: 'bg-color-darkest'
@@ -57,7 +57,7 @@ const SkeletonCard = React.forwardRef<
       {...props}
       ref={ref}
     >
-      <div className='w-full flex items-center md:gap-2 gap-4 p-2 md:p-4'>
+      <div className='w-full flex items-center md:gap-2 gap-4'>
         {showDragIcon && (
           <span className='max-md:hidden'>
             <IconGripVertical size={20} />
