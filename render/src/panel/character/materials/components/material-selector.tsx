@@ -56,50 +56,48 @@ const MaterialSelector = ({ character }: MaterialSelectorProps) => {
         control={control}
         render={({ field }) => {
           return (
-            <>
-              <Select
-                size='lg'
-                aria-label='Material Selector'
-                placeholder='Selecciona los materiales'
-                selectionMode='multiple'
-                className='w-full'
-                isMultiline={true}
-                key={defaultKey}
-                items={materials ?? []}
-                isLoading={isLoading || isPending}
-                isDisabled={isLoading || isPending}
-                classNames={selectInputWrapperDarkest}
-                disabledKeys={disabledItems}
-                onSelectionChange={field.onChange}
-                isInvalid={!!errors.items}
-                errorMessage={errors.items?.message}
-                renderValue={(value) => {
-                  return value.map(({ data, key }) => (
-                    <div key={key} className='flex flex-wrap gap-4'>
-                      <Chip className='bg-color-dark px-2 py-1 rounded-md'>
-                        {data?.name}
-                      </Chip>
-                    </div>
-                  ))
-                }}
-                {...field}
-              >
-                {(material) => (
-                  <SelectItem key={material.id} textValue={material.name}>
-                    <div className='flex gap-2 items-center'>
-                      <Figure size='sm'>
-                        <Image
-                          className='w-full h-full object-cover'
-                          src={material.imageUrl!}
-                          alt={material.name}
-                        />
-                      </Figure>
-                      <span>{material.name}</span>
-                    </div>
-                  </SelectItem>
-                )}
-              </Select>
-            </>
+            <Select
+              size='lg'
+              aria-label='Material Selector'
+              placeholder='Selecciona los materiales'
+              selectionMode='multiple'
+              className='w-full'
+              isMultiline={true}
+              key={defaultKey}
+              items={materials ?? []}
+              isLoading={isLoading || isPending}
+              isDisabled={isLoading || isPending}
+              classNames={selectInputWrapperDarkest}
+              disabledKeys={disabledItems}
+              onSelectionChange={field.onChange}
+              isInvalid={!!errors.items}
+              errorMessage={errors.items?.message}
+              renderValue={(value) => {
+                return value.map(({ data, key }) => (
+                  <div key={key} className='flex flex-wrap gap-4'>
+                    <Chip className='bg-color-dark px-2 py-1 rounded-md'>
+                      {data?.name}
+                    </Chip>
+                  </div>
+                ))
+              }}
+              {...field}
+            >
+              {(material) => (
+                <SelectItem key={material.id} textValue={material.name}>
+                  <div className='flex gap-2 items-center'>
+                    <Figure size='sm'>
+                      <Image
+                        className='w-full h-full object-cover'
+                        src={material.imageUrl!}
+                        alt={material.name}
+                      />
+                    </Figure>
+                    <span>{material.name}</span>
+                  </div>
+                </SelectItem>
+              )}
+            </Select>
           )
         }}
       />
@@ -108,7 +106,6 @@ const MaterialSelector = ({ character }: MaterialSelectorProps) => {
         size='lg'
         fullWidth
         startContent={<IconPlus />}
-        isLoading={isLoading || isPending}
         isDisabled={isLoading || isPending}
         className='bg-color-light text-color-darkest font-bold'
         type='submit'

@@ -50,50 +50,48 @@ const WeaponSelector = ({ character }: WeaponSelectorProps) => {
         name='items'
         control={control}
         render={({ field }) => (
-          <>
-            <Select
-              size='lg'
-              aria-label='Weapon Selector'
-              placeholder='Selecciona las armas'
-              selectionMode='multiple'
-              className='w-full'
-              isMultiline={true}
-              key={defaultKey}
-              items={weapons ?? []}
-              isLoading={isLoading || isPending}
-              isDisabled={isLoading || isPending}
-              classNames={selectInputWrapperDarkest}
-              disabledKeys={disabledItems}
-              onSelectionChange={field.onChange}
-              isInvalid={!!errors.items}
-              errorMessage={errors.items?.message}
-              renderValue={(value) => {
-                return value.map(({ data, key }) => (
-                  <div key={key} className='flex flex-wrap gap-4'>
-                    <Chip className='bg-color-dark capitalize px-2 py-1 rounded-md'>
-                      {data?.name}
-                    </Chip>
-                  </div>
-                ))
-              }}
-              {...field}
-            >
-              {(weapon) => (
-                <SelectItem key={weapon.id} textValue={weapon.name}>
-                  <div className='flex items-center gap-2'>
-                    <Figure size='sm'>
-                      <Image
-                        className='w-full h-full object-cover'
-                        src={weapon.imageUrl!}
-                        alt={weapon.name}
-                      />
-                    </Figure>
-                    <span className='capitalize'>{weapon.name}</span>
-                  </div>
-                </SelectItem>
-              )}
-            </Select>
-          </>
+          <Select
+            size='lg'
+            aria-label='Weapon Selector'
+            placeholder='Selecciona las armas'
+            selectionMode='multiple'
+            className='w-full'
+            isMultiline={true}
+            key={defaultKey}
+            items={weapons ?? []}
+            isLoading={isLoading || isPending}
+            isDisabled={isLoading || isPending}
+            classNames={selectInputWrapperDarkest}
+            disabledKeys={disabledItems}
+            onSelectionChange={field.onChange}
+            isInvalid={!!errors.items}
+            errorMessage={errors.items?.message}
+            renderValue={(value) => {
+              return value.map(({ data, key }) => (
+                <div key={key} className='flex flex-wrap gap-4'>
+                  <Chip className='bg-color-dark capitalize px-2 py-1 rounded-md'>
+                    {data?.name}
+                  </Chip>
+                </div>
+              ))
+            }}
+            {...field}
+          >
+            {(weapon) => (
+              <SelectItem key={weapon.id} textValue={weapon.name}>
+                <div className='flex items-center gap-2'>
+                  <Figure size='sm'>
+                    <Image
+                      className='w-full h-full object-cover'
+                      src={weapon.imageUrl!}
+                      alt={weapon.name}
+                    />
+                  </Figure>
+                  <span className='capitalize'>{weapon.name}</span>
+                </div>
+              </SelectItem>
+            )}
+          </Select>
         )}
       />
 
@@ -101,7 +99,6 @@ const WeaponSelector = ({ character }: WeaponSelectorProps) => {
         fullWidth
         startContent={<IconPlus />}
         isDisabled={isLoading || isPending}
-        isLoading={isLoading || isPending}
         className='bg-color-light text-color-darkest font-bold'
         type='submit'
         size='lg'

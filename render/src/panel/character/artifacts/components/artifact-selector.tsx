@@ -55,8 +55,7 @@ const ArtifactSelector = ({ character }: ArtifactSelectorProps) => {
         control={control}
         render={({ field }) => {
           return (
-            <>
-              <Select
+            <Select
                 size='lg'
                 aria-label='Artifact Selector'
                 placeholder='Selecciona los artefactos'
@@ -98,7 +97,6 @@ const ArtifactSelector = ({ character }: ArtifactSelectorProps) => {
                   </SelectItem>
                 )}
               </Select>
-            </>
           )
         }}
       />
@@ -107,7 +105,6 @@ const ArtifactSelector = ({ character }: ArtifactSelectorProps) => {
         fullWidth
         startContent={<IconPlus />}
         isDisabled={isLoading || isPending}
-        isLoading={isLoading || isPending}
         className='bg-color-light text-color-darkest font-bold'
         type='submit'
         size='lg'
