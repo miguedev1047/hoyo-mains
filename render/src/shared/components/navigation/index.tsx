@@ -78,6 +78,7 @@ const Navigation = () => {
           <DropdownMenu
             className='max-w-[340px]'
             aria-label='Database Links'
+            disabledKeys={['elements']}
             classNames={{
               base: 'gap-4'
             }}
