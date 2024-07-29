@@ -36,7 +36,7 @@ const BestStatsForm = ({ character }: BestStatsFormProps) => {
             label='Reloj'
             isInvalid={!!errors.sandStat}
             errorMessage={errors.sandStat?.message}
-            className={`col-span-3 lg:col-span-1 rounded-xl border-2`}
+            className={`col-span-3 lg:col-span-1 rounded-xl`}
             classNames={InputWrapperDarkest}
             placeholder='Recarga de Energía'
             size='lg'
@@ -54,7 +54,7 @@ const BestStatsForm = ({ character }: BestStatsFormProps) => {
             label='Caliz'
             isInvalid={!!errors.globetStat}
             errorMessage={errors.globetStat?.message}
-            className={`col-span-3 lg:col-span-1 rounded-xl border-2`}
+            className={`col-span-3 lg:col-span-1 rounded-xl`}
             classNames={InputWrapperDarkest}
             placeholder='Bono daño Hydro'
             size='lg'
@@ -72,7 +72,7 @@ const BestStatsForm = ({ character }: BestStatsFormProps) => {
             label='Tiara'
             isInvalid={!!errors.circletStat}
             errorMessage={errors.circletStat?.message}
-            className={`col-span-3 lg:col-span-1 rounded-xl border-2`}
+            className={`col-span-3 lg:col-span-1 rounded-xl`}
             classNames={InputWrapperDarkest}
             placeholder='Daño Crítico / Probabilidad Crítico'
             size='lg'
@@ -90,7 +90,7 @@ const BestStatsForm = ({ character }: BestStatsFormProps) => {
             label='Estadísticas secundarias'
             isInvalid={!!errors.substatPriority}
             errorMessage={errors.substatPriority?.message}
-            className={`col-span-3 rounded-xl border-2`}
+            className={`col-span-3 rounded-xl`}
             classNames={InputWrapperDarkest}
             placeholder='Recarga de Energia > Daño Crít. / Prob. Crít. > Ataque Porcentual'
             size='lg'
