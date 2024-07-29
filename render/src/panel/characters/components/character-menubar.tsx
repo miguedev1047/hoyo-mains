@@ -15,14 +15,14 @@ const CharacterMenubar = () => {
         />
         <SearchSelect
           label='Filtrar por arma'
-          placeholder='Selecciona un arma'
+          placeholder='Selecciona por arma'
           className='col-span-6 lg:col-span-2 xl:col-span-1'
           items={weapons}
           searchQuery='weapon'
         />
         <SearchSelect
           label='Filtrar por arma'
-          placeholder='Selecciona un arma'
+          placeholder='Selecciona por elemento'
           className='col-span-6 lg:col-span-2 xl:col-span-1'
           items={elements}
           searchQuery='element'
