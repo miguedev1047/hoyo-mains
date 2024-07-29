@@ -7,7 +7,7 @@ import { Toggle } from '@/render/src/shared/components/toggle'
 
 const HomeFilters = () => {
   return (
-    <div className='w-full'>
+    <div className='w-full max-lg:mt-2'>
       <Card className='bg-color-light p-1 md:p-4 grid grid-cols-1 lg:grid-cols-3 gap-2 max-md:rounded-md'>
         <div className='w-full flex flex-wrap justify-center gap-2'>
           {buttonFilters.rarity.slice(0, 2).map((filter) => (
