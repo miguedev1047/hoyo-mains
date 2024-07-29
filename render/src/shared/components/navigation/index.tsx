@@ -18,7 +18,6 @@ import {
 } from '@nextui-org/react'
 import { useState } from 'react'
 import { usePathname } from 'next/navigation'
-import { navigationItems } from '@/render/src/shared/constants'
 import { IconChevronDown } from '@tabler/icons-react'
 import NextLink from 'next/link'
 
@@ -103,14 +102,42 @@ const Navigation = () => {
         aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
         className='sm:hidden'
       />
-      <NavbarMenu className='rounded-xl'>
-        {navigationItems.map((item) => (
-          <NavbarMenuItem key={item.href}>
-            <Link color='foreground' as={NextLink} href='/'>
-              {item.label}
-            </Link>
-          </NavbarMenuItem>
-        ))}
+      <NavbarMenu className='rounded-xl mt-2'>
+        <NavbarMenuItem isActive={pathname === '/'}>
+          <Link color='foreground' as={NextLink} href='/'>
+            Personajes
+          </Link>
+        </NavbarMenuItem>
+        <NavbarMenuItem isActive={pathname === '/builds'}>
+          <Link color='foreground' as={NextLink} href='/builds'>
+            Builds
+          </Link>
+        </NavbarMenuItem>
+        <NavbarMenuItem isActive={pathname === '/teams'}>
+          <Link color='foreground' as={NextLink} href='/teams'>
+            Equipos
+          </Link>
+        </NavbarMenuItem>
+        <NavbarMenuItem isActive={pathname === '/weapons'}>
+          <Link color='foreground' as={NextLink} href='/weapons'>
+            Armas
+          </Link>
+        </NavbarMenuItem>
+        <NavbarMenuItem isActive={pathname === '/artifacts'}>
+          <Link color='foreground' as={NextLink} href='/artifacts'>
+            Artefactos
+          </Link>
+        </NavbarMenuItem>
+        <NavbarMenuItem isActive={pathname === '/materials'}>
+          <Link color='foreground' as={NextLink} href='/materials'>
+            Materiales
+          </Link>
+        </NavbarMenuItem>
+        <NavbarMenuItem isActive={pathname === '/elements'}>
+          <Link color='foreground' isDisabled as={NextLink} href='/elements'>
+            Elementos
+          </Link>
+        </NavbarMenuItem>
       </NavbarMenu>
     </Navbar>
   )
