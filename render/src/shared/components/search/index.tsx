@@ -49,7 +49,7 @@ export const Search = ({
     }
 
     const q = params.toString()
-    replace(`${pathname}?${q}`)
+    replace(`${pathname}?${q}`, { scroll: false })
   }
 
   return (

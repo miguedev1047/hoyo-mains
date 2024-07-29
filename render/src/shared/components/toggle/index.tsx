@@ -64,7 +64,7 @@ export const Toggle = ({
       }
 
       const q = params.toString()
-      replace(`${pathname}?${q}`)
+      replace(`${pathname}?${q}`, { scroll: false })
     }
   }
 
