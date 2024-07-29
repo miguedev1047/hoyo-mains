@@ -4,6 +4,7 @@ import { Button } from '@nextui-org/button'
 import { usePathname, useSearchParams } from 'next/navigation'
 import { useRouter } from 'next/navigation'
 import { Tooltip } from '@nextui-org/react'
+import { useMediaQuery } from '@//render/src/shared/utilities/hooks/use-media-query'
 import clsx from 'clsx'
 
 const useToggle = ({
@@ -36,6 +37,8 @@ export const Toggle = ({
   content: string | React.ReactNode
 }) => {
   const { isToggled, handleToggle } = useToggle({ target: value, name: name })
+
+  const isTablet = useMediaQuery('(min-width: 768px)')
 
   const searchParams = useSearchParams()
   const pathname = usePathname()
@@ -72,8 +75,8 @@ export const Toggle = ({
       content={content}
     >
       <Button
-        size='lg'
         isIconOnly
+        size={isTablet ? 'lg' : 'sm'}
         onPress={() => handleChange({ query: name, param: value })}
         className={clsx(
           'p-1',

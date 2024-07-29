@@ -12,7 +12,7 @@ const Home = ({ characters }: HomeProps) => {
     <div className='space-y-4'>
       <Hero
         src={HuTaoHeroBrand.src}
-        title='¡Bienvenido!'
+        title='¡Bienvenido! Caremonda'
         description='Explora a fondo todos los personajes de Genshin Impact. Encuentra información detallada sobre habilidades, builds, y equipos para llevar tu experiencia de juego al siguiente nivel.'
       />
       <CharacterContainer characters={characters} />

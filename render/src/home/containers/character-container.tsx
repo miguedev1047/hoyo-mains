@@ -10,10 +10,10 @@ interface HomeProps {
 
 const CharacterContainer = ({ characters }: HomeProps) => {
   return (
-    <Card className='bg-color-dark p-4'>
-      <CardHeader>
+    <Card className='bg-color-dark max-md:rounded-md'>
+      <CardHeader className='max-md:p-1'>
         <div className='w-full space-y-5'>
-          <div className='w-full flex flex-wrap gap-4 justify-between items-center'>
+          <div className='w-full flex flex-wrap gap-1 md:gap-4 justify-between items-center'>
             <h2 className='text-base md:text-2xl font-bold'>
               Lista de personajes
             </h2>
@@ -30,7 +30,7 @@ const CharacterContainer = ({ characters }: HomeProps) => {
           <HomeFilters />
         </div>
       </CardHeader>
-      <CardBody>
+      <CardBody className='max-md:p-1'>
         <CharacterList characters={characters} />
       </CardBody>
     </Card>

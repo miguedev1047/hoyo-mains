@@ -29,11 +29,14 @@ const CharacterItem = ({ character }: CharacterItemProps) => {
           starCharacter
         )}
       >
-        <Figure className='w-full h-full bg-color-darkest'>
+        <Figure className='w-full h-full bg-color-darkest' size='full'>
           <Image
             isZoomed
             loading='lazy'
-            className='w-full h-full object-cover'
+            className='size-full object-cover'
+            classNames={{
+              wrapper: 'w-full h-full object-cover aspect-square',
+            }}
             src={character?.imageUrl!}
             alt={`Personaje: ${character?.name}`}
           />

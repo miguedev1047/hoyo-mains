@@ -3,17 +3,17 @@ import { cva, type VariantProps } from 'class-variance-authority'
 import { cn } from '@/libs/utils'
 
 const figureVariants = cva(
-  'overflow-hidden relative grid place-content-center  bg-primary-color',
+  'overflow-hidden relative bg-primary-color',
   {
     variants: {
       size: {
-        sm: 'size-10',
-        md: 'size-12',
-        lg: 'size-14',
-        xl: 'size-16',
-        '2xl': 'size-20',
-        '3xl': 'size-24',
-        '4xl': 'size-32',
+        sm: 'size-10 grid place-content-center',
+        md: 'size-12 grid place-content-center',
+        lg: 'size-14 grid place-content-center',
+        xl: 'size-16 grid place-content-center',
+        '2xl': 'size-20 grid place-content-center',
+        '3xl': 'size-24 grid place-content-center',
+        '4xl': 'size-32 grid place-content-center',
         square: 'w-[160px] h-[160px]',
         full: 'w-full h-full'
       },
