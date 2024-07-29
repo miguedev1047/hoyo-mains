@@ -12,7 +12,7 @@ import { Toggle } from '@/render/src/shared/components/toggle'
 const HomeFilters = () => {
   return (
     <Filter>
-      <FilterContent>
+      <FilterContent className='bg-color-lightest'>
         <FilterItem>
           {buttonFilters.rarity.slice(0, 2).map((filter) => (
             <Toggle

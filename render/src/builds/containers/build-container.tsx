@@ -17,13 +17,13 @@ const BuildContainer = ({ builds }: BuildsProps) => {
   return (
     <BoxCard className='bg-color-dark'>
       <BoxCardHeader>
-        <BoxCardTitle>Lista de builds</BoxCardTitle>
+        <BoxCardTitle>Lista de Builds</BoxCardTitle>
 
         <Search
           label='Buscar personaje'
           placeholder='Hu tao...'
           searchQuery='name'
-          className='max-w-[375px]'
+          className='w-full md:max-w-[375px]'
           variant='underlined'
         />
         <BuildFilters />

@@ -41,7 +41,7 @@ const BoxCardTitle = React.forwardRef<
 >(({ className, ...props }, ref) => {
   return (
     <h2
-      className={cn('text-base md:text-2xl capitalize font-bold', className)}
+      className={cn('text-base md:text-2xl font-bold', className)}
       ref={ref}
       {...props}
     />
