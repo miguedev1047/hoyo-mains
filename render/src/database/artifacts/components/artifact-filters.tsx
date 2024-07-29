@@ -1,15 +1,19 @@
 'use client'
 
-import { Card } from '@nextui-org/card'
+import {
+  Filter,
+  FilterContent,
+  FilterItem
+} from '@/render/src/shared/components/filter'
 import { Image } from '@nextui-org/react'
 import { buttonFilters } from '@/render/src/shared/constants'
 import { Toggle } from '@/render/src/shared/components/toggle'
 
 const ArtifactFilters = () => {
   return (
-    <div className='w-full'>
-      <Card className='bg-color-light p-4 flex flex-wrap gap-16 justify-center flex-row'>
-        <div className='flex flex-wrap justify-center gap-2'>
+    <Filter>
+      <FilterContent className='bg-color-light'>
+        <FilterItem>
           {buttonFilters.rarity.slice(0, 3).map((filter) => (
             <Toggle
               name='stars'
@@ -24,9 +28,9 @@ const ArtifactFilters = () => {
               />
             </Toggle>
           ))}
-        </div>
-      </Card>
-    </div>
+        </FilterItem>
+      </FilterContent>
+    </Filter>
   )
 }
 
