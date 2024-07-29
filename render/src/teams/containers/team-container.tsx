@@ -13,7 +13,7 @@ interface TeamsProps {
 }
 const TeamContainer = ({ teams }: TeamsProps) => {
   return (
-    <BoxCard className='bg-color-dark p-4'>
+    <BoxCard className='bg-color-dark'>
       <BoxCardHeader>
         <BoxCardTitle>
           Mejores equipos

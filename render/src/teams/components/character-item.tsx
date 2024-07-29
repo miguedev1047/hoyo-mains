@@ -22,8 +22,8 @@ const CharacterItem = ({ character }: CharacterItemProps) => {
   const characterName = fetchedCharacter?.name.replace(/\s/g, '-').toLowerCase()
   const url = `/character?name=${characterName}`
 
-  if (isLoading) return <SkeletonSquare />
-  if (error) return <SkeletonSquare />
+  if (isLoading) return <SkeletonSquare className='max-md:rounded-md' />
+  if (error) return <SkeletonSquare className='max-md:rounded-md' />
 
   return (
     <Tooltip
@@ -36,10 +36,10 @@ const CharacterItem = ({ character }: CharacterItemProps) => {
       }
     >
       <Link href={url}>
-        <Card className='bg-color-dark aspect-square select-none'>
+        <Card className='bg-color-dark aspect-square select-none max-md:rounded-md'>
           <Figure size='full'>
             <Image
-              className='w-full h-full object-cover'
+              className='w-full h-full object-cover rounded-none'
               src={fetchedCharacter?.imageUrl!}
               alt={fetchedCharacter?.name}
             />

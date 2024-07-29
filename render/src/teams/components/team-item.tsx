@@ -12,7 +12,7 @@ const TeamItem = ({ team }: TeamItemProps) => {
 
   return (
     <li>
-      <Card className='bg-color-darkest p-5 space-y-5'>
+      <Card className='bg-color-darkest p-2 md:p-5 space-y-2 md:space-y-5 max-md:rounded-md'>
         <h2 className='text-sm md:text-xl font-semibold capitalize'>
           {team.name}
         </h2>
