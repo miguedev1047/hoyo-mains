@@ -93,6 +93,22 @@ const WeaponSheet = () => {
             />
 
             <Controller
+              name='atk'
+              control={control}
+              render={({ field }) => (
+                <Input
+                  type='number'
+                  label='ATQ. base'
+                  isDisabled={isPending}
+                  classNames={InputWrapperDarkest}
+                  errorMessage={errors.atk?.message}
+                  isInvalid={!!errors.atk}
+                  {...field}
+                />
+              )}
+            />
+
+            <Controller
               name='stat'
               control={control}
               render={({ field }) => (
@@ -220,22 +236,6 @@ const WeaponSheet = () => {
                   </Select>
                 )
               }}
-            />
-
-            <Controller
-              name='atk'
-              control={control}
-              render={({ field }) => (
-                <Input
-                  type='number'
-                  label='ATQ. base'
-                  isDisabled={isPending}
-                  classNames={InputWrapperDarkest}
-                  errorMessage={errors.atk?.message}
-                  isInvalid={!!errors.atk}
-                  {...field}
-                />
-              )}
             />
 
             <Controller

@@ -1,4 +1,3 @@
-import React from 'react'
 import {
   Button as PrimitiveTrigger,
   ButtonProps as PrimitivieTriggerProps,
@@ -7,12 +6,14 @@ import {
   ModalContent as PrimitivieContent,
   ModalHeader as PrimitiveHeader,
   ModalProps as PrimitiveProps,
-  ModalFooter as PrimitiveFooter
+  ModalFooter as PrimitiveFooter,
+  ScrollShadow
 } from '@nextui-org/react'
 import { cva } from 'class-variance-authority'
 import { cn } from '@/libs/utils'
 import { IconPlus } from '@tabler/icons-react'
 import { SheetAnimations } from '@/render/src/shared/components/sheet/logic'
+import React from 'react'
 
 const Sheet = React.forwardRef<
   HTMLDivElement,
@@ -93,7 +94,13 @@ const SheetContent = React.forwardRef<
         ref={ref}
         {...props}
       >
-        <PrimitivieContent>{() => children}</PrimitivieContent>
+        <PrimitivieContent>
+          {() => (
+            <ScrollShadow size={0} hideScrollBar className='w-full h-full px-1'>
+              {children}
+            </ScrollShadow>
+          )}
+        </PrimitivieContent>
       </PrimitiveSheet>
     )
   }
