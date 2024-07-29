@@ -8,6 +8,7 @@ import { useRouter } from 'next/navigation'
 import { useState, useTransition } from 'react'
 import { useForm } from 'react-hook-form'
 import { toast } from 'sonner'
+import { useDisclosure } from '@nextui-org/react'
 
 interface VideoProps {
   character: CharacterType
@@ -15,7 +16,7 @@ interface VideoProps {
 
 export const useVideo = ({ character }: VideoProps) => {
   const [isPending, startTransition] = useTransition()
-  const [isOpen, setIsOpen] = useState(false)
+  const { isOpen, onOpen, onOpenChange } = useDisclosure()
   const { refresh } = useRouter()
 
   const videoGuide = character?.videoGuide
@@ -45,7 +46,7 @@ export const useVideo = ({ character }: VideoProps) => {
         if (status === 201) {
           toast.success(message)
           refresh()
-          setIsOpen(false)
+          onOpenChange()
           return
         }
 
@@ -58,7 +59,7 @@ export const useVideo = ({ character }: VideoProps) => {
       if (status === 201) {
         toast.success(message)
         refresh()
-        setIsOpen(false)
+        onOpenChange()
         return
       }
 
@@ -73,7 +74,8 @@ export const useVideo = ({ character }: VideoProps) => {
     errors,
     videoGuide,
     isActiveEdit,
-    setIsOpen,
+    onOpenChange,
+    onOpen,
     onSubmit
   }
 }

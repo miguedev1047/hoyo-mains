@@ -30,21 +30,32 @@ interface SheetTriggerProps extends PrimitivieTriggerProps {
 const SheetTrigger = React.forwardRef<
   HTMLButtonElement,
   React.HTMLAttributes<HTMLButtonElement> & SheetTriggerProps
->(({ className, isIconOnly, isVisible = false, ...props }, ref) => {
-  if (isVisible) return null
+>(
+  (
+    {
+      className,
+      isIconOnly,
+      startContent = <IconPlus />,
+      isVisible = false,
+      ...props
+    },
+    ref
+  ) => {
+    if (isVisible) return null
 
-  return (
-    <PrimitiveTrigger
-      color='success'
-      size='lg'
-      isIconOnly={isIconOnly}
-      startContent={!isIconOnly && <IconPlus />}
-      className={cn('bg-color-light font-bold', className)}
-      ref={ref}
-      {...props}
-    />
-  )
-})
+    return (
+      <PrimitiveTrigger
+        color='success'
+        size='lg'
+        isIconOnly={isIconOnly}
+        startContent={!isIconOnly && startContent}
+        className={cn('bg-color-light font-bold', className)}
+        ref={ref}
+        {...props}
+      />
+    )
+  }
+)
 SheetTrigger.displayName = 'SheetTrigger'
 
 const sheetVariants = cva('fixed z-50 gap-4 bg-default-50 p-6 shadow-lg', {

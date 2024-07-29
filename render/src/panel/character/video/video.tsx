@@ -1,6 +1,6 @@
 import { CharacterType } from '@/render/src/types'
 import VideoCardView from '@/render/src/panel/character/video/components/video-card-view'
-import FormVideo from '@/render/src/panel/character/video/components/video-form'
+import VideoSheet from '@/render/src/panel/character/video/components/video-sheet'
 
 interface VideoProps {
   character: CharacterType
@@ -16,7 +16,7 @@ const Video = ({ character }: VideoProps) => {
       </article>
 
       <VideoCardView character={character} />
-      <FormVideo character={character} />
+      <VideoSheet character={character} />
     </div>
   )
 }
