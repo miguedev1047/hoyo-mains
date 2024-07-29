@@ -9,7 +9,7 @@ const MaterialList = ({ character }: MaterialListProps) => {
   const materials = character?.materials ?? []
 
   return (
-    <ol className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4'>
+    <ol className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-1 sm:gap-2 md:gap-4'>
       {materials.map((material) => (
         <MaterialItem key={material.item} material={material} />
       ))}

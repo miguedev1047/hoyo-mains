@@ -24,7 +24,7 @@ const Character = ({ character }: CharacterProps) => {
       <CardHeader>
         <InfoHeader character={character} />
       </CardHeader>
-      <CardBody className='grid grid-cols-4 px-0 md:px-4 gap-10'>
+      <CardBody className='grid grid-cols-4 px-0 md:px-4 gap-6 md:gap-10'>
         <Divider className='col-span-4' />
         <Ascension character={character} />
         <Divider className='col-span-4' />
