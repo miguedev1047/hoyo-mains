@@ -9,15 +9,14 @@ interface TeamsProps {
 
 const Teams = ({ teams }: TeamsProps) => {
   return (
-    <div className='space-y-4'>
+    <section className='space-y-4'>
       <Hero
         src={HuTaoHeroBrand.src}
         title='Equipos'
         description='Mira nuestra lista de los mejores equipos para Genshin Impact. Encuentra la mejor combinación de personajes para maximizar el potencial de tu equipo.'
       />
-
       <TeamContainer teams={teams} />
-    </div>
+    </section>
   )
 }
 
