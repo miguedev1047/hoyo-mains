@@ -24,7 +24,7 @@ const MaterialItem = ({ material }: MaterialItemProps) => {
   return (
     <>
       <Tooltip item={fetchedMaterial}>
-        <Card className='p-5 bg-color-darkest'>
+        <Card className='p-2 md:p-5 max-md:rounded-md bg-color-darkest'>
           <div className='flex gap-4 items-center select-none'>
             <Figure size='sm'>
               <Image

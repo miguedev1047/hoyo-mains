@@ -26,7 +26,7 @@ const ArtifactItem = ({ artifact, index }: ArtifactItemProps) => {
   return (
     <>
       <Tooltip item={fetchedArtifact}>
-        <Card className='p-5 bg-color-darkest'>
+        <Card className='p-2 md:p-5 max-md:rounded-md bg-color-darkest'>
           <div className='flex gap-4 items-center select-none'>
             <div className='size-8 bg-color-dark grid place-items-center rounded-md'>
               <span>{index + 1}</span>
