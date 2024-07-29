@@ -27,7 +27,7 @@ const WeaponFirstItem = ({ build }: WeaponFirstItemProps) => {
 
   return (
     <Tooltip item={weapon}>
-      <Card className='bg-color-dark p-2 md:p-4 flex flex-row items-center gap-2 md:gap-4 max-md:rounded-md'>
+      <Card className='bg-color-dark p-2 md:p-5 flex flex-row items-center gap-2 md:gap-4 max-md:rounded-md'>
         <Figure className='p-1'>
           <Image src={weapon?.imageUrl!} alt={weapon?.name} />
         </Figure>
