@@ -4,7 +4,7 @@ import { IconUsers } from '@tabler/icons-react'
 import Characters from '@/render/src/panel/characters/characters'
 import PanelHeader from '@/render/src/panel/shared/components/ui/panel-header'
 import CharacterMenubar from '@/render/src/panel/characters/components/character-menubar'
-import CharacterModal from '@/render/src/panel/characters/components/character-modal'
+import CharacterSheet from '@/render/src/panel/characters/components/character-sheet'
 import PanelContainer from '@/render/src/shared/components/containers/panel-container'
 
 interface FetchCharactersByNameTypes {
@@ -45,7 +45,7 @@ export default async function CharactersPage({
 
       <Characters characters={characters} />
 
-      <CharacterModal />
+      <CharacterSheet />
     </PanelContainer>
   )
 }
