@@ -261,7 +261,7 @@ const WeaponSheet = () => {
               isLoading={isPending}
               className='bg-color-light font-bold'
             >
-              Crear
+              {isEditActive ? 'Guardar' : 'Crear'}
             </Button>
           </SheetFooter>
         </form>
