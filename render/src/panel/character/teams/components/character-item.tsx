@@ -25,21 +25,25 @@ const CharacterItem = ({ character, index }: CharacterItemProps) => {
 
   if (error)
     return (
-      <SkeletonCard showDragIcon className='max-w-[358px]' variant='dark' />
+      <li className='m-2'>
+        <SkeletonCard showDragIcon variant='dark' />
+      </li>
     )
   if (isLoading)
     return (
-      <SkeletonCard showDragIcon className='max-w-[358px]' variant='dark' />
+      <li className='m-2'>
+        <SkeletonCard showDragIcon variant='dark' />
+      </li>
     )
 
   return (
     <Draggable draggableId={character.id} index={index}>
       {(provided, snapshot) => (
         <li
+          className='p-2'
           ref={provided.innerRef}
           {...provided.draggableProps}
           {...provided.dragHandleProps}
-          className='max-xl:mb-4'
         >
           <Card
             className={clsx(

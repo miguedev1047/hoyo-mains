@@ -18,17 +18,17 @@ const SortableCharacterList = ({ team }: SortableCharacterListProps) => {
     callback: updatedOrderCharacters
   })
 
-  if (isDesktop)
+  if (!isDesktop)
     return (
       <DragDropContext onDragEnd={onDragEnd}>
         <Droppable
-          direction='horizontal'
+          direction='vertical'
           droppableId='characterList'
           type='characterList'
         >
           {(provided) => (
             <ol
-              className='grid grid-cols-4 gap-4'
+              className='grid grid-cols-1 select-none'
               ref={provided.innerRef}
               {...provided.droppableProps}
             >
@@ -49,13 +49,13 @@ const SortableCharacterList = ({ team }: SortableCharacterListProps) => {
   return (
     <DragDropContext onDragEnd={onDragEnd}>
       <Droppable
-        direction='vertical'
+        direction='horizontal'
         droppableId='characterList'
         type='characterList'
       >
         {(provided) => (
           <ol
-            className='grid grid-cols-1'
+            className='grid grid-cols-4 select-none'
             ref={provided.innerRef}
             {...provided.droppableProps}
           >
