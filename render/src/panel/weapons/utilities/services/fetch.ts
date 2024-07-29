@@ -3,7 +3,17 @@
 import { currentRole } from '@/data/auth'
 import db from '@/libs/db'
 
-export const fetchWeapons = async ({ name, stars, weapon }: any) => {
+interface FetchWeaponsProps {
+  name: string
+  stars: number
+  type: string
+}
+
+export const fetchWeapons = async ({
+  name,
+  stars,
+  type
+}: FetchWeaponsProps) => {
   const role = await currentRole()
 
   if (role !== 'ADMIN' && role !== 'OWNER') {
@@ -14,15 +24,13 @@ export const fetchWeapons = async ({ name, stars, weapon }: any) => {
   }
 
   try {
-    const where = {
-      ...(name && { name: { contains: name } }),
-      ...(stars && { stars: { contains: stars } }),
-      ...(weapon && { weapon: { contains: weapon } })
-    }
-
-    if (name) {
+    if (name || stars || type) {
       const weapons = await db.weapon.findMany({
-        where,
+        where: {
+          ...(name && { name: { contains: name } }),
+          ...(type && { type: { contains: type } }),
+          ...(stars && { stars })
+        },
         orderBy: [
           {
             stars: 'desc'
