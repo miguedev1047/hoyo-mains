@@ -19,25 +19,13 @@ const ArtifactItem = ({ artifact }: ArtifactItemProps) => {
     error
   } = useFetch<Artifact>(`/api/artifacts/artifact/${artifact.item}`)
 
-  if (isLoading)
-    return (
-      <SkeletonCard
-        variant='dark'
-        className='p-2 md:p-4 h-20 max-md:rounded-md'
-      />
-    )
-  if (error)
-    return (
-      <SkeletonCard
-        variant='dark'
-        className='p-2 md:p-4 h-20 max-md:rounded-md'
-      />
-    )
+  if (error) return <SkeletonCard variant='dark' size='sm' />
+  if (isLoading) return <SkeletonCard variant='dark' size='sm' />
 
   return (
     <Tooltip item={fetchedArtifact}>
       <Card className='bg-color-dark p-2 md:p-4 flex flex-row items-center gap-2 md:gap-4 max-md:rounded-md'>
-        <Figure size='sm' className='p-1'> 
+        <Figure className='p-1'> 
           <Image src={fetchedArtifact?.imageUrl!} alt={fetchedArtifact?.name} />
         </Figure>
         <h2 className='text-sm md:text-base font-medium line-clamp-1'>

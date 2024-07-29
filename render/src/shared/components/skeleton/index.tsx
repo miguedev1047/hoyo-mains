@@ -6,7 +6,7 @@ import { Card, CardProps } from '@nextui-org/card'
 import { cva, type VariantProps } from 'class-variance-authority'
 import { cn } from '@/libs/utils'
 
-const skeletonVariants = cva('flex flex-row items-center justify-between p-5', {
+const skeletonVariants = cva('w-full p-0 max-md:rounded-md', {
   variants: {
     variant: {
       transparent: 'bg-transparent',
@@ -15,10 +15,9 @@ const skeletonVariants = cva('flex flex-row items-center justify-between p-5', {
       darkest: 'bg-color-darkest'
     },
     size: {
-      sm: 'size-10',
-      md: 'size-12',
-      lg: 'size-14',
-      full: 'w-full h-full'
+      sm: true,
+      md: true,
+      lg: true
     },
     radius: {
       sm: 'rounded-sm',
@@ -44,24 +43,31 @@ const SkeletonCard = React.forwardRef<
     VariantProps<typeof skeletonVariants> &
     CardProps
 >(({ className, showDragIcon, radius, variant, size, ...props }, ref) => {
+  const getSizes = () => {
+    if (size === 'sm') return 'size-10'
+    if (size === 'md') return 'size-12'
+    if (size === 'lg') return 'size-14'
+
+    return 'size-12'
+  }
+
   return (
     <Card
-      className={cn(
-        skeletonVariants({ variant, radius }),
-        `w-full h-full shadow-none ${className}`
-      )}
+      className={cn(skeletonVariants({ variant, radius }), className)}
       {...props}
       ref={ref}
     >
-      <div className='flex items-center gap-4'>
+      <div className='w-full flex items-center md:gap-2 gap-4 p-2 md:p-4'>
         {showDragIcon && (
           <span className='max-md:hidden'>
             <IconGripVertical size={20} />
           </span>
         )}
-        <Skeleton
-          className={`${cn(skeletonVariants({ size }))} ${skeletonWrapper}`}
-        />
+
+        <div>
+          <Skeleton className={`${getSizes()} ${skeletonWrapper}`} />
+        </div>
+
         <div>
           <Skeleton className={`min-w-[150px] h-4 ${skeletonWrapper}`} />
         </div>
