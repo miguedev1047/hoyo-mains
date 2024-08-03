@@ -11,7 +11,7 @@ export const login = async (values: z.infer<typeof LoginSchema>) => {
   const validateFields = LoginSchema.safeParse(values)
 
   if (!validateFields.success) {
-    return { error: 'Invalidad fields!' }
+    return { error: 'Campos invalidos!' }
   }
 
   const { email, password } = validateFields.data
@@ -23,14 +23,16 @@ export const login = async (values: z.infer<typeof LoginSchema>) => {
       redirectTo: DEFAULT_LOGIN_REDIRECT
     })
 
-    return { message: 'Sign in successfull!', status: 201 }
+    return { message: 'Sesion iniciada!', status: 201 }
   } catch (error) {
     if (error instanceof AuthError) {
+        console.log(error)
+
       switch (error.type) {
         case 'CredentialsSignin':
-          return { error: 'Invalidad credentials!' }
+          return { error: 'Credenciales invalidas!' }
         default:
-          return { error: 'Something went wrong!' }
+          return { error: 'Ocurrio un error!' }
       }
     }
 
