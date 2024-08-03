@@ -13,7 +13,8 @@ export const createWeapon = async (data: any[]) => {
     }
   try {
     const weapons = await db.weaponByCharacter.createMany({
-      data
+      data,
+      skipDuplicates: true
     })
 
     return {

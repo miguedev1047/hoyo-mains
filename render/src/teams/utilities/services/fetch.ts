@@ -4,30 +4,39 @@ import db from '@/libs/db'
 
 export const fetchTeamsByName = async (name: string) => {
   try {
-    const character = await db.character.findFirst({ where: { name } })
-
-    const bestTeamCharacter = await db.bestTeamCharacter.findFirst({
-      where: { characterId: character?.id }
-    })
-
-    const characterId = bestTeamCharacter?.characterId
-
-    if (characterId) {
-      const team = await db.bestTeam.findMany({
-        include: {
-          characters: true
-        },
+    if (name) {
+      const character = await db.character.findFirst({
         where: {
-          characters: {
-            some: {
-              characterId: characterId
-            }
+          name: {
+            contains: name,
+            mode: 'insensitive'
           }
-        },
-        orderBy: [{ order: 'asc' }, { createdDate: 'desc' }]
+        }
       })
 
-      return team
+      const bestTeamCharacter = await db.bestTeamCharacter.findFirst({
+        where: { characterId: character?.id }
+      })
+
+      const characterId = bestTeamCharacter?.characterId
+
+      if (characterId) {
+        const team = await db.bestTeam.findMany({
+          include: {
+            characters: true
+          },
+          where: {
+            characters: {
+              some: {
+                characterId: characterId
+              }
+            }
+          },
+          orderBy: [{ order: 'asc' }, { createdDate: 'desc' }]
+        })
+
+        return team
+      }
     }
 
     const teams = await db.bestTeam.findMany({

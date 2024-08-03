@@ -54,7 +54,8 @@ export const createCharacter = async (data: any[]) => {
     }
   try {
     const characters = await db.characterByTeam.createMany({
-      data
+      data,
+      skipDuplicates: true
     })
 
     return {
