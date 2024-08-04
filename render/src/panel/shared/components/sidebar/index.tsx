@@ -6,6 +6,7 @@ import {
   IconLayoutSidebar,
   IconSquareRotated,
   IconSword,
+  IconTrophy,
   IconUsers,
   IconUsersGroup
 } from '@tabler/icons-react'
@@ -50,6 +51,11 @@ const navItems = {
       href: '/panel/materials',
       icon: <IconSquareRotated />,
       title: 'Materiales'
+    },
+    {
+      href: '/panel/tierlist',
+      icon: <IconTrophy />,
+      title: 'Tierlist'
     }
   ]
 }
