@@ -99,6 +99,13 @@ export type BestTeamCharacterType = Prisma.BestTeamCharacterGetPayload<{
   include: { team: true }
 }>
 
+export type TierlistType = Prisma.TierlistGetPayload<{
+  include: {
+    characters: true
+    tier: true
+  }
+}>
+
 export interface SearchTypes {
   searchParams: {
     character: string

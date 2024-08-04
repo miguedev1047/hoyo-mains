@@ -238,3 +238,9 @@ export const CharacterConfigurationSchema = z.object({
   public: z.boolean(),
   isNew: z.boolean()
 })
+
+export const TierlistSchema = z.object({
+  name: z.string().min(1, {
+    message: 'Escribe un nombre válido.'
+  })
+})

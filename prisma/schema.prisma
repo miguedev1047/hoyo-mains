@@ -2,286 +2,327 @@
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
 
 generator client {
-  provider        = "prisma-client-js"
+    provider = "prisma-client-js"
 }
 
 datasource db {
-  provider = "postgresql"
-  url      = env("DATABASE_URL")
+    provider = "postgresql"
+    url      = env("DATABASE_URL")
 }
 
 model User {
-  id       String  @id @default(uuid())
-  email    String  @unique
-  name     String?
-  password String
-  role     String  @default("ADMIN")
+    id       String  @id @default(uuid())
+    email    String  @unique
+    name     String?
+    password String
+    role     String  @default("ADMIN")
 }
 
 model Character {
-  id        String  @id @unique @default(uuid())
-  name      String
-  element   String
-  weapon    String
-  stars     Int
-  starsText String
-  role      String
-  imageUrl  String?
-  public    Boolean @default(false)
-  isNew     Boolean @default(false)
+    id        String  @id @unique @default(uuid())
+    name      String
+    element   String
+    weapon    String
+    stars     Int
+    starsText String
+    role      String
+    imageUrl  String?
+    public    Boolean @default(false)
+    isNew     Boolean @default(false)
 
-  materials      MaterialsByCharacter[]
-  weapons        WeaponByCharacter[]
-  artifacts      ArtifactByCharacter[]
-  bestStats      StatsByCharacter?
-  videoGuide     VideoGuideByCharacter?
-  teams          TeamByCharacter[]
-  talents        TalentsByCharacter[]
-  passives       PassivesByCharacter[]
-  constellations ConstellationsByCharacter[]
-  ascensions     AscensionByCharacter[]
+    materials      MaterialsByCharacter[]
+    weapons        WeaponByCharacter[]
+    artifacts      ArtifactByCharacter[]
+    bestStats      StatsByCharacter?
+    videoGuide     VideoGuideByCharacter?
+    teams          TeamByCharacter[]
+    talents        TalentsByCharacter[]
+    passives       PassivesByCharacter[]
+    constellations ConstellationsByCharacter[]
+    ascensions     AscensionByCharacter[]
 
-  createdDate DateTime @default(now())
-  updatedDate DateTime @updatedAt
+    createdDate DateTime @default(now())
+    updatedDate DateTime @updatedAt
 }
 
 model Material {
-  id String @id @default(uuid())
+    id String @id @default(uuid())
 
-  imageUrl String?
+    imageUrl String?
 
-  name        String
-  type        String
-  description String
-  stars       Int
-  starsText   String
+    name        String
+    type        String
+    description String
+    stars       Int
+    starsText   String
 
-  label String
-  value String
+    label String
+    value String
 
-  createdDate DateTime @default(now())
-  updatedDate DateTime @updatedAt
+    createdDate DateTime @default(now())
+    updatedDate DateTime @updatedAt
 }
 
 model Weapon {
-  id String @id @default(uuid())
+    id String @id @default(uuid())
 
-  imageUrl String?
+    imageUrl String?
 
-  name        String
-  type        String
-  stat        String
-  description String
-  stars       Int
-  starsText   String
-  atk         Int
+    name        String
+    type        String
+    stat        String
+    description String
+    stars       Int
+    starsText   String
+    atk         Int
 
-  createdDate DateTime @default(now())
-  updatedDate DateTime @updatedAt
+    createdDate DateTime @default(now())
+    updatedDate DateTime @updatedAt
 }
 
 model Artifact {
-  id String @id @unique @default(uuid())
+    id String @id @unique @default(uuid())
 
-  name      String
-  stars     Int
-  starsText String
-  imageUrl  String?
+    name      String
+    stars     Int
+    starsText String
+    imageUrl  String?
 
-  description String
+    description String
 
-  createdDate DateTime @default(now())
-  updatedDate DateTime @updatedAt
+    createdDate DateTime @default(now())
+    updatedDate DateTime @updatedAt
 }
 
 model BestTeam {
-  id   String @id @unique @default(uuid())
-  name String
+    id   String @id @unique @default(uuid())
+    name String
 
-  order Int @default(0)
+    order Int @default(0)
 
-  createdDate DateTime @default(now())
-  updatedDate DateTime @updatedAt
+    createdDate DateTime @default(now())
+    updatedDate DateTime @updatedAt
 
-  characters BestTeamCharacter[]
+    characters BestTeamCharacter[]
 }
 
 model BestTeamCharacter {
-  id          String  @id @unique @default(uuid())
-  characterId String?
-  teamId      String?
+    id          String  @id @unique @default(uuid())
+    characterId String?
+    teamId      String?
 
-  order Int @default(0)
+    order Int @default(0)
 
-  createdDate DateTime @default(now())
-  updatedDate DateTime @updatedAt
+    createdDate DateTime @default(now())
+    updatedDate DateTime @updatedAt
 
-  team BestTeam? @relation(fields: [teamId], references: [id])
+    team BestTeam? @relation(fields: [teamId], references: [id])
 }
 
 model MaterialsByCharacter {
-  id          String  @id @unique @default(uuid())
-  item        String
-  characterId String?
-  order       Int     @default(0)
+    id          String  @id @unique @default(uuid())
+    item        String
+    characterId String?
+    order       Int     @default(0)
 
-  createdDate DateTime @default(now())
-  updatedDate DateTime @updatedAt
+    createdDate DateTime @default(now())
+    updatedDate DateTime @updatedAt
 
-  character Character? @relation(fields: [characterId], references: [id])
+    character Character? @relation(fields: [characterId], references: [id])
 }
 
 model WeaponByCharacter {
-  id          String  @id @unique @default(uuid())
-  item        String
-  characterId String?
-  order       Int     @default(0)
+    id          String  @id @unique @default(uuid())
+    item        String
+    characterId String?
+    order       Int     @default(0)
 
-  createdDate DateTime @default(now())
-  updatedDate DateTime @updatedAt
+    createdDate DateTime @default(now())
+    updatedDate DateTime @updatedAt
 
-  character Character? @relation(fields: [characterId], references: [id])
+    character Character? @relation(fields: [characterId], references: [id])
 }
 
 model ArtifactByCharacter {
-  id          String  @id @unique @default(uuid())
-  item        String
-  characterId String?
-  order       Int     @default(0)
+    id          String  @id @unique @default(uuid())
+    item        String
+    characterId String?
+    order       Int     @default(0)
 
-  createdDate DateTime @default(now())
-  updatedDate DateTime @updatedAt
+    createdDate DateTime @default(now())
+    updatedDate DateTime @updatedAt
 
-  character Character? @relation(fields: [characterId], references: [id])
+    character Character? @relation(fields: [characterId], references: [id])
 }
 
 model StatsByCharacter {
-  id          String  @id @unique @default(uuid())
-  characterId String? @unique
+    id          String  @id @unique @default(uuid())
+    characterId String? @unique
 
-  sandStat        String
-  globetStat      String
-  circletStat     String
-  substatPriority String
+    sandStat        String
+    globetStat      String
+    circletStat     String
+    substatPriority String
 
-  createdDate DateTime @default(now())
-  updatedDate DateTime @updatedAt
+    createdDate DateTime @default(now())
+    updatedDate DateTime @updatedAt
 
-  substats Character? @relation(fields: [characterId], references: [id])
+    substats Character? @relation(fields: [characterId], references: [id])
 }
 
 model VideoGuideByCharacter {
-  id          String  @id @unique @default(uuid())
-  characterId String? @unique
+    id          String  @id @unique @default(uuid())
+    characterId String? @unique
 
-  youtuberName    String
-  youtuberChannel String
-  embedVideoUrl   String
+    youtuberName    String
+    youtuberChannel String
+    embedVideoUrl   String
 
-  createdDate DateTime @default(now())
-  updatedDate DateTime @updatedAt
+    createdDate DateTime @default(now())
+    updatedDate DateTime @updatedAt
 
-  videoGuide Character? @relation(fields: [characterId], references: [id])
+    videoGuide Character? @relation(fields: [characterId], references: [id])
 }
 
 model TeamByCharacter {
-  id          String  @id @unique @default(uuid())
-  characterId String?
+    id          String  @id @unique @default(uuid())
+    characterId String?
 
-  order Int    @default(0)
-  name  String
+    order Int    @default(0)
+    name  String
 
-  createdDate DateTime @default(now())
-  updatedDate DateTime @updatedAt
+    createdDate DateTime @default(now())
+    updatedDate DateTime @updatedAt
 
-  character  Character?        @relation(fields: [characterId], references: [id])
-  characters CharacterByTeam[]
+    character  Character?        @relation(fields: [characterId], references: [id])
+    characters CharacterByTeam[]
 }
 
 model CharacterByTeam {
-  id            String  @id @unique @default(uuid())
-  characterItem String?
-  characterId   String?
-  teamId        String
+    id            String  @id @unique @default(uuid())
+    characterItem String?
+    characterId   String?
+    teamId        String
 
-  order Int @default(0)
+    order Int @default(0)
 
-  createdDate DateTime @default(now())
-  updatedDate DateTime @updatedAt
+    createdDate DateTime @default(now())
+    updatedDate DateTime @updatedAt
 
-  characters TeamByCharacter @relation(fields: [teamId], references: [id])
+    characters TeamByCharacter @relation(fields: [teamId], references: [id])
 }
 
 model TalentsByCharacter {
-  id          String  @id @unique @default(uuid())
-  characterId String?
-  name        String
-  description String
-  imageUrl    String?
+    id          String  @id @unique @default(uuid())
+    characterId String?
+    name        String
+    description String
+    imageUrl    String?
 
-  order Int @default(0)
+    order Int @default(0)
 
-  createdDate DateTime @default(now())
-  updatedDate DateTime @updatedAt
+    createdDate DateTime @default(now())
+    updatedDate DateTime @updatedAt
 
-  talents Character? @relation(fields: [characterId], references: [id])
+    talents Character? @relation(fields: [characterId], references: [id])
 }
 
 model PassivesByCharacter {
-  id          String  @id @unique @default(uuid())
-  characterId String?
-  name        String
-  description String
-  imageUrl    String?
+    id          String  @id @unique @default(uuid())
+    characterId String?
+    name        String
+    description String
+    imageUrl    String?
 
-  order Int @default(0)
+    order Int @default(0)
 
-  createdDate DateTime @default(now())
-  updatedDate DateTime @updatedAt
+    createdDate DateTime @default(now())
+    updatedDate DateTime @updatedAt
 
-  passives Character? @relation(fields: [characterId], references: [id])
+    passives Character? @relation(fields: [characterId], references: [id])
 }
 
 model ConstellationsByCharacter {
-  id          String  @id @unique @default(uuid())
-  characterId String?
-  name        String
-  description String
-  imageUrl    String?
+    id          String  @id @unique @default(uuid())
+    characterId String?
+    name        String
+    description String
+    imageUrl    String?
 
-  order Int @default(0)
+    order Int @default(0)
 
-  createdDate DateTime @default(now())
-  updatedDate DateTime @updatedAt
+    createdDate DateTime @default(now())
+    updatedDate DateTime @updatedAt
 
-  constellations Character? @relation(fields: [characterId], references: [id])
+    constellations Character? @relation(fields: [characterId], references: [id])
 }
 
 model AscensionByCharacter {
-  id          String  @id @unique @default(uuid())
-  characterId String?
+    id          String  @id @unique @default(uuid())
+    characterId String?
 
-  level     Int                   @default(20)
-  cost      Int                   @default(20000)
-  materials MaterialByAscension[]
+    level     Int                   @default(20)
+    cost      Int                   @default(20000)
+    materials MaterialByAscension[]
 
-  createdDate DateTime @default(now())
-  updatedDate DateTime @updatedAt
+    createdDate DateTime @default(now())
+    updatedDate DateTime @updatedAt
 
-  ascensions Character? @relation(fields: [characterId], references: [id])
+    ascensions Character? @relation(fields: [characterId], references: [id])
 }
 
 model MaterialByAscension {
-  id          String  @id @unique @default(uuid())
-  materialId  String?
-  ascensionId String
-  characterId String?
+    id          String  @id @unique @default(uuid())
+    materialId  String?
+    ascensionId String
+    characterId String?
 
-  order    Int @default(0)
-  quantity Int @default(0)
+    order    Int @default(0)
+    quantity Int @default(0)
 
-  createdDate DateTime @default(now())
-  updatedDate DateTime @updatedAt
+    createdDate DateTime @default(now())
+    updatedDate DateTime @updatedAt
 
-  ascensions AscensionByCharacter @relation(fields: [ascensionId], references: [id])
+    ascensions AscensionByCharacter @relation(fields: [ascensionId], references: [id])
+}
+
+model Tierlist {
+    id   String @id @unique @default(uuid())
+    name String
+
+    order Int @default(0)
+
+    createdDate DateTime @default(now())
+    updatedDate DateTime @updatedAt
+
+    characters TierlistByCharacter[]
+    tier       Tier[]
+}
+
+model Tier {
+    id         String  @id @unique @default(uuid())
+    name       String
+    rank       Int
+    tierlistId String?
+
+    tierlist   Tierlist?             @relation(fields: [tierlistId], references: [id])
+    characters TierlistByCharacter[]
+}
+
+model TierlistByCharacter {
+    id          String  @id @unique @default(uuid())
+    characterId String?
+    tierlistId  String?
+    tierId      String?
+
+    order         Int @default(0)
+    constellation Int @default(0)
+
+    createdDate DateTime @default(now())
+    updatedDate DateTime @updatedAt
+
+    tierlist Tierlist? @relation(fields: [tierlistId], references: [id])
+    tier     Tier?     @relation(fields: [tierId], references: [id])
+
+    @@unique([tierlistId, characterId])
 }
