@@ -1,4 +1,4 @@
-import { Prisma } from '@prisma/client'
+import { Prisma, TierlistByCharacter } from '@prisma/client'
 
 export type CharacterType = Prisma.CharacterGetPayload<{
   include: {
@@ -105,6 +105,8 @@ export type TierlistType = Prisma.TierlistGetPayload<{
     tier: true
   }
 }>
+
+export type CharacterTierType = Prisma.TierlistByCharacterGetPayload<{}>
 
 export interface SearchTypes {
   searchParams: {

@@ -11,7 +11,7 @@ export const createTierlist = async (data: z.infer<typeof TierlistSchema>) => {
   if (role !== 'ADMIN' && role !== 'OWNER')
     return {
       error: 'No tienes permisos para realizar esta acción.',
-      status: 403
+      status: 403,
     }
 
   const validateFields = TierlistSchema.safeParse(data)
@@ -19,7 +19,7 @@ export const createTierlist = async (data: z.infer<typeof TierlistSchema>) => {
   if (!validateFields.success)
     return {
       error: 'Campos inválidos.',
-      status: 400
+      status: 400,
     }
 
   const { name } = validateFields.data
@@ -30,8 +30,8 @@ export const createTierlist = async (data: z.infer<typeof TierlistSchema>) => {
     const tierlist = await db.tierlist.create({
       data: {
         name,
-        id: tierlistId
-      }
+        id: tierlistId,
+      },
     })
 
     await db.tier.createMany({
@@ -41,16 +41,42 @@ export const createTierlist = async (data: z.infer<typeof TierlistSchema>) => {
         { name: 'A', rank: 3, tierlistId },
         { name: 'B', rank: 4, tierlistId },
         { name: 'C', rank: 5, tierlistId },
-        { name: 'D', rank: 6, tierlistId }
-      ]
+        { name: 'D', rank: 6, tierlistId },
+      ],
     })
 
     return {
       data: tierlist,
       message: 'Tierlist creada!',
-      status: 201
+      status: 201,
     }
   } catch (error) {
     return { error: 'Error al crear la tierlist.', status: 500 }
+  }
+}
+
+export const addCharacterToTier = async (data: Array<Record<string, any>>) => {
+  const role = await currentRole()
+
+  if (role !== 'ADMIN' && role !== 'OWNER') {
+    return {
+      error: 'No tienes permisos para realizar esta acción.',
+      status: 403,
+    }
+  }
+
+  try {
+    const characters = await db.tierlistByCharacter.createMany({
+      data,
+      skipDuplicates: true,
+    })
+
+    return {
+      data: characters,
+      message: 'Personajes agregados!',
+      status: 201,
+    }
+  } catch (error) {
+    return { error: 'Error al agregar a los personajes.', status: 500 }
   }
 }

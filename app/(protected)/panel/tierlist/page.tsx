@@ -1,6 +1,9 @@
 import { IconTrophy } from '@tabler/icons-react'
-import { fetchTierlists } from '@/render/src/panel/tierlist/utilities/services/fetch'
-import { TierlistType } from '@/render/src/types'
+import {
+  fetchCharacters,
+  fetchTierlists
+} from '@/render/src/panel/tierlist/utilities/services/fetch'
+import { CharacterType, TierlistType } from '@/render/src/types'
 import PanelContainer from '@/render/src/shared/components/containers/panel-container'
 import TierlistMenubar from '@/render/src/panel/tierlist/components/tierlist-menubar'
 import PanelHeader from '@/render/src/panel/shared/components/ui/panel-header'
@@ -15,6 +18,7 @@ export async function generateMetadata() {
 
 const TierlistPage = async () => {
   const tierlists = (await fetchTierlists()) as TierlistType[]
+  const characters = (await fetchCharacters()) as CharacterType[]
 
   return (
     <PanelContainer>
@@ -22,7 +26,7 @@ const TierlistPage = async () => {
 
       <TierlistMenubar />
 
-      <Tierlist tierlists={tierlists} />
+      <Tierlist tierlists={tierlists} characters={characters} />
     </PanelContainer>
   )
 }
