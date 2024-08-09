@@ -42,7 +42,7 @@ export const useCharacterSelector = ({ team }: CharacterSelectorProps) => {
   const onSubmit = handleSubmit((data) => {
     const teamId = team?.id
 
-    const selectedCharacters = data.items
+    const selectedCharacters = data.items!
       .split(',')
       .map((itemId: string, index) => ({
         teamId: teamId,
