@@ -10,154 +10,18 @@ import {
   ModalFooterProps,
 } from '@nextui-org/modal'
 import {
-  Button,
   ButtonProps,
   Image,
   Listbox,
   ListboxItem,
-  ListboxProps,
   ScrollShadow,
   Tooltip,
 } from '@nextui-org/react'
 import { Slot } from '@radix-ui/react-slot'
 import { Input, InputProps } from '@nextui-org/input'
 import { Figure } from '@/render/src/shared/components/figure'
-import React, { useCallback, useEffect } from 'react'
 import { cn } from '@/libs/utils'
-
-type ArrayItem = Array<Record<string, any>>
-
-interface MultiSelectModalProps {
-  searchValue: string
-  isOpen: boolean
-  selectedKeys: Set<string>
-  filteredItems: ArrayItem
-  isDismissable?: boolean
-  searchPlaceholder?: string
-  isKeyboardDismissDisabled?: boolean
-  items: ArrayItem
-  emptyContent?: string
-  isLoading?: boolean
-  setSearchValue: (searchValue: string) => void
-  onOpenChange: (isOpen: boolean) => void
-  setFilteredItems: (filteredItems: ArrayItem) => void
-  setSelectedKeys: (keys: Set<string>) => void
-  onSubmit: (e: any) => void
-}
-
-// export const MultiSelectModal = ({
-//   isOpen,
-//   items,
-//   selectedKeys,
-//   filteredItems,
-//   searchValue,
-//   isDismissable = true,
-//   emptyContent = 'No hay resultados.',
-//   searchPlaceholder = 'Buscar...',
-//   isKeyboardDismissDisabled = false,
-//   isLoading = false,
-//   onOpenChange,
-//   setSearchValue,
-//   setFilteredItems,
-//   setSelectedKeys,
-//   onSubmit,
-// }: MultiSelectModalProps) => {
-
-//   useEffect(() => {
-//     handleFilteredItems(items)
-//   }, [searchValue])
-
-//   const handleFilteredItems = useCallback(
-//     (items: Array<Record<string, any>>) => {
-//       const newFilteredItems = items.filter((item) =>
-//         item.name.toLowerCase().includes(searchValue.toLowerCase())
-//       )
-
-//       setFilteredItems(newFilteredItems)
-//     },
-//     [searchValue]
-//   )
-
-//   return (
-//     <Modal
-//       hideCloseButton
-//       backdrop='opaque'
-//       isDismissable={isDismissable}
-//       isKeyboardDismissDisabled={isKeyboardDismissDisabled}
-//       placement='top-center'
-//       onOpenChange={onOpenChange}
-//       isOpen={isOpen}
-//       className='bg-color-dark'
-//     >
-//       <ModalContent>
-//         {() => (
-//           <form
-//             onSubmit={onSubmit}
-//             className='w-full py-2'
-//           >
-//             <ModalHeader className='p-0'>
-//               <Input
-//                 value={searchValue}
-//                 onValueChange={setSearchValue}
-//                 placeholder={searchPlaceholder}
-//                 labelPlacement='inside'
-//                 variant='underlined'
-//                 className='mb-1'
-//                 size='lg'
-//                 classNames={{ input: 'pl-[10px] font-light' }}
-//               />
-//             </ModalHeader>
-//             <ModalBody className='p-0'>
-//               <ScrollShadow
-//                 hideScrollBar
-//                 className='flex flex-col h-full max-h-[200px] sm:max-h-[480px] overflow-y-auto'
-//               >
-//                 <Listbox
-//                   aria-label='Select character'
-//                   selectionMode='multiple'
-//                   emptyContent={emptyContent}
-//                   items={filteredItems}
-//                   selectedKeys={selectedKeys}
-//                   // @ts-ignore
-//                   onSelectionChange={setSelectedKeys}
-//                 >
-//                   {(item) => (
-//                     <ListboxItem
-//                       textValue={item.id}
-//                       key={item.id}
-//                     >
-//                       <div className='flex items-center gap-4'>
-//                         <Figure>
-//                           <Image
-//                             src={item.imageUrl!}
-//                             alt={item.name}
-//                           />
-//                         </Figure>
-
-//                         <h2 className='capitalize'>{item.name}</h2>
-//                       </div>
-//                     </ListboxItem>
-//                   )}
-//                 </Listbox>
-//               </ScrollShadow>
-//             </ModalBody>
-//             <ModalFooter className='flex-col text-center p-0 px-2'>
-//               <Button
-//                 fullWidth
-//                 isLoading={isLoading}
-//                 isDisabled={isLoading}
-//                 type='submit'
-//                 className='bg-color-lightest text-color-darkest font-bold'
-//               >
-//                 Añadir
-//               </Button>
-//             </ModalFooter>
-//           </form>
-//         )}
-//       </ModalContent>
-//     </Modal>
-//   )
-// }
+import React, { useCallback, useEffect } from 'react'
 
 export const MultiSelectModal = React.forwardRef<
   HTMLDivElement,
@@ -301,6 +165,7 @@ interface MultiSelectModalItemsProps {
   emptyContent?: string
   items: Array<Record<string, any>>
   filteredItems: Array<Record<string, string>>
+  disabledKeys: Array<string | null>
   selectedKeys: Set<string>
   searchValue: string
   defaultSelectedKeys: Set<string>
@@ -319,6 +184,7 @@ export const MultiSelectModalItems = React.forwardRef<
       emptyContent,
       selectedKeys,
       defaultSelectedKeys,
+      disabledKeys,
       filteredItems,
       setSelectedKeys,
       setFilteredItems,
@@ -340,6 +206,8 @@ export const MultiSelectModalItems = React.forwardRef<
       [searchValue]
     )
 
+    
+
     return (
       <Listbox
         aria-label='Select Items'
@@ -348,6 +216,8 @@ export const MultiSelectModalItems = React.forwardRef<
         items={filteredItems}
         defaultSelectedKeys={defaultSelectedKeys}
         selectedKeys={selectedKeys}
+        // @ts-ignore
+        disabledKeys={disabledKeys ?? []}
         // @ts-ignore
         onSelectionChange={setSelectedKeys}
         ref={ref}

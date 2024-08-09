@@ -34,6 +34,7 @@ const TierTabItem = ({ tier, tierlist, characters }: TierlistTabItemProps) => {
           tier={tier}
           tierlist={tierlist}
           characters={characters}
+          disabledItems={characterTierList}
         />
       </Card>
     </div>

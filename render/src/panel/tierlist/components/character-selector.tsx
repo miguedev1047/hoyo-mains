@@ -7,7 +7,11 @@ import {
   MultiSelectModalSearch,
   MultiSelectModalTrigger,
 } from '@/render/src/shared/components/multi-select-modal'
-import { CharacterType, TierlistType } from '@/render/src/types'
+import {
+  CharacterTierType,
+  CharacterType,
+  TierlistType,
+} from '@/render/src/types'
 import { Button } from '@nextui-org/button'
 import { useDisclosure } from '@nextui-org/react'
 import { IconPlus } from '@tabler/icons-react'
@@ -20,12 +24,14 @@ interface CharacterSelectorProps {
   tier: TierlistType
   tierlist: TierlistType
   characters: CharacterType[]
+  disabledItems: CharacterTierType[]
 }
 
 const CharacterSelector = ({
   tierlist,
   tier,
   characters,
+  disabledItems,
 }: CharacterSelectorProps) => {
   const { refresh } = useRouter()
   const { isOpen, onOpen, onOpenChange } = useDisclosure()
@@ -34,6 +40,8 @@ const CharacterSelector = ({
     useState<Array<Record<string, any>>>(characters)
   const [selectedKeys, setSelectedKeys] = useState<Set<string>>(new Set([]))
   const [isPending, startTransition] = useTransition()
+
+  const disabledKeys = disabledItems.map((item) => item.characterId)
 
   const onSubmit = (e: any) => {
     e.preventDefault()
@@ -105,6 +113,7 @@ const CharacterSelector = ({
             selectedKeys={selectedKeys}
             defaultSelectedKeys={selectedKeys}
             filteredItems={filteredItems}
+            disabledKeys={disabledKeys}
             setSelectedKeys={setSelectedKeys}
             setFilteredItems={setFilteredItems}
           />
