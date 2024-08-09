@@ -3,7 +3,7 @@
 import { currentRole } from '@/data/auth'
 import db from '@/libs/db'
 
-export const fetchTierlists = async () => {
+export const fetchTierlists = async (id: string) => {
   const role = await currentRole()
 
   if (role !== 'ADMIN' && role !== 'OWNER')
@@ -17,8 +17,19 @@ export const fetchTierlists = async () => {
       include: {
         characters: true,
         tier: {
+          where: {
+            tierlistId: {
+              equals: id,
+            },
+          },
           include: {
-            characters: true,
+            characters: {
+              where: {
+                tierlistId: {
+                  equals: id,
+                },
+              },
+            },
           },
         },
       },

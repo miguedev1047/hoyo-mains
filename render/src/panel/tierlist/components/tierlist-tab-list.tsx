@@ -5,7 +5,9 @@ import {
   NotFoundTitle,
 } from '@/render/src/panel/shared/components/ui/no-items-found'
 import { CharacterType, TierlistType } from '@/render/src/types'
-import { Tabs, Tab } from '@nextui-org/react'
+import { Tabs, Tab, Spinner } from '@nextui-org/react'
+import { usePathname, useRouter, useSearchParams } from 'next/navigation'
+import { Suspense, useEffect } from 'react'
 import TierTabList from '@/render/src/panel/tierlist/components/tier-tab-list'
 
 interface TierlistTabListProps {
@@ -13,6 +15,23 @@ interface TierlistTabListProps {
   characters: CharacterType[]
 }
 const TierlistTabList = ({ tierlists, characters }: TierlistTabListProps) => {
+  const pathname = usePathname()
+  const { replace } = useRouter()
+
+  const searchParams = useSearchParams()
+  const params = new URLSearchParams(searchParams)
+  const tierlistId = searchParams.get('id')
+
+  useEffect(() => {
+    if (!tierlistId) {
+      params.set('id', tierlists[0].id)
+      const q = params.toString()
+      replace(`${pathname}?${q}`, { scroll: false })
+    } else {
+      params.delete('id')
+    }
+  }, [tierlists])
+
   if (!tierlists?.length) {
     return (
       <NotFound>
@@ -22,33 +41,44 @@ const TierlistTabList = ({ tierlists, characters }: TierlistTabListProps) => {
   }
 
   return (
-    <div>
-      <Tabs
-        size='lg'
-        aria-label='Tierlist Tabs'
-        items={tierlists}
-        classNames={{
-          tabList: 'bg-color-darkest',
-        }}
-      >
-        {(item) => (
-          <Tab
-            key={item.name}
-            title={item.name}
-          >
-            <ol className='grid grid-cols-1 gap-2'>
-              {tierlists.map((tierlist) => (
-                <TierTabList
-                  key={tierlist.id}
-                  tierlists={tierlist}
-                  characters={characters}
-                />
-              ))}
-            </ol>
-          </Tab>
-        )}
-      </Tabs>
-    </div>
+    <Suspense
+      fallback={
+        <Spinner
+          size='lg'
+          color='primary'
+        />
+      }
+    >
+      <div>
+        <Tabs
+          size='lg'
+          aria-label='Tierlist Tabs'
+          items={tierlists}
+          selectedKey={tierlistId}
+          classNames={{
+            tabList: 'bg-color-darkest',
+          }}
+        >
+          {(item) => (
+            <Tab
+              key={item.id}
+              title={item.name}
+              href={`?id=${item.id}`}
+            >
+              <ol className='grid grid-cols-1 gap-2'>
+                {tierlists.map((tierlist) => (
+                  <TierTabList
+                    key={tierlist.id}
+                    tierlists={tierlist}
+                    characters={characters}
+                  />
+                ))}
+              </ol>
+            </Tab>
+          )}
+        </Tabs>
+      </div>
+    </Suspense>
   )
 }
 

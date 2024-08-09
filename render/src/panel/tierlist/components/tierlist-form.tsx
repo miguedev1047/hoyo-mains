@@ -11,9 +11,11 @@ import { useTransition } from 'react'
 import { Controller, useForm } from 'react-hook-form'
 import { createTierlist } from '@/render/src/panel/tierlist/utilities/services/create'
 import { toast } from 'sonner'
+import { useRouter } from 'next/navigation'
 
 const TierlistForm = () => {
   const [isPending, startTransition] = useTransition()
+  const {refresh} = useRouter()
 
   const {
     handleSubmit,
@@ -34,6 +36,7 @@ const TierlistForm = () => {
       if (status === 201) {
         toast.success(message)
         reset()
+        refresh()
         return
       }
 
