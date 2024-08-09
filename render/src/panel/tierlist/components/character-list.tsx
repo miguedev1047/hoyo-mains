@@ -6,11 +6,15 @@ interface characterTierList {
 }
 
 const CharacterList = ({ characters }: characterTierList) => {
-  return characters.map((character) => (
-    <li key={character.id}>
-      <CharacterItem character={character} />
-    </li>
-  ))
+  return (
+    <>
+      {characters.map((character) => (
+        <li key={character.id}>
+          <CharacterItem character={character} />
+        </li>
+      ))}
+    </>
+  )
 }
 
 export default CharacterList
