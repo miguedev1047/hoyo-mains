@@ -1,6 +1,7 @@
 'use client'
 
 import { Figure } from '@/render/src/shared/components/figure'
+import { SkeletonSquare } from '@/render/src/shared/components/skeleton'
 import { useFetch } from '@/render/src/shared/utilities/hooks/use-fetch'
 import { CharacterTierType, CharacterType } from '@/render/src/types'
 import { Card, Image, Tooltip } from '@nextui-org/react'
@@ -18,8 +19,8 @@ const CharacterItem = ({ character }: Character) => {
     `/api/characters/character/${character.characterId}`
   )
 
-  if (error) return 'error'
-  if (isLoading) return 'Loading...'
+  if (error) return <SkeletonSquare />
+  if (isLoading) return <SkeletonSquare />
 
   return (
     <Tooltip

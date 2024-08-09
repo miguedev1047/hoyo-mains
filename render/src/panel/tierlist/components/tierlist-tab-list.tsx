@@ -49,8 +49,7 @@ const TierlistTabList = ({ tierlists, characters }: TierlistTabListProps) => {
         />
       }
     >
-      <div>
-        <Tabs
+      <Tabs
           size='lg'
           aria-label='Tierlist Tabs'
           items={tierlists}
@@ -65,7 +64,7 @@ const TierlistTabList = ({ tierlists, characters }: TierlistTabListProps) => {
               title={item.name}
               href={`?id=${item.id}`}
             >
-              <ol className='grid grid-cols-1 gap-2'>
+              <ol className='w-full'>
                 {tierlists.map((tierlist) => (
                   <TierTabList
                     key={tierlist.id}
@@ -77,7 +76,6 @@ const TierlistTabList = ({ tierlists, characters }: TierlistTabListProps) => {
             </Tab>
           )}
         </Tabs>
-      </div>
     </Suspense>
   )
 }
