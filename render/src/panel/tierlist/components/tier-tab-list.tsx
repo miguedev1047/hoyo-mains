@@ -1,5 +1,5 @@
 import { CharacterType, TierlistType } from '@/render/src/types'
-import TierTabItem from './tier-tab-item'
+import TierTabItem from '@/render/src/panel/tierlist/components/tier-tab-item'
 
 interface TierTabListProps {
   tierlists: TierlistType

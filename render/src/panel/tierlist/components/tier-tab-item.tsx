@@ -3,7 +3,7 @@ import { Card } from '@nextui-org/card'
 import { tierColor } from '@/render/src/panel/shared/utilities/helpers/tier-color'
 import { cn } from '@/libs/utils'
 import CharacterSelector from '@/render/src/panel/tierlist/components/character-selector'
-import CharacterList from './character-list'
+import CharacterList from '@/render/src/panel/tierlist/components/character-list'
 
 interface TierlistTabItemProps {
   tier: TierlistType
